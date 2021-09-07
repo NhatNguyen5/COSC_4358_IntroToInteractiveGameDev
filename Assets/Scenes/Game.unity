@@ -1460,6 +1460,7 @@ GameObject:
   - component: {fileID: 493267032}
   - component: {fileID: 493267031}
   - component: {fileID: 493267036}
+  - component: {fileID: 493267037}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1526,7 +1527,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 7
+  m_Constraints: 0
 --- !u!212 &493267034
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1618,6 +1619,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &493267037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493267030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ca509734d49594a9fd902c49cc6c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 693335782}
+  followMovement: {x: 0, y: 0}
+  Xspeed: 5
+  Yspeed: 0
+  canShoot: 0
+  canfollow: 1
+  fireRate: 0
+  health: 5
+  deathSound: Hit
 --- !u!1 &542014990
 GameObject:
   m_ObjectHideFlags: 0
@@ -3678,6 +3700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 2072823792}
   bulletPrefab: {fileID: 5172911503813449251, guid: b60735ba69133254091e7ccf305c7aab, type: 3}
+  delay: 0.2
 --- !u!255 &1543844388
 FixedJoint2D:
   m_ObjectHideFlags: 0
