@@ -43,6 +43,7 @@ public class EnemyAi : MonoBehaviour
         }
         else
         {
+            //set patterns?
             rb.velocity = new Vector2(Xspeed * -1, Yspeed);
         }
 
