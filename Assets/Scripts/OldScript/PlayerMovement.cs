@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     
@@ -16,7 +16,7 @@ public class WeaponMovement : MonoBehaviour
     
     public float coolDownTime = 1f;
 
-    private bool facingDir = true; //control facing direction
+    private bool isFacingRight = true; //control facing direction
 
     Vector2 mousePos;
 
@@ -29,26 +29,24 @@ public class WeaponMovement : MonoBehaviour
 
     private void Update()
     {
+        
         //input
         movement.x = Input.GetAxisRaw("Horizontal"); //these two has values such as 1,-1
         movement.y = Input.GetAxisRaw("Vertical");
 
+        movement = movement.normalized;
+
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        //Rotate weapon
-        Vector2 WeaponDir = mousePos - rb.position;
-        float angle = Mathf.Atan2(WeaponDir.y, WeaponDir.x) * Mathf.Rad2Deg;
-        if (facingDir && mousePos.x < rb.position.x)
+        //Rotate player
+        if (isFacingRight && mousePos.x < rb.position.x)
         {
-                Flip();
+            Flip();
         }
-        else if (!facingDir && mousePos.x > rb.position.x)
+        else if(!isFacingRight && mousePos.x > rb.position.x)
         {
-                Flip();
+            Flip();
         }
-        
-        rb.rotation = angle;
-        
 
         dash();
 
@@ -111,8 +109,8 @@ public class WeaponMovement : MonoBehaviour
     private void Flip()
     {
         //Switch the way the player is labelled as facing.
-        facingDir = !facingDir;
+        isFacingRight = !isFacingRight;
 
-        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * -1, transform.localScale.z);
+        transform.Rotate(0f, 180f, 0f);
     }
 }
