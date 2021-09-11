@@ -37,7 +37,9 @@ public class Player : MonoBehaviour
     private void Update()
     {
         utilities.HandleInput();
+        stats.Position = components.PlayerRidgitBody.position;
         Debug.Log(components.PlayerRidgitBody.velocity.magnitude);
+        Debug.Log(Stats.Angle);
     }
 
     private void FixedUpdate()
