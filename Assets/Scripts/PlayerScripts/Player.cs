@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
     private PlayerStats stats;
 
     [SerializeField]
@@ -14,10 +15,15 @@ public class Player : MonoBehaviour
     private PlayerUtilities utilities;
 
     private PlayerActions actions;
+    public PlayerComponents Components { get => components; }
+    public PlayerStats Stats { get => stats; }
 
-    public PlayerComponents Components 
-    { 
-        get => components; 
+    private void Awake()
+    {
+        actions = new PlayerActions(this);
+        utilities = new PlayerUtilities(this);
+
+        stats.Speed = stats.WalkSpeed;
     }
 
 
@@ -30,7 +36,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        
+        utilities.HandleInput();
+        Debug.Log(components.PlayerRidgitBody.velocity.magnitude);
     }
 
     private void FixedUpdate()
