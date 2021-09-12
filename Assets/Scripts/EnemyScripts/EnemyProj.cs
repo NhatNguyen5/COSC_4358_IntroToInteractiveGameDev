@@ -6,6 +6,7 @@ public class EnemyProj : MonoBehaviour
 {
     public float speed;
     public float despawnTime;
+    public int damage;
     public bool homing;
 
     private Vector2 followMovement;

@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         utilities.HandleInput();
-        Debug.Log(components.PlayerRidgitBody.velocity.magnitude);
+        //Debug.Log(components.PlayerRidgitBody.velocity.magnitude);
     }
 
     private void FixedUpdate()
