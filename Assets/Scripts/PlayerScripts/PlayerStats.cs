@@ -6,6 +6,11 @@ using UnityEngine;
 public class PlayerStats
 {
     public Vector2 Direction { get; set; }
+
+    public float Angle { get; set; }
+
+    public Vector2 Position { get; set; }
+
     public float Speed { get; set; }
 
     [SerializeField]
