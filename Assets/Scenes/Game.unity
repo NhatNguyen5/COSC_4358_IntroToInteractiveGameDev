@@ -2304,7 +2304,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1543844384}
   m_Father: {fileID: 693335782}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3945,6 +3946,7 @@ GameObject:
   - component: {fileID: 1543844387}
   - component: {fileID: 1543844386}
   - component: {fileID: 1543844389}
+  - component: {fileID: 1543844385}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -4011,13 +4013,32 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543844382}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.05, y: -2.3, z: -0.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2072823792}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 702817716}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!254 &1543844385
+RelativeJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543844382}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 693335783}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_MaxForce: 10000
+  m_MaxTorque: 10000
+  m_CorrectionScale: 0.3
+  m_AutoConfigureOffset: 1
+  m_LinearOffset: {x: 0, y: 0}
+  m_AngularOffset: 0
 --- !u!50 &1543844386
 Rigidbody2D:
   serializedVersion: 4
