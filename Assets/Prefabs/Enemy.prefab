@@ -160,7 +160,6 @@ GameObject:
   - component: {fileID: 4107986012236070421}
   - component: {fileID: 4107986012236070420}
   - component: {fileID: 4107986012236070423}
-  - component: {fileID: 4107986012236070422}
   - component: {fileID: 4107986012236070418}
   - component: {fileID: 4107986012236070425}
   - component: {fileID: 4107986012236070419}
@@ -258,32 +257,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 7
---- !u!61 &4107986012236070422
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4107986012236070424}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 3.03, y: 4.99}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
 --- !u!61 &4107986012236070418
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -323,6 +296,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitNoise: Hit
+  ContactNoise: Hit
+  isObjectEnemy: 1
 --- !u!114 &4107986012236070419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,14 +311,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
+  contactDamage: 5
   HP: 200
   speed: 10
   stoppingDistance: 10
   retreatDistance: 5
-  retreat: 1
+  followPlayer: 1
+  retreat: 0
+  randomMovement: 1
+  circleRadius: 5
+  timeTillNextMove: 0.5
+  knockForcePlayerContact: 0.7
   knockbackstartrange: 0.2
   knockbackendrange: 0.2
   startTimeBtwShots: 2
+  amountOfShots: 1
+  bulletSpread: 5
   projectile: {fileID: 3812985790077842512, guid: b8a4215f89377b140b6b3b8efc37eeff, type: 3}
   firePoint: {fileID: 4107986011825897303}
   player: {fileID: 0}
+  burstFire: 1
+  timeBtwBurst: 0.1
+  timesToShoot: 3

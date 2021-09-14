@@ -10,7 +10,7 @@ public class TakeDamage : MonoBehaviour
 
     public float HP = 100;
 
-    private bool hitTarget = false;
+   
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -31,33 +31,34 @@ public class TakeDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        hitTarget = false;
+
 
     }
 
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            float contactDamage = collision.gameObject.GetComponent<Enemy1>().contactDamage;
+            float speed = collision.gameObject.GetComponent<Enemy1>().speed;
+            takeDamage(contactDamage, collision.transform, speed);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-
-
 
         if (collision.tag == "EnemyBullet")
         {
             float damage = collision.gameObject.GetComponent<EnemyProj>().damage;
             float speed = collision.gameObject.GetComponent<EnemyProj>().speed;
-            
-            if (hitTarget == false)
-            {
-                takeDamage(damage, collision.transform, speed);
-            }
+
+
+            takeDamage(damage, collision.transform, speed);
+
 
         }
-
-
-
-        hitTarget = true;
     }
 
     void takeDamage(float damage, Transform impact, float speed)

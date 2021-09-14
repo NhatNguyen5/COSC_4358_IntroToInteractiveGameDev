@@ -1797,7 +1797,6 @@ GameObject:
   - component: {fileID: 693335783}
   - component: {fileID: 693335786}
   - component: {fileID: 693335785}
-  - component: {fileID: 693335787}
   - component: {fileID: 693335788}
   - component: {fileID: 693335784}
   - component: {fileID: 693335789}
@@ -1926,6 +1925,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitNoise: Hit
+  ContactNoise: Hit
+  isObjectEnemy: 0
 --- !u!70 &693335786
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1941,22 +1942,6 @@ CapsuleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.00000047683716, y: -0.0009185374}
   m_Size: {x: 0.7365532, y: 0.98730654}
-  m_Direction: 0
---- !u!70 &693335787
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 693335780}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.00000047683716, y: 0.0008480251}
-  m_Size: {x: 0.7365532, y: 0.99507946}
   m_Direction: 0
 --- !u!95 &693335788
 Animator:
@@ -3835,7 +3820,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 369984310}
   bulletPrefab: {fileID: 5172911503813449251, guid: b60735ba69133254091e7ccf305c7aab, type: 3}
-  delay: 0.2
+  delay: 0.22
+  spread: 5
+  amountOfShots: 1
+  burstFire: 1
+  timeBtwBurst: 0.07
+  timesToShoot: 3
 --- !u!212 &1644538904
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -10,29 +10,54 @@ public class Enemy1 : MonoBehaviour
     public delegate void EnemyKilled();
     public static event EnemyKilled OnEnemyKilled;
 
+    [Header("Enemy Stats")]
+
+    public float contactDamage;
     public float HP = 100;
     public float speed = 0;
+
+    [Header("Movement Settings")]
     public float stoppingDistance = 0;
     public float retreatDistance = 0;
+    public bool followPlayer;
     public bool retreat;
+    public bool randomMovement;
 
+    [Header("Random Movement Settings")]
+    public float circleRadius;
+    public float timeTillNextMove;
+    private float NextMoveCoolDown;
+    private bool reachedDestination;
+    private Vector2 randPos;
 
     private float knockbackForce = 0;
+    [Header("KnockBack Settings")]
+    public float knockForcePlayerContact;
     private bool knockback = false;
     public float knockbackstartrange = 0.4f;
     public float knockbackendrange = 1.0f;
     private float knockbacktime;
 
-
-    private bool hitTarget = false;
-
     private float timeBtwShots;
+    [Header("Gun Settings")]
     public float startTimeBtwShots;
-
+    public int amountOfShots;
+    public float bulletSpread = 0.0f;
     public GameObject projectile;
     public Transform firePoint;
     public Transform player;
     private Rigidbody2D rb;
+
+
+    [Header("Burst Settings")]
+    public bool burstFire;
+    public float timeBtwBurst;
+    private float burstTime = 0;
+
+    public int timesToShoot;
+    private int TimesShot = 0;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +75,7 @@ public class Enemy1 : MonoBehaviour
 
         if (knockback == true)
         {
-            
+
             //Debug.Log("KNOCKBACK");
             transform.position = Vector2.MoveTowards(transform.position, player.position, -knockbackForce * speed * Time.deltaTime);
 
@@ -58,16 +83,32 @@ public class Enemy1 : MonoBehaviour
         else
         {
 
-            if (Vector2.Distance(transform.position, player.position) > stoppingDistance) //follow player
+            if (Vector2.Distance(transform.position, player.position) > stoppingDistance && followPlayer == true) //follow player
             {
+                reachedDestination = true;
                 transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
             }
             else if (Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance) //stop
             {
-                transform.position = this.transform.position;
+                if (randomMovement == false)
+                    transform.position = this.transform.position;
+                else //RANDOM MOVEMENT
+                {
+                    if (reachedDestination == false)
+                        transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime);
+                    else
+                        transform.position = this.transform.position;
+
+                    if (transform.position.x == randPos.x && transform.position.y == randPos.y)
+                    {
+                        reachedDestination = true;
+                    }
+
+                }
             }
             else if (Vector2.Distance(transform.position, player.position) < retreatDistance && retreat == true) //retreat
             {
+                reachedDestination = true;
                 transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
             }
 
@@ -84,51 +125,84 @@ public class Enemy1 : MonoBehaviour
             knockbacktime = 0;
             knockback = false;
         }
-        
+
         if (timeBtwShots <= 0)
         {
-            Instantiate(projectile, firePoint.position, firePoint.rotation);
-            timeBtwShots = startTimeBtwShots;
+
+            if (burstFire == true)
+            {
+                burstTime -= Time.deltaTime;
+                if (TimesShot < timesToShoot)
+                {
+                    if (burstTime < 0)
+                    {
+                        TimesShot++;
+                        burst();
+                    }
+
+                }
+                else
+                {
+                    TimesShot = 0;
+                    timeBtwShots = startTimeBtwShots;
+                }
+            }
+            else
+            {
+                shoot();
+            }
         }
         else
         {
             timeBtwShots -= Time.deltaTime;
         }
 
-        hitTarget = false;
+        if (NextMoveCoolDown <= 0 && reachedDestination == true)
+        {
+            randomPos();
+        }
+        NextMoveCoolDown -= Time.deltaTime;
+
 
     }
 
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        reachedDestination = true;
+        NextMoveCoolDown = timeTillNextMove;
+
+        if (collision.gameObject.tag == "Player")
+        {
+            knockbackForce = knockForcePlayerContact;
+            knockbacktime = 0.1f;
+            knockback = true;
+        }
+
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
 
-       
+
+
 
         if (collision.tag == "Bullet")
         {
             int damage = collision.gameObject.GetComponent<Bullet>().damage;
             float speed = collision.gameObject.GetComponent<Bullet>().speed;
             knockbackForce = collision.gameObject.GetComponent<Bullet>().knockbackForce;
-            //Transform bulletpos = collision.gameObject.transform;
-            if (hitTarget == false)
-            {
-                takeDamage(damage, collision.transform, speed);
-            }
-            //knockbacktime = knockbacktimer;
+
+            takeDamage(damage, collision.transform, speed);
+
+            reachedDestination = true;
+
             knockbacktime = Random.Range(knockbackstartrange, knockbackendrange);
             knockback = true;
 
-            //Vector2 difference = (transform.position - collision.transform.position).normalized;
-            //Vector2 force = difference * knockbackForce;
-            //rb.AddForce(force); //if you don't want to take into consideration enemy's mass then use ForceMode.VelocityChange
         }
 
 
 
-        hitTarget = true;
     }
 
     void takeDamage(float damage, Transform impact, float speed)
@@ -170,7 +244,7 @@ public class Enemy1 : MonoBehaviour
             go.GetComponent<TextMesh>().color = Color.red;
             go.GetComponent<TextMesh>().fontSize *= 3;
         }
-        go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, speed/5);
+        go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, speed / 5);
     }
 
 
@@ -181,6 +255,43 @@ public class Enemy1 : MonoBehaviour
         sprite.color = Color.white;
     }
 
+
+    void burst()
+    {
+        for (int i = 0; i < amountOfShots; i++)
+        {
+            float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
+            Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
+            Instantiate(projectile, firePoint.position, newRot);
+            burstTime = timeBtwBurst;
+        }
+    }
+
+    void shoot()
+    {
+        for (int i = 0; i < amountOfShots; i++)
+        {
+            float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
+            Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
+            Instantiate(projectile, firePoint.position, newRot);
+            timeBtwShots = startTimeBtwShots;
+        }
+
+    }
+
+    void randomPos()
+    {
+        if (reachedDestination == true)
+        {
+            NextMoveCoolDown = timeTillNextMove;
+            randPos = transform.position;
+            randPos += Random.insideUnitCircle * circleRadius;
+            reachedDestination = false;
+        }
+
+    }
+
+
     void Die()
     {
         Destroy(gameObject);
@@ -189,4 +300,6 @@ public class Enemy1 : MonoBehaviour
             OnEnemyKilled();
         }
     }
+
+
 }

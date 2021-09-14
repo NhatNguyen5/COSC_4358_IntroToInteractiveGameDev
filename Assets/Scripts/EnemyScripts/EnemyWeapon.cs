@@ -21,16 +21,19 @@ public class EnemyWeapon : MonoBehaviour
     {
 
 
-        Vector2 direction = player.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
-        if (facingDir && player.position.x < rb.position.x)
+        if (player != null)
         {
-            Flip();
-        }
-        else if (!facingDir && player.position.x > rb.position.x)
-        {
-            Flip();
+            Vector2 direction = player.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            rb.rotation = angle;
+            if (facingDir && player.position.x < rb.position.x)
+            {
+                Flip();
+            }
+            else if (!facingDir && player.position.x > rb.position.x)
+            {
+                Flip();
+            }
         }
 
     }
