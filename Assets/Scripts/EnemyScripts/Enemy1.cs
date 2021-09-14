@@ -7,6 +7,9 @@ public class Enemy1 : MonoBehaviour
     public GameObject DamageText;
     private SpriteRenderer sprite;
 
+    public delegate void EnemyKilled();
+    public static event EnemyKilled OnEnemyKilled;
+
     public float HP = 100;
     public float speed = 0;
     public float stoppingDistance = 0;
@@ -144,7 +147,7 @@ public class Enemy1 : MonoBehaviour
         StartCoroutine(FlashRed());
         if (HP <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
     }
 
@@ -178,5 +181,12 @@ public class Enemy1 : MonoBehaviour
         sprite.color = Color.white;
     }
 
-
+    void Die()
+    {
+        Destroy(gameObject);
+        if (OnEnemyKilled != null)
+        {
+            OnEnemyKilled();
+        }
+    }
 }
