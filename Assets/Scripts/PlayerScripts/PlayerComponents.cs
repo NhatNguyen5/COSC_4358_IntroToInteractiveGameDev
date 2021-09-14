@@ -7,9 +7,16 @@ public class PlayerComponents
 {
     [SerializeField]
     private Rigidbody2D playerRidgitBody;
+    [SerializeField]
+    private Animator playerAnimator;
 
     public Rigidbody2D PlayerRidgitBody 
     {
         get => playerRidgitBody;
+    }
+
+    public Animator PlayerAnimator
+    {
+        get => playerAnimator;
     }
 }

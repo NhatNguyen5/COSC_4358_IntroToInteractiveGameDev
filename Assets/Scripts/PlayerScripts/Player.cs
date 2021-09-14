@@ -17,11 +17,13 @@ public class Player : MonoBehaviour
     private PlayerActions actions;
     public PlayerComponents Components { get => components; }
     public PlayerStats Stats { get => stats; }
+    public PlayerReferences References { get => references; }
 
     private void Awake()
     {
         actions = new PlayerActions(this);
         utilities = new PlayerUtilities(this);
+        references = new PlayerReferences(this);
 
         stats.Speed = stats.WalkSpeed;
     }
@@ -37,11 +39,14 @@ public class Player : MonoBehaviour
     private void Update()
     {
         utilities.HandleInput();
+        references.CalMousePosToPlayer();
         //Debug.Log(components.PlayerRidgitBody.velocity.magnitude);
+        //Debug.Log(references.MousePosToPlayer);
     }
 
     private void FixedUpdate()
     {
         actions.Move(transform);
+        actions.Animate();
     }
 }

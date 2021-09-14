@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TempRotation : MonoBehaviour
+public class Aim : MonoBehaviour
 {
 
     float scaleY;
@@ -19,8 +19,6 @@ public class TempRotation : MonoBehaviour
     {
         if(OptionSettings.GameisPaused == false)
             handleAiming();
-       
-
     }
 
     private void handleAiming()
