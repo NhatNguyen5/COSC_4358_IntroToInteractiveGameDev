@@ -8,6 +8,8 @@ public class EnemyAi : MonoBehaviour
     public Transform player;
     public Vector2 followMovement;
 
+    public delegate void EnemyKilled();
+    public static event EnemyKilled OnEnemyKilled;
 
     public float Xspeed;
     public float Yspeed;
@@ -54,6 +56,7 @@ public class EnemyAi : MonoBehaviour
     {
         if (canfollow == true)
         {
+            Debug.Log("FollowingPlayer");
             followCharacter(followMovement);
         }
     }
@@ -96,6 +99,11 @@ public class EnemyAi : MonoBehaviour
     void Die()
     {
         Destroy(gameObject);
+        if (OnEnemyKilled != null)
+        {
+            Debug.Log("Enemy Killed state should be active.");
+            OnEnemyKilled();
+        }
     }
 
 }
