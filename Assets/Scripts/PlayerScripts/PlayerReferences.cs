@@ -7,6 +7,7 @@ public class PlayerReferences
     Player player;
 
     public Vector2 MousePosToPlayer { get; set; }
+    public Vector2 MousePosToPlayerNotNorm { get; set; }
 
     public PlayerReferences(Player player)
     {
@@ -14,8 +15,10 @@ public class PlayerReferences
     }
 
     public void CalMousePosToPlayer() 
-    { 
+    {
+        //Debug.Log(player.References.MousePosToPlayerNotNorm);
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        MousePosToPlayer = (mousePos - player.Stats.Position).normalized;
+        MousePosToPlayerNotNorm = mousePos - player.Stats.Position;
+        MousePosToPlayer = MousePosToPlayerNotNorm.normalized;
     }
 }

@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: effccdd4d29cd8a4aae09a6671d93d1a
+guid: 133b6437cc9cce3429eb1b91d9e4d757
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8530560539875306147
-    second: Red_Blood_Cell_Sprite_Sheet-export_0
+      213: -2225942082661296427
+    second: Sprite-0001-export_0
   - first:
-      213: -6458527361712132808
-    second: Red_Blood_Cell_Sprite_Sheet-export_1
+      213: -3015763627831204080
+    second: Sprite-0001-export_1
   - first:
-      213: -5127154564572253652
-    second: Red_Blood_Cell_Sprite_Sheet-export_2
+      213: 685191625215505968
+    second: Sprite-0001-export_2
   - first:
-      213: -2075149510202458146
-    second: Red_Blood_Cell_Sprite_Sheet-export_3
+      213: 3462226938136616106
+    second: Sprite-0001-export_3
   - first:
-      213: 3460207671652646301
-    second: Red_Blood_Cell_Sprite_Sheet-export_4
+      213: -2629941337785400250
+    second: Sprite-0001-export_4
   - first:
-      213: -5492405934276231830
-    second: Red_Blood_Cell_Sprite_Sheet-export_5
+      213: 8250157695381917450
+    second: Sprite-0001-export_5
   - first:
-      213: 8269166738852317964
-    second: Red_Blood_Cell_Sprite_Sheet-export_6
+      213: 165973425293920712
+    second: Sprite-0001-export_6
   - first:
-      213: -171032257602072146
-    second: Red_Blood_Cell_Sprite_Sheet-export_7
+      213: 8837202907454835572
+    second: Sprite-0001-export_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,13 +127,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Red_Blood_Cell_Sprite_Sheet-export_0
+      name: Sprite-0001-export_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 294
-        width: 72
-        height: 84
+        x: 0
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,20 +141,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5594c5c26c5d9980800000000000000
-      internalID: -8530560539875306147
+      spriteID: 5d65168287ddb11e0800000000000000
+      internalID: -2225942082661296427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Red_Blood_Cell_Sprite_Sheet-export_1
+      name: Sprite-0001-export_1
       rect:
         serializedVersion: 2
-        x: 108
-        y: 294
-        width: 72
-        height: 84
+        x: 96
+        y: 288
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83de1015593be56a0800000000000000
-      internalID: -6458527361712132808
+      spriteID: 017e39c65fad526d0800000000000000
+      internalID: -3015763627831204080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Red_Blood_Cell_Sprite_Sheet-export_2
+      name: Sprite-0001-export_2
       rect:
         serializedVersion: 2
-        x: 12
-        y: 198
-        width: 72
-        height: 84
+        x: 0
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c22f52e9610b8d8b0800000000000000
-      internalID: -5127154564572253652
+      spriteID: 036fa00272a428900800000000000000
+      internalID: 685191625215505968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Red_Blood_Cell_Sprite_Sheet-export_3
+      name: Sprite-0001-export_3
       rect:
         serializedVersion: 2
-        x: 108
-        y: 198
-        width: 72
-        height: 84
+        x: 96
+        y: 192
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -204,20 +204,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edf7e8cd3869333e0800000000000000
-      internalID: -2075149510202458146
+      spriteID: aacdb6b7e0d4c0030800000000000000
+      internalID: 3462226938136616106
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Red_Blood_Cell_Sprite_Sheet-export_4
+      name: Sprite-0001-export_4
       rect:
         serializedVersion: 2
-        x: 12
-        y: 102
-        width: 72
-        height: 84
+        x: 0
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,20 +225,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9dffed5b80250030800000000000000
-      internalID: 3460207671652646301
+      spriteID: 6448f2d8942908bd0800000000000000
+      internalID: -2629941337785400250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Red_Blood_Cell_Sprite_Sheet-export_5
+      name: Sprite-0001-export_5
       rect:
         serializedVersion: 2
-        x: 108
-        y: 102
-        width: 72
-        height: 84
+        x: 96
+        y: 96
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,20 +246,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6db73d17ed07c3b0800000000000000
-      internalID: -5492405934276231830
+      spriteID: a0fc13676b27e7270800000000000000
+      internalID: 8250157695381917450
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Red_Blood_Cell_Sprite_Sheet-export_6
+      name: Sprite-0001-export_6
       rect:
         serializedVersion: 2
-        x: 12
-        y: 6
-        width: 72
-        height: 84
+        x: 0
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,20 +267,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0b84c9465bf1c270800000000000000
-      internalID: 8269166738852317964
+      spriteID: 8c98cc073f7ad4200800000000000000
+      internalID: 165973425293920712
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Red_Blood_Cell_Sprite_Sheet-export_7
+      name: Sprite-0001-export_7
       rect:
         serializedVersion: 2
-        x: 108
-        y: 6
-        width: 72
-        height: 84
+        x: 96
+        y: 0
+        width: 96
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,8 +288,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea1de70611f50adf0800000000000000
-      internalID: -171032257602072146
+      spriteID: 47b05ea093d04aa70800000000000000
+      internalID: 8837202907454835572
       vertices: []
       indices: 
       edges: []
