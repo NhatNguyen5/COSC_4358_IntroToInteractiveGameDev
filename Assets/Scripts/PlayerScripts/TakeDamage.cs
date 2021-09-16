@@ -44,6 +44,14 @@ public class TakeDamage : MonoBehaviour
             float speed = collision.gameObject.GetComponent<Enemy1>().speed;
             takeDamage(contactDamage, collision.transform, speed);
         }
+        if (collision.gameObject.tag == "EnemyMelee")
+        {
+            float contactDamage = collision.gameObject.GetComponent<Enemy2>().contactDamage;
+            float speed = collision.gameObject.GetComponent<Enemy2>().speed;
+            takeDamage(contactDamage, collision.transform, speed);
+        }
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

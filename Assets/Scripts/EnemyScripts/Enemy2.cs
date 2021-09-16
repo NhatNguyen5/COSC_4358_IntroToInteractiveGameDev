@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy1 : MonoBehaviour
+public class Enemy2 : MonoBehaviour
 {
     public GameObject DamageText;
     private SpriteRenderer sprite;
@@ -18,9 +18,9 @@ public class Enemy1 : MonoBehaviour
 
     [Header("Movement Settings")]
     public float stoppingDistance = 0;
-    public float retreatDistance = 0;
+    //public float retreatDistance = 0;
     public bool followPlayer;
-    public bool retreat;
+    //public bool retreat;
     public bool randomMovement;
 
     [Header("Random Movement Settings")]
@@ -32,30 +32,27 @@ public class Enemy1 : MonoBehaviour
 
     private float knockbackForce = 0;
     [Header("KnockBack Settings")]
-    public float knockForcePlayerContact;
+    //public float knockForcePlayerContact;
     private bool knockback = false;
     public float knockbackstartrange = 0.4f;
     public float knockbackendrange = 1.0f;
     private float knockbacktime;
+    
 
-    private float timeBtwShots;
-    [Header("Gun Settings")]
-    public float startTimeBtwShots;
-    public int amountOfShots;
-    public float bulletSpread = 0.0f;
-    public GameObject projectile;
-    public Transform firePoint;
+    
+    
     public Transform player;
     private Rigidbody2D rb;
 
 
-    [Header("Burst Settings")]
-    public bool burstFire;
-    public float timeBtwBurst;
-    private float burstTime = 0;
-
-    public int timesToShoot;
-    private int TimesShot = 0;
+    [Header("Melee Settings")]
+    //public float DistanceToPlayer;
+    public float chaseCoolDown;
+    public float RetreatSpeed;
+    public float retreatTime = 0.1f;
+    private float chaseCoolDownTimer;
+    private bool hitPlayer;
+    
 
 
 
@@ -66,7 +63,7 @@ public class Enemy1 : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         sprite = GetComponent<SpriteRenderer>();
 
-        timeBtwShots = startTimeBtwShots;
+        
     }
 
 
@@ -77,8 +74,11 @@ public class Enemy1 : MonoBehaviour
         {
 
             //Debug.Log("KNOCKBACK");
-            transform.position = Vector2.MoveTowards(transform.position, player.position, -knockbackForce * speed * Time.deltaTime);
-
+            if(hitPlayer == false)
+                transform.position = Vector2.MoveTowards(transform.position, player.position, -knockbackForce * speed * Time.deltaTime);
+            else
+                transform.position = Vector2.MoveTowards(transform.position, player.position, -RetreatSpeed * speed * Time.deltaTime);
+            
         }
         else
         {
@@ -88,12 +88,13 @@ public class Enemy1 : MonoBehaviour
                 reachedDestination = true;
                 transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
             }
-            else if (Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance) //stop
+            else  
             {
                 if (randomMovement == false)
                     transform.position = this.transform.position;
                 else //RANDOM MOVEMENT
                 {
+                    //Debug.Log("RANDOMPOS");
                     if (reachedDestination == false)
                         transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime);
                     else
@@ -106,11 +107,13 @@ public class Enemy1 : MonoBehaviour
 
                 }
             }
+            /*
             else if (Vector2.Distance(transform.position, player.position) < retreatDistance && retreat == true) //retreat
             {
                 reachedDestination = true;
                 transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
             }
+            */
 
         }
     }
@@ -126,42 +129,19 @@ public class Enemy1 : MonoBehaviour
             knockback = false;
         }
 
-        if (timeBtwShots <= 0)
+
+
+        if (chaseCoolDownTimer <= 0)
         {
-
-            if (burstFire == true)
-            {
-                burstTime -= Time.deltaTime;
-                if (TimesShot < timesToShoot)
-                {
-                    if (burstTime < 0)
-                    {
-                        TimesShot++;
-                        burst();
-                    }
-
-                }
-                else
-                {
-                    TimesShot = 0;
-                    timeBtwShots = startTimeBtwShots;
-                }
-            }
-            else
-            {
-                shoot();
-            }
+            resumeFollow();
         }
-        else
+        if (NextMoveCoolDown <= 0 && reachedDestination == true && hitPlayer == true)
         {
-            timeBtwShots -= Time.deltaTime;
-        }
-
-        if (NextMoveCoolDown <= 0 && reachedDestination == true)
-        {
+            
             randomPos();
         }
         NextMoveCoolDown -= Time.deltaTime;
+        chaseCoolDownTimer -= Time.deltaTime;
 
 
     }
@@ -173,10 +153,13 @@ public class Enemy1 : MonoBehaviour
 
         if (collision.gameObject.tag != "Enemy")
         {
-            knockbackForce = knockForcePlayerContact;
-            knockbacktime = 0.1f;
+            //knockbackForce = knockForcePlayerContact;
+            knockbacktime = retreatTime;
             knockback = true;
+            //reachedDestination = true;
+            attack();
         }
+        
 
     }
 
@@ -194,7 +177,7 @@ public class Enemy1 : MonoBehaviour
 
             takeDamage(damage, collision.transform, speed);
 
-            reachedDestination = true;
+            //reachedDestination = true;
 
             knockbacktime = Random.Range(knockbackstartrange, knockbackendrange);
             knockback = true;
@@ -256,27 +239,23 @@ public class Enemy1 : MonoBehaviour
     }
 
 
-    void burst()
+    void attack()
     {
-        for (int i = 0; i < amountOfShots; i++)
-        {
-            float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
-            Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
-            Instantiate(projectile, firePoint.position, newRot);
-            burstTime = timeBtwBurst;
-        }
+        
+        hitPlayer = true;
+        followPlayer = false;
+        NextMoveCoolDown = 0;
+        chaseCoolDownTimer = chaseCoolDown;
+        //reachedDestination = true;
+        //randomPos();
+        //NextMoveCoolDown = timeTillNextMove;
     }
 
-    void shoot()
+    void resumeFollow()
     {
-        for (int i = 0; i < amountOfShots; i++)
-        {
-            float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
-            Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
-            Instantiate(projectile, firePoint.position, newRot);
-            timeBtwShots = startTimeBtwShots;
-        }
-
+        reachedDestination = true;
+        hitPlayer = false;
+        followPlayer = true;
     }
 
     void randomPos()

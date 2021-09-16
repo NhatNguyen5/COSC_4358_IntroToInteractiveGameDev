@@ -10,7 +10,10 @@ public class Hit : MonoBehaviour
     public bool isObjectEnemy;
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        FindObjectOfType<AudioManager>().PlayEffect(HitNoise);
+        if(hitInfo.tag == "Bullet" && isObjectEnemy == true)
+            FindObjectOfType<AudioManager>().PlayEffect(HitNoise);
+        if(hitInfo.tag == "EnemyBullet" && isObjectEnemy == false)
+            FindObjectOfType<AudioManager>().PlayEffect(HitNoise);
     }
 
 

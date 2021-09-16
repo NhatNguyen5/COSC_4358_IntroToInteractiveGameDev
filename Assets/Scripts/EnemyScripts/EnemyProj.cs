@@ -64,7 +64,7 @@ public class EnemyProj : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.tag != "Enemy" && collision.tag != "EnemyMelee")
             DestroyEnemyProj();
     }
 
