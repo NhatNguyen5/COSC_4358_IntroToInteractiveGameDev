@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atlas_floorsWalls
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 2
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+    totalSpriteSurfaceArea: 7424
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -7241154720231309826, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: -2508737264577783262, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: 4826341331862943587, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: 8316193658664510081, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: 8869864452645690912, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: -8758259640375311575, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: 6832380982832094266, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: 9060946822651790524, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: -5221787487115562772, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: -3493214370851201583, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: 7278637340984603600, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: -8227752470415592313, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: -4889191678148945414, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: -7921384643004262252, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: -3595401146087133148, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: 8084631971717302214, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: -7509079795151316665, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: 7473920403424214205, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: 2831186660323490502, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: -5265195647014083431, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: -7997041820906058120, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: 6147468098944530035, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: -7230907841340526689, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: 7617227210566134198, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: -2964554122471111025, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: -5160094785366335664, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: -3417759111841453283, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: -8882070768281558400, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  - {fileID: -5010115085850664351, guid: dda55ecd1d27a4856849e3dfb5d0dd12, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Sprite-0006_24
+  - Sprite-0006_25
+  - Sprite-0006_26
+  - Sprite-0006_27
+  - Sprite-0006_20
+  - Sprite-0006_21
+  - Sprite-0006_22
+  - Sprite-0006_23
+  - Sprite-0006_28
+  - Sprite-0006_8
+  - Sprite-0006_9
+  - Sprite-0006_6
+  - Sprite-0006_7
+  - Sprite-0006_4
+  - Sprite-0006_5
+  - Sprite-0006_2
+  - Sprite-0006_3
+  - Sprite-0006_0
+  - Sprite-0006_1
+  - Sprite-0006_19
+  - Sprite-0006_18
+  - Sprite-0006_15
+  - Sprite-0006_14
+  - Sprite-0006_17
+  - Sprite-0006_16
+  - Sprite-0006_11
+  - Sprite-0006_10
+  - Sprite-0006_13
+  - Sprite-0006_12
+  m_RenderDataMap: {}
+  m_Tag: Atlas_floorsWalls
+  m_IsVariant: 0
