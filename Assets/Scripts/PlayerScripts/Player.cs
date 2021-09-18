@@ -47,6 +47,10 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         actions.Move(transform);
+        if (Input.GetKey(KeyCode.LeftShift))
+            actions.Sprint();
+        else
+            actions.Walk();
         actions.Animate();
     }
 }

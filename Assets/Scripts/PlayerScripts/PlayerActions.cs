@@ -16,6 +16,16 @@ public class PlayerActions
         player.Components.PlayerRidgitBody.velocity = new Vector2(player.Stats.Direction.x * player.Stats.Speed * Time.deltaTime, player.Stats.Direction.y * player.Stats.Speed * Time.deltaTime);
     }
 
+    public void Sprint()
+    {
+        player.Stats.Speed = player.Stats.SprintSpeed;
+    }
+
+    public void Walk()
+    {
+        player.Stats.Speed = player.Stats.WalkSpeed;
+    }
+
     public void Animate()
     {
         player.Components.PlayerAnimator.SetFloat("MovementX", player.References.MousePosToPlayer.x);

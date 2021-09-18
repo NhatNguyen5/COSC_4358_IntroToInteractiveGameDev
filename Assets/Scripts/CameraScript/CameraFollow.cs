@@ -1,38 +1,52 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    private Func<Player> GetPlayerFunc;
-    private Func<Weapon> GetWeaponFunc;
+    private Camera myCamera;
+
+    [Header("Target")]
+    public Player player;
+    public Weapon weapon;
+
+    [Header("Movement")]
     public float cameraMoveSpeed;
     public float ADSTrigger;
     public bool AutoADS;
 
-    public void SetupPlayer(Func<Player> GetPlayerFunc)
+    [Header("Zoom")]
+    public float DefaultZoomLevel;
+    public float cameraZoom;
+    public float cameraZoomSpeed;
+
+    private void Start()
     {
-        this.GetPlayerFunc = GetPlayerFunc;
-    }
-    public void SetupWeapon(Func<Weapon> GetWeaponFunc)
-    {
-        this.GetWeaponFunc = GetWeaponFunc;
+        myCamera = transform.GetComponent<Camera>();
+        myCamera.orthographicSize = DefaultZoomLevel;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Player player = GetPlayerFunc();
-        Weapon weapon = GetWeaponFunc();
+        HandleMovement();
+        HandleZoom();
+    }
+
+    private void HandleMovement()
+    {
+        //Player player = GetPlayerFunc();
+        //Weapon weapon = GetWeaponFunc();
         float ADSRange = weapon.ADSRange;
         Vector3 cameraFollowPosition = player.Stats.Position;
-        Vector3 MP2P = new Vector3 (player.References.MousePosToPlayer.x * ADSRange, player.References.MousePosToPlayer.y * ADSRange);
+        Vector3 MP2P = new Vector3(player.References.MousePosToPlayer.x * ADSRange, player.References.MousePosToPlayer.y * ADSRange);
 
-        if(AutoADS && player.References.MousePosToPlayerNotNorm.magnitude > ADSTrigger)
+        if (AutoADS && player.References.MousePosToPlayerNotNorm.magnitude > ADSTrigger)
             cameraFollowPosition = cameraFollowPosition + MP2P;
 
-        if(!AutoADS && Input.GetKey(KeyCode.Mouse1))
+        if (!AutoADS && Input.GetKey(KeyCode.Mouse1))
         {
             cameraFollowPosition = cameraFollowPosition + MP2P;
         }
@@ -47,7 +61,7 @@ public class CameraFollow : MonoBehaviour
             Vector3 newCameraPosition = transform.position + cameraMoveDir * distance * cameraMoveSpeed * Time.deltaTime;
             float distanceAfterMoving = Vector3.Distance(newCameraPosition, cameraFollowPosition);
 
-            if(distanceAfterMoving > distance)
+            if (distanceAfterMoving > distance)
             {
                 newCameraPosition = cameraFollowPosition;
             }
@@ -55,4 +69,26 @@ public class CameraFollow : MonoBehaviour
             transform.position = newCameraPosition;
         }
     }
+    private void HandleZoom()
+    {
+        float cameraZoomDiff = cameraZoom - myCamera.orthographicSize;
+        
+        myCamera.orthographicSize += cameraZoomDiff * cameraZoomSpeed * Time.deltaTime;
+
+        if (cameraZoomDiff > 0)
+        {
+            if(myCamera.orthographicSize > cameraZoom)
+            {
+                myCamera.orthographicSize = cameraZoom;
+            }
+        }
+        else
+        {
+            if(myCamera.orthographicSize < cameraZoom)
+            {
+                myCamera.orthographicSize = cameraZoom;
+            }
+        }
+    }
+
 }
