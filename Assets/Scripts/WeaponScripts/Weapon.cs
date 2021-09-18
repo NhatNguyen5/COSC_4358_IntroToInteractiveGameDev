@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour
     float firingDelay = 0.0f;
     public float spread = 0.0f;
     public int amountOfShots;
+    public float ADSRange;
 
 
     [Header("Burst Settings")]

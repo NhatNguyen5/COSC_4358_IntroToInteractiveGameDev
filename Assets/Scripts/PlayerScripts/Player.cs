@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
         actions = new PlayerActions(this);
         utilities = new PlayerUtilities(this);
         references = new PlayerReferences(this);
-
+        stats.Health = stats.hp;
         stats.Speed = stats.WalkSpeed;
     }
 

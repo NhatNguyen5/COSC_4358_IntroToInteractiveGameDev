@@ -7,18 +7,16 @@ public class TakeDamage : MonoBehaviour
 {
     public GameObject DamageText;
     private SpriteRenderer sprite;
+    private float HP;
 
-    public float HP = 100;
-
-   
     private Rigidbody2D rb;
-
+    
     // Start is called before the first frame update
     void Start()
     {
+        HP = GetComponent<Player>().Stats.Health;
         //rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
-
     }
 
 
@@ -31,7 +29,7 @@ public class TakeDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //Debug.Log(HP);
 
     }
 

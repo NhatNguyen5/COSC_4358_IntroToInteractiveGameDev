@@ -6,9 +6,11 @@ public class GameHandler : MonoBehaviour
 {
     public CameraFollow cameraFollow;
     public Player player;
+    public Weapon weapon;
 
     private void Start()
     {
-        cameraFollow.Setup(() => player.Stats.Position);  
+        cameraFollow.SetupPlayer(() => player);
+        cameraFollow.SetupWeapon(() => weapon);
     }
 }

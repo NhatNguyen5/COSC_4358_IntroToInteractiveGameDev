@@ -1458,7 +1458,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.5985565
+  orthographic size: 7.8294396
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1500,7 +1500,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d406260d07c84d4a830773d52bc3da0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraMoveSpeed: 0
+  cameraMoveSpeed: 4
+  ADSTrigger: 0
+  AutoADS: 0
 --- !u!1 &611984226
 GameObject:
   m_ObjectHideFlags: 0
@@ -6708,7 +6710,7 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2225942082661296427, guid: 133b6437cc9cce3429eb1b91d9e4d757, type: 3}
+  m_Sprite: {fileID: 6353777485397086779, guid: af026aeb232b2fa448fb2b448e3504d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6769,7 +6771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
     walkSpeed: 300
-    runSpeed: 0
+    HP: 500
   components:
     playerRidgitBody: {fileID: 693335783}
     playerAnimator: {fileID: 693335788}
@@ -6836,7 +6838,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
-  HP: 500
 --- !u!1 &717553003
 GameObject:
   m_ObjectHideFlags: 0
@@ -27337,6 +27338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraFollow: {fileID: 542014994}
   player: {fileID: 693335784}
+  weapon: {fileID: 1644538903}
 --- !u!1 &1311688294
 GameObject:
   m_ObjectHideFlags: 0
@@ -27880,6 +27882,7 @@ MonoBehaviour:
   delay: 0.22
   spread: 5
   amountOfShots: 7
+  ADSRange: 5
   burstFire: 1
   timeBtwBurst: 0.07
   timesToShoot: 3
@@ -27942,7 +27945,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644538900}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.83, y: -0.02, z: -1}
+  m_LocalPosition: {x: 0.52, y: -0.18, z: -1}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 369984310}

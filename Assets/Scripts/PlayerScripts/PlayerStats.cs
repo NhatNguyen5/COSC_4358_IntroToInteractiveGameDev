@@ -13,11 +13,13 @@ public class PlayerStats
 
     public float Speed { get; set; }
 
+    public float Health { get; set; }
+
     [SerializeField]
     private float walkSpeed;
-
     [SerializeField]
-    private float runSpeed;
+    private float HP;
 
     public float WalkSpeed { get => walkSpeed; }
+    public float hp { get => HP; }
 }
