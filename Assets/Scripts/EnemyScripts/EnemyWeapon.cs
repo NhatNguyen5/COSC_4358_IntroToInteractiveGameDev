@@ -25,15 +25,21 @@ public class EnemyWeapon : MonoBehaviour
         {
             Vector2 direction = player.position - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            rb.rotation = angle;
-            if (facingDir && player.position.x < rb.position.x)
+            Vector3 rotation = new Vector3(0f, 0f, angle);
+            transform.eulerAngles = new Vector3(0, 0, angle);
+            Vector3 aimLocalScale = Vector3.one;
+            if (angle > 90 || angle < -90)
             {
-                Flip();
+                //transform.position.y *= -1;
+                aimLocalScale.y = -1f;
+                //aimLocalScale.y = -1f * scaleX;
             }
-            else if (!facingDir && player.position.x > rb.position.x)
+            else
             {
-                Flip();
+                aimLocalScale.y = +1f;
+                //aimLocalScale.y = -1f * scaleX;
             }
+            transform.localScale = aimLocalScale;
         }
 
     }
