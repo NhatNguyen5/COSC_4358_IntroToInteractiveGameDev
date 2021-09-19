@@ -35,10 +35,10 @@ public class PlayerIndicator : MonoBehaviour
             targetPositionScreenPoint.y < BorderSize || 
             targetPositionScreenPoint.y > Screen.height - BorderSize;
         //Debug.Log(player.Stats.Position);
-        Debug.Log(ArrowTransform.position);
+        //Debug.Log(ArrowTransform.position);
         //Debug.Log(targetPositionScreenPoint);
 
-        if (isOffScreen)
+        if (isOffScreen && OptionSettings.GameisPaused == false)
         {
             ArrowTransform.localScale = new Vector3(ArrowSize, ArrowSize, 1);
             Vector3 cappedTargetScreenPosition = targetPositionScreenPoint;
@@ -73,45 +73,5 @@ public class PlayerIndicator : MonoBehaviour
         {
             ArrowTransform.localScale = new Vector3(ArrowSize, ArrowSize, 0);
         }
-
-        //Old Working
-        /*
-        Vector3 targetPositionScreenPoint = Camera.main.WorldToScreenPoint(targetposition);
-        bool isOffScreen = targetPositionScreenPoint.x < BorderSize ||
-            targetPositionScreenPoint.x > Screen.width - BorderSize ||
-            targetPositionScreenPoint.y < BorderSize ||
-            targetPositionScreenPoint.y > Screen.height - BorderSize;
-        Debug.Log(player.Stats.Position);
-        Debug.Log(ArrowTransform.position);
-
-        if (isOffScreen)
-        {
-            ArrowTransform.localScale = new Vector3(ArrowSize, ArrowSize, 1);
-            Vector3 cappedTargetScreenPosition = targetPositionScreenPoint;
-            if (cappedTargetScreenPosition.x < BorderSize)
-            {
-                cappedTargetScreenPosition.x = BorderSize;
-            }
-            if (cappedTargetScreenPosition.x > Screen.width - BorderSize)
-            {
-                cappedTargetScreenPosition.x = Screen.width - BorderSize;
-            }
-            if (cappedTargetScreenPosition.y < BorderSize)
-            {
-                cappedTargetScreenPosition.y = BorderSize;
-            }
-            if (cappedTargetScreenPosition.y > Screen.height - BorderSize)
-            {
-                cappedTargetScreenPosition.y = Screen.height - BorderSize;
-            }
-            Vector3 pointerWorldPosition = uiCamera.ScreenToWorldPoint(cappedTargetScreenPosition);
-            pointerRectTransform.position = pointerWorldPosition;
-            pointerRectTransform.localPosition = new Vector3(pointerRectTransform.localPosition.x, pointerRectTransform.localPosition.y, 0f);
-        }
-        else
-        {
-            ArrowTransform.localScale = new Vector3(ArrowSize, ArrowSize, 0);
-        }
-        */
     }
 }

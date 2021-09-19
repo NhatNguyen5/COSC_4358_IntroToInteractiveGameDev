@@ -6,7 +6,7 @@ using UnityEngine;
 public class Pause : MonoBehaviour
 {
 
-    
+    public CrossHairCursor crosshair;
     //public static bool GameisPaused = false;
 
 
@@ -19,7 +19,6 @@ public class Pause : MonoBehaviour
         OptionMenuUI.SetActive(false);
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        
     }
 
     void pause() 
