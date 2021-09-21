@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5123433594092369601}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: EnemyFirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5123433594233091972}
   - component: {fileID: 5123433594233091983}
   - component: {fileID: 5123433594233091973}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -195,11 +195,16 @@ MonoBehaviour:
   contactDamage: 5
   HP: 200
   speed: 10
-  stoppingDistance: 10
+  stoppingDistance: 100
   retreatDistance: 5
-  followPlayer: 1
+  followPlayer: 0
   retreat: 0
   randomMovement: 1
+  lineofsight: 0
+  IgnoreMe:
+    serializedVersion: 2
+    m_Bits: 128
+  unstuckTime: 0
   circleRadius: 5
   timeTillNextMove: 0.5
   knockForcePlayerContact: 0.7
@@ -224,7 +229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5123433594368518078}
   - component: {fileID: 5123433594368518064}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: WeaponSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9086126830540450544}
   - component: {fileID: 9086126830540450551}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: EnemyAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}

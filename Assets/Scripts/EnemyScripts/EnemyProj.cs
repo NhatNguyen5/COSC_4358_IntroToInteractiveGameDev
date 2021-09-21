@@ -8,6 +8,7 @@ public class EnemyProj : MonoBehaviour
     public float despawnTime;
     public int damage;
     public bool homing;
+    public bool destroyable = false;
 
     private Vector2 followMovement;
 
@@ -40,7 +41,7 @@ public class EnemyProj : MonoBehaviour
             direction.Normalize();
             followMovement = direction;
 
-            
+
         }
 
         despawnTime -= Time.deltaTime;
@@ -64,14 +65,20 @@ public class EnemyProj : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag != "Enemy" && collision.tag != "EnemyMelee")
+        if (destroyable == false)
+        {
+            if (collision.tag != "Enemy" && collision.tag != "EnemyMelee" && collision.tag != "Bullet" && collision.tag != "EnemyBullet")
+                DestroyEnemyProj();
+        }
+        else
+            if (collision.tag != "Enemy" && collision.tag != "EnemyMelee" && collision.tag != "EnemyBullet")
             DestroyEnemyProj();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //if (collision.name == "Player")
-            DestroyEnemyProj();
+        DestroyEnemyProj();
     }
 
 

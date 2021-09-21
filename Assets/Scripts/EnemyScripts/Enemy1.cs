@@ -23,6 +23,15 @@ public class Enemy1 : MonoBehaviour
     public bool retreat;
     public bool randomMovement;
 
+    [Header("Line Of Sight")]
+    public bool lineofsight;
+    public LayerMask IgnoreMe;
+    private bool unstuck;
+    public float unstuckTime;
+    private Transform UNSTUCKPOS;
+
+
+
     [Header("Random Movement Settings")]
     public float circleRadius;
     public float timeTillNextMove;
@@ -57,6 +66,10 @@ public class Enemy1 : MonoBehaviour
     public int timesToShoot;
     private int TimesShot = 0;
 
+    //ANIMATION VARIABLES
+
+    Vector2 direction;
+    float a;
 
 
     // Start is called before the first frame update
@@ -73,11 +86,21 @@ public class Enemy1 : MonoBehaviour
     private void FixedUpdate()
     {
 
+
+
         if (knockback == true)
         {
 
             //Debug.Log("KNOCKBACK");
-            transform.position = Vector2.MoveTowards(transform.position, player.position, -knockbackForce * speed * Time.deltaTime);
+            if (unstuck == false)
+                transform.position = Vector2.MoveTowards(transform.position, player.position, -knockbackForce * speed * Time.deltaTime);
+            else
+            {
+                //Debug.Log("COMMENCING UNSTUCK");
+                transform.position = Vector2.MoveTowards(transform.position, randPos, -speed * Time.deltaTime);
+
+            }
+            getDirection(player);
 
         }
         else
@@ -87,6 +110,7 @@ public class Enemy1 : MonoBehaviour
             {
                 reachedDestination = true;
                 transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                getDirection(player);
             }
             else if (Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance) //stop
             {
@@ -103,16 +127,24 @@ public class Enemy1 : MonoBehaviour
                     {
                         reachedDestination = true;
                     }
-
+                    direction = randPos;
+                    a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 }
             }
             else if (Vector2.Distance(transform.position, player.position) < retreatDistance && retreat == true) //retreat
             {
                 reachedDestination = true;
                 transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+                getDirection(player);
             }
 
         }
+    }
+
+    void getDirection(Transform objectpos)
+    {
+        direction = objectpos.position - transform.position;
+        a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
     }
 
 
@@ -124,44 +156,77 @@ public class Enemy1 : MonoBehaviour
         {
             knockbacktime = 0;
             knockback = false;
+            unstuck = false;
         }
 
-        if (timeBtwShots <= 0)
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
+        //var rayDirection = player.position - transform.position;
+        //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
+        if (hit.collider.gameObject.tag == "Player")
+        {
+            lineofsight = true;
+            Debug.Log("Player is Visable");
+            // enemy can see the player!
+
+            //Debug.Log("Player is Visable");
+        }
+        else
+        {
+            lineofsight = false;
+            Debug.Log("Player is NOT Visable");
+        }
+
+
+
+        if (lineofsight == true)
         {
 
-            if (burstFire == true)
+            if (timeBtwShots <= 0)
             {
-                burstTime -= Time.deltaTime;
-                if (TimesShot < timesToShoot)
-                {
-                    if (burstTime < 0)
-                    {
-                        TimesShot++;
-                        burst();
-                    }
 
+                if (burstFire == true)
+                {
+                    burstTime -= Time.deltaTime;
+                    if (TimesShot < timesToShoot)
+                    {
+                        if (burstTime < 0)
+                        {
+                            TimesShot++;
+                            burst();
+                        }
+
+                    }
+                    else
+                    {
+                        TimesShot = 0;
+                        timeBtwShots = startTimeBtwShots;
+                    }
                 }
                 else
                 {
-                    TimesShot = 0;
-                    timeBtwShots = startTimeBtwShots;
+                    shoot();
                 }
             }
             else
             {
-                shoot();
+                timeBtwShots -= Time.deltaTime;
             }
+
+            if (NextMoveCoolDown <= 0 && reachedDestination == true)
+            {
+                randomPos();
+            }
+            NextMoveCoolDown -= Time.deltaTime;
         }
         else
         {
-            timeBtwShots -= Time.deltaTime;
-        }
+            if (NextMoveCoolDown <= 0)
+            {
 
-        if (NextMoveCoolDown <= 0 && reachedDestination == true)
-        {
-            randomPos();
+                randomPos();
+            }
+            NextMoveCoolDown -= Time.deltaTime;
         }
-        NextMoveCoolDown -= Time.deltaTime;
 
 
     }
@@ -171,11 +236,21 @@ public class Enemy1 : MonoBehaviour
         reachedDestination = true;
         NextMoveCoolDown = timeTillNextMove;
 
-        if (collision.gameObject.tag != "Enemy")
+        if (collision.gameObject.tag == "Player")
         {
+            //Debug.Log("PLAYER CONTACT");
             knockbackForce = knockForcePlayerContact;
-            knockbacktime = 0.1f;
+            knockbacktime = Random.Range(knockbackstartrange, knockbackendrange);
             knockback = true;
+        }
+        else if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "Player")
+        {
+            //Debug.Log("ENEMY IS HITTING WALL");
+            //UNSTUCKPOS = collision.gameObject.GetComponent<Transform>();
+            //knockbacktime = unstuckTime;
+            //knockback = true;
+            //unstuck = true;
+            randomPos();
         }
 
     }
@@ -281,13 +356,12 @@ public class Enemy1 : MonoBehaviour
 
     void randomPos()
     {
-        if (reachedDestination == true)
-        {
-            NextMoveCoolDown = timeTillNextMove;
-            randPos = transform.position;
-            randPos += Random.insideUnitCircle * circleRadius;
-            reachedDestination = false;
-        }
+
+        NextMoveCoolDown = Random.Range(0f, timeTillNextMove);
+        randPos = transform.position;
+        randPos += Random.insideUnitCircle * circleRadius;
+        reachedDestination = false;
+
 
     }
 

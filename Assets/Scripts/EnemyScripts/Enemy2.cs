@@ -22,10 +22,16 @@ public class Enemy2 : MonoBehaviour
     public bool followPlayer;
     //public bool retreat;
     public bool randomMovement;
+    public float timeRunningTwdPlayer;
+    private float runningTimeOut;
 
     [Header("Random Movement Settings")]
     public float circleRadius;
     public float timeTillNextMove;
+    //public bool DodgeWhileCharging;
+
+
+
     private float NextMoveCoolDown;
     private bool reachedDestination;
     private Vector2 randPos;
@@ -37,10 +43,10 @@ public class Enemy2 : MonoBehaviour
     public float knockbackstartrange = 0.4f;
     public float knockbackendrange = 1.0f;
     private float knockbacktime;
-    
 
-    
-    
+
+
+
     public Transform player;
     private Rigidbody2D rb;
 
@@ -52,8 +58,14 @@ public class Enemy2 : MonoBehaviour
     public float retreatTime = 0.1f;
     private float chaseCoolDownTimer;
     private bool hitPlayer;
-    
 
+    [Header("Line Of Sight")]
+    public bool LineOfSight;
+
+    //ANIMATION VARIABLES
+    public LayerMask IgnoreMe;
+    Vector2 direction;
+    float a;
 
 
     // Start is called before the first frame update
@@ -63,22 +75,29 @@ public class Enemy2 : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         sprite = GetComponent<SpriteRenderer>();
 
-        
+
     }
 
 
     private void FixedUpdate()
     {
 
+
+
         if (knockback == true)
         {
 
             //Debug.Log("KNOCKBACK");
-            if(hitPlayer == false)
+            if (hitPlayer == false)
                 transform.position = Vector2.MoveTowards(transform.position, player.position, -knockbackForce * speed * Time.deltaTime);
             else
-                transform.position = Vector2.MoveTowards(transform.position, player.position, -RetreatSpeed * speed * Time.deltaTime);
-            
+            {
+                //Vector2 Offset = player.position;
+
+                transform.position = Vector2.MoveTowards(transform.position, randPos, RetreatSpeed * speed * Time.deltaTime);
+            }
+            getDirection(player);
+
         }
         else
         {
@@ -87,8 +106,12 @@ public class Enemy2 : MonoBehaviour
             {
                 reachedDestination = true;
                 transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                //go to position 
+                getDirection(player);
+
+                //Debug.Log(transform);
             }
-            else  
+            else
             {
                 if (randomMovement == false)
                     transform.position = this.transform.position;
@@ -104,6 +127,8 @@ public class Enemy2 : MonoBehaviour
                     {
                         reachedDestination = true;
                     }
+                    direction = randPos;
+                    a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
                 }
             }
@@ -118,10 +143,16 @@ public class Enemy2 : MonoBehaviour
         }
     }
 
+    void getDirection(Transform objectpos)
+    {
+        direction = objectpos.position - transform.position;
+        a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+    }
 
     // Update is called once per frame
     void Update()
     {
+
         knockbacktime -= Time.deltaTime;
         if (knockbacktime <= 0)
         {
@@ -130,18 +161,71 @@ public class Enemy2 : MonoBehaviour
         }
 
 
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
+        //var rayDirection = player.position - transform.position;
+        //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
+        if (hit.collider.gameObject.tag == "Player")
+        {
+            LineOfSight = true;
+            Debug.Log("Player is Visable");
+            // enemy can see the player!
 
-        if (chaseCoolDownTimer <= 0)
-        {
-            resumeFollow();
+            //Debug.Log("Player is Visable");
         }
-        if (NextMoveCoolDown <= 0 && reachedDestination == true && hitPlayer == true)
+        else
         {
-            
-            randomPos();
+            LineOfSight = false;
+            Debug.Log("Player is NOT Visable");
         }
-        NextMoveCoolDown -= Time.deltaTime;
-        chaseCoolDownTimer -= Time.deltaTime;
+
+
+        if (LineOfSight == true)
+        {
+            if (followPlayer == true)
+            {
+                runningTimeOut += Time.deltaTime;
+                if (runningTimeOut >= timeRunningTwdPlayer)
+                {
+                    randomRetreatPos();
+                    reachedDestination = true;
+                    NextMoveCoolDown = timeTillNextMove;
+                    knockbacktime = retreatTime;
+                    knockback = true;
+                    attack();
+                    runningTimeOut = 0;
+                }
+            }
+            //Debug.Log(a); //ANGLE
+
+
+
+
+            if (chaseCoolDownTimer <= 0)
+            {
+                resumeFollow();
+            }
+            if (NextMoveCoolDown <= 0 && reachedDestination == true && hitPlayer == true)
+            {
+
+                randomPos();
+            }
+            NextMoveCoolDown -= Time.deltaTime;
+            chaseCoolDownTimer -= Time.deltaTime;
+        }
+        else
+        {
+            //reachedDestination = true;
+            //NextMoveCoolDown = timeTillNextMove;
+            if (NextMoveCoolDown <= 0)
+            {
+
+                randomPos();
+            }
+            NextMoveCoolDown -= Time.deltaTime;
+        }
+
+
+
 
 
     }
@@ -159,7 +243,7 @@ public class Enemy2 : MonoBehaviour
             //reachedDestination = true;
             attack();
         }
-        
+
 
     }
 
@@ -181,6 +265,7 @@ public class Enemy2 : MonoBehaviour
 
             knockbacktime = Random.Range(knockbackstartrange, knockbackendrange);
             knockback = true;
+            hitPlayer = false;
 
         }
 
@@ -241,7 +326,7 @@ public class Enemy2 : MonoBehaviour
 
     void attack()
     {
-        
+
         hitPlayer = true;
         followPlayer = false;
         NextMoveCoolDown = 0;
@@ -258,15 +343,20 @@ public class Enemy2 : MonoBehaviour
         followPlayer = true;
     }
 
+    void randomRetreatPos()
+    {
+        randPos = transform.position;
+        randPos += Random.insideUnitCircle * circleRadius;
+    }
+
     void randomPos()
     {
-        if (reachedDestination == true)
-        {
-            NextMoveCoolDown = timeTillNextMove;
-            randPos = transform.position;
-            randPos += Random.insideUnitCircle * circleRadius;
-            reachedDestination = false;
-        }
+
+        NextMoveCoolDown = timeTillNextMove;
+        randPos = transform.position;
+        randPos += Random.insideUnitCircle * circleRadius;
+        reachedDestination = false;
+
 
     }
 
