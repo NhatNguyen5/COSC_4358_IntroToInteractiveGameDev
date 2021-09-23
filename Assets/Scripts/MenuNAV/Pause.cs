@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.UI;
+using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
@@ -12,21 +12,37 @@ public class Pause : MonoBehaviour
 
     public GameObject OptionMenuUI;
     public GameObject PauseMenuUI;
+    private GameObject PlayerIndicator;
+    private GameObject StatusIndicator;
+
+
+    private void Start()
+    {
+        PlayerIndicator = GameObject.Find("PlayerIndicator");
+        StatusIndicator = GameObject.Find("StatusIndicator");
+    }
 
     public void resume() 
     {
+        Time.timeScale = 1f;
         OptionSettings.GameisPaused = false;
         OptionMenuUI.SetActive(false);
         PauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
+        PlayerIndicator.SetActive(true);
+        StatusIndicator.SetActive(true);
+        
     }
 
     void pause() 
     {
         //PauseOption.SetActive(true);
         PauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
         OptionSettings.GameisPaused = true;
+        PlayerIndicator.SetActive(false);
+        StatusIndicator.SetActive(false);
+        Time.timeScale = 0f;
+
+
     }
 
 
