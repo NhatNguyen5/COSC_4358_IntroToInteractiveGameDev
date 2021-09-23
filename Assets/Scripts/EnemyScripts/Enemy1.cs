@@ -165,7 +165,7 @@ public class Enemy1 : MonoBehaviour
         if (hit.collider.gameObject.tag == "Player")
         {
             lineofsight = true;
-            Debug.Log("Player is Visable");
+            //Debug.Log("Player is Visable");
             // enemy can see the player!
 
             //Debug.Log("Player is Visable");
@@ -173,7 +173,7 @@ public class Enemy1 : MonoBehaviour
         else
         {
             lineofsight = false;
-            Debug.Log("Player is NOT Visable");
+            //Debug.Log("Player is NOT Visable");
         }
 
 

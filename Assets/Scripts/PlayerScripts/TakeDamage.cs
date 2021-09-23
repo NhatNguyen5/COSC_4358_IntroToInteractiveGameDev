@@ -7,16 +7,21 @@ public class TakeDamage : MonoBehaviour
 {
     public GameObject DamageText;
     private SpriteRenderer sprite;
-    private float HP;
+    private float maxHP;
+    [SerializeField]
+    StatusIndicator statusIndicator = null;
+
+
 
     private Rigidbody2D rb;
     
     // Start is called before the first frame update
     void Start()
     {
-        HP = GetComponent<Player>().Stats.Health;
+        maxHP = GetComponent<Player>().Stats.Health;
         //rb = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
+        //sprite = GetComponent<SpriteRenderer>();
+        sprite = transform.Find("PlayerSprite").GetComponent<SpriteRenderer>();
     }
 
 
@@ -29,8 +34,9 @@ public class TakeDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        
         //Debug.Log(HP);
-
     }
 
 
@@ -62,8 +68,6 @@ public class TakeDamage : MonoBehaviour
 
 
             takeDamage(damage, collision.transform, speed);
-
-
         }
     }
 
@@ -80,9 +84,13 @@ public class TakeDamage : MonoBehaviour
             damage *= GlobalPlayerVariables.critDmg;
         }
         */
-        HP -= damage;
+        GetComponent<Player>().Stats.Health -= damage;
+        float HP = GetComponent<Player>().Stats.Health;
         showDamage(damage, impact, speed, iscrit);
         StartCoroutine(FlashRed());
+        statusIndicator.StartFlash(0.25f, ((maxHP - HP)/maxHP)/2, Color.red, 3);
+        statusIndicator.ChangeTransparency(((maxHP - HP) / maxHP));
+
         if (HP <= 0)
         {
             Destroy(gameObject);
@@ -120,5 +128,4 @@ public class TakeDamage : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         sprite.color = Color.white;
     }
-
 }

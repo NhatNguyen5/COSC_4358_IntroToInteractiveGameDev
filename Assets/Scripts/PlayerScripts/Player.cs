@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private PlayerComponents components;
 
+    [SerializeField]
     private PlayerReferences references;
 
     private PlayerUtilities utilities;
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
         references = new PlayerReferences(this);
         stats.Health = stats.hp;
         stats.Speed = stats.WalkSpeed;
+        actions.defaultSpeed = stats.Speed;
     }
 
 
@@ -40,6 +42,9 @@ public class Player : MonoBehaviour
     {
         utilities.HandleInput();
         references.CalMousePosToPlayer();
+        //Debug.Log("HP" + stats.hp);
+        //Debug.Log("Health" + stats.Health);
+
         //Debug.Log(components.PlayerRidgitBody.velocity.magnitude);
         //Debug.Log(references.MousePosToPlayer);
     }

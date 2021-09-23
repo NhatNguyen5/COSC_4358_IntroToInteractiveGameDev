@@ -14,20 +14,21 @@ public class CrossHairCursor : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        sr.forceRenderingOff = true;
         Vector2 mouseCursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 mouseCursorPosDef = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         transform.position = mouseCursorPos;
         if((mouseCursorPosDef.y < 0 || mouseCursorPosDef.y > 1 || mouseCursorPosDef.x < 0 || mouseCursorPosDef.x > 1) || OptionSettings.GameisPaused == true)
         {
-            SpriteRenderer sr = GetComponent<SpriteRenderer>();
             Cursor.visible = true;
             sr.forceRenderingOff = true;
             //Debug.Log(Camera.main.ScreenToViewportPoint(Input.mousePosition));
         }
         else
         {
-            SpriteRenderer sr = GetComponent<SpriteRenderer>();
             Cursor.visible = false;
+            //if(Input.GetKey(KeyCode.Mouse1))
             sr.forceRenderingOff = false;
         }
     }

@@ -25,7 +25,6 @@ public class PlayerIndicator : MonoBehaviour
         Vector3 toPosition = targetposition;
         Vector3 fromPosition = Camera.main.transform.position;
         fromPosition.z = 0f;
-        Vector3 dir = (toPosition - fromPosition).normalized;
         float angle = player.Stats.Angle;
         pointerRectTransform.localEulerAngles = new Vector3(0, 0, angle);
 

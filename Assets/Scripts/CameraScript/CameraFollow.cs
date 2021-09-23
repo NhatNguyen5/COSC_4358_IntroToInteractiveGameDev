@@ -13,7 +13,7 @@ public class CameraFollow : MonoBehaviour
     public Weapon weapon;
 
     [Header("Movement")]
-    public float cameraMoveSpeed;
+    public float DefaultCameraMoveSpeed;
     public float ADSTrigger;
     public bool AutoADS;
 
@@ -22,7 +22,7 @@ public class CameraFollow : MonoBehaviour
     public float cameraZoom;
     public float cameraZoomSpeed;
 
-    private void Start()
+    private void Awake()
     {
         myCamera = transform.GetComponent<Camera>();
         myCamera.orthographicSize = DefaultZoomLevel;
@@ -40,6 +40,8 @@ public class CameraFollow : MonoBehaviour
         //Player player = GetPlayerFunc();
         //Weapon weapon = GetWeaponFunc();
         float ADSRange = weapon.ADSRange;
+        float ADSSpeed = weapon.ADSSpeed;
+        float cameraMoveSpeed = DefaultCameraMoveSpeed;
         Vector3 cameraFollowPosition = player.Stats.Position;
         Vector3 MP2P = new Vector3(player.References.MousePosToPlayer.x * ADSRange, player.References.MousePosToPlayer.y * ADSRange);
 
@@ -49,6 +51,11 @@ public class CameraFollow : MonoBehaviour
         if (!AutoADS && Input.GetKey(KeyCode.Mouse1))
         {
             cameraFollowPosition = cameraFollowPosition + MP2P;
+            cameraMoveSpeed = ADSSpeed;
+        }
+        else if(!Input.GetKey(KeyCode.Mouse1))
+        {
+            cameraMoveSpeed = DefaultCameraMoveSpeed;
         }
 
 
@@ -68,6 +75,7 @@ public class CameraFollow : MonoBehaviour
 
             transform.position = newCameraPosition;
         }
+
     }
     private void HandleZoom()
     {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerActions
 {
     private Player player;
+    public float defaultSpeed;
 
     public PlayerActions(Player player)
     {
@@ -30,5 +31,15 @@ public class PlayerActions
     {
         player.Components.PlayerAnimator.SetFloat("MovementX", player.References.MousePosToPlayer.x);
         player.Components.PlayerAnimator.SetFloat("MovementY", player.References.MousePosToPlayer.y);
+        if(player.Components.PlayerRidgitBody.velocity.magnitude == 0)
+        {
+            player.Components.PlayerAnimator.SetFloat("BounceRate", 0.5f);
+        }
+        else
+        {
+            player.Components.PlayerAnimator.SetFloat("BounceRate", player.Stats.Speed / defaultSpeed);
+        }
+        
     }
+
 }

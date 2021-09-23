@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Aim : MonoBehaviour
+public class RightArmAim : MonoBehaviour
 {
 
     float scaleY;
@@ -11,7 +11,7 @@ public class Aim : MonoBehaviour
     
     private void Start()
     {
-        aimTransform = GameObject.Find("Aim").transform;
+        aimTransform = GameObject.Find("RightArm").transform;
         scaleY = transform.localScale.y;
         //scaleX = transform.localScale.x;
     }
