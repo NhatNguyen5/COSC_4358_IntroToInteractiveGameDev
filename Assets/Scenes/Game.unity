@@ -1048,8 +1048,9 @@ GameObject:
   - component: {fileID: 160801740}
   - component: {fileID: 160801742}
   - component: {fileID: 160801741}
+  - component: {fileID: 160801743}
   m_Layer: 3
-  m_Name: Enforcer
+  m_Name: EnforcerL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1063,7 +1064,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160801739}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 0, z: 1}
+  m_LocalPosition: {x: 0.2, y: 0, z: -1}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 161077054}
@@ -1079,12 +1080,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 160801739}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd3c6430244b8fc4ba9a98c50642631d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fe94ff3acb80d64784a6df627a46cf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeaponAnim: {fileID: 160801743}
   firePoint: {fileID: 161077054}
   bulletPrefab: {fileID: 5172911503813449251, guid: b60735ba69133254091e7ccf305c7aab, type: 3}
-  delay: 0.1
+  delay: 0.2
   spread: 2
   amountOfShots: 1
   ADSRange: 15
@@ -1143,6 +1145,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &160801743
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160801739}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 145794a1e42e4744ea12cd9a8b91e703, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &161077053
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,7 +1174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 161077054}
   m_Layer: 3
-  m_Name: FirePoint
+  m_Name: FirePointL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1796,7 +1817,6 @@ GameObject:
   m_Component:
   - component: {fileID: 366270812}
   - component: {fileID: 366270813}
-  - component: {fileID: 366270814}
   m_Layer: 3
   m_Name: LeftArm
   m_TagString: Untagged
@@ -1812,7 +1832,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366270811}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3, y: -0.17, z: 1}
+  m_LocalPosition: {x: -0.3, y: -0.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 160801740}
@@ -1831,25 +1851,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4806d135cbe7cc14eb9b97cf4c57a172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &366270814
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366270811}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4088f0b6724e8354f80cfc1d4abfec83, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &369984309
 GameObject:
   m_ObjectHideFlags: 0
@@ -1860,7 +1861,7 @@ GameObject:
   m_Component:
   - component: {fileID: 369984310}
   m_Layer: 3
-  m_Name: FirePoint
+  m_Name: FirePointR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2356,7 +2357,7 @@ MonoBehaviour:
   ADSTrigger: 3
   AutoADS: 0
   DefaultZoomLevel: 5
-  cameraZoom: 10
+  cameraZoom: 5
   cameraZoomSpeed: 4
 --- !u!1 &611984226
 GameObject:
@@ -7506,6 +7507,7 @@ GameObject:
   - component: {fileID: 693335785}
   - component: {fileID: 693335784}
   - component: {fileID: 693335789}
+  - component: {fileID: 693335781}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -7513,6 +7515,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &693335781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693335780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13bd8b37fe1424f4fb6d084daeb45f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RightArm: {fileID: 1728217755}
+  LeftArm: {fileID: 366270812}
 --- !u!4 &693335782
 Transform:
   m_ObjectHideFlags: 0
@@ -29388,13 +29404,33 @@ GameObject:
   - component: {fileID: 1644538905}
   - component: {fileID: 1644538904}
   - component: {fileID: 1644538903}
+  - component: {fileID: 1644538901}
   m_Layer: 3
-  m_Name: Enforcer
+  m_Name: EnforcerR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &1644538901
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644538900}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 81abcd8ca36b91345bae5432ea35e8f6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1644538903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29407,9 +29443,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd3c6430244b8fc4ba9a98c50642631d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WeaponAnim: {fileID: 1644538901}
   firePoint: {fileID: 369984310}
   bulletPrefab: {fileID: 5172911503813449251, guid: b60735ba69133254091e7ccf305c7aab, type: 3}
-  delay: 0.1
+  delay: 0.5
   spread: 2
   amountOfShots: 1
   ADSRange: 15
@@ -29476,7 +29513,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644538900}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 0, z: -1}
+  m_LocalPosition: {x: 0.2, y: 0, z: 1}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 369984310}
@@ -29911,7 +29948,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1728217755}
   - component: {fileID: 1728217756}
-  - component: {fileID: 1728217757}
   m_Layer: 3
   m_Name: RightArm
   m_TagString: Untagged
@@ -29946,25 +29982,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c160a2479a730b448eb5e508de75c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1728217757
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1728217754}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: add5b42ab24aa6c499b5724e2a9d5619, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1770120883
 PrefabInstance:
   m_ObjectHideFlags: 0

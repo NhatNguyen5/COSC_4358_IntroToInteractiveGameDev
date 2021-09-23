@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class LeftWeapon : MonoBehaviour
 {
     [Header("Gun Settings")]
+    public Animator WeaponAnim;
     public Transform firePoint;
     public GameObject bulletPrefab;
     public float delay = 0.2f;
@@ -31,6 +32,11 @@ public class Weapon : MonoBehaviour
             if (Input.GetButton("Fire1") && OptionSettings.GameisPaused == false && firingDelay < 0)
             {
                 Shoot();
+            }
+            if (!Input.GetButton("Fire1"))
+            {
+                WeaponAnim.SetBool("IsShooting", false);
+                WeaponAnim.SetFloat("FireRate", 0);
             }
 
             firingDelay -= Time.deltaTime;
@@ -69,6 +75,11 @@ public class Weapon : MonoBehaviour
 
 
             }
+            if (fired == false)
+            {
+                WeaponAnim.SetBool("IsShooting", false);
+                WeaponAnim.SetFloat("FireRate", 0);
+            }
 
             firingDelay -= Time.deltaTime;
             if (firingDelay < -10000)
@@ -79,7 +90,8 @@ public class Weapon : MonoBehaviour
 
     void burst()
     {
-
+        WeaponAnim.SetBool("IsShooting", true);
+        WeaponAnim.SetFloat("FireRate", 1f / timeBtwBurst);
         for (int i = 0; i < amountOfShots; i++)
         {
             float WeaponSpread = Random.Range(-spread, spread);
@@ -92,6 +104,8 @@ public class Weapon : MonoBehaviour
 
     void Shoot()
     {
+        WeaponAnim.SetBool("IsShooting", true);
+        WeaponAnim.SetFloat("FireRate", 1f / delay);
         firingDelay = delay;
         for (int i = 0; i < amountOfShots; i++)
         {

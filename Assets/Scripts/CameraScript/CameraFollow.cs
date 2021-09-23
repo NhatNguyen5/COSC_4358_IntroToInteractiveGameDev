@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour
 
     [Header("Target")]
     public Player player;
-    public Weapon weapon;
+    public RightWeapon weapon;
 
     [Header("Movement")]
     public float DefaultCameraMoveSpeed;

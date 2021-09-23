@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeftArmAim : MonoBehaviour
+public class RightArmAim : MonoBehaviour
 {
 
     float scaleY;
     private Transform aimTransform;
+    private Player player;
     //float scaleX;
     
     private void Start()
     {
-        aimTransform = GameObject.Find("LeftArm").transform;
+        aimTransform = GameObject.Find("RightArm").transform;
         scaleY = transform.localScale.y;
         //scaleX = transform.localScale.x;
     }
@@ -35,13 +36,13 @@ public class LeftArmAim : MonoBehaviour
             //transform.position.y *= -1;
             aimLocalScale.y = -1f;
             //aimLocalScale.y = -1f * scaleX;
-            aimLocalScale.z = -1f;
+            aimLocalScale.z = 1f;
         }
         else
         {
             aimLocalScale.y = +1f;
             //aimLocalScale.y = -1f * scaleX;
-            aimLocalScale.z = 1f;
+            aimLocalScale.z = -1f;
         }
         aimTransform.localScale = aimLocalScale;
 
