@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class TakeDamage : MonoBehaviour
@@ -8,6 +9,7 @@ public class TakeDamage : MonoBehaviour
     public GameObject DamageText;
     private SpriteRenderer sprite;
     private float maxHP;
+    private Image HealthBar;
     [SerializeField]
     StatusIndicator statusIndicator = null;
 
@@ -18,6 +20,7 @@ public class TakeDamage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        HealthBar = GameObject.Find("HP").GetComponent<Image>();
         maxHP = GetComponent<Player>().Stats.Health;
         //rb = GetComponent<Rigidbody2D>();
         //sprite = GetComponent<SpriteRenderer>();
@@ -90,6 +93,8 @@ public class TakeDamage : MonoBehaviour
         StartCoroutine(FlashRed());
         statusIndicator.StartFlash(0.25f, ((maxHP - HP)/maxHP)/2, Color.red, 3);
         statusIndicator.ChangeTransparency(((maxHP - HP) / maxHP));
+
+        HealthBar.fillAmount = HP / maxHP;
 
         if (HP <= 0)
         {

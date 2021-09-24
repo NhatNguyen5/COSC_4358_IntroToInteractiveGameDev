@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -20,6 +21,14 @@ public class Player : MonoBehaviour
     public PlayerStats Stats { get => stats; }
     public PlayerReferences References { get => references; }
 
+    private Image StaminaBar;
+
+    private bool isRunning;
+
+    private float sprint = 0;
+
+
+
     private void Awake()
     {
         actions = new PlayerActions(this);
@@ -27,6 +36,9 @@ public class Player : MonoBehaviour
         references = new PlayerReferences(this);
         stats.Health = stats.hp;
         stats.Speed = stats.WalkSpeed;
+        stats.Stamina = stats.stamina;
+        stats.MaxStamina = stats.maxplayerstamina;
+        stats.TimeBeforeStamRegen = stats.StaminaRegen;
         actions.defaultSpeed = stats.Speed;
     }
 
@@ -34,7 +46,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        
+        StaminaBar = GameObject.Find("StaminaBar").GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -42,6 +54,25 @@ public class Player : MonoBehaviour
     {
         utilities.HandleInput();
         references.CalMousePosToPlayer();
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            if(stats.Stamina > 0)
+                stats.Stamina -= Time.deltaTime;
+            StaminaBar.fillAmount = stats.Stamina / stats.MaxStamina;
+            isRunning = true;
+            sprint = 0;
+        }
+
+
+        if (stats.Stamina <= stats.MaxStamina && isRunning == false && sprint >= stats.TimeBeforeStamRegen)
+        { 
+            stats.Stamina += Time.deltaTime;
+            StaminaBar.fillAmount = stats.Stamina / stats.MaxStamina;
+        }
+        isRunning = false;
+        sprint += Time.deltaTime;
+        
+       
         //Debug.Log("HP" + stats.hp);
         //Debug.Log("Health" + stats.Health);
 
@@ -52,7 +83,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         actions.Move(transform);
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && stats.Stamina > 0)
             actions.Sprint();
         else
             actions.Walk();

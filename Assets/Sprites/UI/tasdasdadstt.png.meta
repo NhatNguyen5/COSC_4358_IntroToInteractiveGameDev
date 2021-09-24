@@ -272,9 +272,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 119
-        width: 39
-        height: 6
+        y: 120
+        width: 38
+        height: 5
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,34 +289,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tasdasdadstt_1
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 96
-        width: 12
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2c6ad7ff6af3a02f0800000000000000
-      internalID: -1005921580280338750
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: tasdasdadstt_2
       rect:
         serializedVersion: 2
         x: 132
-        y: 96
+        y: 112
         width: 18
-        height: 32
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -335,9 +314,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 112
-        width: 39
-        height: 6
+        y: 113
+        width: 38
+        height: 5
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -356,9 +335,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 112
+        y: 113
         width: 87
-        height: 3
+        height: 2
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -377,9 +356,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 103
+        y: 96
         width: 39
-        height: 6
+        height: 13
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,9 +376,9 @@ TextureImporter:
       name: tasdasdadstt_6
       rect:
         serializedVersion: 2
-        x: 93
+        x: 80
         y: 96
-        width: 38
+        width: 70
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -410,27 +389,6 @@ TextureImporter:
       bones: []
       spriteID: 099f49d473aa23190800000000000000
       internalID: -7984132034872936048
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tasdasdadstt_7
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 96
-        width: 39
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd3894dbe07120b30800000000000000
-      internalID: 4251986350263862239
       vertices: []
       indices: 
       edges: []
@@ -1066,27 +1024,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tasdasdadstt_38
-      rect:
-        serializedVersion: 2
-        x: 41
-        y: 32
-        width: 21
-        height: 21
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c5cdf166c6af72070800000000000000
-      internalID: 8081703399816420444
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: tasdasdadstt_39
       rect:
         serializedVersion: 2
@@ -1153,9 +1090,9 @@ TextureImporter:
       name: tasdasdadstt_42
       rect:
         serializedVersion: 2
-        x: 63
+        x: 41
         y: 32
-        width: 21
+        width: 43
         height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1448,11 +1385,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 112
-        width: 70
-        height: 4
+        y: 113
+        width: 69
+        height: 3
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1473,7 +1410,7 @@ TextureImporter:
         width: 70
         height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1494,7 +1431,7 @@ TextureImporter:
         width: 6
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1502,6 +1439,27 @@ TextureImporter:
       bones: []
       spriteID: e006fe3e950504510800000000000000
       internalID: 1531312220312395790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tasdasdadstt_7
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 112
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd3894dbe07120b30800000000000000
+      internalID: 4251986350263862239
       vertices: []
       indices: 
       edges: []

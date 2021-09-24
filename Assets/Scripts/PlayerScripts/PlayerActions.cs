@@ -19,7 +19,8 @@ public class PlayerActions
 
     public void Sprint()
     {
-        player.Stats.Speed = player.Stats.SprintSpeed;
+        if(player.Stats.Stamina >= 0)
+            player.Stats.Speed = player.Stats.SprintSpeed;
     }
 
     public void Walk()
