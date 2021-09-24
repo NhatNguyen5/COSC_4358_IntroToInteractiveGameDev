@@ -158,25 +158,26 @@ public class Enemy1 : MonoBehaviour
             knockback = false;
             unstuck = false;
         }
-
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
-        //var rayDirection = player.position - transform.position;
-        //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
-        if (hit.collider.gameObject.tag == "Player")
+        if (player != null)
         {
-            lineofsight = true;
-            //Debug.Log("Player is Visable");
-            // enemy can see the player!
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
+            //var rayDirection = player.position - transform.position;
+            //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
+            if (hit.collider.gameObject.tag == "Player")
+            {
+                lineofsight = true;
+                //Debug.Log("Player is Visable");
+                // enemy can see the player!
 
-            //Debug.Log("Player is Visable");
+                //Debug.Log("Player is Visable");
+            }
+            else
+            {
+                lineofsight = false;
+                //Debug.Log("Player is NOT Visable");
+            }
+
         }
-        else
-        {
-            lineofsight = false;
-            //Debug.Log("Player is NOT Visable");
-        }
-
-
 
         if (lineofsight == true)
         {

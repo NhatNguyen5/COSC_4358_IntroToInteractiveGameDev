@@ -12,34 +12,36 @@ public class Pause : MonoBehaviour
 
     public GameObject OptionMenuUI;
     public GameObject PauseMenuUI;
-    private GameObject PlayerIndicator;
-    private GameObject StatusIndicator;
+    public GameObject PlayerUI;
+    //public GameObject StatusIndicator;
 
 
-    private void Start()
-    {
-        PlayerIndicator = GameObject.Find("PlayerIndicator");
-        StatusIndicator = GameObject.Find("StatusIndicator");
-    }
+ 
+
 
     public void resume() 
     {
         Time.timeScale = 1f;
-        OptionSettings.GameisPaused = false;
+        PlayerUI.SetActive(true);
         OptionMenuUI.SetActive(false);
         PauseMenuUI.SetActive(false);
-        PlayerIndicator.SetActive(true);
-        StatusIndicator.SetActive(true);
-        
+        OptionSettings.GameisPaused = false;
     }
+
+    public void button()
+    {
+        GameObject Temp = GameObject.Find("GameMusicandPause");
+        Pause pauseButton = Temp.GetComponent<Pause>();
+        pauseButton.resume();
+    }
+
 
     void pause() 
     {
         //PauseOption.SetActive(true);
         PauseMenuUI.SetActive(true);
+        PlayerUI.SetActive(false);
         OptionSettings.GameisPaused = true;
-        PlayerIndicator.SetActive(false);
-        StatusIndicator.SetActive(false);
         Time.timeScale = 0f;
 
 
