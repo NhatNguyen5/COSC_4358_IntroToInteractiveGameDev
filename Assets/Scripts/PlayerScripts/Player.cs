@@ -71,13 +71,21 @@ public class Player : MonoBehaviour
         }
         isRunning = false;
         sprint += Time.deltaTime;
-        
-       
+
+        if (Input.GetKeyUp(KeyCode.T) && OptionSettings.GameisPaused == false)
+        {
+            actions.ToggleDual();
+        }
         //Debug.Log("HP" + stats.hp);
         //Debug.Log("Health" + stats.Health);
 
         //Debug.Log(components.PlayerRidgitBody.velocity.magnitude);
         //Debug.Log(references.MousePosToPlayer);
+
+        if (OptionSettings.GameisPaused == false)
+        {
+            actions.SwapWeapon();
+        }
     }
 
     private void FixedUpdate()
@@ -88,5 +96,6 @@ public class Player : MonoBehaviour
         else
             actions.Walk();
         actions.Animate();
+        
     }
 }

@@ -20,6 +20,8 @@ public class PlayerStats
     public float MaxStamina { get; set; }
     public float TimeBeforeStamRegen { get; set; }
 
+    public bool IsDualWield = false;
+
     [SerializeField]
     private float walkSpeed;
     [SerializeField]

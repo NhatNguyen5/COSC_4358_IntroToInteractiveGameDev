@@ -5,6 +5,7 @@ using UnityEngine;
 public class RightWeapon : MonoBehaviour
 {
     [Header("Gun Settings")]
+    public float Slot;
     public Animator WeaponAnim;
     public Transform firePoint;
     public GameObject bulletPrefab;

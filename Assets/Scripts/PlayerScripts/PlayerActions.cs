@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public class PlayerActions
 {
     private Player player;
     public float defaultSpeed;
+    private Transform leftArm;
+    private Transform rightArm;
 
     public PlayerActions(Player player)
     {
         this.player = player;
+        leftArm = player.transform.Find("LeftArm");
+        rightArm = player.transform.Find("RightArm");
     }
 
     public void Move(Transform transform)
@@ -41,6 +46,42 @@ public class PlayerActions
             player.Components.PlayerAnimator.SetFloat("BounceRate", player.Stats.Speed / defaultSpeed);
         }
         
+    }
+
+    public void ToggleDual()
+    {
+        
+        if(!leftArm.gameObject.activeSelf)
+        {
+            leftArm.gameObject.SetActive(true);
+            player.Stats.IsDualWield = true;
+        }
+        else
+        {
+            leftArm.gameObject.SetActive(false);
+            player.Stats.IsDualWield = false;
+        }
+        //Debug.Log("PA: " + player.Stats.IsUpWhenSwap);
+    }
+
+    public void SwapWeapon()
+    {
+        float input;
+        if(float.TryParse(Input.inputString, out input))
+        {
+            foreach (Transform rw in rightArm)
+            {
+                //Debug.Log(rw.gameObject.activeSelf);
+                if (rw.GetComponent<RightWeapon>().Slot == input)
+                {
+                    rw.gameObject.SetActive(true);
+                }
+                else
+                {
+                    rw.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 
 }
