@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
         stats.MaxStamina = stats.maxplayerstamina;
         stats.TimeBeforeStamRegen = stats.StaminaRegen;
         actions.defaultSpeed = stats.Speed;
+        references.numOfHeal = 100;
     }
 
 
@@ -72,20 +73,20 @@ public class Player : MonoBehaviour
         isRunning = false;
         sprint += Time.deltaTime;
 
-        if (Input.GetKeyUp(KeyCode.T) && OptionSettings.GameisPaused == false)
+        if (OptionSettings.GameisPaused == false)
         {
-            actions.ToggleDual();
+            if(Input.GetKeyUp(KeyCode.T))
+                actions.ToggleDual();
+            if (Input.GetKeyUp(KeyCode.E))
+                actions.Heal();
+            actions.SwapWeapon();
+            
         }
         //Debug.Log("HP" + stats.hp);
         //Debug.Log("Health" + stats.Health);
 
         //Debug.Log(components.PlayerRidgitBody.velocity.magnitude);
         //Debug.Log(references.MousePosToPlayer);
-
-        if (OptionSettings.GameisPaused == false)
-        {
-            actions.SwapWeapon();
-        }
     }
 
     private void FixedUpdate()

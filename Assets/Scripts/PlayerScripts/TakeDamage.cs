@@ -11,9 +11,14 @@ public class TakeDamage : MonoBehaviour
     private float maxHP;
     private Image HealthBar;
     [SerializeField]
-    StatusIndicator statusIndicator = null;
+    private StatusIndicator statusIndicator = null;
     [SerializeField]
-    Camera Mcamera;
+    private Camera Mcamera;
+    [Header("CameraShake")]
+    public bool CameraShake;
+    public float ShakeDuration;
+    public float ShakeIntensity;
+    
 
     private Rigidbody2D rb;
     
@@ -91,9 +96,14 @@ public class TakeDamage : MonoBehaviour
         float HP = GetComponent<Player>().Stats.Health;
         showDamage(damage, impact, speed, iscrit);
         StartCoroutine(FlashRed());
-        statusIndicator.StartFlash(0.25f, ((maxHP - HP)/maxHP)/2, Color.red, 3);
-        statusIndicator.ChangeTransparency(((maxHP - HP) / maxHP));
-        statusIndicator.StartShake(Mcamera, 0.1f, 0.1f);
+        //if ((maxHP - HP) / maxHP >= 0.5)
+        //{
+            
+        statusIndicator.StartFlash(0.25f, ((maxHP - HP) / maxHP), Color.red, ((maxHP - HP) / maxHP) / 2f, Color.red, 3);
+        //}
+        //statusIndicator.ChangeTransparency((maxHP - HP) / maxHP);
+        if(CameraShake)
+            statusIndicator.StartShake(Mcamera, ShakeDuration, ShakeIntensity);
 
         HealthBar.fillAmount = HP / maxHP;
 

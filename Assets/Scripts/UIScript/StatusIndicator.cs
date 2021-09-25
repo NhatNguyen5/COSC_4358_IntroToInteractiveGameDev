@@ -9,11 +9,12 @@ public class StatusIndicator : MonoBehaviour
     Image _image = null;
     Coroutine _currentFlashRoutine = null;
     Coroutine _currentShakeRoutine = null;
-    private float CurrAlpha = 0;
+    private float CurrAlpha;
     // Start is called before the first frame update
     private void Awake()
     {
         _image = GetComponent<Image>();
+        CurrAlpha = _image.color.a;
     }
 
     public void ChangeTransparency(float newAlpha)
@@ -24,18 +25,25 @@ public class StatusIndicator : MonoBehaviour
         _image.color = colorThisFrame;
     }
 
-    public void StartFlash(float secondForOneFlash, float maxAlpha, Color newColor, int numOfFlash)
+    public void ChangeColor(Color newColor)
     {
-        _image.color = newColor;
-
-        maxAlpha = Mathf.Clamp(maxAlpha, CurrAlpha, 1);
-        if (_currentFlashRoutine != null)
-            StopCoroutine(_currentFlashRoutine);
-        _currentFlashRoutine = StartCoroutine(Flash(secondForOneFlash, maxAlpha, numOfFlash));
-        
+        CurrAlpha = _image.color.a;
+        Color colorThisFrame = newColor;
+        colorThisFrame.a = CurrAlpha;
+        _image.color = colorThisFrame;
     }
 
-    IEnumerator Flash(float SecondForOneFlash, float maxAlpha, int numOfFlash)
+    public void StartFlash(float secondForOneFlash, float maxAlpha, Color newColor, float endAlpha, Color endColor, int numOfFlash)
+    {   
+        //CurrAlpha = endAlpha
+        _image.color = newColor;
+        maxAlpha = Mathf.Clamp(maxAlpha, endAlpha, 1);
+        if (_currentFlashRoutine != null)
+            StopCoroutine(_currentFlashRoutine);
+        _currentFlashRoutine = StartCoroutine(Flash(endColor, secondForOneFlash, maxAlpha, endAlpha, numOfFlash));
+    }
+
+    IEnumerator Flash(Color endColor, float SecondForOneFlash, float maxAlpha, float endAlpha, int numOfFlash)
     {
         // animate fade in
         float flashInDuration = SecondForOneFlash / 2;
@@ -44,7 +52,7 @@ public class StatusIndicator : MonoBehaviour
             for (float t = 0; t <= flashInDuration; t += Time.deltaTime)
             {
                 Color colorThisFrame = _image.color;
-                colorThisFrame.a = Mathf.Lerp(CurrAlpha, maxAlpha, t / flashInDuration);
+                colorThisFrame.a = Mathf.Lerp(endAlpha, maxAlpha, t / flashInDuration);
                 _image.color = colorThisFrame;
                 yield return null;
             }
@@ -52,12 +60,18 @@ public class StatusIndicator : MonoBehaviour
             for (float t = 0; t <= flashOutDuration; t += Time.deltaTime)
             {
                 Color colorThisFrame = _image.color;
-                colorThisFrame.a = Mathf.Lerp(maxAlpha, CurrAlpha, t / flashInDuration);
+                colorThisFrame.a = Mathf.Lerp(maxAlpha, endAlpha, t / flashInDuration);
                 _image.color = colorThisFrame;
                 yield return null;
             }
+            if (i == 1)
+            {
+                CurrAlpha = _image.color.a;
+                Color temp = endColor;
+                temp.a = endAlpha;
+                _image.color = temp;
+            }
         }
-
         // animate fade out
     }
 
