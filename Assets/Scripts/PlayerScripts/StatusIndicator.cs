@@ -8,6 +8,7 @@ public class StatusIndicator : MonoBehaviour
 {
     Image _image = null;
     Coroutine _currentFlashRoutine = null;
+    Coroutine _currentShakeRoutine = null;
     private float CurrAlpha = 0;
     // Start is called before the first frame update
     private void Awake()
@@ -33,7 +34,7 @@ public class StatusIndicator : MonoBehaviour
         _currentFlashRoutine = StartCoroutine(Flash(secondForOneFlash, maxAlpha, numOfFlash));
         
     }
-    
+
     IEnumerator Flash(float SecondForOneFlash, float maxAlpha, int numOfFlash)
     {
         // animate fade in
@@ -60,4 +61,21 @@ public class StatusIndicator : MonoBehaviour
         // animate fade out
     }
 
+    public void StartShake(Camera camera, float ShakeDuration, float intensity)
+    {
+        if (_currentShakeRoutine != null)
+            StopCoroutine(_currentShakeRoutine);
+        _currentShakeRoutine = StartCoroutine(Shake(camera, ShakeDuration, intensity));
+    }
+
+    IEnumerator Shake(Camera camera, float ShakeDuration, float intensity)   
+    {
+        for (float t = 0; t <= ShakeDuration; t += Time.deltaTime)
+        {
+            camera.transform.position = new Vector3(camera.transform.position.x + Random.Range(-intensity, intensity),
+                                                    camera.transform.position.y + Random.Range(-intensity, intensity),
+                                                    camera.transform.position.z);
+            yield return null;
+        }
+    }
 }

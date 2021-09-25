@@ -12,8 +12,8 @@ public class TakeDamage : MonoBehaviour
     private Image HealthBar;
     [SerializeField]
     StatusIndicator statusIndicator = null;
-
-
+    [SerializeField]
+    Camera Mcamera;
 
     private Rigidbody2D rb;
     
@@ -93,6 +93,7 @@ public class TakeDamage : MonoBehaviour
         StartCoroutine(FlashRed());
         statusIndicator.StartFlash(0.25f, ((maxHP - HP)/maxHP)/2, Color.red, 3);
         statusIndicator.ChangeTransparency(((maxHP - HP) / maxHP));
+        statusIndicator.StartShake(Mcamera, 0.1f, 0.1f);
 
         HealthBar.fillAmount = HP / maxHP;
 

@@ -20,30 +20,28 @@ public class WeaponTurnSwap : MonoBehaviour
     private void Update()
     {
         angle = GetComponent<Player>().Stats.Angle;
-        if(angle < 0)
+        if (angle < 0)
         {
             angle = 360 + angle;
         }
 
-        if ((angle > 10 && angle < 170) && swap == false)
+        if ((angle > 10 && angle < 170) && swap == true)
         {
-            
+            Vector3 temp = RightArm.position;
+            RightArm.position = LeftArm.position;
+            LeftArm.position = temp;
+
+            swap = false;
+        }
+
+
+        if ((angle > 190 && angle < 350) && swap == false)
+        {
             Vector3 temp = RightArm.position;
             RightArm.position = LeftArm.position;
             LeftArm.position = temp;
             
             swap = true;
-        }
-        
-
-        if (angle > 190 && angle < 350 && swap == true)
-        {
-            
-            Vector3 temp = RightArm.position;
-            RightArm.position = LeftArm.position;
-            LeftArm.position = temp;
-            
-            swap = false;
         }
         
         

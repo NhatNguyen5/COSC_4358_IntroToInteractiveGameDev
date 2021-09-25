@@ -14,6 +14,8 @@ public class CameraFollow : MonoBehaviour
 
     [Header("Movement")]
     public float DefaultCameraMoveSpeed;
+    [HideInInspector]
+    public float cameraMoveSpeed;
     public float ADSTrigger;
     public bool AutoADS;
 
