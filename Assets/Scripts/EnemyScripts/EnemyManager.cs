@@ -1,34 +1,44 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    public int enemiesFromColony;
+    public float timeBetweenSpawns;
+    public Enemy1 enemy;
+    int enemiesRemainingToSpawn;
+    float nextSpawnTime;
+    public GameObject[] spawnPoints = new GameObject[3];
+    public int colonyHealth;
+    private System.Random rand = new System.Random();
 
-    public Transform[] m_SpawnPoints;
-    public GameObject m_EnemyPrefab;
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        SpawnNewEnemy();
+        enemiesRemainingToSpawn = enemiesFromColony;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        if (enemiesRemainingToSpawn > 0 && Time.time > nextSpawnTime && colonyHealth > 0)
+        {
+            enemiesRemainingToSpawn--;
+            nextSpawnTime = Time.time + timeBetweenSpawns;
+
+            int randomSpawn = rand.Next(0, spawnPoints.Length);
+            print("randomSpawn = " + randomSpawn);
+
+            Enemy1 spawnedEnemy = Instantiate(enemy, spawnPoints[randomSpawn].transform.position, Quaternion.identity) as Enemy1;
+            spawnedEnemy.OnDeath += OnEnemyDeath;
+        }
         
     }
 
-    void OnEnable()
+    void OnEnemyDeath()
     {
-        Enemy1.OnEnemyKilled += SpawnNewEnemy;
-    }
-
-    void SpawnNewEnemy()
-    {
-        int randInt = Mathf.RoundToInt(Random.Range(0f, m_SpawnPoints.Length - 1));
-
-        Instantiate(m_EnemyPrefab, m_SpawnPoints[randInt].transform.position, Quaternion.identity);
-
+        print("Enemy died");
+        enemiesRemainingToSpawn++;
+        print("enemies remaing to spawn incremented");
     }
 }

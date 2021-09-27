@@ -7,8 +7,7 @@ public class Enemy1 : MonoBehaviour
     public GameObject DamageText;
     private SpriteRenderer sprite;
 
-    public delegate void EnemyKilled();
-    public static event EnemyKilled OnEnemyKilled;
+    public event System.Action OnDeath;
 
     [Header("Enemy Stats")]
 
@@ -369,11 +368,11 @@ public class Enemy1 : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject);
-        if (OnEnemyKilled != null)
+        if (OnDeath != null)
         {
-            OnEnemyKilled();
+            OnDeath();
         }
+        GameObject.Destroy(gameObject);
     }
 
 
