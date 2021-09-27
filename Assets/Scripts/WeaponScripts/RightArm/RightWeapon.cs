@@ -76,7 +76,7 @@ public class RightWeapon : MonoBehaviour
 
 
 
-        if (ammoCount <= 0 && Input.GetButtonDown("Fire1") || ammoCount < maxAmmoInClip && Input.GetKeyUp(KeyCode.R))
+        if (ammoCount <= 0 && Input.GetButton("Fire1") || ammoCount < maxAmmoInClip && Input.GetKeyUp(KeyCode.R))
         {
             if (reload == false && fired == false)
             {
