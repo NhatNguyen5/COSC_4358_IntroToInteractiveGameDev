@@ -22,6 +22,11 @@ public class DestroyText : MonoBehaviour
         float ycount = Random.Range(-0.5f, 0.5f);
         Vector3 Offset = new Vector3(x + xcount, y + ycount, 0);
         transform.localPosition += Offset;
+
+        var otherPosn = transform.localPosition;
+        transform.localPosition = new Vector3(otherPosn.x, otherPosn.y, -1);
+
+
         movement.x = x;
         movement.y = y;
         TextSpeed = Speed;

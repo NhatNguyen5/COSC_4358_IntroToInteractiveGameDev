@@ -37,6 +37,7 @@ public class RightWeapon : MonoBehaviour
     private Text UIAmmoCount;
     private Text UIMaxAmmoCount;
     private bool reload;
+    private float countFillAmount;
 
 
     private void Start()
@@ -51,12 +52,16 @@ public class RightWeapon : MonoBehaviour
     void reloadClip()
     {
         ammoCount = maxAmmoInClip;
+        firingDelay = 0;
     }
 
     void setAmmoCount()
     {
         UIAmmoCount.text = ammoCount.ToString();
         UIMaxAmmoCount.text = maxAmmoInClip.ToString();
+        countFillAmount = (float)ammoCount / (float)maxAmmoInClip;
+        Debug.Log(countFillAmount);
+        reloadBar.fillAmount = countFillAmount;
 
     }
 
@@ -67,12 +72,16 @@ public class RightWeapon : MonoBehaviour
         if (reloadCooldown < reloadTime)
         {
             reloadBar.fillAmount = (reloadCooldown / reloadTime);
+            WeaponAnim.SetBool("IsShooting", false);
+            WeaponAnim.SetFloat("FireRate", 0);
             //set ammo count here too
         }
+        /*
         else
         { 
             reloadBar.fillAmount = 1;
         }
+        */
 
 
 
