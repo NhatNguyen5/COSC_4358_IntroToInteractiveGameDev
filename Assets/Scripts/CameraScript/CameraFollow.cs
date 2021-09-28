@@ -10,10 +10,12 @@ public class CameraFollow : MonoBehaviour
 
     [Header("Target")]
     public Player player;
-    public RightWeapon weapon;
+    public Transform RightArm;
 
     [Header("Movement")]
     public float DefaultCameraMoveSpeed;
+    [HideInInspector]
+    public float cameraMoveSpeed;
     public float ADSTrigger;
     public bool AutoADS;
 
@@ -21,6 +23,8 @@ public class CameraFollow : MonoBehaviour
     public float DefaultZoomLevel;
     public float cameraZoom;
     public float cameraZoomSpeed;
+
+    private RightWeapon activeWeapon;
 
     private void Awake()
     {
@@ -39,8 +43,18 @@ public class CameraFollow : MonoBehaviour
     {
         //Player player = GetPlayerFunc();
         //Weapon weapon = GetWeaponFunc();
-        float ADSRange = weapon.ADSRange;
-        float ADSSpeed = weapon.ADSSpeed;
+        foreach (Transform rw in RightArm)
+        {
+            //Debug.Log(rw.gameObject.activeSelf);
+            if (rw.gameObject.activeSelf)
+            {
+                activeWeapon = RightArm.transform.Find(rw.name).GetComponent<RightWeapon>();
+                //Debug.Log("Found");
+                break;
+            }
+        }
+        float ADSRange = activeWeapon.ADSRange;
+        float ADSSpeed = activeWeapon.ADSSpeed;
         float cameraMoveSpeed = DefaultCameraMoveSpeed;
         Vector3 cameraFollowPosition = player.Stats.Position;
         Vector3 MP2P = new Vector3(player.References.MousePosToPlayer.x * ADSRange, player.References.MousePosToPlayer.y * ADSRange);
@@ -48,7 +62,7 @@ public class CameraFollow : MonoBehaviour
         if (AutoADS && player.References.MousePosToPlayerNotNorm.magnitude > ADSTrigger)
             cameraFollowPosition = cameraFollowPosition + MP2P;
 
-        if (!AutoADS && Input.GetKey(KeyCode.Mouse1))
+        if (!AutoADS && Input.GetKey(KeyCode.Mouse1) && !player.Stats.IsDualWield)
         {
             cameraFollowPosition = cameraFollowPosition + MP2P;
             cameraMoveSpeed = ADSSpeed;
@@ -98,5 +112,4 @@ public class CameraFollow : MonoBehaviour
             }
         }
     }
-
 }

@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: af026aeb232b2fa448fb2b448e3504d4
+guid: 7e3a28d9dd9325245982e31408c5029f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6353777485397086779
-    second: 222-export_0
+      213: 8907051256185748792
+    second: Strepto_0
   - first:
-      213: 475554437938363813
-    second: 222-export_1
+      213: 3850532411579939151
+    second: Strepto_1
   - first:
-      213: -7111311285377797939
-    second: 222-export_2
+      213: 4418239098869593548
+    second: Strepto_2
   - first:
-      213: -4921420317762943488
-    second: 222-export_3
+      213: -5330811617566646375
+    second: Strepto_3
   - first:
-      213: -2796647912892523174
-    second: 222-export_4
+      213: -5181875376997155505
+    second: Strepto_4
   - first:
-      213: -3200947526172955097
-    second: 222-export_5
+      213: 8443218640368949784
+    second: Strepto_5
   - first:
-      213: 102762871296039118
-    second: 222-export_6
+      213: -2554335272187013442
+    second: Strepto_6
   - first:
-      213: 7156216859548134413
-    second: 222-export_7
+      213: 4529844653437367858
+    second: Strepto_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,7 +127,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 222-export_0
+      name: Strepto_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,14 +141,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b32d7fe85f62d2850800000000000000
-      internalID: 6353777485397086779
+      spriteID: 83df5290de33c9b70800000000000000
+      internalID: 8907051256185748792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 222-export_1
+      name: Strepto_1
       rect:
         serializedVersion: 2
         x: 96
@@ -162,14 +162,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ad3da0ed32899600800000000000000
-      internalID: 475554437938363813
+      spriteID: f49b95cc3d6df6530800000000000000
+      internalID: 3850532411579939151
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 222-export_2
+      name: Strepto_2
       rect:
         serializedVersion: 2
         x: 0
@@ -183,14 +183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc074d3301c8f4d90800000000000000
-      internalID: -7111311285377797939
+      spriteID: cc53dd43d0db05d30800000000000000
+      internalID: 4418239098869593548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 222-export_3
+      name: Strepto_3
       rect:
         serializedVersion: 2
         x: 96
@@ -204,14 +204,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0068959bb4a93bbb0800000000000000
-      internalID: -4921420317762943488
+      spriteID: 99f1a62e3172506b0800000000000000
+      internalID: -5330811617566646375
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 222-export_4
+      name: Strepto_4
       rect:
         serializedVersion: 2
         x: 0
@@ -225,14 +225,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5d143e5a8f4039d0800000000000000
-      internalID: -2796647912892523174
+      spriteID: f4dbdb3acc74618b0800000000000000
+      internalID: -5181875376997155505
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 222-export_5
+      name: Strepto_5
       rect:
         serializedVersion: 2
         x: 96
@@ -246,14 +246,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72eabcd2f23f393d0800000000000000
-      internalID: -3200947526172955097
+      spriteID: 81ad52c8e965c2570800000000000000
+      internalID: 8443218640368949784
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 222-export_6
+      name: Strepto_6
       rect:
         serializedVersion: 2
         x: 0
@@ -267,14 +267,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec813b779461d6100800000000000000
-      internalID: 102762871296039118
+      spriteID: eb6da087a9d2d8cd0800000000000000
+      internalID: -2554335272187013442
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 222-export_7
+      name: Strepto_7
       rect:
         serializedVersion: 2
         x: 96
@@ -288,8 +288,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0c2709815dff4360800000000000000
-      internalID: 7156216859548134413
+      spriteID: 23636df46bd3dde30800000000000000
+      internalID: 4529844653437367858
       vertices: []
       indices: 
       edges: []

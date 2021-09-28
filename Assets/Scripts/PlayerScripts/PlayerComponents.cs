@@ -9,8 +9,10 @@ public class PlayerComponents
     private Rigidbody2D playerRidgitBody;
     [SerializeField]
     private Animator playerAnimator;
+    [SerializeField]
+    private StatusIndicator playerStatusIndicator;
 
-    public Rigidbody2D PlayerRidgitBody 
+    public Rigidbody2D PlayerRidgitBody
     {
         get => playerRidgitBody;
     }
@@ -18,5 +20,10 @@ public class PlayerComponents
     public Animator PlayerAnimator
     {
         get => playerAnimator;
+    }
+
+    public StatusIndicator PlayerStatusIndicator
+    {
+        get => playerStatusIndicator;
     }
 }

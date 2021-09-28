@@ -9,6 +9,7 @@ public class PlayerReferences
 
     public Vector2 MousePosToPlayer { get; set; }
     public Vector2 MousePosToPlayerNotNorm { get; set; }
+    public int numOfHeal { get; set; }
 
     public PlayerReferences(Player player)
     {

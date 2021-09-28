@@ -36,13 +36,13 @@ public class RightArmAim : MonoBehaviour
             //transform.position.y *= -1;
             aimLocalScale.y = -1f;
             //aimLocalScale.y = -1f * scaleX;
-            aimLocalScale.z = 1f;
+            aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, 1f);
         }
         else
         {
             aimLocalScale.y = +1f;
             //aimLocalScale.y = -1f * scaleX;
-            aimLocalScale.z = -1f;
+            aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, -1f);
         }
         aimTransform.localScale = aimLocalScale;
 

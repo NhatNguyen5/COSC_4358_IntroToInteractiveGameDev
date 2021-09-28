@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: af026aeb232b2fa448fb2b448e3504d4
+guid: 8f38618ca62c0a4438c3cf495c623e0f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6353777485397086779
-    second: 222-export_0
+      213: -6153686122857944383
+    second: Brunt_0
   - first:
-      213: 475554437938363813
-    second: 222-export_1
+      213: 8146767086480450097
+    second: Brunt_1
   - first:
-      213: -7111311285377797939
-    second: 222-export_2
+      213: -8213959529949205280
+    second: Brunt_2
   - first:
-      213: -4921420317762943488
-    second: 222-export_3
+      213: 2513851418922019781
+    second: Brunt_3
   - first:
-      213: -2796647912892523174
-    second: 222-export_4
+      213: 6248311171408258273
+    second: Brunt_4
   - first:
-      213: -3200947526172955097
-    second: 222-export_5
+      213: -783875380386337407
+    second: Brunt_5
   - first:
-      213: 102762871296039118
-    second: 222-export_6
+      213: -1818347423100218681
+    second: Brunt_6
   - first:
-      213: 7156216859548134413
-    second: 222-export_7
+      213: -8232444421015954878
+    second: Brunt_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -127,7 +127,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 222-export_0
+      name: Brunt_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,14 +141,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b32d7fe85f62d2850800000000000000
-      internalID: 6353777485397086779
+      spriteID: 1ca2dcb2317b99aa0800000000000000
+      internalID: -6153686122857944383
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 222-export_1
+      name: Brunt_1
       rect:
         serializedVersion: 2
         x: 96
@@ -162,14 +162,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ad3da0ed32899600800000000000000
-      internalID: 475554437938363813
+      spriteID: 132e28170812f0170800000000000000
+      internalID: 8146767086480450097
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 222-export_2
+      name: Brunt_2
       rect:
         serializedVersion: 2
         x: 0
@@ -183,14 +183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc074d3301c8f4d90800000000000000
-      internalID: -7111311285377797939
+      spriteID: 0ec61f1b357220e80800000000000000
+      internalID: -8213959529949205280
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 222-export_3
+      name: Brunt_3
       rect:
         serializedVersion: 2
         x: 96
@@ -204,14 +204,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0068959bb4a93bbb0800000000000000
-      internalID: -4921420317762943488
+      spriteID: 5cb65faeb8ef2e220800000000000000
+      internalID: 2513851418922019781
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 222-export_4
+      name: Brunt_4
       rect:
         serializedVersion: 2
         x: 0
@@ -225,14 +225,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5d143e5a8f4039d0800000000000000
-      internalID: -2796647912892523174
+      spriteID: 1e4e4e9c7e576b650800000000000000
+      internalID: 6248311171408258273
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 222-export_5
+      name: Brunt_5
       rect:
         serializedVersion: 2
         x: 96
@@ -246,14 +246,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72eabcd2f23f393d0800000000000000
-      internalID: -3200947526172955097
+      spriteID: 18de5e3ae7d1f15f0800000000000000
+      internalID: -783875380386337407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 222-export_6
+      name: Brunt_6
       rect:
         serializedVersion: 2
         x: 0
@@ -267,14 +267,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec813b779461d6100800000000000000
-      internalID: 102762871296039118
+      spriteID: 7c25dd717aee3c6e0800000000000000
+      internalID: -1818347423100218681
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 222-export_7
+      name: Brunt_7
       rect:
         serializedVersion: 2
         x: 96
@@ -288,8 +288,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0c2709815dff4360800000000000000
-      internalID: 7156216859548134413
+      spriteID: 24a923c9a6b70cd80800000000000000
+      internalID: -8232444421015954878
       vertices: []
       indices: 
       edges: []
