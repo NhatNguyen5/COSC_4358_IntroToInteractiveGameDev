@@ -78,6 +78,15 @@ public class PlayerActions
         }
         else
         {
+            foreach (Transform lw in leftArm)
+            {
+                if (lw.gameObject.activeSelf == true)
+                {
+                    LeftWeapon lWeapon = lw.GetComponent<LeftWeapon>();
+                    lWeapon.transform.position = leftArm.transform.position;
+                    lWeapon.transform.rotation = leftArm.transform.rotation;
+                }
+            }
             leftArm.gameObject.SetActive(false);
             reloadBarL.gameObject.SetActive(false);
             UIAmmoCountL.gameObject.SetActive(false);
