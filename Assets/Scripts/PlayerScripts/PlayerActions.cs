@@ -11,6 +11,10 @@ public class PlayerActions
     private Transform leftArm;
     private Transform rightArm;
     private Image HealthBar;
+    private Image reloadBarL;
+    private Image reloadBorderL;
+    private Text UIAmmoCountL;
+    private Text UIMaxAmmoCountL;
 
     public PlayerActions(Player player)
     {
@@ -18,6 +22,14 @@ public class PlayerActions
         leftArm = player.transform.Find("LeftArm");
         rightArm = player.transform.Find("RightArm");
         HealthBar = GameObject.Find("HP").GetComponent<Image>();
+        reloadBarL = GameObject.Find("ReloadBarL").GetComponent<Image>();
+        UIAmmoCountL = GameObject.Find("AmmoCountL").GetComponent<Text>();
+        UIMaxAmmoCountL = GameObject.Find("MaxAmmoCountL").GetComponent<Text>();
+        reloadBorderL = GameObject.Find("ReloadBorderL").GetComponent<Image>();
+        reloadBarL.gameObject.SetActive(false);
+        UIAmmoCountL.gameObject.SetActive(false);
+        UIMaxAmmoCountL.gameObject.SetActive(false);
+        reloadBorderL.gameObject.SetActive(false);
     }
 
     public void Move(Transform transform)
@@ -57,11 +69,20 @@ public class PlayerActions
         if(!leftArm.gameObject.activeSelf)
         {
             leftArm.gameObject.SetActive(true);
+            reloadBarL.gameObject.SetActive(true);
+            UIAmmoCountL.gameObject.SetActive(true);
+            UIMaxAmmoCountL.gameObject.SetActive(true);
+            reloadBorderL.gameObject.SetActive(true);
             player.Stats.IsDualWield = true;
+
         }
         else
         {
             leftArm.gameObject.SetActive(false);
+            reloadBarL.gameObject.SetActive(false);
+            UIAmmoCountL.gameObject.SetActive(false);
+            UIMaxAmmoCountL.gameObject.SetActive(false);
+            reloadBorderL.gameObject.SetActive(false);
             player.Stats.IsDualWield = false;
         }
         //Debug.Log("PA: " + player.Stats.IsUpWhenSwap);

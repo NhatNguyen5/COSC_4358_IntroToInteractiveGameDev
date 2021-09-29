@@ -44,9 +44,9 @@ public class RightWeapon : MonoBehaviour
     {
         reloadClip();
         reloadCooldown = reloadTime;
-        reloadBar = GameObject.Find("ReloadBar").GetComponent<Image>();
-        UIAmmoCount = GameObject.Find("AmmoCount").GetComponent<Text>();
-        UIMaxAmmoCount = GameObject.Find("MaxAmmoCount").GetComponent<Text>();
+        reloadBar = GameObject.Find("ReloadBarR").GetComponent<Image>();
+        UIAmmoCount = GameObject.Find("AmmoCountR").GetComponent<Text>();
+        UIMaxAmmoCount = GameObject.Find("MaxAmmoCountR").GetComponent<Text>();
     }
 
     void reloadClip()
@@ -69,13 +69,12 @@ public class RightWeapon : MonoBehaviour
     void Update()
     {
         setAmmoCount();
-        if (reloadCooldown < reloadTime)
-        {
-            reloadBar.fillAmount = (reloadCooldown / reloadTime);
-            WeaponAnim.SetBool("IsShooting", false);
-            WeaponAnim.SetFloat("FireRate", 0);
+        //if (reloadCooldown < reloadTime)
+        //{
+            //reloadBar.fillAmount = (reloadCooldown / reloadTime);
+            
             //set ammo count here too
-        }
+        //}
         /*
         else
         { 
@@ -90,7 +89,12 @@ public class RightWeapon : MonoBehaviour
             if (reload == false && fired == false)
             {
                 Debug.Log("Reload activated");
+                WeaponAnim.SetBool("IsShooting", false);
+                WeaponAnim.SetFloat("FireRate", 0);
+                WeaponAnim.SetBool("IsReloading", true);
+                WeaponAnim.SetFloat("ReloadSpeed", 1 / reloadTime);
                 reloadCooldown = 0;
+                
                 reload = true;
             }
         }
@@ -98,7 +102,10 @@ public class RightWeapon : MonoBehaviour
         if (reloadCooldown >= reloadTime && reload == true)
         {
             reloadClip();
+            
             reload = false;
+            WeaponAnim.SetBool("IsReloading", false);
+            WeaponAnim.SetFloat("ReloadSpeed", 0);
 
         }
 
@@ -184,6 +191,7 @@ public class RightWeapon : MonoBehaviour
         if (reload == true)
         {
             reloadBar.fillAmount = (reloadCooldown / reloadTime);
+
         }
     }
 
