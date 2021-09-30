@@ -113,6 +113,9 @@ public class PlayerActions
                 }
                 else
                 {
+                    RightWeapon RWeapon = rw.GetComponent<RightWeapon>();
+                    RWeapon.transform.position = rightArm.transform.position;
+                    RWeapon.transform.rotation = rightArm.transform.rotation;
                     rw.gameObject.SetActive(false);
                 }
             }
