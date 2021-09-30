@@ -67,11 +67,13 @@ public class EnemyProj : MonoBehaviour
     {
         if (destroyable == false)
         {
-            if (collision.tag != "Enemy" && collision.tag != "EnemyMelee" && collision.tag != "Bullet" && collision.tag != "EnemyBullet")
+            //if (collision.tag != "Enemy" && collision.tag != "EnemyMelee" && collision.tag != "Bullet" && collision.tag != "EnemyBullet")
+            if(collision.tag == "Player" || collision.tag == "Walls")
                 DestroyEnemyProj();
         }
         else
-            if (collision.tag != "Enemy" && collision.tag != "EnemyMelee" && collision.tag != "EnemyBullet")
+            //if (collision.tag != "Enemy" && collision.tag != "EnemyMelee" && collision.tag != "EnemyBullet")
+            if(collision.tag == "Player" || collision.tag == "Bullet" || collision.tag == "Walls")
             DestroyEnemyProj();
     }
 

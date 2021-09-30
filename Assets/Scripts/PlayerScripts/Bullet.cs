@@ -21,7 +21,8 @@ public class Bullet : MonoBehaviour
     {
         
         
-        if (hitInfo.tag != "Player" && hitInfo.tag != "EnemyBullet" && hitInfo.tag != "Bullet")
+        //if (hitInfo.tag != "Player" && hitInfo.tag != "EnemyBullet" && hitInfo.tag != "Bullet")
+        if(hitInfo.tag == "Enemy" || hitInfo.tag == "EnemyMelee" || hitInfo.tag == "Walls")
         {
             //Debug.Log(hitInfo.name);
             Destroy(gameObject);

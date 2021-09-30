@@ -15,6 +15,7 @@ public class PlayerActions
     private Image reloadBorderL;
     private Text UIAmmoCountL;
     private Text UIMaxAmmoCountL;
+    public Text HealCounts;
 
     public PlayerActions(Player player)
     {
@@ -26,6 +27,7 @@ public class PlayerActions
         UIAmmoCountL = GameObject.Find("AmmoCountL").GetComponent<Text>();
         UIMaxAmmoCountL = GameObject.Find("MaxAmmoCountL").GetComponent<Text>();
         reloadBorderL = GameObject.Find("ReloadBorderL").GetComponent<Image>();
+        HealCounts = GameObject.Find("HealCounts").GetComponent<Text>();
         reloadBarL.gameObject.SetActive(false);
         UIAmmoCountL.gameObject.SetActive(false);
         UIMaxAmmoCountL.gameObject.SetActive(false);
@@ -119,13 +121,13 @@ public class PlayerActions
 
     public void Heal()
     {
-        if(player.References.numOfHeal > 0 && player.Stats.Health < player.Stats.hp)
+        if(player.Stats.NumofHeal > 0 && player.Stats.Health < player.Stats.hp)
         {
             //Debug.Log(player.References.numOfHeal);
             if (player.Stats.hp - player.Stats.Health < 25)
             {
                 player.Stats.Health = player.Stats.hp;
-                player.References.numOfHeal--;
+                player.Stats.NumofHeal--;
                 HealthBar.fillAmount = player.Stats.Health / player.Stats.hp;
                 player.Components.PlayerStatusIndicator.StartFlash(0.5f, 0.25f, Color.green, 0f, Color.red, 2);
                 //player.Components.PlayerStatusIndicator.ChangeTransparency((player.Stats.hp - player.Stats.Health) / player.Stats.hp);
@@ -133,11 +135,12 @@ public class PlayerActions
             else
             {
                 player.Stats.Health += 25;
-                player.References.numOfHeal--;
+                player.Stats.NumofHeal--;
                 HealthBar.fillAmount = player.Stats.Health / player.Stats.hp;
                 player.Components.PlayerStatusIndicator.StartFlash(0.25f, ((player.Stats.hp - player.Stats.Health) / player.Stats.hp), Color.green, ((player.Stats.hp - player.Stats.Health) / player.Stats.hp)/2f, Color.red, 1);
                 //player.Components.PlayerStatusIndicator.ChangeTransparency((player.Stats.hp - player.Stats.Health) / player.Stats.hp);
             }
+            HealCounts.text = player.Stats.NumofHeal.ToString();
         }
     }
 }

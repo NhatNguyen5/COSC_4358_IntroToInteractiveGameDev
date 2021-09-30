@@ -39,8 +39,9 @@ public class Player : MonoBehaviour
         stats.Stamina = stats.stamina;
         stats.MaxStamina = stats.maxplayerstamina;
         stats.TimeBeforeStamRegen = stats.StaminaRegen;
+        stats.NumofHeal = stats.numofheal;
         actions.defaultSpeed = stats.Speed;
-        references.numOfHeal = 100;
+        actions.HealCounts.text = stats.NumofHeal.ToString();
     }
 
 

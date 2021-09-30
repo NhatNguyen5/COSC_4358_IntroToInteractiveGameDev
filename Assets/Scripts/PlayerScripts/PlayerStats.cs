@@ -20,6 +20,8 @@ public class PlayerStats
     public float MaxStamina { get; set; }
     public float TimeBeforeStamRegen { get; set; }
 
+    public int NumofHeal { get; set; }
+
     public bool IsDualWield = false;
 
     [SerializeField]
@@ -34,6 +36,8 @@ public class PlayerStats
     private float maxPlayerStamina;
     [SerializeField]
     private float TimeBfrStamRegen;
+    [SerializeField]
+    private int NumOfHeal;
 
     public float WalkSpeed { get => walkSpeed; }
 
@@ -47,5 +51,5 @@ public class PlayerStats
     
     public float StaminaRegen { get => TimeBfrStamRegen; }
 
-
+    public int numofheal { get => NumOfHeal; }
 }

@@ -9,6 +9,7 @@ TagManager:
   - EnemyBullet
   - EnemyMelee
   - Items
+  - Walls
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - EnemyBound
   - Blocking
   - Actor
-  - 
+  - Items
   - 
   - 
   - 
@@ -51,6 +52,9 @@ TagManager:
     locked: 0
   - name: Actor
     uniqueID: 3022527615
+    locked: 0
+  - name: Items
+    uniqueID: 2776728455
     locked: 0
   - name: UI
     uniqueID: 1802700937
