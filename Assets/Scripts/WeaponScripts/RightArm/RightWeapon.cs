@@ -88,7 +88,7 @@ public class RightWeapon : MonoBehaviour
         {
             if (reload == false && fired == false)
             {
-                Debug.Log("Reload activated");
+                //Debug.Log("Reload activated");
                 WeaponAnim.SetBool("IsShooting", false);
                 WeaponAnim.SetFloat("FireRate", 0);
                 WeaponAnim.SetBool("IsReloading", true);

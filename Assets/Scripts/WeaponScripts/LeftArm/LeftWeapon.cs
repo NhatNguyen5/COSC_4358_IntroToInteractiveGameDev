@@ -61,7 +61,7 @@ public class LeftWeapon : MonoBehaviour
         UIAmmoCount.text = ammoCount.ToString();
         UIMaxAmmoCount.text = maxAmmoInClip.ToString();
         countFillAmount = (float)ammoCount / (float)maxAmmoInClip;
-        Debug.Log(countFillAmount);
+        //Debug.Log(countFillAmount);
         reloadBar.fillAmount = countFillAmount;
 
     }
@@ -123,7 +123,7 @@ public class LeftWeapon : MonoBehaviour
                         Shoot();
                         ammoCount--;
 
-                        Debug.Log(ammoCount);
+                        //Debug.Log(ammoCount);
                     }
                 }
                 if (!Input.GetButton("Fire2"))
