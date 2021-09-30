@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
     {
         utilities.HandleInput();
         references.CalMousePosToPlayer();
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && stats.Direction != Vector2.zero)
         {
             if(stats.Stamina > 0)
                 stats.Stamina -= Time.deltaTime;
