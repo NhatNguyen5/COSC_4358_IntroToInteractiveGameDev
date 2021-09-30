@@ -8223,9 +8223,10 @@ MonoBehaviour:
     walkSpeed: 300
     sprintSpeed: 500
     HP: 200
-    playerStamina: 2
-    maxPlayerStamina: 2
-    TimeBfrStamRegen: 0.3
+    playerStamina: 5
+    maxPlayerStamina: 5
+    staminaRegenRate: 2
+    TimeBfrStamRegen: 0.2
     NumOfHeal: 5
   components:
     playerRidgitBody: {fileID: 693335783}

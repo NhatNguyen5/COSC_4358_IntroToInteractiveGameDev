@@ -27,7 +27,7 @@ public class EnemyManager : MonoBehaviour
             nextSpawnTime = Time.time + timeBetweenSpawns;
 
             int randomSpawn = rand.Next(0, spawnPoints.Length);
-            print("randomSpawn = " + randomSpawn);
+            //print("randomSpawn = " + randomSpawn);
 
             Enemy1 spawnedEnemy = Instantiate(enemy, spawnPoints[randomSpawn].transform.position, Quaternion.identity) as Enemy1;
             spawnedEnemy.OnDeath += OnEnemyDeath;

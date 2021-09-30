@@ -18,6 +18,7 @@ public class PlayerStats
     public float Stamina { get; set; }
 
     public float MaxStamina { get; set; }
+    public float StaminaRegenRate { get; set; }
     public float TimeBeforeStamRegen { get; set; }
 
     public int NumofHeal { get; set; }
@@ -35,6 +36,8 @@ public class PlayerStats
     [SerializeField]
     private float maxPlayerStamina;
     [SerializeField]
+    public float staminaRegenRate;
+    [SerializeField]
     private float TimeBfrStamRegen;
     [SerializeField]
     private int NumOfHeal;
@@ -48,7 +51,9 @@ public class PlayerStats
     public float stamina { get => playerStamina; }
 
     public float maxplayerstamina { get => maxPlayerStamina; }
-    
+
+    public float staminaregenrate { get => staminaRegenRate; }
+
     public float StaminaRegen { get => TimeBfrStamRegen; }
 
     public int numofheal { get => NumOfHeal; }

@@ -60,7 +60,7 @@ public class RightWeapon : MonoBehaviour
         UIAmmoCount.text = ammoCount.ToString();
         UIMaxAmmoCount.text = maxAmmoInClip.ToString();
         countFillAmount = (float)ammoCount / (float)maxAmmoInClip;
-        Debug.Log(countFillAmount);
+        //Debug.Log(countFillAmount);
         reloadBar.fillAmount = countFillAmount;
 
     }
@@ -122,7 +122,7 @@ public class RightWeapon : MonoBehaviour
                         Shoot();
                         ammoCount--;
                         
-                        Debug.Log(ammoCount);
+                        //Debug.Log(ammoCount);
                     }
                 }
                 if (!Input.GetButton("Fire1"))

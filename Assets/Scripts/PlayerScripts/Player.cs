@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
         stats.Stamina = stats.stamina;
         stats.MaxStamina = stats.maxplayerstamina;
         stats.TimeBeforeStamRegen = stats.StaminaRegen;
+        stats.StaminaRegenRate = stats.staminaRegenRate;
         stats.NumofHeal = stats.numofheal;
         actions.defaultSpeed = stats.Speed;
         actions.HealCounts.text = stats.NumofHeal.ToString();
@@ -56,6 +57,7 @@ public class Player : MonoBehaviour
     {
         utilities.HandleInput();
         references.CalMousePosToPlayer();
+        actions.UpdateHeal();
         if (Input.GetKey(KeyCode.LeftShift) && stats.Direction != Vector2.zero)
         {
             if(stats.Stamina > 0)
@@ -68,7 +70,7 @@ public class Player : MonoBehaviour
 
         if (stats.Stamina <= stats.MaxStamina && isRunning == false && sprint >= stats.TimeBeforeStamRegen)
         { 
-            stats.Stamina += Time.deltaTime;
+            stats.Stamina += Time.deltaTime * stats.staminaregenrate;
             StaminaBar.fillAmount = stats.Stamina / stats.MaxStamina;
         }
         isRunning = false;

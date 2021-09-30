@@ -127,7 +127,7 @@ public class PlayerActions
         if(player.Stats.NumofHeal > 0 && player.Stats.Health < player.Stats.hp)
         {
             //Debug.Log(player.References.numOfHeal);
-            if (player.Stats.hp - player.Stats.Health < 25)
+            if (player.Stats.hp - player.Stats.Health < 50)
             {
                 player.Stats.Health = player.Stats.hp;
                 player.Stats.NumofHeal--;
@@ -137,13 +137,17 @@ public class PlayerActions
             }
             else
             {
-                player.Stats.Health += 25;
+                player.Stats.Health += 50;
                 player.Stats.NumofHeal--;
                 HealthBar.fillAmount = player.Stats.Health / player.Stats.hp;
                 player.Components.PlayerStatusIndicator.StartFlash(0.25f, ((player.Stats.hp - player.Stats.Health) / player.Stats.hp), Color.green, ((player.Stats.hp - player.Stats.Health) / player.Stats.hp)/2f, Color.red, 1);
                 //player.Components.PlayerStatusIndicator.ChangeTransparency((player.Stats.hp - player.Stats.Health) / player.Stats.hp);
             }
-            HealCounts.text = player.Stats.NumofHeal.ToString();
         }
+    }
+
+    public void UpdateHeal()
+    {
+        HealCounts.text = player.Stats.NumofHeal.ToString();
     }
 }

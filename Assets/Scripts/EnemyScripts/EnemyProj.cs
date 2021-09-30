@@ -40,8 +40,6 @@ public class EnemyProj : MonoBehaviour
             rb.rotation = angle;
             direction.Normalize();
             followMovement = direction;
-
-
         }
 
         despawnTime -= Time.deltaTime;
