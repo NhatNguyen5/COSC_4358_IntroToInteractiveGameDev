@@ -73,6 +73,10 @@ public class Enemy2 : MonoBehaviour
     Vector2 direction;
     float a;
 
+    [Header("Drops")]
+    public GameObject Tylenol;
+    public float DropPercentageTylenol;
+
 
     // Start is called before the first frame update
     void Start()
@@ -290,6 +294,7 @@ public class Enemy2 : MonoBehaviour
 
     void takeDamage(float damage, Transform impact, float speed)
     {
+        
         //Debug.Log(damage);
         bool iscrit = false;
         float chance2crit = Random.Range(0f, 1f);
@@ -378,11 +383,13 @@ public class Enemy2 : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject);
         if (OnEnemyKilled != null)
         {
             OnEnemyKilled();
         }
+        if (Random.Range(0, 100) <= DropPercentageTylenol)
+            Instantiate(Tylenol, transform.position, Quaternion.Euler(0, 0, 0));
+        GameObject.Destroy(gameObject);
     }
 
 

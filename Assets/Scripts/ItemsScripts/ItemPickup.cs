@@ -20,15 +20,23 @@ public class ItemPickup : MonoBehaviour
     public float speed;
     public float DetectRange;
     public float PickUpRange;
+    private Vector2 randomDirection;
+    private Vector3 initialPos;
 
     private void Start()
     {
         transform.GetComponent<BoxCollider2D>().edgeRadius = DetectRange;
+        float xDir = Random.Range(-100, 100);
+        float yDir = Random.Range(-100, 100);
+        initialPos = transform.position;
+        randomDirection = new Vector2(xDir, yDir).normalized;
     }
 
     // Update is called once per frame
     private void Update()
     {
+        if((initialPos- transform.position).magnitude <= 1)
+            transform.Translate(randomDirection * 1 * speed * Time.deltaTime);
         if (detected)
         {
             Vector3 direction = playerTransform.position - transform.position;
@@ -75,5 +83,4 @@ public class ItemPickup : MonoBehaviour
             //Debug.Log("Player left");
         }
     }
-
 }

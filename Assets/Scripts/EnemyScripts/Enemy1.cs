@@ -68,6 +68,10 @@ public class Enemy1 : MonoBehaviour
     public int timesToShoot;
     private int TimesShot = 0;
 
+    [Header("Drops")]
+    public GameObject Tylenol;
+    public float DropPercentageTylenol;
+
     //ANIMATION VARIABLES
 
     Vector2 direction;
@@ -381,6 +385,8 @@ public class Enemy1 : MonoBehaviour
         {
             OnDeath();
         }
+        if(Random.Range(0,100) <= DropPercentageTylenol)
+            Instantiate(Tylenol, transform.position, Quaternion.Euler(0, 0, 0));
         GameObject.Destroy(gameObject);
     }
 
