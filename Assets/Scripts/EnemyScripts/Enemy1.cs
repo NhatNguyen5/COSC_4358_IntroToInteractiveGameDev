@@ -48,9 +48,9 @@ public class Enemy1 : MonoBehaviour
 
     private float timeBtwShots;
     [Header("Gun Settings")]
-    private float startTimeBtwShots;
     public float beginningrangetoshoot;
     public float endingrangetoshoot;
+    private float startTimeBtwShots;
 
     public int amountOfShots;
     public float bulletSpread = 0.0f;
