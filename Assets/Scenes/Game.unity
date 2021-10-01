@@ -31996,7 +31996,7 @@ MonoBehaviour:
   HP: 100
   speed: 10
   stoppingDistance: 0
-  followPlayer: 1
+  followPlayer: 0
   randomMovement: 1
   timeRunningTwdPlayer: 2
   circleRadius: 5
@@ -32004,7 +32004,8 @@ MonoBehaviour:
   knockbackstartrange: 0.3
   knockbackendrange: 0.3
   player: {fileID: 0}
-  chaseCoolDown: 3
+  beginningrangetomove: 2
+  endingrangetomove: 5
   RetreatSpeed: 2
   retreatTime: 0.1
   LineOfSight: 0

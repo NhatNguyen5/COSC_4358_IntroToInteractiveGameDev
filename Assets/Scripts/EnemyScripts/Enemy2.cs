@@ -28,6 +28,7 @@ public class Enemy2 : MonoBehaviour
     [Header("Random Movement Settings")]
     public float circleRadius;
     public float timeTillNextMove;
+
     //public bool DodgeWhileCharging;
 
 
@@ -53,7 +54,12 @@ public class Enemy2 : MonoBehaviour
 
     [Header("Melee Settings")]
     //public float DistanceToPlayer;
-    public float chaseCoolDown;
+    
+
+    public float beginningrangetomove = 0;
+    public float endingrangetomove = 0;
+    private float chaseCoolDown;
+
     public float RetreatSpeed;
     public float retreatTime = 0.1f;
     private float chaseCoolDownTimer;
@@ -74,8 +80,15 @@ public class Enemy2 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         sprite = GetComponent<SpriteRenderer>();
+        attack();
 
 
+    }
+
+    void variation()
+    {
+        chaseCoolDown = Random.Range(beginningrangetomove, endingrangetomove);
+        chaseCoolDownTimer = chaseCoolDown;
     }
 
 
@@ -332,7 +345,7 @@ public class Enemy2 : MonoBehaviour
         hitPlayer = true;
         followPlayer = false;
         NextMoveCoolDown = 0;
-        chaseCoolDownTimer = chaseCoolDown;
+        variation();
         //reachedDestination = true;
         //randomPos();
         //NextMoveCoolDown = timeTillNextMove;

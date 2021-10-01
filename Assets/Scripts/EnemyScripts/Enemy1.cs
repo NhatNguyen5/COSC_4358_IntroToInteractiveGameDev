@@ -48,7 +48,10 @@ public class Enemy1 : MonoBehaviour
 
     private float timeBtwShots;
     [Header("Gun Settings")]
-    public float startTimeBtwShots;
+    private float startTimeBtwShots;
+    public float beginningrangetoshoot;
+    public float endingrangetoshoot;
+
     public int amountOfShots;
     public float bulletSpread = 0.0f;
     public GameObject projectile;
@@ -78,6 +81,12 @@ public class Enemy1 : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         sprite = GetComponent<SpriteRenderer>();
 
+        variation();
+    }
+
+    void variation()
+    {
+        startTimeBtwShots = Random.Range(beginningrangetoshoot, endingrangetoshoot);
         timeBtwShots = startTimeBtwShots;
     }
 
@@ -199,7 +208,7 @@ public class Enemy1 : MonoBehaviour
                     else
                     {
                         TimesShot = 0;
-                        timeBtwShots = startTimeBtwShots;
+                        variation();
                     }
                 }
                 else
@@ -349,7 +358,7 @@ public class Enemy1 : MonoBehaviour
             float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
             Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
             Instantiate(projectile, firePoint.position, newRot);
-            timeBtwShots = startTimeBtwShots;
+            variation();
         }
 
     }
