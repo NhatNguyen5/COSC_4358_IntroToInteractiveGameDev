@@ -11,6 +11,10 @@ public class PlayerComponents
     private Animator playerAnimator;
     [SerializeField]
     private StatusIndicator playerStatusIndicator;
+    [SerializeField]
+    private LayerMask playerLayerMask;
+    [SerializeField]
+    private TrailRenderer playerTrailRenderer;
 
     public Rigidbody2D PlayerRidgitBody
     {
@@ -27,5 +31,13 @@ public class PlayerComponents
         get => playerStatusIndicator;
     }
 
+    public LayerMask PlayerLayerMask
+    {
+        get => playerLayerMask;
+    }
 
+    public TrailRenderer PlayerTrailRenderer
+    {
+        get => playerTrailRenderer;
+    }
 }

@@ -19,24 +19,38 @@ public class ItemPickup : MonoBehaviour
 
     public float speed;
     public float DetectRange;
+    public float flingRange;
     public float PickUpRange;
     private Vector2 randomDirection;
-    private Vector3 initialPos;
+    private BoxCollider2D bcd;
+    private bool triggerDetect = true;
 
     private void Start()
     {
-        transform.GetComponent<BoxCollider2D>().edgeRadius = DetectRange;
+        bcd = transform.GetComponent<BoxCollider2D>();
+        bcd.edgeRadius = 0;
+        bcd.isTrigger = false;
         float xDir = Random.Range(-100, 100);
         float yDir = Random.Range(-100, 100);
-        initialPos = transform.position;
         randomDirection = new Vector2(xDir, yDir).normalized;
+        transform.GetComponent<Rigidbody2D>().AddForce(randomDirection * flingRange, ForceMode2D.Impulse);
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if((initialPos- transform.position).magnitude <= 1)
-            transform.Translate(randomDirection * 1 * speed * Time.deltaTime);
+        //Vector3 dashPosition = player.Stats.Position + player.Stats.Direction * DashDistance;
+
+        //Debug.Log(flingRange);
+        //Debug.Log(transform.GetComponent<Rigidbody2D>().velocity.magnitude);
+        if(transform.GetComponent<Rigidbody2D>().velocity.magnitude == 0 && triggerDetect)
+        {
+            bcd.edgeRadius = DetectRange;
+            bcd.isTrigger = true;
+            //Debug.Log("change");
+            triggerDetect = false;
+        }
+
         if (detected)
         {
             Vector3 direction = playerTransform.position - transform.position;
@@ -62,21 +76,36 @@ public class ItemPickup : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Player")
+        {
+            playerTransform = collision.collider.GetComponent<Transform>();
+            player = collision.collider.GetComponent<Player>();
+            detected = true;
+            bcd.edgeRadius = DetectRange;
+            bcd.isTrigger = true;
+            //Debug.Log(playerTransform.position);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if(collider.tag == "Player")
+        if(collision.tag == "Player")
         {
-            playerTransform = collider.GetComponent<Transform>();
-            player = collider.GetComponent<Player>();
+            playerTransform = collision.GetComponent<Transform>();
+            player = collision.GetComponent<Player>();
             detected = true;
             //Debug.Log(playerTransform.position);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collider)
+    
+
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collider.tag == "Player")
+        if (collision.tag == "Player")
         {
             playerTransform = null;
             detected = false;

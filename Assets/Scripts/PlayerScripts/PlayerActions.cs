@@ -8,9 +8,8 @@ public class PlayerActions
 {
     private Player player;
     public float defaultSpeed;
-    private float DashSpeed;
-    private float DashCooldown;
     private float DashDistance;
+    private float DashSpeed;
     private Transform leftArm;
     private Transform rightArm;
     private Image HealthBar;
@@ -35,9 +34,9 @@ public class PlayerActions
         UIAmmoCountL.gameObject.SetActive(false);
         UIMaxAmmoCountL.gameObject.SetActive(false);
         reloadBorderL.gameObject.SetActive(false);
-        DashSpeed = player.Stats.DashSpeed;
-        DashCooldown = player.Stats.DashCoolDown;
         DashDistance = player.Stats.DashDistance;
+        DashSpeed = player.Stats.DashSpeed;
+
     }
 
     public void Move(Transform transform)
@@ -56,19 +55,9 @@ public class PlayerActions
         player.Stats.Speed = player.Stats.WalkSpeed;
     }
 
-    public void Dash(bool isDashButtonDown)
+    public void Dash(Vector2 Dir)
     {
-        if (player.Stats.DashDistance > 0)
-        {
-            rb.MovePosition(rb.position + movement * dashSpeed * Time.fixedDeltaTime);
-            dashTime -= Time.deltaTime;
-        }
-        else if (dashTime < 0)
-            dashTime = 0;
-        if (isDashButtonDown && DashCooldown == 0)
-        {
-            player.Components.PlayerRidgitBody.MovePosition(player.Stats.Position + player.Stats.Direction * DashDistance * Time.deltaTime);
-        }
+        player.Components.PlayerRidgitBody.MovePosition(player.Stats.Position + Dir * DashSpeed * Time.fixedDeltaTime);
     }
 
     public void Animate()

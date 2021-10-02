@@ -49,13 +49,13 @@ public class RightWeapon : MonoBehaviour
         UIMaxAmmoCount = GameObject.Find("MaxAmmoCountR").GetComponent<Text>();
     }
 
-    void reloadClip()
+    private void reloadClip()
     {
         ammoCount = maxAmmoInClip;
         firingDelay = 0;
     }
 
-    void setAmmoCount()
+    private void setAmmoCount()
     {
         UIAmmoCount.text = ammoCount.ToString();
         UIMaxAmmoCount.text = maxAmmoInClip.ToString();
@@ -66,7 +66,7 @@ public class RightWeapon : MonoBehaviour
     }
 
 
-    void Update()
+    private void Update()
     {
         setAmmoCount();
         //if (reloadCooldown < reloadTime)
@@ -84,7 +84,7 @@ public class RightWeapon : MonoBehaviour
 
 
 
-        if (ammoCount <= 0 && Input.GetButton("Fire1") || ammoCount < maxAmmoInClip && Input.GetKeyUp(KeyCode.R))
+        if (ammoCount <= 0 && Input.GetKey(KeyCode.Mouse0) || ammoCount < maxAmmoInClip && Input.GetKeyUp(KeyCode.R))
         {
             if (reload == false && fired == false)
             {
@@ -114,7 +114,7 @@ public class RightWeapon : MonoBehaviour
         {
             if (burstFire == false)
             {
-                if (Input.GetButton("Fire1") && OptionSettings.GameisPaused == false && firingDelay < 0)
+                if (Input.GetKey(KeyCode.Mouse0) && OptionSettings.GameisPaused == false && firingDelay < 0)
                 {
                     if (ammoCount > 0)
                     {
@@ -125,7 +125,7 @@ public class RightWeapon : MonoBehaviour
                         //Debug.Log(ammoCount);
                     }
                 }
-                if (!Input.GetButton("Fire1"))
+                if (!Input.GetKey(KeyCode.Mouse0))
                 {
                     WeaponAnim.SetBool("IsShooting", false);
                     WeaponAnim.SetFloat("FireRate", 0);
@@ -138,7 +138,7 @@ public class RightWeapon : MonoBehaviour
             else
             {
 
-                if (Input.GetButtonDown("Fire1") && OptionSettings.GameisPaused == false && firingDelay < 0)
+                if (Input.GetKeyDown(KeyCode.Mouse0) && OptionSettings.GameisPaused == false && firingDelay < 0)
                 {
                     if (ammoCount > 0)
                     {
@@ -195,7 +195,7 @@ public class RightWeapon : MonoBehaviour
         }
     }
 
-    void burst()
+    private void burst()
     {
         WeaponAnim.SetBool("IsShooting", true);
         WeaponAnim.SetFloat("FireRate", 1f/timeBtwBurst);
@@ -210,7 +210,7 @@ public class RightWeapon : MonoBehaviour
 
     }
 
-    void Shoot()
+    private void Shoot()
     {
         WeaponAnim.SetBool("IsShooting", true);
         WeaponAnim.SetFloat("FireRate", 1f / delay);

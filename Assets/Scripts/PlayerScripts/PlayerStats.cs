@@ -31,11 +31,13 @@ public class PlayerStats
     [SerializeField]
     private float sprintSpeed;
     [SerializeField]
-    private float dashSpeed;
-    [SerializeField]
     private float dashDistance;
     [SerializeField]
     private float dashCooldown;
+    [SerializeField]
+    private float dashStamCost;
+    [SerializeField]
+    private float dashSpeed;
     [Header("Stats")]
     [SerializeField]
     private float HP;
@@ -52,15 +54,16 @@ public class PlayerStats
     private int NumOfHeal;
 
 
+
     public float WalkSpeed { get => walkSpeed; }
 
     public float SprintSpeed { get => sprintSpeed; }
 
-    public float DashSpeed { get => dashSpeed; }
-
     public float DashDistance { get => dashDistance; }
 
     public float DashCoolDown { get => dashCooldown; }
+    public float DashSpeed { get => dashSpeed; }
+    public float DashStamCost { get => dashStamCost; }
 
     public float hp { get => HP; }
 
@@ -73,4 +76,5 @@ public class PlayerStats
     public float StaminaRegen { get => TimeBfrStamRegen; }
 
     public int numofheal { get => NumOfHeal; }
+
 }

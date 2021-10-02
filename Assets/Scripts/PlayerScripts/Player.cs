@@ -27,6 +27,20 @@ public class Player : MonoBehaviour
 
     private float sprint = 0;
 
+    private float currDashCooldown = 0;
+
+    private float DashDuration;
+
+    private float currDashDuration = 0;
+
+    private float TrailDur;
+
+    private float currTrailDur = 0;
+
+    private bool dashing;
+
+    private Vector2 dashDir;
+
 
 
     private void Awake()
@@ -43,6 +57,8 @@ public class Player : MonoBehaviour
         stats.NumofHeal = stats.numofheal;
         actions.defaultSpeed = stats.Speed;
         actions.HealCounts.text = stats.NumofHeal.ToString();
+        DashDuration = stats.DashDistance / stats.DashSpeed;
+        TrailDur = DashDuration;
     }
 
 
@@ -84,8 +100,8 @@ public class Player : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.E))
                 actions.Heal();
             actions.SwapWeapon();
-            actions.Dash(Input.GetKeyDown(KeyCode.Space));
-                
+            //Debug.DrawRay(stats.Position, stats.Direction, Color.green, 0.1f);
+            DashProc();
         }
         //Debug.Log("HP" + stats.hp);
         //Debug.Log("Health" + stats.Health);
@@ -103,5 +119,50 @@ public class Player : MonoBehaviour
             actions.Walk();
         actions.Animate();
         
+    }
+
+    private void DashProc()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && currDashCooldown == 0 && stats.Stamina >= stats.DashStamCost && stats.Direction.magnitude != 0)
+        {
+            //Debug.Log("Dash");
+            components.PlayerTrailRenderer.enabled = true;
+            dashDir = stats.Direction;
+            currTrailDur = TrailDur;
+            currDashCooldown = stats.DashCoolDown;
+            stats.Stamina -= stats.DashStamCost;
+            currDashDuration = DashDuration;
+            dashing = true;
+        }
+
+        if (dashing)
+        {
+            gameObject.layer = LayerMask.NameToLayer("Phase");
+            components.PlayerTrailRenderer.time = currTrailDur;
+            actions.Dash(dashDir);
+        }
+
+        if (currDashCooldown > 0)
+            currDashCooldown -= Time.deltaTime;
+        else if (currDashCooldown < 0)
+            currDashCooldown = 0;
+
+        if (currDashDuration > 0)
+            currDashDuration -= Time.deltaTime;
+        else if (currDashDuration < 0)
+            currDashDuration = 0;
+        else
+        {
+            gameObject.layer = LayerMask.NameToLayer("Actor");
+            dashing = false;
+        }
+        if (currTrailDur > 0)
+            currTrailDur -= Time.deltaTime;
+        else if (currTrailDur < 0)
+            currTrailDur = 0;
+        else
+            components.PlayerTrailRenderer.enabled = false;
+
+
     }
 }

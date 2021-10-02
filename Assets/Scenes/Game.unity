@@ -946,7 +946,7 @@ GameObject:
   - component: {fileID: 160801742}
   - component: {fileID: 160801741}
   - component: {fileID: 160801743}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: EnforcerL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1073,7 +1073,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 161077054}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: FirePointL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1106,7 +1106,7 @@ GameObject:
   - component: {fileID: 182253424}
   - component: {fileID: 182253423}
   - component: {fileID: 182253422}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: ProtocalR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1899,7 +1899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 366270812}
   - component: {fileID: 366270813}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: LeftArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1942,7 +1942,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 369984310}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: FirePointR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8148,7 +8148,7 @@ GameObject:
   - component: {fileID: 693335789}
   - component: {fileID: 693335781}
   - component: {fileID: 693335787}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -8223,19 +8223,24 @@ MonoBehaviour:
     IsDualWield: 0
     walkSpeed: 300
     sprintSpeed: 500
-    dashSpeed: 5
-    dashDistance: 2
-    dashCooldown: 0
+    dashDistance: 4
+    dashCooldown: 1
+    dashStamCost: 2
+    dashSpeed: 40
     HP: 200
     playerStamina: 5
     maxPlayerStamina: 5
-    staminaRegenRate: 2
+    staminaRegenRate: 1
     TimeBfrStamRegen: 0.2
     NumOfHeal: 5
   components:
     playerRidgitBody: {fileID: 693335783}
     playerAnimator: {fileID: 1040613258}
     playerStatusIndicator: {fileID: 1819652237}
+    playerLayerMask:
+      serializedVersion: 2
+      m_Bits: 512
+    playerTrailRenderer: {fileID: 693335787}
 --- !u!114 &693335785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8279,7 +8284,7 @@ TrailRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
-  m_MotionVectors: 0
+  m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
@@ -8308,10 +8313,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 0.1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.5
+    widthMultiplier: 0.6
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -8324,15 +8329,6 @@ TrailRenderer:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -8366,7 +8362,7 @@ TrailRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 0
+    numCapVertices: 90
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
@@ -8685,7 +8681,7 @@ Transform:
   - {fileID: 611984227}
   - {fileID: 1017935924}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &814234552
 GameObject:
@@ -27914,7 +27910,7 @@ Transform:
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &902418422
 GameObject:
@@ -28236,36 +28232,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &929191876
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 929191877}
-  m_Layer: 6
-  m_Name: Border
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &929191877
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 929191876}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.012759538, y: 0.74103725, z: -11.780572}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &977756228
 GameObject:
   m_ObjectHideFlags: 0
@@ -28530,7 +28496,7 @@ GameObject:
   - component: {fileID: 1040613257}
   - component: {fileID: 1040613259}
   - component: {fileID: 1040613258}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28673,7 +28639,7 @@ Transform:
   - {fileID: 1473416866}
   - {fileID: 300494993}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1083205411
 GameObject:
@@ -30045,7 +30011,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1383213750}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: FirePointR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30368,7 +30334,7 @@ GameObject:
   - component: {fileID: 1644538904}
   - component: {fileID: 1644538903}
   - component: {fileID: 1644538901}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: EnforcerR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30499,11 +30465,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1057500280143966905, guid: da593d588006d8246b89463b4dabc544, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -40.05
+      value: -45.4
       objectReference: {fileID: 0}
     - target: {fileID: 1057500280143966905, guid: da593d588006d8246b89463b4dabc544, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.8
+      value: 11.64
       objectReference: {fileID: 0}
     - target: {fileID: 1057500280143966905, guid: da593d588006d8246b89463b4dabc544, type: 3}
       propertyPath: m_LocalPosition.z
@@ -30541,11 +30507,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tylenol
       objectReference: {fileID: 0}
+    - target: {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733755147204328998, guid: da593d588006d8246b89463b4dabc544, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5514285730663242851, guid: da593d588006d8246b89463b4dabc544, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8724053020462974927, guid: da593d588006d8246b89463b4dabc544, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: da593d588006d8246b89463b4dabc544, type: 3}
 --- !u!1 &1722431373
 GameObject:
@@ -30734,7 +30714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1728217755}
   - component: {fileID: 1728217756}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: RightArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32016,7 +31996,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2125988484
 GameObject:

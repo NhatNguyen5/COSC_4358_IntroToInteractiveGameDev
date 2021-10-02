@@ -50,13 +50,13 @@ public class LeftWeapon : MonoBehaviour
         setAmmoCount();
     }
 
-    void reloadClip()
+    private void reloadClip()
     {
         ammoCount = maxAmmoInClip;
         firingDelay = 0;
     }
 
-    void setAmmoCount()
+    private void setAmmoCount()
     {
         UIAmmoCount.text = ammoCount.ToString();
         UIMaxAmmoCount.text = maxAmmoInClip.ToString();
@@ -67,7 +67,7 @@ public class LeftWeapon : MonoBehaviour
     }
 
 
-    void Update()
+    private void Update()
     {
         setAmmoCount();
         //if (reloadCooldown < reloadTime)
@@ -196,7 +196,7 @@ public class LeftWeapon : MonoBehaviour
         }
     }
 
-    void burst()
+    private void burst()
     {
         WeaponAnim.SetBool("IsShooting", true);
         WeaponAnim.SetFloat("FireRate", 1f / timeBtwBurst);
@@ -211,7 +211,7 @@ public class LeftWeapon : MonoBehaviour
 
     }
 
-    void Shoot()
+    private void Shoot()
     {
         WeaponAnim.SetBool("IsShooting", true);
         WeaponAnim.SetFloat("FireRate", 1f / delay);
