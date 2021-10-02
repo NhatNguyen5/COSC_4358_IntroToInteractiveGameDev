@@ -103,7 +103,6 @@ public class PlayerMovement : MonoBehaviour
         {
             dashCooldown = coolDownTime;
             dashTime = startDashTime;
-
         }
     }
     private void Flip()

@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
         utilities.HandleInput();
         references.CalMousePosToPlayer();
         actions.UpdateHeal();
+        
         if (Input.GetKey(KeyCode.LeftShift) && stats.Direction != Vector2.zero)
         {
             if(stats.Stamina > 0)
@@ -83,7 +84,8 @@ public class Player : MonoBehaviour
             if (Input.GetKeyUp(KeyCode.E))
                 actions.Heal();
             actions.SwapWeapon();
-            
+            actions.Dash(Input.GetKeyDown(KeyCode.Space));
+                
         }
         //Debug.Log("HP" + stats.hp);
         //Debug.Log("Health" + stats.Health);

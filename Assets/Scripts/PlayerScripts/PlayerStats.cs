@@ -24,11 +24,19 @@ public class PlayerStats
     public int NumofHeal { get; set; }
 
     public bool IsDualWield = false;
-
+    
+    [Header("Movement")]
     [SerializeField]
     private float walkSpeed;
     [SerializeField]
     private float sprintSpeed;
+    [SerializeField]
+    private float dashSpeed;
+    [SerializeField]
+    private float dashDistance;
+    [SerializeField]
+    private float dashCooldown;
+    [Header("Stats")]
     [SerializeField]
     private float HP;
     [SerializeField]
@@ -39,12 +47,20 @@ public class PlayerStats
     public float staminaRegenRate;
     [SerializeField]
     private float TimeBfrStamRegen;
+    [Header("Start out Inv")]
     [SerializeField]
     private int NumOfHeal;
+
 
     public float WalkSpeed { get => walkSpeed; }
 
     public float SprintSpeed { get => sprintSpeed; }
+
+    public float DashSpeed { get => dashSpeed; }
+
+    public float DashDistance { get => dashDistance; }
+
+    public float DashCoolDown { get => dashCooldown; }
 
     public float hp { get => HP; }
 
