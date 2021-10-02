@@ -74,6 +74,9 @@ public class Enemy1 : MonoBehaviour
 
     //ANIMATION VARIABLES
 
+    //DEATH VARIABLE
+    private bool isDead = false;
+
     Vector2 direction;
     float a;
 
@@ -381,13 +384,17 @@ public class Enemy1 : MonoBehaviour
 
     void Die()
     {
-        if (OnDeath != null)
+        if (isDead == false)
         {
-            OnDeath();
+            isDead = true;
+            if (OnDeath != null)
+            {
+                OnDeath();
+            }
+            if (Random.Range(0, 100) <= DropPercentageTylenol)
+                Instantiate(Tylenol, transform.position, Quaternion.Euler(0, 0, 0));
+            GameObject.Destroy(gameObject);
         }
-        if(Random.Range(0,100) <= DropPercentageTylenol)
-            Instantiate(Tylenol, transform.position, Quaternion.Euler(0, 0, 0));
-        GameObject.Destroy(gameObject);
     }
 
 

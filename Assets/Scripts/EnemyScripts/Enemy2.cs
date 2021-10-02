@@ -68,6 +68,10 @@ public class Enemy2 : MonoBehaviour
     [Header("Line Of Sight")]
     public bool LineOfSight;
 
+
+    //DEATH VARIABLE
+    private bool isDead = false;
+
     //ANIMATION VARIABLES
     public LayerMask IgnoreMe;
     Vector2 direction;
@@ -383,13 +387,17 @@ public class Enemy2 : MonoBehaviour
 
     void Die()
     {
-        if (OnEnemyKilled != null)
+        if (isDead == false)
         {
-            OnEnemyKilled();
+            isDead = true;
+            if (OnEnemyKilled != null)
+            {
+                OnEnemyKilled();
+            }
+            if (Random.Range(0, 100) <= DropPercentageTylenol)
+                Instantiate(Tylenol, transform.position, Quaternion.Euler(0, 0, 0));
+            GameObject.Destroy(gameObject);
         }
-        if (Random.Range(0, 100) <= DropPercentageTylenol)
-            Instantiate(Tylenol, transform.position, Quaternion.Euler(0, 0, 0));
-        GameObject.Destroy(gameObject);
     }
 
 
