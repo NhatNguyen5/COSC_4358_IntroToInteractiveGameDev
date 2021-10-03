@@ -43,14 +43,17 @@ public class CameraFollow : MonoBehaviour
     {
         //Player player = GetPlayerFunc();
         //Weapon weapon = GetWeaponFunc();
-        foreach (Transform rw in RightArm)
+        if (RightArm != null)
         {
-            //Debug.Log(rw.gameObject.activeSelf);
-            if (rw.gameObject.activeSelf)
+            foreach (Transform rw in RightArm)
             {
-                activeWeapon = RightArm.transform.Find(rw.name).GetComponent<RightWeapon>();
-                //Debug.Log("Found");
-                break;
+                //Debug.Log(rw.gameObject.activeSelf);
+                if (rw.gameObject.activeSelf)
+                {
+                    activeWeapon = RightArm.transform.Find(rw.name).GetComponent<RightWeapon>();
+                    //Debug.Log("Found");
+                    break;
+                }
             }
         }
         float ADSRange = activeWeapon.ADSRange;
