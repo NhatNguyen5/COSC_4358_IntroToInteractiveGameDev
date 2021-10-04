@@ -69,8 +69,11 @@ public class Enemy1 : MonoBehaviour
     private int TimesShot = 0;
 
     [Header("Drops")]
-    public GameObject Tylenol;
+    public GameObject[] Drops;
     public float DropPercentageTylenol;
+    public int NumOfTylenolDrop;
+    public float DropPercentageProtein;
+    public int NumOfProteinDrop;
 
     //ANIMATION VARIABLES
 
@@ -395,8 +398,19 @@ public class Enemy1 : MonoBehaviour
             {
                 OnDeath();
             }
+
             if (Random.Range(0, 100) <= DropPercentageTylenol)
-                Instantiate(Tylenol, transform.position, Quaternion.Euler(0, 0, 0));
+            {
+                for (int i = 0; i < NumOfTylenolDrop; i++)
+                    Instantiate(Drops[0], transform.position, Quaternion.Euler(0, 0, 0));
+            }
+
+            if (Random.Range(0, 100) <= DropPercentageProtein)
+            {
+                for (int i = 0; i < NumOfProteinDrop; i++)
+                    Instantiate(Drops[1], transform.position, Quaternion.Euler(0, 0, 0));
+            }
+
             GameObject.Destroy(gameObject);
         }
     }

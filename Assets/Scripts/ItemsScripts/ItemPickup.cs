@@ -9,6 +9,8 @@ public class ItemPickup : MonoBehaviour
 
     private Transform playerTransform;
 
+    private Animator Anim;
+
     private Vector2 followMovement;
 
     private float distance;
@@ -21,6 +23,9 @@ public class ItemPickup : MonoBehaviour
     public float DetectRange;
     public float flingRange;
     public float PickUpRange;
+    public float DespawnTime;
+    private float currDespawnTime;
+    private bool startDespawn = true;
     private Vector2 randomDirection;
     private BoxCollider2D bcd;
     private bool triggerDetect = true;
@@ -34,6 +39,7 @@ public class ItemPickup : MonoBehaviour
         float yDir = Random.Range(-100, 100);
         randomDirection = new Vector2(xDir, yDir).normalized;
         transform.GetComponent<Rigidbody2D>().AddForce(randomDirection * flingRange, ForceMode2D.Impulse);
+        Anim = transform.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -61,16 +67,42 @@ public class ItemPickup : MonoBehaviour
             //Debug.Log(distance);
             if (distance <= PickUpRange)
             {
-                switch(TypeOfItem)
+                switch (TypeOfItem)
                 {
                     case "Heal":
                         player.Stats.NumofHeal += 1;
                         break;
+                    case "Protein":
+                        player.Stats.NumofProtein += 1;
+                        break;
+
                     default:
                         Debug.Log("Unknow item!");
                         break;
                 }
-                
+
+                Destroy(gameObject);
+            }
+        }
+        else
+        {
+            if (startDespawn)
+            {
+                currDespawnTime = DespawnTime;
+                startDespawn = false;
+            }
+            if (currDespawnTime > 0)
+                currDespawnTime -= Time.deltaTime;
+            else if (currDespawnTime < 0)
+                currDespawnTime = 0;
+
+            if(currDespawnTime < 3)
+            {
+                Anim.SetBool("IsDespawning", true);
+            }
+
+            if(currDespawnTime == 0)
+            {
                 Destroy(gameObject);
             }
         }
@@ -97,11 +129,10 @@ public class ItemPickup : MonoBehaviour
             playerTransform = collision.GetComponent<Transform>();
             player = collision.GetComponent<Player>();
             detected = true;
+            Anim.SetBool("IsDespawning", false);
             //Debug.Log(playerTransform.position);
         }
     }
-
-    
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -109,6 +140,7 @@ public class ItemPickup : MonoBehaviour
         {
             playerTransform = null;
             detected = false;
+            startDespawn = true;
             //Debug.Log("Player left");
         }
     }

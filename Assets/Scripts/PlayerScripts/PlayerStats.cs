@@ -23,6 +23,8 @@ public class PlayerStats
 
     public int NumofHeal { get; set; }
 
+    public int NumofProtein { get; set; }
+
     public bool IsDualWield = false;
     
     [Header("Movement")]
@@ -52,6 +54,8 @@ public class PlayerStats
     [Header("Start out Inv")]
     [SerializeField]
     private int NumOfHeal;
+    [SerializeField]
+    private int NumOfProtein;
 
 
 
@@ -76,5 +80,7 @@ public class PlayerStats
     public float StaminaRegen { get => TimeBfrStamRegen; }
 
     public int numofheal { get => NumOfHeal; }
+
+    public int numofprotein { get => NumOfProtein; }
 
 }

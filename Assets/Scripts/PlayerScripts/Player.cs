@@ -41,6 +41,8 @@ public class Player : MonoBehaviour
 
     private Vector2 dashDir;
 
+    private Text ProteinCounts;
+
 
 
     private void Awake()
@@ -59,6 +61,7 @@ public class Player : MonoBehaviour
         actions.HealCounts.text = stats.NumofHeal.ToString();
         DashDuration = stats.DashDistance / stats.DashSpeed;
         TrailDur = DashDuration;
+        ProteinCounts = GameObject.Find("ProteinCounts").GetComponent<Text>();
     }
 
 
@@ -118,7 +121,7 @@ public class Player : MonoBehaviour
         else
             actions.Walk();
         actions.Animate();
-        
+        ProteinCounts.text = stats.NumofProtein.ToString();
     }
 
     private void DashProc()

@@ -36,7 +36,6 @@ public class PlayerActions
         reloadBorderL.gameObject.SetActive(false);
         DashDistance = player.Stats.DashDistance;
         DashSpeed = player.Stats.DashSpeed;
-
     }
 
     public void Move(Transform transform)

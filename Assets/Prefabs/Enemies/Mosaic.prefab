@@ -348,5 +348,10 @@ MonoBehaviour:
   burstFire: 1
   timeBtwBurst: 0.35
   timesToShoot: 5
-  Tylenol: {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
+  Drops:
+  - {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
+  - {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
   DropPercentageTylenol: 50
+  NumOfTylenolDrop: 1
+  DropPercentageProtein: 50
+  NumOfProteinDrop: 2

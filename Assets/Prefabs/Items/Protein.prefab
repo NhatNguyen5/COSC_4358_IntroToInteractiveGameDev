@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3205579930187456371}
   - component: {fileID: 8242906761410942325}
   - component: {fileID: 3344257401194469249}
+  - component: {fileID: 3413995954745191899}
   m_Layer: 0
   m_Name: Protein
   m_TagString: Untagged
@@ -97,8 +98,28 @@ MonoBehaviour:
   TypeOfItem: Protein
   speed: 10
   DetectRange: 4
-  flingRange: 5
+  flingRange: 10
   PickUpRange: 0.5
+  DespawnTime: 10
+--- !u!95 &3413995954745191899
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2859806896499263471}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 78e658d4c4e32d84dbfdbd188bd38ffa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4384287858724201931
 GameObject:
   m_ObjectHideFlags: 0
