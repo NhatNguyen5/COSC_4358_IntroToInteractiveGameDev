@@ -13,6 +13,7 @@ public class ShowMouse : MonoBehaviour
     private void Start()
     {
         Cursor.visible = true;
+        GlobalPlayerVariables.GameOver = false;
     }
 
     private void Update()

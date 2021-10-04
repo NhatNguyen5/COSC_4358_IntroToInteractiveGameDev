@@ -13,4 +13,18 @@ public class ChangeScene : MonoBehaviour
 		SceneManager.LoadScene(sceneName);
 		
 	}
+
+
+	public void tryagain(string sceneName)
+	{
+
+		OptionSettings.GameisPaused = false;
+		GlobalPlayerVariables.GameOver = false;
+		Time.timeScale = 1f;
+		SceneManager.LoadScene(sceneName);
+
+	}
+
+
+
 }
