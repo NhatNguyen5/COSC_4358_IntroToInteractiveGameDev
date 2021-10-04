@@ -33,7 +33,7 @@ public class EnemyManager : MonoBehaviour
             int randomSpawn = Random.Range(0, spawnPoints.Length);
             //print("randomSpawn = " + randomSpawn);
             int randomEnemeies = Random.Range(0, 100);
-            Debug.Log(randomEnemeies);
+            //Debug.Log(randomEnemeies);
             if(randomEnemeies >= chanceToSpawnBrunt)
                 Instantiate(Enemies[0], spawnPoints[randomSpawn].transform.position, Quaternion.identity);
             else if(randomEnemeies <= chanceToSpawnR_Nold)
