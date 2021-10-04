@@ -52,7 +52,7 @@ public class Enemy1 : MonoBehaviour
     public float endingrangetoshoot;
     private float startTimeBtwShots;
 
-    public int amountOfShots;
+    public int AmountOfBullets;
     public float bulletSpread = 0.0f;
     public GameObject projectile;
     public Transform firePoint;
@@ -349,7 +349,7 @@ public class Enemy1 : MonoBehaviour
 
     void burst()
     {
-        for (int i = 0; i < amountOfShots; i++)
+        for (int i = 0; i < AmountOfBullets; i++)
         {
             float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
             Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
@@ -360,7 +360,7 @@ public class Enemy1 : MonoBehaviour
 
     void shoot()
     {
-        for (int i = 0; i < amountOfShots; i++)
+        for (int i = 0; i < AmountOfBullets; i++)
         {
             float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
             Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);

@@ -1,5 +1,4 @@
 using System.Collections;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,30 +6,43 @@ public class EnemyManager : MonoBehaviour
 {
     public int enemiesFromColony;
     public float timeBetweenSpawns;
-    public Enemy1 enemy;
-    int enemiesRemainingToSpawn;
+    //int enemiesRemainingToSpawn;
     float nextSpawnTime;
-    public GameObject[] spawnPoints = new GameObject[3];
+    public GameObject[] spawnPoints;
+    public GameObject[] Enemies;
+    public int remain;
+    [Header("In between is Mosaic spawnrate")]
+    [Range(20, 100)]
+    public int chanceToSpawnBrunt;
+    [Range(0, 20)]
+    public int chanceToSpawnR_Nold;
     public int colonyHealth;
-    private System.Random rand = new System.Random();
 
     private void Start()
     {
-        enemiesRemainingToSpawn = enemiesFromColony;
+        //enemiesRemainingToSpawn = enemiesFromColony;
     }
 
     private void Update()
     {
-        if (enemiesRemainingToSpawn > 0 && Time.time > nextSpawnTime && colonyHealth > 0)
+        if (/*enemiesRemainingToSpawn > 0 &&*/ Time.time > nextSpawnTime && colonyHealth > 0)
         {
-            enemiesRemainingToSpawn--;
+            //enemiesRemainingToSpawn--;
             nextSpawnTime = Time.time + timeBetweenSpawns;
 
-            int randomSpawn = rand.Next(0, spawnPoints.Length);
+            int randomSpawn = Random.Range(0, spawnPoints.Length);
             //print("randomSpawn = " + randomSpawn);
+            int randomEnemeies = Random.Range(0, 100);
+            Debug.Log(randomEnemeies);
+            if(randomEnemeies >= chanceToSpawnBrunt)
+                Instantiate(Enemies[0], spawnPoints[randomSpawn].transform.position, Quaternion.identity);
+            else if(randomEnemeies <= chanceToSpawnR_Nold)
+                Instantiate(Enemies[2], spawnPoints[randomSpawn].transform.position, Quaternion.identity);
+            else
+                Instantiate(Enemies[1], spawnPoints[randomSpawn].transform.position, Quaternion.identity);
 
-            Enemy1 spawnedEnemy = Instantiate(enemy, spawnPoints[randomSpawn].transform.position, Quaternion.identity) as Enemy1;
-            spawnedEnemy.OnDeath += OnEnemyDeath;
+
+            //spawnedEnemy.OnDeath += OnEnemyDeath;
         }
         
     }
@@ -38,7 +50,7 @@ public class EnemyManager : MonoBehaviour
     void OnEnemyDeath()
     {
         print("Enemy died");
-        enemiesRemainingToSpawn++;
+        //enemiesRemainingToSpawn++;
         print("enemies remaing to spawn incremented");
     }
 }
