@@ -21,7 +21,7 @@ public class SetVolume : MonoBehaviour
 
     private void Start()
     {
-        if (OptionSettings.update)
+        if (OptionSettings.update == true)
         {
             //set value to what it needs to be through static value
             if (MasterVol)

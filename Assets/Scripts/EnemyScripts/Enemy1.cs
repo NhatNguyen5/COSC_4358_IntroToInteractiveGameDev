@@ -85,7 +85,10 @@ public class Enemy1 : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        if(GlobalPlayerVariables.GameOver==false)
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+        else
+            player = this.transform;
         sprite = GetComponent<SpriteRenderer>();
 
         variation();
@@ -100,8 +103,7 @@ public class Enemy1 : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-
+        
 
         if (knockback == true)
         {
@@ -121,13 +123,13 @@ public class Enemy1 : MonoBehaviour
         else
         {
 
-            if (Vector2.Distance(transform.position, player.position) > stoppingDistance && followPlayer == true) //follow player
+            if (Vector2.Distance(transform.position, player.position) >= stoppingDistance && followPlayer == true) //follow player
             {
                 reachedDestination = true;
                 transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
                 getDirection(player);
             }
-            else if (Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance) //stop
+            else if ((Vector2.Distance(transform.position, player.position) <= stoppingDistance && Vector2.Distance(transform.position, player.position) >= retreatDistance) || GlobalPlayerVariables.GameOver == true) //stop
             {
                 if (randomMovement == false)
                     transform.position = this.transform.position;
@@ -146,7 +148,7 @@ public class Enemy1 : MonoBehaviour
                     a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 }
             }
-            else if (Vector2.Distance(transform.position, player.position) < retreatDistance && retreat == true) //retreat
+            else if (Vector2.Distance(transform.position, player.position) <= retreatDistance && retreat == true) //retreat
             {
                 reachedDestination = true;
                 transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
@@ -154,6 +156,7 @@ public class Enemy1 : MonoBehaviour
             }
 
         }
+        
     }
 
     void getDirection(Transform objectpos)
@@ -166,6 +169,10 @@ public class Enemy1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GlobalPlayerVariables.GameOver != false)
+        {
+            player = this.transform;
+        }
         knockbacktime -= Time.deltaTime;
         if (knockbacktime <= 0)
         {
@@ -173,7 +180,7 @@ public class Enemy1 : MonoBehaviour
             knockback = false;
             unstuck = false;
         }
-        if (player != null)
+        if (player != null && player!=this.transform)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
             //var rayDirection = player.position - transform.position;
@@ -194,7 +201,7 @@ public class Enemy1 : MonoBehaviour
 
         }
 
-        if (lineofsight == true)
+        if (lineofsight == true && GlobalPlayerVariables.GameOver==false)
         {
 
             if (timeBtwShots <= 0)

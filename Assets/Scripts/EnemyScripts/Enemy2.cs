@@ -173,7 +173,10 @@ public class Enemy2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (GlobalPlayerVariables.GameOver != false)
+        {
+            player = this.transform;
+        }
         knockbacktime -= Time.deltaTime;
         if (knockbacktime <= 0)
         {
@@ -181,7 +184,7 @@ public class Enemy2 : MonoBehaviour
             knockback = false;
         }
 
-        if (player != null)
+        if (player != null && player != this.transform)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
             //var rayDirection = player.position - transform.position;

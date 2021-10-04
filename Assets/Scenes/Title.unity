@@ -1337,7 +1337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1620,6 +1620,66 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Hit
     clip: {fileID: 8300000, guid: 7b5708f9930b8f245a6804f2e336ecaa, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: HemoTakeDamage
+    clip: {fileID: 8300000, guid: 8fcdf0fa0ae3bfa41bee883138e509ef, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: HemoDead
+    clip: {fileID: 8300000, guid: 775b40680af18dd49b921c7cf4dbfaf1, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Dash
+    clip: {fileID: 8300000, guid: 81e4f8d7dec016a45bc39aa05c77cd24, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Heal
+    clip: {fileID: 8300000, guid: 3a7cc6bdeab0e4e4f93db420b77e1c8e, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ItemPickup
+    clip: {fileID: 8300000, guid: 071f93f8ad1b0014b9f68d91524b7444, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Walk1
+    clip: {fileID: 8300000, guid: 65a4639b0e16a134597f748e60fd2d2d, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Walk2
+    clip: {fileID: 8300000, guid: fbc25839d3c6fee4bbbfbbd91793b252, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PistolSniperReload
+    clip: {fileID: 8300000, guid: 760ffa59e1f6e184683736b2f692f216, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: RifleReload
+    clip: {fileID: 8300000, guid: b7ca961e4ce1740498fbe344ebed3e42, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SwitchGun
+    clip: {fileID: 8300000, guid: 95aeb4bfe6365474cadc08c1fd2f6eae, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
@@ -3470,7 +3530,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Untitled
+  m_Text: 'Hemo: First Blood'
 --- !u!222 &1891976017
 CanvasRenderer:
   m_ObjectHideFlags: 0

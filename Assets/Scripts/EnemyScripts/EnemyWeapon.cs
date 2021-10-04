@@ -13,7 +13,8 @@ public class EnemyWeapon : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        if(GlobalPlayerVariables.GameOver == false)
+            player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
@@ -21,7 +22,7 @@ public class EnemyWeapon : MonoBehaviour
     {
 
 
-        if (player != null)
+        if (player != null && GlobalPlayerVariables.GameOver == false)
         {
             Vector2 direction = player.position - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

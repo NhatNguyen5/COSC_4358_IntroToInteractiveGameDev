@@ -18,7 +18,10 @@ public class TakeDamage : MonoBehaviour
     public bool CameraShake;
     public float ShakeDuration;
     public float ShakeIntensity;
-    
+    [Header("Death Sounds and Canvas")]
+    public string onDeathSound;
+    public GameObject gameOverScreen;
+
 
     private Rigidbody2D rb;
     
@@ -109,9 +112,18 @@ public class TakeDamage : MonoBehaviour
 
         if (HP <= 0)
         {
+            FindObjectOfType<AudioManager>().PlayEffect(onDeathSound);
             Destroy(gameObject);
-            SceneManager.LoadScene("Title");
+            //SceneManager.LoadScene("Title");
             //GO TO TITLE OR GAME OVER SCREEN;
+            OptionSettings.GameisPaused = true;
+            GlobalPlayerVariables.GameOver = true;
+            gameOverScreen.SetActive(true);
+            //Time.timeScale = 0f;
+
+
+
+
         }
     }
 
