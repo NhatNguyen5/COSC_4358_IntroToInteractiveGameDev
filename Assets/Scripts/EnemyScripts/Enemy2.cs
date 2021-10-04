@@ -86,7 +86,10 @@ public class Enemy2 : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (GlobalPlayerVariables.GameOver == false)
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+        else
+            player = this.transform;
         sprite = GetComponent<SpriteRenderer>();
         attack();
 
