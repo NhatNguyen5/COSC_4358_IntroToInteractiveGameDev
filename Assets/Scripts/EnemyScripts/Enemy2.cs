@@ -86,8 +86,7 @@ public class Enemy2 : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        if (GameObject.FindGameObjectWithTag("Player").transform != null)
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         sprite = GetComponent<SpriteRenderer>();
         attack();
 
@@ -105,65 +104,63 @@ public class Enemy2 : MonoBehaviour
     {
 
 
-        if (player != null)
+        
+        if (knockback == true)
         {
-            if (knockback == true)
+
+            //Debug.Log("KNOCKBACK");
+            if (hitPlayer == false)
+                transform.position = Vector2.MoveTowards(transform.position, player.position, -knockbackForce * speed * Time.deltaTime);
+            else
             {
+                //Vector2 Offset = player.position;
 
-                //Debug.Log("KNOCKBACK");
-                if (hitPlayer == false)
-                    transform.position = Vector2.MoveTowards(transform.position, player.position, -knockbackForce * speed * Time.deltaTime);
-                else
-                {
-                    //Vector2 Offset = player.position;
+                transform.position = Vector2.MoveTowards(transform.position, randPos, RetreatSpeed * speed * Time.deltaTime);
+            }
+            getDirection(player);
 
-                    transform.position = Vector2.MoveTowards(transform.position, randPos, RetreatSpeed * speed * Time.deltaTime);
-                }
+        }
+        else
+        {
+
+            if (Vector2.Distance(transform.position, player.position) > stoppingDistance && followPlayer == true) //follow player
+            {
+                reachedDestination = true;
+                transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                //go to position 
                 getDirection(player);
 
+                //Debug.Log(transform);
             }
             else
             {
-
-                if (Vector2.Distance(transform.position, player.position) > stoppingDistance && followPlayer == true) //follow player
+                if (randomMovement == false)
+                    transform.position = this.transform.position;
+                else //RANDOM MOVEMENT
                 {
-                    reachedDestination = true;
-                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-                    //go to position 
-                    getDirection(player);
-
-                    //Debug.Log(transform);
-                }
-                else
-                {
-                    if (randomMovement == false)
+                    //Debug.Log("RANDOMPOS");
+                    if (reachedDestination == false)
+                        transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime);
+                    else
                         transform.position = this.transform.position;
-                    else //RANDOM MOVEMENT
+
+                    if (transform.position.x == randPos.x && transform.position.y == randPos.y)
                     {
-                        //Debug.Log("RANDOMPOS");
-                        if (reachedDestination == false)
-                            transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime);
-                        else
-                            transform.position = this.transform.position;
-
-                        if (transform.position.x == randPos.x && transform.position.y == randPos.y)
-                        {
-                            reachedDestination = true;
-                        }
-                        direction = randPos;
-                        a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
+                        reachedDestination = true;
                     }
-                }
-                /*
-                else if (Vector2.Distance(transform.position, player.position) < retreatDistance && retreat == true) //retreat
-                {
-                    reachedDestination = true;
-                    transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
-                }
-                */
+                    direction = randPos;
+                    a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
+                }
             }
+            /*
+            else if (Vector2.Distance(transform.position, player.position) < retreatDistance && retreat == true) //retreat
+            {
+                reachedDestination = true;
+                transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+            }
+            */
+
         }
     }
 
