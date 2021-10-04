@@ -320,12 +320,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
-  contactDamage: 10
+  contactDamage: 20
   HP: 200
   speed: 5
   stoppingDistance: 100
   retreatDistance: 5
-  followPlayer: 0
+  followPlayer: 1
   retreat: 0
   randomMovement: 1
   lineofsight: 0
@@ -345,8 +345,8 @@ MonoBehaviour:
   projectile: {fileID: 3812985790077842512, guid: b8a4215f89377b140b6b3b8efc37eeff, type: 3}
   firePoint: {fileID: 7674072803375499541}
   player: {fileID: 0}
-  burstFire: 0
-  timeBtwBurst: 0.1
-  timesToShoot: 1
+  burstFire: 1
+  timeBtwBurst: 1
+  timesToShoot: 2
   Tylenol: {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
   DropPercentageTylenol: 100

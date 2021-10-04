@@ -273,7 +273,6 @@ public class Enemy2 : MonoBehaviour
             attack();
         }
 
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
