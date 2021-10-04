@@ -81,21 +81,33 @@ public class ItemPickup : MonoBehaviour
         */
         if (detected)
         {
-            Vector3 direction = playerTransform.position - transform.position;
-            distance = direction.magnitude;
-            direction.Normalize();
-            followMovement = direction;
-            transform.Translate(direction * 1 * speed * Time.deltaTime);
+            
             //Debug.Log(distance);
-            if (distance <= PickUpRange)
-            {
+            
                 switch (TypeOfItem)
                 {
                     case "Heal":
-                        player.Stats.NumofHeal += 1;
+                        if (player.Stats.NumofHeal < 99)
+                        {
+                            Follow();
+                            if (distance <= PickUpRange)
+                            {
+                                player.Stats.NumofHeal += 1;
+                                Destroy(gameObject);
+                            }
+                        }
+                        
                         break;
                     case "Protein":
-                        player.Stats.NumofProtein += 1;
+                        if (player.Stats.NumofProtein < 999)
+                        {
+                            Follow();
+                            if (distance <= PickUpRange)
+                            {
+                                player.Stats.NumofProtein += 1;
+                                Destroy(gameObject);
+                            }
+                        }
                         break;
 
                     default:
@@ -103,8 +115,7 @@ public class ItemPickup : MonoBehaviour
                         break;
                 }
 
-                Destroy(gameObject);
-            }
+                
         }
         else
         {
@@ -165,5 +176,14 @@ public class ItemPickup : MonoBehaviour
             startDespawn = true;
             //Debug.Log("Player left");
         }
+    }
+
+    private void Follow()
+    {
+        Vector3 direction = playerTransform.position - transform.position;
+        distance = direction.magnitude;
+        direction.Normalize();
+        followMovement = direction;
+        transform.Translate(direction * 1 * speed * Time.deltaTime);
     }
 }

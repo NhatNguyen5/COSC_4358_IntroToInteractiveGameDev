@@ -37,14 +37,15 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
-        if(/*colonyHealth > 0 && */timeBetweenSpawns > 0 && Time.time > nextDecrease && (timeBetweenSpawns > MinTbs || timeBetweenSpawns < MaxTbs))
+        if(/*colonyHealth > 0 && */timeBetweenSpawns > 0 && Time.time > nextDecrease && timeBetweenSpawns > MinTbs && timeBetweenSpawns <= MaxTbs)
         {
             nextDecrease = Time.time + DecreaseAfter;
             timeBetweenSpawns -= tbsDecreaseRate;
         }
         if(timeBetweenSpawns > MaxTbs )
         {
-            timeBetweenSpawns = Mathf.Infinity;
+            tbsDecreaseRate = 0;
+            timeBetweenSpawns = 1000000;
         }
         int randomSpawn = Random.Range(0, spawnPoints.Length);
         if (SPAnimReset)
