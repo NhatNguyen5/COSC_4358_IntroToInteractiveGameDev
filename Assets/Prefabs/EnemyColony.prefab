@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 5896408231586960904}
   - component: {fileID: 3873608369398887408}
   - component: {fileID: 3047932416752794907}
-  - component: {fileID: 7173795859414960366}
   - component: {fileID: 8175100634422244890}
   - component: {fileID: 1270911830247238667}
   - component: {fileID: 916351143226452417}
   - component: {fileID: 3083916138999727803}
   m_Layer: 0
-  m_Name: ColonySprite
+  m_Name: ColonyBoss
   m_TagString: Colony
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,19 +106,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7173795859414960366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 301218391734249403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec592580c9b567a47a7f0f58593b70b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemyUI: {fileID: 0}
 --- !u!60 &8175100634422244890
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -194,16 +180,16 @@ MonoBehaviour:
   BossName: {fileID: 0}
   HealthBar: {fileID: 0}
   NameOfEnemy: Colony
+  isDead: 0
   contactDamage: 125
-  HP: 1500
   speed: 5
   Drops:
   - {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
   - {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
   DropPercentageTylenol: 100
-  NumOfTylenolDrop: 3
+  NumOfTylenolDrop: 5
   DropPercentageProtein: 100
-  NumOfProteinDrop: 50
+  NumOfProteinDrop: 999
 --- !u!50 &916351143226452417
 Rigidbody2D:
   serializedVersion: 4
@@ -250,8 +236,9 @@ GameObject:
   m_Component:
   - component: {fileID: 330715470829538497}
   - component: {fileID: 3425390191241164782}
+  - component: {fileID: 6843351295390633571}
   m_Layer: 0
-  m_Name: SpawnPointSprite
+  m_Name: SpawnPointSprite2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -322,6 +309,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6843351295390633571
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2679447734368214520}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9d70ec03bc924f4429cff6629317018a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2950618480692910413
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +380,7 @@ MonoBehaviour:
   tbsDecreaseRate: 0.2
   DecreaseAfter: 2
   MinTbs: 0.5
+  MaxTbs: 0
   spawnPoints:
   - {fileID: 2950618480928158124}
   - {fileID: 3009321316613043682}
@@ -382,6 +389,10 @@ MonoBehaviour:
   - {fileID: 6924399398397163412, guid: 64a959bf86ca6fe4ca2d6c5077663e32, type: 3}
   - {fileID: 7674072803767978074, guid: 004f8d1e3c373fe45bed69bfd2079751, type: 3}
   - {fileID: 7674072803767978074, guid: eff576b4f636dd34390cdc4f8692fd93, type: 3}
+  SpawnPointAnim:
+  - {fileID: 2776325051349927051}
+  - {fileID: 7660949070627372406}
+  - {fileID: 6843351295390633571}
   chanceToSpawnBrunt: 55
   chanceToSpawnR_Nold: 5
 --- !u!1 &2950618480928158124
@@ -538,8 +549,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5705368311751247107}
   - component: {fileID: 1284889807212252317}
+  - component: {fileID: 7660949070627372406}
   m_Layer: 0
-  m_Name: SpawnPointSprite
+  m_Name: SpawnPointSprite1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -610,6 +622,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &7660949070627372406
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8207206990830648690}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6340581829b1866458476ed05cbe3af6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8693848812235982697
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,6 +687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyUI: {fileID: 0}
+  DetectRange: 4
 --- !u!58 &4234616028983469265
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -671,7 +703,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4.304286
+  m_Radius: 0.0001
 --- !u!1 &9172052536470541199
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,6 +714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 245884827038734372}
   - component: {fileID: 4212574405530752844}
+  - component: {fileID: 2776325051349927051}
   m_Layer: 0
   m_Name: SpawnPointSprite
   m_TagString: Untagged
@@ -754,3 +787,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2776325051349927051
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9172052536470541199}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c1d4533c6e66fc4b895c9acea0166b2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -7,6 +7,14 @@ public class ShowBossUI : MonoBehaviour
 {
 
     public GameObject EnemyUI;
+
+    public float DetectRange;
+
+    private void Start()
+    {
+        transform.GetComponent<CircleCollider2D>().radius = DetectRange;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -31,11 +39,6 @@ public class ShowBossUI : MonoBehaviour
             EnemyUI.SetActive(false);
 
         }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-     
     }
 
     // Update is called once per frame

@@ -43,6 +43,10 @@ public class Player : MonoBehaviour
 
     private Text ProteinCounts;
 
+    public EnemyManager enemyManager;
+
+    private Text EnemySpawnRate;
+
 
 
     private void Awake()
@@ -57,11 +61,13 @@ public class Player : MonoBehaviour
         stats.TimeBeforeStamRegen = stats.StaminaRegen;
         stats.StaminaRegenRate = stats.staminaRegenRate;
         stats.NumofHeal = stats.numofheal;
+        stats.NumofProtein = stats.numofprotein;
         actions.defaultSpeed = stats.Speed;
         actions.HealCounts.text = stats.NumofHeal.ToString();
         DashDuration = stats.DashDistance / stats.DashSpeed;
         TrailDur = DashDuration;
         ProteinCounts = GameObject.Find("ProteinCounts").GetComponent<Text>();
+        EnemySpawnRate = GameObject.Find("EnemySpawnRateDisplay").GetComponent<Text>();
     }
 
 
@@ -111,6 +117,8 @@ public class Player : MonoBehaviour
 
         //Debug.Log(components.PlayerRidgitBody.velocity.magnitude);
         //Debug.Log(references.MousePosToPlayer);
+        //Debug.Log(enemyManager.timeBetweenSpawns);
+        EnemySpawnRate.text = (1 / enemyManager.timeBetweenSpawns).ToString();
     }
 
     private void FixedUpdate()

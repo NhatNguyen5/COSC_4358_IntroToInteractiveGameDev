@@ -11,12 +11,13 @@ public class EnemyColony : MonoBehaviour
     public Image HealthBar;
     public string NameOfEnemy;
     //DEATH VARIABLE
-    private bool isDead = false;
+    [HideInInspector]
+    public bool isDead = false;
 
     [Header("Enemy Stats")]
 
     public float contactDamage;
-    public float HP = 100;
+    private EnemyManager enemyColony;
     private float MaxHP = 0;
     public float speed = 0;
 
@@ -33,17 +34,20 @@ public class EnemyColony : MonoBehaviour
     void Start()
     {
         BossName.text = NameOfEnemy;
-        MaxHP = HP;
+        enemyColony = transform.parent.transform.parent.GetComponent<EnemyManager>();
+        //Debug.Log(enemyColony.colonyHealth);
+        MaxHP = enemyColony.colonyHealth;
         //HealthBar = GameObject.Find("EnemyHP").GetComponent<Image>();
         //BossName = GameObject.Find("BossName").GetComponent<Text>();
         sprite = GetComponent<SpriteRenderer>();
-        HealthBar.fillAmount = HP / MaxHP;
+        HealthBar.fillAmount = enemyColony.colonyHealth / MaxHP;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //Debug.Log(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime);
+        //Debug.Log(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("BossDying"));
     }
 
 
@@ -69,6 +73,8 @@ public class EnemyColony : MonoBehaviour
 
             takeDamage(damage, collision.transform, speed);
 
+            Destroy(collision.gameObject);
+
         }
 
 
@@ -86,11 +92,11 @@ public class EnemyColony : MonoBehaviour
             damage *= GlobalPlayerVariables.critDmg;
         }
 
-        HP -= damage;
-        HealthBar.fillAmount = HP / MaxHP;
+        enemyColony.colonyHealth -= damage;
+        HealthBar.fillAmount = enemyColony.colonyHealth / MaxHP;
         showDamage(damage, impact, speed, iscrit);
         StartCoroutine(FlashRed());
-        if (HP <= 0)
+        if (enemyColony.colonyHealth <= 0)
         {
             Die();
         }
@@ -134,20 +140,30 @@ public class EnemyColony : MonoBehaviour
         if (isDead == false)
         {
             isDead = true;
-            if (Random.Range(0, 100) <= DropPercentageTylenol)
-            {
-                for (int i = 0; i < NumOfTylenolDrop; i++)
-                    Instantiate(Drops[0], transform.position, Quaternion.Euler(0, 0, 0));
-            }
-
-            if (Random.Range(0, 100) <= DropPercentageProtein)
-            {
-                for (int i = 0; i < NumOfProteinDrop; i++)
-                    Instantiate(Drops[1], transform.position, Quaternion.Euler(0, 0, 0));
-            }
-            Destroy(transform.parent.gameObject);
-            GameObject.Destroy(gameObject);
+            GetComponent<Animator>().SetBool("IsDead", isDead);
+            GetComponent<PolygonCollider2D>().enabled = false;
+            StartCoroutine(Dying());
+            //GameObject.Destroy(gameObject);
         }
+        
+    }
+
+    IEnumerator Dying()
+    {
+        yield return new WaitForSecondsRealtime(2.75f);
+        if (Random.Range(0, 100) <= DropPercentageTylenol)
+        {
+            for (int i = 0; i < NumOfTylenolDrop; i++)
+                Instantiate(Drops[0], transform.position, Quaternion.Euler(0, 0, 0));
+        }
+
+        if (Random.Range(0, 100) <= DropPercentageProtein)
+        {
+            for (int i = 0; i < NumOfProteinDrop; i++)
+                Instantiate(Drops[1], transform.position, Quaternion.Euler(0, 0, 0));
+        }
+
+        Destroy(transform.parent.gameObject);
     }
 
 
