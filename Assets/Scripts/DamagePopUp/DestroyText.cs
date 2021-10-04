@@ -6,13 +6,15 @@ public class DestroyText : MonoBehaviour
 {
     public float DestroyTime = .5f;
     private Rigidbody2D rb;
-    private Vector2 movement = new Vector2(0,0);
-    private float TextSpeed; 
-   
+    private Vector2 movement = new Vector2(0, 0);
+    private float TextSpeed;
+    public string layerToPushTo;
+
     Vector3 Offset = new Vector3(0, 0, 0);
 
     private void Start()
     {
+        GetComponent<Renderer>().sortingLayerName = layerToPushTo;
         rb = GetComponent<Rigidbody2D>();
     }
 

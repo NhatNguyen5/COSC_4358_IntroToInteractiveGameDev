@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyTime: 0.5
+  layerToPushTo: UI
 --- !u!95 &5006225824730857263
 Animator:
   serializedVersion: 3
