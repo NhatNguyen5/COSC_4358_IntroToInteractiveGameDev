@@ -55,7 +55,9 @@ public class Player : MonoBehaviour
 
     private float spawnRate;
 
+    [HideInInspector]
     public bool enableControl = true;
+
 
 
 

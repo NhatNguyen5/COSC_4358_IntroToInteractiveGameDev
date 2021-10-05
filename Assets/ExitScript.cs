@@ -11,7 +11,7 @@ public class ExitScript : MonoBehaviour
     private BoxCollider2D bxCol2D;
     private PolygonCollider2D plgCol2D;
     private Player player;
-    private Image img;
+    private RawImage img;
     private bool reached = false;
     // Start is called before the first frame update
     private void Start()
@@ -20,11 +20,13 @@ public class ExitScript : MonoBehaviour
         sprite = transform.Find("Helicopter").GetComponent<SpriteRenderer>();
         bxCol2D = GetComponent<BoxCollider2D>();
         plgCol2D = GetComponent<PolygonCollider2D>();
-        img = GameObject.Find("FadeOut").GetComponent<Image>();
+        img = GameObject.Find("FadeOut").GetComponent<RawImage>();
+        /*
         img.enabled = false;
         sprite.enabled = false;
         bxCol2D.enabled = false;
         plgCol2D.enabled = false;
+        */
     }
     //center of the bcl (-35.83, 18.32)
     // Update is called once per frame
