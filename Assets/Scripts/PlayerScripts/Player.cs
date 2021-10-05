@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
 
 
 
+
     private void Awake()
     {
         actions = new PlayerActions(this);
