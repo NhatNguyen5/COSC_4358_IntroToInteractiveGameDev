@@ -338,8 +338,8 @@ MonoBehaviour:
   knockForcePlayerContact: 0.7
   knockbackstartrange: 0.2
   knockbackendrange: 0.2
-  beginningrangetoshoot: 2
-  endingrangetoshoot: 5
+  beginningrangetoshoot: 0.2
+  endingrangetoshoot: 0.5
   AmountOfBullets: 5
   bulletSpread: 15
   projectile: {fileID: 3812985790077842512, guid: b8a4215f89377b140b6b3b8efc37eeff, type: 3}

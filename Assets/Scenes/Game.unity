@@ -31349,7 +31349,7 @@ MonoBehaviour:
   WeaponAnim: {fileID: 1644538901}
   firePoint: {fileID: 369984310}
   bulletPrefab: {fileID: 5172911503813449251, guid: b60735ba69133254091e7ccf305c7aab, type: 3}
-  delay: 0.11
+  delay: 0.05
   spread: 4
   amountOfShots: 1
   ADSRange: 10
@@ -31357,7 +31357,7 @@ MonoBehaviour:
   burstFire: 0
   timeBtwBurst: 0.07
   timesToShoot: 3
-  maxAmmoInClip: 30
+  maxAmmoInClip: 99
   reloadTime: 0.5
 --- !u!212 &1644538904
 SpriteRenderer:
