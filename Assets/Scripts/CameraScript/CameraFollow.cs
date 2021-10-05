@@ -25,11 +25,18 @@ public class CameraFollow : MonoBehaviour
     public float cameraZoomSpeed;
 
     private RightWeapon activeWeapon;
+    private float defaultSpeed;
+    private Vector3 follLocation;
+    private float defaultZoom;
+    private bool moveHold = false;
+    private bool zoomHold = false;
 
     private void Awake()
     {
         myCamera = transform.GetComponent<Camera>();
         myCamera.orthographicSize = DefaultZoomLevel;
+        defaultZoom = cameraZoom;
+        defaultSpeed = DefaultCameraMoveSpeed;
     }
 
     // Update is called once per frame
@@ -58,8 +65,14 @@ public class CameraFollow : MonoBehaviour
         }
         float ADSRange = activeWeapon.ADSRange;
         float ADSSpeed = activeWeapon.ADSSpeed;
-        float cameraMoveSpeed = DefaultCameraMoveSpeed;
-        Vector3 cameraFollowPosition = player.Stats.Position;
+        
+        if (!moveHold)
+        {
+            follLocation = player.Stats.Position;
+            cameraMoveSpeed = defaultSpeed;
+        }
+        
+        Vector3 cameraFollowPosition = follLocation;
         Vector3 MP2P = new Vector3(player.References.MousePosToPlayer.x * ADSRange, player.References.MousePosToPlayer.y * ADSRange);
 
         if (AutoADS && player.References.MousePosToPlayerNotNorm.magnitude > ADSTrigger)
@@ -68,11 +81,13 @@ public class CameraFollow : MonoBehaviour
         if (!AutoADS && Input.GetKey(KeyCode.Mouse1) && !player.Stats.IsDualWield)
         {
             cameraFollowPosition = cameraFollowPosition + MP2P;
-            cameraMoveSpeed = ADSSpeed;
+            if (!moveHold)
+                cameraMoveSpeed = ADSSpeed;
         }
         else if(!Input.GetKey(KeyCode.Mouse1))
         {
-            cameraMoveSpeed = DefaultCameraMoveSpeed;
+            if (!moveHold)
+                cameraMoveSpeed = DefaultCameraMoveSpeed;
         }
 
 
@@ -89,15 +104,17 @@ public class CameraFollow : MonoBehaviour
             {
                 newCameraPosition = cameraFollowPosition;
             }
-
+            
             transform.position = newCameraPosition;
         }
 
     }
     private void HandleZoom()
     {
+        if (!zoomHold)
+            cameraZoom = defaultZoom;
         float cameraZoomDiff = cameraZoom - myCamera.orthographicSize;
-        
+
         myCamera.orthographicSize += cameraZoomDiff * cameraZoomSpeed * Time.deltaTime;
 
         if (cameraZoomDiff > 0)
@@ -115,4 +132,33 @@ public class CameraFollow : MonoBehaviour
             }
         }
     }
+
+    public IEnumerator MoveTo(Vector3 location, float duration, float speed)
+    {
+        follLocation = location;
+        cameraMoveSpeed = speed;
+        moveHold = true;
+        /*
+        Debug.Log("Moved to");
+        Vector3 cameraFollowPosition = location;
+        cameraFollowPosition.z = transform.position.z;
+
+        Vector3 cameraMoveDir = (cameraFollowPosition - transform.position).normalized;
+        Debug.Log(cameraMoveDir);
+
+        Vector3 newCameraPosition = transform.position + cameraMoveDir * speed * Time.deltaTime;
+        transform.position = newCameraPosition;
+        */
+        yield return new WaitForSeconds(duration);
+        moveHold = false;
+    }
+
+    public IEnumerator ZoomTo(float zoom, float duration)
+    {
+        cameraZoom = zoom;
+        zoomHold = true;
+        yield return new WaitForSeconds(duration);
+        zoomHold = false;
+    }
+
 }

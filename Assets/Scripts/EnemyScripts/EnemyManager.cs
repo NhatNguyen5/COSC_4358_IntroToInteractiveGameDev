@@ -6,6 +6,9 @@ public class EnemyManager : MonoBehaviour
 {
     //public int enemiesFromColony;
     public float colonyHealth;
+    public StatusIndicator StaInd;
+    public Camera Mcamera;
+    public CameraFollow CamFollow;
     [Header("Spawn time setting")]
     public float timeBetweenSpawns;
     public float tbsDecreaseRate;
@@ -28,7 +31,10 @@ public class EnemyManager : MonoBehaviour
     public int chanceToSpawnBrunt;
     [Range(0, 20)]
     public int chanceToSpawnR_Nold;
-    
+
+    bool isWaiting = false;
+    bool cutSceneFlag = false;
+
 
     private void Start()
     {
@@ -89,14 +95,27 @@ public class EnemyManager : MonoBehaviour
         {
             BossDeath();
             bossDeath = true;
+            StartCoroutine(wait(5));
         }
+
+        if (!isWaiting && bossDeath && !cutSceneFlag)
+        {
+            StartCoroutine(CamFollow.MoveTo(new Vector3(-38.47f, 20.26f, -1), 1.25f, 3));
+            StartCoroutine(CamFollow.ZoomTo(25, 0.6f));
+            cutSceneFlag = true;
+        }
+
+
+
         //Debug.Log(bossDeath);
-        
+
     }
 
     private void BossDeath()
     {
         tbsDecreaseRate = -2*tbsDecreaseRate;
+        StaInd.StartShake(Mcamera, 1, 0.5f);
+        
     }
 
     private void OnEnemyDeath()
@@ -104,5 +123,12 @@ public class EnemyManager : MonoBehaviour
         print("Enemy died");
         //enemiesRemainingToSpawn++;
         print("enemies remaing to spawn incremented");
+    }
+
+    private IEnumerator wait(float dur)
+    {
+        isWaiting = true;
+        yield return new WaitForSeconds(dur);
+        isWaiting = false;
     }
 }

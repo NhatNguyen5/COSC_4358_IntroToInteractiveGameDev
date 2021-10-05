@@ -55,6 +55,8 @@ public class Player : MonoBehaviour
 
     private float spawnRate;
 
+    public bool enableControl = true;
+
 
 
     private void Awake()
@@ -148,13 +150,17 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        actions.Move(transform);
-        if (Input.GetKey(KeyCode.LeftShift) && stats.Stamina > 0)
-            actions.Sprint();
-        else
-            actions.Walk();
+        if (enableControl)
+        {
+            actions.Move(transform);
+            if (Input.GetKey(KeyCode.LeftShift) && stats.Stamina > 0)
+                actions.Sprint();
+            else
+                actions.Walk();
+        }
         actions.Animate();
         ProteinCounts.text = stats.NumofProtein.ToString();
+        
     }
 
     private void DashProc()
