@@ -34,20 +34,22 @@ public class EnemyManager : MonoBehaviour
 
     bool isWaiting = false;
     bool cutSceneFlag = false;
+    private Player player;
 
 
     private void Start()
     {
         //enemiesRemainingToSpawn = enemiesFromColony;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     private void Update()
     {
-        if(/*colonyHealth > 0 && */timeBetweenSpawns > 0 && Time.time > nextDecrease && (timeBetweenSpawns > MinTbs || timeBetweenSpawns < MaxTbs))
+        if (/*colonyHealth > 0 && */timeBetweenSpawns > 0 && Time.time > nextDecrease && (timeBetweenSpawns > MinTbs || timeBetweenSpawns < MaxTbs))
         {
             nextDecrease = Time.time + DecreaseAfter;
             timeBetweenSpawns -= tbsDecreaseRate;
-            if(timeBetweenSpawns < MinTbs)
+            if (timeBetweenSpawns < MinTbs)
             {
                 timeBetweenSpawns = MinTbs;
             }
@@ -57,7 +59,7 @@ public class EnemyManager : MonoBehaviour
             }
 
         }
-        if(timeBetweenSpawns > MaxTbs )
+        if (timeBetweenSpawns > MaxTbs)
         {
             tbsDecreaseRate = 0;
             timeBetweenSpawns = 1000000;
@@ -75,13 +77,13 @@ public class EnemyManager : MonoBehaviour
         {
             //enemiesRemainingToSpawn--;
             nextSpawnTime = Time.time + timeBetweenSpawns;
-            
+
             //print("randomSpawn = " + randomSpawn);
             int randomEnemeies = Random.Range(0, 100);
             //Debug.Log(randomEnemeies);
-            if(randomEnemeies >= chanceToSpawnBrunt)
+            if (randomEnemeies >= chanceToSpawnBrunt)
                 Instantiate(Enemies[0], spawnPoints[ChosenSP].transform.position, Quaternion.identity);
-            else if(randomEnemeies <= chanceToSpawnR_Nold)
+            else if (randomEnemeies <= chanceToSpawnR_Nold)
                 Instantiate(Enemies[2], spawnPoints[ChosenSP].transform.position, Quaternion.identity);
             else
                 Instantiate(Enemies[1], spawnPoints[ChosenSP].transform.position, Quaternion.identity);
@@ -100,10 +102,16 @@ public class EnemyManager : MonoBehaviour
 
         if (!isWaiting && bossDeath && !cutSceneFlag)
         {
-            StartCoroutine(CamFollow.MoveTo(new Vector3(-38.47f, 20.26f, -1), 1.25f, 3));
-            StartCoroutine(CamFollow.ZoomTo(25, 0.6f));
+            StartCoroutine(player.Phasing(4f));
+            //StartCoroutine(player.TakeOver(4f)); //in progress
+            StartCoroutine(CamFollow.MoveTo(new Vector3(-38.47f, 20.26f, -1), 2.8f, 2f));
+            StartCoroutine(CamFollow.ZoomTo(20, 1f));
             cutSceneFlag = true;
         }
+        
+        
+
+        
 
 
 

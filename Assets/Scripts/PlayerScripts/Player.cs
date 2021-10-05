@@ -51,13 +51,16 @@ public class Player : MonoBehaviour
 
     private float MaxTbs;
 
-    private float defaultTbs;
-
     private float spawnRate;
 
     [HideInInspector]
     public bool enableControl = true;
 
+    private bool phaseOverWrite = false;
+
+    //private float currSpeed;
+
+    //private bool setSpeedBack = false;
 
 
 
@@ -83,7 +86,6 @@ public class Player : MonoBehaviour
         EnemySpawnRate = GameObject.Find("EnemySpawnRateDisplay").GetComponent<Text>();
         MinTbs = enemyManager.MinTbs;
         MaxTbs = enemyManager.MaxTbs;
-        defaultTbs = enemyManager.timeBetweenSpawns;
         
     }
 
@@ -153,7 +155,21 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (enableControl)
+        /*
+        if (!enableControl)
+        {
+            currSpeed = stats.Speed;
+            stats.Speed = 0;
+            setSpeedBack = true;
+        }
+
+        if (enableControl && setSpeedBack)
+        {
+            stats.Speed = currSpeed;
+            setSpeedBack = false;
+        }
+        */
+        if(enableControl)
         {
             actions.Move(transform);
             if (Input.GetKey(KeyCode.LeftShift) && stats.Stamina > 0)
@@ -161,14 +177,15 @@ public class Player : MonoBehaviour
             else
                 actions.Walk();
         }
+        
+
         actions.Animate();
         ProteinCounts.text = stats.NumofProtein.ToString();
-        
     }
 
     private void DashProc()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && currDashCooldown == 0 && stats.Stamina >= stats.DashStamCost && stats.Direction.magnitude != 0)
+        if (Input.GetKeyDown(KeyCode.Space) && currDashCooldown == 0 && stats.Stamina >= stats.DashStamCost && stats.Direction.magnitude != 0 && !phaseOverWrite)
         {
             //Debug.Log("Dash");
             components.PlayerTrailRenderer.enabled = true;
@@ -196,18 +213,38 @@ public class Player : MonoBehaviour
             currDashDuration -= Time.deltaTime;
         else if (currDashDuration < 0)
             currDashDuration = 0;
-        else
+        else if(currDashDuration == 0 && !phaseOverWrite)
         {
             gameObject.layer = LayerMask.NameToLayer("Actor");
             dashing = false;
         }
+
         if (currTrailDur > 0)
             currTrailDur -= Time.deltaTime;
         else if (currTrailDur < 0)
             currTrailDur = 0;
         else
             components.PlayerTrailRenderer.enabled = false;
+    }
 
+    public IEnumerator Phasing(float duration)
+    {
+        
+        phaseOverWrite = true;
+        gameObject.layer = LayerMask.NameToLayer("Phase");
 
+        yield return new WaitForSeconds(duration);
+        phaseOverWrite = false;
+        gameObject.layer = LayerMask.NameToLayer("Actor");
+    }
+
+    public IEnumerator TakeOver(float duration)
+    {
+
+        enableControl = false;
+
+        yield return new WaitForSeconds(duration);
+
+        phaseOverWrite = true;
     }
 }
