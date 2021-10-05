@@ -47,6 +47,10 @@ public class Player : MonoBehaviour
 
     private Text EnemySpawnRate;
 
+    private float MinTbs;
+
+    private float defaultTbs;
+
 
 
     private void Awake()
@@ -68,6 +72,8 @@ public class Player : MonoBehaviour
         TrailDur = DashDuration;
         ProteinCounts = GameObject.Find("ProteinCounts").GetComponent<Text>();
         EnemySpawnRate = GameObject.Find("EnemySpawnRateDisplay").GetComponent<Text>();
+        MinTbs = enemyManager.MinTbs;
+        defaultTbs = enemyManager.timeBetweenSpawns;
     }
 
 
@@ -118,7 +124,16 @@ public class Player : MonoBehaviour
         //Debug.Log(components.PlayerRidgitBody.velocity.magnitude);
         //Debug.Log(references.MousePosToPlayer);
         //Debug.Log(enemyManager.timeBetweenSpawns);
-        EnemySpawnRate.text = (1 / enemyManager.timeBetweenSpawns).ToString();
+        if (enemyManager.timeBetweenSpawns == 1000000)
+        {
+            EnemySpawnRate.text = (0).ToString();
+        }
+        else
+        {
+            EnemySpawnRate.text = (1 / enemyManager.timeBetweenSpawns).ToString();
+        }
+        EnemySpawnRate.color = new Color(1f, (MinTbs - enemyManager.timeBetweenSpawns) / (MinTbs - defaultTbs), (MinTbs - enemyManager.timeBetweenSpawns) / (MinTbs - defaultTbs));
+        Debug.Log(EnemySpawnRate.color);
     }
 
     private void FixedUpdate()

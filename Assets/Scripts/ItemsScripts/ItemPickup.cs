@@ -99,7 +99,7 @@ public class ItemPickup : MonoBehaviour
                         
                         break;
                     case "Protein":
-                        if (player.Stats.NumofProtein < 999)
+                        if (player.Stats.NumofProtein < 1000000)
                         {
                             Follow();
                             if (distance <= PickUpRange)

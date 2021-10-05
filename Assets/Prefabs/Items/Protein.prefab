@@ -101,6 +101,8 @@ MonoBehaviour:
   flingRange: 10
   PickUpRange: 0.5
   DespawnTime: 10
+  MaxQuantityTylenol: 99
+  MaxQuantityProtein: 0
 --- !u!95 &3413995954745191899
 Animator:
   serializedVersion: 3

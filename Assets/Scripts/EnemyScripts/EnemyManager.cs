@@ -37,10 +37,19 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
-        if(/*colonyHealth > 0 && */timeBetweenSpawns > 0 && Time.time > nextDecrease && timeBetweenSpawns > MinTbs && timeBetweenSpawns <= MaxTbs)
+        if(/*colonyHealth > 0 && */timeBetweenSpawns > 0 && Time.time > nextDecrease && (timeBetweenSpawns > MinTbs || timeBetweenSpawns < MaxTbs))
         {
             nextDecrease = Time.time + DecreaseAfter;
             timeBetweenSpawns -= tbsDecreaseRate;
+            if(timeBetweenSpawns < MinTbs)
+            {
+                timeBetweenSpawns = MinTbs;
+            }
+            if (timeBetweenSpawns > MaxTbs)
+            {
+                timeBetweenSpawns = 1000000;
+            }
+
         }
         if(timeBetweenSpawns > MaxTbs )
         {
