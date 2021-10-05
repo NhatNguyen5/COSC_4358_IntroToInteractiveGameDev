@@ -7,6 +7,7 @@ public class ExitScript : MonoBehaviour
 {
 
     public EnemyManager enemyColony;
+    public GameObject WinScreen;
     private SpriteRenderer sprite;
     private BoxCollider2D bxCol2D;
     private PolygonCollider2D plgCol2D;
@@ -68,6 +69,9 @@ public class ExitScript : MonoBehaviour
             player.enableControl = false;
             player.Components.PlayerRidgitBody.drag = 5;
             Debug.Log("You Won!");
+            OptionSettings.GameisPaused = true;
+            GlobalPlayerVariables.GameOver = true;
+            WinScreen.SetActive(true);
             reached = true;
         }
     }
