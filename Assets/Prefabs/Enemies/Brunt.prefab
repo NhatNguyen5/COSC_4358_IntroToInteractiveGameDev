@@ -173,8 +173,8 @@ MonoBehaviour:
   knockbackstartrange: 0.5
   knockbackendrange: 0.5
   player: {fileID: 0}
-  beginningrangetomove: 3
-  endingrangetomove: 6
+  beginningrangetomove: 0
+  endingrangetomove: 30
   RetreatSpeed: 0.6
   retreatTime: 0.25
   LineOfSight: 0

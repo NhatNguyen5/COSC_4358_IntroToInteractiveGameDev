@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1270911830247238667}
   - component: {fileID: 916351143226452417}
   - component: {fileID: 3083916138999727803}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ColonyBoss
   m_TagString: Colony
   m_Icon: {fileID: 0}
@@ -110,11 +110,6 @@ MonoBehaviour:
   HealthBar: {fileID: 0}
   NameOfEnemy: Colony
   isDead: 0
-  stoppingDistance: 5
-  retreatDistance: 3
-  followPlayer: 0
-  retreat: 0
-  randomMovement: 1
   contactDamage: 125
   speed: 5
   Drops:
@@ -124,7 +119,6 @@ MonoBehaviour:
   NumOfTylenolDrop: 5
   DropPercentageProtein: 100
   NumOfProteinDrop: 999
-  player: {fileID: 0}
 --- !u!50 &916351143226452417
 Rigidbody2D:
   serializedVersion: 4
@@ -172,7 +166,7 @@ GameObject:
   - component: {fileID: 3869956422867858282}
   - component: {fileID: 5572582577116461826}
   - component: {fileID: 7637577220909599662}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BossSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -689,7 +683,7 @@ GameObject:
   - component: {fileID: 7603453998838482923}
   - component: {fileID: 5285938711777640152}
   - component: {fileID: 4234616028983469265}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: ShowEnemyUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
