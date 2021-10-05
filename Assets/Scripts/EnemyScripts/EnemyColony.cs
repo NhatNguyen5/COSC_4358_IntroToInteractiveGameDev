@@ -28,8 +28,6 @@ public class EnemyColony : MonoBehaviour
     public float DropPercentageProtein;
     public int NumOfProteinDrop;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -39,16 +37,20 @@ public class EnemyColony : MonoBehaviour
         MaxHP = enemyColony.colonyHealth;
         //HealthBar = GameObject.Find("EnemyHP").GetComponent<Image>();
         //BossName = GameObject.Find("BossName").GetComponent<Text>();
-        sprite = GetComponent<SpriteRenderer>();
+        sprite = transform.Find("BossSprite").GetComponent<SpriteRenderer>();
         HealthBar.fillAmount = enemyColony.colonyHealth / MaxHP;
+
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime);
-        //Debug.Log(GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("BossDying"));
+        
     }
+
+    
 
 
 
@@ -140,7 +142,7 @@ public class EnemyColony : MonoBehaviour
         if (isDead == false)
         {
             isDead = true;
-            GetComponent<Animator>().SetBool("IsDead", isDead);
+            transform.Find("BossSprite").GetComponent<Animator>().SetBool("IsDead", isDead);
             GetComponent<PolygonCollider2D>().enabled = false;
             StartCoroutine(Dying());
             //GameObject.Destroy(gameObject);

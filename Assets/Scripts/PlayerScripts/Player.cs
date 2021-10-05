@@ -49,7 +49,11 @@ public class Player : MonoBehaviour
 
     private float MinTbs;
 
+    private float MaxTbs;
+
     private float defaultTbs;
+
+    private float spawnRate;
 
 
 
@@ -73,7 +77,9 @@ public class Player : MonoBehaviour
         ProteinCounts = GameObject.Find("ProteinCounts").GetComponent<Text>();
         EnemySpawnRate = GameObject.Find("EnemySpawnRateDisplay").GetComponent<Text>();
         MinTbs = enemyManager.MinTbs;
+        MaxTbs = enemyManager.MaxTbs;
         defaultTbs = enemyManager.timeBetweenSpawns;
+        
     }
 
 
@@ -124,16 +130,20 @@ public class Player : MonoBehaviour
         //Debug.Log(components.PlayerRidgitBody.velocity.magnitude);
         //Debug.Log(references.MousePosToPlayer);
         //Debug.Log(enemyManager.timeBetweenSpawns);
+
+        spawnRate = 1 / enemyManager.timeBetweenSpawns;
+
         if (enemyManager.timeBetweenSpawns == 1000000)
         {
-            EnemySpawnRate.text = (0).ToString();
+            EnemySpawnRate.text = "Infection rates: " + (0).ToString();
         }
         else
         {
-            EnemySpawnRate.text = (1 / enemyManager.timeBetweenSpawns).ToString();
+            EnemySpawnRate.text = "Infection rates: " + (spawnRate).ToString();
+
         }
-        EnemySpawnRate.color = new Color(1f, (MinTbs - enemyManager.timeBetweenSpawns) / (MinTbs - defaultTbs), (MinTbs - enemyManager.timeBetweenSpawns) / (MinTbs - defaultTbs));
-        Debug.Log(EnemySpawnRate.color);
+        EnemySpawnRate.color = new Color(1+(MinTbs - enemyManager.timeBetweenSpawns)/ enemyManager.timeBetweenSpawns, 1-(MaxTbs - enemyManager.timeBetweenSpawns)/ enemyManager.timeBetweenSpawns, 0);
+        //Debug.Log(EnemySpawnRate.color);
     }
 
     private void FixedUpdate()

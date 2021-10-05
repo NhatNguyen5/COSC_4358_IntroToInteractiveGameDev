@@ -56,29 +56,7 @@ public class ItemPickup : MonoBehaviour
             //Debug.Log("change");
             triggerDetect = false;
         }
-        /*
-        bool maxItem = false;
-        switch (TypeOfItem)
-        {
-            case "Heal":
-                if (player.Stats.NumofHeal < 99)
-                    maxItem = false;
-                else
-                    maxItem = true;
-                break;
-            case "Protein":
-                if (player.Stats.NumofHeal < 999)
-                    maxItem = false;
-                else
-                    maxItem = true;
-                break;
-
-            default:
-                Debug.Log("Unknow item!");
-                break;
-        }
-        Debug.Log(maxItem);
-        */
+        
         if (detected)
         {
             
