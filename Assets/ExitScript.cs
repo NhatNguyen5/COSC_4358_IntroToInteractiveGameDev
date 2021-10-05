@@ -39,10 +39,14 @@ public class ExitScript : MonoBehaviour
         }
         Vector2 desPos = new Vector2(-35.83f, 18.32f);
         player.Stats.Direction = new Vector2(desPos.x - player.Stats.Position.x, desPos.y - player.Stats.Position.y).normalized;
-        if (player.Stats.Position != desPos)
+        if (player != null)
         {
-            player.Components.PlayerRidgitBody.velocity = new Vector2(player.Stats.Direction.x * player.Stats.Speed * Time.deltaTime, player.Stats.Direction.y * player.Stats.Speed * Time.deltaTime);
+            if (player.Stats.Position != desPos)
+            {
+                player.Components.PlayerRidgitBody.velocity = new Vector2(player.Stats.Direction.x * player.Stats.Speed * Time.deltaTime, player.Stats.Direction.y * player.Stats.Speed * Time.deltaTime);
+            }
         }
+
         
         if (reached)
         {
