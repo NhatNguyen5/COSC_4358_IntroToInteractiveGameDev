@@ -68,13 +68,19 @@ public class ExitScript : MonoBehaviour
         if (collision.tag == "Player")
         {
             player.enableControl = false;
-            player.Components.PlayerRidgitBody.drag = 5;
+            player.Components.PlayerRidgitBody.drag = 500;
             Debug.Log("You Won!");
-            OptionSettings.GameisPaused = true;
-            GlobalPlayerVariables.GameOver = true;
-            WinScreen.SetActive(true);
             reached = true;
+            StartCoroutine(End());
         }
+    }
+
+    private IEnumerator End()
+    {
+        yield return new WaitForSeconds(4);
+        OptionSettings.GameisPaused = true;
+        GlobalPlayerVariables.GameOver = true;
+        WinScreen.SetActive(true);
     }
 
 
