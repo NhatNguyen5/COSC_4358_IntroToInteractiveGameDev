@@ -21,12 +21,12 @@ public class ExitScript : MonoBehaviour
         bxCol2D = GetComponent<BoxCollider2D>();
         plgCol2D = GetComponent<PolygonCollider2D>();
         img = GameObject.Find("FadeOut").GetComponent<RawImage>();
-        /*
+        
         img.enabled = false;
         sprite.enabled = false;
         bxCol2D.enabled = false;
         plgCol2D.enabled = false;
-        */
+        
     }
     //center of the bcl (-35.83, 18.32)
     // Update is called once per frame
