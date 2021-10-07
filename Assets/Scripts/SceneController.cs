@@ -27,7 +27,7 @@ public class SceneController : MonoBehaviour
 
         if (Input.anyKey || (!startUp && !video.isPlaying))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("Title");
         }
         //Debug.Log(video.isPlaying);
     }

@@ -45,13 +45,14 @@ public class Player : MonoBehaviour
 
     public EnemyManager enemyManager;
 
-    private Text EnemySpawnRate;
+    private GameObject EnemySpawnRate;
 
     private float MinTbs;
 
     private float MaxTbs;
 
     private float spawnRate;
+    private float defaultSR;
 
     [HideInInspector]
     public bool enableControl = true;
@@ -61,9 +62,12 @@ public class Player : MonoBehaviour
     //private float currSpeed;
 
     //private bool setSpeedBack = false;
+    [SerializeField]
+    private GameObject beat;
 
+    //private GameObject gendBeat;
 
-
+    private float beatTimer = 0;
 
     private void Awake()
     {
@@ -83,10 +87,10 @@ public class Player : MonoBehaviour
         DashDuration = stats.DashDistance / stats.DashSpeed;
         TrailDur = DashDuration;
         ProteinCounts = GameObject.Find("ProteinCounts").GetComponent<Text>();
-        EnemySpawnRate = GameObject.Find("EnemySpawnRateDisplay").GetComponent<Text>();
+        EnemySpawnRate = GameObject.Find("EnemySpawnRateDisplay");
         MinTbs = enemyManager.MinTbs;
         MaxTbs = enemyManager.MaxTbs;
-        
+        defaultSR = 1/enemyManager.timeBetweenSpawns;
     }
 
 
@@ -138,8 +142,7 @@ public class Player : MonoBehaviour
         //Debug.Log(references.MousePosToPlayer);
         //Debug.Log(enemyManager.timeBetweenSpawns);
 
-        spawnRate = 1 / enemyManager.timeBetweenSpawns;
-
+        /*
         if (enemyManager.timeBetweenSpawns == 1000000)
         {
             EnemySpawnRate.text = "Infection rates: " + (0).ToString();
@@ -149,8 +152,42 @@ public class Player : MonoBehaviour
             EnemySpawnRate.text = "Infection rates: " + (spawnRate).ToString();
 
         }
-        EnemySpawnRate.color = new Color(1+(MinTbs - enemyManager.timeBetweenSpawns)/ enemyManager.timeBetweenSpawns, 1-(MaxTbs - enemyManager.timeBetweenSpawns)/ enemyManager.timeBetweenSpawns, 0);
-        //Debug.Log(EnemySpawnRate.color);
+        */
+        EnemySpawnRate.transform.Find("HeartMonitorBG")
+            .transform.Find("HeartMonitorLine").GetComponent<RawImage>()
+            .color = new Color(1+(MinTbs - enemyManager.timeBetweenSpawns)/ enemyManager.timeBetweenSpawns, 1-(MaxTbs - enemyManager.timeBetweenSpawns)/ enemyManager.timeBetweenSpawns, 0);
+        
+        if (enemyManager.timeBetweenSpawns == 1000000)
+        {
+            spawnRate = defaultSR;
+        }
+        else
+        {
+            spawnRate = 1 / enemyManager.timeBetweenSpawns;
+        }
+
+        if(beatTimer > 0)
+        {
+            beatTimer -= Time.deltaTime;
+        }
+        else
+        {
+            beatTimer = 0;
+        }
+
+        //Debug.Log(beatTimer);
+
+        if (beatTimer == 0)
+        {
+            beatTimer = 0.75f / (spawnRate/defaultSR);
+            //for(int i = 0; i < 2; i++)
+            StartCoroutine(beatGen(0.75f));
+            //StartCoroutine(beatGen(0.75f / spawnRate));
+            
+        }
+        
+            
+
     }
 
     private void FixedUpdate()
@@ -225,6 +262,16 @@ public class Player : MonoBehaviour
             currTrailDur = 0;
         else
             components.PlayerTrailRenderer.enabled = false;
+    }
+
+    private IEnumerator beatGen(float duration)
+    {
+        GameObject gendBeat;
+        gendBeat = Instantiate(beat, EnemySpawnRate.transform.Find("HeartMonitorBG"), false);
+        gendBeat.GetComponent<RawImage>().color = new Color(1 + (MinTbs - enemyManager.timeBetweenSpawns) / enemyManager.timeBetweenSpawns, 1 - (MaxTbs - enemyManager.timeBetweenSpawns) / enemyManager.timeBetweenSpawns, 0);
+        //gendBeat.GetComponent<Animator>().SetFloat("BeatRate", spawnRate);
+        yield return new WaitForSeconds(duration);
+        Destroy(gendBeat);
     }
 
     public IEnumerator Phasing(float duration)
