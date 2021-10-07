@@ -161,20 +161,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
-  contactDamage: 10
+  contactDamage: 20
   HP: 100
   speed: 6
-  stoppingDistance: -1
+  stoppingDistance: 0
   followPlayer: 1
   randomMovement: 1
-  timeRunningTwdPlayer: 4
+  timeRunningTwdPlayer: 5
   circleRadius: 7
   timeTillNextMove: 0.2
-  knockbackstartrange: 0.5
-  knockbackendrange: 0.5
+  knockbackstartrange: 3
+  knockbackendrange: 4
   player: {fileID: 0}
-  beginningrangetomove: 0
-  endingrangetomove: 30
+  beginningrangetomove: 0.8
+  endingrangetomove: 1.6
   RetreatSpeed: 0.6
   retreatTime: 0.25
   LineOfSight: 0
@@ -186,5 +186,5 @@ MonoBehaviour:
   - {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
   DropPercentageTylenol: 30
   NumOfTylenolDrop: 1
-  DropPercentageProtein: 70
+  DropPercentageProtein: 50
   NumOfProteinDrop: 1

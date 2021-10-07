@@ -320,38 +320,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
-  contactDamage: 20
-  HP: 200
-  speed: 5
-  stoppingDistance: 100
+  contactDamage: 24
+  HP: 240
+  speed: 3
+  stoppingDistance: 8
   retreatDistance: 5
   followPlayer: 1
-  retreat: 0
+  retreat: 1
   randomMovement: 1
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
     m_Bits: 128
   unstuckTime: 0
-  circleRadius: 5
+  circleRadius: 8
   timeTillNextMove: 0.5
-  knockForcePlayerContact: 0.7
-  knockbackstartrange: 0.2
-  knockbackendrange: 0.2
-  beginningrangetoshoot: 0.2
-  endingrangetoshoot: 0.5
+  knockForcePlayerContact: 3
+  knockbackstartrange: 0.4
+  knockbackendrange: 0.8
+  beginningrangetoshoot: 0.5
+  endingrangetoshoot: 1
   AmountOfBullets: 5
-  bulletSpread: 15
+  bulletSpread: 18
   projectile: {fileID: 3812985790077842512, guid: b8a4215f89377b140b6b3b8efc37eeff, type: 3}
   firePoint: {fileID: 7674072803375499541}
   player: {fileID: 0}
   burstFire: 1
-  timeBtwBurst: 1
+  timeBtwBurst: 1.5
   timesToShoot: 3
   Drops:
   - {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
   - {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
-  DropPercentageTylenol: 100
+  DropPercentageTylenol: 70
   NumOfTylenolDrop: 2
-  DropPercentageProtein: 100
-  NumOfProteinDrop: 10
+  DropPercentageProtein: 90
+  NumOfProteinDrop: 8
