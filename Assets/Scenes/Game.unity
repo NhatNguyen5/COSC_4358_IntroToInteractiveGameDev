@@ -34430,12 +34430,56 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1769738117}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: stats.cooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: stats.duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: stats.hpRegenAdd
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: stats.HPRegenRate
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: stats.NumOfPhizer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: stats.stamRegenAdd
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: references.Duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: references.cooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: references.duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: references.HPRegenAdd
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: references.hpRegenAdd
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: references.stamRegenAdd
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: references.StaminaRegenAdd
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: components.playerStatusIndicator
@@ -34468,6 +34512,22 @@ PrefabInstance:
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: maxAmmoInClip
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100972221008472471, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: Cooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100972221008472471, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: Duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100972221008472471, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: HPRegenAdd
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4100972221008472471, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: StaminaRegenAdd
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}

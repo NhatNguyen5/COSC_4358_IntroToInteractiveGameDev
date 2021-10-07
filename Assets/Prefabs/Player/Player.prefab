@@ -479,6 +479,7 @@ GameObject:
   - component: {fileID: 3517825292825441641}
   - component: {fileID: 3517825292825441642}
   - component: {fileID: 3517825292825441643}
+  - component: {fileID: 4100972221008472471}
   - component: {fileID: 3517825292825441646}
   - component: {fileID: 3517825292825441638}
   - component: {fileID: 3517825292825441640}
@@ -579,12 +580,14 @@ MonoBehaviour:
     dashStamCost: 1.5
     dashSpeed: 40
     HP: 200
+    HPRegenRate: 0
     playerStamina: 5
     maxPlayerStamina: 5
     staminaRegenRate: 1
     TimeBfrStamRegen: 0.2
     NumOfHeal: 5
     NumOfProtein: 0
+    NumOfPhizer: 2
   components:
     playerRidgitBody: {fileID: 3517825292825441636}
     playerAnimator: {fileID: 3517825292677397513}
@@ -594,8 +597,26 @@ MonoBehaviour:
       m_Bits: 512
     playerTrailRenderer: {fileID: 3517825292825441640}
     playerCapsuleCollider2D: {fileID: 3517825292825441641}
+  references:
+    duration: 2
+    cooldown: 5
+    hpRegenAdd: 10
+    stamRegenAdd: 0.5
   enemyManager: {fileID: 0}
   enableControl: 1
+  beat: {fileID: 0}
+--- !u!114 &4100972221008472471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3517825292825441639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2adf1a26668354b8a392ae20e2b054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3517825292825441646
 MonoBehaviour:
   m_ObjectHideFlags: 0

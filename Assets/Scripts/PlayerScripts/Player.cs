@@ -79,11 +79,17 @@ public class Player : MonoBehaviour
         stats.Speed = stats.WalkSpeed;
         stats.Stamina = stats.stamina;
         stats.MaxStamina = stats.maxplayerstamina;
-        stats.TimeBeforeStamRegen = stats.StaminaRegen;
+        stats.TimeBeforeStamRegen = stats.StaminaRegenWait;
         stats.StaminaRegenRate = stats.staminaRegenRate;
         stats.NumofHeal = stats.numofheal;
         stats.NumofProtein = stats.numofprotein;
         stats.NumofPhizer = stats.numofphizer;
+
+        stats.Durationz = stats.Duration;
+        stats.Cooldownz = stats.Cooldown;
+        stats.HPRegenAddz = stats.HPRegenAdd;
+        stats.StamRegenAddz = stats.StamRegenAdd;
+
         actions.defaultSpeed = stats.Speed;
         actions.HealCounts.text = stats.NumofHeal.ToString();
         actions.VaccineCounts.text = stats.NumofPhizer.ToString();
@@ -94,6 +100,7 @@ public class Player : MonoBehaviour
         MinTbs = enemyManager.MinTbs;
         MaxTbs = enemyManager.MaxTbs;
         defaultSR = 1/enemyManager.timeBetweenSpawns;
+        
     }
 
 
@@ -111,7 +118,8 @@ public class Player : MonoBehaviour
         actions.UpdateHeal();
         actions.UpdateVaccine();
         actions.Regen();
-        
+
+
         if (Input.GetKey(KeyCode.LeftShift) && stats.Direction != Vector2.zero)
         {
             if(stats.Stamina > 0)
@@ -159,7 +167,6 @@ public class Player : MonoBehaviour
                 actions.Walk();
         }
         
-
         actions.Animate();
         ProteinCounts.text = stats.NumofProtein.ToString();
     }

@@ -18,6 +18,8 @@ public class PlayerActions
     private GameObject LeftAmmo;
     private GameObject RWeaponIcon;
 
+    //private bool isWaiting = false;
+
     public PlayerActions(Player player)
     {
         this.player = player;
@@ -150,7 +152,12 @@ public class PlayerActions
 
     public void Phizer()
     {
-
+        if(player.Stats.NumofPhizer > 0)
+        {
+            player.Stats.NumofPhizer -= 1;
+            player.Stats.HPRegen += player.Stats.HPRegenAdd;
+            player.Stats.StaminaRegenRate += player.Stats.StamRegenAdd;
+        }
     }
 
     public void Heal()
@@ -162,7 +169,6 @@ public class PlayerActions
             {
                 player.Stats.Health = player.Stats.hp;
                 player.Stats.NumofHeal--;
-                HealthBar.fillAmount = player.Stats.Health / player.Stats.hp;
                 player.Components.PlayerStatusIndicator.StartFlash(0.5f, 0.25f, Color.green, 0f, Color.red, 2);
                 //player.Components.PlayerStatusIndicator.ChangeTransparency((player.Stats.hp - player.Stats.Health) / player.Stats.hp);
             }
@@ -170,7 +176,6 @@ public class PlayerActions
             {
                 player.Stats.Health += 50;
                 player.Stats.NumofHeal--;
-                HealthBar.fillAmount = player.Stats.Health / player.Stats.hp;
                 player.Components.PlayerStatusIndicator.StartFlash(0.25f, ((player.Stats.hp - player.Stats.Health) / player.Stats.hp), Color.green, ((player.Stats.hp - player.Stats.Health) / player.Stats.hp)/2f, Color.red, 1);
                 //player.Components.PlayerStatusIndicator.ChangeTransparency((player.Stats.hp - player.Stats.Health) / player.Stats.hp);
             }
@@ -191,9 +196,27 @@ public class PlayerActions
     {
         if (player.Stats.Health < player.Stats.hp)
         {
-            player.Stats.Health += player.Stats.hpregenrate * Time.deltaTime;
+            player.Stats.Health += player.Stats.HPRegen * Time.deltaTime;
             player.Components.PlayerStatusIndicator.ChangeTransparency((player.Stats.hp - player.Stats.Health) / player.Stats.hp);
         }
         HealthBar.fillAmount = player.Stats.Health / player.Stats.hp;
     }
+
+    /*
+    public void ResetPlayerStats(float AfterSeconds)
+    {
+
+        player.StartCoroutine(wait(AfterSeconds));
+
+    }
+
+
+    private IEnumerator wait(float duration)
+    {
+        isWaiting = true;
+        yield return new WaitForSeconds(duration);
+        isWaiting = false;
+    }
+    */
+
 }

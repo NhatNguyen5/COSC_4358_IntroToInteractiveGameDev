@@ -5,10 +5,11 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerReferences
 {
-    Player player;
 
     public Vector2 MousePosToPlayer { get; set; }
     public Vector2 MousePosToPlayerNotNorm { get; set; }
+
+    Player player;
 
     public PlayerReferences(Player player)
     {

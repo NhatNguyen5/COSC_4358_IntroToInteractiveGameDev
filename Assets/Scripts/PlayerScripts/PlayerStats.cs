@@ -29,7 +29,12 @@ public class PlayerStats
     public int NumofPhizer { get; set; }
 
     public bool IsDualWield = false;
-    
+
+    public float Durationz { get; set; }
+    public float Cooldownz { get; set; }
+    public float HPRegenAddz { get; set; }
+    public float StamRegenAddz { get; set; }
+
     [Header("Movement")]
     [SerializeField]
     private float walkSpeed;
@@ -63,6 +68,15 @@ public class PlayerStats
     private int NumOfProtein;
     [SerializeField]
     private int NumOfPhizer;
+    [Header("Phizer")]
+    [SerializeField]
+    private float duration;
+    [SerializeField]
+    private float cooldown;
+    [SerializeField]
+    private float hpRegenAdd;
+    [SerializeField]
+    private float stamRegenAdd;
 
 
 
@@ -86,12 +100,17 @@ public class PlayerStats
 
     public float staminaregenrate { get => staminaRegenRate; }
 
-    public float StaminaRegen { get => TimeBfrStamRegen; }
+    public float StaminaRegenWait { get => TimeBfrStamRegen; }
 
     public int numofheal { get => NumOfHeal; }
 
     public int numofprotein { get => NumOfProtein; }
 
     public int numofphizer { get => NumOfPhizer; }
+
+    public float Duration { get => duration; }
+    public float Cooldown { get => cooldown; }
+    public float HPRegenAdd { get => hpRegenAdd; }
+    public float StamRegenAdd { get => stamRegenAdd; }
 
 }
