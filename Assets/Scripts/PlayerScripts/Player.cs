@@ -75,6 +75,7 @@ public class Player : MonoBehaviour
         utilities = new PlayerUtilities(this);
         references = new PlayerReferences(this);
         stats.Health = stats.hp;
+        stats.HPRegen = stats.hpregenrate;
         stats.Speed = stats.WalkSpeed;
         stats.Stamina = stats.stamina;
         stats.MaxStamina = stats.maxplayerstamina;
@@ -82,8 +83,10 @@ public class Player : MonoBehaviour
         stats.StaminaRegenRate = stats.staminaRegenRate;
         stats.NumofHeal = stats.numofheal;
         stats.NumofProtein = stats.numofprotein;
+        stats.NumofPhizer = stats.numofphizer;
         actions.defaultSpeed = stats.Speed;
         actions.HealCounts.text = stats.NumofHeal.ToString();
+        actions.VaccineCounts.text = stats.NumofPhizer.ToString();
         DashDuration = stats.DashDistance / stats.DashSpeed;
         TrailDur = DashDuration;
         ProteinCounts = GameObject.Find("ProteinCounts").GetComponent<Text>();
@@ -106,6 +109,8 @@ public class Player : MonoBehaviour
         utilities.HandleInput();
         references.CalMousePosToPlayer();
         actions.UpdateHeal();
+        actions.UpdateVaccine();
+        actions.Regen();
         
         if (Input.GetKey(KeyCode.LeftShift) && stats.Direction != Vector2.zero)
         {
@@ -115,6 +120,7 @@ public class Player : MonoBehaviour
             isRunning = true;
             sprint = 0;
         }
+
 
 
         if (stats.Stamina <= stats.MaxStamina && isRunning == false && sprint >= stats.TimeBeforeStamRegen)
@@ -131,81 +137,19 @@ public class Player : MonoBehaviour
                 actions.ToggleDual();
             if (Input.GetKeyUp(KeyCode.E))
                 actions.Heal();
+            if (Input.GetKeyUp(KeyCode.Q))
+                actions.Phizer();
             actions.SwapWeapon();
             //Debug.DrawRay(stats.Position, stats.Direction, Color.green, 0.1f);
             DashProc();
         }
-        //Debug.Log("HP" + stats.hp);
-        //Debug.Log("Health" + stats.Health);
-
-        //Debug.Log(components.PlayerRidgitBody.velocity.magnitude);
-        //Debug.Log(references.MousePosToPlayer);
-        //Debug.Log(enemyManager.timeBetweenSpawns);
-
-        /*
-        if (enemyManager.timeBetweenSpawns == 1000000)
-        {
-            EnemySpawnRate.text = "Infection rates: " + (0).ToString();
-        }
-        else
-        {
-            EnemySpawnRate.text = "Infection rates: " + (spawnRate).ToString();
-
-        }
-        */
-        EnemySpawnRate.transform.Find("HeartMonitorBG")
-            .transform.Find("HeartMonitorLine").GetComponent<RawImage>()
-            .color = new Color(1+(MinTbs - enemyManager.timeBetweenSpawns)/ enemyManager.timeBetweenSpawns, 1-(MaxTbs - enemyManager.timeBetweenSpawns)/ enemyManager.timeBetweenSpawns, 0);
         
-        if (enemyManager.timeBetweenSpawns == 1000000)
-        {
-            spawnRate = defaultSR;
-        }
-        else
-        {
-            spawnRate = 1 / enemyManager.timeBetweenSpawns;
-        }
-
-        if(beatTimer > 0)
-        {
-            beatTimer -= Time.deltaTime;
-        }
-        else
-        {
-            beatTimer = 0;
-        }
-
-        //Debug.Log(beatTimer);
-
-        if (beatTimer == 0)
-        {
-            beatTimer = 0.75f / (spawnRate/defaultSR);
-            //for(int i = 0; i < 2; i++)
-            StartCoroutine(beatGen(0.75f));
-            //StartCoroutine(beatGen(0.75f / spawnRate));
-            
-        }
-        
-            
-
+        UpdateSpawnrate();
     }
 
     private void FixedUpdate()
     {
-        /*
-        if (!enableControl)
-        {
-            currSpeed = stats.Speed;
-            stats.Speed = 0;
-            setSpeedBack = true;
-        }
-
-        if (enableControl && setSpeedBack)
-        {
-            stats.Speed = currSpeed;
-            setSpeedBack = false;
-        }
-        */
+        
         if(enableControl)
         {
             actions.Move(transform);
@@ -218,6 +162,42 @@ public class Player : MonoBehaviour
 
         actions.Animate();
         ProteinCounts.text = stats.NumofProtein.ToString();
+    }
+
+    private void UpdateSpawnrate()
+    {
+        EnemySpawnRate.transform.Find("HeartMonitorBG")
+            .transform.Find("HeartMonitorLine").GetComponent<RawImage>()
+            .color = new Color(1 + (MinTbs - enemyManager.timeBetweenSpawns) / enemyManager.timeBetweenSpawns, 1 - (MaxTbs - enemyManager.timeBetweenSpawns) / enemyManager.timeBetweenSpawns, 0);
+
+        if (enemyManager.timeBetweenSpawns == 1000000)
+        {
+            spawnRate = defaultSR;
+        }
+        else
+        {
+            spawnRate = 1 / enemyManager.timeBetweenSpawns;
+        }
+
+        if (beatTimer > 0)
+        {
+            beatTimer -= Time.deltaTime;
+        }
+        else
+        {
+            beatTimer = 0;
+        }
+
+        //Debug.Log(beatTimer);
+
+        if (beatTimer == 0)
+        {
+            beatTimer = 0.75f / (spawnRate / defaultSR);
+            //for(int i = 0; i < 2; i++)
+            StartCoroutine(beatGen(0.75f));
+            //StartCoroutine(beatGen(0.75f / spawnRate));
+
+        }
     }
 
     private void DashProc()

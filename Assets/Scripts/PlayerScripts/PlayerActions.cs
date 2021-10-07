@@ -13,11 +13,10 @@ public class PlayerActions
     private Transform leftArm;
     private Transform rightArm;
     private Image HealthBar;
-    private Image reloadBarL;
-    private Image reloadBorderL;
-    private Text UIAmmoCountL;
-    private Text UIMaxAmmoCountL;
     public Text HealCounts;
+    public Text VaccineCounts;
+    private GameObject LeftAmmo;
+    private GameObject RWeaponIcon;
 
     public PlayerActions(Player player)
     {
@@ -25,17 +24,29 @@ public class PlayerActions
         leftArm = player.transform.Find("LeftArm");
         rightArm = player.transform.Find("RightArm");
         HealthBar = GameObject.Find("HP").GetComponent<Image>();
-        reloadBarL = GameObject.Find("ReloadBarL").GetComponent<Image>();
-        UIAmmoCountL = GameObject.Find("AmmoCountL").GetComponent<Text>();
-        UIMaxAmmoCountL = GameObject.Find("MaxAmmoCountL").GetComponent<Text>();
-        reloadBorderL = GameObject.Find("ReloadBorderL").GetComponent<Image>();
+        LeftAmmo = GameObject.Find("LeftAmmo");
+        RWeaponIcon = GameObject.Find("WeaponBorderR");
         HealCounts = GameObject.Find("HealCounts").GetComponent<Text>();
-        reloadBarL.gameObject.SetActive(false);
-        UIAmmoCountL.gameObject.SetActive(false);
-        UIMaxAmmoCountL.gameObject.SetActive(false);
-        reloadBorderL.gameObject.SetActive(false);
+        VaccineCounts = GameObject.Find("VaccineCounts").GetComponent<Text>();
+        LeftAmmo.gameObject.SetActive(false);
         DashDistance = player.Stats.DashDistance;
         DashSpeed = player.Stats.DashSpeed;
+        foreach (Transform rw in rightArm)
+        {
+            if (rw.gameObject.activeSelf)
+            {
+                foreach (Transform WIcon in RWeaponIcon.transform)
+                    WIcon.gameObject.SetActive(false);
+                if (rw.name.Contains("Protocal"))
+                {
+                    RWeaponIcon.transform.Find("ProtocalIcon").gameObject.SetActive(true);
+                }
+                else if (rw.name.Contains("Enforcer"))
+                {
+                    RWeaponIcon.transform.Find("EnforcerIcon").gameObject.SetActive(true);
+                }
+            }
+        }
     }
 
     public void Move(Transform transform)
@@ -80,10 +91,7 @@ public class PlayerActions
         if(!leftArm.gameObject.activeSelf)
         {
             leftArm.gameObject.SetActive(true);
-            reloadBarL.gameObject.SetActive(true);
-            UIAmmoCountL.gameObject.SetActive(true);
-            UIMaxAmmoCountL.gameObject.SetActive(true);
-            reloadBorderL.gameObject.SetActive(true);
+            LeftAmmo.gameObject.SetActive(true);
             player.Stats.IsDualWield = true;
 
         }
@@ -98,11 +106,9 @@ public class PlayerActions
                     lWeapon.transform.rotation = leftArm.transform.rotation;
                 }
             }
+
             leftArm.gameObject.SetActive(false);
-            reloadBarL.gameObject.SetActive(false);
-            UIAmmoCountL.gameObject.SetActive(false);
-            UIMaxAmmoCountL.gameObject.SetActive(false);
-            reloadBorderL.gameObject.SetActive(false);
+            LeftAmmo.gameObject.SetActive(false);
             player.Stats.IsDualWield = false;
         }
         //Debug.Log("PA: " + player.Stats.IsUpWhenSwap);
@@ -119,6 +125,17 @@ public class PlayerActions
                 if (rw.GetComponent<RightWeapon>().Slot == input)
                 {
                     rw.gameObject.SetActive(true);
+                    foreach (Transform WIcon in RWeaponIcon.transform)
+                        WIcon.gameObject.SetActive(false);
+                    if (rw.name.Contains("Protocal"))
+                    {
+                        RWeaponIcon.transform.Find("ProtocalIcon").gameObject.SetActive(true);
+                    }
+                    else if(rw.name.Contains("Enforcer"))
+                    {
+                        RWeaponIcon.transform.Find("EnforcerIcon").gameObject.SetActive(true);
+                    }
+
                 }
                 else
                 {
@@ -129,6 +146,11 @@ public class PlayerActions
                 }
             }
         }
+    }
+
+    public void Phizer()
+    {
+
     }
 
     public void Heal()
@@ -158,5 +180,20 @@ public class PlayerActions
     public void UpdateHeal()
     {
         HealCounts.text = player.Stats.NumofHeal.ToString();
+    }
+
+    public void UpdateVaccine()
+    {
+        VaccineCounts.text = player.Stats.NumofPhizer.ToString();
+    }
+
+    public void Regen()
+    {
+        if (player.Stats.Health < player.Stats.hp)
+        {
+            player.Stats.Health += player.Stats.hpregenrate * Time.deltaTime;
+            player.Components.PlayerStatusIndicator.ChangeTransparency((player.Stats.hp - player.Stats.Health) / player.Stats.hp);
+        }
+        HealthBar.fillAmount = player.Stats.Health / player.Stats.hp;
     }
 }

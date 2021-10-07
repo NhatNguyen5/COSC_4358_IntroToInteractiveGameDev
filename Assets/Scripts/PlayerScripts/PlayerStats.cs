@@ -15,6 +15,8 @@ public class PlayerStats
 
     public float Health { get; set; }
 
+    public float HPRegen { get; set; }
+
     public float Stamina { get; set; }
 
     public float MaxStamina { get; set; }
@@ -24,6 +26,7 @@ public class PlayerStats
     public int NumofHeal { get; set; }
 
     public int NumofProtein { get; set; }
+    public int NumofPhizer { get; set; }
 
     public bool IsDualWield = false;
     
@@ -44,6 +47,8 @@ public class PlayerStats
     [SerializeField]
     private float HP;
     [SerializeField]
+    private float HPRegenRate;
+    [SerializeField]
     private float playerStamina;
     [SerializeField]
     private float maxPlayerStamina;
@@ -56,6 +61,8 @@ public class PlayerStats
     private int NumOfHeal;
     [SerializeField]
     private int NumOfProtein;
+    [SerializeField]
+    private int NumOfPhizer;
 
 
 
@@ -71,6 +78,8 @@ public class PlayerStats
 
     public float hp { get => HP; }
 
+    public float hpregenrate { get => HPRegenRate; }
+
     public float stamina { get => playerStamina; }
 
     public float maxplayerstamina { get => maxPlayerStamina; }
@@ -82,5 +91,7 @@ public class PlayerStats
     public int numofheal { get => NumOfHeal; }
 
     public int numofprotein { get => NumOfProtein; }
+
+    public int numofphizer { get => NumOfPhizer; }
 
 }
