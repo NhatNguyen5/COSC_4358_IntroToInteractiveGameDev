@@ -902,7 +902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6360f80c29b839040a8d726e015b6221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rechargeRate: 1
+  rechargeRate: 5
   bcr1: 1
   bcd1: 1
   bcr2: 1
@@ -34628,7 +34628,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: delay
-      value: 0.09
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: pierce
@@ -34640,31 +34640,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: critRate
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bEndRange
-      value: 6
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: burstFire
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: critDamage
-      value: 1.5
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: reloadTime
-      value: 1.5
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bStartRange
-      value: 3
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: bulletSpeed
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bulletDamage
-      value: 23
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: timeBtwBurst
@@ -34672,11 +34676,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: weaponWeight
-      value: 0.1
+      value: 0.33
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: CostPerBullet
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: increaseBloom
@@ -34684,7 +34688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: maxAmmoInClip
-      value: 30
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: timeToDropDmg
@@ -34692,15 +34696,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bloomResetTimer
-      value: 0.21
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: targetsToPierce
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: dropOffPerTarget
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bulletDamageDropOff
