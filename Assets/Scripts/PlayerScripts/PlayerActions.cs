@@ -59,17 +59,17 @@ public class PlayerActions
     public void Sprint()
     {
         if(player.Stats.Stamina >= 0)
-            player.Stats.Speed = player.Stats.SprintSpeed;
+            player.Stats.Speed = player.Stats.SprintSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight);
     }
 
     public void Walk()
     {
-        player.Stats.Speed = player.Stats.WalkSpeed;
+        player.Stats.Speed = player.Stats.WalkSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight);
     }
 
     public void Dash(Vector2 Dir)
     {
-        player.Components.PlayerRidgitBody.MovePosition(player.Stats.Position + Dir * DashSpeed * Time.fixedDeltaTime);
+        player.Components.PlayerRidgitBody.MovePosition(player.Stats.Position + Dir * DashSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight) * Time.fixedDeltaTime);
     }
 
     public void Animate()

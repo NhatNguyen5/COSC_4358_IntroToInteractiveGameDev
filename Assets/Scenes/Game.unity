@@ -874,7 +874,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &206181706
 Transform:
@@ -902,8 +902,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6360f80c29b839040a8d726e015b6221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseCritRate: 0
-  BaseCritDamage: 0
+  rechargeRate: 1
+  bcr1: 1
+  bcd1: 1
+  bcr2: 1
+  bcd2: 1
+  playerMaxReserves: 1000
+  chargeMultiplyer: 1
 --- !u!1 &226126651
 GameObject:
   m_ObjectHideFlags: 0
@@ -34389,6 +34394,106 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: bloom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: delay
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: pierce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: critRate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: bEndRange
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: burstFire
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: critDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: reloadTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: bStartRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 220538926086635209, guid: d91d284eec644e444b4c417637b4b9ac, type: 3}
+    - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: weaponWeight
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: CostPerBullet
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: increaseBloom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: timeToDropDmg
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: bloomResetTimer
+      value: 0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: targetsToPierce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: dropOffPerTarget
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: bulletDamageDropOff
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292329628908, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: critRate
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292329628908, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: critDamage
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292329628908, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: weaponWeight
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292329628908, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: CostPerBullet
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292329628908, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: maxAmmoInClip
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292329628908, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: timeToDropDmg
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292329628908, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: bulletDamageDropOff
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441637, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -34518,20 +34623,88 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1819652237}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: bloom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: delay
       value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: pierce
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: spread
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: critRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: bEndRange
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: burstFire
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: critDamage
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: reloadTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: bStartRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: bulletDamage
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: timeBtwBurst
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: weaponWeight
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: CostPerBullet
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: increaseBloom
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: maxAmmoInClip
-      value: 50
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: timeToDropDmg
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: bloomResetTimer
+      value: 0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: targetsToPierce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: dropOffPerTarget
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: bulletDamageDropOff
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4100972221008472471, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: Cooldown

@@ -84,6 +84,10 @@ public class Enemy1 : MonoBehaviour
     float a;
 
 
+    private float critRate = 0;
+    private float critDMG = 0;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -286,9 +290,12 @@ public class Enemy1 : MonoBehaviour
 
         if (collision.tag == "Bullet")
         {
-            int damage = collision.gameObject.GetComponent<Bullet>().damage;
+            float damage = collision.gameObject.GetComponent<Bullet>().damage;
             float speed = collision.gameObject.GetComponent<Bullet>().speed;
+            critRate = collision.gameObject.GetComponent<Bullet>().critRate;
+            critDMG = collision.gameObject.GetComponent<Bullet>().critDMG;
             knockbackForce = collision.gameObject.GetComponent<Bullet>().knockbackForce;
+
 
             takeDamage(damage, collision.transform, speed);
 
@@ -308,10 +315,10 @@ public class Enemy1 : MonoBehaviour
         //Debug.Log(damage);
         bool iscrit = false;
         float chance2crit = Random.Range(0f, 1f);
-        if (chance2crit <= GlobalPlayerVariables.critRate)
+        if (chance2crit <= critRate)
         {
             iscrit = true;
-            damage *= GlobalPlayerVariables.critDmg;
+            damage *= critDMG;
         }
 
         HP -= damage;
@@ -326,23 +333,26 @@ public class Enemy1 : MonoBehaviour
 
     void showDamage(float damage, Transform impact, float speed, bool crit)
     {
-
-        Vector3 direction = (transform.position - impact.transform.position).normalized;
-
-        //might add to impact to make it go past enemy
-        var go = Instantiate(DamageText, impact.position, Quaternion.identity);
-        if (crit == false)
+        damage = Mathf.Round(damage);
+        if (damage > 1)
         {
-            go.GetComponent<TextMesh>().text = damage.ToString();
+            Vector3 direction = (transform.position - impact.transform.position).normalized;
+
+            //might add to impact to make it go past enemy
+            var go = Instantiate(DamageText, impact.position, Quaternion.identity);
+            if (crit == false)
+            {
+                go.GetComponent<TextMesh>().text = damage.ToString();
+            }
+            else
+            {
+                //Debug.Log("CRIT");
+                go.GetComponent<TextMesh>().text = damage.ToString();
+                go.GetComponent<TextMesh>().color = Color.red;
+                go.GetComponent<TextMesh>().fontSize *= 3;
+            }
+            go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, speed / 5);
         }
-        else
-        {
-            //Debug.Log("CRIT");
-            go.GetComponent<TextMesh>().text = damage.ToString();
-            go.GetComponent<TextMesh>().color = Color.red;
-            go.GetComponent<TextMesh>().fontSize *= 3;
-        }
-        go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, speed / 5);
     }
 
 

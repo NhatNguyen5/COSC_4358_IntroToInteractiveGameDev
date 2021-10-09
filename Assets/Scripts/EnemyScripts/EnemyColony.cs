@@ -69,7 +69,7 @@ public class EnemyColony : MonoBehaviour
 
         if (collision.tag == "Bullet")
         {
-            int damage = collision.gameObject.GetComponent<Bullet>().damage;
+            float damage = collision.gameObject.GetComponent<Bullet>().damage;
             float speed = collision.gameObject.GetComponent<Bullet>().speed;
             
 
@@ -107,23 +107,26 @@ public class EnemyColony : MonoBehaviour
 
     void showDamage(float damage, Transform impact, float speed, bool crit)
     {
-
-        Vector3 direction = (transform.position - impact.transform.position).normalized;
-
-        //might add to impact to make it go past enemy
-        var go = Instantiate(DamageText, impact.position, Quaternion.identity);
-        if (crit == false)
+        damage = Mathf.Round(damage);
+        if (damage > 1)
         {
-            go.GetComponent<TextMesh>().text = damage.ToString();
+            Vector3 direction = (transform.position - impact.transform.position).normalized;
+
+            //might add to impact to make it go past enemy
+            var go = Instantiate(DamageText, impact.position, Quaternion.identity);
+            if (crit == false)
+            {
+                go.GetComponent<TextMesh>().text = damage.ToString();
+            }
+            else
+            {
+                //Debug.Log("CRIT");
+                go.GetComponent<TextMesh>().text = damage.ToString();
+                go.GetComponent<TextMesh>().color = Color.red;
+                go.GetComponent<TextMesh>().fontSize *= 3;
+            }
+            go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, speed / 5);
         }
-        else
-        {
-            //Debug.Log("CRIT");
-            go.GetComponent<TextMesh>().text = damage.ToString();
-            go.GetComponent<TextMesh>().color = Color.red;
-            go.GetComponent<TextMesh>().fontSize *= 3;
-        }
-        go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, speed / 5);
     }
 
 
