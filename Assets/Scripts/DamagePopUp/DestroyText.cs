@@ -20,6 +20,9 @@ public class DestroyText : MonoBehaviour
 
     public void spawnPos(float x = 0, float y = 0, float Speed = 0)
     {
+        //float xcount = Random.Range(-0.5f, 0.5f);
+        //float ycount = Random.Range(-0.5f, 0.5f);
+
         float xcount = Random.Range(-0.5f, 0.5f);
         float ycount = Random.Range(-0.5f, 0.5f);
         Vector3 Offset = new Vector3(x + xcount, y + ycount, 0);
@@ -45,5 +48,4 @@ public class DestroyText : MonoBehaviour
         //transform.position.x = transform.position.x + x1; 
         //transform.localPosition += Offset;
     }
-
 }
