@@ -143,7 +143,7 @@ public class RightWeapon : MonoBehaviour
 
         countFillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.reserveCount;
         //Debug.Log(countFillAmount);
-        reloadBar.fillAmount = countFillAmount;
+        //reloadBar.fillAmount = countFillAmount;
 
     }
 

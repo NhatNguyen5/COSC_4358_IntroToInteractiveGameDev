@@ -64,7 +64,7 @@ public class PlayerIndicator : MonoBehaviour
                 cappedTargetScreenPosition.x += (- BorderSize + Screen.height - cappedTargetScreenPosition.y) / Mathf.Tan(angle / Mathf.Rad2Deg);
                 cappedTargetScreenPosition.y = Screen.height - BorderSize;
             }
-            Vector3 pointerWorldPosition = uiCamera.ScreenToWorldPoint(cappedTargetScreenPosition);
+            Vector3 pointerWorldPosition = uiCamera.WorldToScreenPoint(cappedTargetScreenPosition);
             pointerRectTransform.position = pointerWorldPosition;
             pointerRectTransform.localPosition = new Vector3(pointerRectTransform.localPosition.x, pointerRectTransform.localPosition.y);
         }
