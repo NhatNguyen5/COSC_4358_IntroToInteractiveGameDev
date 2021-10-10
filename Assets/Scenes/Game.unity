@@ -34551,6 +34551,10 @@ PrefabInstance:
       propertyPath: bulletDamageDropOff
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3517825292677397512, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 796179245250493503, guid: 9788de4400d2216449d3ed283492d351, type: 3}
     - target: {fileID: 3517825292825441637, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -34599,6 +34603,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441640, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441640, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441640, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: beat
       value: 
@@ -34616,8 +34632,12 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: stats.dashSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: stats.hpRegenAdd
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: stats.HPRegenRate
@@ -34628,8 +34648,12 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: stats.dashDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: stats.stamRegenAdd
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: references.Duration
@@ -34642,6 +34666,14 @@ PrefabInstance:
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: references.duration
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: stats.Phizercooldown
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: stats.Phizerduration
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: references.HPRegenAdd
@@ -34794,6 +34826,10 @@ PrefabInstance:
     - target: {fileID: 4100972221008472471, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: StaminaRegenAdd
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8693076160950319758, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: m_CategoryHash
+      value: -3.2046743e+15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}

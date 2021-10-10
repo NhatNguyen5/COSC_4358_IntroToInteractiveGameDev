@@ -43,7 +43,7 @@ public class PlayerActions
         DashSpeed = player.Stats.DashSpeed;
         VaccineCooldownDisplay = GameObject.Find("VaccineCoolDownIndicator").GetComponent<Image>();
         HealCooldownDisplay = GameObject.Find("HealCoolDownIndicator").GetComponent<Image>();
-
+        player.Components.PlayerTrailRenderer.endColor = new Color(184/255f, 59/255f, 60/255f); // new Color(184, 59, 60);
         foreach (Transform rw in rightArm)
         {
             if (rw.gameObject.activeSelf)
@@ -219,6 +219,7 @@ public class PlayerActions
         player.Stats.NumofPhizer -= 1;
         player.Stats.HPRegen += player.Stats.HPRegenAdd;
         player.Stats.StaminaRegenRate += player.Stats.StamRegenAdd;
+        player.Components.PlayerTrailRenderer.endColor = new Color(0, 76 / 255f, 134 / 255f);
         currSpriteCategory = "PhizerHemo";
     }
 
@@ -266,6 +267,7 @@ public class PlayerActions
     {
         player.Stats.HPRegen -= player.Stats.HPRegenAdd;
         player.Stats.StaminaRegenRate -= player.Stats.StamRegenAdd;
+        player.Components.PlayerTrailRenderer.endColor = new Color(184 / 255f, 59 / 255f, 60 / 255f);
         currSpriteCategory = "DefaultHemo";
     }
 
