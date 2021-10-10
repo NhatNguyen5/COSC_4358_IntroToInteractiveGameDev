@@ -664,17 +664,11 @@ MonoBehaviour:
     playerTrailRenderer: {fileID: 3517825292825441640}
     playerCapsuleCollider2D: {fileID: 3517825292825441641}
     playerSpriteRenderer: {fileID: 3517825292677397512}
+    spriteLibrary: {fileID: 8295273348960893508}
+    targetResolver: {fileID: 8693076160950319758}
+    targetCategory: DefaultHemo
   enemyManager: {fileID: 0}
   enableControl: 1
-  Hemo_Anim:
-  - {fileID: 7400000, guid: 8a6e5f9de16d85643993b3d72e271156, type: 2}
-  - {fileID: 7400000, guid: 147a395423dccb041ac8d5388b8c2bb4, type: 2}
-  - {fileID: 7400000, guid: a32eb8e311d3c334aacaac7f5e22a849, type: 2}
-  - {fileID: 7400000, guid: a930426da851b9c4ca38ccf8ee9401b6, type: 2}
-  - {fileID: 7400000, guid: 637165478ec93ca48b92340044086bfb, type: 2}
-  - {fileID: 7400000, guid: 0b02cb6e8aafd0f4e85af5ef81823bf4, type: 2}
-  - {fileID: 7400000, guid: c5f846582c3d89f4cb629f78db9d2a22, type: 2}
-  - {fileID: 7400000, guid: a959d10a0152d924fa404ff31f1444df, type: 2}
   beat: {fileID: 0}
 --- !u!114 &3517825292825441646
 MonoBehaviour:

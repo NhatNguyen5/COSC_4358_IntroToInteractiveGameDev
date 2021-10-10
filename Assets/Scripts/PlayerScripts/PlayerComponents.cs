@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.U2D.Animation;
 
 [System.Serializable]
 public class PlayerComponents
@@ -19,6 +20,13 @@ public class PlayerComponents
     private CapsuleCollider2D playerCapsuleCollider2D;
     [SerializeField]
     private SpriteRenderer playerSpriteRenderer;
+    [SerializeField]
+    private SpriteLibrary spriteLibrary = default;
+    [SerializeField]
+    private SpriteResolver targetResolver = default;
+    [SerializeField]
+    private string targetCategory = default;
+
 
     public Rigidbody2D PlayerRidgitBody
     {
@@ -53,5 +61,20 @@ public class PlayerComponents
     public SpriteRenderer PlayerSpriteRenderer
     {
         get => playerSpriteRenderer;
+    }
+
+    public SpriteLibrary PlayerSpriteLibrary
+    {
+        get => spriteLibrary;
+    }
+
+    public SpriteResolver PlayerSpriteResolver
+    {
+        get => targetResolver;
+    }
+
+    public string PlayerTargetCategory
+    {
+        get => targetCategory;
     }
 }

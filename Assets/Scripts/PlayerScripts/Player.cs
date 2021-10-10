@@ -68,9 +68,6 @@ public class Player : MonoBehaviour
 
     private float VaccineCooldownDisplay;
 
-    [SerializeField]
-    private AnimationClip[] Hemo_Anim;
-
     //private float currSpeed;
 
     //private bool setSpeedBack = false;
@@ -336,6 +333,9 @@ public class Player : MonoBehaviour
 
     private void HemoUsesPhizer()
     {
+
+
+        /*
         Sprite[] spriteSheetSprites = Resources.LoadAll<Sprite>("Sprites/Hemo_Phizer");
         
         Debug.Log(spriteSheetSprites);
@@ -352,7 +352,7 @@ public class Player : MonoBehaviour
         curve = new AnimationCurve(key);
         Hemo_Anim[0].SetCurve("", typeof(SpriteRenderer), "", curve);
         //clip.SetCurve("", typeof(Sprite),"Sprite", curve);
-        
+        */
     }
 
 }

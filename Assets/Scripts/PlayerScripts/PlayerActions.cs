@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,9 @@ public class PlayerActions
     private GameObject LeftAmmo;
     private GameObject RWeaponIcon;
     private Image VaccineCooldownDisplay;
+    private float relaMouseAngle;
+
+    private string[] CurrHemoSprite;
 
     //private bool isWaiting = false;
 
@@ -51,6 +55,8 @@ public class PlayerActions
                 }
             }
         }
+        CurrHemoSprite = player.Components.PlayerSpriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(player.Components.PlayerTargetCategory).ToArray();
+
     }
 
     public void Move(Transform transform)
@@ -78,7 +84,48 @@ public class PlayerActions
     {
         player.Components.PlayerAnimator.SetFloat("MovementX", player.References.MousePosToPlayer.x);
         player.Components.PlayerAnimator.SetFloat("MovementY", player.References.MousePosToPlayer.y);
-        if(player.Components.PlayerRidgitBody.velocity.magnitude == 0)
+
+        relaMouseAngle = player.Stats.Angle;
+
+        if (relaMouseAngle < 0)
+            relaMouseAngle = relaMouseAngle + 360;
+
+        Debug.Log(relaMouseAngle);
+        //New 8 directions system
+        if(relaMouseAngle < 22.5 && relaMouseAngle > 337.5) //Right
+        {
+
+        }
+        else if(relaMouseAngle < 22.5 && relaMouseAngle > 337.5) //BotRight
+        {
+
+        }
+        else if (relaMouseAngle < 22.5 && relaMouseAngle > 337.5) //Down
+        {
+
+        }
+        else if (relaMouseAngle < 22.5 && relaMouseAngle > 337.5) //BotLeft
+        {
+
+        }
+        else if (relaMouseAngle < 22.5 && relaMouseAngle > 337.5) //Left
+        {
+
+        }
+        else if (relaMouseAngle < 22.5 && relaMouseAngle > 337.5) //TopLeft
+        {
+
+        }
+        else if (relaMouseAngle < 22.5 && relaMouseAngle > 337.5) //Up
+        {
+
+        }
+        else if (relaMouseAngle < 22.5 && relaMouseAngle > 337.5) //TopRight
+        {
+
+        }
+
+        if (player.Components.PlayerRidgitBody.velocity.magnitude == 0)
         {
             player.Components.PlayerAnimator.SetFloat("BounceRate", 0.5f);
         }
@@ -215,6 +262,7 @@ public class PlayerActions
     {
         VaccineCooldownDisplay.fillAmount = FillAmount;
     }
+
 
     /*
 
