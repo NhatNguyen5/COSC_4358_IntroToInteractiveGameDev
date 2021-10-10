@@ -30,8 +30,8 @@ public class PlayerStats
 
     public bool IsDualWield = false;
 
-    public float Durationz { get; set; }
-    public float Cooldownz { get; set; }
+    public float PhizerDurationz { get; set; }
+    public float PhizerCooldownz { get; set; }
     public float HPRegenAddz { get; set; }
     public float StamRegenAddz { get; set; }
 
@@ -70,9 +70,9 @@ public class PlayerStats
     private int NumOfPhizer;
     [Header("Phizer")]
     [SerializeField]
-    private float duration;
+    private float Phizerduration;
     [SerializeField]
-    private float cooldown;
+    private float Phizercooldown;
     [SerializeField]
     private float hpRegenAdd;
     [SerializeField]
@@ -108,8 +108,8 @@ public class PlayerStats
 
     public int numofphizer { get => NumOfPhizer; }
 
-    public float Duration { get => duration; }
-    public float Cooldown { get => cooldown; }
+    public float PhizerDuration { get => Phizerduration; }
+    public float PhizerCooldown { get => Phizercooldown; }
     public float HPRegenAdd { get => hpRegenAdd; }
     public float StamRegenAdd { get => stamRegenAdd; }
 

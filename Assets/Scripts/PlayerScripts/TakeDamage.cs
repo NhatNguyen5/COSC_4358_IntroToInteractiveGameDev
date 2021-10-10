@@ -32,7 +32,7 @@ public class TakeDamage : MonoBehaviour
         maxHP = GetComponent<Player>().Stats.Health;
         //rb = GetComponent<Rigidbody2D>();
         //sprite = GetComponent<SpriteRenderer>();
-        sprite = transform.Find("PlayerSprite").GetComponent<SpriteRenderer>();
+        sprite = transform.Find("PlayerSprite_HemoDefault").GetComponent<SpriteRenderer>();
     }
 
 

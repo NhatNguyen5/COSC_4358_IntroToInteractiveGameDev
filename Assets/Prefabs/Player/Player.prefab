@@ -210,11 +210,28 @@ MonoBehaviour:
   amountOfShots: 1
   ADSRange: 15
   ADSSpeed: 10
+  weaponWeight: 1
+  bloom: 0
+  bStartRange: 0
+  bEndRange: 0
+  increaseBloom: 0
+  bloomResetTimer: 0
+  critRate: 0
+  critDamage: 0
+  pierce: 0
+  targetsToPierce: 0
+  dropOffPerTarget: 0
+  bulletSpeed: 45
+  bulletDamage: 25
+  bullletKnockBackForce: 0.25
+  bulletDamageDropOff: 0
+  timeToDropDmg: 0
   burstFire: 0
   timeBtwBurst: 0.07
   timesToShoot: 3
   maxAmmoInClip: 30
   reloadTime: 1
+  CostPerBullet: 0
 --- !u!95 &3517825292283961420
 Animator:
   serializedVersion: 3
@@ -340,11 +357,28 @@ MonoBehaviour:
   amountOfShots: 10
   ADSRange: 3
   ADSSpeed: 10
+  weaponWeight: 1
+  bloom: 0
+  bStartRange: 0
+  bEndRange: 0
+  increaseBloom: 0
+  bloomResetTimer: 0
+  critRate: 0
+  critDamage: 0
+  pierce: 0
+  targetsToPierce: 0
+  dropOffPerTarget: 0
+  bulletSpeed: 45
+  bulletDamage: 25
+  bullletKnockBackForce: 0.25
+  bulletDamageDropOff: 0
+  timeToDropDmg: 0
   burstFire: 0
   timeBtwBurst: 0
   timesToShoot: 0
   maxAmmoInClip: 5
   reloadTime: 2
+  CostPerBullet: 0
 --- !u!95 &3517825292329628909
 Animator:
   serializedVersion: 3
@@ -375,8 +409,10 @@ GameObject:
   - component: {fileID: 3517825292677397514}
   - component: {fileID: 3517825292677397512}
   - component: {fileID: 3517825292677397513}
+  - component: {fileID: 8295273348960893508}
+  - component: {fileID: 8693076160950319758}
   m_Layer: 9
-  m_Name: PlayerSprite
+  m_Name: PlayerSprite_HemoDefault
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -436,7 +472,7 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6353777485397086779, guid: af026aeb232b2fa448fb2b448e3504d4, type: 3}
+  m_Sprite: {fileID: 796179245250493503, guid: 9788de4400d2216449d3ed283492d351, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -466,6 +502,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8295273348960893508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3517825292677397515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SpriteLibraryAsset: {fileID: 11400000, guid: eafcc93a36333ee478158230a3208941, type: 2}
+--- !u!114 &8693076160950319758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3517825292677397515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: -3.2046743e+15
+  m_labelHash: -0.025054464
 --- !u!1 &3517825292825441639
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,7 +542,6 @@ GameObject:
   - component: {fileID: 3517825292825441641}
   - component: {fileID: 3517825292825441642}
   - component: {fileID: 3517825292825441643}
-  - component: {fileID: 4100972221008472471}
   - component: {fileID: 3517825292825441646}
   - component: {fileID: 3517825292825441638}
   - component: {fileID: 3517825292825441640}
@@ -588,6 +650,10 @@ MonoBehaviour:
     NumOfHeal: 5
     NumOfProtein: 0
     NumOfPhizer: 2
+    Phizerduration: 0
+    Phizercooldown: 0
+    hpRegenAdd: 10
+    stamRegenAdd: 0.5
   components:
     playerRidgitBody: {fileID: 3517825292825441636}
     playerAnimator: {fileID: 3517825292677397513}
@@ -597,26 +663,19 @@ MonoBehaviour:
       m_Bits: 512
     playerTrailRenderer: {fileID: 3517825292825441640}
     playerCapsuleCollider2D: {fileID: 3517825292825441641}
-  references:
-    duration: 2
-    cooldown: 5
-    hpRegenAdd: 10
-    stamRegenAdd: 0.5
+    playerSpriteRenderer: {fileID: 3517825292677397512}
   enemyManager: {fileID: 0}
   enableControl: 1
+  Hemo_Anim:
+  - {fileID: 7400000, guid: 8a6e5f9de16d85643993b3d72e271156, type: 2}
+  - {fileID: 7400000, guid: 147a395423dccb041ac8d5388b8c2bb4, type: 2}
+  - {fileID: 7400000, guid: a32eb8e311d3c334aacaac7f5e22a849, type: 2}
+  - {fileID: 7400000, guid: a930426da851b9c4ca38ccf8ee9401b6, type: 2}
+  - {fileID: 7400000, guid: 637165478ec93ca48b92340044086bfb, type: 2}
+  - {fileID: 7400000, guid: 0b02cb6e8aafd0f4e85af5ef81823bf4, type: 2}
+  - {fileID: 7400000, guid: c5f846582c3d89f4cb629f78db9d2a22, type: 2}
+  - {fileID: 7400000, guid: a959d10a0152d924fa404ff31f1444df, type: 2}
   beat: {fileID: 0}
---- !u!114 &4100972221008472471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3517825292825441639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a2adf1a26668354b8a392ae20e2b054, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3517825292825441646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -885,11 +944,28 @@ MonoBehaviour:
   amountOfShots: 1
   ADSRange: 15
   ADSSpeed: 10
+  weaponWeight: 1
+  bloom: 0
+  bStartRange: 0
+  bEndRange: 0
+  increaseBloom: 0
+  bloomResetTimer: 0
+  critRate: 0
+  critDamage: 0
+  pierce: 0
+  targetsToPierce: 0
+  dropOffPerTarget: 0
+  bulletSpeed: 45
+  bulletDamage: 25
+  bullletKnockBackForce: 0.25
+  bulletDamageDropOff: 0
+  timeToDropDmg: 0
   burstFire: 0
   timeBtwBurst: 0.07
   timesToShoot: 3
   maxAmmoInClip: 30
   reloadTime: 1.8
+  CostPerBullet: 0
 --- !u!95 &3517825294086467478
 Animator:
   serializedVersion: 3

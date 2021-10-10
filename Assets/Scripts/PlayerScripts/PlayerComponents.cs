@@ -17,6 +17,8 @@ public class PlayerComponents
     private TrailRenderer playerTrailRenderer;
     [SerializeField]
     private CapsuleCollider2D playerCapsuleCollider2D;
+    [SerializeField]
+    private SpriteRenderer playerSpriteRenderer;
 
     public Rigidbody2D PlayerRidgitBody
     {
@@ -46,5 +48,10 @@ public class PlayerComponents
     public CapsuleCollider2D PlayerCapsuleCollider2D
     {
         get => playerCapsuleCollider2D;
+    }
+
+    public SpriteRenderer PlayerSpriteRenderer
+    {
+        get => playerSpriteRenderer;
     }
 }

@@ -62,7 +62,7 @@ public class LeftWeapon : MonoBehaviour
     private int ammoCount;
     public float reloadTime;
     private float reloadCooldown;
-    private Image reloadBar;
+    //private Image reloadBar;
     private Text UIAmmoCount;
     private Text UIMaxAmmoCount;
     private bool reload;
@@ -74,7 +74,7 @@ public class LeftWeapon : MonoBehaviour
     {
         reloadOnStartUp();
         reloadCooldown = reloadTime;
-        reloadBar = GameObject.Find("ReloadBarL").GetComponent<Image>();
+        //reloadBar = GameObject.Find("ReloadBarL").GetComponent<Image>();
         UIAmmoCount = GameObject.Find("AmmoCountL").GetComponent<Text>();
         UIMaxAmmoCount = GameObject.Find("MaxAmmoCountL").GetComponent<Text>();
         setAmmoCount();
@@ -132,7 +132,7 @@ public class LeftWeapon : MonoBehaviour
         }
         firingDelay = 0;
         Debug.Log(GlobalPlayerVariables.Reserves);
-        reloadBar.fillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.reserveCount;
+        //reloadBar.fillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.reserveCount;
     }
 
     private void setAmmoCount()
@@ -142,7 +142,7 @@ public class LeftWeapon : MonoBehaviour
 
         countFillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.reserveCount;
         //Debug.Log(countFillAmount);
-        reloadBar.fillAmount = countFillAmount;
+        //reloadBar.fillAmount = countFillAmount;
 
     }
 

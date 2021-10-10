@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Animations;
 
 public class Player : MonoBehaviour
 {
@@ -59,6 +60,17 @@ public class Player : MonoBehaviour
 
     private bool phaseOverWrite = false;
 
+    private bool resetPlayerStatsRequest = false;
+
+    private bool inEffect = false;
+
+    private bool AvailableToUse = true;
+
+    private float VaccineCooldownDisplay;
+
+    [SerializeField]
+    private AnimationClip[] Hemo_Anim;
+
     //private float currSpeed;
 
     //private bool setSpeedBack = false;
@@ -85,8 +97,8 @@ public class Player : MonoBehaviour
         stats.NumofProtein = stats.numofprotein;
         stats.NumofPhizer = stats.numofphizer;
 
-        stats.Durationz = stats.Duration;
-        stats.Cooldownz = stats.Cooldown;
+        stats.PhizerDurationz = stats.PhizerDuration;
+        stats.PhizerCooldownz = stats.PhizerCooldown;
         stats.HPRegenAddz = stats.HPRegenAdd;
         stats.StamRegenAddz = stats.StamRegenAdd;
 
@@ -133,7 +145,7 @@ public class Player : MonoBehaviour
 
         if (stats.Stamina <= stats.MaxStamina && isRunning == false && sprint >= stats.TimeBeforeStamRegen)
         { 
-            stats.Stamina += Time.deltaTime * stats.staminaregenrate;
+            stats.Stamina += Time.deltaTime * stats.StaminaRegenRate;
             StaminaBar.fillAmount = stats.Stamina / stats.MaxStamina;
         }
         isRunning = false;
@@ -145,13 +157,36 @@ public class Player : MonoBehaviour
                 actions.ToggleDual();
             if (Input.GetKeyUp(KeyCode.E))
                 actions.Heal();
-            if (Input.GetKeyUp(KeyCode.Q))
+            if (Input.GetKeyUp(KeyCode.Q) && AvailableToUse)
+            {
                 actions.Phizer();
+                VaccineCooldownDisplay = stats.PhizerCooldown;
+                HemoUsesPhizer();
+                StartCoroutine(ResetStats(stats.PhizerDuration));
+                StartCoroutine(VaccineCooldown(stats.PhizerCooldown));
+            }
             actions.SwapWeapon();
             //Debug.DrawRay(stats.Position, stats.Direction, Color.green, 0.1f);
             DashProc();
         }
-        
+        //Debug.Log(VaccineCooldownDisplay);
+        if(resetPlayerStatsRequest && !inEffect)
+        {
+            Debug.Log("RequestReset");
+            actions.ResetPlayerStats();
+            resetPlayerStatsRequest = false;
+        }
+        Debug.Log(stats.StaminaRegenRate);
+        if(VaccineCooldownDisplay > 0)
+        {
+            VaccineCooldownDisplay -= Time.deltaTime;
+            actions.VaccineCooldownDisplayUpdate(VaccineCooldownDisplay/stats.PhizerCooldown);
+        }
+        else
+        {
+            VaccineCooldownDisplay = 0;
+        }
+
         UpdateSpawnrate();
     }
 
@@ -254,7 +289,9 @@ public class Player : MonoBehaviour
     private IEnumerator beatGen(float duration)
     {
         GameObject gendBeat;
-        gendBeat = Instantiate(beat, EnemySpawnRate.transform.Find("HeartMonitorBG"), false);
+        Transform HMBG = EnemySpawnRate.transform.Find("HeartMonitorBG");
+        gendBeat = Instantiate(beat, HMBG, false);
+        //gendBeat.transform.localScale = HMBG.localScale;
         gendBeat.GetComponent<RawImage>().color = new Color(1 + (MinTbs - enemyManager.timeBetweenSpawns) / enemyManager.timeBetweenSpawns, 1 - (MaxTbs - enemyManager.timeBetweenSpawns) / enemyManager.timeBetweenSpawns, 0);
         //gendBeat.GetComponent<Animator>().SetFloat("BeatRate", spawnRate);
         yield return new WaitForSeconds(duration);
@@ -272,7 +309,7 @@ public class Player : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Actor");
     }
 
-    public IEnumerator TakeOver(float duration)
+    public IEnumerator TakeOver(float duration) //doesn't work!!
     {
 
         enableControl = false;
@@ -281,4 +318,41 @@ public class Player : MonoBehaviour
 
         phaseOverWrite = true;
     }
+
+    private IEnumerator ResetStats(float AfterSeconds)
+    {
+        inEffect = true;
+        resetPlayerStatsRequest = true;
+        yield return new WaitForSeconds(AfterSeconds);
+        inEffect = false;
+    }
+
+    private IEnumerator VaccineCooldown(float AfterSeconds)
+    {
+        AvailableToUse = false;
+        yield return new WaitForSeconds(AfterSeconds);
+        AvailableToUse = true;
+    }
+
+    private void HemoUsesPhizer()
+    {
+        Sprite[] spriteSheetSprites = Resources.LoadAll<Sprite>("Sprites/Hemo_Phizer");
+        
+        Debug.Log(spriteSheetSprites);
+
+        //SpriteRenderer spriteRen = new SpriteRenderer();
+
+        //spriteRen.sprite = sprite;
+
+        components.PlayerSpriteRenderer.sprite = spriteSheetSprites[0];
+        
+        Hemo_Anim[0].ClearCurves();
+        AnimationCurve curve;
+        Keyframe key = new Keyframe(0, 0);
+        curve = new AnimationCurve(key);
+        Hemo_Anim[0].SetCurve("", typeof(SpriteRenderer), "", curve);
+        //clip.SetCurve("", typeof(Sprite),"Sprite", curve);
+        
+    }
+
 }

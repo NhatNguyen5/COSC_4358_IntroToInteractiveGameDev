@@ -90,20 +90,20 @@ public class RightWeapon : MonoBehaviour
 
         if ((GlobalPlayerVariables.Reserves - maxAmmoInClip * CostPerBullet) > 0 && ammoCount == 0)
         {
-            Debug.Log("first");
+            //Debug.Log("first");
             GlobalPlayerVariables.Reserves -= maxAmmoInClip * CostPerBullet;
             ammoCount = maxAmmoInClip;
         }
         else if ((GlobalPlayerVariables.Reserves - (maxAmmoInClip - ammoCount) * CostPerBullet) > 0 && ammoCount > 0)
         {
-            Debug.Log("second");
+            //Debug.Log("second");
             ammoCount = maxAmmoInClip - ammoCount;
             GlobalPlayerVariables.Reserves -= ammoCount * CostPerBullet;
             ammoCount = maxAmmoInClip;
         }
         else if ((GlobalPlayerVariables.Reserves) > 0 && ammoCount >= 0)
         {
-            Debug.Log("third");
+            //Debug.Log("third");
 
             //int keeptrack = 0;
             //keeptrack = maxAmmoInClip - ammoCount; //23 shots 30-23 = 7
@@ -125,14 +125,14 @@ public class RightWeapon : MonoBehaviour
 
             int remaining = 0;
             remaining = (int)GlobalPlayerVariables.Reserves / CostPerBullet;
-            Debug.Log("REMAINING " + remaining);
+            //Debug.Log("REMAINING " + remaining);
             //Debug.Log("KEEPTRACK " +keeptrack);
 
             GlobalPlayerVariables.Reserves -= remaining * CostPerBullet; //14-14
             ammoCount += remaining;
         }
         firingDelay = 0;
-        Debug.Log(GlobalPlayerVariables.Reserves);
+        //Debug.Log(GlobalPlayerVariables.Reserves);
         reloadBar.fillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.reserveCount;
     }
 
@@ -290,7 +290,7 @@ public class RightWeapon : MonoBehaviour
                             bloomTimer = bloomResetTimer;
                             ammoCount--;
 
-                            Debug.Log(ammoCount);
+                            //Debug.Log(ammoCount);
                         }
 
                     }

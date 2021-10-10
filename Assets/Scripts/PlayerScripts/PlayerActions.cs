@@ -17,6 +17,7 @@ public class PlayerActions
     public Text VaccineCounts;
     private GameObject LeftAmmo;
     private GameObject RWeaponIcon;
+    private Image VaccineCooldownDisplay;
 
     //private bool isWaiting = false;
 
@@ -33,6 +34,7 @@ public class PlayerActions
         LeftAmmo.gameObject.SetActive(false);
         DashDistance = player.Stats.DashDistance;
         DashSpeed = player.Stats.DashSpeed;
+        VaccineCooldownDisplay = GameObject.Find("VaccineCoolDownIndicator").GetComponent<Image>();
         foreach (Transform rw in rightArm)
         {
             if (rw.gameObject.activeSelf)
@@ -202,14 +204,19 @@ public class PlayerActions
         HealthBar.fillAmount = player.Stats.Health / player.Stats.hp;
     }
 
-    /*
-    public void ResetPlayerStats(float AfterSeconds)
+    
+    public void ResetPlayerStats()
     {
-
-        player.StartCoroutine(wait(AfterSeconds));
-
+        player.Stats.HPRegen -= player.Stats.HPRegenAdd;
+        player.Stats.StaminaRegenRate -= player.Stats.StamRegenAdd;
     }
 
+    public void VaccineCooldownDisplayUpdate(float FillAmount)
+    {
+        VaccineCooldownDisplay.fillAmount = FillAmount;
+    }
+
+    /*
 
     private IEnumerator wait(float duration)
     {
