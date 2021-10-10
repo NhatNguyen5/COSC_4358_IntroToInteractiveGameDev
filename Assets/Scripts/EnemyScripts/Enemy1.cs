@@ -130,13 +130,13 @@ public class Enemy1 : MonoBehaviour
         else
         {
 
-            if (Vector2.Distance(transform.position, player.position) >= stoppingDistance && followPlayer == true) //follow player
+            if (Vector2.Distance(transform.position, player.position) >= stoppingDistance && followPlayer == true && lineofsight == true) //follow player
             {
                 reachedDestination = true;
                 transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
                 getDirection(player);
             }
-            else if ((Vector2.Distance(transform.position, player.position) <= stoppingDistance && Vector2.Distance(transform.position, player.position) >= retreatDistance) || GlobalPlayerVariables.GameOver == true) //stop
+            else if ((Vector2.Distance(transform.position, player.position) >= retreatDistance) || GlobalPlayerVariables.GameOver == true) //stop /*(Vector2.Distance(transform.position, player.position) <= stoppingDistance && */ 
             {
                 if (randomMovement == false)
                     transform.position = this.transform.position;
