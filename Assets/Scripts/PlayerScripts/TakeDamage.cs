@@ -108,8 +108,8 @@ public class TakeDamage : MonoBehaviour
         //if ((maxHP - HP) / maxHP >= 0.5)
         //{
             
-        statusIndicator.StartFlash(0.25f, ((maxHP - HP) / maxHP), Color.red, ((maxHP - HP) / maxHP) / 2f, Color.red, 3);
-        //}
+        statusIndicator.StartFlash(0.25f, ((maxHP - HP) / maxHP), Color.red, ((maxHP - HP) / maxHP)/2f, Color.red, 3);
+        //} 
         //statusIndicator.ChangeTransparency((maxHP - HP) / maxHP);
         if(CameraShake)
             statusIndicator.StartShake(Mcamera, ShakeDuration, ShakeIntensity);
