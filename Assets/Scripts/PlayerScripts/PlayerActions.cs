@@ -21,6 +21,8 @@ public class PlayerActions
     private Image VaccineCooldownDisplay;
     private float relaMouseAngle;
 
+    private string currSpriteCategory;
+
     private string[] CurrHemoSprite;
 
     //private bool isWaiting = false;
@@ -56,6 +58,7 @@ public class PlayerActions
             }
         }
         CurrHemoSprite = player.Components.PlayerSpriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(player.Components.PlayerTargetCategory).ToArray();
+        currSpriteCategory = player.Components.PlayerTargetCategory;
 
     }
 
@@ -92,35 +95,35 @@ public class PlayerActions
 
         Debug.Log(relaMouseAngle);
         //New 8 directions system
-        if(relaMouseAngle < 22.5 && relaMouseAngle > 337.5) //Right
+        if(relaMouseAngle <= 22.5 || relaMouseAngle > 337.5) //Right
+        {
+            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[0]);
+        }
+        else if(relaMouseAngle > 22.5 && relaMouseAngle <= 67.5) //BotRight
         {
 
         }
-        else if(relaMouseAngle < 22.5 && relaMouseAngle > 337.5) //BotRight
+        else if (relaMouseAngle > 67.5 && relaMouseAngle <= 112.5) //Down
         {
 
         }
-        else if (relaMouseAngle < 22.5 && relaMouseAngle > 337.5) //Down
+        else if (relaMouseAngle > 112.5 && relaMouseAngle <= 157.5) //BotLeft
         {
 
         }
-        else if (relaMouseAngle < 22.5 && relaMouseAngle > 337.5) //BotLeft
+        else if (relaMouseAngle > 157.5 && relaMouseAngle <= 202.5) //Left
         {
 
         }
-        else if (relaMouseAngle < 22.5 && relaMouseAngle > 337.5) //Left
+        else if (relaMouseAngle > 202.5 && relaMouseAngle <= 247.5) //TopLeft
         {
 
         }
-        else if (relaMouseAngle < 22.5 && relaMouseAngle > 337.5) //TopLeft
+        else if (relaMouseAngle > 247.5 && relaMouseAngle <= 292.5) //Up
         {
 
         }
-        else if (relaMouseAngle < 22.5 && relaMouseAngle > 337.5) //Up
-        {
-
-        }
-        else if (relaMouseAngle < 22.5 && relaMouseAngle > 337.5) //TopRight
+        else if (relaMouseAngle > 292.5 && relaMouseAngle <= 337.5) //TopRight
         {
 
         }
