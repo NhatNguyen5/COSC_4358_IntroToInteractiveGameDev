@@ -165,7 +165,7 @@ public class LeftWeapon : MonoBehaviour
 
     private void Update()
     {
-        GlobalPlayerVariables.weaponWeight = weaponWeight;
+        //GlobalPlayerVariables.weaponWeight = weaponWeight;
         if (Input.GetButtonDown("Fire2"))
         {
             //Debug.Log("Set variable");
