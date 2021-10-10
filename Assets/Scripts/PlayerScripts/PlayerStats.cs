@@ -34,6 +34,8 @@ public class PlayerStats
     public float PhizerCooldownz { get; set; }
     public float HPRegenAddz { get; set; }
     public float StamRegenAddz { get; set; }
+    public float TylenolHealAmountz { get; set; }
+    public float TylenoCooldownz { get; set; }
 
     [Header("Movement")]
     [SerializeField]
@@ -77,7 +79,11 @@ public class PlayerStats
     private float hpRegenAdd;
     [SerializeField]
     private float stamRegenAdd;
-
+    [Header("Tylenol")]
+    [SerializeField]
+    private float Tylenolhealamount;
+    [SerializeField]
+    private float Tylenolcooldown;
 
 
     public float WalkSpeed { get => walkSpeed; }
@@ -112,5 +118,8 @@ public class PlayerStats
     public float PhizerCooldown { get => Phizercooldown; }
     public float HPRegenAdd { get => hpRegenAdd; }
     public float StamRegenAdd { get => stamRegenAdd; }
+
+    public float TylenolHealAmount { get => Tylenolhealamount; }
+    public float TylenolCooldown { get => Tylenolcooldown; }
 
 }

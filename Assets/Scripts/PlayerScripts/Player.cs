@@ -64,9 +64,13 @@ public class Player : MonoBehaviour
 
     private bool inEffect = false;
 
-    private bool AvailableToUse = true;
+    private bool LeftSlotAvailableToUse = true;
 
-    private float VaccineCooldownDisplay;
+    private bool RightSlotAvailableToUse = true;
+
+    private float LeftSlotCooldownDisplay;
+
+    private float RightSlotCooldownDisplay;
 
     //private float currSpeed;
 
@@ -98,6 +102,9 @@ public class Player : MonoBehaviour
         stats.PhizerCooldownz = stats.PhizerCooldown;
         stats.HPRegenAddz = stats.HPRegenAdd;
         stats.StamRegenAddz = stats.StamRegenAdd;
+
+        stats.TylenoCooldownz = stats.TylenolCooldown;
+        stats.TylenolHealAmountz = stats.TylenolHealAmount;
 
         actions.defaultSpeed = stats.Speed;
         actions.HealCounts.text = stats.NumofHeal.ToString();
@@ -152,15 +159,24 @@ public class Player : MonoBehaviour
         {
             if(Input.GetKeyUp(KeyCode.T))
                 actions.ToggleDual();
-            if (Input.GetKeyUp(KeyCode.E))
-                actions.Heal();
-            if (Input.GetKeyUp(KeyCode.Q) && AvailableToUse)
+            if (Input.GetKeyUp(KeyCode.E) && RightSlotAvailableToUse)
             {
-                actions.Phizer();
-                VaccineCooldownDisplay = stats.PhizerCooldown;
-                HemoUsesPhizer();
-                StartCoroutine(ResetStats(stats.PhizerDuration));
-                StartCoroutine(VaccineCooldown(stats.PhizerCooldown));
+                if (stats.NumofHeal > 0 && stats.Health < stats.hp)
+                {
+                    actions.Heal();
+                    RightSlotCooldownDisplay = stats.TylenolCooldown;
+                    StartCoroutine(RightSlotItemCooldown(stats.TylenolCooldown));
+                }
+            }
+            if (Input.GetKeyUp(KeyCode.Q) && LeftSlotAvailableToUse)
+            {
+                if (stats.NumofPhizer > 0)
+                {
+                    actions.Phizer();
+                    LeftSlotCooldownDisplay = stats.PhizerCooldown;
+                    StartCoroutine(ResetStats(stats.PhizerDuration));
+                    StartCoroutine(LeftSlotItemCooldown(stats.PhizerCooldown));
+                }
             }
             actions.SwapWeapon();
             //Debug.DrawRay(stats.Position, stats.Direction, Color.green, 0.1f);
@@ -174,14 +190,24 @@ public class Player : MonoBehaviour
             resetPlayerStatsRequest = false;
         }
         Debug.Log(stats.StaminaRegenRate);
-        if(VaccineCooldownDisplay > 0)
+        if(LeftSlotCooldownDisplay > 0 || RightSlotCooldownDisplay > 0)
         {
-            VaccineCooldownDisplay -= Time.deltaTime;
-            actions.VaccineCooldownDisplayUpdate(VaccineCooldownDisplay/stats.PhizerCooldown);
+            LeftSlotCooldownDisplay -= Time.deltaTime;
+            actions.LeftSlotCooldownDisplayUpdate(LeftSlotCooldownDisplay/stats.PhizerCooldown);
         }
         else
         {
-            VaccineCooldownDisplay = 0;
+            LeftSlotCooldownDisplay = 0;
+        }
+
+        if (RightSlotCooldownDisplay > 0 || RightSlotCooldownDisplay > 0)
+        {
+            RightSlotCooldownDisplay -= Time.deltaTime;
+            actions.RightSlotCooldownDisplayUpdate(RightSlotCooldownDisplay / stats.TylenolCooldown); ;
+        }
+        else
+        {
+            RightSlotCooldownDisplay = 0;
         }
 
         UpdateSpawnrate();
@@ -324,35 +350,18 @@ public class Player : MonoBehaviour
         inEffect = false;
     }
 
-    private IEnumerator VaccineCooldown(float AfterSeconds)
+    private IEnumerator LeftSlotItemCooldown(float AfterSeconds)
     {
-        AvailableToUse = false;
+        LeftSlotAvailableToUse = false;
         yield return new WaitForSeconds(AfterSeconds);
-        AvailableToUse = true;
+        LeftSlotAvailableToUse = true;
     }
 
-    private void HemoUsesPhizer()
+    private IEnumerator RightSlotItemCooldown(float AfterSeconds)
     {
-
-
-        /*
-        Sprite[] spriteSheetSprites = Resources.LoadAll<Sprite>("Sprites/Hemo_Phizer");
-        
-        Debug.Log(spriteSheetSprites);
-
-        //SpriteRenderer spriteRen = new SpriteRenderer();
-
-        //spriteRen.sprite = sprite;
-
-        components.PlayerSpriteRenderer.sprite = spriteSheetSprites[0];
-        
-        Hemo_Anim[0].ClearCurves();
-        AnimationCurve curve;
-        Keyframe key = new Keyframe(0, 0);
-        curve = new AnimationCurve(key);
-        Hemo_Anim[0].SetCurve("", typeof(SpriteRenderer), "", curve);
-        //clip.SetCurve("", typeof(Sprite),"Sprite", curve);
-        */
+        RightSlotAvailableToUse = false;
+        yield return new WaitForSeconds(AfterSeconds);
+        RightSlotAvailableToUse = true;
     }
 
 }

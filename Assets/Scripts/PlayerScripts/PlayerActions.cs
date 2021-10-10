@@ -19,6 +19,7 @@ public class PlayerActions
     private GameObject LeftAmmo;
     private GameObject RWeaponIcon;
     private Image VaccineCooldownDisplay;
+    private Image HealCooldownDisplay;
     private float relaMouseAngle;
 
     private string currSpriteCategory;
@@ -41,6 +42,8 @@ public class PlayerActions
         DashDistance = player.Stats.DashDistance;
         DashSpeed = player.Stats.DashSpeed;
         VaccineCooldownDisplay = GameObject.Find("VaccineCoolDownIndicator").GetComponent<Image>();
+        HealCooldownDisplay = GameObject.Find("HealCoolDownIndicator").GetComponent<Image>();
+
         foreach (Transform rw in rightArm)
         {
             if (rw.gameObject.activeSelf)
@@ -95,40 +98,46 @@ public class PlayerActions
 
         Debug.Log(relaMouseAngle);
         //New 8 directions system
-        /*
-         *
+        /*[0]Down
+         *[1]Up
+         *[2]Left
+         *[3]Right
+         *[4]TopLeft
+         *[5]TopRight
+         *[6]BotLeft
+         *[7]BotRight
          */
         if(relaMouseAngle <= 22.5 || relaMouseAngle > 337.5) //Right
         {
-            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[0]);
+            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[3]);
         }
-        else if(relaMouseAngle > 22.5 && relaMouseAngle <= 67.5) //BotRight
+        else if(relaMouseAngle > 22.5 && relaMouseAngle <= 67.5) //TopRight
         {
-
+            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[5]);
         }
-        else if (relaMouseAngle > 67.5 && relaMouseAngle <= 112.5) //Down
+        else if (relaMouseAngle > 67.5 && relaMouseAngle <= 112.5) //Up
         {
-
+            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[1]);
         }
-        else if (relaMouseAngle > 112.5 && relaMouseAngle <= 157.5) //BotLeft
+        else if (relaMouseAngle > 112.5 && relaMouseAngle <= 157.5) //TopLeft
         {
-
+            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[4]);
         }
         else if (relaMouseAngle > 157.5 && relaMouseAngle <= 202.5) //Left
         {
-
+            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[2]);
         }
-        else if (relaMouseAngle > 202.5 && relaMouseAngle <= 247.5) //TopLeft
+        else if (relaMouseAngle > 202.5 && relaMouseAngle <= 247.5) //BotLeft
         {
-
+            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[6]);
         }
-        else if (relaMouseAngle > 247.5 && relaMouseAngle <= 292.5) //Up
+        else if (relaMouseAngle > 247.5 && relaMouseAngle <= 292.5) //Down
         {
-
+            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[0]);
         }
-        else if (relaMouseAngle > 292.5 && relaMouseAngle <= 337.5) //TopRight
+        else if (relaMouseAngle > 292.5 && relaMouseAngle <= 337.5) //BotRight
         {
-
+            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[7]);
         }
 
         if (player.Components.PlayerRidgitBody.velocity.magnitude == 0)
@@ -207,33 +216,28 @@ public class PlayerActions
 
     public void Phizer()
     {
-        if(player.Stats.NumofPhizer > 0)
-        {
-            player.Stats.NumofPhizer -= 1;
-            player.Stats.HPRegen += player.Stats.HPRegenAdd;
-            player.Stats.StaminaRegenRate += player.Stats.StamRegenAdd;
-        }
+        player.Stats.NumofPhizer -= 1;
+        player.Stats.HPRegen += player.Stats.HPRegenAdd;
+        player.Stats.StaminaRegenRate += player.Stats.StamRegenAdd;
+        currSpriteCategory = "PhizerHemo";
     }
 
     public void Heal()
     {
-        if(player.Stats.NumofHeal > 0 && player.Stats.Health < player.Stats.hp)
+        //Debug.Log(player.References.numOfHeal);
+        if (player.Stats.hp - player.Stats.Health < player.Stats.TylenolHealAmount)
         {
-            //Debug.Log(player.References.numOfHeal);
-            if (player.Stats.hp - player.Stats.Health < 50)
-            {
-                player.Stats.Health = player.Stats.hp;
-                player.Stats.NumofHeal--;
-                player.Components.PlayerStatusIndicator.StartFlash(0.5f, 0.25f, Color.green, 0f, Color.red, 2);
-                //player.Components.PlayerStatusIndicator.ChangeTransparency((player.Stats.hp - player.Stats.Health) / player.Stats.hp);
-            }
-            else
-            {
-                player.Stats.Health += 50;
-                player.Stats.NumofHeal--;
-                player.Components.PlayerStatusIndicator.StartFlash(0.25f, ((player.Stats.hp - player.Stats.Health) / player.Stats.hp), Color.green, ((player.Stats.hp - player.Stats.Health) / player.Stats.hp)/2f, Color.red, 1);
-                //player.Components.PlayerStatusIndicator.ChangeTransparency((player.Stats.hp - player.Stats.Health) / player.Stats.hp);
-            }
+            player.Stats.Health = player.Stats.hp;
+            player.Stats.NumofHeal--;
+            player.Components.PlayerStatusIndicator.StartFlash(0.5f, 0.25f, Color.green, 0f, Color.red, 2);
+            //player.Components.PlayerStatusIndicator.ChangeTransparency((player.Stats.hp - player.Stats.Health) / player.Stats.hp);
+        }
+        else
+        {
+            player.Stats.Health += player.Stats.TylenolHealAmount;
+            player.Stats.NumofHeal--;
+            player.Components.PlayerStatusIndicator.StartFlash(0.25f, ((player.Stats.hp - player.Stats.Health) / player.Stats.hp), Color.green, ((player.Stats.hp - player.Stats.Health) / player.Stats.hp)/2f, Color.red, 1);
+            //player.Components.PlayerStatusIndicator.ChangeTransparency((player.Stats.hp - player.Stats.Health) / player.Stats.hp);
         }
     }
 
@@ -262,12 +266,19 @@ public class PlayerActions
     {
         player.Stats.HPRegen -= player.Stats.HPRegenAdd;
         player.Stats.StaminaRegenRate -= player.Stats.StamRegenAdd;
+        currSpriteCategory = "DefaultHemo";
     }
 
-    public void VaccineCooldownDisplayUpdate(float FillAmount)
+    public void LeftSlotCooldownDisplayUpdate(float LeftSlotFillAmount)
     {
-        VaccineCooldownDisplay.fillAmount = FillAmount;
+        VaccineCooldownDisplay.fillAmount = LeftSlotFillAmount;
     }
+
+    public void RightSlotCooldownDisplayUpdate(float RightSlotFillAmount)
+    {
+        HealCooldownDisplay.fillAmount = RightSlotFillAmount;
+    }
+
 
 
     /*
