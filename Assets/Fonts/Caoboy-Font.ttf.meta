@@ -3,8 +3,8 @@ guid: 676bf267952c3c14189cbbc1cc06baeb
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 160
-  forceTextureCase: -1
+  fontSize: 16
+  forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
@@ -12,9 +12,9 @@ TrueTypeFontImporter:
   - Caoboy Font
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 2
+  fontRenderingMode: 0
   ascentCalculationMode: 1
-  useLegacyBoundsCalculation: 1
+  useLegacyBoundsCalculation: 0
   shouldRoundAdvanceValue: 1
   userData: 
   assetBundleName: 

@@ -165,7 +165,7 @@ public class RightWeapon : MonoBehaviour
     private void Update()
     {
         GlobalPlayerVariables.weaponWeight = weaponWeight;
-        //reloadBar.fillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.reserveCount;
+        reloadBar.fillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.reserveCount;
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
