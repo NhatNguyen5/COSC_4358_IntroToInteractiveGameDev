@@ -95,6 +95,9 @@ public class PlayerActions
 
         Debug.Log(relaMouseAngle);
         //New 8 directions system
+        /*
+         *
+         */
         if(relaMouseAngle <= 22.5 || relaMouseAngle > 337.5) //Right
         {
             player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[0]);
