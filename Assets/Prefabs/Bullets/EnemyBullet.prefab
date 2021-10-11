@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -6512196313212412596}
   - component: {fileID: 7681877613234558851}
   - component: {fileID: -1718153704179959414}
+  - component: {fileID: -5550003468063578332}
   m_Layer: 9
   m_Name: EnemyBullet
   m_TagString: EnemyBullet
@@ -247,3 +248,19 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &-5550003468063578332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3812985790077842512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec4861c341fc164584416993b204a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundClip: Cannon
+  SoundEffect: 1
+  PlayOnArrival: 1
+  ResetSoundForNewScene: 0
