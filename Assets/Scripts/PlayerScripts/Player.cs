@@ -88,10 +88,12 @@ public class Player : MonoBehaviour
         utilities = new PlayerUtilities(this);
         references = new PlayerReferences(this);
         stats.Health = stats.hp;
+        stats.MaxHealth = stats.maxhp;
         stats.HPRegen = stats.hpregenrate;
         stats.Speed = stats.WalkSpeed;
         stats.Stamina = stats.stamina;
         stats.MaxStamina = stats.maxplayerstamina;
+        stats.StamDrainRate = stats.stamdrainrate;
         stats.TimeBeforeStamRegen = stats.StaminaRegenWait;
         stats.StaminaRegenRate = stats.staminaRegenRate;
         stats.NumofHeal = stats.numofheal;
@@ -139,12 +141,11 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && stats.Direction != Vector2.zero)
         {
             if(stats.Stamina > 0)
-                stats.Stamina -= Time.deltaTime;
+                stats.Stamina -= Time.deltaTime*(stats.StamDrainRate - stats.StaminaRegenRate);
             StaminaBar.fillAmount = stats.Stamina / stats.MaxStamina;
             isRunning = true;
             sprint = 0;
         }
-
 
 
         if (stats.Stamina <= stats.MaxStamina && isRunning == false && sprint >= stats.TimeBeforeStamRegen)
@@ -161,7 +162,7 @@ public class Player : MonoBehaviour
                 actions.ToggleDual();
             if (Input.GetKeyUp(KeyCode.E) && RightSlotAvailableToUse)
             {
-                if (stats.NumofHeal > 0 && stats.Health < stats.hp)
+                if (stats.NumofHeal > 0 && stats.Health < stats.MaxHealth)
                 {
                     actions.Heal();
                     RightSlotCooldownDisplay = stats.TylenolCooldown;
@@ -189,7 +190,7 @@ public class Player : MonoBehaviour
             actions.ResetPlayerStats();
             resetPlayerStatsRequest = false;
         }
-        Debug.Log(stats.StaminaRegenRate);
+        //Debug.Log(stats.StaminaRegenRate);
         if(LeftSlotCooldownDisplay > 0 || RightSlotCooldownDisplay > 0)
         {
             LeftSlotCooldownDisplay -= Time.deltaTime;

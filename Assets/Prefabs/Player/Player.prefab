@@ -639,21 +639,25 @@ MonoBehaviour:
     sprintSpeed: 500
     dashDistance: 4
     dashCooldown: 0
-    dashStamCost: 1.5
+    dashStamCost: 25
     dashSpeed: 40
     HP: 200
+    maxHP: 0
     HPRegenRate: 0
-    playerStamina: 5
-    maxPlayerStamina: 5
-    staminaRegenRate: 1
+    playerStamina: 100
+    maxPlayerStamina: 100
+    stamDrainRate: 20
+    staminaRegenRate: 10
     TimeBfrStamRegen: 0.2
     NumOfHeal: 5
     NumOfProtein: 0
     NumOfPhizer: 2
     Phizerduration: 2
     Phizercooldown: 5
+    hpAdd: 20
     hpRegenAdd: 10
-    stamRegenAdd: 0.5
+    stamAdd: 20
+    stamRegenAdd: 10
     Tylenolhealamount: 0
     Tylenolcooldown: 0
   components:

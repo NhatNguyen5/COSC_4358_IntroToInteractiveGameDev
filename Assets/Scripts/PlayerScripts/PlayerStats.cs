@@ -15,9 +15,13 @@ public class PlayerStats
 
     public float Health { get; set; }
 
+    public float MaxHealth { get; set; }
+
     public float HPRegen { get; set; }
 
     public float Stamina { get; set; }
+
+    public float StamDrainRate { get; set; }
 
     public float MaxStamina { get; set; }
     public float StaminaRegenRate { get; set; }
@@ -32,8 +36,14 @@ public class PlayerStats
 
     public float PhizerDurationz { get; set; }
     public float PhizerCooldownz { get; set; }
+    public float HPAddz { get; set; }
     public float HPRegenAddz { get; set; }
+    public float StamAddz { get; set; }
     public float StamRegenAddz { get; set; }
+
+
+
+
     public float TylenolHealAmountz { get; set; }
     public float TylenoCooldownz { get; set; }
 
@@ -54,11 +64,15 @@ public class PlayerStats
     [SerializeField]
     private float HP;
     [SerializeField]
+    private float maxHP;
+    [SerializeField]
     private float HPRegenRate;
     [SerializeField]
     private float playerStamina;
     [SerializeField]
     private float maxPlayerStamina;
+    [SerializeField]
+    private float stamDrainRate;
     [SerializeField]
     public float staminaRegenRate;
     [SerializeField]
@@ -75,8 +89,14 @@ public class PlayerStats
     private float Phizerduration;
     [SerializeField]
     private float Phizercooldown;
+    [Tooltip("In Percentage")]
+    [SerializeField]
+    private float hpAdd;
     [SerializeField]
     private float hpRegenAdd;
+    [Tooltip("In Percentage")]
+    [SerializeField]
+    private float stamAdd;
     [SerializeField]
     private float stamRegenAdd;
     [Header("Tylenol")]
@@ -98,11 +118,15 @@ public class PlayerStats
 
     public float hp { get => HP; }
 
+    public float maxhp { get => maxHP; }
+
     public float hpregenrate { get => HPRegenRate; }
 
     public float stamina { get => playerStamina; }
 
     public float maxplayerstamina { get => maxPlayerStamina; }
+
+    public float stamdrainrate { get => stamDrainRate; }
 
     public float staminaregenrate { get => staminaRegenRate; }
 
@@ -116,7 +140,9 @@ public class PlayerStats
 
     public float PhizerDuration { get => Phizerduration; }
     public float PhizerCooldown { get => Phizercooldown; }
+    public float HPAdd { get => hpAdd; }
     public float HPRegenAdd { get => hpRegenAdd; }
+    public float StamAdd { get => stamAdd; }
     public float StamRegenAdd { get => stamRegenAdd; }
 
     public float TylenolHealAmount { get => Tylenolhealamount; }

@@ -88,15 +88,13 @@ public class PlayerActions
 
     public void Animate()
     {
-        player.Components.PlayerAnimator.SetFloat("MovementX", player.References.MousePosToPlayer.x);
-        player.Components.PlayerAnimator.SetFloat("MovementY", player.References.MousePosToPlayer.y);
 
         relaMouseAngle = player.Stats.Angle;
 
         if (relaMouseAngle < 0)
             relaMouseAngle = relaMouseAngle + 360;
 
-        Debug.Log(relaMouseAngle);
+        //Debug.Log(relaMouseAngle);
         //New 8 directions system
         /*[0]Down
          *[1]Up
@@ -217,6 +215,12 @@ public class PlayerActions
     public void Phizer()
     {
         player.Stats.NumofPhizer -= 1;
+        float tempMH = player.Stats.MaxHealth;
+        float tempMS = player.Stats.MaxStamina;
+        player.Stats.MaxHealth += player.Stats.MaxHealth * player.Stats.HPAdd / 100;
+        //player.Stats.Health += player.Stats.MaxHealth - tempMH;
+        player.Stats.MaxStamina += player.Stats.MaxStamina * player.Stats.StamAdd / 100;
+        //player.Stats.Stamina += player.Stats.MaxStamina - tempMS;
         player.Stats.HPRegen += player.Stats.HPRegenAdd;
         player.Stats.StaminaRegenRate += player.Stats.StamRegenAdd;
         player.Components.PlayerTrailRenderer.endColor = new Color(0, 76 / 255f, 134 / 255f);
@@ -226,9 +230,9 @@ public class PlayerActions
     public void Heal()
     {
         //Debug.Log(player.References.numOfHeal);
-        if (player.Stats.hp - player.Stats.Health < player.Stats.TylenolHealAmount)
+        if (player.Stats.MaxHealth - player.Stats.Health < player.Stats.TylenolHealAmount)
         {
-            player.Stats.Health = player.Stats.hp;
+            player.Stats.Health = player.Stats.MaxHealth;
             player.Stats.NumofHeal--;
             player.Components.PlayerStatusIndicator.StartFlash(0.5f, 0.25f, Color.green, 0f, Color.red, 2);
             //player.Components.PlayerStatusIndicator.ChangeTransparency((player.Stats.hp - player.Stats.Health) / player.Stats.hp);
@@ -237,7 +241,7 @@ public class PlayerActions
         {
             player.Stats.Health += player.Stats.TylenolHealAmount;
             player.Stats.NumofHeal--;
-            player.Components.PlayerStatusIndicator.StartFlash(0.25f, ((player.Stats.hp - player.Stats.Health) / player.Stats.hp), Color.green, ((player.Stats.hp - player.Stats.Health) / player.Stats.hp)/2f, Color.red, 1);
+            player.Components.PlayerStatusIndicator.StartFlash(0.25f, ((player.Stats.MaxHealth - player.Stats.Health) / player.Stats.MaxHealth), Color.green, ((player.Stats.MaxHealth - player.Stats.Health) / player.Stats.MaxHealth) /2f, Color.red, 1);
             //player.Components.PlayerStatusIndicator.ChangeTransparency((player.Stats.hp - player.Stats.Health) / player.Stats.hp);
         }
     }
@@ -254,12 +258,12 @@ public class PlayerActions
 
     public void Regen()
     {
-        if (player.Stats.Health < player.Stats.hp)
+        if (player.Stats.Health < player.Stats.MaxHealth)
         {
             player.Stats.Health += player.Stats.HPRegen * Time.deltaTime;
-            player.Components.PlayerStatusIndicator.ChangeTransparency((player.Stats.hp - player.Stats.Health) / player.Stats.hp);
+            player.Components.PlayerStatusIndicator.ChangeTransparency((player.Stats.MaxHealth - player.Stats.Health) / player.Stats.MaxHealth);
         }
-        HealthBar.fillAmount = player.Stats.Health / player.Stats.hp;
+        HealthBar.fillAmount = player.Stats.Health / player.Stats.MaxHealth;
     }
 
     
@@ -267,6 +271,12 @@ public class PlayerActions
     {
         player.Stats.HPRegen -= player.Stats.HPRegenAdd;
         player.Stats.StaminaRegenRate -= player.Stats.StamRegenAdd;
+        player.Stats.MaxHealth = player.Stats.maxhp;
+        if (player.Stats.Health > player.Stats.MaxHealth)
+            player.Stats.Health = player.Stats.MaxHealth;
+        player.Stats.MaxStamina = player.Stats.maxplayerstamina;
+        if (player.Stats.Stamina > player.Stats.Stamina)
+            player.Stats.Stamina = player.Stats.MaxStamina;
         player.Components.PlayerTrailRenderer.endColor = new Color(184 / 255f, 59 / 255f, 60 / 255f);
         currSpriteCategory = "DefaultHemo";
     }
