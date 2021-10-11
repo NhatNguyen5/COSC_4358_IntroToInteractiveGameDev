@@ -215,6 +215,9 @@ public class PlayerActions
     public void Phizer()
     {
         player.Stats.NumofPhizer -= 1;
+        ParticleSystem.ColorOverLifetimeModule pSsettings = player.Components.PlayerParticleSystem.colorOverLifetime;
+        pSsettings.color = new ParticleSystem.MinMaxGradient(new Color(255, 255, 255), new Color(0, 78, 137));
+        player.Components.PlayerParticleSystem.Play();
         float tempMH = player.Stats.MaxHealth;
         float tempMS = player.Stats.MaxStamina;
         player.Stats.MaxHealth += player.Stats.MaxHealth * player.Stats.HPAdd / 100;
@@ -269,6 +272,7 @@ public class PlayerActions
     
     public void ResetPlayerStats()
     {
+        player.Components.PlayerParticleSystem.Stop();
         player.Stats.HPRegen -= player.Stats.HPRegenAdd;
         player.Stats.StaminaRegenRate -= player.Stats.StamRegenAdd;
         player.Stats.MaxHealth = player.Stats.maxhp;

@@ -121,7 +121,8 @@ public class Player : MonoBehaviour
         MaxTbs = enemyManager.MaxTbs;
         defaultTbs = enemyManager.timeBetweenSpawns;
         defaultSR = 1/enemyManager.timeBetweenSpawns;
-        
+
+        components.PlayerParticleSystem.Stop();
     }
 
 

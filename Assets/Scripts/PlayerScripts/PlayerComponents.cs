@@ -26,6 +26,8 @@ public class PlayerComponents
     private SpriteResolver targetResolver = default;
     [SerializeField]
     private string targetCategory = default;
+    [SerializeField]
+    private ParticleSystem playerParticleSystem;
 
 
     public Rigidbody2D PlayerRidgitBody
@@ -76,5 +78,10 @@ public class PlayerComponents
     public string PlayerTargetCategory
     {
         get => targetCategory;
+    }
+
+    public ParticleSystem PlayerParticleSystem
+    {
+        get => playerParticleSystem;
     }
 }
