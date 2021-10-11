@@ -34597,8 +34597,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1270911830247238667, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: NumOfAmmoDrop
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270911830247238667, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: NumOfPhizerDrop
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270911830247238667, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: retreatDistance
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270911830247238667, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: Drops.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1270911830247238667, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: NumOfProteinDrop
@@ -34606,7 +34618,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1270911830247238667, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: NumOfTylenolDrop
-      value: 5
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270911830247238667, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: DropPercentageAmmo
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270911830247238667, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: Drops.Array.data[2]
+      value: 
+      objectReference: {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
+    - target: {fileID: 1270911830247238667, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: Drops.Array.data[3]
+      value: 
+      objectReference: {fileID: 2056935271745837854, guid: 9729f65a98d9dd14b86e888222ffbcbc, type: 3}
+    - target: {fileID: 1270911830247238667, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: DropPercentagePhizer
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1270911830247238667, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: DropPercentageProtein

@@ -118,7 +118,7 @@ MonoBehaviour:
   DropPercentageTylenol: 100
   NumOfTylenolDrop: 5
   DropPercentageProtein: 100
-  NumOfProteinDrop: 999
+  NumOfProteinDrop: 100
 --- !u!50 &916351143226452417
 Rigidbody2D:
   serializedVersion: 4
@@ -407,6 +407,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colonyHealth: 2000
+  StaInd: {fileID: 0}
+  Mcamera: {fileID: 0}
+  CamFollow: {fileID: 0}
   timeBetweenSpawns: 2
   tbsDecreaseRate: 0.2
   DecreaseAfter: 2
