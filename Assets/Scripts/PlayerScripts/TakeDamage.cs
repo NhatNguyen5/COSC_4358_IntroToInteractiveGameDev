@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class TakeDamage : MonoBehaviour
 {
@@ -143,14 +144,14 @@ public class TakeDamage : MonoBehaviour
         var go = Instantiate(DamageText, impact.position, Quaternion.identity);
         if (crit == false)
         {
-            go.GetComponent<TextMesh>().text = damage.ToString();
+            go.GetComponent<TextMeshPro>().text = damage.ToString();
         }
         else
         {
             //Debug.Log("CRIT");
-            go.GetComponent<TextMesh>().text = damage.ToString();
-            go.GetComponent<TextMesh>().color = Color.red;
-            go.GetComponent<TextMesh>().fontSize *= 3;
+            go.GetComponent<TextMeshPro>().text = damage.ToString();
+            go.GetComponent<TextMeshPro>().color = Color.red;
+            go.GetComponent<TextMeshPro>().fontSize *= 3;
         }
         go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, speed / 5);
     }

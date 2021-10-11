@@ -347,15 +347,15 @@ public class Enemy1 : MonoBehaviour
             var go = Instantiate(DamageText, impact.position, Quaternion.identity);
             if (crit == false)
             {
-                go.GetComponent< TextMeshProUGUI>().text = damage.ToString();
+                go.GetComponent<TextMeshPro>().text = damage.ToString();
             }
             else
             {
                 //Debug.Log("CRIT");
 
-                go.GetComponent<TextMeshProUGUI>().text = damage.ToString();
-                go.GetComponent<TextMeshProUGUI>().color = Color.red;
-                go.GetComponent<TextMeshProUGUI>().fontSize *= 3;
+                go.GetComponent<TextMeshPro>().text = damage.ToString();
+                go.GetComponent<TextMeshPro>().color = Color.red;
+                go.GetComponent<TextMeshPro>().fontSize *= 3;
             }
             go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, speed / 5);
         }

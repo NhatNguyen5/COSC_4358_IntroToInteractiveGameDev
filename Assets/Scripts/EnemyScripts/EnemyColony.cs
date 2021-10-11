@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class EnemyColony : MonoBehaviour
 {
@@ -120,14 +121,14 @@ public class EnemyColony : MonoBehaviour
             var go = Instantiate(DamageText, impact.position, Quaternion.identity);
             if (crit == false)
             {
-                go.GetComponent<TextMesh>().text = damage.ToString();
+                go.GetComponent<TextMeshPro>().text = damage.ToString();
             }
             else
             {
                 //Debug.Log("CRIT");
-                go.GetComponent<TextMesh>().text = damage.ToString();
-                go.GetComponent<TextMesh>().color = Color.red;
-                go.GetComponent<TextMesh>().fontSize *= 3;
+                go.GetComponent<TextMeshPro>().text = damage.ToString();
+                go.GetComponent<TextMeshPro>().color = Color.red;
+                go.GetComponent<TextMeshPro>().fontSize *= 3;
             }
             go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, speed / 5);
         }
