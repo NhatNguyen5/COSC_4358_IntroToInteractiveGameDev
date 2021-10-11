@@ -353,9 +353,13 @@ public class Enemy1 : MonoBehaviour
             {
                 //Debug.Log("CRIT");
 
+                Color colorTop = new Color(0.83529f, 0.06667f, 0.06667f);
+                Color colorBottom = new Color(0.98824f, 0.33725f, .90196f);
+
+
                 go.GetComponent<TextMeshPro>().text = damage.ToString();
-                go.GetComponent<TextMeshPro>().color = Color.red;
-                go.GetComponent<TextMeshPro>().fontSize *= 3;
+                go.GetComponent<TextMeshPro>().colorGradient = new VertexGradient(colorTop, colorTop, colorBottom, colorBottom);
+                go.GetComponent<TextMeshPro>().fontSize *= 1.5f;
             }
             go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, speed / 5);
         }

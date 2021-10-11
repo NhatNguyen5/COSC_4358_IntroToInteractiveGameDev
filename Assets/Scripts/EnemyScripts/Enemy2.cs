@@ -351,11 +351,20 @@ public class Enemy2 : MonoBehaviour
             }
             else
             {
+                Color colorTop = new Color(0.83529f, 0.06667f, 0.06667f);
+                Color colorBottom = new Color(0.98824f, 0.33725f, .90196f);
                 //Debug.Log("CRIT");
                 go.GetComponent<TextMeshPro>().text = damage.ToString();
-                go.GetComponent<TextMeshPro>().color = Color.red;
-                go.GetComponent<TextMeshPro>().fontSize *= 3;
-            }
+                //go.GetComponent<TextMeshPro>().color = new Color(1.0f, 0.0f, 0.7f);
+                go.GetComponent<TextMeshPro>().colorGradient = new VertexGradient(colorTop, colorTop, colorBottom, colorBottom);                         
+                go.GetComponent<TextMeshPro>().fontSize *= 1.5f;
+
+             //rgb colors
+        //private float r = 236;  // red component
+        //private float g = 35;  // green component
+        //private float b = 101;  // blue component
+
+}
             go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, speed / 5);
         }
     }
