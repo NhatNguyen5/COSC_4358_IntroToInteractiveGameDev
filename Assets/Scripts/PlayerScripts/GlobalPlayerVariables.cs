@@ -23,6 +23,7 @@ public class GlobalPlayerVariables : MonoBehaviour
     public static float rechargeRateMultiplyer = 1;
     public static float reserveCount = 0;
     public static float Reserves = 500;
+    public static float MaxReserves = 1000;
 
     //public static float playerHealth = 100;
     //right weapon stats

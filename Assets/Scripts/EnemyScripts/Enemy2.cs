@@ -83,6 +83,10 @@ public class Enemy2 : MonoBehaviour
     public int NumOfTylenolDrop;
     public float DropPercentageProtein;
     public int NumOfProteinDrop;
+    public float DropPercentageAmmo;
+    public int NumOfAmmoDrop;
+    public float DropPercentagePhizer;
+    public int NumOfPhizerDrop;
 
     private float critRate = 0;
     private float critDMG = 0;
@@ -421,6 +425,19 @@ public class Enemy2 : MonoBehaviour
                 for (int i = 0; i < NumOfProteinDrop; i++)
                     Instantiate(Drops[1], transform.position, Quaternion.Euler(0, 0, 0));
             }
+
+            if (Random.Range(0, 100) <= DropPercentageAmmo)
+            {
+                for (int i = 0; i < NumOfAmmoDrop; i++)
+                    Instantiate(Drops[2], transform.position, Quaternion.Euler(0, 0, 0));
+            }
+
+            if (Random.Range(0, 100) <= DropPercentagePhizer)
+            {
+                for (int i = 0; i < NumOfPhizerDrop; i++)
+                    Instantiate(Drops[3], transform.position, Quaternion.Euler(0, 0, 0));
+            }
+
             GameObject.Destroy(gameObject);
         }
     }

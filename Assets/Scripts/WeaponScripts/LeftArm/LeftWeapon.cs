@@ -288,7 +288,7 @@ public class LeftWeapon : MonoBehaviour
                             bloomTimer = bloomResetTimer;
                             ammoCount--;
 
-                            Debug.Log(ammoCount);
+                            //Debug.Log(ammoCount);
                         }
 
                     }

@@ -186,7 +186,7 @@ public class Player : MonoBehaviour
         //Debug.Log(VaccineCooldownDisplay);
         if(resetPlayerStatsRequest && !inEffect)
         {
-            Debug.Log("RequestReset");
+            //Debug.Log("RequestReset");
             actions.ResetPlayerStats();
             resetPlayerStatsRequest = false;
         }
@@ -234,7 +234,7 @@ public class Player : MonoBehaviour
     {
         EnemySpawnRate.transform.Find("HeartMonitorBG")
             .transform.Find("HeartMonitorLine").GetComponent<RawImage>()
-            .color = new Color(1 + (MinTbs - enemyManager.timeBetweenSpawns) / enemyManager.timeBetweenSpawns, 1 - (MaxTbs - enemyManager.timeBetweenSpawns) / enemyManager.timeBetweenSpawns, 0);
+            .color = new Color(0.75f + (MinTbs - enemyManager.timeBetweenSpawns) / enemyManager.timeBetweenSpawns, 0.75f - (MaxTbs - enemyManager.timeBetweenSpawns) / enemyManager.timeBetweenSpawns, 0);
 
         if (enemyManager.timeBetweenSpawns == 1000000)
         {

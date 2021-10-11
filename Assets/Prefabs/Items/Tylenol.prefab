@@ -100,7 +100,8 @@ MonoBehaviour:
   DetectRange: 2
   flingRange: 5
   PickUpRange: 0.5
-  DespawnTime: 10
+  DespawnTime: 20
+  AmmoReserveAdd: 0
 --- !u!95 &5280829901517362271
 Animator:
   serializedVersion: 3

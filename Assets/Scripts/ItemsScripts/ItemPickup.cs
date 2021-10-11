@@ -24,6 +24,9 @@ public class ItemPickup : MonoBehaviour
     public float flingRange;
     public float PickUpRange;
     public float DespawnTime;
+    [Header("Ammo")]
+    [SerializeField]
+    private float AmmoReserveAdd; 
     private float currDespawnTime;
     private bool startDespawn = true;
     private Vector2 randomDirection;
@@ -64,33 +67,60 @@ public class ItemPickup : MonoBehaviour
             
                 switch (TypeOfItem)
                 {
-                    case "Heal":
-                        if (player.Stats.NumofHeal < 99)
+                case "Heal":
+                    if (player.Stats.NumofHeal < 99)
+                    {
+                        Follow();
+                        if (distance <= PickUpRange)
                         {
-                            Follow();
-                            if (distance <= PickUpRange)
-                            {
-                                player.Stats.NumofHeal += 1;
-                                Destroy(gameObject);
-                            }
+                            player.Stats.NumofHeal += 1;
+                            Destroy(gameObject);
                         }
+                    }
                         
-                        break;
-                    case "Protein":
-                        if (player.Stats.NumofProtein < 1000000)
+                    break;
+                case "Protein":
+                    if (player.Stats.NumofProtein < 1000000)
+                    {
+                        Follow();
+                        if (distance <= PickUpRange)
                         {
-                            Follow();
-                            if (distance <= PickUpRange)
-                            {
-                                player.Stats.NumofProtein += 1;
-                                Destroy(gameObject);
-                            }
+                            player.Stats.NumofProtein += 1;
+                            Destroy(gameObject);
                         }
-                        break;
+                    }
+                    break;
+                case "Ammo":
+                    //Debug.Log(GlobalPlayerVariables.Reserves);
+                    if (GlobalPlayerVariables.Reserves < GlobalPlayerVariables.MaxReserves)
+                    {
+                        Follow();
+                        if (distance <= PickUpRange)
+                        {
+                            GlobalPlayerVariables.Reserves += AmmoReserveAdd;
+                            Destroy(gameObject);
+                        }
+                    }
+                    break;
 
-                    default:
-                        Debug.Log("Unknow item!");
-                        break;
+                case "Phizer":
+                    //Debug.Log(GlobalPlayerVariables.Reserves);
+                    if (player.Stats.NumofPhizer < 99)
+                    {
+                        Follow();
+                        if (distance <= PickUpRange)
+                        {
+                            player.Stats.NumofPhizer += 1;
+                            Destroy(gameObject);
+                        }
+                    }
+                    break;
+
+
+                default:
+                    Follow();
+                    Debug.Log("Unknow item!");
+                    break;
                 }
 
                 
@@ -107,7 +137,7 @@ public class ItemPickup : MonoBehaviour
             else if (currDespawnTime < 0)
                 currDespawnTime = 0;
 
-            if(currDespawnTime < 3)
+            if(currDespawnTime < 5)
             {
                 Anim.SetBool("IsDespawning", true);
             }
