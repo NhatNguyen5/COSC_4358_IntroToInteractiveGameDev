@@ -52,6 +52,8 @@ public class Player : MonoBehaviour
 
     private float MaxTbs;
 
+    private float defaultTbs;
+
     private float spawnRate;
     private float defaultSR;
 
@@ -117,6 +119,7 @@ public class Player : MonoBehaviour
         EnemySpawnRate = GameObject.Find("EnemySpawnRateDisplay");
         MinTbs = enemyManager.MinTbs;
         MaxTbs = enemyManager.MaxTbs;
+        defaultTbs = enemyManager.timeBetweenSpawns;
         defaultSR = 1/enemyManager.timeBetweenSpawns;
         
     }
@@ -234,7 +237,9 @@ public class Player : MonoBehaviour
     {
         EnemySpawnRate.transform.Find("HeartMonitorBG")
             .transform.Find("HeartMonitorLine").GetComponent<RawImage>()
-            .color = new Color(0.75f + (MinTbs - enemyManager.timeBetweenSpawns) / enemyManager.timeBetweenSpawns, 0.75f - (MaxTbs - enemyManager.timeBetweenSpawns) / enemyManager.timeBetweenSpawns, 0);
+            .color = new Color(0.75f*((MaxTbs - enemyManager.timeBetweenSpawns) / (MaxTbs - MinTbs)),
+                               0.75f * ((enemyManager.timeBetweenSpawns - MinTbs) / (MaxTbs - MinTbs)),
+                               0.75f * (1 - Mathf.Abs(2 * ((enemyManager.timeBetweenSpawns - MinTbs) / (MaxTbs - MinTbs)) - 1)));
 
         if (enemyManager.timeBetweenSpawns == 1000000)
         {
@@ -313,10 +318,13 @@ public class Player : MonoBehaviour
     private IEnumerator beatGen(float duration)
     {
         GameObject gendBeat;
-        Transform HMBG = EnemySpawnRate.transform.Find("HeartMonitorBG");
+        Transform HMBG = EnemySpawnRate.transform.Find("HeartMonitorBG").transform.Find("HeartMonitorLine");
         gendBeat = Instantiate(beat, HMBG, false);
         //gendBeat.transform.localScale = HMBG.localScale;
-        gendBeat.GetComponent<RawImage>().color = new Color(1 + (MinTbs - enemyManager.timeBetweenSpawns) / enemyManager.timeBetweenSpawns, 1 - (MaxTbs - enemyManager.timeBetweenSpawns) / enemyManager.timeBetweenSpawns, 0);
+        gendBeat.GetComponent<RawImage>().color = new Color(0.75f * ((MaxTbs - enemyManager.timeBetweenSpawns) / (MaxTbs - MinTbs)),
+                                                            0.75f * ((enemyManager.timeBetweenSpawns - MinTbs) / (MaxTbs - MinTbs)),
+                                                            0.75f * (1 - Mathf.Abs(2*((enemyManager.timeBetweenSpawns - MinTbs) / (MaxTbs - MinTbs)) - 1)));
+        //Debug.Log(gendBeat.GetComponent<RawImage>().color);
         //gendBeat.GetComponent<Animator>().SetFloat("BeatRate", spawnRate);
         yield return new WaitForSeconds(duration);
         Destroy(gendBeat);
