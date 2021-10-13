@@ -14,6 +14,7 @@ public class StatusIndicator : MonoBehaviour
     private void Awake()
     {
         _image = GetComponent<Image>();
+        _image.color = new Color(1,0,0,0);
         CurrAlpha = _image.color.a;
     }
 
