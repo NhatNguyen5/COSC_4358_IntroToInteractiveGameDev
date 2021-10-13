@@ -84,6 +84,9 @@ public class Player : MonoBehaviour
 
     private float beatTimer = 0;
 
+    [SerializeField]
+    private Molotov Molie;
+
     private void Awake()
     {
         actions = new PlayerActions(this);
@@ -172,6 +175,12 @@ public class Player : MonoBehaviour
                     RightSlotCooldownDisplay = stats.TylenolCooldown;
                     StartCoroutine(RightSlotItemCooldown(stats.TylenolCooldown));
                 }
+            }
+            if(Input.GetKeyUp(KeyCode.G))
+            {
+                Quaternion newRot = Quaternion.Euler(stats.Direction.x, stats.Direction.y, 0);
+
+                Instantiate(Molie, stats.Position, newRot);
             }
             if (Input.GetKeyUp(KeyCode.Q) && LeftSlotAvailableToUse)
             {

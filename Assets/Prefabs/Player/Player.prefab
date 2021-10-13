@@ -322,9 +322,10 @@ MonoBehaviour:
     targetResolver: {fileID: 8693076160950319758}
     targetCategory: DefaultHemo
     playerParticleSystem: {fileID: 8089623419280815895}
-  enemyManager: {fileID: 0}
+  enemyManager: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
   enableControl: 1
-  beat: {fileID: 0}
+  beat: {fileID: 2213989057062135191, guid: e8ab9d29358ca8844878ba1e19596536, type: 3}
+  Molie: {fileID: 359814843918546931, guid: b7de69beb589f9b4395c5196638db2de, type: 3}
 --- !u!114 &3517825292825441646
 MonoBehaviour:
   m_ObjectHideFlags: 0
