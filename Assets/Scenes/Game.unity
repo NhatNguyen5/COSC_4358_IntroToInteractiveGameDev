@@ -35252,6 +35252,14 @@ PrefabInstance:
       propertyPath: bulletDamageDropOff
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467482, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.281
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294086467482, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.013
+      objectReference: {fileID: 0}
     - target: {fileID: 3517825294137245976, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.05
