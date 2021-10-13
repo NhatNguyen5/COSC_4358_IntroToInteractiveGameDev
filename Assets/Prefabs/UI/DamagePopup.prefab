@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11ea9fed83c89b428d2a90b064d2e4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyTime: 1.5
+  DestroyTime: 1
   layerToPushTo: UI
 --- !u!95 &5006225824730857263
 Animator:
@@ -156,9 +156,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '100
-
-'
+  m_text: 17998
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 720a9e31d64eedc43ae2e98c621d4dd0, type: 2}
   m_sharedMaterial: {fileID: 6829860111235474743, guid: 720a9e31d64eedc43ae2e98c621d4dd0, type: 2}
@@ -167,7 +165,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
@@ -195,7 +193,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 2.3
+  m_characterSpacing: -1.07
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

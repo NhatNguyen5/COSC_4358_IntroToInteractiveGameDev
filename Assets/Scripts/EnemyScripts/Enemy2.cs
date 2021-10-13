@@ -357,7 +357,7 @@ public class Enemy2 : MonoBehaviour
                 go.GetComponent<TextMeshPro>().text = damage.ToString();
                 //go.GetComponent<TextMeshPro>().color = new Color(1.0f, 0.0f, 0.7f);
                 go.GetComponent<TextMeshPro>().colorGradient = new VertexGradient(colorTop, colorTop, colorBottom, colorBottom);                         
-                go.GetComponent<TextMeshPro>().fontSize *= 1.5f;
+                go.GetComponent<TextMeshPro>().fontSize *= 1.2f;
 
              //rgb colors
         //private float r = 236;  // red component
