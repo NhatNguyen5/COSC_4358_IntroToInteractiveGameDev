@@ -22,6 +22,9 @@ public class PlayerActions
     private Image HealCooldownDisplay;
     private float relaMouseAngle;
 
+    private Vector3 OriLeftArmPos;
+    private Vector3 OriRightArmPos;
+
     private string currSpriteCategory;
 
     private string[] CurrHemoSprite;
@@ -32,7 +35,9 @@ public class PlayerActions
     {
         this.player = player;
         leftArm = player.transform.Find("LeftArm");
+        OriLeftArmPos = leftArm.position;
         rightArm = player.transform.Find("RightArm");
+        OriRightArmPos = rightArm.position;
         HealthBar = GameObject.Find("HP").GetComponent<Image>();
         LeftAmmo = GameObject.Find("LeftAmmo");
         RWeaponIcon = GameObject.Find("WeaponBorderR");
@@ -154,10 +159,20 @@ public class PlayerActions
         
         if(!leftArm.gameObject.activeSelf)
         {
+            if (player.Stats.Angle < 0)
+            {
+                leftArm.position = new Vector2(player.Stats.Position.x + 0.3f, player.Stats.Position.y - 0.15f);
+                rightArm.position = new Vector2(player.Stats.Position.x - 0.3f, player.Stats.Position.y - 0.15f);
+            }
+            else
+            {
+                leftArm.position = new Vector2(player.Stats.Position.x - 0.3f, player.Stats.Position.y - 0.15f);
+                rightArm.position = new Vector2(player.Stats.Position.x + 0.3f, player.Stats.Position.y - 0.15f);
+            }
+
             leftArm.gameObject.SetActive(true);
             LeftAmmo.gameObject.SetActive(true);
             player.Stats.IsDualWield = true;
-
         }
         else
         {
@@ -165,17 +180,30 @@ public class PlayerActions
             {
                 if (lw.gameObject.activeSelf == true)
                 {
-                    LeftWeapon lWeapon = lw.GetComponent<LeftWeapon>();
+                    Weapon lWeapon = lw.GetComponent<Weapon>();
                     lWeapon.transform.position = leftArm.transform.position;
                     lWeapon.transform.rotation = leftArm.transform.rotation;
                 }
             }
 
+            if (player.Stats.Angle < 0)
+            {
+                leftArm.position = new Vector2(player.Stats.Position.x + 0.05f, player.Stats.Position.y - 0.15f);
+                rightArm.position = new Vector2(player.Stats.Position.x - 0.05f, player.Stats.Position.y - 0.15f);
+            }
+            else
+            {
+                leftArm.position = new Vector2(player.Stats.Position.x - 0.05f, player.Stats.Position.y - 0.15f);
+                rightArm.position = new Vector2(player.Stats.Position.x + 0.05f, player.Stats.Position.y - 0.15f);
+            }
+
             leftArm.gameObject.SetActive(false);
             LeftAmmo.gameObject.SetActive(false);
             player.Stats.IsDualWield = false;
+
+
         }
-        //Debug.Log("PA: " + player.Stats.IsUpWhenSwap);
+        
     }
 
     public void SwapWeapon()
@@ -186,7 +214,7 @@ public class PlayerActions
             foreach (Transform rw in rightArm)
             {
                 //Debug.Log(rw.gameObject.activeSelf);
-                if (rw.GetComponent<RightWeapon>().Slot == input)
+                if (rw.GetComponent<Weapon>().Slot == input)
                 {
                     rw.gameObject.SetActive(true);
                     foreach (Transform WIcon in RWeaponIcon.transform)
@@ -203,7 +231,7 @@ public class PlayerActions
                 }
                 else
                 {
-                    RightWeapon RWeapon = rw.GetComponent<RightWeapon>();
+                    Weapon RWeapon = rw.GetComponent<Weapon>();
                     RWeapon.transform.position = rightArm.transform.position;
                     RWeapon.transform.rotation = rightArm.transform.rotation;
                     rw.gameObject.SetActive(false);

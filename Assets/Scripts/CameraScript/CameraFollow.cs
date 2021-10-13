@@ -24,7 +24,7 @@ public class CameraFollow : MonoBehaviour
     public float cameraZoom;
     public float cameraZoomSpeed;
 
-    private RightWeapon activeWeapon;
+    private Weapon activeWeapon;
     private float defaultSpeed;
     private Vector3 follLocation;
     private float defaultZoom;
@@ -57,7 +57,7 @@ public class CameraFollow : MonoBehaviour
                 //Debug.Log(rw.gameObject.activeSelf);
                 if (rw.gameObject.activeSelf)
                 {
-                    activeWeapon = RightArm.transform.Find(rw.name).GetComponent<RightWeapon>();
+                    activeWeapon = RightArm.transform.Find(rw.name).GetComponent<Weapon>();
                     //Debug.Log("Found");
                     break;
                 }

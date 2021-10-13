@@ -27,7 +27,7 @@ public class WeaponTurnSwap : MonoBehaviour
                 angle = 360 + angle;
             }
 
-            if ((angle > 10 && angle < 170) && swap == true)
+            if ((angle >= 0 && angle <= 180) && swap == true)
             {
                 Vector3 temp = RightArm.position;
                 RightArm.position = LeftArm.position;
@@ -37,7 +37,7 @@ public class WeaponTurnSwap : MonoBehaviour
             }
 
 
-            if ((angle > 190 && angle < 350) && swap == false)
+            if ((angle > 180 && angle < 360) && swap == false)
             {
                 Vector3 temp = RightArm.position;
                 RightArm.position = LeftArm.position;

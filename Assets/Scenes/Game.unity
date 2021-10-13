@@ -161,7 +161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 279.3, y: -241.3}
+  m_AnchoredPosition: {x: 244, y: -241.3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &35752701
@@ -29402,7 +29402,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000032425, y: 86.6}
+  m_AnchoredPosition: {x: 26.1, y: 86.6}
   m_SizeDelta: {x: 398.03, y: 74.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1108824130
@@ -32071,7 +32071,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000038147, y: 59.8}
+  m_AnchoredPosition: {x: -0.000038147, y: 44.4}
   m_SizeDelta: {x: 398.03, y: 74.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1593084434
@@ -34921,6 +34921,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3517825292212706015, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292212706015, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 3517825292283961422, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bloom
       value: 1
@@ -35119,7 +35127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: stats.dashSpeed
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: stats.hpRegenAdd
@@ -35134,8 +35142,12 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: stats.dashCooldown
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: stats.dashDistance
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: stats.stamRegenAdd
@@ -35304,6 +35316,14 @@ PrefabInstance:
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bulletDamageDropOff
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294137245976, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825294137245976, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: 4100972221008472471, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: Cooldown

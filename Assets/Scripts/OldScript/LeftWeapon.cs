@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RightWeapon : MonoBehaviour
+public class TempLeftWeapon : MonoBehaviour
 {
     [Header("Gun Settings")]
     public float Slot;
@@ -62,7 +62,7 @@ public class RightWeapon : MonoBehaviour
     private int ammoCount;
     public float reloadTime;
     private float reloadCooldown;
-    private Image reloadBar;
+    //private Image reloadBar;
     private Text UIAmmoCount;
     private Text UIMaxAmmoCount;
     private bool reload;
@@ -74,11 +74,11 @@ public class RightWeapon : MonoBehaviour
     {
         reloadOnStartUp();
         reloadCooldown = reloadTime;
-        reloadBar = GameObject.Find("ReloadBarR").GetComponent<Image>();
-        UIAmmoCount = GameObject.Find("AmmoCountR").GetComponent<Text>();
-        UIMaxAmmoCount = GameObject.Find("MaxAmmoCountR").GetComponent<Text>();
+        //reloadBar = GameObject.Find("ReloadBarL").GetComponent<Image>();
+        UIAmmoCount = GameObject.Find("AmmoCountL").GetComponent<Text>();
+        UIMaxAmmoCount = GameObject.Find("MaxAmmoCountL").GetComponent<Text>();
+        setAmmoCount();
     }
-
 
     private void reloadOnStartUp()
     {
@@ -87,23 +87,22 @@ public class RightWeapon : MonoBehaviour
 
     private void reloadClip()
     {
-
         if ((GlobalPlayerVariables.Reserves - maxAmmoInClip * CostPerBullet) > 0 && ammoCount == 0)
         {
-            //Debug.Log("first");
+            Debug.Log("first");
             GlobalPlayerVariables.Reserves -= maxAmmoInClip * CostPerBullet;
             ammoCount = maxAmmoInClip;
         }
         else if ((GlobalPlayerVariables.Reserves - (maxAmmoInClip - ammoCount) * CostPerBullet) > 0 && ammoCount > 0)
         {
-            //Debug.Log("second");
+            Debug.Log("second");
             ammoCount = maxAmmoInClip - ammoCount;
             GlobalPlayerVariables.Reserves -= ammoCount * CostPerBullet;
             ammoCount = maxAmmoInClip;
         }
         else if ((GlobalPlayerVariables.Reserves) > 0 && ammoCount >= 0)
         {
-            //Debug.Log("third");
+            Debug.Log("third");
 
             //int keeptrack = 0;
             //keeptrack = maxAmmoInClip - ammoCount; //23 shots 30-23 = 7
@@ -125,15 +124,15 @@ public class RightWeapon : MonoBehaviour
 
             int remaining = 0;
             remaining = (int)GlobalPlayerVariables.Reserves / CostPerBullet;
-            //Debug.Log("REMAINING " + remaining);
+            Debug.Log("REMAINING " + remaining);
             //Debug.Log("KEEPTRACK " +keeptrack);
 
             GlobalPlayerVariables.Reserves -= remaining * CostPerBullet; //14-14
             ammoCount += remaining;
         }
         firingDelay = 0;
-        //Debug.Log(GlobalPlayerVariables.Reserves);
-        reloadBar.fillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.reserveCount;
+        Debug.Log(GlobalPlayerVariables.Reserves);
+        //reloadBar.fillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.reserveCount;
     }
 
     private void setAmmoCount()
@@ -149,29 +148,30 @@ public class RightWeapon : MonoBehaviour
 
     private void setDamage()
     {
-        GlobalPlayerVariables.critRate = critRate * GlobalPlayerVariables.BaseCritRate;
-        GlobalPlayerVariables.critDmg = critDamage * GlobalPlayerVariables.BaseCritDamage;
-        GlobalPlayerVariables.bulletDamage = bulletDamage;
-        GlobalPlayerVariables.bulletKnockbackForce = bullletKnockBackForce;
-        GlobalPlayerVariables.bulletPierce = pierce;
-        GlobalPlayerVariables.bulletSpeed = bulletSpeed;
-        GlobalPlayerVariables.targetsToPierce = targetsToPierce;
-        GlobalPlayerVariables.damageDropOff = dropOffPerTarget;
-        GlobalPlayerVariables.bulletDamageDropOff = bulletDamageDropOff;
-        GlobalPlayerVariables.timeToDropDmg = timeToDropDmg;
+        GlobalPlayerVariables.critRate2 = critRate * GlobalPlayerVariables.BaseCritRate2;
+        GlobalPlayerVariables.critDmg2 = critDamage * GlobalPlayerVariables.BaseCritDamage2;
+        //Debug.Log(GlobalPlayerVariables.critDmg2);
+        GlobalPlayerVariables.bulletDamage2 = bulletDamage;
+        GlobalPlayerVariables.bulletKnockbackForce2 = bullletKnockBackForce;
+        GlobalPlayerVariables.bulletPierce2 = pierce;
+        GlobalPlayerVariables.bulletSpeed2 = bulletSpeed;
+        GlobalPlayerVariables.targetsToPierce2 = targetsToPierce;
+        GlobalPlayerVariables.damageDropOff2 = dropOffPerTarget;
+        GlobalPlayerVariables.bulletDamageDropOff2 = bulletDamageDropOff;
+        GlobalPlayerVariables.timeToDropDmg2 = timeToDropDmg;
     }
+
 
 
     private void Update()
     {
-        GlobalPlayerVariables.weaponWeight = weaponWeight;
-        reloadBar.fillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.reserveCount;
-
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        //GlobalPlayerVariables.weaponWeight = weaponWeight;
+        if (Input.GetButtonDown("Fire2"))
         {
             //Debug.Log("Set variable");
             setDamage();
         }
+
 
         setAmmoCount();
 
@@ -192,6 +192,8 @@ public class RightWeapon : MonoBehaviour
         }
 
 
+
+
         //if (reloadCooldown < reloadTime)
         //{
         //reloadBar.fillAmount = (reloadCooldown / reloadTime);
@@ -207,22 +209,18 @@ public class RightWeapon : MonoBehaviour
 
 
 
-        if (ammoCount <= 0 && Input.GetKey(KeyCode.Mouse0) || ammoCount < maxAmmoInClip && Input.GetKeyUp(KeyCode.R))
+        if (ammoCount <= 0 && Input.GetButton("Fire2") || ammoCount < maxAmmoInClip && Input.GetKeyUp(KeyCode.R))
         {
-            if (GlobalPlayerVariables.Reserves > 0)
+            if (reload == false && fired == false)
             {
-                if (reload == false && fired == false)
-                {
-                    //Debug.Log("Reload activated");
-                    WeaponAnim.SetBool("IsShooting", false);
-                    WeaponAnim.SetFloat("FireRate", 0);
-                    WeaponAnim.SetBool("IsReloading", true);
-                    WeaponAnim.SetFloat("ReloadSpeed", 1 / reloadTime);
-                    reloadCooldown = 0;
+                Debug.Log("Reload activated");
+                WeaponAnim.SetBool("IsShooting", false);
+                WeaponAnim.SetFloat("FireRate", 0);
+                WeaponAnim.SetBool("IsReloading", true);
+                WeaponAnim.SetFloat("ReloadSpeed", 1 / reloadTime);
+                reloadCooldown = 0;
 
-                    reload = true;
-                    bStartRange = 0;
-                }
+                reload = true;
             }
         }
 
@@ -241,7 +239,7 @@ public class RightWeapon : MonoBehaviour
         {
             if (burstFire == false)
             {
-                if (Input.GetKey(KeyCode.Mouse0) && OptionSettings.GameisPaused == false && firingDelay < 0)
+                if (Input.GetButton("Fire2") && OptionSettings.GameisPaused == false && firingDelay < 0)
                 {
                     if (ammoCount > 0)
                     {
@@ -254,7 +252,7 @@ public class RightWeapon : MonoBehaviour
                         //Debug.Log(ammoCount);
                     }
                 }
-                if (!Input.GetKey(KeyCode.Mouse0))
+                if (!Input.GetButton("Fire2"))
                 {
                     WeaponAnim.SetBool("IsShooting", false);
                     WeaponAnim.SetFloat("FireRate", 0);
@@ -268,7 +266,7 @@ public class RightWeapon : MonoBehaviour
             else
             {
 
-                if (Input.GetKeyDown(KeyCode.Mouse0) && OptionSettings.GameisPaused == false && firingDelay < 0)
+                if (Input.GetButtonDown("Fire2") && OptionSettings.GameisPaused == false && firingDelay < 0)
                 {
                     if (ammoCount > 0)
                     {
@@ -300,7 +298,6 @@ public class RightWeapon : MonoBehaviour
                         firingDelay = delay;
                         fired = false;
                     }
-                    //bStartRange -= Time.deltaTime;
                     burstTime -= Time.deltaTime;
 
 

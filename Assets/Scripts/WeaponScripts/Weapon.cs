@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LeftWeapon : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     [Header("Gun Settings")]
     public float Slot;
@@ -62,23 +62,44 @@ public class LeftWeapon : MonoBehaviour
     private int ammoCount;
     public float reloadTime;
     private float reloadCooldown;
-    //private Image reloadBar;
+    private Image reloadBar;
     private Text UIAmmoCount;
     private Text UIMaxAmmoCount;
     private bool reload;
     private float countFillAmount;
     public int CostPerBullet;
 
+    [HideInInspector]
+    public bool IsRightArm;
+
 
     private void Start()
     {
         reloadOnStartUp();
         reloadCooldown = reloadTime;
-        //reloadBar = GameObject.Find("ReloadBarL").GetComponent<Image>();
-        UIAmmoCount = GameObject.Find("AmmoCountL").GetComponent<Text>();
-        UIMaxAmmoCount = GameObject.Find("MaxAmmoCountL").GetComponent<Text>();
-        setAmmoCount();
+        if (transform.parent.name == "RightArm")
+        {
+            IsRightArm = true;
+        }
+        else if (transform.parent.name == "LeftArm")
+        {
+            IsRightArm = false;
+        }
+
+        if (IsRightArm)
+        {
+            reloadBar = GameObject.Find("ReloadBarR").GetComponent<Image>();
+            UIAmmoCount = GameObject.Find("AmmoCountR").GetComponent<Text>();
+            UIMaxAmmoCount = GameObject.Find("MaxAmmoCountR").GetComponent<Text>();
+        }
+        else
+        {
+            UIAmmoCount = GameObject.Find("AmmoCountL").GetComponent<Text>();
+            UIMaxAmmoCount = GameObject.Find("MaxAmmoCountL").GetComponent<Text>();
+            setAmmoCount();
+        }
     }
+
 
     private void reloadOnStartUp()
     {
@@ -87,22 +108,23 @@ public class LeftWeapon : MonoBehaviour
 
     private void reloadClip()
     {
+
         if ((GlobalPlayerVariables.Reserves - maxAmmoInClip * CostPerBullet) > 0 && ammoCount == 0)
         {
-            Debug.Log("first");
+            //Debug.Log("first");
             GlobalPlayerVariables.Reserves -= maxAmmoInClip * CostPerBullet;
             ammoCount = maxAmmoInClip;
         }
         else if ((GlobalPlayerVariables.Reserves - (maxAmmoInClip - ammoCount) * CostPerBullet) > 0 && ammoCount > 0)
         {
-            Debug.Log("second");
+            //Debug.Log("second");
             ammoCount = maxAmmoInClip - ammoCount;
             GlobalPlayerVariables.Reserves -= ammoCount * CostPerBullet;
             ammoCount = maxAmmoInClip;
         }
         else if ((GlobalPlayerVariables.Reserves) > 0 && ammoCount >= 0)
         {
-            Debug.Log("third");
+            //Debug.Log("third");
 
             //int keeptrack = 0;
             //keeptrack = maxAmmoInClip - ammoCount; //23 shots 30-23 = 7
@@ -124,15 +146,16 @@ public class LeftWeapon : MonoBehaviour
 
             int remaining = 0;
             remaining = (int)GlobalPlayerVariables.Reserves / CostPerBullet;
-            Debug.Log("REMAINING " + remaining);
+            //Debug.Log("REMAINING " + remaining);
             //Debug.Log("KEEPTRACK " +keeptrack);
 
             GlobalPlayerVariables.Reserves -= remaining * CostPerBullet; //14-14
             ammoCount += remaining;
         }
         firingDelay = 0;
-        Debug.Log(GlobalPlayerVariables.Reserves);
-        //reloadBar.fillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.reserveCount;
+        //Debug.Log(GlobalPlayerVariables.Reserves);
+        if(IsRightArm)
+            reloadBar.fillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.reserveCount;
     }
 
     private void setAmmoCount()
@@ -148,24 +171,224 @@ public class LeftWeapon : MonoBehaviour
 
     private void setDamage()
     {
-        GlobalPlayerVariables.critRate2 = critRate * GlobalPlayerVariables.BaseCritRate2;
-        GlobalPlayerVariables.critDmg2 = critDamage * GlobalPlayerVariables.BaseCritDamage2;
-        //Debug.Log(GlobalPlayerVariables.critDmg2);
-        GlobalPlayerVariables.bulletDamage2 = bulletDamage;
-        GlobalPlayerVariables.bulletKnockbackForce2 = bullletKnockBackForce;
-        GlobalPlayerVariables.bulletPierce2 = pierce;
-        GlobalPlayerVariables.bulletSpeed2 = bulletSpeed;
-        GlobalPlayerVariables.targetsToPierce2 = targetsToPierce;
-        GlobalPlayerVariables.damageDropOff2 = dropOffPerTarget;
-        GlobalPlayerVariables.bulletDamageDropOff2 = bulletDamageDropOff;
-        GlobalPlayerVariables.timeToDropDmg2 = timeToDropDmg;
+        if (IsRightArm)
+        {
+            GlobalPlayerVariables.critRate = critRate * GlobalPlayerVariables.BaseCritRate;
+            GlobalPlayerVariables.critDmg = critDamage * GlobalPlayerVariables.BaseCritDamage;
+            GlobalPlayerVariables.bulletDamage = bulletDamage;
+            GlobalPlayerVariables.bulletKnockbackForce = bullletKnockBackForce;
+            GlobalPlayerVariables.bulletPierce = pierce;
+            GlobalPlayerVariables.bulletSpeed = bulletSpeed;
+            GlobalPlayerVariables.targetsToPierce = targetsToPierce;
+            GlobalPlayerVariables.damageDropOff = dropOffPerTarget;
+            GlobalPlayerVariables.bulletDamageDropOff = bulletDamageDropOff;
+            GlobalPlayerVariables.timeToDropDmg = timeToDropDmg;
+        }
+        else
+        {
+            GlobalPlayerVariables.critRate2 = critRate * GlobalPlayerVariables.BaseCritRate2;
+            GlobalPlayerVariables.critDmg2 = critDamage * GlobalPlayerVariables.BaseCritDamage2;
+            //Debug.Log(GlobalPlayerVariables.critDmg2);
+            GlobalPlayerVariables.bulletDamage2 = bulletDamage;
+            GlobalPlayerVariables.bulletKnockbackForce2 = bullletKnockBackForce;
+            GlobalPlayerVariables.bulletPierce2 = pierce;
+            GlobalPlayerVariables.bulletSpeed2 = bulletSpeed;
+            GlobalPlayerVariables.targetsToPierce2 = targetsToPierce;
+            GlobalPlayerVariables.damageDropOff2 = dropOffPerTarget;
+            GlobalPlayerVariables.bulletDamageDropOff2 = bulletDamageDropOff;
+            GlobalPlayerVariables.timeToDropDmg2 = timeToDropDmg;
+        }
     }
-
 
 
     private void Update()
     {
-        //GlobalPlayerVariables.weaponWeight = weaponWeight;
+        if (IsRightArm) // RightArm
+        {
+            RightArmUpdate();
+        }
+        else // LeftArm
+        {
+            LeftArmUpdate();
+        }
+    }
+
+    private void RightArmUpdate()
+    {
+        GlobalPlayerVariables.weaponWeight = weaponWeight;
+        reloadBar.fillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.reserveCount;
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            //Debug.Log("Set variable");
+            setDamage();
+        }
+
+        setAmmoCount();
+
+        if (bStartRange > bEndRange)
+        {
+            bStartRange = bEndRange;
+        }
+
+        if (bStartRange < 0)
+        {
+            bStartRange = 0;
+        }
+
+        if (bloomTimer < 0)
+        {
+            bStartRange = 0;
+            bloomTimer = 0;
+        }
+
+
+        //if (reloadCooldown < reloadTime)
+        //{
+        //reloadBar.fillAmount = (reloadCooldown / reloadTime);
+
+        //set ammo count here too
+        //}
+        /*
+        else
+        { 
+            reloadBar.fillAmount = 1;
+        }
+        */
+
+
+
+        if ((ammoCount <= 0 && Input.GetKey(KeyCode.Mouse0) || ammoCount < maxAmmoInClip && Input.GetKeyUp(KeyCode.R)) && firingDelay == 0)
+        {
+            if (GlobalPlayerVariables.Reserves > 0)
+            {
+                if (reload == false && fired == false)
+                {
+                    //Debug.Log("Reload activated");
+                    WeaponAnim.SetBool("IsShooting", false);
+                    WeaponAnim.SetFloat("FireRate", 0);
+                    WeaponAnim.SetBool("IsReloading", true);
+                    WeaponAnim.SetFloat("ReloadSpeed", 1 / reloadTime);
+                    reloadCooldown = 0;
+
+                    reload = true;
+                    bStartRange = 0;
+                }
+            }
+        }
+        //Debug.Log(reloadCooldown);
+        if (reloadCooldown == reloadTime && reload == true)
+        {
+            reloadClip();
+
+            reload = false;
+            WeaponAnim.SetBool("IsReloading", false);
+            WeaponAnim.SetFloat("ReloadSpeed", 0);
+
+        }
+
+
+        if (reload == false)
+        {
+            if (burstFire == false)
+            {
+                if (Input.GetKey(KeyCode.Mouse0) && OptionSettings.GameisPaused == false && firingDelay == 0)
+                {
+                    if (ammoCount > 0)
+                    {
+
+                        Shoot();
+                        bStartRange += increaseBloom;
+                        bloomTimer = bloomResetTimer;
+                        ammoCount--;
+
+                        //Debug.Log(ammoCount);
+                    }
+                }
+                if (!Input.GetKey(KeyCode.Mouse0))
+                {
+                    WeaponAnim.SetBool("IsShooting", false);
+                    WeaponAnim.SetFloat("FireRate", 0);
+                }
+                if (bStartRange >= 0)
+                    bStartRange -= Time.deltaTime;
+
+                if(firingDelay > 0)
+                    firingDelay -= Time.deltaTime;
+                else
+                    firingDelay = 0;
+            }
+            else
+            {
+
+                if (Input.GetKeyDown(KeyCode.Mouse0) && OptionSettings.GameisPaused == false && firingDelay == 0)
+                {
+                    if (ammoCount > 0)
+                    {
+                        fired = true;
+                    }
+                }
+
+                if (fired == true)
+                {
+
+                    if (TimesShot < timesToShoot && ammoCount > 0)
+                    {
+                        //TimesShot++;
+                        if (burstTime < 0)
+                        {
+                            TimesShot++;
+                            burst();
+                            bStartRange += increaseBloom;
+                            bloomTimer = bloomResetTimer;
+                            ammoCount--;
+
+                            //Debug.Log(ammoCount);
+                        }
+
+                    }
+                    else
+                    {
+                        TimesShot = 0;
+                        firingDelay = delay;
+                        fired = false;
+                    }
+                    //bStartRange -= Time.deltaTime;
+                    burstTime -= Time.deltaTime;
+
+
+                }
+                if (fired == false)
+                {
+                    WeaponAnim.SetBool("IsShooting", false);
+                    WeaponAnim.SetFloat("FireRate", 0);
+                }
+                if (bStartRange >= 0)
+                    bStartRange -= Time.deltaTime;
+
+                if(firingDelay > 0)
+                    firingDelay -= Time.deltaTime;
+                else
+                    firingDelay = 0;
+            }
+        }
+        if (reloadCooldown < reloadTime)
+            reloadCooldown += Time.deltaTime;
+        else
+            reloadCooldown = reloadTime;
+
+        bloomTimer -= Time.deltaTime;
+        /*
+        if (reload == true)
+        {
+            //reloadBar.fillAmount = (reloadCooldown / reloadTime);
+
+        }
+        */
+    }
+
+    private void LeftArmUpdate()
+    {
         if (Input.GetButtonDown("Fire2"))
         {
             //Debug.Log("Set variable");
@@ -224,7 +447,7 @@ public class LeftWeapon : MonoBehaviour
             }
         }
 
-        if (reloadCooldown >= reloadTime && reload == true)
+        if (reloadCooldown == reloadTime && reload == true)
         {
             reloadClip();
 
@@ -239,7 +462,7 @@ public class LeftWeapon : MonoBehaviour
         {
             if (burstFire == false)
             {
-                if (Input.GetButton("Fire2") && OptionSettings.GameisPaused == false && firingDelay < 0)
+                if (Input.GetButton("Fire2") && OptionSettings.GameisPaused == false && firingDelay == 0)
                 {
                     if (ammoCount > 0)
                     {
@@ -259,14 +482,15 @@ public class LeftWeapon : MonoBehaviour
                 }
                 if (bStartRange >= 0)
                     bStartRange -= Time.deltaTime;
-                firingDelay -= Time.deltaTime;
-                if (firingDelay < -10000)
+                if(firingDelay > 0)
+                    firingDelay -= Time.deltaTime;
+                else
                     firingDelay = 0;
             }
             else
             {
 
-                if (Input.GetButtonDown("Fire2") && OptionSettings.GameisPaused == false && firingDelay < 0)
+                if (Input.GetButtonDown("Fire2") && OptionSettings.GameisPaused == false && firingDelay == 0)
                 {
                     if (ammoCount > 0)
                     {
@@ -309,21 +533,25 @@ public class LeftWeapon : MonoBehaviour
                 }
                 if (bStartRange >= 0)
                     bStartRange -= Time.deltaTime;
-                firingDelay -= Time.deltaTime;
-                if (firingDelay < -10000)
+                if(firingDelay > 0)
+                    firingDelay -= Time.deltaTime;
+                else
                     firingDelay = 0;
             }
         }
-
-        reloadCooldown += Time.deltaTime;
+        if (reloadCooldown < reloadTime)
+            reloadCooldown += Time.deltaTime;
+        else
+            reloadCooldown = reloadTime;
         bloomTimer -= Time.deltaTime;
-        if (reloadCooldown < -10000)
-            reloadCooldown = 0;
+        
+        /*
         if (reload == true)
         {
             //reloadBar.fillAmount = (reloadCooldown / reloadTime);
 
         }
+        */
     }
 
     private void burst()
