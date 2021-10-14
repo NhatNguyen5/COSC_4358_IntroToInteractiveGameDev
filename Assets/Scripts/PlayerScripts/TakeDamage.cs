@@ -89,7 +89,7 @@ public class TakeDamage : MonoBehaviour
         }
     }
 
-    void takeDamage(float damage, Transform impact, float speed)
+    public void takeDamage(float damage, Transform impact, float speed)
     {
         //Debug.Log(damage);
         

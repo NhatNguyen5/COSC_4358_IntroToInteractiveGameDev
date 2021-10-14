@@ -314,7 +314,7 @@ public class Enemy2 : MonoBehaviour
 
     }
 
-    void takeDamage(float damage, Transform impact, float speed)
+    public void takeDamage(float damage, Transform impact, float speed)
     {
         
         //Debug.Log(damage);

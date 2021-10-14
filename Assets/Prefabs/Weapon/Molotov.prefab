@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1958789180224378485}
   - component: {fileID: 6297962017088467537}
   - component: {fileID: 359814843918546931}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: Molotov
-  m_TagString: Untagged
+  m_TagString: Items
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,13 +98,13 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 1
+  m_AngularDrag: 0.5
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &6297962017088467537
 CircleCollider2D:
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwRange: 10
-  throwSpeed: 10
   burnDuration: 2
   puddleSize: 2
   damageOverTime: 2
+  puddle: {fileID: 4771493260390014491, guid: c9204730cf2d0764aaf2353083e737f0, type: 3}

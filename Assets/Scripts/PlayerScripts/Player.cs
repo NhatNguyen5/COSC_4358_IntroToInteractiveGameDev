@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
     private float beatTimer = 0;
 
     [SerializeField]
-    private Molotov Molie;
+    private Molotov Molly;
 
     private void Awake()
     {
@@ -180,7 +180,7 @@ public class Player : MonoBehaviour
             {
                 Quaternion newRot = Quaternion.Euler(stats.Direction.x, stats.Direction.y, 0);
 
-                Instantiate(Molie, stats.Position, newRot);
+                Instantiate(Molly, stats.Position, newRot);
             }
             if (Input.GetKeyUp(KeyCode.Q) && LeftSlotAvailableToUse)
             {
