@@ -116,6 +116,18 @@ public class ItemPickup : MonoBehaviour
                     }
                     break;
 
+                case "Molly":
+                    //Debug.Log(GlobalPlayerVariables.Reserves);
+                    if (player.Stats.NumofMolly < 9)
+                    {
+                        Follow();
+                        if (distance <= PickUpRange)
+                        {
+                            player.Stats.NumofMolly += 1;
+                            Destroy(gameObject);
+                        }
+                    }
+                    break;
 
                 default:
                     Follow();

@@ -72,7 +72,7 @@ public class Puddle : MonoBehaviour
         {
             scaleDown -= Time.deltaTime;
         }
-        //Debug.Log(scaleDown);
+        //Debug.Log(300 * puddleSize * scaleDown / puddleFadeDuration);
 
         if(scaleUp >= puddleSize && firstExplotion)
         {

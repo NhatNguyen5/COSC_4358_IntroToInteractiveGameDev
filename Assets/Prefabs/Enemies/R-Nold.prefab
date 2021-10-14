@@ -353,6 +353,7 @@ MonoBehaviour:
   - {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
   - {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
   - {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
+  - {fileID: 2056935271745837854, guid: 953376de06b619b4898731a5bab67558, type: 3}
   DropPercentageTylenol: 70
   NumOfTylenolDrop: 2
   DropPercentageProtein: 90
@@ -361,3 +362,5 @@ MonoBehaviour:
   NumOfAmmoDrop: 10
   DropPercentagePhizer: 5
   NumOfPhizerDrop: 1
+  DropPercentageMolly: 20
+  NumOfMollyDrop: 1

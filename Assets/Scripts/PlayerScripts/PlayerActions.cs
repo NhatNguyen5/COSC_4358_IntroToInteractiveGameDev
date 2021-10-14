@@ -16,6 +16,7 @@ public class PlayerActions
     private Image HealthBar;
     public Text HealCounts;
     public Text VaccineCounts;
+    public Text MollyCounts;
     private GameObject LeftAmmo;
     private GameObject RWeaponIcon;
     private Image VaccineCooldownDisplay;
@@ -43,6 +44,7 @@ public class PlayerActions
         RWeaponIcon = GameObject.Find("WeaponBorderR");
         HealCounts = GameObject.Find("HealCounts").GetComponent<Text>();
         VaccineCounts = GameObject.Find("VaccineCounts").GetComponent<Text>();
+        MollyCounts = GameObject.Find("MollyCounts").GetComponent<Text>();
         LeftAmmo.gameObject.SetActive(false);
         DashDistance = player.Stats.DashDistance;
         DashSpeed = player.Stats.DashSpeed;
@@ -277,14 +279,11 @@ public class PlayerActions
         }
     }
 
-    public void UpdateHeal()
+    public void UpdateCountsUI()
     {
         HealCounts.text = player.Stats.NumofHeal.ToString();
-    }
-
-    public void UpdateVaccine()
-    {
         VaccineCounts.text = player.Stats.NumofPhizer.ToString();
+        MollyCounts.text = player.Stats.NumofMolly.ToString();
     }
 
     public void Regen()

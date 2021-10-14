@@ -104,6 +104,7 @@ public class Player : MonoBehaviour
         stats.NumofHeal = stats.numofheal;
         stats.NumofProtein = stats.numofprotein;
         stats.NumofPhizer = stats.numofphizer;
+        stats.NumofMolly = stats.numofmolly;
 
         stats.PhizerDurationz = stats.PhizerDuration;
         stats.PhizerCooldownz = stats.PhizerCooldown;
@@ -140,8 +141,7 @@ public class Player : MonoBehaviour
     {
         utilities.HandleInput();
         references.CalMousePosToPlayer();
-        actions.UpdateHeal();
-        actions.UpdateVaccine();
+        actions.UpdateCountsUI();
         actions.Regen();
 
 
@@ -178,9 +178,12 @@ public class Player : MonoBehaviour
             }
             if(Input.GetKeyUp(KeyCode.G))
             {
-                Quaternion newRot = Quaternion.Euler(stats.Direction.x, stats.Direction.y, 0);
-
-                Instantiate(Molly, stats.Position, newRot);
+                if (stats.NumofMolly > 0)
+                {
+                    Quaternion newRot = Quaternion.Euler(stats.Direction.x, stats.Direction.y, 0);
+                    Instantiate(Molly, stats.Position, newRot);
+                    stats.NumofMolly -= 1;
+                }
             }
             if (Input.GetKeyUp(KeyCode.Q) && LeftSlotAvailableToUse)
             {

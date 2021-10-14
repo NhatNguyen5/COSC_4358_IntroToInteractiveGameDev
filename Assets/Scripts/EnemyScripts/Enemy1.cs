@@ -79,6 +79,8 @@ public class Enemy1 : MonoBehaviour
     public int NumOfAmmoDrop;
     public float DropPercentagePhizer;
     public int NumOfPhizerDrop;
+    public float DropPercentageMolly;
+    public int NumOfMollyDrop;
 
     //ANIMATION VARIABLES
 
@@ -441,6 +443,12 @@ public class Enemy1 : MonoBehaviour
             {
                 for (int i = 0; i < NumOfPhizerDrop; i++)
                     Instantiate(Drops[3], transform.position, Quaternion.Euler(0, 0, 0));
+            }
+
+            if (Random.Range(0, 100) <= DropPercentageMolly)
+            {
+                for (int i = 0; i < NumOfMollyDrop; i++)
+                    Instantiate(Drops[4], transform.position, Quaternion.Euler(0, 0, 0));
             }
 
             GameObject.Destroy(gameObject);

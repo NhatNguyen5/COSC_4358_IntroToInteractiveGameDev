@@ -119,6 +119,10 @@ MonoBehaviour:
   NumOfTylenolDrop: 5
   DropPercentageProtein: 100
   NumOfProteinDrop: 100
+  DropPercentageAmmo: 0
+  NumOfAmmoDrop: 0
+  DropPercentagePhizer: 0
+  NumOfPhizerDrop: 0
 --- !u!50 &916351143226452417
 Rigidbody2D:
   serializedVersion: 4
@@ -168,7 +172,7 @@ GameObject:
   - component: {fileID: 7637577220909599662}
   m_Layer: 7
   m_Name: BossSprite
-  m_TagString: Untagged
+  m_TagString: Colony
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,7 +185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067879679887400978}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5896408231586960904}
@@ -224,8 +228,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1272439681
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 720118652224413485, guid: 897e894bd5ba14749ba7b85ff863a043, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

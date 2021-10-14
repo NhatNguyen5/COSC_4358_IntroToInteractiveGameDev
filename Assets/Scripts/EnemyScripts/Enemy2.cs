@@ -88,6 +88,7 @@ public class Enemy2 : MonoBehaviour
     public int NumOfAmmoDrop;
     public float DropPercentagePhizer;
     public int NumOfPhizerDrop;
+    
 
     private float critRate = 0;
     private float critDMG = 0;
