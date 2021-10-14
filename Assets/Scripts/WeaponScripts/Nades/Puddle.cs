@@ -38,9 +38,9 @@ public class Puddle : MonoBehaviour
         PuddleShadow.localScale *= 0;
         cc2d = transform.GetComponent<CircleCollider2D>();
         cc2d.radius = 0;
-        PSShapeModule = transform.GetComponent<ParticleSystem>().shape;
+        PSShapeModule = transform.Find("Particle").GetComponent<ParticleSystem>().shape;
         PSShapeModule.radius = 0;
-        PSEmissionModule = transform.GetComponent<ParticleSystem>().emission;
+        PSEmissionModule = transform.Find("Particle").GetComponent<ParticleSystem>().emission;
         PSEmissionModule.rateOverTime = 0;
         currDamage = initialExplodeDamage;
         scaleDown = fullDamageDuration + puddleFadeDuration;
@@ -112,6 +112,14 @@ public class Puddle : MonoBehaviour
     private IEnumerator clearPuddle(float AfterDuration)
     {
         yield return new WaitForSeconds(AfterDuration);
+        //detach particle effect so it won't disapear suddenly
+        
+        Transform tempPS;
+        tempPS = transform.Find("Particle");
+        tempPS.GetComponent<ParticleSystem>().Stop();
+        tempPS.parent = null;
+        Destroy(tempPS.gameObject, tempPS.GetComponent<ParticleSystem>().main.duration);
+        
         Destroy(gameObject);
     }
 

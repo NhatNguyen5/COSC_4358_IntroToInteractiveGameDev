@@ -5,6 +5,7 @@ using UnityEngine;
 public class Molotov : MonoBehaviour
 {
     public float throwRange;
+    public float throwSpeed;
     private Vector2 throwDir;
     public float burnDuration;
     public float puddleSize;
@@ -31,7 +32,7 @@ public class Molotov : MonoBehaviour
         Target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         OriPlayerPos = player.Stats.Position;
         cc2d.isTrigger = true;
-        rb.AddForce(throwDir * throwRange*1.75f, ForceMode2D.Impulse);
+        rb.AddForce(throwDir * throwRange * throwSpeed * 1.75f, ForceMode2D.Impulse);
         var impulse = (30*Mathf.Deg2Rad) * -10;
         rb.AddTorque(impulse, ForceMode2D.Impulse);
     }
@@ -51,6 +52,12 @@ public class Molotov : MonoBehaviour
         if(exploded)
         {
             Instantiate(puddle, explodedPos, Quaternion.identity);
+            //detach particle effect so it won't disapear suddenly
+            Transform tempPS;
+            tempPS = transform.Find("Particle");
+            tempPS.GetComponent<ParticleSystem>().Stop();
+            tempPS.parent = null;
+            Destroy(tempPS.gameObject, tempPS.GetComponent<ParticleSystem>().main.duration);
             Destroy(gameObject);
         }
 
