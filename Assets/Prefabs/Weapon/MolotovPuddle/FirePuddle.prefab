@@ -4868,7 +4868,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuddleType: Fire
   puddleSize: 3
-  puddleDuration: 5
+  fullDamageDuration: 2
+  puddleFadeDuration: 5
   spreadSpeed: 10
   initialExplodeDamage: 50
   damageOverTime: 20
