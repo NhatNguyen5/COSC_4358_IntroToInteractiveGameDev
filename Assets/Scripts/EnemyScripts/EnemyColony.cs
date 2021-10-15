@@ -477,7 +477,7 @@ public class EnemyColony : MonoBehaviour
                 Instantiate(Drops[3], transform.position, Quaternion.Euler(0, 0, 0));
         }
         EnemyUI.SetActive(false);
-        Destroy(transform.parent.gameObject);
+        Destroy(transform.gameObject);
     }
 
 
