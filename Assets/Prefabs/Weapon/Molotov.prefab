@@ -4948,8 +4948,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd45222151c30e14ab212e3a05fb8ff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwRange: 20
+  throwRange: 15
   throwSpeed: 1
-  burnDuration: 2
+  burnDuration: 5
   puddleSize: 2
   puddle: {fileID: 4771493260390014491, guid: c9204730cf2d0764aaf2353083e737f0, type: 3}
