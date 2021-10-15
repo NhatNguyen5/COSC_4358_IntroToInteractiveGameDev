@@ -86,11 +86,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PuddleType: Fire
   puddleSize: 3
-  fullDamageDuration: 2
-  puddleFadeDuration: 5
+  fullDamageDuration: 5
+  puddleFadeDuration: 9
   spreadSpeed: 10
-  initialExplodeDamage: 50
-  damageOverTime: 20
+  initialExplodeDamage: 55
+  damageOverTime: 45
   durationBetweenBurn: 0.5
 --- !u!1 &2594125042544627345
 GameObject:
