@@ -87,6 +87,15 @@ public class TakeDamage : MonoBehaviour
 
             takeDamage(damage, collision.transform, speed);
         }
+        if (collision.tag == "EnemyBullet2")
+        {
+            float damage = collision.gameObject.GetComponent<EnemyProj2>().damage;
+            float speed = collision.gameObject.GetComponent<EnemyProj2>().speed;
+
+
+            takeDamage(damage, collision.transform, speed);
+        }
+
     }
 
     public void takeDamage(float damage, Transform impact, float speed)

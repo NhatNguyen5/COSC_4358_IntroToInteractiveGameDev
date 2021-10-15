@@ -33,6 +33,9 @@ public class GlobalPlayerVariables : MonoBehaviour
     public static float bulletDamage = 0;
     public static float bulletKnockbackForce = 0;
     public static bool bulletPierce = false;
+    public static bool bulletExplosion = false;
+
+
     public static int targetsToPierce = 0;
     public static float damageDropOff = 0;
 
@@ -50,6 +53,8 @@ public class GlobalPlayerVariables : MonoBehaviour
     public static float bulletDamage2 = 0;
     public static float bulletKnockbackForce2 = 0;
     public static bool bulletPierce2 = false;
+    public static bool bulletExplosion2 = false;
+
     public static int targetsToPierce2 = 0;
     public static float damageDropOff2 = 0;
 

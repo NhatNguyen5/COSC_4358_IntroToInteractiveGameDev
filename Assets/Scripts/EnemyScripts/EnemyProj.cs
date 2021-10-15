@@ -20,19 +20,20 @@ public class EnemyProj : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        target = new Vector2(player.position.x, player.position.y);
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
+        //target = new Vector2(player.position.x, player.position.y);
         rb = GetComponent<Rigidbody2D>();
-        if (homing == false)
-        {
-            rb.velocity = transform.right * speed;
 
-        }
+       
+        rb.velocity = transform.right * speed;
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if (homing == true)
         {
             Vector3 direction = player.position - transform.position;
@@ -41,6 +42,7 @@ public class EnemyProj : MonoBehaviour
             direction.Normalize();
             followMovement = direction;
         }
+        */
 
         despawnTime -= Time.deltaTime;
         if (despawnTime <= 0)

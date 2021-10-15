@@ -331,7 +331,7 @@ MonoBehaviour:
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1152
   unstuckTime: 0
   circleRadius: 3
   timeTillNextMove: 1
@@ -361,3 +361,5 @@ MonoBehaviour:
   NumOfAmmoDrop: 5
   DropPercentagePhizer: 2
   NumOfPhizerDrop: 1
+  DropPercentageMolly: 0
+  NumOfMollyDrop: 0

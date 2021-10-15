@@ -34,6 +34,7 @@ public class Weapon : MonoBehaviour
     public float critDamage;
 
     [Header("Bullet Settings")]
+    public bool explodingBullets;
     public bool pierce;
     public int targetsToPierce;
     public float dropOffPerTarget;
@@ -177,6 +178,7 @@ public class Weapon : MonoBehaviour
             GlobalPlayerVariables.critDmg = critDamage * GlobalPlayerVariables.BaseCritDamage;
             GlobalPlayerVariables.bulletDamage = bulletDamage;
             GlobalPlayerVariables.bulletKnockbackForce = bullletKnockBackForce;
+            GlobalPlayerVariables.bulletExplosion = explodingBullets;
             GlobalPlayerVariables.bulletPierce = pierce;
             GlobalPlayerVariables.bulletSpeed = bulletSpeed;
             GlobalPlayerVariables.targetsToPierce = targetsToPierce;
@@ -191,6 +193,7 @@ public class Weapon : MonoBehaviour
             //Debug.Log(GlobalPlayerVariables.critDmg2);
             GlobalPlayerVariables.bulletDamage2 = bulletDamage;
             GlobalPlayerVariables.bulletKnockbackForce2 = bullletKnockBackForce;
+            GlobalPlayerVariables.bulletExplosion2 = explodingBullets;
             GlobalPlayerVariables.bulletPierce2 = pierce;
             GlobalPlayerVariables.bulletSpeed2 = bulletSpeed;
             GlobalPlayerVariables.targetsToPierce2 = targetsToPierce;

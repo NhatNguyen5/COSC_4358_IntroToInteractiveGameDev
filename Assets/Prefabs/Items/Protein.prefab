@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8242906761410942325}
   - component: {fileID: 3344257401194469249}
   - component: {fileID: 3413995954745191899}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Protein
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 2284507134722376520}
   - component: {fileID: 3509743912027340510}
   - component: {fileID: 997729437338678284}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ProteinShadowSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 8229160137370921602}
   - component: {fileID: 4779140138144632676}
   - component: {fileID: 3896641313532433094}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ProteinSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

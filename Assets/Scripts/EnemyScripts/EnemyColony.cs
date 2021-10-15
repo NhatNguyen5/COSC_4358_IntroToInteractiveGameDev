@@ -11,6 +11,8 @@ public class EnemyColony : MonoBehaviour
     public Text BossName;
     public Image HealthBar;
     public string NameOfEnemy;
+    public GameObject EnemyUI;
+    public float DetectRange;
     //DEATH VARIABLE
     [HideInInspector]
     public bool isDead = false;
@@ -21,6 +23,55 @@ public class EnemyColony : MonoBehaviour
     private EnemyManager enemyColony;
     private float MaxHP = 0;
     public float speed = 0;
+
+    [Header("Movement Settings")]
+    public float stoppingDistance = 0;
+    public float retreatDistance = 0;
+    public bool followPlayer;
+    public bool retreat;
+    public bool randomMovement;
+
+    [Header("Line Of Sight")]
+    public bool lineofsight;
+    public LayerMask IgnoreMe;
+
+    [Header("Random Movement Settings")]
+    public float circleRadius;
+    public float timeTillNextMove;
+    private float NextMoveCoolDown;
+    private bool reachedDestination;
+    private Vector2 randPos;
+
+    private float knockbackForce = 0;
+    [Header("KnockBack Settings")]
+    public float knockForcePlayerContact;
+    private bool knockback = false;
+    public float knockbackstartrange = 0.4f;
+    public float knockbackendrange = 1.0f;
+    private float knockbacktime;
+
+    private float timeBtwShots;
+    [Header("Gun Settings")]
+    public float beginningrangetoshoot;
+    public float endingrangetoshoot;
+    private float startTimeBtwShots;
+
+    public int AmountOfBullets;
+    public float bulletSpread = 0.0f;
+    public GameObject projectile;
+    public Transform firePoint;
+    private Transform player;
+    private Rigidbody2D rb;
+
+    [Header("Burst Settings")]
+    public bool burstFire;
+    public float timeBtwBurst;
+    private float burstTime = 0;
+
+    public int timesToShoot;
+    private int TimesShot = 0;
+
+
 
     [Header("Drops")]
     public GameObject[] Drops;
@@ -33,11 +84,21 @@ public class EnemyColony : MonoBehaviour
     public float DropPercentagePhizer;
     public int NumOfPhizerDrop;
 
+
+    Vector2 direction;
+    float a;
+
+
+    private float critRate = 0;
+    private float critDMG = 0;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         BossName.text = NameOfEnemy;
-        enemyColony = transform.parent.transform.parent.GetComponent<EnemyManager>();
+        enemyColony = transform.parent.GetComponent<EnemyManager>();
         //Debug.Log(enemyColony.colonyHealth);
         MaxHP = enemyColony.colonyHealth;
         //HealthBar = GameObject.Find("EnemyHP").GetComponent<Image>();
@@ -45,14 +106,178 @@ public class EnemyColony : MonoBehaviour
         sprite = transform.Find("BossSprite").GetComponent<SpriteRenderer>();
         HealthBar.fillAmount = enemyColony.colonyHealth / MaxHP;
 
-        
+        rb = GetComponent<Rigidbody2D>();
+        if (GlobalPlayerVariables.GameOver == false)
+        {
+            Debug.Log("SETTING PLAYER");
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+        else
+            player = this.transform;
+
+        variation();
 
     }
+
+    void variation()
+    {
+        startTimeBtwShots = Random.Range(beginningrangetoshoot, endingrangetoshoot);
+        timeBtwShots = startTimeBtwShots;
+    }
+
+
+    private void FixedUpdate()
+    {
+
+
+        if (knockback == true)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, randPos, -speed * Time.deltaTime);
+            getDirection(player);
+
+        }
+        else
+        {
+
+            if (Vector2.Distance(transform.position, player.position) >= stoppingDistance && followPlayer == true && lineofsight == true) //follow player
+            {
+                reachedDestination = true;
+                transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                getDirection(player);
+            }
+            else if ((Vector2.Distance(transform.position, player.position) >= retreatDistance) || GlobalPlayerVariables.GameOver == true) //stop /*(Vector2.Distance(transform.position, player.position) <= stoppingDistance && */ 
+            {
+                if (randomMovement == false)
+                    transform.position = this.transform.position;
+                else //RANDOM MOVEMENT
+                {
+                    if (reachedDestination == false)
+                        transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime);
+                    else
+                        transform.position = this.transform.position;
+
+                    if (transform.position.x == randPos.x && transform.position.y == randPos.y)
+                    {
+                        reachedDestination = true;
+                    }
+                    direction = randPos;
+                    a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                }
+            }
+            else if (Vector2.Distance(transform.position, player.position) <= retreatDistance && retreat == true) //retreat
+            {
+                reachedDestination = true;
+                transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+                getDirection(player);
+            }
+
+        }
+
+    }
+
+    void getDirection(Transform objectpos)
+    {
+        direction = objectpos.position - transform.position;
+        a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+    }
+
+
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (GlobalPlayerVariables.GameOver != false)
+        {
+            player = this.transform;
+        }
+
+        if (Vector2.Distance(transform.position, player.position) <= DetectRange)
+        {
+            EnemyUI.SetActive(true);
+        }
+        else if (Vector2.Distance(transform.position, player.position) >= DetectRange)
+        {
+            EnemyUI.SetActive(false);
+        }
+
+
+        knockbacktime -= Time.deltaTime;
+        if (knockbacktime <= 0)
+        {
+            knockbacktime = 0;
+            knockback = false;
+        }
+        if (player != null && player != this.transform)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
+            //var rayDirection = player.position - transform.position;
+            //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
+            if (hit.collider.gameObject.tag == "Player")
+            {
+                lineofsight = true;
+                //Debug.Log("Player is Visable");
+                // enemy can see the player!
+
+                //Debug.Log("Player is Visable");
+            }
+            else
+            {
+                lineofsight = false;
+                //Debug.Log("Player is NOT Visable");
+            }
+
+        }
+
+        if (lineofsight == true && GlobalPlayerVariables.GameOver == false && isDead == false)
+        {
+
+            if (timeBtwShots <= 0)
+            {
+
+                if (burstFire == true)
+                {
+                    burstTime -= Time.deltaTime;
+                    if (TimesShot < timesToShoot)
+                    {
+                        if (burstTime < 0)
+                        {
+                            TimesShot++;
+                            burst();
+                        }
+
+                    }
+                    else
+                    {
+                        TimesShot = 0;
+                        variation();
+                    }
+                }
+                else
+                {
+                    //Debug.Log("SHOOT");
+                    shoot();
+                }
+            }
+            else
+            {
+                timeBtwShots -= Time.deltaTime;
+            }
+
+            if (NextMoveCoolDown <= 0 && reachedDestination == true)
+            {
+                randomPos();
+            }
+            NextMoveCoolDown -= Time.deltaTime;
+        }
+        else
+        {
+            if (NextMoveCoolDown <= 0)
+            {
+
+                randomPos();
+            }
+            NextMoveCoolDown -= Time.deltaTime;
+        }
     }
 
     
@@ -63,7 +288,25 @@ public class EnemyColony : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        reachedDestination = true;
+        NextMoveCoolDown = timeTillNextMove;
 
+        if (collision.gameObject.tag == "Player")
+        {
+            //Debug.Log("PLAYER CONTACT");
+            knockbackForce = knockForcePlayerContact;
+            knockbacktime = Random.Range(knockbackstartrange, knockbackendrange);
+            knockback = true;
+        }
+        else if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "Player")
+        {
+            //Debug.Log("ENEMY IS HITTING WALL");
+            //UNSTUCKPOS = collision.gameObject.GetComponent<Transform>();
+            //knockbacktime = unstuckTime;
+            //knockback = true;
+            //unstuck = true;
+            randomPos();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -76,13 +319,20 @@ public class EnemyColony : MonoBehaviour
         {
             float damage = collision.gameObject.GetComponent<Bullet>().damage;
             float speed = collision.gameObject.GetComponent<Bullet>().speed;
-            
+            critRate = collision.gameObject.GetComponent<Bullet>().critRate;
+            critDMG = collision.gameObject.GetComponent<Bullet>().critDMG;
+            knockbackForce = collision.gameObject.GetComponent<Bullet>().knockbackForce;
+
 
             takeDamage(damage, collision.transform, speed);
 
-            Destroy(collision.gameObject);
+            reachedDestination = true;
+
+            knockbacktime = Random.Range(knockbackstartrange, knockbackendrange);
+            knockback = true;
 
         }
+
 
 
 
@@ -146,6 +396,43 @@ public class EnemyColony : MonoBehaviour
         sprite.color = Color.white;
     }
 
+    void burst()
+    {
+        for (int i = 0; i < AmountOfBullets; i++)
+        {
+            float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
+            Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
+            Instantiate(projectile, firePoint.position, newRot);
+            burstTime = timeBtwBurst;
+        }
+    }
+
+    void shoot()
+    {
+        for (int i = 0; i < AmountOfBullets; i++)
+        {
+            float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
+            Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
+            Instantiate(projectile, firePoint.position, newRot);
+            variation();
+        }
+
+    }
+
+    void randomPos()
+    {
+
+        NextMoveCoolDown = Random.Range(0f, timeTillNextMove);
+
+        randPos = transform.position;
+
+        randPos += Random.insideUnitCircle * circleRadius;
+        //Vector3 zfix = new Vector3(randPos.x, randPos.y, 0);
+        //randPos = zfix;
+        reachedDestination = false;
+
+
+    }
 
 
 
@@ -154,6 +441,7 @@ public class EnemyColony : MonoBehaviour
         if (isDead == false)
         {
             isDead = true;
+            transform.position = this.transform.position;
             transform.Find("BossSprite").GetComponent<Animator>().SetBool("IsDead", isDead);
             GetComponent<PolygonCollider2D>().enabled = false;
             StartCoroutine(Dying());
@@ -188,7 +476,7 @@ public class EnemyColony : MonoBehaviour
             for (int i = 0; i < NumOfPhizerDrop; i++)
                 Instantiate(Drops[3], transform.position, Quaternion.Euler(0, 0, 0));
         }
-
+        EnemyUI.SetActive(false);
         Destroy(transform.parent.gameObject);
     }
 

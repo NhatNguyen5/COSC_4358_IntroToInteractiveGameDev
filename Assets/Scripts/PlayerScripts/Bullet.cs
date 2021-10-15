@@ -24,9 +24,36 @@ public class Bullet : MonoBehaviour
     public float critRate = 0;
     public float critDMG = 0;
 
+    //explosion settings
+    public GameObject explosion;
+    private bool isBoom = false;
+    public bool isExplosiveBullet = false;
+
+    private Vector2 randPos;
+    public float circleRadius;
+
+    /*
+    private Vector3 spawnPos;
+    private float distanceFromStart = 0;
+    public float when2screenshake = 20;
+
+
+    public bool CameraShake;
+    public float ShakeDuration;
+    public float ShakeIntensity;
+
+    private StatusIndicator statusIndicator = null;
+    private Camera Mcamera;
+
+    */
+
+
+
     // Start is called before the first frame update
     void Start()
     {
+
+        //spawnPos = transform.position;
         if (isLeftWeapon == false)
         {
             speed = GlobalPlayerVariables.bulletSpeed;
@@ -39,6 +66,7 @@ public class Bullet : MonoBehaviour
             timeToDropDmg = GlobalPlayerVariables.timeToDropDmg;
             critRate = GlobalPlayerVariables.critRate;
             critDMG = GlobalPlayerVariables.critDmg;
+            isExplosiveBullet = GlobalPlayerVariables.bulletExplosion;
         }
         if (isLeftWeapon == true)
         {
@@ -52,6 +80,7 @@ public class Bullet : MonoBehaviour
             timeToDropDmg = GlobalPlayerVariables.timeToDropDmg2;
             critRate = GlobalPlayerVariables.critRate2;
             critDMG = GlobalPlayerVariables.critDmg2;
+            isExplosiveBullet = GlobalPlayerVariables.bulletExplosion2;
         }
 
 
@@ -65,10 +94,21 @@ public class Bullet : MonoBehaviour
         //if (hitInfo.tag != "Player" && hitInfo.tag != "EnemyBullet" && hitInfo.tag != "Bullet")
         if (pierce == false)
         {
-            if (hitInfo.tag == "Enemy" || hitInfo.tag == "EnemyMelee" || hitInfo.tag == "Walls")
+            if (isExplosiveBullet == false)
             {
-                //Debug.Log(hitInfo.name);
-                Destroy(gameObject);
+                if (hitInfo.tag == "Enemy" || hitInfo.tag == "EnemyMelee" || hitInfo.tag == "Walls" || hitInfo.tag == "Colony" || hitInfo.tag == "EnemyBullet2")
+                {
+                    //Debug.Log(hitInfo.name);
+                    Destroy(gameObject);
+                }
+            }
+            else
+            {
+                if (hitInfo.tag == "Enemy" || hitInfo.tag == "EnemyMelee" || hitInfo.tag == "Walls" || hitInfo.tag == "Colony" || hitInfo.tag == "EnemyBullet2")
+                {
+                    //Debug.Log(hitInfo.name);
+                    explode();
+                }
             }
         }
         if (pierce == true)
@@ -78,7 +118,7 @@ public class Bullet : MonoBehaviour
                 //Debug.Log(hitInfo.name);
                 Destroy(gameObject);
             }
-            if (hitInfo.tag == "Enemy" || hitInfo.tag == "EnemyMelee")
+            if (hitInfo.tag == "Enemy" || hitInfo.tag == "EnemyMelee" || hitInfo.tag == "Colony" || hitInfo.tag == "EnemyBullet2")
             {
                 //Debug.Log(hitInfo.name);
 
@@ -92,13 +132,46 @@ public class Bullet : MonoBehaviour
 
     }
 
+
+    void explode()
+    {
+        //if (explodeTime < 0)
+        // DestroyEnemyProj();
+
+        if (isBoom == false)
+        {
+            //Debug.Log("boom");
+            isBoom = true;
+            //transform.localScale = new Vector3(0.1f, 0.1f, 1f);
+            //sprite.color = Color.red;
+        }
+
+        if (isBoom == true)
+        {
+            //rb.velocity *= 0;
+
+                //SPAWN EXPLOSION OBJECT
+                randPos = transform.position;
+                randPos += Random.insideUnitCircle * circleRadius;
+                Instantiate(explosion, randPos, Quaternion.Euler(0, 0, 0));
+                Destroy(gameObject);
+            
+
+        }
+
+    }
+
+
+
+
+
     private void OnTriggerExit2D(Collider2D collision)
     {
 
         if (pierce == true)
         {
 
-            if (collision.tag == "Enemy" || collision.tag == "EnemyMelee")
+            if (collision.tag == "Enemy" || collision.tag == "EnemyMelee" || collision.tag == "Colony")
             {
                 damage *= (1 - dropOffPerTarget);
             }
@@ -110,6 +183,16 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
+        /*
+        if (isExplosiveBullet == true)
+        {
+            distanceFromStart = Vector3.Distance(spawnPos, transform.position);
+            if (CameraShake && distanceFromStart < when2screenshake)
+                statusIndicator.StartShake(Mcamera, ShakeDuration, ShakeIntensity);
+        }
+        */
+
+
         timebeforedrop += Time.deltaTime;
         if (timebeforedrop > timeToDropDmg)
         {
