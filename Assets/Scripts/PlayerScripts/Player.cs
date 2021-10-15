@@ -92,6 +92,7 @@ public class Player : MonoBehaviour
         actions = new PlayerActions(this);
         utilities = new PlayerUtilities(this);
         references = new PlayerReferences(this);
+        stats.PFrictionz = stats.pfriction;
         stats.Health = stats.hp;
         stats.MaxHealth = stats.maxhp;
         stats.HPRegen = stats.hpregenrate;
