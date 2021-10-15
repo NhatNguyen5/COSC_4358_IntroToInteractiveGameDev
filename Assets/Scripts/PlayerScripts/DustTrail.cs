@@ -17,23 +17,26 @@ public class DustTrail : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        transform.position = player.Stats.Position - new Vector2(0, 0.4f);
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(player.Stats.Direction.y, player.Stats.Direction.x) * Mathf.Rad2Deg - 180));
-        //Debug.Log(Mathf.Atan2(player.Stats.Direction.y, player.Stats.Direction.x) * Mathf.Rad2Deg);
-        if(player.Components.PlayerRidgitBody.velocity.magnitude > 0)
+        if (player != null)
         {
-            if(trailPS.isStopped)
-                trailPS.Play();
+            transform.position = player.Stats.Position - new Vector2(0, 0.4f);
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(player.Stats.Direction.y, player.Stats.Direction.x) * Mathf.Rad2Deg - 180));
+            //Debug.Log(Mathf.Atan2(player.Stats.Direction.y, player.Stats.Direction.x) * Mathf.Rad2Deg);
+            if (player.Components.PlayerRidgitBody.velocity.magnitude > 0)
+            {
+                if (trailPS.isStopped)
+                    trailPS.Play();
 
-            ParticleSystem.MainModule trailPSMain = trailPS.main;
-            ParticleSystem.EmissionModule trailPSEmission = trailPS.emission;
-            trailPSMain.startSpeed = player.Stats.Speed/player.Stats.WalkSpeed;
-            trailPSEmission.rateOverTime = 30*player.Stats.Speed / player.Stats.WalkSpeed;
-        }
-        else
-        {
-            if (trailPS.isPlaying)
-                trailPS.Stop();
+                ParticleSystem.MainModule trailPSMain = trailPS.main;
+                ParticleSystem.EmissionModule trailPSEmission = trailPS.emission;
+                trailPSMain.startSpeed = player.Stats.Speed / player.Stats.WalkSpeed;
+                trailPSEmission.rateOverTime = 30 * player.Stats.Speed / player.Stats.WalkSpeed;
+            }
+            else
+            {
+                if (trailPS.isPlaying)
+                    trailPS.Stop();
+            }
         }
     }
 }
