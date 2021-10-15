@@ -81,6 +81,7 @@ public class PlayerActions
 
     public void Move(Transform transform)
     {
+        /*
         if(player.Stats.Direction.magnitude > 0)
         {
             hdir = player.Stats.Direction.x;
@@ -98,6 +99,22 @@ public class PlayerActions
             else
                 ease = 0;
         }
+        */
+        if (player.Stats.Direction.magnitude <= 0)
+        {
+            stopSpeed = player.Stats.Speed / player.Stats.WalkSpeed;
+            if (ease > 0)
+                ease -= Time.fixedDeltaTime * player.Stats.PFrictionz / stopSpeed;
+            else
+                ease = 0;
+        }
+        else
+        {
+            hdir = player.Stats.Direction.x;
+            vdir = player.Stats.Direction.y;
+            ease = 1;
+        }
+
         Debug.Log(ease);
         player.Components.PlayerRidgitBody.velocity = ease * (new Vector2(hdir * player.Stats.Speed * Time.deltaTime, vdir * player.Stats.Speed * Time.deltaTime));
     }
