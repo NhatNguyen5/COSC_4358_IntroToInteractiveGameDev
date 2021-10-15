@@ -17,6 +17,8 @@ public class PlayerActions
     public Text HealCounts;
     public Text VaccineCounts;
     public Text MollyCounts;
+    public Text HPNumber;
+    public Text MaxHPNUmber;
     private GameObject LeftAmmo;
     private GameObject RWeaponIcon;
     private Image VaccineCooldownDisplay;
@@ -52,6 +54,8 @@ public class PlayerActions
         HealCounts = GameObject.Find("HealCounts").GetComponent<Text>();
         VaccineCounts = GameObject.Find("VaccineCounts").GetComponent<Text>();
         MollyCounts = GameObject.Find("MollyCounts").GetComponent<Text>();
+        HPNumber = GameObject.Find("HPNumber").GetComponent<Text>();
+        MaxHPNUmber = GameObject.Find("MaxHPNumber").GetComponent<Text>();
         LeftAmmo.gameObject.SetActive(false);
         DashDistance = player.Stats.DashDistance;
         DashSpeed = player.Stats.DashSpeed;
@@ -115,7 +119,7 @@ public class PlayerActions
             ease = 1;
         }
 
-        Debug.Log(ease);
+        //Debug.Log(ease);
         player.Components.PlayerRidgitBody.velocity = ease * (new Vector2(hdir * player.Stats.Speed * Time.deltaTime, vdir * player.Stats.Speed * Time.deltaTime));
     }
 
@@ -326,6 +330,8 @@ public class PlayerActions
         HealCounts.text = player.Stats.NumofHeal.ToString();
         VaccineCounts.text = player.Stats.NumofPhizer.ToString();
         MollyCounts.text = player.Stats.NumofMolly.ToString();
+        HPNumber.text = ((int)player.Stats.Health).ToString();
+        MaxHPNUmber.text = "/ " + ((int)player.Stats.MaxHealth).ToString();
     }
 
     public void Regen()
@@ -351,6 +357,7 @@ public class PlayerActions
         if (player.Stats.Stamina > player.Stats.Stamina)
             player.Stats.Stamina = player.Stats.MaxStamina;
         player.Components.PlayerTrailRenderer.endColor = new Color(184 / 255f, 59 / 255f, 60 / 255f);
+        player.Components.PlayerStatusIndicator.ChangeTransparency((player.Stats.MaxHealth - player.Stats.Health) / player.Stats.MaxHealth);
         currSpriteCategory = "DefaultHemo";
     }
 

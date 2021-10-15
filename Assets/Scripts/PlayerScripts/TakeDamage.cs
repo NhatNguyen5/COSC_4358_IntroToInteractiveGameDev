@@ -30,7 +30,6 @@ public class TakeDamage : MonoBehaviour
     void Start()
     {
         HealthBar = GameObject.Find("HP").GetComponent<Image>();
-        maxHP = GetComponent<Player>().Stats.Health;
         //rb = GetComponent<Rigidbody2D>();
         //sprite = GetComponent<SpriteRenderer>();
         sprite = transform.Find("PlayerSprite_HemoDefault").GetComponent<SpriteRenderer>();
@@ -46,8 +45,8 @@ public class TakeDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
+        maxHP = GetComponent<Player>().Stats.MaxHealth;
+
         //Debug.Log(HP);
     }
 

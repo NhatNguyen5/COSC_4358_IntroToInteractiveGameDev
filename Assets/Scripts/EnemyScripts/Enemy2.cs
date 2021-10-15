@@ -93,6 +93,7 @@ public class Enemy2 : MonoBehaviour
     private float critRate = 0;
     private float critDMG = 0;
 
+    private float easeOM;
 
     // Start is called before the first frame update
     void Start()
@@ -140,8 +141,8 @@ public class Enemy2 : MonoBehaviour
 
             if (Vector2.Distance(transform.position, player.position) > stoppingDistance && followPlayer == true) //follow player
             {
-                reachedDestination = true;
-                transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                easeOM = 1;
+                transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime * easeOM);
                 //go to position 
                 getDirection(player);
 
@@ -153,9 +154,22 @@ public class Enemy2 : MonoBehaviour
                     transform.position = this.transform.position;
                 else //RANDOM MOVEMENT
                 {
+                    float disToRandPos = (new Vector2(transform.position.x, transform.position.y) - randPos).magnitude;
+                    if (disToRandPos < speed)
+                    {
+                        if (easeOM > 0)
+                            easeOM -= Time.fixedDeltaTime;
+                        else
+                            easeOM = 0;
+                    }
+                    else
+                    {
+                        easeOM = 1;
+                    }
+                    //Debug.Log(easeOM);
                     //Debug.Log("RANDOMPOS");
                     if (reachedDestination == false)
-                        transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime);
+                        transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime * easeOM);
                     else
                         transform.position = this.transform.position;
 

@@ -285,31 +285,31 @@ MonoBehaviour:
     IsDualWield: 0
     PFriction: 2
     walkSpeed: 300
-    sprintSpeed: 500
-    dashDistance: 2
+    sprintSpeed: 550
+    dashDistance: 2.5
     dashCooldown: 0
-    dashStamCost: 15
-    dashSpeed: 50
-    HP: 200
-    maxHP: 0
-    HPRegenRate: 0
+    dashStamCost: 20
+    dashSpeed: 40
+    HP: 999
+    maxHP: 999
+    HPRegenRate: 1
     playerStamina: 100
     maxPlayerStamina: 100
-    stamDrainRate: 20
-    staminaRegenRate: 10
+    stamDrainRate: 40
+    staminaRegenRate: 20
     TimeBfrStamRegen: 0.2
     NumOfHeal: 5
     NumOfProtein: 0
     NumOfPhizer: 2
-    NumOfMolly: 2
-    Phizerduration: 5
-    Phizercooldown: 10
-    hpAdd: 20
-    hpRegenAdd: 10
-    stamAdd: 20
-    stamRegenAdd: 10
-    Tylenolhealamount: 0
-    Tylenolcooldown: 0
+    NumOfMolly: 6
+    Phizerduration: 10
+    Phizercooldown: 20
+    hpAdd: 50
+    hpRegenAdd: 30
+    stamAdd: 50
+    stamRegenAdd: 30
+    Tylenolhealamount: 50
+    Tylenolcooldown: 1
   components:
     playerRidgitBody: {fileID: 3517825292825441636}
     playerAnimator: {fileID: 3517825292677397513}
@@ -324,7 +324,7 @@ MonoBehaviour:
     targetResolver: {fileID: 8693076160950319758}
     targetCategory: DefaultHemo
     playerParticleSystem: {fileID: 8089623419280815895}
-  enemyManager: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+  enemyManager: {fileID: 0}
   enableControl: 1
   beat: {fileID: 2213989057062135191, guid: e8ab9d29358ca8844878ba1e19596536, type: 3}
   Molly: {fileID: 359814843918546931, guid: b7de69beb589f9b4395c5196638db2de, type: 3}
