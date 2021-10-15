@@ -11,6 +11,8 @@ public class PlayerStats
 
     public Vector2 Position { get; set; }
 
+    public float PFrictionz { get; set; }
+
     public float Speed { get; set; }
 
     public float Health { get; set; }
@@ -48,6 +50,8 @@ public class PlayerStats
     public float TylenoCooldownz { get; set; }
 
     [Header("Movement")]
+    [SerializeField]
+    private float PFriction;
     [SerializeField]
     private float walkSpeed;
     [SerializeField]
@@ -107,7 +111,7 @@ public class PlayerStats
     [SerializeField]
     private float Tylenolcooldown;
 
-
+    public float pfriction { get => PFriction; }
     public float WalkSpeed { get => walkSpeed; }
 
     public float SprintSpeed { get => sprintSpeed; }

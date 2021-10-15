@@ -30,6 +30,13 @@ public class PlayerActions
 
     private string[] CurrHemoSprite;
 
+    private float ease;
+
+    private float stopSpeed;
+
+    private float hdir;
+    private float vdir;
+
     //private bool isWaiting = false;
 
     public PlayerActions(Player player)
@@ -74,7 +81,25 @@ public class PlayerActions
 
     public void Move(Transform transform)
     {
-        player.Components.PlayerRidgitBody.velocity = new Vector2(player.Stats.Direction.x * player.Stats.Speed * Time.deltaTime, player.Stats.Direction.y * player.Stats.Speed * Time.deltaTime);
+        if(player.Stats.Direction.magnitude > 0)
+        {
+            hdir = player.Stats.Direction.x;
+            vdir = player.Stats.Direction.y;
+            if (ease < 1)
+                ease += Time.fixedDeltaTime * player.Stats.PFrictionz / stopSpeed;
+            else
+                ease = 1;
+        }
+        else
+        {
+            stopSpeed = player.Stats.Speed / player.Stats.WalkSpeed;
+            if (ease > 0)
+                ease -= Time.fixedDeltaTime * player.Stats.PFrictionz / stopSpeed;
+            else
+                ease = 0;
+        }
+        Debug.Log(ease);
+        player.Components.PlayerRidgitBody.velocity = ease * (new Vector2(hdir * player.Stats.Speed * Time.deltaTime, vdir * player.Stats.Speed * Time.deltaTime));
     }
 
     public void Sprint()

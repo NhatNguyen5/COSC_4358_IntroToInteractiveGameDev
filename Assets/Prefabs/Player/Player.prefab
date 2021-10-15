@@ -283,6 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
     IsDualWield: 0
+    PFriction: 2
     walkSpeed: 300
     sprintSpeed: 500
     dashDistance: 2
