@@ -285,23 +285,23 @@ MonoBehaviour:
     IsDualWield: 0
     PFriction: 2
     walkSpeed: 300
-    sprintSpeed: 600
-    dashDistance: 3
+    sprintSpeed: 550
+    dashDistance: 2.5
     dashCooldown: 0
-    dashStamCost: 40
+    dashStamCost: 20
     dashSpeed: 40
     HP: 999
     maxHP: 999
-    HPRegenRate: 0
+    HPRegenRate: 1
     playerStamina: 100
     maxPlayerStamina: 100
-    stamDrainRate: 30
+    stamDrainRate: 40
     staminaRegenRate: 20
     TimeBfrStamRegen: 0.2
     NumOfHeal: 5
     NumOfProtein: 0
     NumOfPhizer: 2
-    NumOfMolly: 9
+    NumOfMolly: 6
     Phizerduration: 10
     Phizercooldown: 20
     hpAdd: 50
