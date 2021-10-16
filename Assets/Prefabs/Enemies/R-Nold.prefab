@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  facing: 0
+  AimDir: 0
 --- !u!1 &7674072803375499540
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,12 +357,12 @@ MonoBehaviour:
   - {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
   - {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
   - {fileID: 2056935271745837854, guid: 953376de06b619b4898731a5bab67558, type: 3}
-  DropPercentageTylenol: 70
+  DropPercentageTylenol: 35
   NumOfTylenolDrop: 2
-  DropPercentageProtein: 90
+  DropPercentageProtein: 45
   NumOfProteinDrop: 8
-  DropPercentageAmmo: 100
-  NumOfAmmoDrop: 10
+  DropPercentageAmmo: 50
+  NumOfAmmoDrop: 1
   DropPercentagePhizer: 5
   NumOfPhizerDrop: 1
   DropPercentageMolly: 20

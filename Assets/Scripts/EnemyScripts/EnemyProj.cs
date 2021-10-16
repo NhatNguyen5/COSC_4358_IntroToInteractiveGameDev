@@ -16,6 +16,8 @@ public class EnemyProj : MonoBehaviour
     private Vector2 target;
     private Rigidbody2D rb;
 
+    private Transform BParticle;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +29,9 @@ public class EnemyProj : MonoBehaviour
        
         rb.velocity = transform.right * speed;
 
-        
+        BParticle = transform.Find("BulletParticle");
+        BParticle.GetComponent<ParticleSystem>().Stop();
+
     }
 
     // Update is called once per frame
@@ -68,13 +72,22 @@ public class EnemyProj : MonoBehaviour
         if (destroyable == false)
         {
             //if (collision.tag != "Enemy" && collision.tag != "EnemyMelee" && collision.tag != "Bullet" && collision.tag != "EnemyBullet")
-            if(collision.tag == "Player" || collision.tag == "Walls")
+            if (collision.tag == "Player" || collision.tag == "Walls")
+            {
+                BParticle.GetComponent<ParticleSystem>().Play();
+                BParticle.parent = null;
+                Destroy(BParticle.gameObject, BParticle.GetComponent<ParticleSystem>().main.duration * 2);
                 DestroyEnemyProj();
+            }
         }
         else
             //if (collision.tag != "Enemy" && collision.tag != "EnemyMelee" && collision.tag != "EnemyBullet")
-            if(collision.tag == "Player" || collision.tag == "Bullet" || collision.tag == "Walls")
-            DestroyEnemyProj();
+            if (collision.tag == "Player" || collision.tag == "Bullet" || collision.tag == "Walls") {
+                BParticle.GetComponent<ParticleSystem>().Play();
+                BParticle.parent = null;
+                Destroy(BParticle.gameObject, BParticle.GetComponent<ParticleSystem>().main.duration * 2);
+                DestroyEnemyProj();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
