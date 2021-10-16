@@ -24,7 +24,7 @@ public class EnemyWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player != null && GlobalPlayerVariables.GameOver == false)
+        if (player != null && GlobalPlayerVariables.GameOver == false && enemy1 != null)
         {
             Vector2 direction = player.position - transform.position;
             if (enemy1.lineofsight)

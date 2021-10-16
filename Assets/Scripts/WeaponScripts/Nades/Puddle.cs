@@ -81,7 +81,7 @@ public class Puddle : MonoBehaviour
             //cc2d.radius = scaleUp;
             PSShapeModule.radius = scaleUp;
             PuddleShadow.localScale = PudShaOriSca * scaleUp;
-            Debug.Log("Spreading");
+            //Debug.Log("Spreading");
         }
 
         if(scaleUp >= explodeRadius && firstExplotion)

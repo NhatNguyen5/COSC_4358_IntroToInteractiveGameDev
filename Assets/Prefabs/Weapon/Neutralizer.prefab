@@ -144,8 +144,8 @@ MonoBehaviour:
   bloomResetTimer: 0.8
   critRate: 0.3
   critDamage: 1.7
-  explodingBullets: 0
-  pierce: 1
+  explodingBullets: 1
+  pierce: 0
   targetsToPierce: 4
   dropOffPerTarget: 0.3
   bulletSpeed: 40

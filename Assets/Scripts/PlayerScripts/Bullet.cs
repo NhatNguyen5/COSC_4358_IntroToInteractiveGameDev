@@ -32,6 +32,8 @@ public class Bullet : MonoBehaviour
     private Vector2 randPos;
     public float circleRadius;
 
+    private Transform BParticle;
+
     /*
     private Vector3 spawnPos;
     private float distanceFromStart = 0;
@@ -83,14 +85,15 @@ public class Bullet : MonoBehaviour
             isExplosiveBullet = GlobalPlayerVariables.bulletExplosion2;
         }
 
+        
+        BParticle = transform.Find("BulletParticle");
+        BParticle.GetComponent<ParticleSystem>().Stop();
 
         rb.velocity = transform.right * speed;
     }
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-
-
         //if (hitInfo.tag != "Player" && hitInfo.tag != "EnemyBullet" && hitInfo.tag != "Bullet")
         if (pierce == false)
         {
@@ -99,6 +102,9 @@ public class Bullet : MonoBehaviour
                 if (hitInfo.tag == "Enemy" || hitInfo.tag == "EnemyMelee" || hitInfo.tag == "Walls" || hitInfo.tag == "Colony" || hitInfo.tag == "EnemyBullet2")
                 {
                     //Debug.Log(hitInfo.name);
+                    BParticle.GetComponent<ParticleSystem>().Play();
+                    BParticle.parent = null;
+                    Destroy(BParticle.gameObject, BParticle.GetComponent<ParticleSystem>().main.duration * 2);
                     Destroy(gameObject);
                 }
             }
@@ -106,6 +112,9 @@ public class Bullet : MonoBehaviour
             {
                 if (hitInfo.tag == "Enemy" || hitInfo.tag == "EnemyMelee" || hitInfo.tag == "Walls" || hitInfo.tag == "Colony" || hitInfo.tag == "EnemyBullet2")
                 {
+                    BParticle.GetComponent<ParticleSystem>().Play();
+                    BParticle.parent = null;
+                    Destroy(BParticle.gameObject, BParticle.GetComponent<ParticleSystem>().main.duration * 2);
                     //Debug.Log(hitInfo.name);
                     explode();
                 }
@@ -154,6 +163,7 @@ public class Bullet : MonoBehaviour
                 randPos = transform.position;
                 randPos += Random.insideUnitCircle * circleRadius;
                 Instantiate(explosion, randPos, Quaternion.Euler(0, 0, 0));
+
                 Destroy(gameObject);
             
 
@@ -191,6 +201,7 @@ public class Bullet : MonoBehaviour
                 statusIndicator.StartShake(Mcamera, ShakeDuration, ShakeIntensity);
         }
         */
+
 
 
         timebeforedrop += Time.deltaTime;
