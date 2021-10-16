@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  facing: 0
 --- !u!1 &7674072803375499540
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,7 +147,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -5488275578273347653, guid: 13fbac3e34da6924f99b227b0dbe22d4, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -172,6 +173,8 @@ GameObject:
   - component: {fileID: 7674072803767978064}
   - component: {fileID: 7674072803767978075}
   - component: {fileID: 7674072803767978065}
+  - component: {fileID: 2316006094040792944}
+  - component: {fileID: 4850006730279266072}
   m_Layer: 7
   m_Name: Mosaic
   m_TagString: Enemy
@@ -331,7 +334,7 @@ MonoBehaviour:
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 1152
+    m_Bits: 17536
   unstuckTime: 0
   circleRadius: 5
   timeTillNextMove: 1
@@ -363,3 +366,34 @@ MonoBehaviour:
   NumOfPhizerDrop: 1
   DropPercentageMolly: 0
   NumOfMollyDrop: 0
+  spriteLibrary: {fileID: 2316006094040792944}
+  targetResolver: {fileID: 4850006730279266072}
+  targetCategory: MosaicSkins
+  facing: 0
+--- !u!114 &2316006094040792944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7674072803767978074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SpriteLibraryAsset: {fileID: 11400000, guid: fff37d40dc4fbe34ca519a7f3b24d121, type: 2}
+--- !u!114 &4850006730279266072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7674072803767978074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: -3.1280313e+32
+  m_labelHash: -0.025054464

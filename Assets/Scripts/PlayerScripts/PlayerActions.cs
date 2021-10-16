@@ -76,6 +76,10 @@ public class PlayerActions
                 {
                     RWeaponIcon.transform.Find("EnforcerIcon").gameObject.SetActive(true);
                 }
+                else if (rw.name.Contains("Neutralizer"))
+                {
+                    RWeaponIcon.transform.Find("NeutralizerIcon").gameObject.SetActive(true);
+                }
             }
         }
         CurrHemoSprite = player.Components.PlayerSpriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(player.Components.PlayerTargetCategory).ToArray();
@@ -126,12 +130,20 @@ public class PlayerActions
     public void Sprint()
     {
         if(player.Stats.Stamina >= 0)
-            player.Stats.Speed = player.Stats.SprintSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight);
+            player.Stats.Speed = player.Stats.SprintSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f);
+        if(GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f == 0.001)
+        {
+            Debug.Log("Weapon too heavy!");
+        }
     }
 
     public void Walk()
     {
-        player.Stats.Speed = player.Stats.WalkSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight);
+        player.Stats.Speed = player.Stats.WalkSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f);
+        if (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f == 0.001)
+        {
+            Debug.Log("Weapon too heavy!");
+        }
     }
 
     public void Dash(Vector2 Dir)
@@ -274,6 +286,10 @@ public class PlayerActions
                     else if(rw.name.Contains("Enforcer"))
                     {
                         RWeaponIcon.transform.Find("EnforcerIcon").gameObject.SetActive(true);
+                    }
+                    else if (rw.name.Contains("Neutralizer"))
+                    {
+                        RWeaponIcon.transform.Find("NeutralizerIcon").gameObject.SetActive(true);
                     }
 
                 }

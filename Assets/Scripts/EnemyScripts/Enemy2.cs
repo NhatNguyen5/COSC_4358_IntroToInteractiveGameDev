@@ -281,7 +281,6 @@ public class Enemy2 : MonoBehaviour
                 Vector2 temp = randPos;
                 randomPos();
                 facing = Mathf.Atan2((temp - randPos).x, (temp - randPos).y) * Mathf.Rad2Deg;
-                randomPos();
             }
             NextMoveCoolDown -= Time.deltaTime;
             chaseCoolDownTimer -= Time.deltaTime;
@@ -494,7 +493,7 @@ public class Enemy2 : MonoBehaviour
         relaMouseAngle = angle;
         if (relaMouseAngle < 0)
             relaMouseAngle = relaMouseAngle + 360;
-        Debug.Log(relaMouseAngle);
+        //Debug.Log(relaMouseAngle);
         //Debug.Log(relaMouseAngle);
         //New 8 directions system
         /*[0]Down

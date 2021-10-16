@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3556159641389608563}
   m_Layer: 9
-  m_Name: FirePointR
+  m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   amountOfShots: 1
   ADSRange: 15
   ADSSpeed: 10
-  weaponWeight: 1
+  weaponWeight: 0.33
   bloom: 0
   bStartRange: 0
   bEndRange: 0
@@ -144,6 +144,7 @@ MonoBehaviour:
   bloomResetTimer: 0
   critRate: 0
   critDamage: 0
+  explodingBullets: 0
   pierce: 0
   targetsToPierce: 0
   dropOffPerTarget: 0
@@ -158,6 +159,7 @@ MonoBehaviour:
   maxAmmoInClip: 30
   reloadTime: 1
   CostPerBullet: 0
+  IsRightArm: 0
 --- !u!95 &3556159641590399312
 Animator:
   serializedVersion: 3

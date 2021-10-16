@@ -4,45 +4,51 @@ using UnityEngine;
 
 public class EnemyWeapon : MonoBehaviour
 {
-
     public Transform player;
     private Rigidbody2D rb;
     private bool facingDir = true;
-
+    private float aimAngle;
+    private Enemy1 enemy1;
+    [HideInInspector]
+    public float AimDir = 0;
+    private float angle;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         if(GlobalPlayerVariables.GameOver == false)
             player = GameObject.FindGameObjectWithTag("Player").transform;
+        enemy1 = transform.parent.GetComponent<Enemy1>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
         if (player != null && GlobalPlayerVariables.GameOver == false)
         {
             Vector2 direction = player.position - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            Vector3 rotation = new Vector3(0f, 0f, angle);
+            if (enemy1.lineofsight)
+                angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            else
+                angle = enemy1.facing;
             transform.eulerAngles = new Vector3(0, 0, angle);
+            AimDir = angle;
             Vector3 aimLocalScale = Vector3.one;
             if (angle > 90 || angle < -90)
             {
                 //transform.position.y *= -1;
                 aimLocalScale.y = -1f;
+                transform.position = new Vector3(transform.position.x, transform.position.y, 1f);
                 //aimLocalScale.y = -1f * scaleX;
             }
             else
             {
                 aimLocalScale.y = +1f;
                 //aimLocalScale.y = -1f * scaleX;
+                transform.position = new Vector3(transform.position.x, transform.position.y, -1f);
             }
             transform.localScale = aimLocalScale;
         }
-
     }
 
     private void Flip()

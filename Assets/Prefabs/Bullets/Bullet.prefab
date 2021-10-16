@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3496416242090338223}
   - component: {fileID: 659438377223916971}
   - component: {fileID: -3204440461861315942}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -268,10 +268,6 @@ MonoBehaviour:
   explosion: {fileID: 3415031394687288729, guid: d9886ea223d9856468dc49bc64dd7d0b, type: 3}
   isExplosiveBullet: 0
   circleRadius: 1
-  when2screenshake: 20
-  CameraShake: 1
-  ShakeDuration: 0.2
-  ShakeIntensity: 1
 --- !u!114 &-3204440461861315942
 MonoBehaviour:
   m_ObjectHideFlags: 0

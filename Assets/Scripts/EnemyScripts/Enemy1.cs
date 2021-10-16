@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Experimental.U2D.Animation;
+using System.Linq;
 
 public class Enemy1 : MonoBehaviour
 {
@@ -82,6 +84,16 @@ public class Enemy1 : MonoBehaviour
     public float DropPercentageMolly;
     public int NumOfMollyDrop;
 
+    [Header("SkinModule")]
+    [SerializeField]
+    private SpriteLibrary spriteLibrary = default;
+    [SerializeField]
+    private SpriteResolver targetResolver = default;
+    [SerializeField]
+    private string targetCategory = default;
+
+    private string[] currSprite;
+
     //ANIMATION VARIABLES
 
     //DEATH VARIABLE
@@ -96,16 +108,23 @@ public class Enemy1 : MonoBehaviour
 
     private float easeOM;
 
+    private float relaMouseAngle;
+
+    [HideInInspector]
+    public float facing;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        if(GlobalPlayerVariables.GameOver==false)
+        if (GlobalPlayerVariables.GameOver == false)
             player = GameObject.FindGameObjectWithTag("Player").transform;
         else
             player = this.transform;
         sprite = GetComponent<SpriteRenderer>();
+
+        currSprite = spriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(targetCategory).ToArray();
 
         variation();
     }
@@ -119,8 +138,6 @@ public class Enemy1 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
-
         if (knockback == true)
         {
 
@@ -152,7 +169,7 @@ public class Enemy1 : MonoBehaviour
                     transform.position = this.transform.position;
                 else //RANDOM MOVEMENT
                 {
-                    
+
                     float disToRandPos = (new Vector2(transform.position.x, transform.position.y) - randPos).magnitude;
                     if (disToRandPos < speed)
                     {
@@ -165,7 +182,7 @@ public class Enemy1 : MonoBehaviour
                     {
                         easeOM = 1;
                     }
-                    
+
                     if (reachedDestination == false)
                         transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime * easeOM);
                     else
@@ -187,7 +204,6 @@ public class Enemy1 : MonoBehaviour
             }
 
         }
-        
     }
 
     void getDirection(Transform objectpos)
@@ -211,7 +227,7 @@ public class Enemy1 : MonoBehaviour
             knockback = false;
             unstuck = false;
         }
-        if (player != null && player!=this.transform)
+        if (player != null && player != this.transform)
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
             //var rayDirection = player.position - transform.position;
@@ -232,7 +248,7 @@ public class Enemy1 : MonoBehaviour
 
         }
 
-        if (lineofsight == true && GlobalPlayerVariables.GameOver==false)
+        if (lineofsight == true && GlobalPlayerVariables.GameOver == false)
         {
 
             if (timeBtwShots <= 0)
@@ -268,7 +284,9 @@ public class Enemy1 : MonoBehaviour
 
             if (NextMoveCoolDown <= 0 && reachedDestination == true)
             {
+                //Vector2 temp = randPos;
                 randomPos();
+                //facing = Mathf.Atan2((temp - randPos).x, (temp - randPos).y) * Mathf.Rad2Deg;
             }
             NextMoveCoolDown -= Time.deltaTime;
         }
@@ -276,13 +294,18 @@ public class Enemy1 : MonoBehaviour
         {
             if (NextMoveCoolDown <= 0)
             {
-
+                Vector2 temp = randPos;
                 randomPos();
+                facing = Mathf.Atan2((temp - randPos).x, (temp - randPos).y) * Mathf.Rad2Deg;
             }
             NextMoveCoolDown -= Time.deltaTime;
         }
-
-
+        if(lineofsight)
+        {
+            facing = transform.Find("EnemyAim").GetComponent<EnemyWeapon>().AimDir;
+        }
+        //Debug.Log(lineofsight + " " +facing);
+        Animate(facing);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -423,8 +446,6 @@ public class Enemy1 : MonoBehaviour
         randPos = transform.position;
         randPos += Random.insideUnitCircle * circleRadius;
         reachedDestination = false;
-
-
     }
 
 
@@ -471,6 +492,57 @@ public class Enemy1 : MonoBehaviour
             GameObject.Destroy(gameObject);
         }
     }
-
+    public void Animate(float angle)
+    {
+        //transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(player.Stats.Direction.y, player.Stats.Direction.x) * Mathf.Rad2Deg - 180));
+        //relaMouseAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        relaMouseAngle = angle;
+        if (relaMouseAngle < 0)
+            relaMouseAngle = relaMouseAngle + 360;
+        //Debug.Log(relaMouseAngle);
+        //Debug.Log(relaMouseAngle);
+        //New 8 directions system
+        /*[0]Down
+         *[1]Up
+         *[2]Left
+         *[3]Right
+         *[4]TopLeft
+         *[5]TopRight
+         *[6]BotLeft
+         *[7]BotRight
+         */
+        if (relaMouseAngle <= 22.5 || relaMouseAngle > 337.5) //Right
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[3]);
+        }
+        else if (relaMouseAngle > 22.5 && relaMouseAngle <= 67.5) //TopRight
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[5]);
+        }
+        else if (relaMouseAngle > 67.5 && relaMouseAngle <= 112.5) //Up
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[1]);
+        }
+        else if (relaMouseAngle > 112.5 && relaMouseAngle <= 157.5) //TopLeft
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[4]);
+        }
+        else if (relaMouseAngle > 157.5 && relaMouseAngle <= 202.5) //Left
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[2]);
+        }
+        else if (relaMouseAngle > 202.5 && relaMouseAngle <= 247.5) //BotLeft
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[6]);
+        }
+        else if (relaMouseAngle > 247.5 && relaMouseAngle <= 292.5) //Down
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[0]);
+        }
+        else if (relaMouseAngle > 292.5 && relaMouseAngle <= 337.5) //BotRight
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[7]);
+        }
+    }
 
 }
