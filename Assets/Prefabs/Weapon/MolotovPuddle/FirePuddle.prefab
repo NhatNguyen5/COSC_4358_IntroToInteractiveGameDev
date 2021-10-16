@@ -85,10 +85,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuddleType: Fire
-  puddleSize: 3
+  explodeRadius: 2
+  spreadSize: 5
   fullDamageDuration: 6
   puddleFadeDuration: 9
-  spreadSpeed: 1.5
+  spreadSpeed: 1
   initialExplodeDamage: 43
   damageOverTime: 28
   durationBetweenBurn: 0.5
@@ -1158,7 +1159,7 @@ ParticleSystem:
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 0.5384619
+          value: 0.47692323
           inSlope: -0.21167152
           outSlope: -0.21167152
           tangentMode: 0

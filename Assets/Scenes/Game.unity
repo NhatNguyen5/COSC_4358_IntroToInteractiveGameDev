@@ -31958,6 +31958,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brunt
       objectReference: {fileID: 0}
+    - target: {fileID: 6924399398397163416, guid: 64a959bf86ca6fe4ca2d6c5077663e32, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8146767086480450097, guid: 8f38618ca62c0a4438c3cf495c623e0f, type: 3}
     - target: {fileID: 6924399398397163417, guid: 64a959bf86ca6fe4ca2d6c5077663e32, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -35125,14 +35129,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7674072803767978065, guid: 004f8d1e3c373fe45bed69bfd2079751, type: 3}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
-      propertyPath: MaxTbs
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
-      propertyPath: MinTbs
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: StaInd
       value: 
       objectReference: {fileID: 1819652237}
@@ -35145,32 +35141,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 542014994}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
-      propertyPath: colonyHealth
-      value: 3000
-      objectReference: {fileID: 0}
-    - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
-      propertyPath: DecreaseAfter
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
-      propertyPath: tbsDecreaseRate
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: timeBetweenSpawns
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
-      propertyPath: chanceToSpawnBrunt
-      value: 55
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: chanceToSpawnMoaic
       value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
-      propertyPath: chanceToSpawnR_Nold
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910413, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: m_Name

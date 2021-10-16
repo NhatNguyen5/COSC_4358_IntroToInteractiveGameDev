@@ -12,4 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bf7c34a0dc4e6348bea04faa70406ee, type: 3}
   m_Name: EnemiesSkins
   m_EditorClassIdentifier: 
-  m_Labels: []
+  m_Labels:
+  - m_Name: BruntSkins
+    m_Hash: -285548486
+    m_CategoryList:
+    - m_Name: Down
+      m_Hash: -1127399675
+      m_Sprite: {fileID: -6153686122857944383, guid: 8f38618ca62c0a4438c3cf495c623e0f, type: 3}
+    - m_Name: UP
+      m_Hash: -310449638
+      m_Sprite: {fileID: 8146767086480450097, guid: 8f38618ca62c0a4438c3cf495c623e0f, type: 3}
+    - m_Name: Left
+      m_Hash: -631945130
+      m_Sprite: {fileID: -8213959529949205280, guid: 8f38618ca62c0a4438c3cf495c623e0f, type: 3}
+    - m_Name: Right
+      m_Hash: 1963678224
+      m_Sprite: {fileID: 2513851418922019781, guid: 8f38618ca62c0a4438c3cf495c623e0f, type: 3}
+    - m_Name: TopLeft
+      m_Hash: -1315448624
+      m_Sprite: {fileID: -1818347423100218681, guid: 8f38618ca62c0a4438c3cf495c623e0f, type: 3}
+    - m_Name: TopRight
+      m_Hash: 1908129429
+      m_Sprite: {fileID: -8232444421015954878, guid: 8f38618ca62c0a4438c3cf495c623e0f, type: 3}
+    - m_Name: BotLeft
+      m_Hash: 1075435492
+      m_Sprite: {fileID: 6248311171408258273, guid: 8f38618ca62c0a4438c3cf495c623e0f, type: 3}
+    - m_Name: BotRight
+      m_Hash: 1358873647
+      m_Sprite: {fileID: -783875380386337407, guid: 8f38618ca62c0a4438c3cf495c623e0f, type: 3}

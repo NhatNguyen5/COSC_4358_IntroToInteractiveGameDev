@@ -5,7 +5,8 @@ using UnityEngine;
 public class Puddle : MonoBehaviour
 {
     public string PuddleType;
-    public float puddleSize;
+    public float explodeRadius;
+    public float spreadSize;
     public float fullDamageDuration;
     public float puddleFadeDuration;
     public float spreadSpeed;
@@ -50,12 +51,12 @@ public class Puddle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (scaleUp < puddleSize && firstExplotion)
+        if (scaleUp < explodeRadius && firstExplotion)
         {
-            PSEmissionModule.rateOverTime = puddleSize * 5000 * scaleUp;
-            scaleUp += Time.deltaTime * spreadSpeed;
+            PSEmissionModule.rateOverTime = explodeRadius * 5000 * scaleUp;
+            scaleUp += Time.deltaTime * 10;
             //cc2d.radius = scaleUp;
-            PSShapeModule.radius = (0.75f * puddleSize) * scaleUp;
+            PSShapeModule.radius = (0.75f * explodeRadius) * scaleUp;
             PuddleShadow.localScale = PudShaOriSca * scaleUp;
         }
         else if(scaleDown <= puddleFadeDuration)
@@ -65,7 +66,7 @@ public class Puddle : MonoBehaviour
             Color tempColor = PuddleShadow.GetComponent<SpriteRenderer>().color;
             tempColor.a = OriShaTrans * scaleDown / puddleFadeDuration;
             PuddleShadow.GetComponent<SpriteRenderer>().color = tempColor;
-            PSEmissionModule.rateOverTime = 300 * puddleSize * scaleDown / puddleFadeDuration;
+            PSEmissionModule.rateOverTime = 300 * explodeRadius * scaleDown / puddleFadeDuration;
             currDamage = (int)(damageOverTime * scaleDown / puddleFadeDuration);
         }
         else
@@ -74,7 +75,16 @@ public class Puddle : MonoBehaviour
         }
         //Debug.Log(300 * puddleSize * scaleDown / puddleFadeDuration);
 
-        if(scaleUp >= puddleSize && firstExplotion)
+        if(scaleUp < spreadSize && scaleUp > explodeRadius)
+        {
+            scaleUp += Time.deltaTime * spreadSpeed/5;
+            //cc2d.radius = scaleUp;
+            PSShapeModule.radius = scaleUp;
+            PuddleShadow.localScale = PudShaOriSca * scaleUp;
+            Debug.Log("Spreading");
+        }
+
+        if(scaleUp >= explodeRadius && firstExplotion)
         {
             currDamage = damageOverTime;
             firstExplotion = false;
@@ -85,14 +95,17 @@ public class Puddle : MonoBehaviour
 
         if (!isWaiting)
         {
-            burn();
+            if (scaleUp < explodeRadius)
+                burn(explodeRadius);
+            else
+                burn(scaleUp);
             StartCoroutine(wait(durationBetweenBurn));
         }
     }
 
-    private void burn()
+    private void burn(float size)
     {
-        Collider2D[] objectsToBurn = Physics2D.OverlapCircleAll(transform.position, puddleSize);
+        Collider2D[] objectsToBurn = Physics2D.OverlapCircleAll(transform.position, size);
         foreach (var objectToBurn in objectsToBurn)
         {
             if (objectToBurn.tag == "EnemyMelee") { objectToBurn.GetComponent<Enemy2>().takeDamage(currDamage, objectToBurn.transform, 10); }

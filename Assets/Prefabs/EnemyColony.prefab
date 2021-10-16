@@ -481,15 +481,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ddd134675d1e6c43b612b1db403ee8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colonyHealth: 2000
+  colonyHealth: 3000
   StaInd: {fileID: 0}
   Mcamera: {fileID: 0}
   CamFollow: {fileID: 0}
-  timeBetweenSpawns: 2
-  tbsDecreaseRate: 0.2
-  DecreaseAfter: 2
+  timeBetweenSpawns: 5
+  tbsDecreaseRate: 0.05
+  DecreaseAfter: 1
   MinTbs: 0.5
-  MaxTbs: 0
+  MaxTbs: 5
   spawnPoints:
   - {fileID: 2950618480928158124}
   - {fileID: 3009321316613043682}
