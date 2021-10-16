@@ -108,6 +108,8 @@ public class Enemy2 : MonoBehaviour
 
     private float relaMouseAngle;
 
+    private float facing;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -215,7 +217,7 @@ public class Enemy2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Animate(a);
+        Animate(facing);
         if (GlobalPlayerVariables.GameOver != false)
         {
             player = this.transform;
@@ -271,11 +273,14 @@ public class Enemy2 : MonoBehaviour
 
             if (chaseCoolDownTimer <= 0)
             {
+                facing = a;
                 resumeFollow();
             }
             if (NextMoveCoolDown <= 0 && reachedDestination == true && hitPlayer == true)
             {
-
+                Vector2 temp = randPos;
+                randomPos();
+                facing = Mathf.Atan2((temp - randPos).x, (temp - randPos).y) * Mathf.Rad2Deg;
                 randomPos();
             }
             NextMoveCoolDown -= Time.deltaTime;
@@ -287,8 +292,9 @@ public class Enemy2 : MonoBehaviour
             //NextMoveCoolDown = timeTillNextMove;
             if (NextMoveCoolDown <= 0)
             {
-
+                Vector2 temp = randPos;
                 randomPos();
+                facing = Mathf.Atan2((temp - randPos).x, (temp - randPos).y) * Mathf.Rad2Deg;
             }
             NextMoveCoolDown -= Time.deltaTime;
         }
