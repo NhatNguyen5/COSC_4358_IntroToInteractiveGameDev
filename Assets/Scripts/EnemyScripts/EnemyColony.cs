@@ -34,6 +34,8 @@ public class EnemyColony : MonoBehaviour
     [Header("Line Of Sight")]
     public bool lineofsight;
     public LayerMask IgnoreMe;
+    public float shootdistance;
+    private float distancefromplayer;
 
     [Header("Random Movement Settings")]
     public float circleRadius;
@@ -131,7 +133,7 @@ public class EnemyColony : MonoBehaviour
     private void FixedUpdate()
     {
 
-
+        distancefromplayer = Vector2.Distance(transform.position, player.position);
         if (knockback == true)
         {
             transform.position = Vector2.MoveTowards(transform.position, randPos, -speed * Time.deltaTime);
@@ -141,13 +143,13 @@ public class EnemyColony : MonoBehaviour
         else
         {
 
-            if (Vector2.Distance(transform.position, player.position) >= stoppingDistance && followPlayer == true && lineofsight == true) //follow player
+            if (distancefromplayer >= stoppingDistance && followPlayer == true && lineofsight == true) //follow player
             {
                 reachedDestination = true;
                 transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
                 getDirection(player);
             }
-            else if ((Vector2.Distance(transform.position, player.position) >= retreatDistance) || GlobalPlayerVariables.GameOver == true) //stop /*(Vector2.Distance(transform.position, player.position) <= stoppingDistance && */ 
+            else if ((distancefromplayer >= retreatDistance) || GlobalPlayerVariables.GameOver == true) //stop /*(Vector2.Distance(transform.position, player.position) <= stoppingDistance && */ 
             {
                 if (randomMovement == false)
                     transform.position = this.transform.position;
@@ -166,7 +168,7 @@ public class EnemyColony : MonoBehaviour
                     a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 }
             }
-            else if (Vector2.Distance(transform.position, player.position) <= retreatDistance && retreat == true) //retreat
+            else if (distancefromplayer <= retreatDistance && retreat == true) //retreat
             {
                 reachedDestination = true;
                 transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
@@ -199,12 +201,12 @@ public class EnemyColony : MonoBehaviour
         }
         
 
-        if (Vector2.Distance(transform.position, player.position) <= DetectRange && GlobalPlayerVariables.GameOver == false)
+        if (distancefromplayer <= DetectRange && GlobalPlayerVariables.GameOver == false)
         {
             if(hideing == false)
                 EnemyUI.SetActive(true);
         }
-        else if (Vector2.Distance(transform.position, player.position) >= DetectRange)
+        else if (distancefromplayer >= DetectRange)
         {
             EnemyUI.SetActive(false);
         }
@@ -237,7 +239,7 @@ public class EnemyColony : MonoBehaviour
 
         }
 
-        if (lineofsight == true && GlobalPlayerVariables.GameOver == false && isDead == false)
+        if (lineofsight == true && GlobalPlayerVariables.GameOver == false && isDead == false && distancefromplayer <= shootdistance)
         {
 
             if (timeBtwShots <= 0)
