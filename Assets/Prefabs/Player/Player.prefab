@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CategoryHash: -3.2046743e+15
+  m_CategoryHash: 4.976076e-16
   m_labelHash: -0.025054464
 --- !u!1 &3517825292825441639
 GameObject:
@@ -290,6 +290,9 @@ MonoBehaviour:
     dashCooldown: 0
     dashStamCost: 20
     dashSpeed: 40
+    ArmorPerAmorLevel: 200
+    Amor: 120
+    DamageReducePerArmorLevel: 10
     HP: 999
     maxHP: 999
     HPRegenRate: 1
@@ -340,7 +343,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a21ddcf9ac793f04aa01ecea0d8a7c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
+  HealthDamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
+  ArmorDamageText: {fileID: 1138736699864978853, guid: e86e4a3f026cb174dbe6455e50f6805d, type: 3}
   statusIndicator: {fileID: 0}
   Mcamera: {fileID: 0}
   CameraShake: 1

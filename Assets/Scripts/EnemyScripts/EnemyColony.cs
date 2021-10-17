@@ -111,7 +111,7 @@ public class EnemyColony : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         if (GlobalPlayerVariables.GameOver == false)
         {
-            Debug.Log("SETTING PLAYER");
+            //Debug.Log("SETTING PLAYER");
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
         else

@@ -93,6 +93,9 @@ public class Player : MonoBehaviour
         utilities = new PlayerUtilities(this);
         references = new PlayerReferences(this);
         stats.PFrictionz = stats.pfriction;
+        stats.Armorz = stats.armor;
+        stats.ArmorPerArmorLevelz = stats.armorperarmorlevel;
+        stats.DamageReducePerArmorLevelz = stats.damagereduceperarmorlevel;
         stats.Health = stats.hp;
         stats.MaxHealth = stats.maxhp;
         stats.HPRegen = stats.hpregenrate;
@@ -127,6 +130,8 @@ public class Player : MonoBehaviour
         defaultTbs = enemyManager.timeBetweenSpawns;
         defaultSR = 1/enemyManager.timeBetweenSpawns;
 
+        stats.ArmorLevel = Mathf.FloorToInt(stats.Armorz / stats.ArmorPerArmorLevelz);
+
         components.PlayerParticleSystem.Stop();
     }
 
@@ -144,7 +149,7 @@ public class Player : MonoBehaviour
         references.CalMousePosToPlayer();
         actions.UpdateCountsUI();
         actions.Regen();
-
+        stats.ArmorLevel = Mathf.CeilToInt(stats.Armorz / stats.ArmorPerArmorLevelz);
 
         if (Input.GetKey(KeyCode.LeftShift) && stats.Direction != Vector2.zero)
         {

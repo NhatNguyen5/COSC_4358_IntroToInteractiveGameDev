@@ -7,10 +7,12 @@ using TMPro;
 
 public class TakeDamage : MonoBehaviour
 {
-    public GameObject DamageText;
+    public GameObject HealthDamageText;
+    public GameObject ArmorDamageText;
     private SpriteRenderer sprite;
     private float maxHP;
     private Image HealthBar;
+    private Player player;
     [SerializeField]
     private StatusIndicator statusIndicator = null;
     [SerializeField]
@@ -29,6 +31,7 @@ public class TakeDamage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GetComponent<Player>();
         HealthBar = GameObject.Find("HP").GetComponent<Image>();
         //rb = GetComponent<Rigidbody2D>();
         //sprite = GetComponent<SpriteRenderer>();
@@ -45,7 +48,7 @@ public class TakeDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        maxHP = GetComponent<Player>().Stats.MaxHealth;
+        maxHP = player.Stats.MaxHealth;
 
         //Debug.Log(HP);
     }
@@ -110,9 +113,37 @@ public class TakeDamage : MonoBehaviour
             damage *= GlobalPlayerVariables.critDmg;
         }
         */
-        GetComponent<Player>().Stats.Health -= damage;
-        float HP = GetComponent<Player>().Stats.Health;
-        showDamage(damage, impact, speed, iscrit);
+        //Debug.Log(player.Stats.Armorz);
+        if (player.Stats.Armorz > damage)
+        {
+            float ArmorMitigation = player.Stats.damagereduceperarmorlevel * player.Stats.ArmorLevel;
+            float ArmorDamagePop = 0;
+            float HealthDamagePop = 0;
+            if (damage >= ArmorMitigation)
+            {
+                ArmorDamagePop = ArmorMitigation;
+                HealthDamagePop = damage - ArmorMitigation;
+                player.Stats.Armorz -= ArmorMitigation;
+                player.Stats.Health -= damage - ArmorMitigation;
+                showDamage(ArmorDamagePop, impact, speed, iscrit, ArmorDamageText);
+                showDamage(HealthDamagePop, impact, speed, iscrit, HealthDamageText);
+            }
+            else
+            {
+                ArmorDamagePop = damage;
+                player.Stats.Armorz -= damage;
+                showDamage(ArmorDamagePop, impact, speed, iscrit, ArmorDamageText);
+            }
+            //Debug.Log("Armor: " + ArmorDamagePop + " " + "Health: " + HealthDamagePop);
+        }
+        else
+        {
+            player.Stats.Armorz = 0;
+            player.Stats.Health -= damage;
+            showDamage(damage, impact, speed, iscrit, HealthDamageText);
+        }
+
+        float HP = player.Stats.Health;
         StartCoroutine(FlashRed());
         //if ((maxHP - HP) / maxHP >= 0.5)
         //{
@@ -135,21 +166,17 @@ public class TakeDamage : MonoBehaviour
             GlobalPlayerVariables.GameOver = true;
             gameOverScreen.SetActive(true);
             //Time.timeScale = 0f;
-
-
-
-
         }
     }
 
 
-    void showDamage(float damage, Transform impact, float speed, bool crit)
+    void showDamage(float damage, Transform impact, float speed, bool crit, GameObject typeOfDamage)
     {
 
         Vector3 direction = (transform.position - impact.transform.position).normalized;
 
         //might add to impact to make it go past enemy
-        var go = Instantiate(DamageText, impact.position, Quaternion.identity);
+        var go = Instantiate(typeOfDamage, impact.position, Quaternion.identity);
         if (crit == false)
         {
             go.GetComponent<TextMeshPro>().text = damage.ToString();

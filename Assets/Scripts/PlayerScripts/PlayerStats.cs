@@ -15,6 +15,14 @@ public class PlayerStats
 
     public float Speed { get; set; }
 
+    public float Armorz { get; set; }
+
+    public float ArmorPerArmorLevelz { get; set; }
+
+    public float DamageReducePerArmorLevelz { get; set; }
+
+    public int ArmorLevel { get; set; }
+
     public float Health { get; set; }
 
     public float MaxHealth { get; set; }
@@ -65,6 +73,13 @@ public class PlayerStats
     [SerializeField]
     private float dashSpeed;
     [Header("Stats")]
+    [SerializeField]
+    private float ArmorPerAmorLevel;
+    [Tooltip("Make this no larger than 5 times above please.")]
+    [SerializeField]
+    private float Amor;
+    [SerializeField]
+    private float DamageReducePerArmorLevel;
     [SerializeField]
     private float HP;
     [SerializeField]
@@ -121,6 +136,12 @@ public class PlayerStats
     public float DashCoolDown { get => dashCooldown; }
     public float DashSpeed { get => dashSpeed; }
     public float DashStamCost { get => dashStamCost; }
+
+    public float armorperarmorlevel { get => ArmorPerAmorLevel; }
+    public float armor { get => Amor; }
+
+    public float damagereduceperarmorlevel { get => DamageReducePerArmorLevel; }
+
 
     public float hp { get => HP; }
 
