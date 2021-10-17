@@ -88,6 +88,19 @@ public class PlayerActions
                 {
                     RWeaponIcon.transform.Find("PrecisionIcon").gameObject.SetActive(true);
                 }
+                else if (rw.name.Contains("Umpilical"))
+                {
+                    RWeaponIcon.transform.Find("UmpilicalIcon").gameObject.SetActive(true);
+                }
+                else if (rw.name.Contains("Disruptor"))
+                {
+                    RWeaponIcon.transform.Find("DisruptorIcon").gameObject.SetActive(true);
+                }
+                else if (rw.name.Contains("Vaccinator2.0"))
+                {
+                    RWeaponIcon.transform.Find("Vaccinator2.0Icon").gameObject.SetActive(true);
+                }
+
             }
         }
         currSpriteCategory = player.Components.PlayerTargetCategory;
@@ -301,6 +314,18 @@ public class PlayerActions
                     else if (rw.name.Contains("Precision"))
                     {
                         RWeaponIcon.transform.Find("PrecisionIcon").gameObject.SetActive(true);
+                    }
+                    else if (rw.name.Contains("Umpilical"))
+                    {
+                        RWeaponIcon.transform.Find("UmpilicalIcon").gameObject.SetActive(true);
+                    }
+                    else if (rw.name.Contains("Disruptor"))
+                    {
+                        RWeaponIcon.transform.Find("DisruptorIcon").gameObject.SetActive(true);
+                    }
+                    else if (rw.name.Contains("Vaccinator2.0"))
+                    {
+                        RWeaponIcon.transform.Find("Vaccinator2.0Icon").gameObject.SetActive(true);
                     }
 
                 }
