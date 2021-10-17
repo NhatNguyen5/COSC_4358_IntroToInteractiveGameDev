@@ -115,6 +115,7 @@ public class Bullet : MonoBehaviour
                     BParticle.GetComponent<ParticleSystem>().Play();
                     BParticle.parent = null;
                     Destroy(BParticle.gameObject, BParticle.GetComponent<ParticleSystem>().main.duration * 2);
+
                     //Debug.Log(hitInfo.name);
                     explode();
                 }
