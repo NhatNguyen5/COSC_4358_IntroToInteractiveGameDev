@@ -69,7 +69,6 @@ public class GlobalPlayerVariables : MonoBehaviour
 
     public static bool GameOver = false;
 
-
     private void Start()
     {
         if (SceneManager.GetActiveScene().name == "Game")
