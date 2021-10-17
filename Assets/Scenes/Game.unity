@@ -84308,6 +84308,10 @@ PrefabInstance:
       value: 99999
       objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: stats.Amor
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: stats.maxHP
       value: 99999
       objectReference: {fileID: 0}
