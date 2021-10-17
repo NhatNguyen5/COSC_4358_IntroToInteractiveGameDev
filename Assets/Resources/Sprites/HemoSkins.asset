@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: HemoSkins
   m_EditorClassIdentifier: 
   m_Labels:
-  - m_Name: DefaultHemo
-    m_Hash: -650761690
+  - m_Name: DefaultHemo0
+    m_Hash: 638545142
     m_CategoryList:
     - m_Name: Down
       m_Hash: -1127399675
@@ -40,8 +40,116 @@ MonoBehaviour:
     - m_Name: BotRight
       m_Hash: 1358873647
       m_Sprite: {fileID: 1594332647181434615, guid: 9788de4400d2216449d3ed283492d351, type: 3}
-  - m_Name: PhizerHemo
-    m_Hash: -61815797
+  - m_Name: DefaultHemo1
+    m_Hash: 1359502432
+    m_CategoryList:
+    - m_Name: Down
+      m_Hash: -1127399675
+      m_Sprite: {fileID: -7855217349055201227, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: Up
+      m_Hash: -703542574
+      m_Sprite: {fileID: 330162942216883812, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: Left
+      m_Hash: -631945130
+      m_Sprite: {fileID: 6497148975805122786, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: Right
+      m_Hash: 1963678224
+      m_Sprite: {fileID: -2417161697214646869, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: TopLeft
+      m_Hash: -1315448624
+      m_Sprite: {fileID: -6672500601586860332, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: TopRight
+      m_Hash: 1908129429
+      m_Sprite: {fileID: -8384835498041256938, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: BotLeft
+      m_Hash: 1075435492
+      m_Sprite: {fileID: -4572587027266175437, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: BotRight
+      m_Hash: 1358873647
+      m_Sprite: {fileID: -4018125162661194864, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+  - m_Name: DefaultHemo2
+    m_Hash: -939455014
+    m_CategoryList:
+    - m_Name: Down
+      m_Hash: -1127399675
+      m_Sprite: {fileID: -1064295803384258977, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: Up
+      m_Hash: -703542574
+      m_Sprite: {fileID: 2013905515838098264, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: Left
+      m_Hash: -631945130
+      m_Sprite: {fileID: -1745865820566173978, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: Right
+      m_Hash: 1963678224
+      m_Sprite: {fileID: -5125994107263838312, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: TopLeft
+      m_Hash: -1315448624
+      m_Sprite: {fileID: -8326952882494606525, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: TopRight
+      m_Hash: 1908129429
+      m_Sprite: {fileID: 4944544772584167123, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: BotLeft
+      m_Hash: 1075435492
+      m_Sprite: {fileID: 5409972771984429286, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: BotRight
+      m_Hash: 1358873647
+      m_Sprite: {fileID: -1901883842044673350, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+  - m_Name: DefaultHemo3
+    m_Hash: -1090110132
+    m_CategoryList:
+    - m_Name: Down
+      m_Hash: -1127399675
+      m_Sprite: {fileID: -7643265032932531221, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: Up
+      m_Hash: -703542574
+      m_Sprite: {fileID: 3847888975740674202, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: Left
+      m_Hash: -631945130
+      m_Sprite: {fileID: 1654096054032509426, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: Right
+      m_Hash: 1963678224
+      m_Sprite: {fileID: -2049260558647947264, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: TopLeft
+      m_Hash: -1315448624
+      m_Sprite: {fileID: 6580419113735220637, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: TopRight
+      m_Hash: 1908129429
+      m_Sprite: {fileID: 2928429468195343948, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: BotLeft
+      m_Hash: 1075435492
+      m_Sprite: {fileID: 1999770354690435236, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: BotRight
+      m_Hash: 1358873647
+      m_Sprite: {fileID: -6768656749544006860, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+  - m_Name: DefaultHemo4
+    m_Hash: 560113903
+    m_CategoryList:
+    - m_Name: Down
+      m_Hash: -1127399675
+      m_Sprite: {fileID: -8364678681625328606, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: Up
+      m_Hash: -703542574
+      m_Sprite: {fileID: 4592686362101902833, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: Left
+      m_Hash: -631945130
+      m_Sprite: {fileID: -4737022557665405680, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: Right
+      m_Hash: 1963678224
+      m_Sprite: {fileID: 5578631722872588297, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: TopLeft
+      m_Hash: -1315448624
+      m_Sprite: {fileID: 8595966833004542495, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: TopRight
+      m_Hash: 1908129429
+      m_Sprite: {fileID: -6081892175683214541, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: BotLeft
+      m_Hash: 1075435492
+      m_Sprite: {fileID: -8288952288664105266, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+    - m_Name: BotRight
+      m_Hash: 1358873647
+      m_Sprite: {fileID: -6052418901685304098, guid: 9788de4400d2216449d3ed283492d351, type: 3}
+  - m_Name: PhizerHemo0
+    m_Hash: 1677022829
     m_CategoryList:
     - m_Name: Down
       m_Hash: -1127399675
@@ -67,3 +175,111 @@ MonoBehaviour:
     - m_Name: BotRight
       m_Hash: 1358873647
       m_Sprite: {fileID: 7545637601913734149, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+  - m_Name: PhizerHemo1
+    m_Hash: 351430395
+    m_CategoryList:
+    - m_Name: Down
+      m_Hash: -1127399675
+      m_Sprite: {fileID: 2562188246368038612, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: Up
+      m_Hash: -703542574
+      m_Sprite: {fileID: -4277924812950271713, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: Left
+      m_Hash: -631945130
+      m_Sprite: {fileID: 5788729486636699618, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: Right
+      m_Hash: 1963678224
+      m_Sprite: {fileID: 6885975951915821871, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: TopLeft
+      m_Hash: -1315448624
+      m_Sprite: {fileID: -8497152957231962652, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: TopRight
+      m_Hash: 1908129429
+      m_Sprite: {fileID: -3510378193416739829, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: BotLeft
+      m_Hash: 1075435492
+      m_Sprite: {fileID: 7423855632441922913, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: BotRight
+      m_Hash: 1358873647
+      m_Sprite: {fileID: 3354292262861113734, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+  - m_Name: PhizerHemo2
+    m_Hash: -1912916159
+    m_CategoryList:
+    - m_Name: Down
+      m_Hash: -1127399675
+      m_Sprite: {fileID: -3945026047628891462, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: Up
+      m_Hash: -703542574
+      m_Sprite: {fileID: -5541491603825180227, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: Left
+      m_Hash: -631945130
+      m_Sprite: {fileID: 6053483683003986784, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: Right
+      m_Hash: 1963678224
+      m_Sprite: {fileID: -5836039373876140887, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: TopLeft
+      m_Hash: -1315448624
+      m_Sprite: {fileID: 825214567676230702, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: TopRight
+      m_Hash: 1908129429
+      m_Sprite: {fileID: 4861174189143085075, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: BotLeft
+      m_Hash: 1075435492
+      m_Sprite: {fileID: 1614026859115458996, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: BotRight
+      m_Hash: 1358873647
+      m_Sprite: {fileID: -1680213180994315977, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+  - m_Name: PhizerHemo3
+    m_Hash: -84146217
+    m_CategoryList:
+    - m_Name: Down
+      m_Hash: -1127399675
+      m_Sprite: {fileID: 248859229765366386, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: Up
+      m_Hash: -703542574
+      m_Sprite: {fileID: -8061808972565866122, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: Left
+      m_Hash: -631945130
+      m_Sprite: {fileID: -2606102013434762136, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: Right
+      m_Hash: 1963678224
+      m_Sprite: {fileID: -5908762586391147740, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: TopLeft
+      m_Hash: -1315448624
+      m_Sprite: {fileID: 8650271798749067939, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: TopRight
+      m_Hash: 1908129429
+      m_Sprite: {fileID: 8002482883535115402, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: BotLeft
+      m_Hash: 1075435492
+      m_Sprite: {fileID: 1384101791663185309, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: BotRight
+      m_Hash: 1358873647
+      m_Sprite: {fileID: 4683555631640703365, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+  - m_Name: PhizerHemo4
+    m_Hash: 1687720564
+    m_CategoryList:
+    - m_Name: Down
+      m_Hash: -1127399675
+      m_Sprite: {fileID: -8001611850513779941, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: Up
+      m_Hash: -703542574
+      m_Sprite: {fileID: 6251657010872134616, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: Left
+      m_Hash: -631945130
+      m_Sprite: {fileID: -6513311225023086781, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: Right
+      m_Hash: 1963678224
+      m_Sprite: {fileID: 486228641976841164, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: TopLeft
+      m_Hash: -1315448624
+      m_Sprite: {fileID: 4683894629134211023, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: TopRight
+      m_Hash: 1908129429
+      m_Sprite: {fileID: 6386481789769612620, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: BotLeft
+      m_Hash: 1075435492
+      m_Sprite: {fileID: 6701495317952531520, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}
+    - m_Name: BotRight
+      m_Hash: 1358873647
+      m_Sprite: {fileID: -4272296384519820776, guid: a12c6cd8122d4dd4d8c0a15253cfed4f, type: 3}

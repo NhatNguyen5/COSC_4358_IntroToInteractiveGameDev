@@ -14,6 +14,7 @@ public class PlayerActions
     private Transform leftArm;
     private Transform rightArm;
     private Image HealthBar;
+    private Image ARBar;
     public Text HealCounts;
     public Text VaccineCounts;
     public Text MollyCounts;
@@ -39,6 +40,8 @@ public class PlayerActions
     private float hdir;
     private float vdir;
 
+
+
     //private bool isWaiting = false;
 
     public PlayerActions(Player player)
@@ -49,6 +52,7 @@ public class PlayerActions
         rightArm = player.transform.Find("RightArm");
         OriRightArmPos = rightArm.position;
         HealthBar = GameObject.Find("HP").GetComponent<Image>();
+        ARBar = GameObject.Find("AR").GetComponent<Image>();
         LeftAmmo = GameObject.Find("LeftAmmo");
         RWeaponIcon = GameObject.Find("WeaponBorderR");
         HealCounts = GameObject.Find("HealCounts").GetComponent<Text>();
@@ -82,9 +86,8 @@ public class PlayerActions
                 }
             }
         }
-        CurrHemoSprite = player.Components.PlayerSpriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(player.Components.PlayerTargetCategory).ToArray();
         currSpriteCategory = player.Components.PlayerTargetCategory;
-
+        CurrHemoSprite = player.Components.PlayerSpriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(currSpriteCategory + (player.Stats.ArmorLevel).ToString()).ToArray();
     }
 
     public void Move(Transform transform)
@@ -172,35 +175,35 @@ public class PlayerActions
          */
         if(relaMouseAngle <= 22.5 || relaMouseAngle > 337.5) //Right
         {
-            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[3]);
+            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory + (player.Stats.ArmorLevel).ToString(), CurrHemoSprite[3]);
         }
         else if(relaMouseAngle > 22.5 && relaMouseAngle <= 67.5) //TopRight
         {
-            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[5]);
+            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory + (player.Stats.ArmorLevel).ToString(), CurrHemoSprite[5]);
         }
         else if (relaMouseAngle > 67.5 && relaMouseAngle <= 112.5) //Up
         {
-            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[1]);
+            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory + (player.Stats.ArmorLevel).ToString(), CurrHemoSprite[1]);
         }
         else if (relaMouseAngle > 112.5 && relaMouseAngle <= 157.5) //TopLeft
         {
-            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[4]);
+            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory + (player.Stats.ArmorLevel).ToString(), CurrHemoSprite[4]);
         }
         else if (relaMouseAngle > 157.5 && relaMouseAngle <= 202.5) //Left
         {
-            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[2]);
+            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory + (player.Stats.ArmorLevel).ToString(), CurrHemoSprite[2]);
         }
         else if (relaMouseAngle > 202.5 && relaMouseAngle <= 247.5) //BotLeft
         {
-            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[6]);
+            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory + (player.Stats.ArmorLevel).ToString(), CurrHemoSprite[6]);
         }
         else if (relaMouseAngle > 247.5 && relaMouseAngle <= 292.5) //Down
         {
-            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[0]);
+            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory + (player.Stats.ArmorLevel).ToString(), CurrHemoSprite[0]);
         }
         else if (relaMouseAngle > 292.5 && relaMouseAngle <= 337.5) //BotRight
         {
-            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory, CurrHemoSprite[7]);
+            player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory + (player.Stats.ArmorLevel).ToString(), CurrHemoSprite[7]);
         }
 
         if (player.Components.PlayerRidgitBody.velocity.magnitude == 0)
@@ -348,6 +351,27 @@ public class PlayerActions
         MollyCounts.text = player.Stats.NumofMolly.ToString();
         HPNumber.text = ((int)player.Stats.Health).ToString();
         MaxHPNUmber.text = "/ " + ((int)player.Stats.MaxHealth).ToString();
+        ARBar.fillAmount = player.Stats.Armorz / ((player.Stats.ArmorPerArmorLevelz * 4) - 1);
+        switch (player.Stats.ArmorLevel)
+        {
+            case 1:
+                ARBar.color = Color.white;
+                break;
+            case 2:
+                ARBar.color = new Color(55 / 255f, 195 / 255f, 255 / 255f);
+                break;
+            case 3:
+                ARBar.color = new Color(166 / 255f, 50 / 255f, 168 / 255f);
+                break;
+            case 4:
+                ARBar.color = Color.yellow;
+                break;
+                /*
+            case 5:
+                ARBar.color = Color.green;
+                break;*/
+        }
+
     }
 
     public void Regen()
