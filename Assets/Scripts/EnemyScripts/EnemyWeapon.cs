@@ -30,7 +30,7 @@ public class EnemyWeapon : MonoBehaviour
         if (player != null && GlobalPlayerVariables.GameOver == false && enemy1 != null &&  isNotEnemy1 == false)
         {
             Vector2 direction = player.position - transform.position;
-            if (enemy1.lineofsight)
+            if ((enemy1.lineofsight && enemy1.distancefromplayer <= enemy1.shootdistance) || (enemy1.lineofsight && enemy1.followPlayer == true))
                 angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             else
                 angle = enemy1.facing;

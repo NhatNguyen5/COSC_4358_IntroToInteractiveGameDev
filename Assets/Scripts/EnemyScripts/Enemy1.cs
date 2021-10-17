@@ -31,7 +31,7 @@ public class Enemy1 : MonoBehaviour
     private bool unstuck;
     public float unstuckTime;
     public float shootdistance;
-    private float distancefromplayer;
+    public float distancefromplayer;
     private Transform UNSTUCKPOS;
 
 
@@ -196,7 +196,7 @@ public class Enemy1 : MonoBehaviour
                         reachedDestination = true;
                     }
                     direction = randPos;
-                    a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                    //a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 }
             }
             else if (distancefromplayer <= retreatDistance && retreat == true) //retreat
@@ -212,7 +212,7 @@ public class Enemy1 : MonoBehaviour
     void getDirection(Transform objectpos)
     {
         direction = objectpos.position - transform.position;
-        a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        facing = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
     }
 
 
@@ -303,7 +303,7 @@ public class Enemy1 : MonoBehaviour
             }
             NextMoveCoolDown -= Time.deltaTime;
         }
-        if(lineofsight)
+        if((lineofsight && distancefromplayer <= shootdistance))
         {
             facing = transform.Find("EnemyAim").GetComponent<EnemyWeapon>().AimDir;
         }
