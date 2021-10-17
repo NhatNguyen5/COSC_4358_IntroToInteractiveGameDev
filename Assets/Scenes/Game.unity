@@ -83712,7 +83712,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3556159641590399313, guid: e36e305817e0f9d4e930d2167d9f378f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3556159641590399314, guid: e36e305817e0f9d4e930d2167d9f378f, type: 3}
       propertyPath: Slot
@@ -83724,7 +83724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3556159641590399314, guid: e36e305817e0f9d4e930d2167d9f378f, type: 3}
       propertyPath: delay
-      value: 3
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 3556159641590399314, guid: e36e305817e0f9d4e930d2167d9f378f, type: 3}
       propertyPath: pierce
@@ -83763,6 +83763,10 @@ PrefabInstance:
       value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 3556159641590399314, guid: e36e305817e0f9d4e930d2167d9f378f, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 3578575317254583761, guid: b016374ab55e7474f95fbc7c967186b3, type: 3}
+    - target: {fileID: 3556159641590399314, guid: e36e305817e0f9d4e930d2167d9f378f, type: 3}
       propertyPath: weaponWeight
       value: 0.5
       objectReference: {fileID: 0}
@@ -83780,7 +83784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3556159641590399314, guid: e36e305817e0f9d4e930d2167d9f378f, type: 3}
       propertyPath: targetsToPierce
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3556159641590399314, guid: e36e305817e0f9d4e930d2167d9f378f, type: 3}
       propertyPath: dropOffPerTarget
@@ -83796,7 +83800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3556159641590399314, guid: e36e305817e0f9d4e930d2167d9f378f, type: 3}
       propertyPath: bullletKnockBackForce
-      value: 4
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 3556159641590399324, guid: e36e305817e0f9d4e930d2167d9f378f, type: 3}
       propertyPath: m_RootOrder
@@ -84455,6 +84459,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sedator
       objectReference: {fileID: 0}
+    - target: {fileID: 3488768932483338715, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3517825292212706015, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.05
@@ -84693,6 +84701,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: stats.duration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: stats.PFriction
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
