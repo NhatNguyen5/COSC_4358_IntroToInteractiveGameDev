@@ -46,7 +46,7 @@ public class Weapon : MonoBehaviour
     public float bulletDamageDropOff;
     public float timeToDropDmg;
 
-
+    public float textAmmoXPosition;
 
     [Header("Burst Settings")]
     public bool burstFire;
@@ -64,6 +64,8 @@ public class Weapon : MonoBehaviour
     public float reloadTime;
     private float reloadCooldown;
     private Image reloadBar;
+    private Image ammoBar;
+    private Image ammoBar2;
     private Text UIAmmoCount;
     private Text UIMaxAmmoCount;
     private bool reload;
@@ -89,12 +91,14 @@ public class Weapon : MonoBehaviour
 
         if (IsRightArm)
         {
+            ammoBar = GameObject.Find("AmmoCountBar").GetComponent<Image>();
             reloadBar = GameObject.Find("ReloadBarR").GetComponent<Image>();
             UIAmmoCount = GameObject.Find("AmmoCountR").GetComponent<Text>();
             UIMaxAmmoCount = GameObject.Find("MaxAmmoCountR").GetComponent<Text>();
         }
         else
         {
+            ammoBar2 = GameObject.Find("AmmoCountBar2").GetComponent<Image>();
             UIAmmoCount = GameObject.Find("AmmoCountL").GetComponent<Text>();
             UIMaxAmmoCount = GameObject.Find("MaxAmmoCountL").GetComponent<Text>();
             setAmmoCount();
@@ -245,19 +249,17 @@ public class Weapon : MonoBehaviour
             bloomTimer = 0;
         }
 
-
-        //if (reloadCooldown < reloadTime)
-        //{
-        //reloadBar.fillAmount = (reloadCooldown / reloadTime);
+        /*
+        if (reloadCooldown < reloadTime)
+        {
+        ammoBar.fillAmount = (reloadCooldown / reloadTime);
 
         //set ammo count here too
-        //}
-        /*
-        else
-        { 
-            reloadBar.fillAmount = 1;
+        } else { 
+            ammoBar.fillAmount = 1;
         }
         */
+        
 
 
 
@@ -305,7 +307,35 @@ public class Weapon : MonoBehaviour
                         bloomTimer = bloomResetTimer;
                         ammoCount--;
 
+                        //decrease bar height
+                        ammoBar.fillAmount = (float)ammoCount / (float)maxAmmoInClip;
+
+                        //RectTransform rt = UIAmmoCount.rectTransform;
+                        //Vector3 startPos = rt.anchoredPosition;
+
+                        //textAmmoXPosition = textAmmoXPosition.transform.position;
+
+
+                        //rt.anchoredPosition = rt.anchoredPosition(textAmmoXPosition, UIAmmoCount.Transform.position.y);
+
+                        //Debug.Log("startPos: " + startPos);
+
+
+                        //.GetComponent<RectTransform>();
+                        //UIAmmoCount.anchoredPosition = new Vector3();
+
+                        //transform.Translate();
+
+                        //textAmmoPosition = UIAmmoCount.GetComponent<Transform>().position
+                        //(float)ammoCount / (float)maxAmmoInClip;
+
+
+                        //Debug.Log("ammo count: " + ammoCount);
+                        //Debug.Log("maxAmmoInClip: " + maxAmmoInClip);
+                        //Debug.Log("ammo/max:" + ammoCount / maxAmmoInClip);
+
                         //Debug.Log(ammoCount);
+
                     }
                 }
                 if (!Input.GetKey(KeyCode.Mouse0))
@@ -334,7 +364,7 @@ public class Weapon : MonoBehaviour
 
                 if (fired == true)
                 {
-
+                                        
                     if (TimesShot < timesToShoot && ammoCount > 0)
                     {
                         //TimesShot++;
@@ -345,6 +375,9 @@ public class Weapon : MonoBehaviour
                             bStartRange += increaseBloom;
                             bloomTimer = bloomResetTimer;
                             ammoCount--;
+
+                            //decrease bar height
+                            ammoBar.fillAmount = (float)ammoCount / (float)maxAmmoInClip;
 
                             //Debug.Log(ammoCount);
                         }
@@ -381,13 +414,15 @@ public class Weapon : MonoBehaviour
             reloadCooldown = reloadTime;
 
         bloomTimer -= Time.deltaTime;
-        /*
+        
+        
         if (reload == true)
         {
-            //reloadBar.fillAmount = (reloadCooldown / reloadTime);
+            ammoBar.fillAmount = (reloadCooldown / reloadTime);
 
         }
-        */
+        
+        
     }
 
     private void LeftArmUpdate()
@@ -419,23 +454,19 @@ public class Weapon : MonoBehaviour
 
 
 
-
-        //if (reloadCooldown < reloadTime)
-        //{
-        //reloadBar.fillAmount = (reloadCooldown / reloadTime);
-
-        //set ammo count here too
-        //}
         /*
-        else
-        { 
-            reloadBar.fillAmount = 1;
-        }
+        if (reloadCooldown < reloadTime)
+        {
+            ammoBar.fillAmount = (reloadCooldown / reloadTime);
+            //set ammo count here too
+        } 
         */
+        
+            
 
 
 
-        if (ammoCount <= 0 && Input.GetButton("Fire2") || ammoCount < maxAmmoInClip && Input.GetKeyUp(KeyCode.R))
+            if (ammoCount <= 0 && Input.GetButton("Fire2") || ammoCount < maxAmmoInClip && Input.GetKeyUp(KeyCode.R))
         {
             if (reload == false && fired == false)
             {
@@ -474,6 +505,11 @@ public class Weapon : MonoBehaviour
                         bStartRange += increaseBloom;
                         bloomTimer = bloomResetTimer;
                         ammoCount--;
+
+                        //decrease bar height
+
+                        ammoBar2.fillAmount = (float)ammoCount / (float)maxAmmoInClip;
+                        
 
                         //Debug.Log(ammoCount);
                     }
@@ -515,6 +551,8 @@ public class Weapon : MonoBehaviour
                             bloomTimer = bloomResetTimer;
                             ammoCount--;
 
+                            ammoBar2.fillAmount = (float)ammoCount / (float)maxAmmoInClip;
+
                             //Debug.Log(ammoCount);
                         }
 
@@ -548,13 +586,14 @@ public class Weapon : MonoBehaviour
             reloadCooldown = reloadTime;
         bloomTimer -= Time.deltaTime;
         
-        /*
+        
         if (reload == true)
         {
-            //reloadBar.fillAmount = (reloadCooldown / reloadTime);
+            ammoBar2.fillAmount = (reloadCooldown / reloadTime);
 
         }
-        */
+        
+
     }
 
     private void burst()
