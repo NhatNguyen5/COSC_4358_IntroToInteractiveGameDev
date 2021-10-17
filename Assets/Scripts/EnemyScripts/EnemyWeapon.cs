@@ -12,19 +12,22 @@ public class EnemyWeapon : MonoBehaviour
     [HideInInspector]
     public float AimDir = 0;
     private float angle;
+    public bool isNotEnemy1 = false;
+    public bool isNotHoldingWeapon = false;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         if(GlobalPlayerVariables.GameOver == false)
             player = GameObject.FindGameObjectWithTag("Player").transform;
-        enemy1 = transform.parent.GetComponent<Enemy1>();
+        if(isNotEnemy1 == false)
+            enemy1 = transform.parent.GetComponent<Enemy1>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player != null && GlobalPlayerVariables.GameOver == false && enemy1 != null)
+        if (player != null && GlobalPlayerVariables.GameOver == false && enemy1 != null &&  isNotEnemy1 == false)
         {
             Vector2 direction = player.position - transform.position;
             if (enemy1.lineofsight)
@@ -48,6 +51,32 @@ public class EnemyWeapon : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, transform.position.y, -1f);
             }
             transform.localScale = aimLocalScale;
+        }
+        
+        if(isNotHoldingWeapon == true)
+        {
+            if (GlobalPlayerVariables.GameOver == false && player!=null)
+            {
+                Vector2 direction = player.position - transform.position;
+                angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                transform.eulerAngles = new Vector3(0, 0, angle);
+                //AimDir = angle;
+                Vector3 aimLocalScale = Vector3.one;
+                if (angle > 90 || angle < -90)
+                {
+                    //transform.position.y *= -1;
+                    aimLocalScale.y = -1f;
+                    transform.position = new Vector3(transform.position.x, transform.position.y, 1f);
+                    //aimLocalScale.y = -1f * scaleX;
+                }
+                else
+                {
+                    aimLocalScale.y = +1f;
+                    //aimLocalScale.y = -1f * scaleX;
+                    transform.position = new Vector3(transform.position.x, transform.position.y, -1f);
+                }
+                transform.localScale = aimLocalScale;
+            }
         }
     }
 
