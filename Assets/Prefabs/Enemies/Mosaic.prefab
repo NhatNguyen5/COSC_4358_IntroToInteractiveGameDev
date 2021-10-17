@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   AimDir: 0
+  isNotEnemy1: 0
+  isNotHoldingWeapon: 0
 --- !u!1 &7674072803375499540
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,6 +338,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 17536
   unstuckTime: 0
+  shootdistance: 10
   circleRadius: 5
   timeTillNextMove: 1
   knockForcePlayerContact: 0.7

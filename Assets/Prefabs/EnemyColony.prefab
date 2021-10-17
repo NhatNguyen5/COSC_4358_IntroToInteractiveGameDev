@@ -145,6 +145,7 @@ MonoBehaviour:
   IgnoreMe:
     serializedVersion: 2
     m_Bits: 128
+  shootdistance: 20
   circleRadius: 5
   timeTillNextMove: 2
   knockForcePlayerContact: 0

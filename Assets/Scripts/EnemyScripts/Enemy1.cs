@@ -30,6 +30,8 @@ public class Enemy1 : MonoBehaviour
     public LayerMask IgnoreMe;
     private bool unstuck;
     public float unstuckTime;
+    public float shootdistance;
+    private float distancefromplayer;
     private Transform UNSTUCKPOS;
 
 
@@ -138,6 +140,7 @@ public class Enemy1 : MonoBehaviour
 
     private void FixedUpdate()
     {
+        distancefromplayer = Vector2.Distance(transform.position, player.position);
         if (knockback == true)
         {
 
@@ -156,14 +159,14 @@ public class Enemy1 : MonoBehaviour
         else
         {
 
-            if (Vector2.Distance(transform.position, player.position) >= stoppingDistance && followPlayer == true && lineofsight == true) //follow player
+            if (distancefromplayer >= stoppingDistance && followPlayer == true && lineofsight == true) //follow player
             {
                 reachedDestination = true;
                 easeOM = 1;
                 transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
                 getDirection(player);
             }
-            else if ((Vector2.Distance(transform.position, player.position) >= retreatDistance) || GlobalPlayerVariables.GameOver == true) //stop /*(Vector2.Distance(transform.position, player.position) <= stoppingDistance && */ 
+            else if ((distancefromplayer >= retreatDistance) || GlobalPlayerVariables.GameOver == true) //stop /*(Vector2.Distance(transform.position, player.position) <= stoppingDistance && */ 
             {
                 if (randomMovement == false)
                     transform.position = this.transform.position;
@@ -196,7 +199,7 @@ public class Enemy1 : MonoBehaviour
                     a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 }
             }
-            else if (Vector2.Distance(transform.position, player.position) <= retreatDistance && retreat == true) //retreat
+            else if (distancefromplayer <= retreatDistance && retreat == true) //retreat
             {
                 reachedDestination = true;
                 transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
@@ -248,7 +251,7 @@ public class Enemy1 : MonoBehaviour
 
         }
 
-        if (lineofsight == true && GlobalPlayerVariables.GameOver == false)
+        if (lineofsight == true && GlobalPlayerVariables.GameOver == false && distancefromplayer <= shootdistance)
         {
 
             if (timeBtwShots <= 0)
