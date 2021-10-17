@@ -138,15 +138,23 @@ public class Bullet : MonoBehaviour
                 //Debug.Log(hitInfo.name);
 
                 BParticle.GetComponent<ParticleSystem>().Play();
-                BParticle.parent = null;
-                Destroy(BParticle.gameObject, BParticle.GetComponent<ParticleSystem>().main.duration * 2);
+                //BParticle.parent = null;
+                //Destroy(BParticle.gameObject, BParticle.GetComponent<ParticleSystem>().main.duration * 2);
                 count++;
             }
             if (count > targetToPierce) 
             {
+                BParticle.GetComponent<ParticleSystem>().Play();
+                BParticle.parent = null;
+                Destroy(BParticle.gameObject, BParticle.GetComponent<ParticleSystem>().main.duration * 2);
                 Destroy(gameObject);
             }              
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        BParticle.GetComponent<ParticleSystem>().Stop();
     }
 
 
@@ -171,8 +179,7 @@ public class Bullet : MonoBehaviour
                 randPos = transform.position;
                 randPos += Random.insideUnitCircle * circleRadius;
                 Instantiate(explosion, randPos, Quaternion.Euler(0, 0, 0));
-
-                Destroy(gameObject);
+            Destroy(gameObject);
             
 
         }
