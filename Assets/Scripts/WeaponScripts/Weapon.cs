@@ -46,7 +46,7 @@ public class Weapon : MonoBehaviour
     public float bulletDamageDropOff;
     public float timeToDropDmg;
 
-    public float textAmmoXPosition;
+    private float textAmmoXPosition;
 
     [Header("Burst Settings")]
     public bool burstFire;

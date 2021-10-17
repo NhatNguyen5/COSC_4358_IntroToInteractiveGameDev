@@ -76,13 +76,17 @@ public class PlayerActions
                 {
                     RWeaponIcon.transform.Find("ProtocalIcon").gameObject.SetActive(true);
                 }
-                else if (rw.name.Contains("Enforcer"))
+                else if (rw.name.Contains("Sedator"))
                 {
-                    RWeaponIcon.transform.Find("EnforcerIcon").gameObject.SetActive(true);
+                    RWeaponIcon.transform.Find("SedatorIcon").gameObject.SetActive(true);
                 }
                 else if (rw.name.Contains("Neutralizer"))
                 {
                     RWeaponIcon.transform.Find("NeutralizerIcon").gameObject.SetActive(true);
+                }
+                else if (rw.name.Contains("Precision"))
+                {
+                    RWeaponIcon.transform.Find("PrecisionIcon").gameObject.SetActive(true);
                 }
             }
         }
@@ -286,13 +290,17 @@ public class PlayerActions
                     {
                         RWeaponIcon.transform.Find("ProtocalIcon").gameObject.SetActive(true);
                     }
-                    else if(rw.name.Contains("Enforcer"))
+                    else if (rw.name.Contains("Sedator"))
                     {
-                        RWeaponIcon.transform.Find("EnforcerIcon").gameObject.SetActive(true);
+                        RWeaponIcon.transform.Find("SedatorIcon").gameObject.SetActive(true);
                     }
                     else if (rw.name.Contains("Neutralizer"))
                     {
                         RWeaponIcon.transform.Find("NeutralizerIcon").gameObject.SetActive(true);
+                    }
+                    else if (rw.name.Contains("Precision"))
+                    {
+                        RWeaponIcon.transform.Find("PrecisionIcon").gameObject.SetActive(true);
                     }
 
                 }
