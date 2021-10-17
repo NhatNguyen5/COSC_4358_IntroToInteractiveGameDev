@@ -115,15 +115,21 @@ public class Bullet : MonoBehaviour
                     BParticle.GetComponent<ParticleSystem>().Play();
                     BParticle.parent = null;
                     Destroy(BParticle.gameObject, BParticle.GetComponent<ParticleSystem>().main.duration * 2);
+
                     //Debug.Log(hitInfo.name);
                     explode();
                 }
             }
         }
+
         if (pierce == true)
         {
             if (hitInfo.tag == "Walls")
             {
+                BParticle.GetComponent<ParticleSystem>().Play();
+                BParticle.parent = null;
+                Destroy(BParticle.gameObject, BParticle.GetComponent<ParticleSystem>().main.duration * 2);
+
                 //Debug.Log(hitInfo.name);
                 Destroy(gameObject);
             }
@@ -131,14 +137,16 @@ public class Bullet : MonoBehaviour
             {
                 //Debug.Log(hitInfo.name);
 
+                BParticle.GetComponent<ParticleSystem>().Play();
+                BParticle.parent = null;
+                Destroy(BParticle.gameObject, BParticle.GetComponent<ParticleSystem>().main.duration * 2);
                 count++;
             }
-            if (count > targetToPierce)
+            if (count > targetToPierce) 
+            {
                 Destroy(gameObject);
-
-
+            }              
         }
-
     }
 
 

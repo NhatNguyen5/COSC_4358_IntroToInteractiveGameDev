@@ -230,6 +230,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  AimDir: 0
+  isNotEnemy1: 1
+  isNotHoldingWeapon: 1
 --- !u!1 &1067879679887400978
 GameObject:
   m_ObjectHideFlags: 0

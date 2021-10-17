@@ -92,6 +92,8 @@ public class EnemyColony : MonoBehaviour
     private float critRate = 0;
     private float critDMG = 0;
 
+    private bool hideing = false;
+
 
 
     // Start is called before the first frame update
@@ -186,14 +188,21 @@ public class EnemyColony : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (GlobalPlayerVariables.GameOver != false)
         {
-            player = this.transform;
+            if (hideing == false)
+            {
+                player = this.transform;
+                hideing = true;
+            }
         }
+        
 
-        if (Vector2.Distance(transform.position, player.position) <= DetectRange)
+        if (Vector2.Distance(transform.position, player.position) <= DetectRange && GlobalPlayerVariables.GameOver == false)
         {
-            EnemyUI.SetActive(true);
+            if(hideing == false)
+                EnemyUI.SetActive(true);
         }
         else if (Vector2.Distance(transform.position, player.position) >= DetectRange)
         {
