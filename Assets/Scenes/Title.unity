@@ -2992,7 +2992,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: TRUE
+  m_Text: FALSE
 --- !u!222 &736537412
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5176,9 +5176,9 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: TRUE
-      m_Image: {fileID: 0}
     - m_Text: FALSE
+      m_Image: {fileID: 0}
+    - m_Text: TRUE
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
