@@ -86963,6 +86963,10 @@ PrefabInstance:
       propertyPath: statusIndicator
       value: 
       objectReference: {fileID: 1819652237}
+    - target: {fileID: 3517825292825441646, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: HealthDamageText
+      value: 
+      objectReference: {fileID: 8102218231787117946, guid: 0b648bc0a5f34c84cbeffcc33bd0f741, type: 3}
     - target: {fileID: 3517825294086467476, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bloom
       value: 1
