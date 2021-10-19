@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     //public Animator animator;
     // Update is called once per frame
 
+    //public string dashSound;
+
+
     private void Update()
     {
         
@@ -101,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
         //check if dash is not on cool down
         if (Input.GetKeyDown(KeyCode.Space) && dashCooldown == 0)
         {
+            //FindObjectOfType<AudioManager>().PlayEffect(dashSound);
             dashCooldown = coolDownTime;
             dashTime = startDashTime;
         }

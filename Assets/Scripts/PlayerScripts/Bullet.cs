@@ -49,7 +49,7 @@ public class Bullet : MonoBehaviour
 
     */
 
-
+    
 
     // Start is called before the first frame update
     void Start()
@@ -126,6 +126,7 @@ public class Bullet : MonoBehaviour
         {
             if (hitInfo.tag == "Walls")
             {
+                
                 BParticle.GetComponent<ParticleSystem>().Play();
                 BParticle.parent = null;
                 Destroy(BParticle.gameObject, BParticle.GetComponent<ParticleSystem>().main.duration * 2);
@@ -176,6 +177,8 @@ public class Bullet : MonoBehaviour
             //rb.velocity *= 0;
 
                 //SPAWN EXPLOSION OBJECT
+                
+                //Debug.Log("boom");
                 randPos = transform.position;
                 randPos += Random.insideUnitCircle * circleRadius;
                 Instantiate(explosion, randPos, Quaternion.Euler(0, 0, 0));

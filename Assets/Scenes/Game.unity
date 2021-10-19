@@ -84918,7 +84918,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Cannon
     clip: {fileID: 8300000, guid: 332134bb4ce318c4e92666d7f0c110d0, type: 3}
-    volume: 0.5
+    volume: 0.45
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -84936,7 +84936,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: HemoDead
     clip: {fileID: 8300000, guid: 775b40680af18dd49b921c7cf4dbfaf1, type: 3}
-    volume: 0.5
+    volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -84985,6 +84985,12 @@ MonoBehaviour:
   - name: SwitchGun
     clip: {fileID: 8300000, guid: 95aeb4bfe6365474cadc08c1fd2f6eae, type: 3}
     volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DistantExplosion
+    clip: {fileID: 8300000, guid: 77b36e005637c29449e459df71b23b9d, type: 3}
+    volume: 0.8
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -86922,6 +86928,10 @@ PrefabInstance:
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: stats.HP
       value: 99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: dashSound
+      value: Dash
       objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: stats.Amor

@@ -87,6 +87,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Molotov Molly;
 
+    public string dashSound;
+
+
     private void Awake()
     {
         actions = new PlayerActions(this);
@@ -295,6 +298,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && currDashCooldown == 0 && stats.Stamina >= stats.DashStamCost && stats.Direction.magnitude != 0 && !phaseOverWrite)
         {
             //Debug.Log("Dash");
+
+            FindObjectOfType<AudioManager>().PlayEffect(dashSound);
             components.PlayerTrailRenderer.enabled = true;
             dashDir = stats.Direction;
             currTrailDur = TrailDur;

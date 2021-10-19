@@ -7292,6 +7292,162 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1811140947}
   m_CullTransparentMesh: 1
+--- !u!1 &1862282605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1862282608}
+  - component: {fileID: 1862282607}
+  - component: {fileID: 1862282606}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1862282606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862282605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 044732b03b06cae4385b0e328547ad6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1862282607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862282605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9453cab995b290478ac8d0c693baf6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MusicVolume: {fileID: -7517854670178784311, guid: 91b7303476fe32d4e81b98d03a16f542, type: 2}
+  SoundEffectVolume: {fileID: 2664957414522669955, guid: 91b7303476fe32d4e81b98d03a16f542, type: 2}
+  SoundEffects:
+  - name: Button
+    clip: {fileID: 8300000, guid: efc53fdfa39e8d74b979e78a3a938e06, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Cannon
+    clip: {fileID: 8300000, guid: 332134bb4ce318c4e92666d7f0c110d0, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Hit
+    clip: {fileID: 8300000, guid: 7b5708f9930b8f245a6804f2e336ecaa, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: HemoTakeDamage
+    clip: {fileID: 8300000, guid: 8fcdf0fa0ae3bfa41bee883138e509ef, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: HemoDead
+    clip: {fileID: 8300000, guid: 775b40680af18dd49b921c7cf4dbfaf1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Dash
+    clip: {fileID: 8300000, guid: 81e4f8d7dec016a45bc39aa05c77cd24, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Heal
+    clip: {fileID: 8300000, guid: 3a7cc6bdeab0e4e4f93db420b77e1c8e, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ItemPickup
+    clip: {fileID: 8300000, guid: 071f93f8ad1b0014b9f68d91524b7444, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Walk1
+    clip: {fileID: 8300000, guid: 65a4639b0e16a134597f748e60fd2d2d, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Walk2
+    clip: {fileID: 8300000, guid: fbc25839d3c6fee4bbbfbbd91793b252, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PistolSniperReload
+    clip: {fileID: 8300000, guid: 760ffa59e1f6e184683736b2f692f216, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: RifleReload
+    clip: {fileID: 8300000, guid: b7ca961e4ce1740498fbe344ebed3e42, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SwitchGun
+    clip: {fileID: 8300000, guid: 95aeb4bfe6365474cadc08c1fd2f6eae, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DistantExplosion
+    clip: {fileID: 8300000, guid: 77b36e005637c29449e459df71b23b9d, type: 3}
+    volume: 0.65
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  Music:
+  - name: Theme
+    clip: {fileID: 8300000, guid: b51a60b59117cf44b931df2e12386abe, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Game
+    clip: {fileID: 8300000, guid: ba65fad91d8750c459f6fcf28ba0054c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+--- !u!4 &1862282608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862282605}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.27940896, y: 0.3591812, z: -1.8205546}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1873852809
 GameObject:
   m_ObjectHideFlags: 0
@@ -7610,156 +7766,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1924890309}
   m_CullTransparentMesh: 1
---- !u!1 &1930717678
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1930717681}
-  - component: {fileID: 1930717680}
-  - component: {fileID: 1930717679}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1930717679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930717678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 044732b03b06cae4385b0e328547ad6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1930717680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930717678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9453cab995b290478ac8d0c693baf6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MusicVolume: {fileID: -7517854670178784311, guid: 91b7303476fe32d4e81b98d03a16f542, type: 2}
-  SoundEffectVolume: {fileID: 2664957414522669955, guid: 91b7303476fe32d4e81b98d03a16f542, type: 2}
-  SoundEffects:
-  - name: Button
-    clip: {fileID: 8300000, guid: efc53fdfa39e8d74b979e78a3a938e06, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Cannon
-    clip: {fileID: 8300000, guid: 332134bb4ce318c4e92666d7f0c110d0, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Hit
-    clip: {fileID: 8300000, guid: 7b5708f9930b8f245a6804f2e336ecaa, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: HemoTakeDamage
-    clip: {fileID: 8300000, guid: 8fcdf0fa0ae3bfa41bee883138e509ef, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: HemoDead
-    clip: {fileID: 8300000, guid: 775b40680af18dd49b921c7cf4dbfaf1, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Dash
-    clip: {fileID: 8300000, guid: 81e4f8d7dec016a45bc39aa05c77cd24, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Heal
-    clip: {fileID: 8300000, guid: 3a7cc6bdeab0e4e4f93db420b77e1c8e, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: ItemPickup
-    clip: {fileID: 8300000, guid: 071f93f8ad1b0014b9f68d91524b7444, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Walk1
-    clip: {fileID: 8300000, guid: 65a4639b0e16a134597f748e60fd2d2d, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Walk2
-    clip: {fileID: 8300000, guid: fbc25839d3c6fee4bbbfbbd91793b252, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: PistolSniperReload
-    clip: {fileID: 8300000, guid: 760ffa59e1f6e184683736b2f692f216, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: RifleReload
-    clip: {fileID: 8300000, guid: b7ca961e4ce1740498fbe344ebed3e42, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: SwitchGun
-    clip: {fileID: 8300000, guid: 95aeb4bfe6365474cadc08c1fd2f6eae, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  Music:
-  - name: Theme
-    clip: {fileID: 8300000, guid: b51a60b59117cf44b931df2e12386abe, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  - name: Game
-    clip: {fileID: 8300000, guid: ba65fad91d8750c459f6fcf28ba0054c, type: 3}
-    volume: 0.5
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
---- !u!4 &1930717681
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930717678}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.27940896, y: 0.3591812, z: -1.8205546}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1933094126
 GameObject:
   m_ObjectHideFlags: 0
