@@ -199,7 +199,7 @@ public class Enemy1 : MonoBehaviour
                     //a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 }
             }
-            else if (distancefromplayer <= retreatDistance && retreat == true) //retreat
+            else if (distancefromplayer <= retreatDistance && retreat == true && lineofsight == true) //retreat
             {
                 reachedDestination = true;
                 transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);

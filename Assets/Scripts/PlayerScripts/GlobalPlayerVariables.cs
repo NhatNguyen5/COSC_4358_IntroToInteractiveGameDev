@@ -5,7 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class GlobalPlayerVariables : MonoBehaviour
 {
+    //SCORE
     public static float TotalScore;
+
+    //EXP SYSTEM AND VARIABLES TO CHANGE WHEN LEVELING UP
+    public static float maxHealthBonus = 0;
+    public static float healthRegenBonus = 0;
+    public static float maxStaminaBonus = 0;
+    public static float staminaRegenBonus = 0;
+    public static float sprintWalkSpeedBonus = 0;
+    public static float maxAmmoReserveBonus = 0;
+    public static float ammoReserveRegenBonus = 0;
+    public static float bulletCritRateBonus = 0;
+    public static float reloadSpeedBonus = 0;
+    public static float itemUsageCoolDownBonus = 0;
+
+
+
     public float rechargeRate = 1;
 
     public static float weaponWeight = 1;
@@ -22,7 +38,10 @@ public class GlobalPlayerVariables : MonoBehaviour
     public float chargeMultiplyer = 1;
     public static float rechargeRateMultiplyer = 1;
     public static float reserveCount = 0;
+
+
     public static float Reserves = 500;
+    
     public static float MaxReserves = 1000;
 
     //public static float playerHealth = 100;
@@ -99,8 +118,34 @@ public class GlobalPlayerVariables : MonoBehaviour
         rechargeRateMultiplyer = chargeMultiplyer;
 
 
+
+
+
         TotalScore = 0;
-    }
+
+        //Bonus Reset;
+        maxHealthBonus = 0;
+        healthRegenBonus = 0;
+        maxStaminaBonus = 0;
+        staminaRegenBonus = 0;
+        sprintWalkSpeedBonus = 0;
+        maxAmmoReserveBonus = 0;
+        ammoReserveRegenBonus = 0;
+        bulletCritRateBonus = 0;
+        reloadSpeedBonus = 0;
+        itemUsageCoolDownBonus = 0;
+
+
+
+
+
+
+
+
+
+
+
+}
 
     public void Update()
     {
