@@ -167,7 +167,7 @@ public class Enemy1 : MonoBehaviour
                 transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
                 getDirection(player);
             }
-            else if ((distancefromplayer >= retreatDistance) || GlobalPlayerVariables.GameOver == true) //stop /*(Vector2.Distance(transform.position, player.position) <= stoppingDistance && */ 
+            else if ((distancefromplayer >= retreatDistance) || GlobalPlayerVariables.GameOver == true || lineofsight == false) //stop /*(Vector2.Distance(transform.position, player.position) <= stoppingDistance && */ 
             {
                 if (randomMovement == false)
                     transform.position = this.transform.position;

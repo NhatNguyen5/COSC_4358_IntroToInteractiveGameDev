@@ -130,7 +130,7 @@ public class PlayerActions
         */
         if (player.Stats.Direction.magnitude <= 0)
         {
-            stopSpeed = player.Stats.Speed / player.Stats.WalkSpeed;
+            stopSpeed = player.Stats.Speed / player.holdWalkSpeed; //player.Stats.WalkSpeed
             if (ease > 0)
                 ease -= Time.fixedDeltaTime * player.Stats.PFrictionz / stopSpeed;
             else
@@ -150,8 +150,8 @@ public class PlayerActions
     public void Sprint()
     {
         if(player.Stats.Stamina >= 0)
-            player.Stats.Speed = player.Stats.SprintSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f);
-        if(GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f == 0.001)
+            player.Stats.Speed = player.holdSprintSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f); //player.Stats.SprintSpeed
+        if (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f == 0.001)
         {
             Debug.Log("Weapon too heavy!");
         }
@@ -159,7 +159,7 @@ public class PlayerActions
 
     public void Walk()
     {
-        player.Stats.Speed = player.Stats.WalkSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f);
+        player.Stats.Speed = player.holdWalkSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f); //player.Stats.WalkSpeed
         if (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f == 0.001)
         {
             Debug.Log("Weapon too heavy!");
@@ -421,15 +421,15 @@ public class PlayerActions
     public void ResetPlayerStats()
     {
         player.Components.PlayerParticleSystem.Stop();
-        player.Stats.HPRegen -= player.Stats.HPRegenAdd; //HEALTH REGEN FUNCTION GOES HERE
-        player.Stats.StaminaRegenRate -= player.Stats.StamRegenAdd; //STAMINA REGEN FUNCTION GOES HERE
+        player.Stats.HPRegen -= player.Stats.HPRegenAdd; 
+        player.Stats.StaminaRegenRate -= player.Stats.StamRegenAdd; 
         //HEALTH FUNCTION IMPLEMENTED HERE
         player.Stats.MaxHealth = player.healthGrowthRate * player.Currentlevel + GlobalPlayerVariables.baseMaxHealth; //player.Stats.maxhp; 
         if (player.Stats.Health > player.Stats.MaxHealth)
             player.Stats.Health = player.Stats.MaxHealth;
         //STAMINA FUNCTION NEEDS TO BE IMPLEMENTED HERE
-        player.Stats.MaxStamina = player.Stats.maxplayerstamina;
-        if (player.Stats.Stamina > player.Stats.Stamina)
+        player.Stats.MaxStamina = player.maxStaminaGrowthRate * player.Currentlevel + GlobalPlayerVariables.baseMaxStamina; //player.Stats.maxplayerstamina;
+        if (player.Stats.Stamina > player.Stats.MaxStamina)
             player.Stats.Stamina = player.Stats.MaxStamina;
 
 

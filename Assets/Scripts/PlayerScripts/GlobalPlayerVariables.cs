@@ -16,7 +16,9 @@ public class GlobalPlayerVariables : MonoBehaviour
     public static float baseHealthRegen = 0;
     public static float baseMaxStamina = 0;
     public static float baseStaminaRegen = 0;
-    public static float baseSprintWalkSpeed = 0;
+    public static float baseWalkSpeed = 0;
+    public static float baseSprintSpeed = 0;
+    //public static float baseDashSpeed = 0; WONT TOUCH THIS FOR NOW 
     public static float baseMaxAmmoReserve = 0;
     public static float baseAmmoReserveRegen = 0;
     public static float baseBulletCritRate = 0;

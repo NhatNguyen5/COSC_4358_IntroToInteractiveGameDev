@@ -91,7 +91,7 @@ public class Player : MonoBehaviour
 
     //LEVELCAP
     public int baseLevelThreshHold = 100;
-    public int hardLevelCap = 120;
+    //public int hardLevelCap = 120;
     private int levelThreshhold = 100;
     [HideInInspector]
     public float Currentlevel = 0;
@@ -105,8 +105,19 @@ public class Player : MonoBehaviour
     public int healthGrowthRate = 98;
     [HideInInspector]
     public float hpRegenGrowthRate = 0.29f;
+    [HideInInspector]
+    public float maxStaminaGrowthRate = 2f;
+    [HideInInspector]
+    public float staminaRegenGrowthRate = 0.15f;
+    [HideInInspector]
+    public float walkSpeedGrowthRate = 1f;
+    [HideInInspector]
+    public float holdWalkSpeed = 0f;
 
-
+    [HideInInspector]
+    public float sprintSpeedGrowthRate = 1f;
+    [HideInInspector]
+    public float holdSprintSpeed = 0f;
 
 
 
@@ -115,11 +126,10 @@ public class Player : MonoBehaviour
         /*
         public static float baseMaxHealth = 0; done
         public static float baseHealthRegen = 0; done
+        public static float baseMaxStamina = 0; done
+        public static float baseStaminaRegen = 0; done
+        public static float baseSprintWalkSpeed = 0; done
 
-
-        public static float baseMaxStamina = 0; 
-        public static float baseStaminaRegen = 0; 
-        public static float baseSprintWalkSpeed = 0; 
         public static float baseMaxAmmoReserve = 0; 
         public static float baseAmmoReserveRegen = 0; 
         public static float baseBulletCritRate = 0; 
@@ -156,7 +166,12 @@ public class Player : MonoBehaviour
         GlobalPlayerVariables.baseHealthRegen = stats.hpregenrate;
 
         stats.Speed = stats.WalkSpeed;
-        GlobalPlayerVariables.baseSprintWalkSpeed = stats.WalkSpeed;
+        holdWalkSpeed = stats.WalkSpeed;
+        holdSprintSpeed = stats.SprintSpeed;
+        GlobalPlayerVariables.baseWalkSpeed = stats.WalkSpeed;
+        GlobalPlayerVariables.baseSprintSpeed = stats.SprintSpeed;
+        //GlobalPlayerVariables.baseDashSpeed = stats.DashSpeed; WONT TOUCH THIS FOR NOW
+
         stats.Stamina = stats.stamina;
         stats.MaxStamina = stats.maxplayerstamina;
         GlobalPlayerVariables.baseMaxStamina = stats.maxplayerstamina;
@@ -216,6 +231,8 @@ public class Player : MonoBehaviour
         //LEVELING FUNCTION
         //levelThreshhold = (float)hardLevelCap / (1 + Mathf.Pow(1.5f, (11f - 0.9f * Currentlevel)));
         levelThreshhold = levelCapGrowthRate * (int)Currentlevel + baseLevelThreshHold;
+
+
         //HealthFunction
         if(PhizerIsActive == false)
             stats.MaxHealth = healthGrowthRate * Currentlevel + GlobalPlayerVariables.baseMaxHealth;
@@ -229,21 +246,45 @@ public class Player : MonoBehaviour
         //HealthRegen Function
         if (PhizerIsActive == false)
         {
-            Debug.Log(hpRegenGrowthRate);
+            //Debug.Log(hpRegenGrowthRate);
             stats.HPRegen = hpRegenGrowthRate * Currentlevel + GlobalPlayerVariables.baseHealthRegen;
-            Debug.Log(stats.HPRegen + " growthrate " + hpRegenGrowthRate + " curr level " + Currentlevel);
+            //Debug.Log(stats.HPRegen + " growthrate " + hpRegenGrowthRate + " curr level " + Currentlevel);
         }
         else if (PhizerIsActive == true)
         {
             Stats.HPRegen += hpRegenGrowthRate;
-            Debug.Log(stats.HPRegen + " growthrate " + hpRegenGrowthRate + " curr level " + Currentlevel);
+            //Debug.Log(stats.HPRegen + " growthrate " + hpRegenGrowthRate + " curr level " + Currentlevel);
         }
-            /*
-        if (stats.HPRegen + hpRegenGrowthRate > stats.MaxHealth)
-            stats.Health = stats.MaxHealth;
+
+        //MaxStamina function
+        if (PhizerIsActive == false)
+            stats.MaxStamina = maxStaminaGrowthRate * Currentlevel + GlobalPlayerVariables.baseMaxStamina;
+        else if (PhizerIsActive == true)
+            stats.MaxStamina += maxStaminaGrowthRate;
+        if (stats.Stamina + maxStaminaGrowthRate > stats.MaxStamina)
+            stats.Stamina = stats.MaxStamina;
         else
-            stats.Health += healthGrowthRate;
-        */
+            stats.MaxStamina += maxStaminaGrowthRate;
+
+
+        //StaminaRegen function
+        if (PhizerIsActive == false)
+            stats.StaminaRegenRate = staminaRegenGrowthRate * Currentlevel + GlobalPlayerVariables.baseStaminaRegen;
+        else if (PhizerIsActive == true)
+            stats.StaminaRegenRate += staminaRegenGrowthRate;
+
+        //Speed functions
+        holdWalkSpeed = walkSpeedGrowthRate * Currentlevel + GlobalPlayerVariables.baseWalkSpeed;
+        holdSprintSpeed = sprintSpeedGrowthRate * Currentlevel + GlobalPlayerVariables.baseSprintSpeed;
+
+
+
+        /*
+    if (stats.HPRegen + hpRegenGrowthRate > stats.MaxHealth)
+        stats.Health = stats.MaxHealth;
+    else
+        stats.Health += healthGrowthRate;
+    */
 
 
 
@@ -253,6 +294,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        //Debug.Log("walk speed " + holdWalkSpeed + " sprint speed " + holdSprintSpeed + " curr level " + Currentlevel);
+        //Debug.Log(stats.StaminaRegenRate);
         //Debug.Log(stats.HPRegen);
         if (GlobalPlayerVariables.expToDistribute > 0)
         {
@@ -276,7 +319,7 @@ public class Player : MonoBehaviour
         {
             if(stats.Stamina > 0)
                 stats.Stamina -= Time.deltaTime*(stats.StamDrainRate - stats.StaminaRegenRate);
-            StaminaBar.fillAmount = stats.Stamina / stats.MaxStamina;
+            StaminaBar.fillAmount = stats.Stamina / (maxStaminaGrowthRate * Currentlevel + GlobalPlayerVariables.baseMaxStamina); //stats.Stamina / stats.MaxStamina;
             isRunning = true;
             sprint = 0;
         }
@@ -285,7 +328,7 @@ public class Player : MonoBehaviour
         if (stats.Stamina <= stats.MaxStamina && isRunning == false && sprint >= stats.TimeBeforeStamRegen)
         { 
             stats.Stamina += Time.deltaTime * stats.StaminaRegenRate;
-            StaminaBar.fillAmount = stats.Stamina / stats.MaxStamina;
+            StaminaBar.fillAmount = stats.Stamina / (maxStaminaGrowthRate * Currentlevel + GlobalPlayerVariables.baseMaxStamina); //stats.Stamina / stats.MaxStamina;
         }
         isRunning = false;
         sprint += Time.deltaTime;
