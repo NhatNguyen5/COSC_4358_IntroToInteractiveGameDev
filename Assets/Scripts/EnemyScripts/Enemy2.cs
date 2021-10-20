@@ -18,6 +18,7 @@ public class Enemy2 : MonoBehaviour
     public float contactDamage;
     public float HP = 100;
     public float speed = 0;
+    public int EXPWorth = 50;
 
     [Header("Movement Settings")]
     public float stoppingDistance = 0;
@@ -454,6 +455,7 @@ public class Enemy2 : MonoBehaviour
         if (isDead == false)
         {
             isDead = true;
+            GlobalPlayerVariables.expToDistribute += EXPWorth;
             if (OnEnemyKilled != null)
             {
                 OnEnemyKilled();

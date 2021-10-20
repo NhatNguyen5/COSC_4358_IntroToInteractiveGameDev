@@ -8,6 +8,32 @@ public class GlobalPlayerVariables : MonoBehaviour
     //SCORE
     public static float TotalScore;
 
+    //Hold xp backlog
+    public static int expToDistribute;
+
+    //base values to do calculations with
+    public static float baseMaxHealth = 0;
+    public static float baseHealthRegen = 0;
+    public static float baseMaxStamina = 0;
+    public static float baseStaminaRegen = 0;
+    public static float baseSprintWalkSpeed = 0;
+    public static float baseMaxAmmoReserve = 0;
+    public static float baseAmmoReserveRegen = 0;
+    public static float baseBulletCritRate = 0;
+    public static float baseReloadSpeed = 0;
+
+
+    //ITEMS
+    //public static float baseItemUsageCoolDownMolly = 0;
+    public static float baseItemUsageCoolDownPhizer = 0;
+    public static float baseItemUsageCoolDownTylenol = 0;
+
+
+
+
+
+
+
     //EXP SYSTEM AND VARIABLES TO CHANGE WHEN LEVELING UP
     public static float maxHealthBonus = 0;
     public static float healthRegenBonus = 0;
@@ -17,8 +43,15 @@ public class GlobalPlayerVariables : MonoBehaviour
     public static float maxAmmoReserveBonus = 0;
     public static float ammoReserveRegenBonus = 0;
     public static float bulletCritRateBonus = 0;
-    public static float reloadSpeedBonus = 0;
-    public static float itemUsageCoolDownBonus = 0;
+    public static float reloadSpeedBonus = 1;
+
+
+
+
+    //public static float itemUsageCoolDownBonusMolly = 1;
+    public static float itemUsageCoolDownBonusPhizer = 1;
+    public static float itemUsageCoolDownBonusTylenol = 1;
+
 
 
 
@@ -123,6 +156,9 @@ public class GlobalPlayerVariables : MonoBehaviour
 
         TotalScore = 0;
 
+        //BackLog Reset
+        expToDistribute = 0;
+
         //Bonus Reset;
         maxHealthBonus = 0;
         healthRegenBonus = 0;
@@ -132,8 +168,15 @@ public class GlobalPlayerVariables : MonoBehaviour
         maxAmmoReserveBonus = 0;
         ammoReserveRegenBonus = 0;
         bulletCritRateBonus = 0;
-        reloadSpeedBonus = 0;
-        itemUsageCoolDownBonus = 0;
+        reloadSpeedBonus = 1;
+        //itemUsageCoolDownBonus = 1;
+
+        //LEVELING PURPOSES
+        baseMaxAmmoReserve = playerMaxReserves;
+        baseAmmoReserveRegen = chargeMultiplyer;
+        baseBulletCritRate = BaseCritRate;
+        baseReloadSpeed = 1;
+       // baseItemUsageCoolDown = 1;
 
 
 
@@ -145,7 +188,8 @@ public class GlobalPlayerVariables : MonoBehaviour
 
 
 
-}
+
+    }
 
     public void Update()
     {

@@ -409,7 +409,7 @@ public class Weapon : MonoBehaviour
             }
         }
         if (reloadCooldown < reloadTime)
-            reloadCooldown += Time.deltaTime;
+            reloadCooldown += Time.deltaTime * GlobalPlayerVariables.reloadSpeedBonus; //might be inefficient keep close eye on this
         else
             reloadCooldown = reloadTime;
 

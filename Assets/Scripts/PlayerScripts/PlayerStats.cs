@@ -23,6 +23,9 @@ public class PlayerStats
 
     public int ArmorLevel { get; set; }
 
+    //EXPERIENCE
+    public float Experience { get; set; }
+
     public float Health { get; set; }
 
     public float MaxHealth { get; set; }
@@ -80,6 +83,8 @@ public class PlayerStats
     private float Amor;
     [SerializeField]
     private float DamageReducePerArmorLevel;
+    [SerializeField] //EXPERIENCE
+    private int experience;
     [SerializeField]
     private float HP;
     [SerializeField]
@@ -142,7 +147,8 @@ public class PlayerStats
 
     public float damagereduceperarmorlevel { get => DamageReducePerArmorLevel; }
 
-
+    //EXPERIENCE
+    public float EXP { get => Experience; }
     public float hp { get => HP; }
 
     public float maxhp { get => maxHP; }

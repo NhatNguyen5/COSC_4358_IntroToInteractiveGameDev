@@ -23,6 +23,7 @@ public class EnemyColony : MonoBehaviour
     private EnemyManager enemyColony;
     private float MaxHP = 0;
     public float speed = 0;
+    public int EXPWorth = 50;
 
     [Header("Movement Settings")]
     public float stoppingDistance = 0;
@@ -452,6 +453,7 @@ public class EnemyColony : MonoBehaviour
         if (isDead == false)
         {
             isDead = true;
+            GlobalPlayerVariables.expToDistribute += EXPWorth;
             transform.position = this.transform.position;
             transform.Find("BossSprite").GetComponent<Animator>().SetBool("IsDead", isDead);
             GetComponent<PolygonCollider2D>().enabled = false;

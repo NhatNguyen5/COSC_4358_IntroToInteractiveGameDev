@@ -327,7 +327,7 @@ public class PlayerActions
                     {
                         RWeaponIcon.transform.Find("Vaccinator2.0Icon").gameObject.SetActive(true);
                     }
-
+                    //start swap counter???
                 }
                 else
                 {
@@ -421,14 +421,18 @@ public class PlayerActions
     public void ResetPlayerStats()
     {
         player.Components.PlayerParticleSystem.Stop();
-        player.Stats.HPRegen -= player.Stats.HPRegenAdd;
-        player.Stats.StaminaRegenRate -= player.Stats.StamRegenAdd;
-        player.Stats.MaxHealth = player.Stats.maxhp;
+        player.Stats.HPRegen -= player.Stats.HPRegenAdd; //HEALTH REGEN FUNCTION GOES HERE
+        player.Stats.StaminaRegenRate -= player.Stats.StamRegenAdd; //STAMINA REGEN FUNCTION GOES HERE
+        //HEALTH FUNCTION IMPLEMENTED HERE
+        player.Stats.MaxHealth = player.healthGrowthRate * player.Currentlevel + GlobalPlayerVariables.baseMaxHealth; //player.Stats.maxhp; 
         if (player.Stats.Health > player.Stats.MaxHealth)
             player.Stats.Health = player.Stats.MaxHealth;
+        //STAMINA FUNCTION NEEDS TO BE IMPLEMENTED HERE
         player.Stats.MaxStamina = player.Stats.maxplayerstamina;
         if (player.Stats.Stamina > player.Stats.Stamina)
             player.Stats.Stamina = player.Stats.MaxStamina;
+
+
         player.Components.PlayerTrailRenderer.endColor = new Color(184 / 255f, 59 / 255f, 60 / 255f);
         player.Components.PlayerStatusIndicator.ChangeTransparency((player.Stats.MaxHealth - player.Stats.Health) / player.Stats.MaxHealth);
         currSpriteCategory = "DefaultHemo";

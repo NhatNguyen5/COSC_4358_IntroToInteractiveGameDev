@@ -328,6 +328,7 @@ MonoBehaviour:
   contactDamage: 24
   HP: 240
   speed: 3
+  EXPWorth: 1000
   stoppingDistance: 5
   retreatDistance: 2
   followPlayer: 1
@@ -339,6 +340,7 @@ MonoBehaviour:
     m_Bits: 17536
   unstuckTime: 0
   shootdistance: 10
+  distancefromplayer: 0
   circleRadius: 8
   timeTillNextMove: 0.5
   knockForcePlayerContact: 3

@@ -89,9 +89,54 @@ public class Player : MonoBehaviour
 
     public string dashSound;
 
+    //LEVELCAP
+    public int baseLevelThreshHold = 100;
+    public int hardLevelCap = 120;
+    private int levelThreshhold = 100;
+    [HideInInspector]
+    public float Currentlevel = 0;
+    private bool PhizerIsActive = false;
+
+
+    //growth rates
+    [HideInInspector]
+    public int levelCapGrowthRate = 50;
+    [HideInInspector]
+    public int healthGrowthRate = 98;
+    [HideInInspector]
+    public float hpRegenGrowthRate = 0.29f;
+
+
+
+
 
     private void Awake()
     {
+        /*
+        public static float baseMaxHealth = 0; done
+        public static float baseHealthRegen = 0; done
+
+
+        public static float baseMaxStamina = 0; 
+        public static float baseStaminaRegen = 0; 
+        public static float baseSprintWalkSpeed = 0; 
+        public static float baseMaxAmmoReserve = 0; 
+        public static float baseAmmoReserveRegen = 0; 
+        public static float baseBulletCritRate = 0; 
+        public static float baseReloadSpeed = 0; 
+        
+        public static float baseItemUsageCoolDownPhizer = 0; 
+        public static float baseItemUsageCoolDownTylenol = 0; 
+        */
+
+
+
+
+
+
+
+
+        levelThreshhold = baseLevelThreshHold;
         actions = new PlayerActions(this);
         utilities = new PlayerUtilities(this);
         references = new PlayerReferences(this);
@@ -99,15 +144,26 @@ public class Player : MonoBehaviour
         stats.Armorz = stats.armor;
         stats.ArmorPerArmorLevelz = stats.armorperarmorlevel;
         stats.DamageReducePerArmorLevelz = stats.damagereduceperarmorlevel;
+        //EXP
+        stats.Experience = stats.EXP;
+
         stats.Health = stats.hp;
+
         stats.MaxHealth = stats.maxhp;
+        GlobalPlayerVariables.baseMaxHealth = stats.maxhp;
+
         stats.HPRegen = stats.hpregenrate;
+        GlobalPlayerVariables.baseHealthRegen = stats.hpregenrate;
+
         stats.Speed = stats.WalkSpeed;
+        GlobalPlayerVariables.baseSprintWalkSpeed = stats.WalkSpeed;
         stats.Stamina = stats.stamina;
         stats.MaxStamina = stats.maxplayerstamina;
+        GlobalPlayerVariables.baseMaxStamina = stats.maxplayerstamina;
         stats.StamDrainRate = stats.stamdrainrate;
         stats.TimeBeforeStamRegen = stats.StaminaRegenWait;
         stats.StaminaRegenRate = stats.staminaRegenRate;
+        GlobalPlayerVariables.baseStaminaRegen = stats.staminaRegenRate;
         stats.NumofHeal = stats.numofheal;
         stats.NumofProtein = stats.numofprotein;
         stats.NumofPhizer = stats.numofphizer;
@@ -115,10 +171,14 @@ public class Player : MonoBehaviour
 
         stats.PhizerDurationz = stats.PhizerDuration;
         stats.PhizerCooldownz = stats.PhizerCooldown;
+        GlobalPlayerVariables.baseItemUsageCoolDownPhizer = stats.PhizerCooldown;
+
+
         stats.HPRegenAddz = stats.HPRegenAdd;
         stats.StamRegenAddz = stats.StamRegenAdd;
 
         stats.TylenoCooldownz = stats.TylenolCooldown;
+        GlobalPlayerVariables.baseItemUsageCoolDownTylenol = stats.TylenolCooldown;
         stats.TylenolHealAmountz = stats.TylenolHealAmount;
 
         actions.defaultSpeed = stats.Speed;
@@ -136,6 +196,8 @@ public class Player : MonoBehaviour
         stats.ArmorLevel = Mathf.FloorToInt(stats.Armorz / stats.ArmorPerArmorLevelz);
 
         components.PlayerParticleSystem.Stop();
+
+        
     }
 
 
@@ -145,9 +207,65 @@ public class Player : MonoBehaviour
         StaminaBar = GameObject.Find("StaminaBar").GetComponent<Image>();
     }
 
+
+    void levelUP()
+    {
+        stats.Experience -= levelThreshhold;
+        Currentlevel += 1f;
+        Debug.Log("LEVEL UP, Experience: " + stats.Experience + " Current level: " + Currentlevel);
+        //LEVELING FUNCTION
+        //levelThreshhold = (float)hardLevelCap / (1 + Mathf.Pow(1.5f, (11f - 0.9f * Currentlevel)));
+        levelThreshhold = levelCapGrowthRate * (int)Currentlevel + baseLevelThreshHold;
+        //HealthFunction
+        if(PhizerIsActive == false)
+            stats.MaxHealth = healthGrowthRate * Currentlevel + GlobalPlayerVariables.baseMaxHealth;
+        else if(PhizerIsActive == true)
+            Stats.MaxHealth += healthGrowthRate;
+        if (stats.Health + healthGrowthRate > stats.MaxHealth)
+            stats.Health = stats.MaxHealth;
+        else
+            stats.Health += healthGrowthRate;
+
+        //HealthRegen Function
+        if (PhizerIsActive == false)
+        {
+            Debug.Log(hpRegenGrowthRate);
+            stats.HPRegen = hpRegenGrowthRate * Currentlevel + GlobalPlayerVariables.baseHealthRegen;
+            Debug.Log(stats.HPRegen + " growthrate " + hpRegenGrowthRate + " curr level " + Currentlevel);
+        }
+        else if (PhizerIsActive == true)
+        {
+            Stats.HPRegen += hpRegenGrowthRate;
+            Debug.Log(stats.HPRegen + " growthrate " + hpRegenGrowthRate + " curr level " + Currentlevel);
+        }
+            /*
+        if (stats.HPRegen + hpRegenGrowthRate > stats.MaxHealth)
+            stats.Health = stats.MaxHealth;
+        else
+            stats.Health += healthGrowthRate;
+        */
+
+
+
+    }
+
+
     // Update is called once per frame
     private void Update()
     {
+        //Debug.Log(stats.HPRegen);
+        if (GlobalPlayerVariables.expToDistribute > 0)
+        {
+            stats.Experience += GlobalPlayerVariables.expToDistribute;
+            GlobalPlayerVariables.expToDistribute = 0;
+        }
+        if (stats.Experience >= levelThreshhold)
+        {
+            levelUP();
+        }
+
+
+
         utilities.HandleInput();
         references.CalMousePosToPlayer();
         actions.UpdateCountsUI();
@@ -379,7 +497,9 @@ public class Player : MonoBehaviour
     {
         inEffect = true;
         resetPlayerStatsRequest = true;
+        PhizerIsActive = true; //might have to change this later to make it more general
         yield return new WaitForSeconds(AfterSeconds);
+        PhizerIsActive = false; //same with this one
         inEffect = false;
     }
 
