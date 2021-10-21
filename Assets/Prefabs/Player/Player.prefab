@@ -347,6 +347,10 @@ MonoBehaviour:
   holdWalkSpeed: 0
   sprintSpeedGrowthRate: 1
   holdSprintSpeed: 0
+  maxAmmoReserveGrowthRate: 10
+  ammoReserveRegen: 0.5
+  critRateGrowthRate: 0.01
+  reloadSpeedGrowthRate: 0.01
 --- !u!114 &3517825292825441646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5378,7 +5382,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3556159641590399313, guid: 471bd23a45c03b54c9510a9e653b2fb4, type: 3}
       propertyPath: m_Name
-      value: Enforcer
+      value: Sedator
       objectReference: {fileID: 0}
     - target: {fileID: 3556159641590399324, guid: 471bd23a45c03b54c9510a9e653b2fb4, type: 3}
       propertyPath: m_RootOrder
