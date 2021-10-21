@@ -66,6 +66,7 @@ public class PlayerActions
         VaccineCooldownDisplay = GameObject.Find("VaccineCoolDownIndicator").GetComponent<Image>();
         HealCooldownDisplay = GameObject.Find("HealCoolDownIndicator").GetComponent<Image>();
         player.Components.PlayerTrailRenderer.endColor = new Color(184/255f, 59/255f, 60/255f); // new Color(184, 59, 60);
+
         foreach (Transform rw in rightArm)
         {
             if (rw.gameObject.activeSelf)
@@ -99,6 +100,10 @@ public class PlayerActions
                 else if (rw.name.Contains("Vaccinator2.0"))
                 {
                     RWeaponIcon.transform.Find("Vaccinator2.0Icon").gameObject.SetActive(true);
+                }
+                else if (rw.name.Contains("Suprolizer"))
+                {
+                    RWeaponIcon.transform.Find("SuprolizerIcon").gameObject.SetActive(true);
                 }
 
             }
@@ -326,6 +331,10 @@ public class PlayerActions
                     else if (rw.name.Contains("Vaccinator2.0"))
                     {
                         RWeaponIcon.transform.Find("Vaccinator2.0Icon").gameObject.SetActive(true);
+                    }
+                    else if (rw.name.Contains("Suprolizer"))
+                    {
+                        RWeaponIcon.transform.Find("SuprolizerIcon").gameObject.SetActive(true);
                     }
                     //start swap counter???
                 }
