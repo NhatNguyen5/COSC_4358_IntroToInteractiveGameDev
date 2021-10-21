@@ -97,34 +97,44 @@ public class Player : MonoBehaviour
     public string dashSound;
 
     //LEVELCAP
-    public int baseLevelThreshHold = 100;
+    [Header("Level Stats")]
+    public int baseLevelThreshHold = 200;
     //public int hardLevelCap = 120;
-    private int levelThreshhold = 100;
+    private float levelThreshhold = 100;
     [HideInInspector]
     public float Currentlevel = 0;
     private bool PhizerIsActive = false;
 
 
     //growth rates
-    [HideInInspector]
-    public int levelCapGrowthRate = 50;
-    [HideInInspector]
-    public int healthGrowthRate = 98;
-    [HideInInspector]
-    public float hpRegenGrowthRate = 0.29f;
-    [HideInInspector]
-    public float maxStaminaGrowthRate = 2f;
-    [HideInInspector]
-    public float staminaRegenGrowthRate = 0.15f;
-    [HideInInspector]
+    
+    public int levelCapGrowthRate = 200;
+    
+    public int healthGrowthRate = 8;
+    
+    public float hpRegenGrowthRate = 0.19f;
+    
+    public float maxStaminaGrowthRate = 1f;
+    
+    public float staminaRegenGrowthRate = 0.2f;
+   
     public float walkSpeedGrowthRate = 1f;
     [HideInInspector]
     public float holdWalkSpeed = 0f;
 
-    [HideInInspector]
-    public float sprintSpeedGrowthRate = 1f;
+    
+    public float sprintSpeedGrowthRate = 1.5f;
     [HideInInspector]
     public float holdSprintSpeed = 0f;
+
+    
+    public float maxAmmoReserveGrowthRate = 10f;
+
+    
+    public float ammoReserveRegen = 0.5f;
+
+    
+    public float critRateGrowthRate = 0.01f;
 
 
 
@@ -136,10 +146,10 @@ public class Player : MonoBehaviour
         public static float baseMaxStamina = 0; done
         public static float baseStaminaRegen = 0; done
         public static float baseSprintWalkSpeed = 0; done
+        public static float baseMaxAmmoReserve = 0; done
+        public static float baseAmmoReserveRegen = 0; done
+        public static float baseBulletCritRate = 0; done
 
-        public static float baseMaxAmmoReserve = 0; 
-        public static float baseAmmoReserveRegen = 0; 
-        public static float baseBulletCritRate = 0; 
         public static float baseReloadSpeed = 0; 
         
         public static float baseItemUsageCoolDownPhizer = 0; 
@@ -234,10 +244,10 @@ public class Player : MonoBehaviour
     {
         stats.Experience -= levelThreshhold;
         Currentlevel += 1f;
-        Debug.Log("LEVEL UP, Experience: " + stats.Experience + " Current level: " + Currentlevel);
+        //Debug.Log("LEVEL UP, Experience: " + stats.Experience + " Current level: " + Currentlevel);
         //LEVELING FUNCTION
         //levelThreshhold = (float)hardLevelCap / (1 + Mathf.Pow(1.5f, (11f - 0.9f * Currentlevel)));
-        levelThreshhold = levelCapGrowthRate * (int)Currentlevel + baseLevelThreshHold;
+        levelThreshhold = levelCapGrowthRate * Currentlevel + baseLevelThreshHold;
 
 
         //HealthFunction
@@ -284,6 +294,31 @@ public class Player : MonoBehaviour
         holdWalkSpeed = walkSpeedGrowthRate * Currentlevel + GlobalPlayerVariables.baseWalkSpeed;
         holdSprintSpeed = sprintSpeedGrowthRate * Currentlevel + GlobalPlayerVariables.baseSprintSpeed;
 
+        //ammoreserve function
+        GlobalPlayerVariables.MaxReserves = maxAmmoReserveGrowthRate * Currentlevel + GlobalPlayerVariables.baseMaxAmmoReserve;
+
+        //ammoreserveregen function
+        GlobalPlayerVariables.rechargeRateMultiplyer = ammoReserveRegen * Currentlevel + GlobalPlayerVariables.baseAmmoReserveRegen;
+
+
+
+        //bulletcritrate function
+        GlobalPlayerVariables.BaseCritRate = critRateGrowthRate * Currentlevel + GlobalPlayerVariables.baseBulletCritRate;
+        GlobalPlayerVariables.BaseCritRate2 = critRateGrowthRate * Currentlevel + GlobalPlayerVariables.baseBulletCritRate;
+
+        //reload speed
+
+
+
+        //phizer speed
+
+
+
+        //tylenol speed
+
+
+
+
 
 
         /*
@@ -301,6 +336,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        Debug.Log("critrate1 " + GlobalPlayerVariables.BaseCritRate + " bcr2 " + GlobalPlayerVariables.BaseCritRate2 + " curr level " + Currentlevel);
+        //Debug.Log("Max reserves " + GlobalPlayerVariables.MaxReserves + " recharge rate " + GlobalPlayerVariables.rechargeRateMultiplyer + " curr level " + Currentlevel);
         //Debug.Log("walk speed " + holdWalkSpeed + " sprint speed " + holdSprintSpeed + " curr level " + Currentlevel);
         //Debug.Log(stats.StaminaRegenRate);
         //Debug.Log(stats.HPRegen);

@@ -160,7 +160,7 @@ public class Weapon : MonoBehaviour
         firingDelay = 0;
         //Debug.Log(GlobalPlayerVariables.Reserves);
         if(IsRightArm)
-            reloadBar.fillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.reserveCount;
+            reloadBar.fillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.MaxReserves;
     }
 
     private void setAmmoCount()
@@ -168,7 +168,7 @@ public class Weapon : MonoBehaviour
         UIAmmoCount.text = ammoCount.ToString();
         UIMaxAmmoCount.text = maxAmmoInClip.ToString();
 
-        countFillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.reserveCount;
+        countFillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.MaxReserves;
         //Debug.Log(countFillAmount);
         //reloadBar.fillAmount = countFillAmount;
 
@@ -223,7 +223,7 @@ public class Weapon : MonoBehaviour
     private void RightArmUpdate()
     {
         GlobalPlayerVariables.weaponWeight = weaponWeight;
-        reloadBar.fillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.reserveCount;
+        reloadBar.fillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.MaxReserves;
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
