@@ -74,6 +74,13 @@ public class Player : MonoBehaviour
 
     private float RightSlotCooldownDisplay;
 
+    private int currArmor;
+
+    [SerializeField]
+    private ArmorUp ArmorUpEff;
+    [SerializeField]
+    private ArmorDown ArmorDownEff;
+
     //private float currSpeed;
 
     //private bool setSpeedBack = false;
@@ -212,7 +219,7 @@ public class Player : MonoBehaviour
 
         components.PlayerParticleSystem.Stop();
 
-        
+        currArmor = stats.ArmorLevel;
     }
 
 
@@ -398,6 +405,7 @@ public class Player : MonoBehaviour
         }
 
         UpdateSpawnrate();
+        ArmorEffect();
     }
 
     private void FixedUpdate()
@@ -498,6 +506,23 @@ public class Player : MonoBehaviour
             currTrailDur = 0;
         else
             components.PlayerTrailRenderer.enabled = false;
+    }
+
+    public void ArmorEffect()
+    {
+        if (currArmor != stats.ArmorLevel)
+        {
+            if (currArmor < stats.ArmorLevel)
+            {
+                Instantiate(ArmorUpEff, stats.Position, Quaternion.identity);
+            }
+            else if(currArmor > stats.ArmorLevel)
+            {
+                Instantiate(ArmorDownEff, stats.Position, Quaternion.identity);
+            }
+
+            currArmor = stats.ArmorLevel;
+        }
     }
 
     private IEnumerator beatGen(float duration)
