@@ -136,6 +136,8 @@ public class Player : MonoBehaviour
     
     public float critRateGrowthRate = 0.01f;
 
+    public float reloadSpeedGrowthRate = 0.01f;
+
 
 
     private void Awake()
@@ -149,8 +151,7 @@ public class Player : MonoBehaviour
         public static float baseMaxAmmoReserve = 0; done
         public static float baseAmmoReserveRegen = 0; done
         public static float baseBulletCritRate = 0; done
-
-        public static float baseReloadSpeed = 0; 
+        public static float baseReloadSpeed = 0; done
         
         public static float baseItemUsageCoolDownPhizer = 0; 
         public static float baseItemUsageCoolDownTylenol = 0; 
@@ -308,7 +309,7 @@ public class Player : MonoBehaviour
 
         //reload speed
 
-
+        GlobalPlayerVariables.reloadSpeedBonus = reloadSpeedGrowthRate * Currentlevel + GlobalPlayerVariables.baseReloadSpeed;
 
         //phizer speed
 
@@ -336,7 +337,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        Debug.Log("critrate1 " + GlobalPlayerVariables.BaseCritRate + " bcr2 " + GlobalPlayerVariables.BaseCritRate2 + " curr level " + Currentlevel);
+        //Debug.Log("reload speed multiplier " + GlobalPlayerVariables.reloadSpeedBonus + " curr level " + Currentlevel);
+        //Debug.Log("critrate1 " + GlobalPlayerVariables.BaseCritRate + " bcr2 " + GlobalPlayerVariables.BaseCritRate2 + " curr level " + Currentlevel);
         //Debug.Log("Max reserves " + GlobalPlayerVariables.MaxReserves + " recharge rate " + GlobalPlayerVariables.rechargeRateMultiplyer + " curr level " + Currentlevel);
         //Debug.Log("walk speed " + holdWalkSpeed + " sprint speed " + holdSprintSpeed + " curr level " + Currentlevel);
         //Debug.Log(stats.StaminaRegenRate);
