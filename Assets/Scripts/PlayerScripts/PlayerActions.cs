@@ -106,6 +106,10 @@ public class PlayerActions
                 {
                     RWeaponIcon.transform.Find("SuprolizerIcon").gameObject.SetActive(true);
                 }
+                else if (rw.name.Contains("Lympakilla"))
+                {
+                    RWeaponIcon.transform.Find("Lympakilla").gameObject.SetActive(true);
+                }
 
             }
         }
@@ -336,6 +340,10 @@ public class PlayerActions
                     else if (rw.name.Contains("Suprolizer"))
                     {
                         RWeaponIcon.transform.Find("SuprolizerIcon").gameObject.SetActive(true);
+                    }
+                    else if (rw.name.Contains("Lympakilla"))
+                    {
+                        RWeaponIcon.transform.Find("LympakillaIcon").gameObject.SetActive(true);
                     }
                     //start swap counter???
                 }
