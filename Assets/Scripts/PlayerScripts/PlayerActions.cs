@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class PlayerActions
 {
     private Player player;
+    [HideInInspector]
     public float defaultSpeed;
     private float DashDistance;
     private float DashSpeed;
@@ -40,7 +41,7 @@ public class PlayerActions
     private float hdir;
     private float vdir;
 
-
+    //private ArmorDown ArmorDownEff;
 
     //private bool isWaiting = false;
 
@@ -447,8 +448,6 @@ public class PlayerActions
     {
         HealCooldownDisplay.fillAmount = RightSlotFillAmount;
     }
-
-
 
     /*
 

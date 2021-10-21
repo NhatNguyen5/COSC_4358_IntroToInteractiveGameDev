@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 671bfbcba78b65f4390a96328d96cc9b, type: 2}
+  m_Motion: {fileID: 7400000, guid: 2d060ce72657eb04aadddf9b62689a37, type: 2}
   m_Tag: 
   m_SpeedParameter: FireRate
   m_MirrorParameter: 
@@ -220,7 +220,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnforcerAnimCtrl
+  m_Name: PrecisionAnimCtrl
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: FireRate
@@ -300,14 +300,14 @@ AnimatorStateMachine:
     m_Position: {x: 350, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -891134702875765110}
-    m_Position: {x: 350, y: 170, z: 0}
+    m_Position: {x: 360, y: 180, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions:
   - {fileID: 3703798413430757832}
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 50, y: 190, z: 0}
+  m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 40, y: 100, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
