@@ -110,6 +110,26 @@ public class PlayerActions
                 {
                     RWeaponIcon.transform.Find("Lympakilla").gameObject.SetActive(true);
                 }
+                else if (rw.name.Contains("Augment"))
+                {
+                    RWeaponIcon.transform.Find("AugmentIcon").gameObject.SetActive(true);
+                }
+                else if (rw.name.Contains("Enforcer"))
+                {
+                    RWeaponIcon.transform.Find("EnforcerIcon").gameObject.SetActive(true);
+                }
+                else if (rw.name.Contains("Eosinger"))
+                {
+                    RWeaponIcon.transform.Find("EosingerIcon").gameObject.SetActive(true);
+                }
+                else if (rw.name.Contains("Ravager"))
+                {
+                    RWeaponIcon.transform.Find("RavagerIcon").gameObject.SetActive(true);
+                }
+                else if (rw.name.Contains("Razor"))
+                {
+                    RWeaponIcon.transform.Find("RazorIcon").gameObject.SetActive(true);
+                }
 
             }
         }
@@ -344,6 +364,26 @@ public class PlayerActions
                     else if (rw.name.Contains("Lympakilla"))
                     {
                         RWeaponIcon.transform.Find("LympakillaIcon").gameObject.SetActive(true);
+                    }
+                    else if (rw.name.Contains("Augment"))
+                    {
+                        RWeaponIcon.transform.Find("AugmentIcon").gameObject.SetActive(true);
+                    }
+                    else if (rw.name.Contains("Enforcer"))
+                    {
+                        RWeaponIcon.transform.Find("EnforcerIcon").gameObject.SetActive(true);
+                    }
+                    else if (rw.name.Contains("Eosinger"))
+                    {
+                        RWeaponIcon.transform.Find("EosingerIcon").gameObject.SetActive(true);
+                    }
+                    else if (rw.name.Contains("Ravager"))
+                    {
+                        RWeaponIcon.transform.Find("RavagerIcon").gameObject.SetActive(true);
+                    }
+                    else if (rw.name.Contains("Razor"))
+                    {
+                        RWeaponIcon.transform.Find("RazorIcon").gameObject.SetActive(true);
                     }
                     //start swap counter???
                 }
