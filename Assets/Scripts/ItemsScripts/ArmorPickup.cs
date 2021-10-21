@@ -26,7 +26,7 @@ public class ArmorPickup : MonoBehaviour
                 player.Stats.Armorz += 100;
             else if(player.Stats.Armorz >= 700 && player.Stats.Armorz < 799)
                 player.Stats.Armorz = 799;
-            Debug.Log(player.Stats.ArmorLevel + " " + player.Stats.Armorz);
+            //Debug.Log(player.Stats.ArmorLevel + " " + player.Stats.Armorz);
         }
     }
 

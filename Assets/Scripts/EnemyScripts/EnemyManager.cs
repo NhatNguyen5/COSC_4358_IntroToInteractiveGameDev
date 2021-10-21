@@ -9,6 +9,7 @@ public class EnemyManager : MonoBehaviour
     public StatusIndicator StaInd;
     public Camera Mcamera;
     public CameraFollow CamFollow;
+    public int SpawnCap;
     [Header("Spawn time setting")]
     public float timeBetweenSpawns;
     public float tbsDecreaseRate;
@@ -35,6 +36,7 @@ public class EnemyManager : MonoBehaviour
     bool isWaiting = false;
     bool cutSceneFlag = false;
     private Player player;
+    private List<GameObject> SpawnedMobs = new List<GameObject>();
 
 
     private void Start()
@@ -73,7 +75,7 @@ public class EnemyManager : MonoBehaviour
             SPAnimReset = false;
         }
         //Debug.Log(timeBetweenSpawns);
-        if (/*enemiesRemainingToSpawn > 0 && colonyHealth > 0 &&*/ Time.time > nextSpawnTime)
+        if (/*enemiesRemainingToSpawn > 0 && colonyHealth > 0 &&*/ Time.time > nextSpawnTime && SpawnedMobs.Count < SpawnCap)
         {
             //enemiesRemainingToSpawn--;
             nextSpawnTime = Time.time + timeBetweenSpawns;
@@ -82,16 +84,19 @@ public class EnemyManager : MonoBehaviour
             int randomEnemeies = Random.Range(0, 100);
             //Debug.Log(randomEnemeies);
             if (randomEnemeies >= chanceToSpawnBrunt)
-                Instantiate(Enemies[0], spawnPoints[ChosenSP].transform.position, Quaternion.identity);
+                SpawnedMobs.Add(Instantiate(Enemies[0], spawnPoints[ChosenSP].transform.position, Quaternion.identity));
             else if (randomEnemeies <= chanceToSpawnR_Nold)
-                Instantiate(Enemies[2], spawnPoints[ChosenSP].transform.position, Quaternion.identity);
+                SpawnedMobs.Add(Instantiate(Enemies[2], spawnPoints[ChosenSP].transform.position, Quaternion.identity));
             else
-                Instantiate(Enemies[1], spawnPoints[ChosenSP].transform.position, Quaternion.identity);
+                SpawnedMobs.Add(Instantiate(Enemies[1], spawnPoints[ChosenSP].transform.position, Quaternion.identity));
             //Debug.Log("Spawned");
+            
             SpawnPointAnim[ChosenSP].SetBool("WasChosen", false);
             SPAnimReset = true;
             //spawnedEnemy.OnDeath += OnEnemyDeath;
         }
+
+        StartCoroutine(RemoveDeadMobs());
 
         if (colonyHealth <= 0 && !bossDeath)
         {
@@ -138,5 +143,13 @@ public class EnemyManager : MonoBehaviour
         isWaiting = true;
         yield return new WaitForSeconds(dur);
         isWaiting = false;
+    }
+
+    private IEnumerator RemoveDeadMobs()
+    {
+        yield return 0;
+
+        SpawnedMobs.RemoveAll(item => item == null);
+
     }
 }
