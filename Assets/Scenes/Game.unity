@@ -87755,8 +87755,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2121849640}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 867.95184, y: -268.52985, z: -3530.783}
-  m_LocalScale: {x: 200, y: 200, z: 38.799812}
+  m_LocalPosition: {x: 0, y: 63.9, z: -1}
+  m_LocalScale: {x: 200, y: 200, z: 1}
   m_Children: []
   m_Father: {fileID: 1953218237}
   m_RootOrder: 5
@@ -88160,8 +88160,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: bloom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: spread
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bulletSpeed
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: explodingBullets
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3108138470192047827, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: m_LocalPosition.x
