@@ -88660,8 +88660,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: bloom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: spread
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bulletSpeed
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: explodingBullets
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3108138470192047827, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -88678,6 +88690,10 @@ PrefabInstance:
     - target: {fileID: 3108138471467633138, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: delay
       value: 0.065
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108138471467633138, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: spread
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3108138471467633138, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: ADSRange
