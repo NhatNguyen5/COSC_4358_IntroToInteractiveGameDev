@@ -5,6 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class GlobalPlayerVariables : MonoBehaviour
 {
+    public static GlobalPlayerVariables instance;
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+
+
     //SCORE
     public static float TotalScore;
 
@@ -125,13 +142,14 @@ public class GlobalPlayerVariables : MonoBehaviour
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == "Game")
+        if (SceneManager.GetActiveScene().name != "Title")
         {
+            Debug.Log("RESET");
             resetStats();
         }
     }
 
-    private void resetStats()
+    public void resetStats()
     {
         //Debug.Log("Stats Reset");
 
@@ -197,8 +215,10 @@ public class GlobalPlayerVariables : MonoBehaviour
 
     public void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Game")
+        
+        if (SceneManager.GetActiveScene().name != "Title")
         {
+            Debug.Log(Reserves + " " + MaxReserves);
             //recharge bar
             if (Reserves < MaxReserves)
             {
