@@ -9,6 +9,9 @@ public class EnemyWeapon : MonoBehaviour
     private bool facingDir = true;
     private float aimAngle;
     private Enemy1 enemy1;
+
+    public Animator WeaponAnim;
+
     [HideInInspector]
     public float AimDir = 0;
     private float angle;

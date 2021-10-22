@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  WeaponAnim: {fileID: 0}
   AimDir: 0
   isNotEnemy1: 0
   isNotHoldingWeapon: 0

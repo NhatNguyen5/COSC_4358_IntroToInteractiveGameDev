@@ -435,6 +435,7 @@ public class Enemy1 : MonoBehaviour
     {
         for (int i = 0; i < AmountOfBullets; i++)
         {
+            //EnemyWeapon.WeaponAnim.SetBool("IsShooting", true);
             float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
             Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
             Instantiate(projectile, firePoint.position, newRot);

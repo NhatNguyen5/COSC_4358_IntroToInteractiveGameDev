@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  WeaponAnim: {fileID: 0}
   AimDir: 0
   isNotEnemy1: 0
   isNotHoldingWeapon: 0
@@ -72,7 +73,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7674072803375499540}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.429, y: 0.021, z: 0}
+  m_LocalPosition: {x: 0.64, y: 0.025, z: 0}
   m_LocalScale: {x: 5.8743153, y: 5.8743153, z: 5.874317}
   m_Children: []
   m_Father: {fileID: 7674072803634583658}
@@ -150,8 +151,8 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5488275578273347653, guid: 13fbac3e34da6924f99b227b0dbe22d4, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -6165998805475274842, guid: da2cfb65df11ca2428cb2baa0307c950, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
