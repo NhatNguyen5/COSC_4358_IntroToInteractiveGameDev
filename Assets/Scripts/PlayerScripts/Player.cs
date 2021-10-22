@@ -363,6 +363,7 @@ public class Player : MonoBehaviour
 
 
         expBar.fillAmount = stats.Experience / levelThreshhold;
+
     }
 
 
