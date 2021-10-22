@@ -98,6 +98,15 @@ public class Player : MonoBehaviour
 
     //LEVELCAP
     [Header("Level Stats")]
+    public GameObject levelText1;
+    public GameObject levelText10;
+    public GameObject levelText100;
+    public Image expBar;
+
+    private Text Text1;
+    private Text Text2;
+    private Text Text3;
+
     public int baseLevelThreshHold = 200;
     //public int hardLevelCap = 120;
     private float levelThreshhold = 100;
@@ -138,6 +147,10 @@ public class Player : MonoBehaviour
 
     public float reloadSpeedGrowthRate = 0.01f;
 
+    //private int hardcap = 0; //leaving this here for now
+
+    public float itemUsageGrowthRate = 0.0035f;
+
 
 
     private void Awake()
@@ -160,7 +173,12 @@ public class Player : MonoBehaviour
 
 
 
-
+        Text1 = levelText1.GetComponent<Text>();
+        Text2 = levelText10.GetComponent<Text>();
+        Text3 = levelText100.GetComponent<Text>();
+        Text1.text = "0";
+        Text2.text = "0";
+        Text3.text = "0";
 
 
 
@@ -311,16 +329,30 @@ public class Player : MonoBehaviour
 
         GlobalPlayerVariables.reloadSpeedBonus = reloadSpeedGrowthRate * Currentlevel + GlobalPlayerVariables.baseReloadSpeed;
 
-        //phizer speed
+        //item speed function
 
-
-
-        //tylenol speed
-
+        GlobalPlayerVariables.baseItemUsageCoolDown = itemUsageGrowthRate * Currentlevel;
 
 
 
 
+
+        //show level
+        //int calc = ((int)Currentlevel % 100);
+        //Debug.Log(Currentlevel);
+
+        Text3.text = (((int)Currentlevel / 100) % 10).ToString();
+        Text2.text = (((int)Currentlevel / 10) % 10).ToString();
+        Text1.text = ((int)Currentlevel % 10).ToString();
+
+
+        //Text3.text = temp.ToString();
+
+
+       // temp = ((int)Currentlevel / 10)%10;
+        //Text2.text = temp.ToString();
+       
+        //Text1.text = temp.ToString();
 
         /*
     if (stats.HPRegen + hpRegenGrowthRate > stats.MaxHealth)
@@ -330,13 +362,14 @@ public class Player : MonoBehaviour
     */
 
 
-
+        expBar.fillAmount = stats.Experience / levelThreshhold;
     }
 
 
     // Update is called once per frame
     private void Update()
     {
+        //Debug.Log("itemusagecooldown " + GlobalPlayerVariables.baseItemUsageCoolDown + " curr level " + Currentlevel);
         //Debug.Log("reload speed multiplier " + GlobalPlayerVariables.reloadSpeedBonus + " curr level " + Currentlevel);
         //Debug.Log("critrate1 " + GlobalPlayerVariables.BaseCritRate + " bcr2 " + GlobalPlayerVariables.BaseCritRate2 + " curr level " + Currentlevel);
         //Debug.Log("Max reserves " + GlobalPlayerVariables.MaxReserves + " recharge rate " + GlobalPlayerVariables.rechargeRateMultiplyer + " curr level " + Currentlevel);
@@ -347,6 +380,7 @@ public class Player : MonoBehaviour
         {
             stats.Experience += GlobalPlayerVariables.expToDistribute;
             GlobalPlayerVariables.expToDistribute = 0;
+            expBar.fillAmount = stats.Experience / levelThreshhold;
         }
         if (stats.Experience >= levelThreshhold)
         {
@@ -388,8 +422,8 @@ public class Player : MonoBehaviour
                 if (stats.NumofHeal > 0 && stats.Health < stats.MaxHealth)
                 {
                     actions.Heal();
-                    RightSlotCooldownDisplay = stats.TylenolCooldown;
-                    StartCoroutine(RightSlotItemCooldown(stats.TylenolCooldown));
+                    RightSlotCooldownDisplay = stats.TylenolCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown);
+                    StartCoroutine(RightSlotItemCooldown(stats.TylenolCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown)));
                 }
             }
             if(Input.GetKeyUp(KeyCode.G))
@@ -401,14 +435,14 @@ public class Player : MonoBehaviour
                     stats.NumofMolly -= 1;
                 }
             }
-            if (Input.GetKeyUp(KeyCode.Q) && LeftSlotAvailableToUse)
+            if (Input.GetKeyUp(KeyCode.Q) && LeftSlotAvailableToUse && PhizerIsActive == false)
             {
                 if (stats.NumofPhizer > 0)
                 {
                     actions.Phizer();
-                    LeftSlotCooldownDisplay = stats.PhizerCooldown;
+                    LeftSlotCooldownDisplay = stats.PhizerCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown);
                     StartCoroutine(ResetStats(stats.PhizerDuration));
-                    StartCoroutine(LeftSlotItemCooldown(stats.PhizerCooldown));
+                    StartCoroutine(LeftSlotItemCooldown(stats.PhizerCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown)));
                 }
             }
             actions.SwapWeapon();
