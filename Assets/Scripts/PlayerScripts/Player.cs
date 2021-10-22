@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
 
     public int baseLevelThreshHold = 200;
     //public int hardLevelCap = 120;
-    private float levelThreshhold = 100;
+    public float levelThreshhold = 100;
     [HideInInspector]
     public float Currentlevel = 0;
     private bool PhizerIsActive = false;
