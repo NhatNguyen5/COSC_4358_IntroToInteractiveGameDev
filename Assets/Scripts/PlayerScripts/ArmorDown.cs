@@ -14,7 +14,7 @@ public class ArmorDown : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        Debug.Log("Spawn Armor down at " + player.Stats.ArmorLevel);
+        //Debug.Log("Spawn Armor down at " + player.Stats.ArmorLevel);
         ArmorDownPS = transform.GetComponent<ParticleSystem>();
         ArmorDownPSMain = ArmorDownPS.main;
         ArmorDownPSEmission = ArmorDownPS.emission;
