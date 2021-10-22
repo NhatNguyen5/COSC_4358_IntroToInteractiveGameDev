@@ -89098,7 +89098,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bloom
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: spread
@@ -89114,7 +89114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: increaseBloom
-      value: 0.78
+      value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bloomResetTimer
@@ -89834,6 +89834,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6008977813096064326, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295345111514474212, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295345111514474217, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295345111514474218, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: Slot
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6795264347055929421, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
