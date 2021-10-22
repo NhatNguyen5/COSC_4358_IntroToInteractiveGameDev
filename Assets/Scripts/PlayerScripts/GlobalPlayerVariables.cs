@@ -218,7 +218,7 @@ public class GlobalPlayerVariables : MonoBehaviour
         
         if (SceneManager.GetActiveScene().name != "Title")
         {
-            Debug.Log(Reserves + " " + MaxReserves);
+            //Debug.Log(Reserves + " " + MaxReserves);
             //recharge bar
             if (Reserves < MaxReserves)
             {
