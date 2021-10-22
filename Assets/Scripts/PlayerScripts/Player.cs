@@ -80,6 +80,8 @@ public class Player : MonoBehaviour
     private ArmorUp ArmorUpEff;
     [SerializeField]
     private ArmorDown ArmorDownEff;
+    [SerializeField]
+    private LevelUpEff levelUpEff;
 
     //private float currSpeed;
 
@@ -386,6 +388,8 @@ public class Player : MonoBehaviour
         }
         if (stats.Experience >= levelThreshhold)
         {
+            Instantiate(levelUpEff, stats.Position, Quaternion.identity);
+            components.PlayerStatusIndicator.StartFlash(0.25f, 0.25f, Color.yellow, ((stats.MaxHealth - stats.Health) / stats.MaxHealth) / 2f, Color.red, 1);
             levelUP();
         }
 
