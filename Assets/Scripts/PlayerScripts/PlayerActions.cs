@@ -21,6 +21,10 @@ public class PlayerActions
     public Text MollyCounts;
     public Text HPNumber;
     public Text MaxHPNUmber;
+
+    public Text ExpNumber;
+    public Text MaxEXPNumber;
+
     private GameObject LeftAmmo;
     private GameObject RWeaponIcon;
     private Image VaccineCooldownDisplay;
@@ -60,7 +64,10 @@ public class PlayerActions
         VaccineCounts = GameObject.Find("VaccineCounts").GetComponent<Text>();
         MollyCounts = GameObject.Find("MollyCounts").GetComponent<Text>();
         HPNumber = GameObject.Find("HPNumber").GetComponent<Text>();
-        MaxHPNUmber = GameObject.Find("MaxHPNumber").GetComponent<Text>();
+
+
+        ExpNumber = GameObject.Find("CurrEXPText").GetComponent<Text>();
+
         LeftAmmo.gameObject.SetActive(false);
         DashDistance = player.Stats.DashDistance;
         DashSpeed = player.Stats.DashSpeed;
@@ -440,8 +447,13 @@ public class PlayerActions
         HealCounts.text = player.Stats.NumofHeal.ToString();
         VaccineCounts.text = player.Stats.NumofPhizer.ToString();
         MollyCounts.text = player.Stats.NumofMolly.ToString();
-        HPNumber.text = ((int)player.Stats.Health).ToString();
-        MaxHPNUmber.text = "/ " + ((int)player.Stats.MaxHealth).ToString();
+        HPNumber.text = ((int)player.Stats.Health).ToString() + "/" + ((int)player.Stats.MaxHealth).ToString(); ;
+        //MaxHPNUmber.text = "/" + ((int)player.Stats.MaxHealth).ToString();
+
+        ExpNumber.text = ((int)player.Stats.Experience).ToString() + "/" + ((int)player.levelThreshhold).ToString();
+        //MaxEXPNumber.text = "/" + ((int)player.levelThreshhold).ToString();
+
+
         ARBar.fillAmount = player.Stats.Armorz / ((player.Stats.ArmorPerArmorLevelz * 4) - 1);
         switch (player.Stats.ArmorLevel)
         {
