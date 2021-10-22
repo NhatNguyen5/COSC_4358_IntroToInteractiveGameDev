@@ -5337,6 +5337,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8725768441343987255, guid: 9f449af8056b6764aa76953d39063aee, type: 3}
+      propertyPath: weaponWeight
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725768441343987256, guid: 9f449af8056b6764aa76953d39063aee, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1184381930589756991, guid: 626a6eb994f8e6d41958e1d354186535, type: 3}
     - target: {fileID: 8725768441343987257, guid: 9f449af8056b6764aa76953d39063aee, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -5930,6 +5938,10 @@ PrefabInstance:
     - target: {fileID: 7653431232674003505, guid: 1cb4f5a8fb9ce324fb96185db7d0924f, type: 3}
       propertyPath: m_Name
       value: Immunity (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7653431232674003505, guid: 1cb4f5a8fb9ce324fb96185db7d0924f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7653431232674003516, guid: 1cb4f5a8fb9ce324fb96185db7d0924f, type: 3}
       propertyPath: m_RootOrder
