@@ -137,6 +137,14 @@ public class PlayerActions
                 {
                     RWeaponIcon.transform.Find("RazorIcon").gameObject.SetActive(true);
                 }
+                else if (rw.name.Contains("Immunity"))
+                {
+                    RWeaponIcon.transform.Find("ImmunityIcon").gameObject.SetActive(true);
+                }
+                else if (rw.name.Contains("Denaturator"))
+                {
+                    RWeaponIcon.transform.Find("DenaturatorIcon").gameObject.SetActive(true);
+                }
 
             }
         }
@@ -391,6 +399,14 @@ public class PlayerActions
                     else if (rw.name.Contains("Razor"))
                     {
                         RWeaponIcon.transform.Find("RazorIcon").gameObject.SetActive(true);
+                    }
+                    else if (rw.name.Contains("Immunity"))
+                    {
+                        RWeaponIcon.transform.Find("ImmunityIcon").gameObject.SetActive(true);
+                    }
+                    else if (rw.name.Contains("Denaturator"))
+                    {
+                        RWeaponIcon.transform.Find("DenaturatorIcon").gameObject.SetActive(true);
                     }
                     //start swap counter???
                 }
