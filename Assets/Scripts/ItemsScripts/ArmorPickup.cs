@@ -37,7 +37,7 @@ public class ArmorPickup : MonoBehaviour
             player = collision.GetComponent<Player>();
             if (player.Stats.Armorz < 798)
                 player.Stats.Armorz += 2;
-            Debug.Log(player.Stats.ArmorLevel + " " + player.Stats.Armorz);
+            //Debug.Log(player.Stats.ArmorLevel + " " + player.Stats.Armorz);
         }
     }
 }

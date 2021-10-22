@@ -66,7 +66,7 @@ public class PlayerActions
         HPNumber = GameObject.Find("HPNumber").GetComponent<Text>();
 
 
-        ExpNumber = GameObject.Find("CurrEXPText").GetComponent<Text>();
+        //ExpNumber = GameObject.Find("CurrEXPText").GetComponent<Text>();
 
         LeftAmmo.gameObject.SetActive(false);
         DashDistance = player.Stats.DashDistance;
@@ -450,7 +450,7 @@ public class PlayerActions
         HPNumber.text = ((int)player.Stats.Health).ToString() + "/" + ((int)player.Stats.MaxHealth).ToString(); ;
         //MaxHPNUmber.text = "/" + ((int)player.Stats.MaxHealth).ToString();
 
-        ExpNumber.text = ((int)player.Stats.Experience).ToString() + "/" + ((int)player.levelThreshhold).ToString();
+        //ExpNumber.text = ((int)player.Stats.Experience).ToString() + "/" + ((int)player.levelThreshhold).ToString();
         //MaxEXPNumber.text = "/" + ((int)player.levelThreshhold).ToString();
 
 
