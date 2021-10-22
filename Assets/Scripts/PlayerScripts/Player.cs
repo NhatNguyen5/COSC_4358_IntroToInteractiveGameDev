@@ -152,9 +152,9 @@ public class Player : MonoBehaviour
     public float itemUsageGrowthRate = 0.0035f;
 
 
-
     private void Awake()
     {
+
         /*
         public static float baseMaxHealth = 0; done
         public static float baseHealthRegen = 0; done
@@ -255,6 +255,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        //levelUP();
         StaminaBar = GameObject.Find("StaminaBar").GetComponent<Image>();
     }
 
