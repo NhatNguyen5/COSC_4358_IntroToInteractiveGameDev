@@ -24,7 +24,7 @@ public class GlobalPlayerVariables : MonoBehaviour
     public static float baseBulletCritRate = 0;
     public static float baseReloadSpeed = 0;
 
-
+    public static float baseItemUsageCoolDown = 0;
     //ITEMS
     //public static float baseItemUsageCoolDownMolly = 0;
     public static float baseItemUsageCoolDownPhizer = 0;
@@ -178,7 +178,9 @@ public class GlobalPlayerVariables : MonoBehaviour
         baseAmmoReserveRegen = chargeMultiplyer;
         baseBulletCritRate = BaseCritRate;
         baseReloadSpeed = 1;
-       // baseItemUsageCoolDown = 1;
+        // baseItemUsageCoolDown = 1;
+
+        baseItemUsageCoolDown = 0;
 
 
 
