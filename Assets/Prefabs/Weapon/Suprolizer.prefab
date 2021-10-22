@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 1181104393984936626}
   - component: {fileID: 1181104393984936627}
   - component: {fileID: 1181104393984936636}
-  - component: {fileID: 1181104393984936638}
+  - component: {fileID: 8280589456634308226}
   m_Layer: 9
   m_Name: Suprolizer
   m_TagString: Untagged
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slot: 8
-  WeaponAnim: {fileID: 1181104393984936638}
+  WeaponAnim: {fileID: 0}
   firePoint: {fileID: 1181104393649923485}
   bulletPrefab: {fileID: 5172911503813449251, guid: b60735ba69133254091e7ccf305c7aab, type: 3}
   delay: 0.05
@@ -160,7 +160,7 @@ MonoBehaviour:
   reloadTime: 3.6
   CostPerBullet: 4
   IsRightArm: 0
---- !u!95 &1181104393984936638
+--- !u!95 &8280589456634308226
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -170,7 +170,7 @@ Animator:
   m_GameObject: {fileID: 1181104393984936639}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 81abcd8ca36b91345bae5432ea35e8f6, type: 2}
+  m_Controller: {fileID: 9100000, guid: df2fc942ab283fb42afda8187982c9e0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

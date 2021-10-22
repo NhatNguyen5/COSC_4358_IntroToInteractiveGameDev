@@ -89084,17 +89084,25 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.71
       objectReference: {fileID: 0}
+    - target: {fileID: 2811296245496214144, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811296245496214144, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: df2fc942ab283fb42afda8187982c9e0, type: 2}
     - target: {fileID: 2811296245496214145, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bloom
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: spread
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bStartRange
@@ -89866,7 +89874,7 @@ PrefabInstance:
       objectReference: {fileID: 693335784}
     - target: {fileID: 8797557643771957907, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8915681190375321922, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: m_IsActive
