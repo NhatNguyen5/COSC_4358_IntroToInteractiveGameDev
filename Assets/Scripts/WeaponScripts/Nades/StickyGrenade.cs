@@ -18,6 +18,7 @@ public class StickyGrenade : MonoBehaviour
     private CircleCollider2D cc2d;
     private SpriteRenderer spriteRend;
     private Transform explSprite;
+    Coroutine _currentFlashRoutine = null;
     /*
     private float throwDistance;
     private Vector2 oldPos;
@@ -68,13 +69,27 @@ public class StickyGrenade : MonoBehaviour
             
             transform.GetComponent<TrailRenderer>().enabled = false;
         }
+        if (_currentFlashRoutine != null)
+            StopCoroutine(_currentFlashRoutine);
+        //_currentFlashRoutine = StartCoroutine(Flash(endColor, secondForOneFlash, maxAlpha, endAlpha, numOfFlash));
         float flashInDuration = SecondForOneFlash / 2;
         for (float t = 0; t <= flashInDuration; t += Time.deltaTime)
         {
+            spriteRend.color = new Color(1, 0, 0, Mathf.Lerp(0, 0.25f, t/ flashInDuration));
         }
 
-            //Debug.Log(distanceLeft);
+        for (float t = 0; t <= flashInDuration; t += Time.deltaTime)
+        {
+            spriteRend.color = new Color(1, 0, 0, Mathf.Lerp(0, 0.25f, t / flashInDuration));
         }
+        float flashOutDuration = SecondForOneFlash / 2;
+        for (float t = 0; t <= flashOutDuration; t += Time.deltaTime)
+        {
+            spriteRend.color = new Color(1, 0, 0, Mathf.Lerp(0, 0.25f, t / flashInDuration));
+        }
+
+        //Debug.Log(distanceLeft);
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
