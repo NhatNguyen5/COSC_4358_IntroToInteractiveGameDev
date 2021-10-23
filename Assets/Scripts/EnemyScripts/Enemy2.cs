@@ -324,9 +324,6 @@ public class Enemy2 : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-
-
-
         if (collision.tag == "Bullet")
         {
             float damage = collision.gameObject.GetComponent<Bullet>().damage;

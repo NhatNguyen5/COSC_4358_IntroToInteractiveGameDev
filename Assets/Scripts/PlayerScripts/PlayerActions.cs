@@ -235,6 +235,7 @@ public class PlayerActions
          *[6]BotLeft
          *[7]BotRight
          */
+
         if(relaMouseAngle <= 22.5 || relaMouseAngle > 337.5) //Right
         {
             player.Components.PlayerSpriteResolver.SetCategoryAndLabel(currSpriteCategory + (player.Stats.ArmorLevel).ToString(), CurrHemoSprite[3]);

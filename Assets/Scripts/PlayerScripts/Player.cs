@@ -98,6 +98,8 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private Molotov Molly;
+    [SerializeField]
+    private StickyGrenade Gre;
 
     public string dashSound;
 
@@ -439,11 +441,17 @@ public class Player : MonoBehaviour
             }
             if(Input.GetKeyUp(KeyCode.G))
             {
+                /*
                 if (stats.NumofMolly > 0)
                 {
                     Quaternion newRot = Quaternion.Euler(stats.Direction.x, stats.Direction.y, 0);
                     Instantiate(Molly, stats.Position, newRot);
                     stats.NumofMolly -= 1;
+                }
+                */
+                {
+                    Quaternion newRot = Quaternion.Euler(stats.Direction.x, stats.Direction.y, 0);
+                    Instantiate(Gre, stats.Position, newRot);
                 }
             }
             if (Input.GetKeyUp(KeyCode.Q) && LeftSlotAvailableToUse && PhizerIsActive == false)

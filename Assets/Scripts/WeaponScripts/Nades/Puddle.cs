@@ -31,7 +31,7 @@ public class Puddle : MonoBehaviour
 
     private bool firstExplotion = true;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         PuddleShadow = transform.Find("Sprite");
         PudShaOriSca = PuddleShadow.localScale;
@@ -49,7 +49,7 @@ public class Puddle : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (scaleUp < explodeRadius && firstExplotion)
         {

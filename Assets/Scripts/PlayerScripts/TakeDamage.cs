@@ -158,6 +158,7 @@ public class TakeDamage : MonoBehaviour
 
         if (HP <= 0)
         {
+
             FindObjectOfType<AudioManager>().PlayEffect(onDeathSound);
             Destroy(gameObject);
             //SceneManager.LoadScene("Title");

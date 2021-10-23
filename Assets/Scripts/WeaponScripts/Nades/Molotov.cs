@@ -7,8 +7,6 @@ public class Molotov : MonoBehaviour
     public float throwRange;
     public float throwSpeed;
     private Vector2 throwDir;
-    public float burnDuration;
-    public float puddleSize;
     private Rigidbody2D rb;
     private Player player;
     private Vector2 Target;
@@ -60,7 +58,6 @@ public class Molotov : MonoBehaviour
             Destroy(tempPS.gameObject, tempPS.GetComponent<ParticleSystem>().main.duration);
             Destroy(gameObject);
         }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
