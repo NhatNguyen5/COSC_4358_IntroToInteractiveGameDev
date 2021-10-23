@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: 7d81ae997920f044aa60844c051b4403
+guid: 8507aad4dee7a59408f40656ffe698fe
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6408645142056729064
-    second: Lymphakilla_0
+      213: 6092454917058817715
+    second: Eosinger_0
   - first:
-      213: 3045373987949074865
-    second: Lymphakilla_1
+      213: -4554451924472073881
+    second: Eosinger_1
   - first:
-      213: -3813906471521935540
-    second: Lymphakilla_2
+      213: 5240275136784803926
+    second: Eosinger_2
+  - first:
+      213: 59641679285168218
+    second: Eosinger Sprite_0
+  - first:
+      213: -2579723390049209586
+    second: Eosinger Sprite_1
+  - first:
+      213: -5787859424947297255
+    second: Eosinger Sprite_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lymphakilla_0
+      name: Eosinger Sprite_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 33
-        width: 30
-        height: 9
+        x: 0
+        y: 32
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,20 +123,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8160d20a23bef07a0800000000000000
-      internalID: -6408645142056729064
+      spriteID: a58a9939ac3e3d000800000000000000
+      internalID: 59641679285168218
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lymphakilla_1
+      name: Eosinger Sprite_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 22
-        width: 30
-        height: 4
+        x: 0
+        y: 16
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,20 +144,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b95be7c187534a20800000000000000
-      internalID: 3045373987949074865
+      spriteID: e03b955ae3bf23cd0800000000000000
+      internalID: -2579723390049209586
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lymphakilla_2
+      name: Eosinger Sprite_2
       rect:
         serializedVersion: 2
-        x: 1
-        y: 4
-        width: 30
-        height: 9
+        x: 0
+        y: 0
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4f1f566548421bc0800000000000000
-      internalID: -3813906471521935540
+      spriteID: 914ae16b4846dafa0800000000000000
+      internalID: -5787859424947297255
       vertices: []
       indices: 
       edges: []

@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3187667672115927471, guid: c22617f0c64185b4cb6cefdbd13730ae, type: 3}
+  m_Sprite: {fileID: 1890145175349646470, guid: c22617f0c64185b4cb6cefdbd13730ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 1.4545455, y: 0.72727275}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -98,7 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slot: 7
-  WeapnIcon: {fileID: -8349735488274361628, guid: c22617f0c64185b4cb6cefdbd13730ae, type: 3}
+  WeapnIcon: {fileID: 7607334804710797493, guid: c22617f0c64185b4cb6cefdbd13730ae, type: 3}
+  IconScale: 1
   WeaponLabel: VACCINATOR
   WeaponAnim: {fileID: 3544499261659222556}
   firePoint: {fileID: 3544499263471697215}

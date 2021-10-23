@@ -1,16 +1,28 @@
 fileFormatVersion: 2
-guid: b6ca2c4352fd972479f25cb0663443c9
+guid: 61cdb555b37501941a03a8cb25eb2c76
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4677365148177797994
-    second: Ravager_0
+      213: -493679631273359336
+    second: Umpilical_0
   - first:
-      213: -1225357069053358456
-    second: Ravager_1
+      213: -5877334388623551220
+    second: Umpilical_1
   - first:
-      213: 2356973917655575647
-    second: Ravager_2
+      213: 3337013281813759590
+    second: Umpilical_2
+  - first:
+      213: -5245784815164977894
+    second: Umpilical_3
+  - first:
+      213: 946424380798277021
+    second: Umpilical Sprite_0
+  - first:
+      213: -6285321007481494889
+    second: Umpilical Sprite_1
+  - first:
+      213: 4667184021751804794
+    second: Umpilical Sprite_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ravager_0
+      name: Umpilical Sprite_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 34
-        width: 27
-        height: 8
+        x: 0
+        y: 64
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,20 +126,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69ce112fd29a61fb0800000000000000
-      internalID: -4677365148177797994
+      spriteID: d951040c5ff522d00800000000000000
+      internalID: 946424380798277021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ravager_1
+      name: Umpilical Sprite_1
       rect:
         serializedVersion: 2
-        x: 2
-        y: 2
-        width: 27
-        height: 8
+        x: 0
+        y: 48
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88e8f08ec38aefee0800000000000000
-      internalID: -1225357069053358456
+      spriteID: 792e3c148dd06c8a0800000000000000
+      internalID: -6285321007481494889
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ravager_2
+      name: Umpilical Sprite_3
       rect:
         serializedVersion: 2
-        x: 2
-        y: 23
-        width: 27
-        height: 2
+        x: 0
+        y: 16
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +168,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5ca8b25a47a5b020800000000000000
-      internalID: 2356973917655575647
+      spriteID: a7335e5d32b25c040800000000000000
+      internalID: 4667184021751804794
       vertices: []
       indices: 
       edges: []

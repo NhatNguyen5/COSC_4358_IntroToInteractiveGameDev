@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -493679631273359336, guid: 61cdb555b37501941a03a8cb25eb2c76, type: 3}
+  m_Sprite: {fileID: 946424380798277021, guid: 61cdb555b37501941a03a8cb25eb2c76, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 1.4545455, y: 0.72727275}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -98,7 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slot: 5
-  WeapnIcon: {fileID: 3337013281813759590, guid: 61cdb555b37501941a03a8cb25eb2c76, type: 3}
+  WeapnIcon: {fileID: 4667184021751804794, guid: 61cdb555b37501941a03a8cb25eb2c76, type: 3}
+  IconScale: 1
   WeaponLabel: UMPILICAL
   WeaponAnim: {fileID: 9036960665989413032}
   firePoint: {fileID: 9036960667935037323}

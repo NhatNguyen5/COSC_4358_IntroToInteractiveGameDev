@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: 8507aad4dee7a59408f40656ffe698fe
+guid: 2a1e1e0f5b937d84085b51dfc38d8df6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6092454917058817715
-    second: Eosinger_0
+      213: -588515844615296095
+    second: rpk_0
   - first:
-      213: -4554451924472073881
-    second: Eosinger_1
+      213: -7765997331417753198
+    second: rpk_1
   - first:
-      213: 5240275136784803926
-    second: Eosinger_2
+      213: 6723819281431038103
+    second: rpk_2
+  - first:
+      213: -2106447965007306751
+    second: Razor Sprite_0
+  - first:
+      213: -8324362039326267322
+    second: Razor Sprite_1
+  - first:
+      213: -879219621541083018
+    second: Razor Sprite_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Eosinger_0
+      name: Razor Sprite_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 34
-        width: 24
-        height: 8
+        x: 0
+        y: 32
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,20 +123,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3be6f55c77fbc8450800000000000000
-      internalID: 6092454917058817715
+      spriteID: 10025eb7cb464c2e0800000000000000
+      internalID: -2106447965007306751
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Eosinger_1
+      name: Razor Sprite_1
       rect:
         serializedVersion: 2
-        x: 2
-        y: 21
-        width: 24
-        height: 4
+        x: 0
+        y: 16
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,20 +144,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7617f3fea165bc0c0800000000000000
-      internalID: -4554451924472073881
+      spriteID: 648263064dce97c80800000000000000
+      internalID: -8324362039326267322
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Eosinger_2
+      name: Razor Sprite_2
       rect:
         serializedVersion: 2
-        x: 2
-        y: 4
-        width: 24
-        height: 8
+        x: 0
+        y: 0
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 658ae55097239b840800000000000000
-      internalID: 5240275136784803926
+      spriteID: 6788d7a99626cc3f0800000000000000
+      internalID: -879219621541083018
       vertices: []
       indices: 
       edges: []
