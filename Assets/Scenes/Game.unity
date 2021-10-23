@@ -88069,6 +88069,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: IconScale
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bStartRange
       value: 2.8
       objectReference: {fileID: 0}
