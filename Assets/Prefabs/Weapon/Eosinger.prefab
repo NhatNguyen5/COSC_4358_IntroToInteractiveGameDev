@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6092454917058817715, guid: 8507aad4dee7a59408f40656ffe698fe, type: 3}
+  m_Sprite: {fileID: 59641679285168218, guid: 8507aad4dee7a59408f40656ffe698fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 1.4545455, y: 0.72727275}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -98,7 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slot: 3
-  WeapnIcon: {fileID: 5240275136784803926, guid: 8507aad4dee7a59408f40656ffe698fe, type: 3}
+  WeapnIcon: {fileID: -5787859424947297255, guid: 8507aad4dee7a59408f40656ffe698fe, type: 3}
+  IconScale: 1
   WeaponLabel: EOSINGER
   WeaponAnim: {fileID: 8587654299976819028}
   firePoint: {fileID: 8587654300848705143}

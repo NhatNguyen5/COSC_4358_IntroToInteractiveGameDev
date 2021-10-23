@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 0346638ca6214ff4c8d651f721bcab9e
+guid: 8c3a41bd558ab824d9fd9bd5eaf45bdc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4568900378763136148
-    second: suprolizer_0
+      213: 8517992094808328791
+    second: Immunity Sprite_0
   - first:
-      213: -3979111942641843629
-    second: suprolizer_1
+      213: 5588482912653499557
+    second: Immunity Sprite_1
   - first:
-      213: -3012721911923018967
-    second: suprolizer_2
+      213: -8096651249225103943
+    second: Immunity Sprite_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: suprolizer_0
+      name: Immunity Sprite_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 36
-        width: 29
-        height: 7
+        x: 0
+        y: 32
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,20 +114,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c63fca500510890c0800000000000000
-      internalID: -4568900378763136148
+      spriteID: 75ac2a21eacf53670800000000000000
+      internalID: 8517992094808328791
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: suprolizer_1
+      name: Immunity Sprite_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 21
-        width: 29
-        height: 5
+        x: 0
+        y: 16
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,20 +135,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 352815935ca57c8c0800000000000000
-      internalID: -3979111942641843629
+      spriteID: 5ac5d0a99974e8d40800000000000000
+      internalID: 5588482912653499557
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: suprolizer_2
+      name: Immunity Sprite_2
       rect:
         serializedVersion: 2
-        x: 1
-        y: 4
-        width: 29
-        height: 7
+        x: 0
+        y: 0
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +156,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 923fac81269a036d0800000000000000
-      internalID: -3012721911923018967
+      spriteID: 9b507b3369ae2af80800000000000000
+      internalID: -8096651249225103943
       vertices: []
       indices: 
       edges: []

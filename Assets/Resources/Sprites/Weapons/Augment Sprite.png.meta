@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: 2405a95f2d48f1e4686b02582cf0a17a
+guid: a06805a374d68bc46911c0cd3ae4d0f9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1811078347304454194
-    second: Sedator_0
+      213: -5204944244578505131
+    second: Augment_0
   - first:
-      213: -7161992100163749011
-    second: Sedator_1
+      213: 8700286675947264588
+    second: Augment_1
   - first:
-      213: -1322781466224076265
-    second: Sedator_2
-  - first:
-      213: 6405404855089647597
-    second: Sedator_3
-  - first:
-      213: 7152596993988464037
-    second: Sedator_4
+      213: -7147719038166404058
+    second: Augment_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -106,33 +100,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sedator_0
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 66
-        width: 27
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 238cb7f492e322910800000000000000
-      internalID: 1811078347304454194
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sedator_1
+      name: Augment_0
       rect:
         serializedVersion: 2
         x: 0
         y: 32
-        width: 38
+        width: 32
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -141,20 +114,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6bf599712e7b9c90800000000000000
-      internalID: -7161992100163749011
+      spriteID: 55e2f2a59c254c7b0800000000000000
+      internalID: -5204944244578505131
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sedator_2
+      name: Augment_1
       rect:
         serializedVersion: 2
-        x: 5
-        y: 20
-        width: 27
-        height: 9
+        x: 0
+        y: 16
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,19 +135,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71a5e3ec34984ade0800000000000000
-      internalID: -1322781466224076265
+      spriteID: c4a96ebb2a0adb870800000000000000
+      internalID: 8700286675947264588
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sedator_3
+      name: Augment_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 38
+        width: 32
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -183,29 +156,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: def4e2647c194e850800000000000000
-      internalID: 6405404855089647597
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sedator_4
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 55
-        width: 27
-        height: 2
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5ad8538e111234360800000000000000
-      internalID: 7152596993988464037
+      spriteID: 6247bcfa7633ecc90800000000000000
+      internalID: -7147719038166404058
       vertices: []
       indices: 
       edges: []

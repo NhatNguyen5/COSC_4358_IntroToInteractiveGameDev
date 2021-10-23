@@ -1,22 +1,25 @@
 fileFormatVersion: 2
-guid: c22617f0c64185b4cb6cefdbd13730ae
+guid: a327a11ed07330c42ba3bbf868ae8008
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3187667672115927471
-    second: Vaccinator2_0
+      213: 5399073397602018733
+    second: Enforcer_0
   - first:
-      213: -4683126472397671350
-    second: Vaccinator2_1
+      213: -2745276847316635595
+    second: Enforcer_1
   - first:
-      213: -8349735488274361628
-    second: Vaccinator2_2
+      213: -1838573944192621503
+    second: Enforcer_2
   - first:
-      213: -6801312330223252165
-    second: Vaccinator2_3
+      213: 4331132927758105455
+    second: Enforcer Sprite_0
   - first:
-      213: -465398771080449455
-    second: Vaccinator2_4
+      213: -3562409276575186959
+    second: Enforcer Sprite_1
+  - first:
+      213: -7605189521028146577
+    second: Enforcer Sprite_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -106,33 +109,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Vaccinator2_0
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 67
-        width: 26
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fa9577adbdedc3c20800000000000000
-      internalID: 3187667672115927471
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Vaccinator2_1
+      name: Enforcer Sprite_0
       rect:
         serializedVersion: 2
         x: 0
         y: 32
-        width: 38
+        width: 32
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -141,20 +123,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a44328e1941320fb0800000000000000
-      internalID: -4683126472397671350
+      spriteID: f6bf40253764b1c30800000000000000
+      internalID: 4331132927758105455
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vaccinator2_2
+      name: Enforcer Sprite_1
       rect:
         serializedVersion: 2
-        x: 6
-        y: 19
-        width: 26
-        height: 7
+        x: 0
+        y: 16
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,19 +144,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e21fecefc7cf1c80800000000000000
-      internalID: -8349735488274361628
+      spriteID: 1fffd2d23a7cf8ec0800000000000000
+      internalID: -3562409276575186959
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vaccinator2_3
+      name: Enforcer Sprite_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 38
+        width: 32
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -183,29 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3d0f867872ec91a0800000000000000
-      internalID: -6801312330223252165
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Vaccinator2_4
-      rect:
-        serializedVersion: 2
-        x: 3
-        y: 55
-        width: 26
-        height: 3
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 152b8d298429a89f0800000000000000
-      internalID: -465398771080449455
+      spriteID: f6a1895bc60f47690800000000000000
+      internalID: -7605189521028146577
       vertices: []
       indices: 
       edges: []

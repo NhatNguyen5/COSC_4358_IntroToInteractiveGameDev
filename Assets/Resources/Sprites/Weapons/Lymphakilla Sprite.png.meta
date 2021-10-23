@@ -1,22 +1,25 @@
 fileFormatVersion: 2
-guid: 3410ff2611f3298468c0753c74aafeba
+guid: 7d81ae997920f044aa60844c051b4403
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2702045051019320621
-    second: p90_0
+      213: -6408645142056729064
+    second: Lymphakilla_0
   - first:
-      213: 6488041450685354995
-    second: p90_1
+      213: 3045373987949074865
+    second: Lymphakilla_1
   - first:
-      213: -3043471905939325892
-    second: p90_2
+      213: -3813906471521935540
+    second: Lymphakilla_2
   - first:
-      213: -7095397637647870674
-    second: p90_3
+      213: 3235382790232154534
+    second: Lymphakilla Sprite_0
   - first:
-      213: 4605663875002339101
-    second: p90_4
+      213: -3790975447319718992
+    second: Lymphakilla Sprite_1
+  - first:
+      213: -167876591147692147
+    second: Lymphakilla Sprite_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -106,33 +109,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: p90_0
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 69
-        width: 17
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3d224e69758608ad0800000000000000
-      internalID: -2702045051019320621
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: p90_1
+      name: Lymphakilla Sprite_0
       rect:
         serializedVersion: 2
         x: 0
         y: 32
-        width: 38
+        width: 32
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -141,20 +123,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f35c1403572a0a50800000000000000
-      internalID: 6488041450685354995
+      spriteID: 6a12334818366ec20800000000000000
+      internalID: 3235382790232154534
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: p90_2
+      name: Lymphakilla Sprite_1
       rect:
         serializedVersion: 2
-        x: 10
-        y: 21
-        width: 17
-        height: 6
+        x: 0
+        y: 16
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,19 +144,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3cfa923d6a63c5d0800000000000000
-      internalID: -3043471905939325892
+      spriteID: 0b3d7468aefb36bc0800000000000000
+      internalID: -3790975447319718992
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: p90_3
+      name: Lymphakilla Sprite_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 38
+        width: 32
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -183,29 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e255adb0175188d90800000000000000
-      internalID: -7095397637647870674
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: p90_4
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 56
-        width: 17
-        height: 2
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d1f0d5874ea9aef30800000000000000
-      internalID: 4605663875002339101
+      spriteID: d8fc98a31259badf0800000000000000
+      internalID: -167876591147692147
       vertices: []
       indices: 
       edges: []

@@ -1,22 +1,25 @@
 fileFormatVersion: 2
-guid: 72b3e0c610b405f418b37062248c85c0
+guid: da2cfb65df11ca2428cb2baa0307c950
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5175110694676736591
-    second: mg3v2_0
+      213: -6165998805475274842
+    second: Invader_0
   - first:
-      213: -5259996137094767556
-    second: mg3v2_1
+      213: -966208457095740225
+    second: Invader_1
   - first:
-      213: -2855651993872003749
-    second: mg3v2_2
+      213: -2094738770177709427
+    second: Invader_2
   - first:
-      213: -6995918839025897026
-    second: mg3v2_3
+      213: 2068158501624943106
+    second: Invader Sprite_0
   - first:
-      213: -6684725888935220730
-    second: mg3v2_4
+      213: -2133146609135506797
+    second: Invader Sprite_1
+  - first:
+      213: 7869275638141161179
+    second: Invader Sprite_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -106,54 +109,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mg3v2_0
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 68
-        width: 28
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f4a288502cfa1d740800000000000000
-      internalID: 5175110694676736591
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mg3v2_1
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 52
-        width: 28
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c3c1a88c16db007b0800000000000000
-      internalID: -5259996137094767556
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mg3v2_2
+      name: Invader Sprite_0
       rect:
         serializedVersion: 2
         x: 0
         y: 32
-        width: 38
+        width: 32
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -162,20 +123,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5d8f1734afae58d0800000000000000
-      internalID: -2855651993872003749
+      spriteID: 2021f8c133393bc10800000000000000
+      internalID: 2068158501624943106
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mg3v2_3
+      name: Invader Sprite_1
       rect:
         serializedVersion: 2
-        x: 4
-        y: 20
-        width: 28
-        height: 7
+        x: 0
+        y: 16
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,19 +144,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb1f562c1e089ee90800000000000000
-      internalID: -6995918839025897026
+      spriteID: 39a26acf57a8562e0800000000000000
+      internalID: -2133146609135506797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mg3v2_4
+      name: Invader Sprite_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 38
+        width: 32
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -204,8 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60aa821a8351b33a0800000000000000
-      internalID: -6684725888935220730
+      spriteID: bde0a0bef78453d60800000000000000
+      internalID: 7869275638141161179
       vertices: []
       indices: 
       edges: []

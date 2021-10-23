@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: 626a6eb994f8e6d41958e1d354186535
+guid: 0346638ca6214ff4c8d651f721bcab9e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1184381930589756991
-    second: Denaturator2_0
+      213: -4568900378763136148
+    second: suprolizer_0
   - first:
-      213: -4483660967157214799
-    second: Denaturator2_1
+      213: -3979111942641843629
+    second: suprolizer_1
   - first:
-      213: -6538199288176803214
-    second: Denaturator2_2
+      213: -3012721911923018967
+    second: suprolizer_2
+  - first:
+      213: 4632541455620010770
+    second: Suprolizer Sprite_0
+  - first:
+      213: -695673045764341405
+    second: Suprolizer Sprite_1
+  - first:
+      213: -4558618458202900779
+    second: Suprolizer Sprite_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Denaturator2_0
+      name: Suprolizer Sprite_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 34
-        width: 30
-        height: 11
+        x: 0
+        y: 32
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,20 +123,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c16ec4c8ea309fe0800000000000000
-      internalID: -1184381930589756991
+      spriteID: 213708dd8e71a4040800000000000000
+      internalID: 4632541455620010770
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Denaturator2_1
+      name: Suprolizer Sprite_1
       rect:
         serializedVersion: 2
-        x: 2
-        y: 20
-        width: 29
-        height: 7
+        x: 0
+        y: 16
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,20 +144,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b15f471b16d6c1c0800000000000000
-      internalID: -4483660967157214799
+      spriteID: 361076bfc097856f0800000000000000
+      internalID: -695673045764341405
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Denaturator2_2
+      name: Suprolizer Sprite_2
       rect:
         serializedVersion: 2
-        x: 1
-        y: 2
-        width: 30
-        height: 11
+        x: 0
+        y: 0
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27282856366a345a0800000000000000
-      internalID: -6538199288176803214
+      spriteID: 5d6f6443aa88cb0c0800000000000000
+      internalID: -4558618458202900779
       vertices: []
       indices: 
       edges: []

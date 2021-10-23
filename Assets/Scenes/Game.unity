@@ -87343,6 +87343,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: IconScale
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bStartRange
       value: 2.8
       objectReference: {fileID: 0}
@@ -87390,6 +87394,10 @@ PrefabInstance:
       propertyPath: critRate
       value: 0.16
       objectReference: {fileID: 0}
+    - target: {fileID: 3108138471467633138, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: WeapnIcon
+      value: 
+      objectReference: {fileID: -1322781466224076265, guid: 2405a95f2d48f1e4686b02582cf0a17a, type: 3}
     - target: {fileID: 3108138471467633138, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bEndRange
       value: 6
@@ -87446,6 +87454,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 3108138471467633149, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1811078347304454194, guid: 2405a95f2d48f1e4686b02582cf0a17a, type: 3}
     - target: {fileID: 3108138471467633149, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: m_Enabled
       value: 1

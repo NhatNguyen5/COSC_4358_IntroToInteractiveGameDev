@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: 6c604151384e52641903ba3bbf5ce24e
+guid: 1a98ee8136dc5b34d83d39aa0d26df03
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6346310068373335684
-    second: Double Dose_0
+      213: -6852942174436562580
+    second: Protocol_0
   - first:
-      213: -2485762272073871584
-    second: Double Dose_1
+      213: -6080876609125835969
+    second: Protocol_1
   - first:
-      213: -2271889860731400981
-    second: Double Dose_2
+      213: -561664365993467023
+    second: Protocol_2
+  - first:
+      213: -3788436479071197040
+    second: Protocol Sprite_0
+  - first:
+      213: 7332946015077425146
+    second: Protocol Sprite_1
+  - first:
+      213: 7014833900448588877
+    second: Protocol Sprite_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Double Dose_0
+      name: Protocol Sprite_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 38
-        width: 21
-        height: 4
+        x: 0
+        y: 32
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,20 +123,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48ea0eb026f921850800000000000000
-      internalID: 6346310068373335684
+      spriteID: 09864d22815cc6bc0800000000000000
+      internalID: -3788436479071197040
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Double Dose_1
+      name: Protocol Sprite_1
       rect:
         serializedVersion: 2
-        x: 4
-        y: 6
-        width: 21
-        height: 4
+        x: 0
+        y: 16
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,20 +144,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02f08f8326cc08dd0800000000000000
-      internalID: -2485762272073871584
+      spriteID: aff5ec19c8bd3c560800000000000000
+      internalID: 7332946015077425146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Double Dose_2
+      name: Protocol Sprite_2
       rect:
         serializedVersion: 2
-        x: 4
-        y: 23
-        width: 21
-        height: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bec0b4a6530a870e0800000000000000
-      internalID: -2271889860731400981
+      spriteID: d442b9a2442b95160800000000000000
+      internalID: 7014833900448588877
       vertices: []
       indices: 
       edges: []

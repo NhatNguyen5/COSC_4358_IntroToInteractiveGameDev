@@ -1,16 +1,31 @@
 fileFormatVersion: 2
-guid: 3a4912f15331a1942bfbc49981184564
+guid: 72b3e0c610b405f418b37062248c85c0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8738991188577906888
-    second: Immunity_0
+      213: 5175110694676736591
+    second: mg3v2_0
   - first:
-      213: 7605701695760223124
-    second: Immunity_1
+      213: -5259996137094767556
+    second: mg3v2_1
   - first:
-      213: 1577048955958470783
-    second: Immunity_2
+      213: -2855651993872003749
+    second: mg3v2_2
+  - first:
+      213: -6995918839025897026
+    second: mg3v2_3
+  - first:
+      213: -6684725888935220730
+    second: mg3v2_4
+  - first:
+      213: 400340720595620221
+    second: Neutrolizer Sprite_0
+  - first:
+      213: 8694898889946132783
+    second: Neutrolizer Sprite_1
+  - first:
+      213: -7684661189148825069
+    second: Neutrolizer Sprite_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Immunity_0
+      name: Neutrolizer Sprite_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 35
-        width: 36
-        height: 9
+        x: 0
+        y: 64
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,20 +129,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83f8b8da0ddd8b680800000000000000
-      internalID: -8738991188577906888
+      spriteID: d71d938a3cb4e8500800000000000000
+      internalID: 400340720595620221
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Immunity_1
+      name: Neutrolizer Sprite_1
       rect:
         serializedVersion: 2
-        x: 3
-        y: 3
-        width: 36
-        height: 9
+        x: 0
+        y: 48
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49bcf534561ec8960800000000000000
-      internalID: 7605701695760223124
+      spriteID: f217d2d097c7aa870800000000000000
+      internalID: 8694898889946132783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Immunity_2
+      name: Neutrolizer Sprite_3
       rect:
         serializedVersion: 2
-        x: 3
-        y: 23
-        width: 36
-        height: 3
+        x: 0
+        y: 16
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +171,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f782e4d7badc2e510800000000000000
-      internalID: 1577048955958470783
+      spriteID: 31aad811d599a5590800000000000000
+      internalID: -7684661189148825069
       vertices: []
       indices: 
       edges: []

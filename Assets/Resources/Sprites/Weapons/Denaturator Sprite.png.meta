@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: a06805a374d68bc46911c0cd3ae4d0f9
+guid: 626a6eb994f8e6d41958e1d354186535
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5204944244578505131
-    second: Augment_0
+      213: -1184381930589756991
+    second: Denaturator2_0
   - first:
-      213: 8700286675947264588
-    second: Augment_1
+      213: -4483660967157214799
+    second: Denaturator2_1
   - first:
-      213: -7147719038166404058
-    second: Augment_2
+      213: -6538199288176803214
+    second: Denaturator2_2
+  - first:
+      213: 3663158424420634987
+    second: Denaturator Sprite_0
+  - first:
+      213: -6610266544909398922
+    second: Denaturator Sprite_1
+  - first:
+      213: 7978659364925602663
+    second: Denaturator Sprite_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Augment_0
+      name: Denaturator Sprite_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 35
-        width: 21
-        height: 8
+        x: 0
+        y: 32
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,20 +123,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55e2f2a59c254c7b0800000000000000
-      internalID: -5204944244578505131
+      spriteID: b615293cd2726d230800000000000000
+      internalID: 3663158424420634987
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Augment_1
+      name: Denaturator Sprite_1
       rect:
         serializedVersion: 2
-        x: 5
-        y: 3
-        width: 21
-        height: 8
+        x: 0
+        y: 16
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,20 +144,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4a96ebb2a0adb870800000000000000
-      internalID: 8700286675947264588
+      spriteID: 67cc600a99d9344a0800000000000000
+      internalID: -6610266544909398922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Augment_2
+      name: Denaturator Sprite_2
       rect:
         serializedVersion: 2
-        x: 5
-        y: 23
-        width: 21
-        height: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6247bcfa7633ecc90800000000000000
-      internalID: -7147719038166404058
+      spriteID: 76bfb3e6b64e9be60800000000000000
+      internalID: 7978659364925602663
       vertices: []
       indices: 
       edges: []

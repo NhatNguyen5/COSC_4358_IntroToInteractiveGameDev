@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5785191722286910190, guid: 5acdd0216fb1c8a4eb83e4176168faef, type: 3}
+  m_Sprite: {fileID: 3663158424420634987, guid: 626a6eb994f8e6d41958e1d354186535, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 1.4545455, y: 0.72727275}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -98,12 +98,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slot: 2
-  WeapnIcon: {fileID: -5963820222233927217, guid: 5acdd0216fb1c8a4eb83e4176168faef, type: 3}
+  WeapnIcon: {fileID: 7978659364925602663, guid: 626a6eb994f8e6d41958e1d354186535, type: 3}
   IconScale: 1
   WeaponLabel: DENATURALIZER
   WeaponAnim: {fileID: 8725768441343987253}
   firePoint: {fileID: 8725768442752753942}
-  bulletPrefab: {fileID: 9086816830404711763, guid: 103a9c628a9486b44af60b4f7fcc0ee8, type: 3}
+  bulletPrefab: {fileID: 2373547008619839316, guid: a5b72fd4f83a745439a8701c971742c9, type: 3}
   delay: 0.17
   spread: 3
   amountOfShots: 1
