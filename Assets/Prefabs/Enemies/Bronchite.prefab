@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6924399398397163412
+--- !u!1 &7037990376088200953
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6924399398397163417}
-  - component: {fileID: 6924399398397163416}
-  - component: {fileID: 6924399398397163419}
-  - component: {fileID: 6924399398397163422}
-  - component: {fileID: 6924399398397163413}
-  - component: {fileID: 6924399398397163415}
-  - component: {fileID: -1873635527342343803}
-  - component: {fileID: -9127901303579602637}
+  - component: {fileID: 7037990376088200948}
+  - component: {fileID: 7037990376088200949}
+  - component: {fileID: 7037990376088200950}
+  - component: {fileID: 7037990376088200947}
+  - component: {fileID: 7037990376088200952}
+  - component: {fileID: 7037990376088200954}
+  - component: {fileID: 7227182355474802920}
+  - component: {fileID: 63244208746446942}
   m_Layer: 7
-  m_Name: Brunt
+  m_Name: Bronchite
   m_TagString: EnemyMelee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6924399398397163417
+--- !u!4 &7037990376088200948
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6924399398397163412}
+  m_GameObject: {fileID: 7037990376088200953}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.716715, y: 21.293139, z: 2.010197}
+  m_LocalPosition: {x: -15.347516, y: 10.471354, z: 2.010197}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6924399398397163416
+--- !u!212 &7037990376088200949
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6924399398397163412}
+  m_GameObject: {fileID: 7037990376088200953}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -77,31 +77,31 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6153686122857944383, guid: 8f38618ca62c0a4438c3cf495c623e0f, type: 3}
+  m_Sprite: {fileID: 6066350227164343862, guid: 5d034d8c0b4119f49b9b92125bf6901f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.03, y: 4.99}
+  m_Size: {x: 0.96003836, y: 0.96003836}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &6924399398397163419
+--- !u!50 &7037990376088200950
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6924399398397163412}
+  m_GameObject: {fileID: 7037990376088200953}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 5
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -109,39 +109,39 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &6924399398397163422
+--- !u!61 &7037990376088200947
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6924399398397163412}
+  m_GameObject: {fileID: 7037990376088200953}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.031506777, y: -0.030339241}
+  m_Offset: {x: 0.0002374649, y: -0.03196764}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.96, y: 0.96}
-    newSize: {x: 3.03, y: 4.99}
+    oldSize: {x: 0.96003836, y: 0.96003836}
+    newSize: {x: 0.96003836, y: 0.96003836}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.67111063, y: 0.67344475}
+  m_Size: {x: 0.60762215, y: 0.4162302}
   m_EdgeRadius: 0
---- !u!114 &6924399398397163413
+--- !u!114 &7037990376088200952
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6924399398397163412}
+  m_GameObject: {fileID: 7037990376088200953}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e16f8f96122c8334d90203c5a4549cb6, type: 3}
@@ -150,40 +150,40 @@ MonoBehaviour:
   HitNoise: Hit
   ContactNoise: Hit
   isObjectEnemy: 1
---- !u!114 &6924399398397163415
+--- !u!114 &7037990376088200954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6924399398397163412}
+  m_GameObject: {fileID: 7037990376088200953}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 133bab9e7f5eb64419740e251ef37bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
-  contactDamage: 20
-  HP: 100
-  speed: 6
-  EXPWorth: 150
+  contactDamage: 8
+  HP: 40
+  speed: 4.25
+  EXPWorth: 50
   stoppingDistance: 0
   followPlayer: 1
   randomMovement: 1
   timeRunningTwdPlayer: 5
-  circleRadius: 7
-  timeTillNextMove: 0.2
-  knockbackstartrange: 3
-  knockbackendrange: 4
+  circleRadius: 5
+  timeTillNextMove: 0.1
+  knockbackstartrange: 2
+  knockbackendrange: 3
   player: {fileID: 0}
-  beginningrangetomove: 0.8
-  endingrangetomove: 1.6
-  RetreatSpeed: 0.6
-  retreatTime: 0.25
+  beginningrangetomove: 0.4
+  endingrangetomove: 0.8
+  RetreatSpeed: 0.3
+  retreatTime: 0.125
   LineOfSight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 25728
+    m_Bits: 17536
   Drops:
   - {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
   - {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
@@ -197,33 +197,33 @@ MonoBehaviour:
   NumOfAmmoDrop: 1
   DropPercentagePhizer: 1
   NumOfPhizerDrop: 1
-  spriteLibrary: {fileID: -1873635527342343803}
-  targetResolver: {fileID: -9127901303579602637}
-  targetCategory: Brunt Skin Library Asset
---- !u!114 &-1873635527342343803
+  spriteLibrary: {fileID: 7227182355474802920}
+  targetResolver: {fileID: 63244208746446942}
+  targetCategory: Bronchite Skin Library Asset
+--- !u!114 &7227182355474802920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6924399398397163412}
+  m_GameObject: {fileID: 7037990376088200953}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_SpriteLibraryAsset: {fileID: 11400000, guid: fff37d40dc4fbe34ca519a7f3b24d121, type: 2}
---- !u!114 &-9127901303579602637
+--- !u!114 &63244208746446942
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6924399398397163412}
+  m_GameObject: {fileID: 7037990376088200953}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CategoryHash: -3.8821163e+28
-  m_labelHash: -3.9800195e+13
+  m_CategoryHash: 74663.03
+  m_labelHash: -0.025054464

@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 122dbf3f7e1773142b23201195ae25f3
+guid: 50eee703d1491ee46909d340390755b1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6775561205250858437
-    second: New R-Nold_0
+      213: -669594795073765615
+    second: Zoster_0
   - first:
-      213: 5675241785239868437
-    second: New R-Nold_1
+      213: 3163485487132800447
+    second: Zoster_1
   - first:
-      213: -6671852260847874546
-    second: New R-Nold_2
+      213: -7372272335662942173
+    second: Zoster_2
   - first:
-      213: 6082136533465208681
-    second: New R-Nold_3
+      213: -3963561449568232793
+    second: Zoster_3
   - first:
-      213: -1873838188937537396
-    second: New R-Nold_4
+      213: 4124676758659182077
+    second: Zoster_4
   - first:
-      213: -6166497428811000385
-    second: New R-Nold_5
+      213: 3103998933158542155
+    second: Zoster_5
   - first:
-      213: -4606851842050985471
-    second: New R-Nold_6
+      213: 1970470628631487598
+    second: Zoster_6
   - first:
-      213: -1755457063695662697
-    second: New R-Nold_7
+      213: -6686433054505910703
+    second: Zoster_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -70,7 +70,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16.666
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -115,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: New R-Nold_0
+      name: Zoster_0
       rect:
         serializedVersion: 2
         x: 0
@@ -129,14 +129,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5cd15e88401a70e50800000000000000
-      internalID: 6775561205250858437
+      spriteID: 11f7d20e41f15b6f0800000000000000
+      internalID: -669594795073765615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New R-Nold_1
+      name: Zoster_1
       rect:
         serializedVersion: 2
         x: 16
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5141dafb55282ce40800000000000000
-      internalID: 5675241785239868437
+      spriteID: fb577a82a45f6eb20800000000000000
+      internalID: 3163485487132800447
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New R-Nold_2
+      name: Zoster_2
       rect:
         serializedVersion: 2
         x: 0
@@ -171,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0e864eb7b1d863a0800000000000000
-      internalID: -6671852260847874546
+      spriteID: 328fe55ee5d60b990800000000000000
+      internalID: -7372272335662942173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New R-Nold_3
+      name: Zoster_3
       rect:
         serializedVersion: 2
         x: 16
@@ -192,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9679e90e3f6186450800000000000000
-      internalID: 6082136533465208681
+      spriteID: 7aa9d098cd99ef8c0800000000000000
+      internalID: -3963561449568232793
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New R-Nold_4
+      name: Zoster_4
       rect:
         serializedVersion: 2
         x: 0
@@ -213,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8811dd581acef5e0800000000000000
-      internalID: -1873838188937537396
+      spriteID: dfda03598abcd3930800000000000000
+      internalID: 4124676758659182077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New R-Nold_5
+      name: Zoster_5
       rect:
         serializedVersion: 2
         x: 16
@@ -234,14 +234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb55c5f82433c6aa0800000000000000
-      internalID: -6166497428811000385
+      spriteID: b4b3b12859e931b20800000000000000
+      internalID: 3103998933158542155
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New R-Nold_6
+      name: Zoster_6
       rect:
         serializedVersion: 2
         x: 0
@@ -255,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10272b568ac2110c0800000000000000
-      internalID: -4606851842050985471
+      spriteID: e64abe3c894885b10800000000000000
+      internalID: 1970470628631487598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: New R-Nold_7
+      name: Zoster_7
       rect:
         serializedVersion: 2
         x: 16
@@ -276,8 +276,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79148f3f91d53a7e0800000000000000
-      internalID: -1755457063695662697
+      spriteID: 15ebebb20940533a0800000000000000
+      internalID: -6686433054505910703
       vertices: []
       indices: 
       edges: []
