@@ -119,7 +119,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 17998
+  m_text: LEVEL 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 720a9e31d64eedc43ae2e98c621d4dd0, type: 2}
   m_sharedMaterial: {fileID: 6829860111235474743, guid: 720a9e31d64eedc43ae2e98c621d4dd0, type: 2}
@@ -133,16 +133,16 @@ MonoBehaviour:
   m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
-    topLeft: {r: 1, g: 0.8970642, b: 0, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 0.8980393, b: 0, a: 1}
+    topLeft: {r: 0.12677999, g: 0.7264151, b: 0.49429837, a: 1}
+    topRight: {r: 0.12941177, g: 0.7294118, b: 0.49803922, a: 1}
+    bottomLeft: {r: 0.74509805, g: 1, b: 0.21568628, a: 1}
+    bottomRight: {r: 0.74143016, g: 1, b: 0.21226418, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
+  m_overrideHtmlColors: 1
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: -1.07
+  m_characterSpacing: 4.3
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
