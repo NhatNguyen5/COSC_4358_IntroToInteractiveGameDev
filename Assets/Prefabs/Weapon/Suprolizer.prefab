@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slot: 8
   WeapnIcon: {fileID: -3012721911923018967, guid: 0346638ca6214ff4c8d651f721bcab9e, type: 3}
+  IconScale: 0.7
   WeaponLabel: SUPROLIZER
   WeaponAnim: {fileID: 8280589456634308226}
   firePoint: {fileID: 1181104393649923485}

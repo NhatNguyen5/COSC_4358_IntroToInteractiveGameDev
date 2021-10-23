@@ -81,7 +81,7 @@ public class PlayerActions
             {
                 Transform tempWI = RWeaponIcon.transform.Find("WeaponIcon");
                 tempWI.GetComponent<Image>().sprite = rw.GetComponent<Weapon>().WeapnIcon;
-                tempWI.localScale *= rw.GetComponent<Weapon>().IconScale;
+                tempWI.localScale = new Vector3(rw.GetComponent<Weapon>().IconScale, rw.GetComponent<Weapon>().IconScale, 1);
                 RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<Weapon>().WeaponLabel;
             }
         }
@@ -283,7 +283,7 @@ public class PlayerActions
                     {
                         Transform tempWI = RWeaponIcon.transform.Find("WeaponIcon");
                         tempWI.GetComponent<Image>().sprite = rw.GetComponent<Weapon>().WeapnIcon;
-                        tempWI.localScale *= rw.GetComponent<Weapon>().IconScale;
+                        tempWI.localScale = new Vector3(rw.GetComponent<Weapon>().IconScale, rw.GetComponent<Weapon>().IconScale, 1);
                         RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<Weapon>().WeaponLabel;
                     }
                     //start swap counter???
