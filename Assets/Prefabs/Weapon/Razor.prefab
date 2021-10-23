@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slot: 5
+  WeapnIcon: {fileID: 6723819281431038103, guid: 2a1e1e0f5b937d84085b51dfc38d8df6, type: 3}
+  WeaponLabel: RAZOR
   WeaponAnim: {fileID: 8233479261077972574}
   firePoint: {fileID: 8233479260205025661}
   bulletPrefab: {fileID: 5172911503813449251, guid: b60735ba69133254091e7ccf305c7aab, type: 3}

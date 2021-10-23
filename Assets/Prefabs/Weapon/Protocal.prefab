@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slot: 2
+  WeapnIcon: {fileID: 1971577198177248361, guid: 13fbac3e34da6924f99b227b0dbe22d4, type: 3}
+  WeaponLabel: PROTOCAL
   WeaponAnim: {fileID: 6530922535323270368}
   firePoint: {fileID: 6530922536524816696}
   bulletPrefab: {fileID: 5172911503813449251, guid: b60735ba69133254091e7ccf305c7aab, type: 3}

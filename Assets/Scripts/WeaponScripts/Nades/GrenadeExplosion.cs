@@ -10,8 +10,9 @@ public class GrenadeExplosion : MonoBehaviour
     private bool isWaiting = false;
     private CircleCollider2D cc2d;
     private ParticleSystem PS;
-    private ParticleSystem.ShapeModule PSShapeModule;
-    private ParticleSystem.EmissionModule PSEmissionModule;
+    private ParticleSystem.MainModule PSMain;
+    private ParticleSystem.ShapeModule PSShape;
+    private ParticleSystem.EmissionModule PSEmission;
 
 
     private void Start()
@@ -20,12 +21,26 @@ public class GrenadeExplosion : MonoBehaviour
         cc2d.isTrigger = true;
         cc2d.radius = explodeRadius;
         PS = transform.Find("Particle").GetComponent<ParticleSystem>();
-        PSShapeModule = PS.shape;
-        PSShapeModule.radius = explodeRadius;
-        PSEmissionModule = PS.emission;
-        PSEmissionModule.rateOverTimeMultiplier *= 100*explodeRadius;
+        transform.Find("Sprite").transform.localScale *= explodeRadius;
+        PSShape = PS.shape;
+        PSShape.radius = explodeRadius;
+        PSEmission = PS.emission;
+        PSEmission.rateOverTimeMultiplier *= 100*explodeRadius;
+        PSMain = PS.main;
+        //PSMain.startSpeed = explodeRadius;
+
+        Collider2D[] CaughtObjects = Physics2D.OverlapCircleAll(transform.position, explodeRadius);
+        foreach (var CaughtObject in CaughtObjects)
+        {
+            if (CaughtObject.tag == "EnemyMelee") { CaughtObject.GetComponent<Enemy2>().takeDamage(ExplodeDamage, CaughtObject.transform, 10); }
+            if (CaughtObject.tag == "Enemy") { CaughtObject.GetComponent<Enemy1>().takeDamage(ExplodeDamage, CaughtObject.transform, 10); }
+            if (CaughtObject.tag == "Colony") { CaughtObject.GetComponent<EnemyColony>().takeDamage(ExplodeDamage, CaughtObject.transform, 10); }
+            if (CaughtObject.tag == "Player") { CaughtObject.GetComponent<TakeDamage>().takeDamage(ExplodeDamage, CaughtObject.transform, 10); }
+        }
         StartCoroutine(clearSmoke(PS.main.duration));
     }
+
+
 
     private IEnumerator clearSmoke(float AfterDuration)
     {

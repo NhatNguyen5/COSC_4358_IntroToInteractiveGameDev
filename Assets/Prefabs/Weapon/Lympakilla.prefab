@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slot: 9
+  WeapnIcon: {fileID: -3813906471521935540, guid: 7d81ae997920f044aa60844c051b4403, type: 3}
+  WeaponLabel: LYMPHAKILLA
   WeaponAnim: {fileID: 5932730024843355162}
   firePoint: {fileID: 5932730024508328761}
   bulletPrefab: {fileID: 5172911503813449251, guid: b60735ba69133254091e7ccf305c7aab, type: 3}

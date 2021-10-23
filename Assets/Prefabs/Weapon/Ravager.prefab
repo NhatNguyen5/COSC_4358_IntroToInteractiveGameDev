@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slot: 6
+  WeapnIcon: {fileID: -1225357069053358456, guid: b6ca2c4352fd972479f25cb0663443c9, type: 3}
+  WeaponLabel: RAVAGER
   WeaponAnim: {fileID: 2314615936899718398}
   firePoint: {fileID: 2314615935489913821}
   bulletPrefab: {fileID: 5172911503813449251, guid: b60735ba69133254091e7ccf305c7aab, type: 3}

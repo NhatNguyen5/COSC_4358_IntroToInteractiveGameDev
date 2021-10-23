@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slot: 4
+  WeapnIcon: {fileID: 7605701695760223124, guid: 3a4912f15331a1942bfbc49981184564, type: 3}
+  WeaponLabel: IMMUNITY
   WeaponAnim: {fileID: 7653431232674003504}
   firePoint: {fileID: 7653431234082755859}
   bulletPrefab: {fileID: 5172911503813449251, guid: b60735ba69133254091e7ccf305c7aab, type: 3}

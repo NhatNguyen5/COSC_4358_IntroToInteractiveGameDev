@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slot: 2
+  WeapnIcon: {fileID: -5963820222233927217, guid: 5acdd0216fb1c8a4eb83e4176168faef, type: 3}
+  WeaponLabel: DENATURALIZER
   WeaponAnim: {fileID: 8725768441343987253}
   firePoint: {fileID: 8725768442752753942}
   bulletPrefab: {fileID: 2373547008619839316, guid: a5b72fd4f83a745439a8701c971742c9, type: 3}

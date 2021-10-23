@@ -79,73 +79,9 @@ public class PlayerActions
         {
             if (rw.gameObject.activeSelf)
             {
-                foreach (Transform WIcon in RWeaponIcon.transform)
-                    WIcon.gameObject.SetActive(false);
-                if (rw.name.Contains("Protocal"))
-                {
-                    RWeaponIcon.transform.Find("ProtocalIcon").gameObject.SetActive(true);
-                }
-                else if (rw.name.Contains("Sedator"))
-                {
-                    RWeaponIcon.transform.Find("SedatorIcon").gameObject.SetActive(true);
-                }
-                else if (rw.name.Contains("Neutralizer"))
-                {
-                    RWeaponIcon.transform.Find("NeutralizerIcon").gameObject.SetActive(true);
-                }
-                else if (rw.name.Contains("Precision"))
-                {
-                    RWeaponIcon.transform.Find("PrecisionIcon").gameObject.SetActive(true);
-                }
-                else if (rw.name.Contains("Umpilical"))
-                {
-                    RWeaponIcon.transform.Find("UmpilicalIcon").gameObject.SetActive(true);
-                }
-                else if (rw.name.Contains("Disruptor"))
-                {
-                    RWeaponIcon.transform.Find("DisruptorIcon").gameObject.SetActive(true);
-                }
-                else if (rw.name.Contains("Vaccinator2.0"))
-                {
-                    RWeaponIcon.transform.Find("Vaccinator2.0Icon").gameObject.SetActive(true);
-                }
-                else if (rw.name.Contains("Suprolizer"))
-                {
-                    RWeaponIcon.transform.Find("SuprolizerIcon").gameObject.SetActive(true);
-                }
-                else if (rw.name.Contains("Lympakilla"))
-                {
-                    RWeaponIcon.transform.Find("Lympakilla").gameObject.SetActive(true);
-                }
-                else if (rw.name.Contains("Augment"))
-                {
-                    RWeaponIcon.transform.Find("AugmentIcon").gameObject.SetActive(true);
-                }
-                else if (rw.name.Contains("Enforcer"))
-                {
-                    RWeaponIcon.transform.Find("EnforcerIcon").gameObject.SetActive(true);
-                }
-                else if (rw.name.Contains("Eosinger"))
-                {
-                    RWeaponIcon.transform.Find("EosingerIcon").gameObject.SetActive(true);
-                }
-                else if (rw.name.Contains("Ravager"))
-                {
-                    RWeaponIcon.transform.Find("RavagerIcon").gameObject.SetActive(true);
-                }
-                else if (rw.name.Contains("Razor"))
-                {
-                    RWeaponIcon.transform.Find("RazorIcon").gameObject.SetActive(true);
-                }
-                else if (rw.name.Contains("Immunity"))
-                {
-                    RWeaponIcon.transform.Find("ImmunityIcon").gameObject.SetActive(true);
-                }
-                else if (rw.name.Contains("Denaturator"))
-                {
-                    RWeaponIcon.transform.Find("DenaturatorIcon").gameObject.SetActive(true);
-                }
-
+                Transform tempWI = RWeaponIcon.transform.Find("WeaponIcon");
+                tempWI.GetComponent<Image>().sprite = rw.GetComponent<Weapon>().WeapnIcon;
+                tempWI.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<Weapon>().WeaponLabel;
             }
         }
         currSpriteCategory = player.Components.PlayerTargetCategory;
@@ -342,71 +278,11 @@ public class PlayerActions
                 if (rw.GetComponent<Weapon>().Slot == input)
                 {
                     rw.gameObject.SetActive(true);
-                    foreach (Transform WIcon in RWeaponIcon.transform)
-                        WIcon.gameObject.SetActive(false);
-                    if (rw.name.Contains("Protocal"))
+                    if (rw.gameObject.activeSelf)
                     {
-                        RWeaponIcon.transform.Find("ProtocalIcon").gameObject.SetActive(true);
-                    }
-                    else if (rw.name.Contains("Sedator"))
-                    {
-                        RWeaponIcon.transform.Find("SedatorIcon").gameObject.SetActive(true);
-                    }
-                    else if (rw.name.Contains("Neutralizer"))
-                    {
-                        RWeaponIcon.transform.Find("NeutralizerIcon").gameObject.SetActive(true);
-                    }
-                    else if (rw.name.Contains("Precision"))
-                    {
-                        RWeaponIcon.transform.Find("PrecisionIcon").gameObject.SetActive(true);
-                    }
-                    else if (rw.name.Contains("Umpilical"))
-                    {
-                        RWeaponIcon.transform.Find("UmpilicalIcon").gameObject.SetActive(true);
-                    }
-                    else if (rw.name.Contains("Disruptor"))
-                    {
-                        RWeaponIcon.transform.Find("DisruptorIcon").gameObject.SetActive(true);
-                    }
-                    else if (rw.name.Contains("Vaccinator2.0"))
-                    {
-                        RWeaponIcon.transform.Find("Vaccinator2.0Icon").gameObject.SetActive(true);
-                    }
-                    else if (rw.name.Contains("Suprolizer"))
-                    {
-                        RWeaponIcon.transform.Find("SuprolizerIcon").gameObject.SetActive(true);
-                    }
-                    else if (rw.name.Contains("Lympakilla"))
-                    {
-                        RWeaponIcon.transform.Find("LympakillaIcon").gameObject.SetActive(true);
-                    }
-                    else if (rw.name.Contains("Augment"))
-                    {
-                        RWeaponIcon.transform.Find("AugmentIcon").gameObject.SetActive(true);
-                    }
-                    else if (rw.name.Contains("Enforcer"))
-                    {
-                        RWeaponIcon.transform.Find("EnforcerIcon").gameObject.SetActive(true);
-                    }
-                    else if (rw.name.Contains("Eosinger"))
-                    {
-                        RWeaponIcon.transform.Find("EosingerIcon").gameObject.SetActive(true);
-                    }
-                    else if (rw.name.Contains("Ravager"))
-                    {
-                        RWeaponIcon.transform.Find("RavagerIcon").gameObject.SetActive(true);
-                    }
-                    else if (rw.name.Contains("Razor"))
-                    {
-                        RWeaponIcon.transform.Find("RazorIcon").gameObject.SetActive(true);
-                    }
-                    else if (rw.name.Contains("Immunity"))
-                    {
-                        RWeaponIcon.transform.Find("ImmunityIcon").gameObject.SetActive(true);
-                    }
-                    else if (rw.name.Contains("Denaturator"))
-                    {
-                        RWeaponIcon.transform.Find("DenaturatorIcon").gameObject.SetActive(true);
+                        Transform tempWI = RWeaponIcon.transform.Find("WeaponIcon");
+                        tempWI.GetComponent<Image>().sprite = rw.GetComponent<Weapon>().WeapnIcon;
+                        tempWI.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<Weapon>().WeaponLabel;
                     }
                     //start swap counter???
                 }

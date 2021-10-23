@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slot: 7
+  WeapnIcon: {fileID: -8349735488274361628, guid: c22617f0c64185b4cb6cefdbd13730ae, type: 3}
+  WeaponLabel: VACCINATOR
   WeaponAnim: {fileID: 3544499261659222556}
   firePoint: {fileID: 3544499263471697215}
   bulletPrefab: {fileID: 3578575317254583761, guid: b016374ab55e7474f95fbc7c967186b3, type: 3}

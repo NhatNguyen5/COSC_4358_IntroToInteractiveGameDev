@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    [System.Serializable]
+    public struct enemyType
+    {
+        public GameObject Enemies;
+        public float StartSpawnRange;
+        public float EndSpawnRange;
+    }
+
     //public int enemiesFromColony;
     public float colonyHealth;
     public StatusIndicator StaInd;
@@ -21,17 +29,13 @@ public class EnemyManager : MonoBehaviour
     private float nextSpawnTime;
     private float nextDecrease;
     public GameObject[] spawnPoints;
-    public GameObject[] Enemies;
+    public enemyType[] EnemyTypes;
+
     public Animator[] SpawnPointAnim;
     private bool SPAnimReset = false;
     private int ChosenSP;
     private bool bossDeath = false;
     //public int remain;
-    [Header("In between is Mosaic spawnrate")]
-    [Range(20, 100)]
-    public int chanceToSpawnBrunt;
-    [Range(0, 20)]
-    public int chanceToSpawnR_Nold;
 
     bool isWaiting = false;
     bool cutSceneFlag = false;
@@ -83,12 +87,11 @@ public class EnemyManager : MonoBehaviour
             //print("randomSpawn = " + randomSpawn);
             int randomEnemeies = Random.Range(0, 100);
             //Debug.Log(randomEnemeies);
-            if (randomEnemeies >= chanceToSpawnBrunt)
-                SpawnedMobs.Add(Instantiate(Enemies[0], spawnPoints[ChosenSP].transform.position, Quaternion.identity));
-            else if (randomEnemeies <= chanceToSpawnR_Nold)
-                SpawnedMobs.Add(Instantiate(Enemies[2], spawnPoints[ChosenSP].transform.position, Quaternion.identity));
-            else
-                SpawnedMobs.Add(Instantiate(Enemies[1], spawnPoints[ChosenSP].transform.position, Quaternion.identity));
+            foreach (enemyType et in EnemyTypes)
+            {
+                if (randomEnemeies >= et.StartSpawnRange && randomEnemeies <= et.EndSpawnRange)
+                    SpawnedMobs.Add(Instantiate(et.Enemies, spawnPoints[ChosenSP].transform.position, Quaternion.identity));
+            }
             //Debug.Log("Spawned");
             
             SpawnPointAnim[ChosenSP].SetBool("WasChosen", false);

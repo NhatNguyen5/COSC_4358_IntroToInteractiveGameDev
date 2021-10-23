@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slot: 2
+  WeapnIcon: {fileID: 8700286675947264588, guid: a06805a374d68bc46911c0cd3ae4d0f9, type: 3}
+  WeaponLabel: AUGMENT
   WeaponAnim: {fileID: 4266070238205467169}
   firePoint: {fileID: 4266070236795663618}
   bulletPrefab: {fileID: 5172911503813449251, guid: b60735ba69133254091e7ccf305c7aab, type: 3}

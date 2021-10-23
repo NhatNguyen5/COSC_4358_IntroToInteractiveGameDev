@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slot: 1
+  WeapnIcon: {fileID: -8957152161633487562, guid: 13fbac3e34da6924f99b227b0dbe22d4, type: 3}
+  WeaponLabel: ENFORCER
   WeaponAnim: {fileID: 3556159641590399312}
   firePoint: {fileID: 3556159641389608563}
   bulletPrefab: {fileID: 5172911503813449251, guid: b60735ba69133254091e7ccf305c7aab, type: 3}

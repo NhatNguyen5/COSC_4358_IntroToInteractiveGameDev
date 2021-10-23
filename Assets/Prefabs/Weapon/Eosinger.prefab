@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slot: 3
+  WeapnIcon: {fileID: 5240275136784803926, guid: 8507aad4dee7a59408f40656ffe698fe, type: 3}
+  WeaponLabel: EOSINGER
   WeaponAnim: {fileID: 8587654299976819028}
   firePoint: {fileID: 8587654300848705143}
   bulletPrefab: {fileID: 5172911503813449251, guid: b60735ba69133254091e7ccf305c7aab, type: 3}
