@@ -8,6 +8,7 @@ public class Weapon : MonoBehaviour
     [Header("Gun Settings")]
     public float Slot;
     public Sprite WeapnIcon;
+    public float IconScale = 1;
     public string WeaponLabel;
     public Animator WeaponAnim;
     public Transform firePoint;
