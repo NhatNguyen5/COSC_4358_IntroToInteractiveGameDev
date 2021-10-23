@@ -218,7 +218,6 @@ public class PlayerActions
 
     public void Animate()
     {
-
         relaMouseAngle = player.Stats.Angle;
 
         if (relaMouseAngle < 0)

@@ -402,7 +402,6 @@ public class Player : MonoBehaviour
             components.PlayerStatusIndicator.StartFlash(0.25f, 0.25f, Color.yellow, ((stats.MaxHealth - stats.Health) / stats.MaxHealth) / 2f, Color.red, 1);
             levelUP();
         }
-
         utilities.HandleInput();
         references.CalMousePosToPlayer();
         actions.UpdateCountsUI();
