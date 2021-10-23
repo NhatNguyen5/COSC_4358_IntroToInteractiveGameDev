@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 51f75559ca47e8045a14f27f8e2c761a
+guid: 006bfcda7b650f14c80748f0a02c8c6c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2245179970198166621
-    second: R-Nold_0
+      213: -5223919323732446560
+    second: DStroy_0
   - first:
-      213: 4751403765956497049
-    second: R-Nold_1
+      213: 6544743519132373811
+    second: DStroy_1
   - first:
-      213: 1018811985839621265
-    second: R-Nold_2
+      213: -3100762144505698226
+    second: DStroy_2
   - first:
-      213: 3116610178739186086
-    second: R-Nold_3
+      213: 5430386352747626407
+    second: DStroy_3
   - first:
-      213: -1165989442088700575
-    second: R-Nold_4
+      213: -4278270753236343190
+    second: DStroy_4
   - first:
-      213: -4056505080622104848
-    second: R-Nold_5
+      213: 2466553831753660186
+    second: DStroy_5
   - first:
-      213: -8987593985528537553
-    second: R-Nold_6
+      213: -142964703912679104
+    second: DStroy_6
   - first:
-      213: 4056703211286894397
-    second: R-Nold_7
+      213: -7379105181985469371
+    second: DStroy_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -70,7 +70,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16.666
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -111,29 +111,17 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: R-Nold_0
+      name: DStroy_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 288
-        width: 96
-        height: 96
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,20 +129,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5cdb74994b782f10800000000000000
-      internalID: 2245179970198166621
+      spriteID: 0a2f0a57d09e087b0800000000000000
+      internalID: -5223919323732446560
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: R-Nold_1
+      name: DStroy_1
       rect:
         serializedVersion: 2
-        x: 96
-        y: 288
-        width: 96
-        height: 96
+        x: 16
+        y: 48
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,62 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99e4a461d8060f140800000000000000
-      internalID: 4751403765956497049
+      spriteID: 333dceb1e8993da50800000000000000
+      internalID: 6544743519132373811
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: R-Nold_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 192
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 19481ec6a1c832e00800000000000000
-      internalID: 1018811985839621265
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: R-Nold_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 192
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6a9ad1fe17c604b20800000000000000
-      internalID: 3116610178739186086
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: R-Nold_4
+      name: DStroy_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
-        width: 96
-        height: 96
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -225,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1657274b7c291dfe0800000000000000
-      internalID: -1165989442088700575
+      spriteID: e4862c31241e7f4d0800000000000000
+      internalID: -3100762144505698226
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: R-Nold_5
+      name: DStroy_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 96
-        width: 96
-        height: 96
+        x: 16
+        y: 32
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,20 +192,62 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0feb3f71f1664b7c0800000000000000
-      internalID: -4056505080622104848
+      spriteID: 7afb6accd9b9c5b40800000000000000
+      internalID: 5430386352747626407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: R-Nold_6
+      name: DStroy_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a66a76cca6780a4c0800000000000000
+      internalID: -4278270753236343190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DStroy_5
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a173e0144a5fa3220800000000000000
+      internalID: 2466553831753660186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DStroy_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
-        height: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -267,20 +255,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2e522373e6a54380800000000000000
-      internalID: -8987593985528537553
+      spriteID: 049add7fb56140ef0800000000000000
+      internalID: -142964703912679104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: R-Nold_7
+      name: DStroy_7
       rect:
         serializedVersion: 2
-        x: 96
+        x: 16
         y: 0
-        width: 96
-        height: 96
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,8 +276,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3711fbc31e4c4830800000000000000
-      internalID: 4056703211286894397
+      spriteID: 54c0383eee6289990800000000000000
+      internalID: -7379105181985469371
       vertices: []
       indices: 
       edges: []
