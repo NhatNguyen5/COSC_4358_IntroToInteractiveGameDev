@@ -89450,7 +89450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3108138471467633137, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3108138471467633138, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bloom
@@ -89527,6 +89527,10 @@ PrefabInstance:
     - target: {fileID: 3108138471467633148, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108138471467633149, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3488768932483338711, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: m_Sprite
@@ -90162,7 +90166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6295345111514474217, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6295345111514474218, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: Slot

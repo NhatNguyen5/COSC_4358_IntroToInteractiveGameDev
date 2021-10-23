@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Animations;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -82,6 +83,8 @@ public class Player : MonoBehaviour
     private ArmorDown ArmorDownEff;
     [SerializeField]
     private LevelUpEff levelUpEff;
+    [SerializeField]
+    private GameObject levelUpPopUp;
 
     //private float currSpeed;
 
@@ -152,7 +155,6 @@ public class Player : MonoBehaviour
     //private int hardcap = 0; //leaving this here for now
 
     public float itemUsageGrowthRate = 0.0035f;
-
 
     private void Awake()
     {
@@ -389,11 +391,14 @@ public class Player : MonoBehaviour
         if (stats.Experience >= levelThreshhold)
         {
             Instantiate(levelUpEff, stats.Position, Quaternion.identity);
+            GameObject levelPopUpTemp;
+            levelPopUpTemp = Instantiate(levelUpPopUp, transform, false);
+            levelPopUpTemp.GetComponent<TextMeshPro>().text = ("Lv: " + (Currentlevel + 1));
+            Destroy(levelPopUpTemp, 1);
+
             components.PlayerStatusIndicator.StartFlash(0.25f, 0.25f, Color.yellow, ((stats.MaxHealth - stats.Health) / stats.MaxHealth) / 2f, Color.red, 1);
             levelUP();
         }
-
-
 
         utilities.HandleInput();
         references.CalMousePosToPlayer();
