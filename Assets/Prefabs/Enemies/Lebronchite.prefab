@@ -101,7 +101,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -181,22 +181,23 @@ MonoBehaviour:
   RetreatSpeed: 0.8
   retreatTime: 0.5
   LineOfSight: 0
+  isDead: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 17536
+    m_Bits: 83072
   Drops:
-  - {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
-  - {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
-  - {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
-  - {fileID: 2056935271745837854, guid: 9729f65a98d9dd14b86e888222ffbcbc, type: 3}
-  DropPercentageTylenol: 15
-  NumOfTylenolDrop: 1
-  DropPercentageProtein: 25
-  NumOfProteinDrop: 1
-  DropPercentageAmmo: 50
-  NumOfAmmoDrop: 1
-  DropPercentagePhizer: 1
-  NumOfPhizerDrop: 1
+  - drop: {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
+    DropPercentage: 100
+    NumOfDrop: 2
+  - drop: {fileID: 2056935271745837854, guid: 9729f65a98d9dd14b86e888222ffbcbc, type: 3}
+    DropPercentage: 5
+    NumOfDrop: 1
+  - drop: {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
+    DropPercentage: 50
+    NumOfDrop: 1
+  - drop: {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
+    DropPercentage: 50
+    NumOfDrop: 1
   spriteLibrary: {fileID: 2830568679307036900}
   targetResolver: {fileID: 4892210458596237394}
   targetCategory: Lebronchite Skin Library Asset

@@ -136,6 +136,7 @@ MonoBehaviour:
   isDead: 0
   contactDamage: 125
   speed: 5
+  EXPWorth: 50
   stoppingDistance: 50
   retreatDistance: 0
   followPlayer: 0
@@ -161,16 +162,21 @@ MonoBehaviour:
   timeBtwBurst: 0
   timesToShoot: 0
   Drops:
-  - {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
-  - {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
-  DropPercentageTylenol: 100
-  NumOfTylenolDrop: 5
-  DropPercentageProtein: 100
-  NumOfProteinDrop: 100
-  DropPercentageAmmo: 0
-  NumOfAmmoDrop: 0
-  DropPercentagePhizer: 0
-  NumOfPhizerDrop: 0
+  - drop: {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
+    DropPercentage: 100
+    NumOfDrop: 50
+  - drop: {fileID: 2056935271745837854, guid: 9729f65a98d9dd14b86e888222ffbcbc, type: 3}
+    DropPercentage: 100
+    NumOfDrop: 3
+  - drop: {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
+    DropPercentage: 100
+    NumOfDrop: 10
+  - drop: {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
+    DropPercentage: 100
+    NumOfDrop: 5
+  - drop: {fileID: 2056935271745837854, guid: 953376de06b619b4898731a5bab67558, type: 3}
+    DropPercentage: 100
+    NumOfDrop: 3
 --- !u!114 &3083916138999727803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  WeaponAnim: {fileID: 0}
   AimDir: 0
   isNotEnemy1: 1
   isNotHoldingWeapon: 1
@@ -489,6 +496,7 @@ MonoBehaviour:
   StaInd: {fileID: 0}
   Mcamera: {fileID: 0}
   CamFollow: {fileID: 0}
+  SpawnCap: 0
   timeBetweenSpawns: 5
   tbsDecreaseRate: 0.05
   DecreaseAfter: 1
@@ -498,16 +506,11 @@ MonoBehaviour:
   - {fileID: 2950618480928158124}
   - {fileID: 3009321316613043682}
   - {fileID: 5798512867060637555}
-  Enemies:
-  - {fileID: 6924399398397163412, guid: 64a959bf86ca6fe4ca2d6c5077663e32, type: 3}
-  - {fileID: 7674072803767978074, guid: 004f8d1e3c373fe45bed69bfd2079751, type: 3}
-  - {fileID: 7674072803767978074, guid: eff576b4f636dd34390cdc4f8692fd93, type: 3}
+  EnemyTypes: []
   SpawnPointAnim:
   - {fileID: 2776325051349927051}
   - {fileID: 7660949070627372406}
   - {fileID: 6843351295390633571}
-  chanceToSpawnBrunt: 55
-  chanceToSpawnR_Nold: 5
 --- !u!1 &2950618480928158124
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,15 @@ using System.Linq;
 
 public class Enemy1 : MonoBehaviour
 {
+    [System.Serializable]
+    public struct ItemDrops
+    {
+        public GameObject drop;
+        public float DropPercentage;
+        public int NumOfDrop;
+    }
+
+
     public GameObject DamageText;
     private SpriteRenderer sprite;
 
@@ -75,17 +84,7 @@ public class Enemy1 : MonoBehaviour
     private int TimesShot = 0;
 
     [Header("Drops")]
-    public GameObject[] Drops;
-    public float DropPercentageTylenol;
-    public int NumOfTylenolDrop;
-    public float DropPercentageProtein;
-    public int NumOfProteinDrop;
-    public float DropPercentageAmmo;
-    public int NumOfAmmoDrop;
-    public float DropPercentagePhizer;
-    public int NumOfPhizerDrop;
-    public float DropPercentageMolly;
-    public int NumOfMollyDrop;
+    public ItemDrops[] Drops;
 
     [Header("SkinModule")]
     [SerializeField]
@@ -100,7 +99,7 @@ public class Enemy1 : MonoBehaviour
     //ANIMATION VARIABLES
 
     //DEATH VARIABLE
-    private bool isDead = false;
+    public bool isDead = false;
 
     Vector2 direction;
     float a;
@@ -464,35 +463,19 @@ public class Enemy1 : MonoBehaviour
             {
                 OnDeath();
             }
-
-            if (Random.Range(0, 100) <= DropPercentageTylenol)
+            foreach(ItemDrops id in Drops)
             {
-                for (int i = 0; i < NumOfTylenolDrop; i++)
-                    Instantiate(Drops[0], transform.position, Quaternion.Euler(0, 0, 0));
+                if (Random.Range(0, 100) <= id.DropPercentage)
+                {
+                    for (int i = 0; i < id.NumOfDrop; i++)
+                        Instantiate(id.drop, transform.position, Quaternion.identity);
+                }
             }
 
-            if (Random.Range(0, 100) <= DropPercentageProtein)
+            if(transform.Find("StickyGrenade(Clone)") != null)
             {
-                for (int i = 0; i < NumOfProteinDrop; i++)
-                    Instantiate(Drops[1], transform.position, Quaternion.Euler(0, 0, 0));
-            }
-
-            if (Random.Range(0, 100) <= DropPercentageAmmo)
-            {
-                for (int i = 0; i < NumOfAmmoDrop; i++)
-                    Instantiate(Drops[2], transform.position, Quaternion.Euler(0, 0, 0));
-            }
-
-            if (Random.Range(0, 100) <= DropPercentagePhizer)
-            {
-                for (int i = 0; i < NumOfPhizerDrop; i++)
-                    Instantiate(Drops[3], transform.position, Quaternion.Euler(0, 0, 0));
-            }
-
-            if (Random.Range(0, 100) <= DropPercentageMolly)
-            {
-                for (int i = 0; i < NumOfMollyDrop; i++)
-                    Instantiate(Drops[4], transform.position, Quaternion.Euler(0, 0, 0));
+                transform.Find("StickyGrenade(Clone)").parent = null;
+                transform.Find("StickyGrenade(Clone)").GetComponent<StickyGrenade>().stuck = false;
             }
 
             GameObject.Destroy(gameObject);

@@ -181,22 +181,23 @@ MonoBehaviour:
   RetreatSpeed: 0.6
   retreatTime: 0.25
   LineOfSight: 0
+  isDead: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 25728
+    m_Bits: 91264
   Drops:
-  - {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
-  - {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
-  - {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
-  - {fileID: 2056935271745837854, guid: 9729f65a98d9dd14b86e888222ffbcbc, type: 3}
-  DropPercentageTylenol: 15
-  NumOfTylenolDrop: 1
-  DropPercentageProtein: 25
-  NumOfProteinDrop: 1
-  DropPercentageAmmo: 50
-  NumOfAmmoDrop: 1
-  DropPercentagePhizer: 1
-  NumOfPhizerDrop: 1
+  - drop: {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
+    DropPercentage: 100
+    NumOfDrop: 2
+  - drop: {fileID: 2056935271745837854, guid: 9729f65a98d9dd14b86e888222ffbcbc, type: 3}
+    DropPercentage: 5
+    NumOfDrop: 1
+  - drop: {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
+    DropPercentage: 50
+    NumOfDrop: 1
+  - drop: {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
+    DropPercentage: 50
+    NumOfDrop: 1
   spriteLibrary: {fileID: -1873635527342343803}
   targetResolver: {fileID: -9127901303579602637}
   targetCategory: Brunt Skin Library Asset

@@ -338,7 +338,7 @@ MonoBehaviour:
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 25728
+    m_Bits: 91264
   unstuckTime: 0
   shootdistance: 10
   distancefromplayer: 0
@@ -358,24 +358,25 @@ MonoBehaviour:
   timeBtwBurst: 1.5
   timesToShoot: 3
   Drops:
-  - {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
-  - {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
-  - {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
-  - {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
-  - {fileID: 2056935271745837854, guid: 953376de06b619b4898731a5bab67558, type: 3}
-  DropPercentageTylenol: 35
-  NumOfTylenolDrop: 2
-  DropPercentageProtein: 45
-  NumOfProteinDrop: 8
-  DropPercentageAmmo: 50
-  NumOfAmmoDrop: 1
-  DropPercentagePhizer: 5
-  NumOfPhizerDrop: 1
-  DropPercentageMolly: 20
-  NumOfMollyDrop: 1
+  - drop: {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
+    DropPercentage: 100
+    NumOfDrop: 20
+  - drop: {fileID: 2056935271745837854, guid: 9729f65a98d9dd14b86e888222ffbcbc, type: 3}
+    DropPercentage: 30
+    NumOfDrop: 1
+  - drop: {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
+    DropPercentage: 50
+    NumOfDrop: 5
+  - drop: {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
+    DropPercentage: 50
+    NumOfDrop: 2
+  - drop: {fileID: 2056935271745837854, guid: 953376de06b619b4898731a5bab67558, type: 3}
+    DropPercentage: 10
+    NumOfDrop: 1
   spriteLibrary: {fileID: -5747798501272440446}
   targetResolver: {fileID: 4134347511560369730}
   targetCategory: R-Nold Skin Library Asset
+  isDead: 0
   facing: 0
 --- !u!114 &-5747798501272440446
 MonoBehaviour:

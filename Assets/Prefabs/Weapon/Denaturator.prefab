@@ -99,10 +99,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slot: 2
   WeapnIcon: {fileID: -5963820222233927217, guid: 5acdd0216fb1c8a4eb83e4176168faef, type: 3}
+  IconScale: 1
   WeaponLabel: DENATURALIZER
   WeaponAnim: {fileID: 8725768441343987253}
   firePoint: {fileID: 8725768442752753942}
-  bulletPrefab: {fileID: 2373547008619839316, guid: a5b72fd4f83a745439a8701c971742c9, type: 3}
+  bulletPrefab: {fileID: 9086816830404711763, guid: 103a9c628a9486b44af60b4f7fcc0ee8, type: 3}
   delay: 0.17
   spread: 3
   amountOfShots: 1

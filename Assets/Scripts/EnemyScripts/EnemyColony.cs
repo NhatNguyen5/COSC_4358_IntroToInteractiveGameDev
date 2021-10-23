@@ -6,6 +6,14 @@ using TMPro;
 
 public class EnemyColony : MonoBehaviour
 {
+    [System.Serializable]
+    public struct ItemDrops
+    {
+        public GameObject drop;
+        public float DropPercentage;
+        public int NumOfDrop;
+    }
+
     public GameObject DamageText;
     private SpriteRenderer sprite;
     public Text BossName;
@@ -77,15 +85,7 @@ public class EnemyColony : MonoBehaviour
 
 
     [Header("Drops")]
-    public GameObject[] Drops;
-    public float DropPercentageTylenol;
-    public int NumOfTylenolDrop;
-    public float DropPercentageProtein;
-    public int NumOfProteinDrop;
-    public float DropPercentageAmmo;
-    public int NumOfAmmoDrop;
-    public float DropPercentagePhizer;
-    public int NumOfPhizerDrop;
+    public ItemDrops[] Drops;
 
 
     Vector2 direction;
@@ -466,28 +466,13 @@ public class EnemyColony : MonoBehaviour
     IEnumerator Dying()
     {
         yield return new WaitForSecondsRealtime(2.75f);
-        if (Random.Range(0, 100) <= DropPercentageTylenol)
+        foreach (ItemDrops id in Drops)
         {
-            for (int i = 0; i < NumOfTylenolDrop; i++)
-                Instantiate(Drops[0], transform.position, Quaternion.Euler(0, 0, 0));
-        }
-
-        if (Random.Range(0, 100) <= DropPercentageProtein)
-        {
-            for (int i = 0; i < NumOfProteinDrop; i++)
-                Instantiate(Drops[1], transform.position, Quaternion.Euler(0, 0, 0));
-        }
-
-        if (Random.Range(0, 100) <= DropPercentageAmmo)
-        {
-            for (int i = 0; i < NumOfAmmoDrop; i++)
-                Instantiate(Drops[2], transform.position, Quaternion.Euler(0, 0, 0));
-        }
-
-        if (Random.Range(0, 100) <= DropPercentagePhizer)
-        {
-            for (int i = 0; i < NumOfPhizerDrop; i++)
-                Instantiate(Drops[3], transform.position, Quaternion.Euler(0, 0, 0));
+            if (Random.Range(0, 100) <= id.DropPercentage)
+            {
+                for (int i = 0; i < id.NumOfDrop; i++)
+                    Instantiate(id.drop, transform.position, Quaternion.identity);
+            }
         }
         EnemyUI.SetActive(false);
         Destroy(transform.gameObject);
