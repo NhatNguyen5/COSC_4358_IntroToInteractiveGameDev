@@ -84085,8 +84085,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 90327625}
-  speed: 375
   nextWaypointDistance: 3
+  DamageText: {fileID: 0}
+  contactDamage: 0
+  HP: 100
+  speed: 375
+  stoppingDistance: 5
+  retreatDistance: 0
+  followPlayer: 0
+  retreat: 0
+  randomMovement: 0
+  lineofsight: 0
+  IgnoreMe:
+    serializedVersion: 2
+    m_Bits: 0
+  shootdistance: 0
+  distancefromplayer: 0
+  circleRadius: 2
+  timeTillNextMove: 0.5
+  beginningrangetoshoot: 0
+  endingrangetoshoot: 0
+  AmountOfBullets: 0
+  bulletSpread: 0
+  projectile: {fileID: 0}
+  firePoint: {fileID: 0}
+  player: {fileID: 0}
+  burstFire: 0
+  timeBtwBurst: 0
+  timesToShoot: 0
 --- !u!4 &1475563018
 Transform:
   m_ObjectHideFlags: 0
@@ -84095,7 +84121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475563013}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: 39.8, z: 0}
+  m_LocalPosition: {x: -33.74, y: 26.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 383400720}
