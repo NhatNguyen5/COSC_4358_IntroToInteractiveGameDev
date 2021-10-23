@@ -4888,7 +4888,7 @@ SpriteRenderer:
   m_SortingLayerID: -1518238841
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1403547283861232153, guid: 89a9bfddb0375154d90c3a2331987bad, type: 3}
+  m_Sprite: {fileID: -3834111115921536497, guid: 9af4fdb99da1c734d996318250be332a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4950,6 +4950,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwRange: 15
   throwSpeed: 1
-  burnDuration: 5
-  puddleSize: 2
   puddle: {fileID: 4771493260390014491, guid: c9204730cf2d0764aaf2353083e737f0, type: 3}
