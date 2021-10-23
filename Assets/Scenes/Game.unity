@@ -3079,7 +3079,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &478022998
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8841,7 +8841,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.09, y: 2.23}
+  m_AnchoredPosition: {x: -3.69, y: 1.47}
   m_SizeDelta: {x: 30, y: 11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &592188311
@@ -85780,7 +85780,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7605701695760223124, guid: 3a4912f15331a1942bfbc49981184564, type: 3}
+  m_Sprite: {fileID: -720588749336547210, guid: 4a09fc810f2302c42846a04c33a512d3, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -86848,7 +86848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1901870742
 RectTransform:
   m_ObjectHideFlags: 0
@@ -87401,7 +87401,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.71, y: -1.06}
+  m_AnchoredPosition: {x: 12.38, y: -0.23}
   m_SizeDelta: {x: 180.04, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1949857287
@@ -89209,7 +89209,7 @@ PrefabInstance:
       objectReference: {fileID: 542014994}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: colonyHealth
-      value: 30
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: timeBetweenSpawns
@@ -89414,7 +89414,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: df2fc942ab283fb42afda8187982c9e0, type: 2}
     - target: {fileID: 2811296245496214145, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2811296245496214146, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bloom
@@ -89450,7 +89450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3108138471467633137, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3108138471467633138, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: bloom
@@ -89462,7 +89462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3108138471467633138, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: spread
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3108138471467633138, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: ADSRange
