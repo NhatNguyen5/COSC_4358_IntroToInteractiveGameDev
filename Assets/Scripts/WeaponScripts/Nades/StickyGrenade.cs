@@ -72,21 +72,7 @@ public class StickyGrenade : MonoBehaviour
         if (_currentFlashRoutine != null)
             StopCoroutine(_currentFlashRoutine);
         //_currentFlashRoutine = StartCoroutine(Flash(endColor, secondForOneFlash, maxAlpha, endAlpha, numOfFlash));
-        float flashInDuration = SecondForOneFlash / 2;
-        for (float t = 0; t <= flashInDuration; t += Time.deltaTime)
-        {
-            spriteRend.color = new Color(1, 0, 0, Mathf.Lerp(0, 0.25f, t/ flashInDuration));
-        }
-
-        for (float t = 0; t <= flashInDuration; t += Time.deltaTime)
-        {
-            spriteRend.color = new Color(1, 0, 0, Mathf.Lerp(0, 0.25f, t / flashInDuration));
-        }
-        float flashOutDuration = SecondForOneFlash / 2;
-        for (float t = 0; t <= flashOutDuration; t += Time.deltaTime)
-        {
-            spriteRend.color = new Color(1, 0, 0, Mathf.Lerp(0, 0.25f, t / flashInDuration));
-        }
+        
 
         //Debug.Log(distanceLeft);
     }
@@ -129,5 +115,26 @@ public class StickyGrenade : MonoBehaviour
         yield return new WaitForSeconds(timer);
         Instantiate(greExpl, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    private IEnumerable Flash()
+    {
+        float flashInDuration = SecondForOneFlash / 2;
+        for (float t = 0; t <= flashInDuration; t += Time.deltaTime)
+        {
+            spriteRend.color = new Color(1, 0, 0, Mathf.Lerp(0, 0.25f, t / flashInDuration));
+            yield return null;
+        }
+
+        for (float t = 0; t <= flashInDuration; t += Time.deltaTime)
+        {
+            spriteRend.color = new Color(1, 0, 0, Mathf.Lerp(0, 0.25f, t / flashInDuration));
+            yield return null;
+        }
+        float flashOutDuration = SecondForOneFlash / 2;
+        for (float t = 0; t <= flashOutDuration; t += Time.deltaTime)
+        {
+            spriteRend.color = new Color(1, 0, 0, Mathf.Lerp(0, 0.25f, t / flashInDuration));
+        }
     }
 }
