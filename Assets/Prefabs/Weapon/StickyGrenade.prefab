@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4221866154652965809
 Transform:
   m_ObjectHideFlags: 0
@@ -186,6 +186,8 @@ MonoBehaviour:
   timer: 5
   SecondForOneFlash: 1
   greExpl: {fileID: 4262998911616451501, guid: bb03030f354650a45b2eb69f056556e6, type: 3}
+  landed: 0
+  stuck: 0
 --- !u!50 &1958789180224378485
 Rigidbody2D:
   serializedVersion: 4
