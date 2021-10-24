@@ -48,7 +48,10 @@ public class Globin : MonoBehaviour
     public float shootdistance;
     public float distancefromplayer;
 
- 
+    bool canSeeEnemy = false;
+    bool closest = false;
+
+
     //private float distToEnemy = 0;
 
     //private Transform UNSTUCKPOS;
@@ -257,48 +260,61 @@ public class Globin : MonoBehaviour
                 Collider2D[] ColliderArray = Physics2D.OverlapCircleAll(transform.position, shootdistance);
                 foreach (Collider2D collider2D in ColliderArray)
                 {
-                    bool canSeeEnemy = false;
-                    bool closest = false;
                     if (collider2D.TryGetComponent<EnemyMarker>(out EnemyMarker marked))
                     {
                         if (collider2D.TryGetComponent<Transform>(out Transform enemy))
                         {
-                            canSeeEnemy = false;
                             //CAN THEY SEE THEM
+
+                            //can probably optimize this later
                             RaycastHit2D hit2 = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
-                            
-                            
+
+
                             if (hit2.collider.gameObject.tag == "EnemyMelee" || hit2.collider.gameObject.tag == "Enemy" || hit2.collider.gameObject.tag == "Colony")
                             {
-
+                                canSeeEnemy = true;
                                 Vector3 directionToTarget = enemy.position - transform.position;
                                 float dSqrToTarget = directionToTarget.sqrMagnitude;
                                 if (dSqrToTarget < closestDistanceSqr)
                                 {
                                     closestDistanceSqr = dSqrToTarget;
                                     EnemyTarget = enemy;
-                                    canSeeEnemy = true;
                                     closest = true;
-                                    Debug.Log("Found target");
+                                    //Debug.Log("Found target");
+
+                                    //if (EnemyTarget != null && canSeeEnemy == true && closest == true && EnemyTarget == enemy)
                                 }
                             }
-                            if (canSeeEnemy == false)
-                                Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.white);
-
-                            if (EnemyTarget != null && canSeeEnemy == true && closest == false)
-                                Debug.DrawRay(transform.position, EnemyTarget.transform.position - transform.position, Color.red);
-
-                            if (EnemyTarget != null && canSeeEnemy == true && closest == true && EnemyTarget == enemy)
-                                Debug.DrawRay(transform.position, EnemyTarget.transform.position - transform.position, Color.black);
 
 
                             //target = enemy;
                         }
                     }
                 }
+                /*
+                if (canSeeEnemy == false)
+                    Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.white);
+                */
 
-                
 
+
+                if (EnemyTarget != null)
+                {
+                    RaycastHit2D hit3 = Physics2D.Raycast(transform.position, EnemyTarget.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
+                    if (hit3.collider.gameObject.tag == "EnemyMelee" || hit3.collider.gameObject.tag == "Enemy" || hit3.collider.gameObject.tag == "Colony")
+                    {
+                        canSeeEnemy = true;
+                        Debug.DrawRay(transform.position, EnemyTarget.transform.position - transform.position, Color.red);
+                    }
+                    else 
+                    {
+                        canSeeEnemy = false;
+                    }
+                }
+                /*
+                if (EnemyTarget != null && canSeeEnemy == true && closest == false)
+                    Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.black);
+                */
 
 
 
