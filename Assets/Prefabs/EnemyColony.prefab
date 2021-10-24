@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 916351143226452417}
   - component: {fileID: 1270911830247238667}
   - component: {fileID: 3083916138999727803}
+  - component: {fileID: 2359986598006495498}
   m_Layer: 7
   m_Name: ColonyBoss
   m_TagString: Colony
@@ -212,6 +213,18 @@ MonoBehaviour:
   HitNoise: Hit
   ContactNoise: Hit
   isObjectEnemy: 1
+--- !u!114 &2359986598006495498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301218391734249403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e74e3615ce8efa49984f414aedbecbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &949814357736792046
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +387,7 @@ GameObject:
   - component: {fileID: 330715470829538497}
   - component: {fileID: 3425390191241164782}
   - component: {fileID: 6843351295390633571}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: SpawnPointSprite2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +554,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2950618480928158035}
   - component: {fileID: 6110855666367488409}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,7 +602,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7090437538552658969}
   - component: {fileID: 4495945476720250967}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: SpawnPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -637,7 +650,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4774610320342833391}
   - component: {fileID: 7292532041723830432}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: SpawnPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +699,7 @@ GameObject:
   - component: {fileID: 5705368311751247107}
   - component: {fileID: 1284889807212252317}
   - component: {fileID: 7660949070627372406}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: SpawnPointSprite1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -818,7 +831,7 @@ GameObject:
   - component: {fileID: 245884827038734372}
   - component: {fileID: 4212574405530752844}
   - component: {fileID: 2776325051349927051}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: SpawnPointSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

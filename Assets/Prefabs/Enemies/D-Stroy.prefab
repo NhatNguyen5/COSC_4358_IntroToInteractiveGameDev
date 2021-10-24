@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 525723374113895263}
   - component: {fileID: 6705791291405109900}
   - component: {fileID: 6076571106673511756}
+  - component: {fileID: 3650654343970274161}
   m_Layer: 7
   m_Name: D-Stroy
   m_TagString: Enemy
@@ -206,7 +207,7 @@ MonoBehaviour:
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 83072
+    m_Bits: 87168
   unstuckTime: 0
   shootdistance: 10
   distancefromplayer: 0
@@ -293,6 +294,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CategoryHash: -1.5884546e-17
   m_labelHash: -0.025054464
+--- !u!114 &3650654343970274161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525723374113895252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e74e3615ce8efa49984f414aedbecbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &525723374247093095
 GameObject:
   m_ObjectHideFlags: 0

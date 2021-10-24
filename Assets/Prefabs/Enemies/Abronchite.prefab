@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8080074651266125677}
   - component: {fileID: 8486430893350191487}
   - component: {fileID: 1254665523035056585}
+  - component: {fileID: -3226408582317586282}
   m_Layer: 7
   m_Name: Abronchite
   m_TagString: EnemyMelee
@@ -184,7 +185,7 @@ MonoBehaviour:
   isDead: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 83072
+    m_Bits: 87168
   Drops:
   - drop: {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
     DropPercentage: 100
@@ -245,3 +246,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CategoryHash: -1.0464013e+38
   m_labelHash: -0.025054464
+--- !u!114 &-3226408582317586282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8080074651266125678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e74e3615ce8efa49984f414aedbecbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

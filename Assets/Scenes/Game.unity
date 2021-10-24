@@ -2856,7 +2856,7 @@ GameObject:
   - component: {fileID: 490421929}
   - component: {fileID: 490421933}
   - component: {fileID: 490421934}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ArmorZoneThingy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8397,6 +8397,10 @@ PrefabInstance:
     - target: {fileID: 2993377497966877745, guid: ba08ef7a32f2b1644808f14a8ca380b8, type: 3}
       propertyPath: m_Name
       value: Immunity (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2993377497966877745, guid: ba08ef7a32f2b1644808f14a8ca380b8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2993377497966877746, guid: ba08ef7a32f2b1644808f14a8ca380b8, type: 3}
       propertyPath: Slot
@@ -82735,12 +82739,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 90327625}
+  EnemyTarget: {fileID: 0}
   nextWaypointDistance: 3
   DamageText: {fileID: 0}
   contactDamage: 0
   HP: 100
   speed: 375
-  stoppingDistance: 5
+  stoppingDistance: 10
   retreatDistance: 0
   followPlayer: 0
   retreat: 0
@@ -82748,8 +82753,8 @@ MonoBehaviour:
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 0
-  shootdistance: 0
+    m_Bits: 91648
+  shootdistance: 16
   distancefromplayer: 0
   circleRadius: 2
   timeTillNextMove: 0.5
@@ -82771,7 +82776,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475563013}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.47, y: 35.08, z: 0}
+  m_LocalPosition: {x: -38.31, y: 6.69, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 383400720}
@@ -84445,11 +84450,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7674072803767978071, guid: 004f8d1e3c373fe45bed69bfd2079751, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -40.03
+      value: -44.68
       objectReference: {fileID: 0}
     - target: {fileID: 7674072803767978071, guid: 004f8d1e3c373fe45bed69bfd2079751, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.45
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7674072803767978071, guid: 004f8d1e3c373fe45bed69bfd2079751, type: 3}
       propertyPath: m_LocalPosition.z
@@ -84723,6 +84728,10 @@ PrefabInstance:
     - target: {fileID: 8725768441343987252, guid: 9f449af8056b6764aa76953d39063aee, type: 3}
       propertyPath: m_Name
       value: Denaturator
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725768441343987252, guid: 9f449af8056b6764aa76953d39063aee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8725768441343987255, guid: 9f449af8056b6764aa76953d39063aee, type: 3}
       propertyPath: Slot
@@ -87899,7 +87908,7 @@ PrefabInstance:
       objectReference: {fileID: 645740920}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: stats.HP
-      value: 200
+      value: 99999
       objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: CamFollow
@@ -87923,7 +87932,7 @@ PrefabInstance:
       objectReference: {fileID: 1783163442}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: stats.maxHP
-      value: 200
+      value: 99999
       objectReference: {fileID: 0}
     - target: {fileID: 3517825292825441643, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
       propertyPath: enemyManager
