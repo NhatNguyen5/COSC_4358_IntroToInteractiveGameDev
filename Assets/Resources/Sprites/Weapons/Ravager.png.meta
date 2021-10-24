@@ -11,6 +11,15 @@ TextureImporter:
   - first:
       213: 7716055114155542885
     second: Ravanger_2
+  - first:
+      213: -4677365148177797994
+    second: Ravager_0
+  - first:
+      213: -1225357069053358456
+    second: Ravager_1
+  - first:
+      213: 2356973917655575647
+    second: Ravager_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,7 +109,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ravanger_0
+      name: Ravager_0
       rect:
         serializedVersion: 2
         x: 0
@@ -114,14 +123,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f0943ca7bc2894a0800000000000000
-      internalID: -6586465287649586955
+      spriteID: 69ce112fd29a61fb0800000000000000
+      internalID: -4677365148177797994
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ravanger_1
+      name: Ravager_1
       rect:
         serializedVersion: 2
         x: 0
@@ -135,14 +144,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b892e1ff3b7c19860800000000000000
-      internalID: 7535023227460790667
+      spriteID: 88e8f08ec38aefee0800000000000000
+      internalID: -1225357069053358456
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ravanger_2
+      name: Ravager_2
       rect:
         serializedVersion: 2
         x: 0
@@ -156,8 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 569c392be3fe41b60800000000000000
-      internalID: 7716055114155542885
+      spriteID: f5ca8b25a47a5b020800000000000000
+      internalID: 2356973917655575647
       vertices: []
       indices: 
       edges: []

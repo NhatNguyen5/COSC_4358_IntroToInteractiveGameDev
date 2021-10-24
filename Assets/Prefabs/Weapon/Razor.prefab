@@ -104,7 +104,7 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2106447965007306751, guid: 2a1e1e0f5b937d84085b51dfc38d8df6, type: 3}
+  m_Sprite: {fileID: 391014363293730182, guid: 5ec99990ef043fd49b43d89b19bac358, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,8 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slot: 5
-  WeapnIcon: {fileID: -879219621541083018, guid: 2a1e1e0f5b937d84085b51dfc38d8df6, type: 3}
-  IconScale: 1
+  WeapnIcon: {fileID: -3159585991783005596, guid: 5ec99990ef043fd49b43d89b19bac358, type: 3}
+  IconScale: 0.9
   WeaponLabel: RAZOR
   WeaponAnim: {fileID: 8233479261077972574}
   firePoint: {fileID: 8233479260205025661}

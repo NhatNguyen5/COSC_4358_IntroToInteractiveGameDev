@@ -104,7 +104,7 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4551864306911932953, guid: b6ca2c4352fd972479f25cb0663443c9, type: 3}
+  m_Sprite: {fileID: -4677365148177797994, guid: 8626e924457531e429260f6d363728f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,8 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slot: 6
-  WeapnIcon: {fileID: 5351819606173405884, guid: b6ca2c4352fd972479f25cb0663443c9, type: 3}
-  IconScale: 1
+  WeapnIcon: {fileID: 2356973917655575647, guid: 8626e924457531e429260f6d363728f4, type: 3}
+  IconScale: 0.9
   WeaponLabel: RAVAGER
   WeaponAnim: {fileID: 2314615936899718398}
   firePoint: {fileID: 2314615935489913821}
