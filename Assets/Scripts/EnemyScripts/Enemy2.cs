@@ -134,78 +134,78 @@ public class Enemy2 : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-
-        
-        if (knockback == true)
+        if (GlobalPlayerVariables.EnableAI)
         {
-
-            //Debug.Log("KNOCKBACK");
-            if (hitPlayer == false)
-                transform.position = Vector2.MoveTowards(transform.position, player.position, -knockbackForce * speed * Time.deltaTime);
-            else
+            if (knockback == true)
             {
-                //Vector2 Offset = player.position;
 
-                transform.position = Vector2.MoveTowards(transform.position, randPos, RetreatSpeed * speed * Time.deltaTime);
-            }
-            getDirection(player);
+                //Debug.Log("KNOCKBACK");
+                if (hitPlayer == false)
+                    transform.position = Vector2.MoveTowards(transform.position, player.position, -knockbackForce * speed * Time.deltaTime);
+                else
+                {
+                    //Vector2 Offset = player.position;
 
-        }
-        else
-        {
-
-            if (Vector2.Distance(transform.position, player.position) > stoppingDistance && followPlayer == true) //follow player
-            {
-                easeOM = 1;
-                transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime * easeOM);
-                //go to position 
+                    transform.position = Vector2.MoveTowards(transform.position, randPos, RetreatSpeed * speed * Time.deltaTime);
+                }
                 getDirection(player);
 
-                //Debug.Log(transform);
             }
             else
             {
-                if (randomMovement == false)
-                    transform.position = this.transform.position;
-                else //RANDOM MOVEMENT
+
+                if (Vector2.Distance(transform.position, player.position) > stoppingDistance && followPlayer == true) //follow player
                 {
-                    float disToRandPos = (new Vector2(transform.position.x, transform.position.y) - randPos).magnitude;
-                    if (disToRandPos < speed)
-                    {
-                        if (easeOM > 0)
-                            easeOM -= Time.fixedDeltaTime;
-                        else
-                            easeOM = 0;
-                    }
-                    else
-                    {
-                        easeOM = 1;
-                    }
-                    //Debug.Log(easeOM);
-                    //Debug.Log("RANDOMPOS");
-                    if (reachedDestination == false)
-                        transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime * easeOM);
-                    else
-                        transform.position = this.transform.position;
+                    easeOM = 1;
+                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime * easeOM);
+                    //go to position 
+                    getDirection(player);
 
-                    if (transform.position.x == randPos.x && transform.position.y == randPos.y)
-                    {
-                        reachedDestination = true;
-                    }
-                    direction = randPos;
-                    a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
+                    //Debug.Log(transform);
                 }
-            }
-            /*
-            else if (Vector2.Distance(transform.position, player.position) < retreatDistance && retreat == true) //retreat
-            {
-                reachedDestination = true;
-                transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
-            }
-            */
+                else
+                {
+                    if (randomMovement == false)
+                        transform.position = this.transform.position;
+                    else //RANDOM MOVEMENT
+                    {
+                        float disToRandPos = (new Vector2(transform.position.x, transform.position.y) - randPos).magnitude;
+                        if (disToRandPos < speed)
+                        {
+                            if (easeOM > 0)
+                                easeOM -= Time.fixedDeltaTime;
+                            else
+                                easeOM = 0;
+                        }
+                        else
+                        {
+                            easeOM = 1;
+                        }
+                        //Debug.Log(easeOM);
+                        //Debug.Log("RANDOMPOS");
+                        if (reachedDestination == false)
+                            transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime * easeOM);
+                        else
+                            transform.position = this.transform.position;
 
+                        if (transform.position.x == randPos.x && transform.position.y == randPos.y)
+                        {
+                            reachedDestination = true;
+                        }
+                        direction = randPos;
+                        a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+                    }
+                }
+                /*
+                else if (Vector2.Distance(transform.position, player.position) < retreatDistance && retreat == true) //retreat
+                {
+                    reachedDestination = true;
+                    transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+                }
+                */
+
+            }
         }
     }
 

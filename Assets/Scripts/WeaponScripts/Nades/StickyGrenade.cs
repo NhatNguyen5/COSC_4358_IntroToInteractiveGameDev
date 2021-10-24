@@ -130,7 +130,7 @@ public class StickyGrenade : MonoBehaviour
     private IEnumerator countDown()
     {
         yield return new WaitForSeconds(timer);
-        Instantiate(greExpl, transform.position, Quaternion.identity);
+        Instantiate(greExpl, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }

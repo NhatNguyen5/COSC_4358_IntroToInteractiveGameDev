@@ -6,6 +6,7 @@ public class GrenadeExplosion : MonoBehaviour
 {
     public float explodeRadius;
     public float ExplodeDamage;
+    public float explodeLifetime;
 
     private bool isWaiting = false;
     private CircleCollider2D cc2d;
@@ -57,7 +58,8 @@ public class GrenadeExplosion : MonoBehaviour
         tempPS.parent = null;
         Destroy(tempPS.gameObject, tempPS.GetComponent<ParticleSystem>().main.duration);
 
-        Destroy(gameObject);
+        Destroy(gameObject, explodeLifetime);
+        //Destroy(gameObject);
     }
 
 }

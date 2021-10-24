@@ -171,27 +171,30 @@ public class Globin : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(player!=null)
-            distancefromplayer = Vector2.Distance(rb.position, player.position);
-
-
-
-        if (distancefromplayer >= stoppingDistance || lineofsight == false)
+        if (GlobalPlayerVariables.EnableAI)
         {
-            Astar();
-        }
-        else //RANDOM MOVEMENT
-        {
-            if (reachedDestination == false)
+            if (player != null)
+                distancefromplayer = Vector2.Distance(rb.position, player.position);
+
+
+
+            if (distancefromplayer >= stoppingDistance || lineofsight == false)
             {
-                Vector2 direction = (randPos - rb.position).normalized;
-                Vector2 force = direction * speed * Time.deltaTime;
-                rb.AddForce(force);
-                //transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime); //need to make it where it walks in that direction
+                Astar();
             }
-            if (transform.position.x == randPos.x && transform.position.y == randPos.y)
+            else //RANDOM MOVEMENT
             {
-                reachedDestination = true;
+                if (reachedDestination == false)
+                {
+                    Vector2 direction = (randPos - rb.position).normalized;
+                    Vector2 force = direction * speed * Time.deltaTime;
+                    rb.AddForce(force);
+                    //transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime); //need to make it where it walks in that direction
+                }
+                if (transform.position.x == randPos.x && transform.position.y == randPos.y)
+                {
+                    reachedDestination = true;
+                }
             }
         }
     }
@@ -209,48 +212,50 @@ public class Globin : MonoBehaviour
 
     private void Update()
     {
-        if (player != null && player != this.transform)
+        if (GlobalPlayerVariables.EnableAI)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
-            Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
-            //var rayDirection = player.position - transform.position;
-            //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
-            if (hit.collider.gameObject.tag == "Player")
+            if (player != null && player != this.transform)
             {
-                lineofsight = true;
-                Debug.Log("Player is Visable");
-                // enemy can see the player!
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
+                Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
+                //var rayDirection = player.position - transform.position;
+                //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
+                if (hit.collider.gameObject.tag == "Player")
+                {
+                    lineofsight = true;
+                    Debug.Log("Player is Visable");
+                    // enemy can see the player!
 
-                //Debug.Log("Player is Visable");
+                    //Debug.Log("Player is Visable");
+                }
+                else
+                {
+                    lineofsight = false;
+                    Debug.Log("Player is NOT Visable");
+                }
+
+
+                if (NextMoveCoolDown <= 0)
+                {
+                    //Vector2 temp = randPos;
+                    randomPos();
+                    //facing = Mathf.Atan2((temp - randPos).x, (temp - randPos).y) * Mathf.Rad2Deg;
+                }
+                NextMoveCoolDown -= Time.deltaTime;
+
+
+
+
+
+
+
+
+
+
             }
-            else
-            {
-                lineofsight = false;
-                Debug.Log("Player is NOT Visable");
-            }
-
-
-            if (NextMoveCoolDown <= 0)
-            {
-                //Vector2 temp = randPos;
-                randomPos();
-                //facing = Mathf.Atan2((temp - randPos).x, (temp - randPos).y) * Mathf.Rad2Deg;
-            }
-            NextMoveCoolDown -= Time.deltaTime;
-
-
-
-
-
-
-
-
-
-
         }
+
+
+
     }
-
-
-
-
 }

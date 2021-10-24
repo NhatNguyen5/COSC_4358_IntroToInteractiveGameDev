@@ -140,72 +140,75 @@ public class Enemy1 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        distancefromplayer = Vector2.Distance(transform.position, player.position);
-        if (knockback == true)
+        if (GlobalPlayerVariables.EnableAI)
         {
+            distancefromplayer = Vector2.Distance(transform.position, player.position);
+            if (knockback == true)
+            {
 
-            //Debug.Log("KNOCKBACK");
-            if (unstuck == false)
-                transform.position = Vector2.MoveTowards(transform.position, player.position, -knockbackForce * speed * Time.deltaTime);
+                //Debug.Log("KNOCKBACK");
+                if (unstuck == false)
+                    transform.position = Vector2.MoveTowards(transform.position, player.position, -knockbackForce * speed * Time.deltaTime);
+                else
+                {
+                    //Debug.Log("COMMENCING UNSTUCK");
+                    transform.position = Vector2.MoveTowards(transform.position, randPos, -speed * Time.deltaTime);
+
+                }
+                getDirection(player);
+
+            }
             else
             {
-                //Debug.Log("COMMENCING UNSTUCK");
-                transform.position = Vector2.MoveTowards(transform.position, randPos, -speed * Time.deltaTime);
 
-            }
-            getDirection(player);
-
-        }
-        else
-        {
-
-            if (distancefromplayer >= stoppingDistance && followPlayer == true && lineofsight == true) //follow player
-            {
-                reachedDestination = true;
-                easeOM = 1;
-                transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-                getDirection(player);
-            }
-            else if ((distancefromplayer >= retreatDistance) || GlobalPlayerVariables.GameOver == true || lineofsight == false) //stop /*(Vector2.Distance(transform.position, player.position) <= stoppingDistance && */ 
-            {
-                if (randomMovement == false)
-                    transform.position = this.transform.position;
-                else //RANDOM MOVEMENT
+                if (distancefromplayer >= stoppingDistance && followPlayer == true && lineofsight == true) //follow player
                 {
-
-                    float disToRandPos = (new Vector2(transform.position.x, transform.position.y) - randPos).magnitude;
-                    if (disToRandPos < speed)
-                    {
-                        if (easeOM > 0)
-                            easeOM -= Time.fixedDeltaTime;
-                        else
-                            easeOM = 0;
-                    }
-                    else
-                    {
-                        easeOM = 1;
-                    }
-
-                    if (reachedDestination == false)
-                        transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime * easeOM);
-                    else
-                        transform.position = this.transform.position;
-
-                    if (transform.position.x == randPos.x && transform.position.y == randPos.y)
-                    {
-                        reachedDestination = true;
-                    }
-                    direction = randPos;
-                    //a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                    reachedDestination = true;
+                    easeOM = 1;
+                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                    getDirection(player);
                 }
-            }
-            else if (distancefromplayer <= retreatDistance && retreat == true && lineofsight == true) //retreat
-            {
-                reachedDestination = true;
-                transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
-                getDirection(player);
-            }
+                else if ((distancefromplayer >= retreatDistance) || GlobalPlayerVariables.GameOver == true || lineofsight == false) //stop /*(Vector2.Distance(transform.position, player.position) <= stoppingDistance && */ 
+                {
+                    if (randomMovement == false)
+                        transform.position = this.transform.position;
+                    else //RANDOM MOVEMENT
+                    {
 
+                        float disToRandPos = (new Vector2(transform.position.x, transform.position.y) - randPos).magnitude;
+                        if (disToRandPos < speed)
+                        {
+                            if (easeOM > 0)
+                                easeOM -= Time.fixedDeltaTime;
+                            else
+                                easeOM = 0;
+                        }
+                        else
+                        {
+                            easeOM = 1;
+                        }
+
+                        if (reachedDestination == false)
+                            transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime * easeOM);
+                        else
+                            transform.position = this.transform.position;
+
+                        if (transform.position.x == randPos.x && transform.position.y == randPos.y)
+                        {
+                            reachedDestination = true;
+                        }
+                        direction = randPos;
+                        //a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                    }
+                }
+                else if (distancefromplayer <= retreatDistance && retreat == true && lineofsight == true) //retreat
+                {
+                    reachedDestination = true;
+                    transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+                    getDirection(player);
+                }
+
+            }
         }
     }
 
@@ -219,96 +222,99 @@ public class Enemy1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GlobalPlayerVariables.GameOver != false)
+        if (GlobalPlayerVariables.EnableAI)
         {
-            player = this.transform;
-        }
-        knockbacktime -= Time.deltaTime;
-        if (knockbacktime <= 0)
-        {
-            knockbacktime = 0;
-            knockback = false;
-            unstuck = false;
-        }
-        if (player != null && player != this.transform)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
-            //var rayDirection = player.position - transform.position;
-            //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
-            if (hit.collider.gameObject.tag == "Player")
+            if (GlobalPlayerVariables.GameOver != false)
             {
-                lineofsight = true;
-                //Debug.Log("Player is Visable");
-                // enemy can see the player!
-
-                //Debug.Log("Player is Visable");
+                player = this.transform;
             }
-            else
+            knockbacktime -= Time.deltaTime;
+            if (knockbacktime <= 0)
             {
-                lineofsight = false;
-                //Debug.Log("Player is NOT Visable");
+                knockbacktime = 0;
+                knockback = false;
+                unstuck = false;
             }
-
-        }
-
-        if (lineofsight == true && GlobalPlayerVariables.GameOver == false && distancefromplayer <= shootdistance)
-        {
-
-            if (timeBtwShots <= 0)
+            if (player != null && player != this.transform)
             {
-
-                if (burstFire == true)
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
+                //var rayDirection = player.position - transform.position;
+                //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
+                if (hit.collider.gameObject.tag == "Player")
                 {
-                    burstTime -= Time.deltaTime;
-                    if (TimesShot < timesToShoot)
-                    {
-                        if (burstTime < 0)
-                        {
-                            TimesShot++;
-                            burst();
-                        }
+                    lineofsight = true;
+                    //Debug.Log("Player is Visable");
+                    // enemy can see the player!
 
+                    //Debug.Log("Player is Visable");
+                }
+                else
+                {
+                    lineofsight = false;
+                    //Debug.Log("Player is NOT Visable");
+                }
+
+            }
+
+            if (lineofsight == true && GlobalPlayerVariables.GameOver == false && distancefromplayer <= shootdistance)
+            {
+
+                if (timeBtwShots <= 0)
+                {
+
+                    if (burstFire == true)
+                    {
+                        burstTime -= Time.deltaTime;
+                        if (TimesShot < timesToShoot)
+                        {
+                            if (burstTime < 0)
+                            {
+                                TimesShot++;
+                                burst();
+                            }
+
+                        }
+                        else
+                        {
+                            TimesShot = 0;
+                            variation();
+                        }
                     }
                     else
                     {
-                        TimesShot = 0;
-                        variation();
+                        shoot();
                     }
                 }
                 else
                 {
-                    shoot();
+                    timeBtwShots -= Time.deltaTime;
                 }
+
+                if (NextMoveCoolDown <= 0 && reachedDestination == true)
+                {
+                    //Vector2 temp = randPos;
+                    randomPos();
+                    //facing = Mathf.Atan2((temp - randPos).x, (temp - randPos).y) * Mathf.Rad2Deg;
+                }
+                NextMoveCoolDown -= Time.deltaTime;
             }
             else
             {
-                timeBtwShots -= Time.deltaTime;
+                if (NextMoveCoolDown <= 0)
+                {
+                    Vector2 temp = randPos;
+                    randomPos();
+                    facing = Mathf.Atan2((temp - randPos).x, (temp - randPos).y) * Mathf.Rad2Deg;
+                }
+                NextMoveCoolDown -= Time.deltaTime;
             }
-
-            if (NextMoveCoolDown <= 0 && reachedDestination == true)
+            if ((lineofsight && distancefromplayer <= shootdistance))
             {
-                //Vector2 temp = randPos;
-                randomPos();
-                //facing = Mathf.Atan2((temp - randPos).x, (temp - randPos).y) * Mathf.Rad2Deg;
+                facing = transform.Find("EnemyAim").GetComponent<EnemyWeapon>().AimDir;
             }
-            NextMoveCoolDown -= Time.deltaTime;
+            //Debug.Log(lineofsight + " " +facing);
+            Animate(facing);
         }
-        else
-        {
-            if (NextMoveCoolDown <= 0)
-            {
-                Vector2 temp = randPos;
-                randomPos();
-                facing = Mathf.Atan2((temp - randPos).x, (temp - randPos).y) * Mathf.Rad2Deg;
-            }
-            NextMoveCoolDown -= Time.deltaTime;
-        }
-        if((lineofsight && distancefromplayer <= shootdistance))
-        {
-            facing = transform.Find("EnemyAim").GetComponent<EnemyWeapon>().AimDir;
-        }
-        //Debug.Log(lineofsight + " " +facing);
-        Animate(facing);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -2,18 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LoadingScreenScript : MonoBehaviour
 {
+    public Image ProgressBar;
+    public string SceneName;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        StartCoroutine(LoadAsyncOperation());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator LoadAsyncOperation()
     {
-        
+        AsyncOperation gameLevel = SceneManager.LoadSceneAsync(SceneName);
+        while (gameLevel.progress < 1)
+        {
+            ProgressBar.fillAmount = gameLevel.progress;
+            yield return new WaitForEndOfFrame();
+        }
     }
 }
