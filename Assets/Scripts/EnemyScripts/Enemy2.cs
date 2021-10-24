@@ -10,6 +10,7 @@ public class Enemy2 : MonoBehaviour
     [System.Serializable]
     public struct ItemDrops
     {
+        public bool isProtein;
         public GameObject drop;
         public float DropPercentage;
         public int NumOfDrop;
@@ -91,6 +92,7 @@ public class Enemy2 : MonoBehaviour
 
     [Header("Drops")]
     public ItemDrops[] Drops;
+    public GameObject[] Currency;
 
     [Header("SkinModule")]
     [SerializeField]
@@ -461,8 +463,49 @@ public class Enemy2 : MonoBehaviour
             {
                 if (Random.Range(0, 100) <= id.DropPercentage)
                 {
-                    for (int i = 0; i < id.NumOfDrop; i++)
-                        Instantiate(id.drop, transform.position, Quaternion.identity);
+                    if (id.isProtein == false)
+                    {
+                        for (int i = 0; i < id.NumOfDrop; i++)
+                            Instantiate(id.drop, transform.position, Quaternion.identity);
+                    }
+                    else if (id.isProtein == true)
+                    {
+                        // if(id.NumOfDrop % 10 != 0)
+                        //Instantiate(Currency[0], transform.position, Quaternion.identity);
+                        int ones = 0;
+                        int tens = 0;
+                        int hundy = 0;
+                        int thous = 0;
+                        int tenthous = 0;
+
+                        ones = id.NumOfDrop % 10;
+                        for (int i = 0; i < ones; i++)
+                        {
+                            Instantiate(Currency[0], transform.position, Quaternion.identity);
+                        }
+                        tens = id.NumOfDrop / 10 % 10;
+                        for (int i = 0; i < tens; i++)
+                        {
+                            Instantiate(Currency[1], transform.position, Quaternion.identity);
+                        }
+                        hundy = id.NumOfDrop / 100 % 10;
+                        for (int i = 0; i < hundy; i++)
+                        {
+                            Instantiate(Currency[2], transform.position, Quaternion.identity);
+                        }
+                        thous = id.NumOfDrop / 1000 % 10;
+                        for (int i = 0; i < thous; i++)
+                        {
+                            Instantiate(Currency[3], transform.position, Quaternion.identity);
+                        }
+                        tenthous = id.NumOfDrop / 10000 % 10;
+                        for (int i = 0; i < tenthous; i++)
+                        {
+                            Instantiate(Currency[4], transform.position, Quaternion.identity);
+                        }
+                    }
+
+
                 }
             }
             if (transform.Find("StickyGrenade(Clone)") != null)

@@ -186,18 +186,28 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 83072
   Drops:
-  - drop: {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
+  - isProtein: 1
+    drop: {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
     DropPercentage: 100
     NumOfDrop: 2
-  - drop: {fileID: 2056935271745837854, guid: 9729f65a98d9dd14b86e888222ffbcbc, type: 3}
+  - isProtein: 0
+    drop: {fileID: 2056935271745837854, guid: 9729f65a98d9dd14b86e888222ffbcbc, type: 3}
     DropPercentage: 5
     NumOfDrop: 1
-  - drop: {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
+  - isProtein: 0
+    drop: {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
     DropPercentage: 50
     NumOfDrop: 1
-  - drop: {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
+  - isProtein: 0
+    drop: {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
     DropPercentage: 50
     NumOfDrop: 1
+  Currency:
+  - {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
+  - {fileID: 8493335925642168428, guid: a7710005c5b967549a684aa3f7ff04f4, type: 3}
+  - {fileID: 6945996946943777615, guid: e163425566a083b428b0bd23743d338d, type: 3}
+  - {fileID: 6662930850099418146, guid: 60e2807eca38f6748a71871b39003466, type: 3}
+  - {fileID: 1218887535022631140, guid: a9fff5c94023816449f11c7055169929, type: 3}
   spriteLibrary: {fileID: 8486430893350191487}
   targetResolver: {fileID: 1254665523035056585}
   targetCategory: Abronchite Skin Library Asset
