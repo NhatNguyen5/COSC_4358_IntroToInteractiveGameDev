@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4266070236795663617
+--- !u!1 &2591568960697854573
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4266070236795663618}
+  - component: {fileID: 2591568960697854574}
   m_Layer: 9
   m_Name: FirePoint
   m_TagString: Untagged
@@ -16,21 +16,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4266070236795663618
+--- !u!4 &2591568960697854574
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4266070236795663617}
+  m_GameObject: {fileID: 2591568960697854573}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.545, y: 0.07, z: 0}
+  m_LocalPosition: {x: 0.8, y: 0.045, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4266070238205467181}
+  m_Father: {fileID: 2591568961033913665}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4266070238205467168
+--- !u!1 &2591568961033913676
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -38,39 +38,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4266070238205467181}
-  - component: {fileID: 4266070238205467180}
-  - component: {fileID: 4266070238205467171}
-  - component: {fileID: 4266070238205467169}
+  - component: {fileID: 2591568961033913665}
+  - component: {fileID: 2591568961033913664}
+  - component: {fileID: 2591568961033913679}
+  - component: {fileID: 2591568961033913677}
   m_Layer: 9
-  m_Name: Augment
+  m_Name: Zyzz Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4266070238205467181
+--- !u!4 &2591568961033913665
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4266070238205467168}
+  m_GameObject: {fileID: 2591568961033913676}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: -32.334263, y: 13.5218935, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4266070236795663618}
+  - {fileID: 2591568960697854574}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4266070238205467180
+--- !u!212 &2591568961033913664
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4266070238205467168}
+  m_GameObject: {fileID: 2591568961033913676}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -104,7 +104,7 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4272981163490604987, guid: 95738faa47a3a7f4a9804fee207dd9cd, type: 3}
+  m_Sprite: {fileID: 5761209578947959585, guid: 7d187143a9437d040b84b0f8886808b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,62 +115,62 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4266070238205467171
+--- !u!114 &2591568961033913679
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4266070238205467168}
+  m_GameObject: {fileID: 2591568961033913676}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd3c6430244b8fc4ba9a98c50642631d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Slot: 2
-  WeapnIcon: {fileID: 4396372839767545202, guid: 95738faa47a3a7f4a9804fee207dd9cd, type: 3}
-  IconScale: 1
-  WeaponLabel: AUGMENT
-  WeaponAnim: {fileID: 4266070238205467169}
-  firePoint: {fileID: 4266070236795663618}
-  bulletPrefab: {fileID: 5172911503813449251, guid: b60735ba69133254091e7ccf305c7aab, type: 3}
-  delay: 0.08
-  spread: 4
-  amountOfShots: 1
-  ADSRange: 16
+  Slot: 9
+  WeapnIcon: {fileID: -5249537578828706783, guid: 7d187143a9437d040b84b0f8886808b7, type: 3}
+  IconScale: 0.9
+  WeaponLabel: ZYZZ CANNON
+  WeaponAnim: {fileID: 2591568961033913677}
+  firePoint: {fileID: 2591568960697854574}
+  bulletPrefab: {fileID: 3578575317254583761, guid: b016374ab55e7474f95fbc7c967186b3, type: 3}
+  delay: 1.6
+  spread: 20
+  amountOfShots: 20
+  ADSRange: 5
   ADSSpeed: 10
-  weaponWeight: 0.31
-  bloom: 1
-  bStartRange: 0.75
-  bEndRange: 3.75
-  increaseBloom: 0.21
-  bloomResetTimer: 0.28
-  critRate: 0.19
+  weaponWeight: 0.46
+  bloom: 0
+  bStartRange: 5
+  bEndRange: 15
+  increaseBloom: 1
+  bloomResetTimer: 0.8
+  critRate: 0.5
   critDamage: 3.4
-  explodingBullets: 0
+  explodingBullets: 1
   pierce: 0
-  targetsToPierce: 0
-  dropOffPerTarget: 0
-  bulletSpeed: 55
-  bulletDamage: 24
-  bullletKnockBackForce: 0.28
-  bulletDamageDropOff: 0.17
-  timeToDropDmg: 0.38
+  targetsToPierce: 20
+  dropOffPerTarget: 0.2
+  bulletSpeed: 35
+  bulletDamage: 90
+  bullletKnockBackForce: 6.5
+  bulletDamageDropOff: 0.4
+  timeToDropDmg: 0.08
   burstFire: 0
-  timeBtwBurst: 0.07
-  timesToShoot: 3
-  maxAmmoInClip: 30
-  reloadTime: 1.33
-  CostPerBullet: 3
+  timeBtwBurst: 0.01
+  timesToShoot: 20
+  maxAmmoInClip: 2
+  reloadTime: 0.9
+  CostPerBullet: 50
   IsRightArm: 0
---- !u!95 &4266070238205467169
+--- !u!95 &2591568961033913677
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4266070238205467168}
+  m_GameObject: {fileID: 2591568961033913676}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 81abcd8ca36b91345bae5432ea35e8f6, type: 2}
