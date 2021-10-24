@@ -10,10 +10,23 @@ public class Enemy2 : MonoBehaviour
     [System.Serializable]
     public struct ItemDrops
     {
-        public bool isProtein;
         public GameObject drop;
         public float DropPercentage;
         public int NumOfDrop;
+        [Header("Generalized Conversion")]
+        public bool doConvert;
+        public GameObject[] Currency;
+        public int[] numbers;
+
+        public void convert()
+        {
+            int multten = 1;
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                numbers[i] = NumOfDrop / multten % 10;
+                multten *= 10;
+            }
+        }
     }
 
     public GameObject DamageText;
@@ -92,7 +105,6 @@ public class Enemy2 : MonoBehaviour
 
     [Header("Drops")]
     public ItemDrops[] Drops;
-    public GameObject[] Currency;
 
     [Header("SkinModule")]
     [SerializeField]
@@ -463,45 +475,20 @@ public class Enemy2 : MonoBehaviour
             {
                 if (Random.Range(0, 100) <= id.DropPercentage)
                 {
-                    if (id.isProtein == false)
+                    if (id.doConvert == false)
                     {
                         for (int i = 0; i < id.NumOfDrop; i++)
                             Instantiate(id.drop, transform.position, Quaternion.identity);
                     }
-                    else if (id.isProtein == true)
+                    else if (id.doConvert == true)
                     {
-                        // if(id.NumOfDrop % 10 != 0)
-                        //Instantiate(Currency[0], transform.position, Quaternion.identity);
-                        int ones = 0;
-                        int tens = 0;
-                        int hundy = 0;
-                        int thous = 0;
-                        int tenthous = 0;
-
-                        ones = id.NumOfDrop % 10;
-                        for (int i = 0; i < ones; i++)
+                        id.convert();
+                        for (int i = 0; i < id.Currency.Length; i++)
                         {
-                            Instantiate(Currency[0], transform.position, Quaternion.identity);
-                        }
-                        tens = id.NumOfDrop / 10 % 10;
-                        for (int i = 0; i < tens; i++)
-                        {
-                            Instantiate(Currency[1], transform.position, Quaternion.identity);
-                        }
-                        hundy = id.NumOfDrop / 100 % 10;
-                        for (int i = 0; i < hundy; i++)
-                        {
-                            Instantiate(Currency[2], transform.position, Quaternion.identity);
-                        }
-                        thous = id.NumOfDrop / 1000 % 10;
-                        for (int i = 0; i < thous; i++)
-                        {
-                            Instantiate(Currency[3], transform.position, Quaternion.identity);
-                        }
-                        tenthous = id.NumOfDrop / 10000 % 10;
-                        for (int i = 0; i < tenthous; i++)
-                        {
-                            Instantiate(Currency[4], transform.position, Quaternion.identity);
+                            for (int j = 0; j < id.numbers[i]; j++)
+                            {
+                                Instantiate(id.Currency[i], transform.position, Quaternion.identity);
+                            }
                         }
                     }
 
