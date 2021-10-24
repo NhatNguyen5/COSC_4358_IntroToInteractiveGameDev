@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GlobalPlayerVariables : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class GlobalPlayerVariables : MonoBehaviour
         }
     }
 
+    public static bool EnableAI = false;
+    private float fadeInTime = 1;
+    public RawImage FadeInImg;
 
 
     //SCORE
@@ -147,6 +151,7 @@ public class GlobalPlayerVariables : MonoBehaviour
             Debug.Log("RESET");
             resetStats();
         }
+        StartCoroutine(FadeIn(1));
     }
 
     public void resetStats()
@@ -215,7 +220,6 @@ public class GlobalPlayerVariables : MonoBehaviour
 
     public void Update()
     {
-        
         if (SceneManager.GetActiveScene().name != "Title")
         {
             //Debug.Log(Reserves + " " + MaxReserves);
@@ -225,8 +229,18 @@ public class GlobalPlayerVariables : MonoBehaviour
                 Reserves += Time.deltaTime * rechargeRateMultiplyer;
             }
         }
+        if (fadeInTime > 0)
+            fadeInTime -= Time.deltaTime;
+        if (fadeInTime < 0)
+            fadeInTime = 0;
+        Color temp = new Color(0, 0, 0, fadeInTime);
+        FadeInImg.color = temp;
     }
 
-
+    private IEnumerator FadeIn(float Dur)
+    {
+        yield return new WaitForSeconds(Dur);
+        EnableAI = true;
+    }
 
 }

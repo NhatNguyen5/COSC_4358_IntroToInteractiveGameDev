@@ -28,7 +28,7 @@ public class GrenadeExplosion : MonoBehaviour
         PSEmission = PS.emission;
         PSEmission.rateOverTimeMultiplier *= 100*explodeRadius;
         PSMain = PS.main;
-        //PSMain.startSpeed = explodeRadius;
+        PSMain.startSpeed = 1;
 
         Collider2D[] CaughtObjects = Physics2D.OverlapCircleAll(transform.position, explodeRadius);
         foreach (var CaughtObject in CaughtObjects)
@@ -52,8 +52,11 @@ public class GrenadeExplosion : MonoBehaviour
         tempPS = transform.Find("Particle");
         tempPS.GetComponent<ParticleSystem>().Stop();
         tempPS.parent = null;
-        Destroy(tempPS.gameObject, explodeLifetime);
-        //Destroy(tempPS.gameObject, tempPS.GetComponent<ParticleSystem>().main.duration);
+        Destroy(tempPS.gameObject, tempPS.GetComponent<ParticleSystem>().main.duration);
+        tempPS = transform.Find("Flaring");
+        tempPS.GetComponent<ParticleSystem>().Stop();
+        tempPS.parent = null;
+        Destroy(tempPS.gameObject, tempPS.GetComponent<ParticleSystem>().main.duration);
 
         Destroy(gameObject, explodeLifetime);
         //Destroy(gameObject);

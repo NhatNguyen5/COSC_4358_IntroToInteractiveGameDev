@@ -85,6 +85,8 @@ public class Player : MonoBehaviour
     private LevelUpEff levelUpEff;
     [SerializeField]
     private GameObject levelUpPopUp;
+    [SerializeField]
+    private CameraFollow CamFollow;
 
     //private float currSpeed;
 
@@ -463,6 +465,11 @@ public class Player : MonoBehaviour
                     StartCoroutine(ResetStats(stats.PhizerDuration));
                     StartCoroutine(LeftSlotItemCooldown(stats.PhizerCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown)));
                 }
+            }
+            if(Input.GetKey(KeyCode.M))
+            {
+                
+                Debug.Log("Map");
             }
             actions.SwapWeapon();
             //Debug.DrawRay(stats.Position, stats.Direction, Color.green, 0.1f);

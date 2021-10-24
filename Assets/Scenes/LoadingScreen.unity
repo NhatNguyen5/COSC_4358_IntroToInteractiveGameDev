@@ -309,6 +309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8445f587eb012a42b072ad93c87479f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ProgressBar: {fileID: 2063907402}
+  SceneName: Game
 --- !u!1 &1440493752
 GameObject:
   m_ObjectHideFlags: 0

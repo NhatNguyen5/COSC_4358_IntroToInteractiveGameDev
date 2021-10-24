@@ -18,14 +18,16 @@ public class StickyGrenade : MonoBehaviour
     private CircleCollider2D cc2d;
     private SpriteRenderer spriteRend;
     private Transform explSprite;
-    Coroutine _currentFlashRoutine = null;
+    private float tempTr;
+    public bool landed = false;
+    private float timeElapse = 0;
     /*
     private float throwDistance;
     private Vector2 oldPos;
     private Vector2 newPos;
     private float distanceLeft;
     */
-    private bool stuck = false;
+    public bool stuck = false;
     
 
     private void Start()
@@ -58,6 +60,8 @@ public class StickyGrenade : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        timeElapse += Time.deltaTime;
+        Debug.Log(timer);
         Vector2 GrenadePos = new Vector2(transform.position.x, transform.position.y);
         float distance = (OriPlayerPos - GrenadePos).magnitude;
 
@@ -66,14 +70,27 @@ public class StickyGrenade : MonoBehaviour
             rb.drag = 50;
             rb.velocity = Vector2.zero;
             rb.angularVelocity = 0;
-            
             transform.GetComponent<TrailRenderer>().enabled = false;
+            landed = true;
         }
-        if (_currentFlashRoutine != null)
-            StopCoroutine(_currentFlashRoutine);
-        //_currentFlashRoutine = StartCoroutine(Flash(endColor, secondForOneFlash, maxAlpha, endAlpha, numOfFlash));
-        
 
+        if(stuck || landed)
+        {
+            if(tempTr > 0)
+            {
+                tempTr -= Time.deltaTime/((timer - timeElapse)/timer);
+            }
+            else
+            {
+                tempTr = 0;
+            }
+            if(tempTr == 0)
+            {
+                tempTr = 1;
+            }
+
+            spriteRend.color = new Color(1, 0, 0, 0.25f * tempTr);
+        }
         //Debug.Log(distanceLeft);
     }
 
@@ -113,28 +130,7 @@ public class StickyGrenade : MonoBehaviour
     private IEnumerator countDown()
     {
         yield return new WaitForSeconds(timer);
-        Instantiate(greExpl, transform.position, Quaternion.identity);
+        Instantiate(greExpl, transform.position, transform.rotation);
         Destroy(gameObject);
-    }
-
-    private IEnumerable Flash()
-    {
-        float flashInDuration = SecondForOneFlash / 2;
-        for (float t = 0; t <= flashInDuration; t += Time.deltaTime)
-        {
-            spriteRend.color = new Color(1, 0, 0, Mathf.Lerp(0, 0.25f, t / flashInDuration));
-            yield return null;
-        }
-
-        for (float t = 0; t <= flashInDuration; t += Time.deltaTime)
-        {
-            spriteRend.color = new Color(1, 0, 0, Mathf.Lerp(0, 0.25f, t / flashInDuration));
-            yield return null;
-        }
-        float flashOutDuration = SecondForOneFlash / 2;
-        for (float t = 0; t <= flashOutDuration; t += Time.deltaTime)
-        {
-            spriteRend.color = new Color(1, 0, 0, Mathf.Lerp(0, 0.25f, t / flashInDuration));
-        }
     }
 }

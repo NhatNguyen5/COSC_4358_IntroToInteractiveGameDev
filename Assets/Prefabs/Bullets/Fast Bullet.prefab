@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3364086583935523716}
   - component: {fileID: 5831190307486349310}
   - component: {fileID: 4647645370731601026}
-  - component: {fileID: 5227836974440357973}
   m_Layer: 14
   m_Name: BulletParticle
   m_TagString: Untagged
@@ -4818,25 +4817,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7d9e77f6e31db47aa68878c5337ecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &5227836974440357973
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697729319804465425}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7f8402200d64baa439987a94fc6b556a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3578575317254583761
 GameObject:
   m_ObjectHideFlags: 0

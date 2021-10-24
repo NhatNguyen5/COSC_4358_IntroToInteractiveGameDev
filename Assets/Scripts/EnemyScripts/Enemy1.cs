@@ -7,6 +7,17 @@ using System.Linq;
 
 public class Enemy1 : MonoBehaviour
 {
+    [System.Serializable]
+    public struct ItemDrops
+    {
+        public bool isProtein;
+        //public bool isAmmo;
+        public GameObject drop;
+        public float DropPercentage;
+        public int NumOfDrop;
+    }
+
+
     public GameObject DamageText;
     private SpriteRenderer sprite;
 
@@ -75,17 +86,8 @@ public class Enemy1 : MonoBehaviour
     private int TimesShot = 0;
 
     [Header("Drops")]
-    public GameObject[] Drops;
-    public float DropPercentageTylenol;
-    public int NumOfTylenolDrop;
-    public float DropPercentageProtein;
-    public int NumOfProteinDrop;
-    public float DropPercentageAmmo;
-    public int NumOfAmmoDrop;
-    public float DropPercentagePhizer;
-    public int NumOfPhizerDrop;
-    public float DropPercentageMolly;
-    public int NumOfMollyDrop;
+    public ItemDrops[] Drops;
+    public GameObject[] Currency;
 
     [Header("SkinModule")]
     [SerializeField]
@@ -100,7 +102,7 @@ public class Enemy1 : MonoBehaviour
     //ANIMATION VARIABLES
 
     //DEATH VARIABLE
-    private bool isDead = false;
+    public bool isDead = false;
 
     Vector2 direction;
     float a;
@@ -141,72 +143,75 @@ public class Enemy1 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        distancefromplayer = Vector2.Distance(transform.position, player.position);
-        if (knockback == true)
+        if (GlobalPlayerVariables.EnableAI)
         {
+            distancefromplayer = Vector2.Distance(transform.position, player.position);
+            if (knockback == true)
+            {
 
-            //Debug.Log("KNOCKBACK");
-            if (unstuck == false)
-                transform.position = Vector2.MoveTowards(transform.position, player.position, -knockbackForce * speed * Time.deltaTime);
+                //Debug.Log("KNOCKBACK");
+                if (unstuck == false)
+                    transform.position = Vector2.MoveTowards(transform.position, player.position, -knockbackForce * speed * Time.deltaTime);
+                else
+                {
+                    //Debug.Log("COMMENCING UNSTUCK");
+                    transform.position = Vector2.MoveTowards(transform.position, randPos, -speed * Time.deltaTime);
+
+                }
+                getDirection(player);
+
+            }
             else
             {
-                //Debug.Log("COMMENCING UNSTUCK");
-                transform.position = Vector2.MoveTowards(transform.position, randPos, -speed * Time.deltaTime);
 
-            }
-            getDirection(player);
-
-        }
-        else
-        {
-
-            if (distancefromplayer >= stoppingDistance && followPlayer == true && lineofsight == true) //follow player
-            {
-                reachedDestination = true;
-                easeOM = 1;
-                transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-                getDirection(player);
-            }
-            else if ((distancefromplayer >= retreatDistance) || GlobalPlayerVariables.GameOver == true || lineofsight == false) //stop /*(Vector2.Distance(transform.position, player.position) <= stoppingDistance && */ 
-            {
-                if (randomMovement == false)
-                    transform.position = this.transform.position;
-                else //RANDOM MOVEMENT
+                if (distancefromplayer >= stoppingDistance && followPlayer == true && lineofsight == true) //follow player
                 {
-
-                    float disToRandPos = (new Vector2(transform.position.x, transform.position.y) - randPos).magnitude;
-                    if (disToRandPos < speed)
-                    {
-                        if (easeOM > 0)
-                            easeOM -= Time.fixedDeltaTime;
-                        else
-                            easeOM = 0;
-                    }
-                    else
-                    {
-                        easeOM = 1;
-                    }
-
-                    if (reachedDestination == false)
-                        transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime * easeOM);
-                    else
-                        transform.position = this.transform.position;
-
-                    if (transform.position.x == randPos.x && transform.position.y == randPos.y)
-                    {
-                        reachedDestination = true;
-                    }
-                    direction = randPos;
-                    //a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                    reachedDestination = true;
+                    easeOM = 1;
+                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                    getDirection(player);
                 }
-            }
-            else if (distancefromplayer <= retreatDistance && retreat == true && lineofsight == true) //retreat
-            {
-                reachedDestination = true;
-                transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
-                getDirection(player);
-            }
+                else if ((distancefromplayer >= retreatDistance) || GlobalPlayerVariables.GameOver == true || lineofsight == false) //stop /*(Vector2.Distance(transform.position, player.position) <= stoppingDistance && */ 
+                {
+                    if (randomMovement == false)
+                        transform.position = this.transform.position;
+                    else //RANDOM MOVEMENT
+                    {
 
+                        float disToRandPos = (new Vector2(transform.position.x, transform.position.y) - randPos).magnitude;
+                        if (disToRandPos < speed)
+                        {
+                            if (easeOM > 0)
+                                easeOM -= Time.fixedDeltaTime;
+                            else
+                                easeOM = 0;
+                        }
+                        else
+                        {
+                            easeOM = 1;
+                        }
+
+                        if (reachedDestination == false)
+                            transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime * easeOM);
+                        else
+                            transform.position = this.transform.position;
+
+                        if (transform.position.x == randPos.x && transform.position.y == randPos.y)
+                        {
+                            reachedDestination = true;
+                        }
+                        direction = randPos;
+                        //a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                    }
+                }
+                else if (distancefromplayer <= retreatDistance && retreat == true && lineofsight == true) //retreat
+                {
+                    reachedDestination = true;
+                    transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+                    getDirection(player);
+                }
+
+            }
         }
     }
 
@@ -220,96 +225,99 @@ public class Enemy1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GlobalPlayerVariables.GameOver != false)
+        if (GlobalPlayerVariables.EnableAI)
         {
-            player = this.transform;
-        }
-        knockbacktime -= Time.deltaTime;
-        if (knockbacktime <= 0)
-        {
-            knockbacktime = 0;
-            knockback = false;
-            unstuck = false;
-        }
-        if (player != null && player != this.transform)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
-            //var rayDirection = player.position - transform.position;
-            //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
-            if (hit.collider.gameObject.tag == "Player")
+            if (GlobalPlayerVariables.GameOver != false)
             {
-                lineofsight = true;
-                //Debug.Log("Player is Visable");
-                // enemy can see the player!
-
-                //Debug.Log("Player is Visable");
+                player = this.transform;
             }
-            else
+            knockbacktime -= Time.deltaTime;
+            if (knockbacktime <= 0)
             {
-                lineofsight = false;
-                //Debug.Log("Player is NOT Visable");
+                knockbacktime = 0;
+                knockback = false;
+                unstuck = false;
             }
-
-        }
-
-        if (lineofsight == true && GlobalPlayerVariables.GameOver == false && distancefromplayer <= shootdistance)
-        {
-
-            if (timeBtwShots <= 0)
+            if (player != null && player != this.transform)
             {
-
-                if (burstFire == true)
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
+                //var rayDirection = player.position - transform.position;
+                //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
+                if (hit.collider.gameObject.tag == "Player")
                 {
-                    burstTime -= Time.deltaTime;
-                    if (TimesShot < timesToShoot)
-                    {
-                        if (burstTime < 0)
-                        {
-                            TimesShot++;
-                            burst();
-                        }
+                    lineofsight = true;
+                    //Debug.Log("Player is Visable");
+                    // enemy can see the player!
 
+                    //Debug.Log("Player is Visable");
+                }
+                else
+                {
+                    lineofsight = false;
+                    //Debug.Log("Player is NOT Visable");
+                }
+
+            }
+
+            if (lineofsight == true && GlobalPlayerVariables.GameOver == false && distancefromplayer <= shootdistance)
+            {
+
+                if (timeBtwShots <= 0)
+                {
+
+                    if (burstFire == true)
+                    {
+                        burstTime -= Time.deltaTime;
+                        if (TimesShot < timesToShoot)
+                        {
+                            if (burstTime < 0)
+                            {
+                                TimesShot++;
+                                burst();
+                            }
+
+                        }
+                        else
+                        {
+                            TimesShot = 0;
+                            variation();
+                        }
                     }
                     else
                     {
-                        TimesShot = 0;
-                        variation();
+                        shoot();
                     }
                 }
                 else
                 {
-                    shoot();
+                    timeBtwShots -= Time.deltaTime;
                 }
+
+                if (NextMoveCoolDown <= 0 && reachedDestination == true)
+                {
+                    //Vector2 temp = randPos;
+                    randomPos();
+                    //facing = Mathf.Atan2((temp - randPos).x, (temp - randPos).y) * Mathf.Rad2Deg;
+                }
+                NextMoveCoolDown -= Time.deltaTime;
             }
             else
             {
-                timeBtwShots -= Time.deltaTime;
+                if (NextMoveCoolDown <= 0)
+                {
+                    Vector2 temp = randPos;
+                    randomPos();
+                    facing = Mathf.Atan2((temp - randPos).x, (temp - randPos).y) * Mathf.Rad2Deg;
+                }
+                NextMoveCoolDown -= Time.deltaTime;
             }
-
-            if (NextMoveCoolDown <= 0 && reachedDestination == true)
+            if ((lineofsight && distancefromplayer <= shootdistance))
             {
-                //Vector2 temp = randPos;
-                randomPos();
-                //facing = Mathf.Atan2((temp - randPos).x, (temp - randPos).y) * Mathf.Rad2Deg;
+                facing = transform.Find("EnemyAim").GetComponent<EnemyWeapon>().AimDir;
             }
-            NextMoveCoolDown -= Time.deltaTime;
+            //Debug.Log(lineofsight + " " +facing);
+            Animate(facing);
         }
-        else
-        {
-            if (NextMoveCoolDown <= 0)
-            {
-                Vector2 temp = randPos;
-                randomPos();
-                facing = Mathf.Atan2((temp - randPos).x, (temp - randPos).y) * Mathf.Rad2Deg;
-            }
-            NextMoveCoolDown -= Time.deltaTime;
-        }
-        if((lineofsight && distancefromplayer <= shootdistance))
-        {
-            facing = transform.Find("EnemyAim").GetComponent<EnemyWeapon>().AimDir;
-        }
-        //Debug.Log(lineofsight + " " +facing);
-        Animate(facing);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -464,35 +472,68 @@ public class Enemy1 : MonoBehaviour
             {
                 OnDeath();
             }
-
-            if (Random.Range(0, 100) <= DropPercentageTylenol)
+            foreach(ItemDrops id in Drops)
             {
-                for (int i = 0; i < NumOfTylenolDrop; i++)
-                    Instantiate(Drops[0], transform.position, Quaternion.Euler(0, 0, 0));
+                if (Random.Range(0, 100) <= id.DropPercentage)
+                {
+                    if (id.isProtein == false)
+                    {
+                        for (int i = 0; i < id.NumOfDrop; i++)
+                            Instantiate(id.drop, transform.position, Quaternion.identity);
+                    }
+                    else if (id.isProtein == true)
+                    {
+                        // if(id.NumOfDrop % 10 != 0)
+                        //Instantiate(Currency[0], transform.position, Quaternion.identity);
+                        int ones = 0;
+                        int tens = 0;
+                        int hundy = 0;
+                        int thous = 0;
+                        int tenthous = 0;
+
+                        ones = id.NumOfDrop % 10;
+                        for (int i = 0; i < ones; i++)
+                        {
+                            Instantiate(Currency[0], transform.position, Quaternion.identity);
+                        }
+                        tens = id.NumOfDrop / 10 % 10;
+                        for (int i = 0; i < tens; i++)
+                        {
+                            Instantiate(Currency[1], transform.position, Quaternion.identity);
+                        }
+                        hundy = id.NumOfDrop / 100 % 10;
+                        for (int i = 0; i < hundy; i++)
+                        {
+                            Instantiate(Currency[2], transform.position, Quaternion.identity);
+                        }
+                        thous = id.NumOfDrop / 1000 % 10;
+                        for (int i = 0; i < thous; i++)
+                        {
+                            Instantiate(Currency[3], transform.position, Quaternion.identity);
+                        }
+                        tenthous = id.NumOfDrop / 10000 % 10;
+                        for (int i = 0; i < tenthous; i++)
+                        {
+                            Instantiate(Currency[4], transform.position, Quaternion.identity);
+                        }
+                    }
+                                        //for (int i = 0; i < ones; i++)
+
+
+
+
+                        //Text3.text = (((int)Currentlevel / 100) % 10).ToString();
+                        //Text2.text = (((int)Currentlevel / 10) % 10).ToString();
+                        //Text1.text = ((int)Currentlevel % 10).ToString();
+                    
+
+                }
             }
 
-            if (Random.Range(0, 100) <= DropPercentageProtein)
+            if(transform.Find("StickyGrenade(Clone)") != null)
             {
-                for (int i = 0; i < NumOfProteinDrop; i++)
-                    Instantiate(Drops[1], transform.position, Quaternion.Euler(0, 0, 0));
-            }
-
-            if (Random.Range(0, 100) <= DropPercentageAmmo)
-            {
-                for (int i = 0; i < NumOfAmmoDrop; i++)
-                    Instantiate(Drops[2], transform.position, Quaternion.Euler(0, 0, 0));
-            }
-
-            if (Random.Range(0, 100) <= DropPercentagePhizer)
-            {
-                for (int i = 0; i < NumOfPhizerDrop; i++)
-                    Instantiate(Drops[3], transform.position, Quaternion.Euler(0, 0, 0));
-            }
-
-            if (Random.Range(0, 100) <= DropPercentageMolly)
-            {
-                for (int i = 0; i < NumOfMollyDrop; i++)
-                    Instantiate(Drops[4], transform.position, Quaternion.Euler(0, 0, 0));
+                transform.Find("StickyGrenade(Clone)").GetComponent<StickyGrenade>().stuck = false;
+                transform.Find("StickyGrenade(Clone)").parent = null;
             }
 
             GameObject.Destroy(gameObject);

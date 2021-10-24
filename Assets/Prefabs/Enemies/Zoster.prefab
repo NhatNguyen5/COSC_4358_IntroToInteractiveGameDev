@@ -110,7 +110,7 @@ SpriteRenderer:
   m_Size: {x: 1.44, y: 1.44}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1425901162039282574
@@ -215,7 +215,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -289,7 +289,7 @@ MonoBehaviour:
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 17536
+    m_Bits: 83072
   unstuckTime: 0
   shootdistance: 18
   distancefromplayer: 0
@@ -309,23 +309,32 @@ MonoBehaviour:
   timeBtwBurst: 0.22
   timesToShoot: 18
   Drops:
-  - {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
+  - isProtein: 1
+    drop: {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
+    DropPercentage: 100
+    NumOfDrop: 10
+  - isProtein: 0
+    drop: {fileID: 2056935271745837854, guid: 9729f65a98d9dd14b86e888222ffbcbc, type: 3}
+    DropPercentage: 10
+    NumOfDrop: 1
+  - isProtein: 0
+    drop: {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
+    DropPercentage: 50
+    NumOfDrop: 2
+  - isProtein: 0
+    drop: {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
+    DropPercentage: 30
+    NumOfDrop: 2
+  Currency:
   - {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
-  - {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
-  - {fileID: 2056935271745837854, guid: 9729f65a98d9dd14b86e888222ffbcbc, type: 3}
-  DropPercentageTylenol: 25
-  NumOfTylenolDrop: 1
-  DropPercentageProtein: 35
-  NumOfProteinDrop: 4
-  DropPercentageAmmo: 50
-  NumOfAmmoDrop: 1
-  DropPercentagePhizer: 2
-  NumOfPhizerDrop: 1
-  DropPercentageMolly: 0
-  NumOfMollyDrop: 0
+  - {fileID: 8493335925642168428, guid: a7710005c5b967549a684aa3f7ff04f4, type: 3}
+  - {fileID: 6945996946943777615, guid: e163425566a083b428b0bd23743d338d, type: 3}
+  - {fileID: 6662930850099418146, guid: 60e2807eca38f6748a71871b39003466, type: 3}
+  - {fileID: 1218887535022631140, guid: a9fff5c94023816449f11c7055169929, type: 3}
   spriteLibrary: {fileID: 6454223718159252644}
   targetResolver: {fileID: 4249346839464387788}
   targetCategory: Zoster Skin Library Asset
+  isDead: 0
   facing: 0
 --- !u!114 &6454223718159252644
 MonoBehaviour:

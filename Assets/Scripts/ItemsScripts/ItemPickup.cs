@@ -90,6 +90,50 @@ public class ItemPickup : MonoBehaviour
                         }
                     }
                     break;
+                case "Protein10":
+                    if (player.Stats.NumofProtein < 1000000)
+                    {
+                        Follow();
+                        if (distance <= PickUpRange)
+                        {
+                            player.Stats.NumofProtein += 10;
+                            Destroy(gameObject);
+                        }
+                    }
+                    break;
+                case "Protein100":
+                    if (player.Stats.NumofProtein < 1000000)
+                    {
+                        Follow();
+                        if (distance <= PickUpRange)
+                        {
+                            player.Stats.NumofProtein += 100;
+                            Destroy(gameObject);
+                        }
+                    }
+                    break;
+                case "Protein1000":
+                    if (player.Stats.NumofProtein < 1000000)
+                    {
+                        Follow();
+                        if (distance <= PickUpRange)
+                        {
+                            player.Stats.NumofProtein += 1000;
+                            Destroy(gameObject);
+                        }
+                    }
+                    break;
+                case "Protein10000":
+                    if (player.Stats.NumofProtein < 1000000)
+                    {
+                        Follow();
+                        if (distance <= PickUpRange)
+                        {
+                            player.Stats.NumofProtein += 10000;
+                            Destroy(gameObject);
+                        }
+                    }
+                    break;
                 case "Ammo":
                     //Debug.Log(GlobalPlayerVariables.Reserves);
                     if (GlobalPlayerVariables.Reserves < GlobalPlayerVariables.MaxReserves)
