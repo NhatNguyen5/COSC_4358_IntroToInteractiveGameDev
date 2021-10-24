@@ -87061,6 +87061,10 @@ PrefabInstance:
       propertyPath: beginningrangetoshoot
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 1270911830247238667, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: Drops.Array.data[0].NumOfDrop
+      value: 11111
+      objectReference: {fileID: 0}
     - target: {fileID: 2338634325353430177, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: HP
       value: 1000
