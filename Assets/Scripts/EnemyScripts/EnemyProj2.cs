@@ -197,9 +197,9 @@ public class EnemyProj2 : MonoBehaviour
     {
 
         //if (collision.tag != "Enemy" && collision.tag != "EnemyMelee" && collision.tag != "Bullet" && collision.tag != "EnemyBullet")
-        if ((collision.tag == "Player" || collision.tag == "Walls") && isExplosiveBullet == false)
+        if ((collision.tag == "Player" || collision.tag == "Walls" || collision.tag == "Globin") && isExplosiveBullet == false)
             DestroyEnemyProj();
-        else if (collision.tag == "Player" || collision.tag == "Walls")
+        else if (collision.tag == "Player" || collision.tag == "Walls" || collision.tag == "Globin")
         {
             reachedDestination = true;
             randPos = transform.position;

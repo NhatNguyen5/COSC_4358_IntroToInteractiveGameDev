@@ -72,7 +72,7 @@ public class EnemyProj : MonoBehaviour
         if (destroyable == false)
         {
             //if (collision.tag != "Enemy" && collision.tag != "EnemyMelee" && collision.tag != "Bullet" && collision.tag != "EnemyBullet")
-            if (collision.tag == "Player" || collision.tag == "Walls")
+            if (collision.tag == "Player" || collision.tag == "Walls" || collision.tag == "Globin")
             {
                 BParticle.GetComponent<ParticleSystem>().Play();
                 BParticle.parent = null;

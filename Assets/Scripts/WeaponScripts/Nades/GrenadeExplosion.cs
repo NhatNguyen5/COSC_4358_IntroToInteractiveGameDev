@@ -37,6 +37,7 @@ public class GrenadeExplosion : MonoBehaviour
             if (CaughtObject.tag == "Enemy") { CaughtObject.GetComponent<Enemy1>().takeDamage(ExplodeDamage, CaughtObject.transform, 10); }
             if (CaughtObject.tag == "Colony") { CaughtObject.GetComponent<EnemyColony>().takeDamage(ExplodeDamage, CaughtObject.transform, 10); }
             if (CaughtObject.tag == "Player") { CaughtObject.GetComponent<TakeDamage>().takeDamage(ExplodeDamage, CaughtObject.transform, 10); }
+            if (CaughtObject.tag == "Globin") { CaughtObject.GetComponent<Globin>().takeDamage(ExplodeDamage, CaughtObject.transform, 10); }
         }
         StartCoroutine(clearSmoke(PS.main.duration));
     }
