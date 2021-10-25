@@ -398,10 +398,10 @@ public class EnemyColony : MonoBehaviour
         //Debug.Log(damage);
         bool iscrit = false;
         float chance2crit = Random.Range(0f, 1f);
-        if (chance2crit <= GlobalPlayerVariables.critRate)
+        if (chance2crit <= critRate)
         {
             iscrit = true;
-            damage *= GlobalPlayerVariables.critDmg;
+            damage *= critDMG;
         }
 
         enemyColony.colonyHealth -= damage;

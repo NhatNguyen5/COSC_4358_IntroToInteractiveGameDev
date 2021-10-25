@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5770111075610496673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5770111075610496674}
+  - component: {fileID: 5770111075610496675}
+  m_Layer: 5
+  m_Name: CursorCrosshair
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5770111075610496674
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5770111075610496673}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5.154664, y: 5.154664, z: 0.02577332}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5770111075610496675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5770111075610496673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cb9fee88951f3a48a942f566942bf45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorAnimationList:
+  - cursorType: 2
+    textureArray:
+    - {fileID: 2800000, guid: 0fdbf2d8770767f4f8c0d26548cda080, type: 3}
+    frameRate: 0.1
+    offset: {x: 85, y: 85}
+  - cursorType: 3
+    textureArray:
+    - {fileID: 2800000, guid: 0fdbf2d8770767f4f8c0d26548cda080, type: 3}
+    - {fileID: 2800000, guid: c48fedcb0dd80624584dff6fd6d25733, type: 3}
+    frameRate: 0.1
+    offset: {x: 85, y: 85}
+  - cursorType: 0
+    textureArray:
+    - {fileID: 2800000, guid: b46b20c9b33d4e4409ea93d63981dd87, type: 3}
+    frameRate: 0.15
+    offset: {x: 0, y: 0}
+  - cursorType: 1
+    textureArray:
+    - {fileID: 2800000, guid: 6c947c869bf232a41857360f59e973bc, type: 3}
+    frameRate: 0.15
+    offset: {x: 50, y: 0}
