@@ -4890,7 +4890,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explodeRadius: 2.5
-  ExplodeDamage: 185
+  knockBackForce: 20
+  ExplodeDamage: 150
   explodeLifetime: 0
 --- !u!1 &5677739247836569721
 GameObject:

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GrenadeExplosion : MonoBehaviour
 {
     public float explodeRadius;
+    public float knockBackForce;
     public float ExplodeDamage;
     public float explodeLifetime;
 
@@ -33,11 +34,21 @@ public class GrenadeExplosion : MonoBehaviour
         Collider2D[] CaughtObjects = Physics2D.OverlapCircleAll(transform.position, explodeRadius);
         foreach (var CaughtObject in CaughtObjects)
         {
-            if (CaughtObject.tag == "EnemyMelee") { CaughtObject.GetComponent<Enemy2>().takeDamage(ExplodeDamage, CaughtObject.transform, 10); }
-            if (CaughtObject.tag == "Enemy") { CaughtObject.GetComponent<Enemy1>().takeDamage(ExplodeDamage, CaughtObject.transform, 10); }
-            if (CaughtObject.tag == "Colony") { CaughtObject.GetComponent<EnemyColony>().takeDamage(ExplodeDamage, CaughtObject.transform, 10); }
-            if (CaughtObject.tag == "Player") { CaughtObject.GetComponent<TakeDamage>().takeDamage(ExplodeDamage, CaughtObject.transform, 10); }
-            if (CaughtObject.tag == "Globin") { CaughtObject.GetComponent<Globin>().takeDamage(ExplodeDamage, CaughtObject.transform, 10); }
+            if (CaughtObject.tag == "EnemyMelee") { CaughtObject.GetComponent<Enemy2>().takeDamage(ExplodeDamage, CaughtObject.transform, 10);
+                CaughtObject.GetComponent<Rigidbody2D>().AddForce(-(transform.position - CaughtObject.transform.position) * knockBackForce, ForceMode2D.Impulse);
+            }
+            if (CaughtObject.tag == "Enemy") { CaughtObject.GetComponent<Enemy1>().takeDamage(ExplodeDamage, CaughtObject.transform, 10);
+                CaughtObject.GetComponent<Rigidbody2D>().AddForce(-(transform.position - CaughtObject.transform.position) * knockBackForce, ForceMode2D.Impulse);
+            }
+            if (CaughtObject.tag == "Colony") { CaughtObject.GetComponent<EnemyColony>().takeDamage(ExplodeDamage, CaughtObject.transform, 10);
+                CaughtObject.GetComponent<Rigidbody2D>().AddForce(-(transform.position - CaughtObject.transform.position) * knockBackForce, ForceMode2D.Impulse);
+            }
+            if (CaughtObject.tag == "Player") { CaughtObject.GetComponent<TakeDamage>().takeDamage(ExplodeDamage, CaughtObject.transform, 10);
+                CaughtObject.GetComponent<Rigidbody2D>().AddForce(-(transform.position - CaughtObject.transform.position) * knockBackForce, ForceMode2D.Impulse);
+            }
+            if (CaughtObject.tag == "Globin") { CaughtObject.GetComponent<Globin>().takeDamage(ExplodeDamage, CaughtObject.transform, 10);
+                CaughtObject.GetComponent<Rigidbody2D>().AddForce(-(transform.position - CaughtObject.transform.position) * knockBackForce, ForceMode2D.Impulse);
+            }
         }
         StartCoroutine(clearSmoke(PS.main.duration));
     }

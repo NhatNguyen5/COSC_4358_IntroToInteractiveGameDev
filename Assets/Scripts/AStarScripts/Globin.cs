@@ -123,7 +123,7 @@ public class Globin : MonoBehaviour
         {
             player = this.transform;
         }
-
+        target = player;
 
         InvokeRepeating("UpdatePath", 0f, 0.5f);
 
@@ -265,8 +265,8 @@ public class Globin : MonoBehaviour
         {
             if (player != null && player != this.transform)
             {
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
-                Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, player.position - transform.position, Mathf.Infinity, ~IgnoreMe);
+                Debug.DrawRay(transform.position, player.position - transform.position, Color.green);
                 //var rayDirection = player.position - transform.position;
                 //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
                 if (hit.collider.gameObject.tag == "Player")
@@ -404,13 +404,8 @@ public class Globin : MonoBehaviour
                     }
                     NextMoveCoolDown -= Time.deltaTime;
                 }
-
-
             }
         }
-
-
-
     }
 
 
