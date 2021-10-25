@@ -199,8 +199,8 @@ MonoBehaviour:
   HP: 200
   speed: 2.5
   EXPWorth: 500
-  stoppingDistance: 7
-  retreatDistance: 3
+  stoppingDistance: 34
+  retreatDistance: 17
   followPlayer: 1
   retreat: 1
   randomMovement: 1
@@ -209,9 +209,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 87168
   unstuckTime: 0
-  shootdistance: 14
+  shootdistance: 28
   distancefromplayer: 0
-  circleRadius: 8
+  circleRadius: 12
   timeTillNextMove: 0.5
   knockForcePlayerContact: 3
   knockbackstartrange: 0.4
@@ -219,12 +219,12 @@ MonoBehaviour:
   beginningrangetoshoot: 0.5
   endingrangetoshoot: 1
   AmountOfBullets: 1
-  bulletSpread: 18
-  projectile: {fileID: 836386443634150724, guid: f7490fbaebaefc34c91a846a3bbbc06d, type: 3}
+  bulletSpread: 22
+  projectile: {fileID: 7738925325800699999, guid: 47d335fd8e3c2204c928145b4d0b89bb, type: 3}
   firePoint: {fileID: 525723373986181659}
   player: {fileID: 0}
   burstFire: 1
-  timeBtwBurst: 4
+  timeBtwBurst: 5
   timesToShoot: 1
   Drops:
   - isCurrency: 1
