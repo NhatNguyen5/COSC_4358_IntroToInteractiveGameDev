@@ -84,8 +84,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
   player: {fileID: 0}
-  HP: 400
-  speed: 375
+  HP: 375
+  speed: 325
   stoppingDistance: 5
   lineofsight: 0
   IgnoreMe:
