@@ -25,6 +25,8 @@ public class Globin : MonoBehaviour
     private SpriteRenderer sprite;
     [HideInInspector]
     public Transform player;
+    [HideInInspector]
+    public Transform playerStash;
 
     //public event System.Action OnDeath;
 
@@ -116,8 +118,9 @@ public class Globin : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         if (GlobalPlayerVariables.GameOver == false)
         {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+            playerStash = GameObject.FindGameObjectWithTag("Player").transform;
             Debug.Log("Player transform acquired");
+            player = playerStash;
         }
         else
         {
@@ -263,25 +266,59 @@ public class Globin : MonoBehaviour
     {
         if (GlobalPlayerVariables.EnableAI)
         {
+
+            if (GlobalPlayerVariables.Defend == false)
+            {
+                target = GlobalPlayerVariables.newTransformCoords;
+                player = GlobalPlayerVariables.newTransformCoords;
+                
+            }
+            if (GlobalPlayerVariables.Defend == true)
+            {
+                target = playerStash;
+                player = playerStash;
+            }
+
+
+
             if (player != null && player != this.transform)
             {
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, player.position - transform.position, Mathf.Infinity, ~IgnoreMe);
                 Debug.DrawRay(transform.position, player.position - transform.position, Color.green);
                 //var rayDirection = player.position - transform.position;
                 //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
-                if (hit.collider.gameObject.tag == "Player")
-                {
-                    lineofsight = true;
-                    Debug.Log("Player is Visable");
-                    // enemy can see the player!
 
-                    //Debug.Log("Player is Visable");
-                }
-                else
+                if (GlobalPlayerVariables.Defend == true)
                 {
-                    lineofsight = false;
-                    Debug.Log("Player is NOT Visable");
+                    if (hit.collider.gameObject.tag == "Player")
+                    {
+                        lineofsight = true;
+                        //Debug.Log("Player is Visable");
+                        // enemy can see the player!
+
+                        //Debug.Log("Player is Visable");
+                    }
+                    else
+                    {
+                        lineofsight = false;
+                        //Debug.Log("Player is NOT Visable");
+                    }
                 }
+                else if (GlobalPlayerVariables.Defend == false)
+                {
+                    if (hit.collider.gameObject.tag == "DefendPos")
+                    {
+                        Debug.Log("Player is Visable");
+                        lineofsight = true;
+                    }
+                    else
+                    {
+                        Debug.Log("Player is Not Visable");
+                        lineofsight = false;
+                    }
+                }
+
+
 
 
                 if (NextMoveCoolDown <= 0)

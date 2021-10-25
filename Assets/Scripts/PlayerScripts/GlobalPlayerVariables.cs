@@ -8,6 +8,9 @@ public class GlobalPlayerVariables : MonoBehaviour
 {
     public static GlobalPlayerVariables instance;
 
+    public GameObject DefendMode;
+    public GameObject AttackMode;
+    /*
     void Awake()
     {
         if (instance != null)
@@ -20,7 +23,7 @@ public class GlobalPlayerVariables : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-
+    */
     public static bool EnableAI = false;
     private float fadeInTime = 1;
     public RawImage FadeInImg;
@@ -144,6 +147,11 @@ public class GlobalPlayerVariables : MonoBehaviour
 
     public static bool GameOver = false;
 
+    public static bool Defend = true;
+
+
+
+
     private void Start()
     {
         if (SceneManager.GetActiveScene().name != "Title")
@@ -206,28 +214,80 @@ public class GlobalPlayerVariables : MonoBehaviour
         baseItemUsageCoolDown = 0;
 
 
-
-
-
-
-
-
-
-
-
-
     }
 
+    //globin positioning
+    Vector3 newPosition = Vector3.zero;
+    public static Transform newTransformCoords;
+    float deactivateText = 1;
+    float countdown = 0;
+    bool resetObject = false;
     public void Update()
     {
+        if (SceneManager.GetActiveScene().name == "Title")
+        {
+            resetObject = true;
+        }
+
+
         if (SceneManager.GetActiveScene().name != "Title")
         {
+
+            if (resetObject == true)
+            {
+                DefendMode = GameObject.Find("Defend");
+                AttackMode = GameObject.Find("Attack");
+                resetObject = false;
+            }
+
             //Debug.Log(Reserves + " " + MaxReserves);
             //recharge bar
             if (Reserves < MaxReserves)
             {
                 Reserves += Time.deltaTime * rechargeRateMultiplyer;
             }
+
+            
+            if (Input.GetKeyDown(KeyCode.Mouse2))
+            {
+               
+
+                if (Defend == true)
+                {
+                    Debug.Log("Follow Cursor");
+                    Defend = false;
+                    Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    mouseWorldPosition.z = 0f;
+                    Debug.Log(mouseWorldPosition);
+                    transform.position = mouseWorldPosition;
+                    newTransformCoords = transform;
+                    DefendMode.SetActive(false);
+                    AttackMode.SetActive(true);
+                    countdown = deactivateText;
+
+
+                }
+                else if (Defend == false)
+                {
+                    Debug.Log("Defend Player");
+                    Defend = true;
+                    DefendMode.SetActive(true);
+                    AttackMode.SetActive(false);
+                    countdown = deactivateText;
+                }
+                //Debug.Log("Mouse 2 ");
+            }
+
+            if (countdown <= 0)
+            {
+                DefendMode.SetActive(false);
+                AttackMode.SetActive(false);
+            }
+            else
+            {
+                countdown -= Time.deltaTime;
+            }
+
         }
         if (fadeInTime > 0)
             fadeInTime -= Time.deltaTime;
@@ -241,6 +301,14 @@ public class GlobalPlayerVariables : MonoBehaviour
     {
         yield return new WaitForSeconds(Dur);
         EnableAI = true;
+    }
+
+
+
+
+    public void switchGlobinMode()
+    {
+
     }
 
 }
