@@ -152,10 +152,10 @@ MonoBehaviour:
   targetsToPierce: 0
   dropOffPerTarget: 0
   bulletSpeed: 45
-  bulletDamage: 32
+  bulletDamage: 31
   bullletKnockBackForce: 0.35
-  bulletDamageDropOff: 0.2
-  timeToDropDmg: 0.37
+  bulletDamageDropOff: 0.23
+  timeToDropDmg: 0.34
   burstFire: 0
   timeBtwBurst: 0.07
   timesToShoot: 3
