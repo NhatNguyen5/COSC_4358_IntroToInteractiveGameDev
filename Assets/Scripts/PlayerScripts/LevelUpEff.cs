@@ -28,7 +28,7 @@ public class LevelUpEff : MonoBehaviour
         float angle = player.Stats.Angle;
         if (angle < 0)
             angle += 360;
-        Debug.Log(scale);
+        //Debug.Log(scale);
         if (transform != null)
         {
             transform.position = player.Stats.Position - new Vector2(0, 0.3f);

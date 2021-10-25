@@ -10,6 +10,7 @@ public class GlobalPlayerVariables : MonoBehaviour
 
     public GameObject DefendMode;
     public GameObject AttackMode;
+    
     /*
     void Awake()
     {
@@ -157,7 +158,9 @@ public class GlobalPlayerVariables : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "Title")
         {
             Debug.Log("RESET");
+            //resetObject = true;
             resetStats();
+            resetObject = true;
         }
         StartCoroutine(FadeIn(1));
     }
@@ -214,6 +217,11 @@ public class GlobalPlayerVariables : MonoBehaviour
         baseItemUsageCoolDown = 0;
 
 
+        //weapon weight
+
+        weaponWeight = 0;
+
+
     }
 
     //globin positioning
@@ -224,10 +232,12 @@ public class GlobalPlayerVariables : MonoBehaviour
     bool resetObject = false;
     public void Update()
     {
+        /*
         if (SceneManager.GetActiveScene().name == "Title")
         {
+            Debug.Log("TITLE");
             resetObject = true;
-        }
+        }*/
 
 
         if (SceneManager.GetActiveScene().name != "Title")
@@ -235,9 +245,14 @@ public class GlobalPlayerVariables : MonoBehaviour
 
             if (resetObject == true)
             {
+                Debug.Log("RESETTING OBJECTS");
                 DefendMode = GameObject.Find("Defend");
                 AttackMode = GameObject.Find("Attack");
+                DefendMode.SetActive(false);
+                AttackMode.SetActive(false);
+                Defend = true;
                 resetObject = false;
+                countdown = 0;
             }
 
             //Debug.Log(Reserves + " " + MaxReserves);
