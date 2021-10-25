@@ -78285,6 +78285,7 @@ GameObject:
   - component: {fileID: 932930425}
   - component: {fileID: 932930427}
   - component: {fileID: 932930426}
+  - component: {fileID: 932930428}
   m_Layer: 5
   m_Name: Defend
   m_TagString: Untagged
@@ -78308,8 +78309,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030518, y: -264.7}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -2.4, y: -271.3}
+  m_SizeDelta: {x: 204.23, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &932930426
 MonoBehaviour:
@@ -78333,7 +78334,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 676bf267952c3c14189cbbc1cc06baeb, type: 3}
-    m_FontSize: 12
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -78344,7 +78345,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'GLOBIN AI: DEFEND PLAYER'
+  m_Text: 'GLOBIN: DEFEND HEMO'
 --- !u!222 &932930427
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -78353,6 +78354,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932930424}
   m_CullTransparentMesh: 1
+--- !u!95 &932930428
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932930424}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9a9c8eb9fc18a0b4d87354594a7f9021, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &945451522
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84655,7 +84675,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 11}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1769738117 stripped
@@ -85295,6 +85315,7 @@ GameObject:
   - component: {fileID: 1851866249}
   - component: {fileID: 1851866251}
   - component: {fileID: 1851866250}
+  - component: {fileID: 1851866252}
   m_Layer: 5
   m_Name: Attack
   m_TagString: Untagged
@@ -85318,8 +85339,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030518, y: -264.7}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0.000047684, y: -271.3}
+  m_SizeDelta: {x: 204.24, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1851866250
 MonoBehaviour:
@@ -85343,7 +85364,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 676bf267952c3c14189cbbc1cc06baeb, type: 3}
-    m_FontSize: 12
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -85354,7 +85375,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'GLOBIN AI: ATTACK SELECTED POSITION'
+  m_Text: 'GLOBIN: ATTACK RALLY'
 --- !u!222 &1851866251
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -85363,6 +85384,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851866248}
   m_CullTransparentMesh: 1
+--- !u!95 &1851866252
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851866248}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9a9c8eb9fc18a0b4d87354594a7f9021, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1872092415
 GameObject:
   m_ObjectHideFlags: 0
