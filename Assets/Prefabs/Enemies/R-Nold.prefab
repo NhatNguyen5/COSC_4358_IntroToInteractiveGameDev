@@ -151,15 +151,15 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6346310068373335684, guid: 6c604151384e52641903ba3bbf5ce24e, type: 3}
+  m_Sprite: {fileID: -5031096736406312594, guid: 671f1f06dd3913749914918b75f431e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.44, y: 1.44}
+  m_Size: {x: 1.4545455, y: 0.72727275}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7674072803767978074
@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: -5747798501272440446}
   - component: {fileID: 4134347511560369730}
   - component: {fileID: -8903139927100954141}
+  - component: {fileID: -2478118446765878758}
   m_Layer: 7
   m_Name: R-Nold
   m_TagString: Enemy
@@ -438,3 +439,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e74e3615ce8efa49984f414aedbecbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2478118446765878758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7674072803767978074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d3495297b6e3e448de092eb2cfb830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorType: 3

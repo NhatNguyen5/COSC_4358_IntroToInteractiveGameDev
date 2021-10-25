@@ -270,6 +270,7 @@ public class PlayerActions
 
     public void SwapWeapon()
     {
+        //bool cond = false;
         float input;
         if(float.TryParse(Input.inputString, out input))
         {
@@ -278,6 +279,7 @@ public class PlayerActions
                 //Debug.Log(rw.gameObject.activeSelf);
                 if (rw.GetComponent<Weapon>().Slot == input)
                 {
+                    //cond = true;
                     rw.gameObject.SetActive(true);
                     if (rw.gameObject.activeSelf)
                     {

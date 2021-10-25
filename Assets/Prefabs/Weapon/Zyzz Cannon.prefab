@@ -149,8 +149,8 @@ MonoBehaviour:
   critDamage: 3.4
   explodingBullets: 1
   pierce: 0
-  targetsToPierce: 20
-  dropOffPerTarget: 0.2
+  targetsToPierce: 100
+  dropOffPerTarget: 0.1
   bulletSpeed: 35
   bulletDamage: 90
   bullletKnockBackForce: 6.5
