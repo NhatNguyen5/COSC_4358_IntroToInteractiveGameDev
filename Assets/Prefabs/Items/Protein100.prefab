@@ -305,12 +305,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 923aa7153c838cc43a0f49cfaf332e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TypeOfItem: Protein100
+  TypeOfItem: Protein
   speed: 10
   DetectRange: 4
   flingRange: 10
   PickUpRange: 0.5
   DespawnTime: 15
+  ProteinAdd: 100
   AmmoReserveAdd: 0
 --- !u!95 &7545151602620903803
 Animator:

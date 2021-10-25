@@ -24,6 +24,9 @@ public class ItemPickup : MonoBehaviour
     public float flingRange;
     public float PickUpRange;
     public float DespawnTime;
+    [Header("Currency")]
+    [SerializeField]
+    private int ProteinAdd;
     [Header("Ammo")]
     [SerializeField]
     private float AmmoReserveAdd; 
@@ -77,63 +80,22 @@ public class ItemPickup : MonoBehaviour
                             Destroy(gameObject);
                         }
                     }
-                        
                     break;
+
                 case "Protein":
-                    if (player.Stats.NumofProtein < 1000000)
+                    if (player.Stats.NumofProtein < 9999999)
                     {
                         Follow();
                         if (distance <= PickUpRange)
                         {
-                            player.Stats.NumofProtein += 1;
+                            player.Stats.NumofProtein += ProteinAdd;
+                            if (player.Stats.NumofProtein > 9999999)
+                                player.Stats.NumofProtein = 9999999;
                             Destroy(gameObject);
                         }
                     }
                     break;
-                case "Protein10":
-                    if (player.Stats.NumofProtein < 1000000)
-                    {
-                        Follow();
-                        if (distance <= PickUpRange)
-                        {
-                            player.Stats.NumofProtein += 10;
-                            Destroy(gameObject);
-                        }
-                    }
-                    break;
-                case "Protein100":
-                    if (player.Stats.NumofProtein < 1000000)
-                    {
-                        Follow();
-                        if (distance <= PickUpRange)
-                        {
-                            player.Stats.NumofProtein += 100;
-                            Destroy(gameObject);
-                        }
-                    }
-                    break;
-                case "Protein1000":
-                    if (player.Stats.NumofProtein < 1000000)
-                    {
-                        Follow();
-                        if (distance <= PickUpRange)
-                        {
-                            player.Stats.NumofProtein += 1000;
-                            Destroy(gameObject);
-                        }
-                    }
-                    break;
-                case "Protein10000":
-                    if (player.Stats.NumofProtein < 1000000)
-                    {
-                        Follow();
-                        if (distance <= PickUpRange)
-                        {
-                            player.Stats.NumofProtein += 10000;
-                            Destroy(gameObject);
-                        }
-                    }
-                    break;
+
                 case "Ammo":
                     //Debug.Log(GlobalPlayerVariables.Reserves);
                     if (GlobalPlayerVariables.Reserves < GlobalPlayerVariables.MaxReserves)
@@ -142,6 +104,8 @@ public class ItemPickup : MonoBehaviour
                         if (distance <= PickUpRange)
                         {
                             GlobalPlayerVariables.Reserves += AmmoReserveAdd;
+                            if (GlobalPlayerVariables.Reserves > GlobalPlayerVariables.MaxReserves)
+                                GlobalPlayerVariables.Reserves = GlobalPlayerVariables.MaxReserves;
                             Destroy(gameObject);
                         }
                     }
