@@ -210,7 +210,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 87168
   unstuckTime: 0
-  shootdistance: 10
+  shootdistance: 14
   distancefromplayer: 0
   circleRadius: 8
   timeTillNextMove: 0.5
@@ -219,14 +219,14 @@ MonoBehaviour:
   knockbackendrange: 0.8
   beginningrangetoshoot: 0.5
   endingrangetoshoot: 1
-  AmountOfBullets: 5
+  AmountOfBullets: 1
   bulletSpread: 18
-  projectile: {fileID: 3812985790077842512, guid: b8a4215f89377b140b6b3b8efc37eeff, type: 3}
+  projectile: {fileID: 836386443634150724, guid: f7490fbaebaefc34c91a846a3bbbc06d, type: 3}
   firePoint: {fileID: 525723373986181659}
   player: {fileID: 0}
   burstFire: 1
-  timeBtwBurst: 1.5
-  timesToShoot: 3
+  timeBtwBurst: 4
+  timesToShoot: 1
   Drops:
   - drop: {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
     DropPercentage: 100
