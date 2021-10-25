@@ -169,7 +169,7 @@ MonoBehaviour:
   player: {fileID: 0}
   HP: 400
   speed: 375
-  stoppingDistance: 10
+  stoppingDistance: 7
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
@@ -293,7 +293,7 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: -6194314041863519612, guid: d77f1b9841a34da4285e77b0791636e4, type: 3}
+  m_Sprite: {fileID: 2470925077525222866, guid: d77f1b9841a34da4285e77b0791636e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
