@@ -20,7 +20,7 @@ public class Weapon : MonoBehaviour
     public float ADSRange;
     public float ADSSpeed;
 
-    public float weaponWeight = 1;
+    public float weaponWeight = 0;
 
 
     //GUN REWORK
