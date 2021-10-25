@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 5172911503813449251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.47, y: 0.03, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1666, y: 0.1666, z: 1}
   m_Children:
   - {fileID: 915631288670915381}
   m_Father: {fileID: 0}
@@ -126,7 +126,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.1, y: 0.1}
+    oldSize: {x: 0.600024, y: 0.600024}
     newSize: {x: 0.24, y: 0.06}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -134,7 +134,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.1}
-  m_EdgeRadius: 0.03
+  m_EdgeRadius: 0.06
 --- !u!96 &3496416242090338223
 TrailRenderer:
   serializedVersion: 2
@@ -327,8 +327,8 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9209489388930880227}
   serializedVersion: 7
-  lengthInSec: 0.2
-  simulationSpeed: 4
+  lengthInSec: 0.65
+  simulationSpeed: 2
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -402,7 +402,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.65
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -455,7 +455,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -509,7 +509,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.13333334, g: 0.13333334, b: 0.13333334, a: 1}
+      maxColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -571,7 +571,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.08
+      scalar: 0.3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -893,7 +893,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.8
+      scalar: 0.3
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -5113,7 +5113,7 @@ Animator:
   m_GameObject: {fileID: 9209489388930880227}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7f8402200d64baa439987a94fc6b556a, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
