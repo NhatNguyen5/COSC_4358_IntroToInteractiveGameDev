@@ -73,7 +73,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4069872733581338210}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.67, y: 0.07, z: 0}
+  m_LocalPosition: {x: 0.61, y: 0.025, z: 0}
   m_LocalScale: {x: 5.8743153, y: 5.8743153, z: 5.874317}
   m_Children: []
   m_Father: {fileID: 4069872733857986332}
@@ -151,15 +151,15 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4677365148177797994, guid: b6ca2c4352fd972479f25cb0663443c9, type: 3}
+  m_Sprite: {fileID: -4677365148177797994, guid: 8626e924457531e429260f6d363728f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.44, y: 1.44}
+  m_Size: {x: 1.4545455, y: 0.72727275}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4069872733990987564
@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 8223788956223262726}
   - component: {fileID: 1245931748085958766}
   - component: {fileID: -8908154297759928591}
+  - component: {fileID: -5415636848034444732}
   m_Layer: 7
   m_Name: Norov
   m_TagString: Enemy
@@ -432,3 +433,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e74e3615ce8efa49984f414aedbecbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5415636848034444732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069872733990987564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d3495297b6e3e448de092eb2cfb830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorType: 3

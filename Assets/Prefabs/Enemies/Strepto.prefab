@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 1729207426254750165}
   - component: {fileID: 8400854700762438077}
   - component: {fileID: -1219820772148568906}
+  - component: {fileID: -5320121407409313973}
   m_Layer: 7
   m_Name: Strepto
   m_TagString: Enemy
@@ -303,7 +304,7 @@ MonoBehaviour:
   endingrangetoshoot: 1.5
   AmountOfBullets: 1
   bulletSpread: 18
-  projectile: {fileID: 3812985790077842512, guid: b8a4215f89377b140b6b3b8efc37eeff, type: 3}
+  projectile: {fileID: 5411894737003789611, guid: 8041d91e063884a408a556919e332874, type: 3}
   firePoint: {fileID: 6747715185240176560}
   player: {fileID: 0}
   burstFire: 1
@@ -383,6 +384,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e74e3615ce8efa49984f414aedbecbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5320121407409313973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6747715185630426879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d3495297b6e3e448de092eb2cfb830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorType: 3
 --- !u!1 &7252709335960136576
 GameObject:
   m_ObjectHideFlags: 0

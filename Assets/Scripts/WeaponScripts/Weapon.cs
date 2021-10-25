@@ -79,8 +79,13 @@ public class Weapon : MonoBehaviour
     public bool IsRightArm;
 
 
+    public PlayerActions SwapWeapon;
+
     private void Start()
     {
+
+ 
+
         reloadOnStartUp();
         reloadCooldown = reloadTime;
         if (transform.parent.name == "RightArm")
@@ -213,6 +218,14 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
+
+        //refill bar on weapon switch
+        //if (PlayerActions.SwapWeapon() {
+        //    ammoBar.fillAmount = (float)ammoCount / (float)maxAmmoInClip;
+        //}
+
+        
+
         if (IsRightArm) // RightArm
         {
             RightArmUpdate();

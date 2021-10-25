@@ -73,7 +73,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7674072803375499540}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.64, y: 0.025, z: 0}
+  m_LocalPosition: {x: 0.62, y: 0.025, z: 0}
   m_LocalScale: {x: 5.8743153, y: 5.8743153, z: 5.874317}
   m_Children: []
   m_Father: {fileID: 7674072803634583658}
@@ -151,15 +151,15 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6165998805475274842, guid: da2cfb65df11ca2428cb2baa0307c950, type: 3}
+  m_Sprite: {fileID: -6165998805475274842, guid: 8bd4e49118f6e0441be7da75b4d041e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.44, y: 1.44}
+  m_Size: {x: 1.4545455, y: 0.72727275}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7674072803767978074
@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 2316006094040792944}
   - component: {fileID: 4850006730279266072}
   - component: {fileID: -2106452630694708202}
+  - component: {fileID: -3872022004533685482}
   m_Layer: 7
   m_Name: Mosaic
   m_TagString: Enemy
@@ -432,3 +433,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e74e3615ce8efa49984f414aedbecbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3872022004533685482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7674072803767978074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d3495297b6e3e448de092eb2cfb830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorType: 3

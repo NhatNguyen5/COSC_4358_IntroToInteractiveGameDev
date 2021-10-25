@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 8226067464753016066}
   - component: {fileID: 1243671825624085866}
   - component: {fileID: -8312431971303589806}
+  - component: {fileID: -2862026185229534646}
   m_Layer: 7
   m_Name: Cocci
   m_TagString: Enemy
@@ -239,7 +240,7 @@ MonoBehaviour:
   endingrangetoshoot: 0.8
   AmountOfBullets: 1
   bulletSpread: 9
-  projectile: {fileID: 3812985790077842512, guid: b8a4215f89377b140b6b3b8efc37eeff, type: 3}
+  projectile: {fileID: 5411894737003789611, guid: 8041d91e063884a408a556919e332874, type: 3}
   firePoint: {fileID: 4067611438470814567}
   player: {fileID: 0}
   burstFire: 1
@@ -319,6 +320,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e74e3615ce8efa49984f414aedbecbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2862026185229534646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4067611438076860968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d3495297b6e3e448de092eb2cfb830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorType: 3
 --- !u!1 &4067611438209862171
 GameObject:
   m_ObjectHideFlags: 0

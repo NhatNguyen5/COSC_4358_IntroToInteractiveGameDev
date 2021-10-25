@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
+    [SerializeField] private CursorManager.CursorType cursorType;
+
 
     public CrossHairCursor crosshair;
     //public static bool GameisPaused = false;
@@ -16,7 +18,11 @@ public class Pause : MonoBehaviour
     //public GameObject StatusIndicator;
 
 
- 
+    public void Start()
+    {
+        CursorManager.Instance.SetActiveCursorType(CursorManager.CursorType.Target);
+        Debug.Log("Setting Cursor To Target START");
+    }
 
 
     public void resume() 
@@ -26,6 +32,9 @@ public class Pause : MonoBehaviour
         OptionMenuUI.SetActive(false);
         PauseMenuUI.SetActive(false);
         OptionSettings.GameisPaused = false;
+
+        CursorManager.Instance.SetActiveCursorType(CursorManager.CursorType.Target);
+        Debug.Log("Setting Cursor To Target RESUME");
     }
 
     public void button()
@@ -44,7 +53,8 @@ public class Pause : MonoBehaviour
         OptionSettings.GameisPaused = true;
         Time.timeScale = 0f;
 
-
+        CursorManager.Instance.SetActiveCursorType(CursorManager.CursorType.Arrow);
+        Debug.Log("Setting Cursor To ARROW PAUSE");
     }
 
 
