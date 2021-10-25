@@ -247,35 +247,42 @@ MonoBehaviour:
   timeBtwBurst: 0.6
   timesToShoot: 3
   Drops:
-  - drop: {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
-    DropPercentage: 100
-    NumOfDrop: 2
-    doConvert: 1
-    Currency:
+  - isCurrency: 1
+    isAmmo: 0
+    Drops:
     - {fileID: 2859806896499263471, guid: e786d9e05e544c342854ebaae6f330ec, type: 3}
     - {fileID: 8493335925642168428, guid: a7710005c5b967549a684aa3f7ff04f4, type: 3}
     - {fileID: 6945996946943777615, guid: e163425566a083b428b0bd23743d338d, type: 3}
     - {fileID: 6662930850099418146, guid: 60e2807eca38f6748a71871b39003466, type: 3}
     - {fileID: 1218887535022631140, guid: a9fff5c94023816449f11c7055169929, type: 3}
-    numbers: 0000000000000000000000000000000000000000
-  - drop: {fileID: 2056935271745837854, guid: 9729f65a98d9dd14b86e888222ffbcbc, type: 3}
+    DropPercentage: 100
+    NumOfDrop: 100
+  - isCurrency: 0
+    isAmmo: 0
+    Drops:
+    - {fileID: 2056935271745837854, guid: 9729f65a98d9dd14b86e888222ffbcbc, type: 3}
     DropPercentage: 5
     NumOfDrop: 1
-    doConvert: 0
-    Currency: []
-    numbers: 
-  - drop: {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
+  - isCurrency: 0
+    isAmmo: 0
+    Drops:
+    - {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
     DropPercentage: 50
     NumOfDrop: 1
-    doConvert: 0
-    Currency: []
-    numbers: 
-  - drop: {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
+  - isCurrency: 0
+    isAmmo: 1
+    Drops:
+    - {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
+    - {fileID: 2859806896499263471, guid: 984f67430b7ad7440afb326ad75ab93b, type: 3}
+    - {fileID: 2859806896499263471, guid: bf31acb7f6eaf0041bd226f2abc114c6, type: 3}
     DropPercentage: 50
+    NumOfDrop: 50
+  - isCurrency: 0
+    isAmmo: 0
+    Drops:
+    - {fileID: 2056935271745837854, guid: 953376de06b619b4898731a5bab67558, type: 3}
+    DropPercentage: 5
     NumOfDrop: 1
-    doConvert: 0
-    Currency: []
-    numbers: 
   spriteLibrary: {fileID: 8226067464753016066}
   targetResolver: {fileID: 1243671825624085866}
   targetCategory: Cocci Skin Library Asset

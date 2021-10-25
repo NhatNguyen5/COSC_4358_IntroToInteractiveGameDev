@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3344257401194469249}
   - component: {fileID: 3413995954745191899}
   m_Layer: 10
-  m_Name: Ammo
+  m_Name: Ammo25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   flingRange: 10
   PickUpRange: 0.5
   DespawnTime: 10
-  AmmoReserveAdd: 50
+  AmmoReserveAdd: 25
 --- !u!95 &3413995954745191899
 Animator:
   serializedVersion: 3
@@ -296,7 +296,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 6636537622650090910, guid: b1f6553df2d74054a88fe9dc03f14f02, type: 3}
+  m_Sprite: {fileID: -3976831562410728981, guid: d745a93b78832f744a430c5312cca5b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

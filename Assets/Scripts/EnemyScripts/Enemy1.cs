@@ -10,27 +10,49 @@ public class Enemy1 : MonoBehaviour
     [System.Serializable]
     public struct ItemDrops
     {
-        
-        //public bool isAmmo;
-        public GameObject drop;
+        public bool isCurrency;
+        public bool isAmmo;
+        public GameObject[] Drops;
         public float DropPercentage;
         public int NumOfDrop;
-        [Header("Generalized Conversion")]
-        public bool doConvert;
-        public GameObject[] Currency;
-        public int[] numbers;
-
-        public void convert()
+        public int[] convertProtein()
         {
-            int multten = 1;
-            for (int i = 0; i < numbers.Length; i++)
-            { 
-                numbers[i] = NumOfDrop / multten % 10;
+            int numOfDigits;
+            if (NumOfDrop.ToString().Length >= Drops.Length)
+                numOfDigits = Drops.Length;
+            else
+                numOfDigits = NumOfDrop.ToString().Length;
+
+            int[] convertedArr = new int[numOfDigits];
+
+            float multten = 1;
+            for (int i = 0; i < numOfDigits; i++)
+            {
+                if (i < numOfDigits - 1)
+                    convertedArr[i] = (Mathf.FloorToInt(NumOfDrop / multten) % 10);
+                else
+                    convertedArr[i] = (Mathf.FloorToInt(NumOfDrop / multten));
                 multten *= 10;
             }
+            return convertedArr;
         }
+        public int[] convertAmmo()
+        {
+            int[] convertedArr = new int[3];
+            convertedArr[2] = Mathf.FloorToInt(NumOfDrop / 100f);
 
+            if ((NumOfDrop / 100f) - convertedArr[2] > 0.5)
+            {
+                convertedArr[1] = 1;
+                convertedArr[0] = 1;
+            }
+            else if ((NumOfDrop / 100f) - convertedArr[2] == 0.5)
+                convertedArr[1] = 1;
+            else if ((NumOfDrop / 100f) - convertedArr[2] > 0 && (NumOfDrop / 100f) - convertedArr[2] < 0.5)
+                convertedArr[0] = 1;
 
+            return convertedArr;
+        }
     }
 
 
@@ -491,20 +513,30 @@ public class Enemy1 : MonoBehaviour
             {
                 if (Random.Range(0, 100) <= id.DropPercentage)
                 {
-                    if (id.doConvert == false)
+                    if (id.isAmmo == false)
                     {
-                        for (int i = 0; i < id.NumOfDrop; i++)
-                            Instantiate(id.drop, transform.position, Quaternion.identity);
-                    }
-                    else if (id.doConvert == true)
-                    {
-                        id.convert();
-                        for (int i = 0; i < id.Currency.Length; i++)
+                        if (id.isCurrency == false)
                         {
-                            for (int j = 0; j < id.numbers[i]; j++)
+                            for (int i = 0; i < id.NumOfDrop; i++)
+                                Instantiate(id.Drops[0], transform.position, Quaternion.identity);
+                        }
+                        else if (id.isCurrency == true)
+                        {
+                            int[] NumArr = id.convertProtein();
+                            for (int i = 0; i < NumArr.Length; i++)
                             {
-                                Instantiate(id.Currency[i], transform.position, Quaternion.identity);
+                                for (int j = 0; j < NumArr[i]; j++)
+                                    Instantiate(id.Drops[i], transform.position, Quaternion.identity);
                             }
+                        }
+                    }
+                    else
+                    {
+                        int[] NumArr = id.convertAmmo();
+                        for (int i = 0; i < NumArr.Length; i++)
+                        {
+                            for (int j = 0; j < NumArr[i]; j++)
+                                Instantiate(id.Drops[i], transform.position, Quaternion.identity);
                         }
                     }
                 }

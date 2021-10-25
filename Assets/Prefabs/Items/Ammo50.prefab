@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3344257401194469249}
   - component: {fileID: 3413995954745191899}
   m_Layer: 10
-  m_Name: Protein
+  m_Name: Ammo50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,13 +95,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 923aa7153c838cc43a0f49cfaf332e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TypeOfItem: Protein
+  TypeOfItem: Ammo
   speed: 10
   DetectRange: 4
   flingRange: 10
   PickUpRange: 0.5
-  DespawnTime: 15
-  AmmoReserveAdd: 0
+  DespawnTime: 10
+  AmmoReserveAdd: 50
 --- !u!95 &3413995954745191899
 Animator:
   serializedVersion: 3
@@ -112,7 +112,7 @@ Animator:
   m_GameObject: {fileID: 2859806896499263471}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 78e658d4c4e32d84dbfdbd188bd38ffa, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4395a817d948d5343aca75ae70922b9f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 3509743912027340510}
   - component: {fileID: 997729437338678284}
   m_Layer: 10
-  m_Name: ProteinShadowSprite
+  m_Name: AmmoShadowSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,7 +214,7 @@ Animator:
   m_GameObject: {fileID: 4384287858724201931}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: aa8b3c5fc8cfa014c991d57e8ae7cfc7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 23e4683ffa8943c4b980f4dba071f118, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 4779140138144632676}
   - component: {fileID: 3896641313532433094}
   m_Layer: 10
-  m_Name: ProteinSprite
+  m_Name: AmmoSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -296,7 +296,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 4526421226142997883, guid: d745a93b78832f744a430c5312cca5b1, type: 3}
+  m_Sprite: {fileID: 1758808956524903493, guid: d745a93b78832f744a430c5312cca5b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -317,7 +317,7 @@ Animator:
   m_GameObject: {fileID: 6620979700757096013}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 68063ce063b73dd44ac739f8af8141cc, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3bee44511851e324b8d7a77344315ce1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -397,7 +397,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.9803922, g: 0.82745105, b: 0.45098042, a: 1}
+      key0: {r: 0.7411765, g: 0.58431375, b: 0.7176471, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 1, g: 1, b: 1, a: 1}
       key3: {r: 0, g: 0, b: 0, a: 0}
