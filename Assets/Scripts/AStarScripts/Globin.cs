@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using TMPro;
 public class Globin : MonoBehaviour
 {
     public Transform target;
@@ -16,18 +17,20 @@ public class Globin : MonoBehaviour
     bool reachedEndofPath = false;
 
     Seeker seeker;
-
-    Rigidbody2D rb;
+    [HideInInspector]
+    public Rigidbody2D rb;
 
 
     public GameObject DamageText;
     private SpriteRenderer sprite;
+    [HideInInspector]
+    public Transform player;
 
     //public event System.Action OnDeath;
 
     [Header("Globin Stats")]
 
-    public float contactDamage;
+    //public float contactDamage;
     public float HP = 100;
     public float speed = 200f;
     //public float speed = 0;
@@ -35,10 +38,10 @@ public class Globin : MonoBehaviour
 
     [Header("Movement Settings")]
     public float stoppingDistance = 0;
-    public float retreatDistance = 0;
-    public bool followPlayer;
-    public bool retreat;
-    public bool randomMovement;
+    //public float retreatDistance = 0;
+    //public bool followPlayer;
+    //public bool retreat;
+    //public bool randomMovement;
 
     [Header("Line Of Sight")]
     public bool lineofsight;
@@ -47,8 +50,9 @@ public class Globin : MonoBehaviour
     //public float unstuckTime;
     public float shootdistance;
     public float distancefromplayer;
-
-    bool canSeeEnemy = false;
+    //public float distancefromTarget;
+    [HideInInspector]
+    public bool canSeeEnemy = false;
     bool closest = false;
 
 
@@ -85,7 +89,6 @@ public class Globin : MonoBehaviour
     public float bulletSpread = 0.0f;
     public GameObject projectile;
     public Transform firePoint;
-    public Transform player;
     //private Rigidbody2D rb;
 
 
@@ -110,7 +113,7 @@ public class Globin : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-
+        sprite = GetComponent<SpriteRenderer>();
         if (GlobalPlayerVariables.GameOver == false)
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -219,6 +222,43 @@ public class Globin : MonoBehaviour
     }
 
 
+
+    void burst()
+    {
+        for (int i = 0; i < AmountOfBullets; i++)
+        {
+            float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
+            Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
+            Instantiate(projectile, firePoint.position, newRot);
+            burstTime = timeBtwBurst;
+        }
+    }
+
+    void variation()
+    {
+        startTimeBtwShots = Random.Range(beginningrangetoshoot, endingrangetoshoot);
+        timeBtwShots = startTimeBtwShots;
+    }
+
+    void shoot()
+    {
+        for (int i = 0; i < AmountOfBullets; i++)
+        {
+            //EnemyWeapon.WeaponAnim.SetBool("IsShooting", true);
+            float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
+            Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
+            Instantiate(projectile, firePoint.position, newRot);
+            variation();
+        }
+
+    }
+
+
+
+
+
+
+
     private void Update()
     {
         if (GlobalPlayerVariables.EnableAI)
@@ -306,16 +346,64 @@ public class Globin : MonoBehaviour
                         canSeeEnemy = true;
                         Debug.DrawRay(transform.position, EnemyTarget.transform.position - transform.position, Color.red);
                     }
-                    else 
+                    else
                     {
                         canSeeEnemy = false;
                     }
                 }
+                else
+                {
+                    canSeeEnemy = false;
+                }
+
+
+
                 /*
                 if (EnemyTarget != null && canSeeEnemy == true && closest == false)
                     Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.black);
                 */
+                if (canSeeEnemy == true && GlobalPlayerVariables.GameOver == false)
+                {
 
+                    if (timeBtwShots <= 0)
+                    {
+
+                        if (burstFire == true)
+                        {
+                            burstTime -= Time.deltaTime;
+                            if (TimesShot < timesToShoot)
+                            {
+                                if (burstTime < 0)
+                                {
+                                    TimesShot++;
+                                    burst();
+                                }
+
+                            }
+                            else
+                            {
+                                TimesShot = 0;
+                                variation();
+                            }
+                        }
+                        else
+                        {
+                            shoot();
+                        }
+                    }
+                    else
+                    {
+                        timeBtwShots -= Time.deltaTime;
+                    }
+
+                    if (NextMoveCoolDown <= 0 && reachedDestination == true)
+                    {
+                        //Vector2 temp = randPos;
+                        randomPos();
+                        //facing = Mathf.Atan2((temp - randPos).x, (temp - randPos).y) * Mathf.Rad2Deg;
+                    }
+                    NextMoveCoolDown -= Time.deltaTime;
+                }
 
 
             }
@@ -324,4 +412,142 @@ public class Globin : MonoBehaviour
 
 
     }
+
+
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            float contactDamage = collision.gameObject.GetComponent<Enemy1>().contactDamage;
+            float speed = collision.gameObject.GetComponent<Enemy1>().speed;
+            takeDamage(contactDamage, collision.transform, speed);
+        }
+        if (collision.gameObject.tag == "EnemyMelee")
+        {
+            float contactDamage = collision.gameObject.GetComponent<Enemy2>().contactDamage;
+            float speed = collision.gameObject.GetComponent<Enemy2>().speed;
+            takeDamage(contactDamage, collision.transform, speed);
+        }
+        if (collision.gameObject.tag == "Colony")
+        {
+            float contactDamage = collision.gameObject.GetComponent<EnemyColony>().contactDamage;
+            float speed = collision.gameObject.GetComponent<EnemyColony>().speed;
+            takeDamage(contactDamage, collision.transform, speed);
+        }
+
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.tag == "EnemyBullet")
+        {
+            float damage = collision.gameObject.GetComponent<EnemyProj>().damage;
+            float speed = collision.gameObject.GetComponent<EnemyProj>().speed;
+
+
+            takeDamage(damage, collision.transform, speed);
+        }
+        if (collision.tag == "EnemyBullet2")
+        {
+            float damage = collision.gameObject.GetComponent<EnemyProj2>().damage;
+            float speed = collision.gameObject.GetComponent<EnemyProj2>().speed;
+
+
+            takeDamage(damage, collision.transform, speed);
+        }
+
+    }
+
+    public void takeDamage(float damage, Transform impact, float speed)
+    {
+        //Debug.Log(damage);
+        //bool iscrit = false;
+        //float chance2crit = Random.Range(0f, 1f);
+        /*
+        if (chance2crit <= critRate)
+        {
+            iscrit = true;
+            damage *= critDMG;
+        }*/
+        Debug.Log("Taking Damage");
+        HP -= damage;
+        showDamage(damage, impact, speed);
+        StartCoroutine(FlashRed());
+        if (HP <= 0)
+        {
+            Die();
+        }
+            
+    }
+
+
+    void showDamage(float damage, Transform impact, float speed)
+    {
+        damage = Mathf.Round(damage);
+        if (damage > 1)
+        {
+            Vector3 direction = (transform.position - impact.transform.position).normalized;
+
+            //might add to impact to make it go past enemy
+            var go = Instantiate(DamageText, impact.position, Quaternion.identity);
+
+            //Debug.Log("CRIT");
+
+            Color colorTop = new Color(0.83529f, 0.06667f, 0.06667f);
+            Color colorBottom = new Color(0.98824f, 0.33725f, .90196f);
+
+
+            go.GetComponent<TextMeshPro>().text = damage.ToString();
+            go.GetComponent<TextMeshPro>().colorGradient = new VertexGradient(colorTop, colorTop, colorBottom, colorBottom);
+            go.GetComponent<TextMeshPro>().fontSize *= 1.2f;
+            
+            go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, speed / 5);
+        }
+    }
+
+
+    public IEnumerator FlashRed()
+    {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
+    }
+
+
+
+
+
+
+    void Die()
+    {
+        if (isDead == false)
+        {
+            isDead = true;
+            //lobalPlayerVariables.expToDistribute += EXPWorth;
+           
+
+            if (transform.Find("StickyGrenade(Clone)") != null)
+            {
+                transform.Find("StickyGrenade(Clone)").GetComponent<StickyGrenade>().stuck = false;
+                transform.Find("StickyGrenade(Clone)").parent = null;
+            }
+
+            GameObject.Destroy(gameObject);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
 }

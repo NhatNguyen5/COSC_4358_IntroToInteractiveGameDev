@@ -32,8 +32,11 @@ public class Explosion : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(hurtPlayer == true)
+        if (hurtPlayer == true)
+        {
             if (collision.tag == "Player") { collision.GetComponent<TakeDamage>().takeDamage(explosionDamage, collision.transform, 10); }
+            if (collision.tag == "Globin") { collision.GetComponent<Globin>().takeDamage(explosionDamage, collision.transform, 10); }
+        }
         if (hurtEnemies == true)
         {
             if (collision.tag == "EnemyMelee") { collision.GetComponent<Enemy2>().takeDamage(explosionDamage, collision.transform, 10); }

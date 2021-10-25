@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
 
     //private Transform player;
+    public bool forGlobin = false;
     public float speed = 20f;
     public Rigidbody2D rb;
     public float damage;
@@ -54,35 +55,37 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        //spawnPos = transform.position;
-        if (isLeftWeapon == false)
+        if (forGlobin == false)
         {
-            speed = GlobalPlayerVariables.bulletSpeed;
-            damage = GlobalPlayerVariables.bulletDamage;
-            knockbackForce = GlobalPlayerVariables.bulletKnockbackForce;
-            pierce = GlobalPlayerVariables.bulletPierce;
-            targetToPierce = GlobalPlayerVariables.targetsToPierce;
-            dropOffPerTarget = GlobalPlayerVariables.damageDropOff;
-            bulletDamageDropOff = GlobalPlayerVariables.bulletDamageDropOff;
-            timeToDropDmg = GlobalPlayerVariables.timeToDropDmg;
-            critRate = GlobalPlayerVariables.critRate;
-            critDMG = GlobalPlayerVariables.critDmg;
-            isExplosiveBullet = GlobalPlayerVariables.bulletExplosion;
-        }
-        if (isLeftWeapon == true)
-        {
-            speed = GlobalPlayerVariables.bulletSpeed2;
-            damage = GlobalPlayerVariables.bulletDamage2;
-            knockbackForce = GlobalPlayerVariables.bulletKnockbackForce2;
-            pierce = GlobalPlayerVariables.bulletPierce2;
-            targetToPierce = GlobalPlayerVariables.targetsToPierce2;
-            dropOffPerTarget = GlobalPlayerVariables.damageDropOff2;
-            bulletDamageDropOff = GlobalPlayerVariables.bulletDamageDropOff2;
-            timeToDropDmg = GlobalPlayerVariables.timeToDropDmg2;
-            critRate = GlobalPlayerVariables.critRate2;
-            critDMG = GlobalPlayerVariables.critDmg2;
-            isExplosiveBullet = GlobalPlayerVariables.bulletExplosion2;
+            //spawnPos = transform.position;
+            if (isLeftWeapon == false)
+            {
+                speed = GlobalPlayerVariables.bulletSpeed;
+                damage = GlobalPlayerVariables.bulletDamage;
+                knockbackForce = GlobalPlayerVariables.bulletKnockbackForce;
+                pierce = GlobalPlayerVariables.bulletPierce;
+                targetToPierce = GlobalPlayerVariables.targetsToPierce;
+                dropOffPerTarget = GlobalPlayerVariables.damageDropOff;
+                bulletDamageDropOff = GlobalPlayerVariables.bulletDamageDropOff;
+                timeToDropDmg = GlobalPlayerVariables.timeToDropDmg;
+                critRate = GlobalPlayerVariables.critRate;
+                critDMG = GlobalPlayerVariables.critDmg;
+                isExplosiveBullet = GlobalPlayerVariables.bulletExplosion;
+            }
+            if (isLeftWeapon == true)
+            {
+                speed = GlobalPlayerVariables.bulletSpeed2;
+                damage = GlobalPlayerVariables.bulletDamage2;
+                knockbackForce = GlobalPlayerVariables.bulletKnockbackForce2;
+                pierce = GlobalPlayerVariables.bulletPierce2;
+                targetToPierce = GlobalPlayerVariables.targetsToPierce2;
+                dropOffPerTarget = GlobalPlayerVariables.damageDropOff2;
+                bulletDamageDropOff = GlobalPlayerVariables.bulletDamageDropOff2;
+                timeToDropDmg = GlobalPlayerVariables.timeToDropDmg2;
+                critRate = GlobalPlayerVariables.critRate2;
+                critDMG = GlobalPlayerVariables.critDmg2;
+                isExplosiveBullet = GlobalPlayerVariables.bulletExplosion2;
+            }
         }
 
         
