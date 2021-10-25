@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 370946250377228248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.522, y: 0.06, z: 0}
+  m_LocalPosition: {x: 0.64, y: 0.025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 370946250935635544}
@@ -102,7 +102,7 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 6675589291155759245, guid: 552f6cd06aae56944a23e05f87b3087e, type: 3}
+  m_Sprite: {fileID: 6094968338453082562, guid: c44c425560294504d83e804a28197a7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
   player: {fileID: 0}
-  HP: 99999
+  HP: 400
   speed: 375
   stoppingDistance: 10
   lineofsight: 0
@@ -179,15 +179,15 @@ MonoBehaviour:
   canSeeEnemy: 0
   circleRadius: 2
   timeTillNextMove: 0.5
-  beginningrangetoshoot: 0
-  endingrangetoshoot: 3
-  AmountOfBullets: 3
-  bulletSpread: 5
+  beginningrangetoshoot: 0.8
+  endingrangetoshoot: 1.8
+  AmountOfBullets: 1
+  bulletSpread: 8
   projectile: {fileID: 3329193777033625832, guid: 590dcad13d25b2e49bdf14eb4b7ff16c, type: 3}
   firePoint: {fileID: 370946250377228249}
-  burstFire: 0
-  timeBtwBurst: 0
-  timesToShoot: 0
+  burstFire: 1
+  timeBtwBurst: 0.09
+  timesToShoot: 14
 --- !u!114 &370946251004088082
 MonoBehaviour:
   m_ObjectHideFlags: 0
