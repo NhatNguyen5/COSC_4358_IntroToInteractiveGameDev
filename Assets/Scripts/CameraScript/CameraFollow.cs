@@ -64,8 +64,8 @@ public class CameraFollow : MonoBehaviour
             }
         }
 
-        float ADSRange = 1;
-        float ADSSpeed = 1;
+        float ADSRange = 0;
+        float ADSSpeed = defaultSpeed;
         if (activeWeapon != null)
         {
             ADSRange = activeWeapon.ADSRange;

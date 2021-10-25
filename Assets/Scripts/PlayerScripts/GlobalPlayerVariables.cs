@@ -80,7 +80,7 @@ public class GlobalPlayerVariables : MonoBehaviour
 
     public float rechargeRate = 1;
 
-    public static float weaponWeight = 1;
+    public static float weaponWeight = 0;
     public static float BaseWeaponWeight = 1;
 
     public float bcr1 = 1;
