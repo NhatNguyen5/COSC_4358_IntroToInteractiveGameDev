@@ -248,7 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
   contactDamage: 8
-  HP: 45
+  HP: 40
   speed: 4.25
   EXPWorth: 50
   stoppingDistance: 0
@@ -293,9 +293,11 @@ MonoBehaviour:
   - isCurrency: 0
     isAmmo: 1
     Drops:
-    - {fileID: 0}
+    - {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
+    - {fileID: 2859806896499263471, guid: 984f67430b7ad7440afb326ad75ab93b, type: 3}
+    - {fileID: 2859806896499263471, guid: bf31acb7f6eaf0041bd226f2abc114c6, type: 3}
     DropPercentage: 15
-    NumOfDrop: 10
+    NumOfDrop: 25
   spriteLibrary: {fileID: 7227182355474802920}
   targetResolver: {fileID: 63244208746446942}
   targetCategory: Bronchite Skin Library Asset
