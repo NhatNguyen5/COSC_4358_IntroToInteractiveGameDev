@@ -161,6 +161,7 @@ public class Enemy2 : MonoBehaviour
             player = this.transform;
         sprite = GetComponent<SpriteRenderer>();
         attack();
+        GlobalPlayerVariables.TotalEnemiesAlive += 1;
 
         currSprite = spriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(targetCategory).ToArray();
     }
@@ -494,6 +495,8 @@ public class Enemy2 : MonoBehaviour
             isDead = true;
             GlobalPlayerVariables.expToDistribute += EXPWorth;
             RememberLoadout.totalExperienceEarned += EXPWorth;
+            GlobalPlayerVariables.TotalEnemiesAlive -= 1;
+            GlobalPlayerVariables.enemiesKilled += 1;
             if (OnEnemyKilled != null)
             {
                 OnEnemyKilled();

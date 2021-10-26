@@ -31,6 +31,7 @@ public class TakeDamage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GlobalPlayerVariables.GlobinsAndPlayerAlive += 1;
         player = GetComponent<Player>();
         HealthBar = GameObject.Find("HP").GetComponent<Image>();
         //rb = GetComponent<Rigidbody2D>();
@@ -160,6 +161,7 @@ public class TakeDamage : MonoBehaviour
         {
 
             FindObjectOfType<AudioManager>().PlayEffect(onDeathSound);
+            GlobalPlayerVariables.GlobinsAndPlayerAlive -= 1;
             Destroy(gameObject);
             //SceneManager.LoadScene("Title");
             //GO TO TITLE OR GAME OVER SCREEN;

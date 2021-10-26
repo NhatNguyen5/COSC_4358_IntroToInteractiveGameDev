@@ -151,8 +151,19 @@ public class GlobalPlayerVariables : MonoBehaviour
 
     public static bool Defend = true;
 
+    //stat tracking
+
+    public static int GlobinsAndPlayerAlive = 0;
+    public static int TotalEnemiesAlive = 0;
+    public static int enemiesKilled = 0;
 
 
+    private void Awake()
+    {
+        GlobinsAndPlayerAlive = 0;
+        TotalEnemiesAlive = 0;
+        enemiesKilled = 0;
+    }
 
     private void Start()
     {
