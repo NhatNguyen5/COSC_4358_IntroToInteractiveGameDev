@@ -255,8 +255,8 @@ MonoBehaviour:
   followPlayer: 1
   randomMovement: 1
   timeRunningTwdPlayer: 5
-  circleRadius: 5
-  timeTillNextMove: 0.1
+  circleRadius: 80
+  timeTillNextMove: 1
   knockbackstartrange: 2
   knockbackendrange: 3
   player: {fileID: 0}

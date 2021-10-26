@@ -248,15 +248,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
   contactDamage: 32
-  HP: 200
+  HP: 260
   speed: 5.5
   EXPWorth: 275
   stoppingDistance: 0
   followPlayer: 1
   randomMovement: 1
   timeRunningTwdPlayer: 5
-  circleRadius: 15
-  timeTillNextMove: 0.07
+  circleRadius: 100
+  timeTillNextMove: 1
   knockbackstartrange: 3
   knockbackendrange: 4
   player: {fileID: 0}
