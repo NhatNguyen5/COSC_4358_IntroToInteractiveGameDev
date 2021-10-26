@@ -35,7 +35,7 @@ Transform:
   - {fileID: 3869956422867858282}
   - {fileID: 6130911342840827726}
   m_Father: {fileID: 2950618480692910450}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &8175100634422244890
 PolygonCollider2D:
@@ -507,6 +507,7 @@ Transform:
   m_LocalPosition: {x: -2.16, y: 3.64, z: -3.6}
   m_LocalScale: {x: 6.2114124, y: 6.2114124, z: 6.2114124}
   m_Children:
+  - {fileID: 9087477925010929286}
   - {fileID: 2950618480928158035}
   - {fileID: 7090437538552658969}
   - {fileID: 4774610320342833391}
@@ -531,10 +532,10 @@ MonoBehaviour:
   Mcamera: {fileID: 0}
   CamFollow: {fileID: 0}
   SpawnCap: 0
-  timeBetweenSpawns: 5
-  tbsDecreaseRate: 0.05
+  timeBetweenSpawns: 0.15
+  tbsDecreaseRate: 0.025
   DecreaseAfter: 1
-  MinTbs: 0.5
+  MinTbs: 0.1
   MaxTbs: 5
   spawnPoints:
   - {fileID: 2950618480928158124}
@@ -575,7 +576,7 @@ Transform:
   m_Children:
   - {fileID: 245884827038734372}
   m_Father: {fileID: 2950618480692910450}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &6110855666367488409
 CapsuleCollider2D:
@@ -623,7 +624,7 @@ Transform:
   m_Children:
   - {fileID: 5705368311751247107}
   m_Father: {fileID: 2950618480692910450}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &4495945476720250967
 CapsuleCollider2D:
@@ -671,7 +672,7 @@ Transform:
   m_Children:
   - {fileID: 330715470829538497}
   m_Father: {fileID: 2950618480692910450}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &7292532041723830432
 CapsuleCollider2D:
@@ -689,6 +690,88 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.52938306, y: 0.24735494}
   m_Direction: 1
+--- !u!1 &6680611552086907082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9087477925010929286}
+  - component: {fileID: 1604439743464653816}
+  m_Layer: 17
+  m_Name: BossMinimapImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9087477925010929286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6680611552086907082}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.06637584, z: 79.01566}
+  m_LocalScale: {x: 7, y: 7, z: 0.16099398}
+  m_Children: []
+  m_Father: {fileID: 2950618480692910450}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1604439743464653816
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6680611552086907082}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 1807849770800619416, guid: 5a9cc03699b55e8459a1a2e8c80971e7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.12, y: 0.12}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &8207206990830648690
 GameObject:
   m_ObjectHideFlags: 0
