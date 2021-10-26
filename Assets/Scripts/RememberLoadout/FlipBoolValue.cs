@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class FlipBoolValue : MonoBehaviour
 {
+
+
+    public GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
         RememberLoadout.loadPlayerStats = true;
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<Player>().SetPlayerItemsAndArmorValues();
     }
 
     // Update is called once per frame
