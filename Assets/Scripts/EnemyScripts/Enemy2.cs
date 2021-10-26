@@ -493,6 +493,7 @@ public class Enemy2 : MonoBehaviour
         {
             isDead = true;
             GlobalPlayerVariables.expToDistribute += EXPWorth;
+            RememberLoadout.totalExperienceEarned += EXPWorth;
             if (OnEnemyKilled != null)
             {
                 OnEnemyKilled();

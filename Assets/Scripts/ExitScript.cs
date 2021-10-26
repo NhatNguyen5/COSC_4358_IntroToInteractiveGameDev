@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ExitScript : MonoBehaviour
 {
@@ -79,7 +80,8 @@ public class ExitScript : MonoBehaviour
     {
         yield return new WaitForSeconds(4);
         OptionSettings.GameisPaused = true;
-        GlobalPlayerVariables.GameOver = true;
+        if (SceneManager.GetActiveScene().name == "Game 1") //CHANGE THIS TO ENDING SCENE
+            GlobalPlayerVariables.GameOver = true;
         WinScreen.SetActive(true);
     }
 

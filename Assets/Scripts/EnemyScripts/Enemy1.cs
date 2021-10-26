@@ -505,6 +505,7 @@ public class Enemy1 : MonoBehaviour
         {
             isDead = true;
             GlobalPlayerVariables.expToDistribute += EXPWorth;
+            RememberLoadout.totalExperienceEarned += EXPWorth;
             if (OnDeath != null)
             {
                 OnDeath();
