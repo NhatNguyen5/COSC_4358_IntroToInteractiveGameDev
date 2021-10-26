@@ -79821,10 +79821,10 @@ MonoBehaviour:
   CamFollow: {fileID: 0}
   SpawnCap: 0
   timeBetweenSpawns: 0
+  MaxTbs: 0
   tbsDecreaseRate: 0
   DecreaseAfter: 0
   MinTbs: 0
-  MaxTbs: 0
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -88021,8 +88021,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7674072803767978065, guid: 004f8d1e3c373fe45bed69bfd2079751, type: 3}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: MaxTbs
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: MinTbs
-      value: 0.079
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: StaInd
@@ -88050,7 +88054,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: timeBetweenSpawns
-      value: 0.08
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: chanceToSpawnBrunt

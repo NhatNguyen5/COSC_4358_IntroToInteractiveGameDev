@@ -18,13 +18,14 @@ public class EnemyManager : MonoBehaviour
     public Camera Mcamera;
     public CameraFollow CamFollow;
     public int SpawnCap;
-    [Header("Spawn time setting")]
+    [HideInInspector]
     public float timeBetweenSpawns;
-    public float tbsDecreaseRate;
+    [Header("Spawn time setting")]
     [Tooltip("This is in second")]
+    public float MaxTbs;
+    public float tbsDecreaseRate;
     public float DecreaseAfter;
     public float MinTbs;
-    public float MaxTbs;
     //int enemiesRemainingToSpawn;
     private float nextSpawnTime;
     private float nextDecrease;
@@ -47,6 +48,7 @@ public class EnemyManager : MonoBehaviour
     {
         //enemiesRemainingToSpawn = enemiesFromColony;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        timeBetweenSpawns = MaxTbs;
     }
 
     private void Update()
