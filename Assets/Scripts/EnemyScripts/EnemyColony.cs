@@ -497,6 +497,7 @@ public class EnemyColony : MonoBehaviour
         {
             isDead = true;
             GlobalPlayerVariables.expToDistribute += EXPWorth;
+            RememberLoadout.totalExperienceEarned += EXPWorth;
             transform.position = this.transform.position;
             transform.Find("BossSprite").GetComponent<Animator>().SetBool("IsDead", isDead);
             GetComponent<PolygonCollider2D>().enabled = false;
