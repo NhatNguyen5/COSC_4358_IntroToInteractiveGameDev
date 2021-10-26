@@ -505,7 +505,7 @@ public class Globin : MonoBehaviour
             iscrit = true;
             damage *= critDMG;
         }*/
-        Debug.Log("Taking Damage");
+        Debug.Log("Globin Taking Damage");
         HP -= damage;
         showDamage(damage, impact, speed);
         StartCoroutine(FlashRed());
