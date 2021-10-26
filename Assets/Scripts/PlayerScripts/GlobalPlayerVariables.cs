@@ -291,7 +291,7 @@ public class GlobalPlayerVariables : MonoBehaviour
                     newTransformCoords = transform;
                     DefendMode.SetActive(false);
                     AttackMode.SetActive(true);
-                    flagMarker.SetActive(false);
+                    flagMarker.SetActive(true);
                     countdown = deactivateText;
 
 
@@ -302,7 +302,7 @@ public class GlobalPlayerVariables : MonoBehaviour
                     Defend = true;
                     DefendMode.SetActive(true);
                     AttackMode.SetActive(false);
-                    flagMarker.SetActive(true);
+                    flagMarker.SetActive(false);
                     countdown = deactivateText;
                 }
                 //Debug.Log("Mouse 2 ");

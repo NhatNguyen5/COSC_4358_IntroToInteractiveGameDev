@@ -249,19 +249,19 @@ MonoBehaviour:
   DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
   contactDamage: 20
   HP: 100
-  speed: 6
+  speed: 3.75
   EXPWorth: 150
   stoppingDistance: 0
-  followPlayer: 1
+  followPlayer: 0
   randomMovement: 1
   timeRunningTwdPlayer: 5
-  circleRadius: 5
-  timeTillNextMove: 0.2
-  knockbackstartrange: 3
-  knockbackendrange: 4
+  circleRadius: 50
+  timeTillNextMove: 0.35
+  knockbackstartrange: 2
+  knockbackendrange: 3
   player: {fileID: 0}
-  beginningrangetomove: 0.8
-  endingrangetomove: 1.6
+  beginningrangetomove: 0.7
+  endingrangetomove: 1.2
   RetreatSpeed: 0.6
   retreatTime: 0.25
   LineOfSight: 0

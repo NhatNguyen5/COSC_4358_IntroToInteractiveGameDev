@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class RememberLoadout : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class RememberLoadout : MonoBehaviour
     public static bool loadPlayerStats = false;
 
 
-
+    public Text currentScoreDeath;
     public static int totalExperienceEarned = 0;
 
     public GameObject[] PossiblePlayerWeapons;
@@ -19,8 +20,7 @@ public class RememberLoadout : MonoBehaviour
     public string startingWeapon2;
     public string startingWeapon3;
 
-
-
+    public static int rememberScore = 0;
 
     public string PrimaryWeapon;
     public string PrimaryWeaponDual;
@@ -53,7 +53,9 @@ public class RememberLoadout : MonoBehaviour
 
     void Start()
     {
-        
+        //currentScoreDeath = GameObject.Find("DeathCurrentScore").GetComponent<Text>();
+
+
         RightArm = GameObject.FindGameObjectWithTag("RightArm");
         LeftArm = GameObject.FindGameObjectWithTag("LeftArm");
 
@@ -120,9 +122,14 @@ public class RememberLoadout : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        rememberScore = totalExperienceEarned;
 
         if (SceneManager.GetActiveScene().name == "Title" || GlobalPlayerVariables.GameOver == true)
         {
+            //if (GlobalPlayerVariables.GameOver == true)
+            //{
+            //    currentScoreDeath.GetComponent<Text>().text = "SCORE: " + totalExperienceEarned.ToString();
+            //}
             Destroy(gameObject);
         }
 

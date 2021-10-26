@@ -34,8 +34,9 @@ Transform:
   m_Children:
   - {fileID: 3869956422867858282}
   - {fileID: 6130911342840827726}
+  - {fileID: 9087477925010929286}
   m_Father: {fileID: 2950618480692910450}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &8175100634422244890
 PolygonCollider2D:
@@ -507,7 +508,6 @@ Transform:
   m_LocalPosition: {x: -2.16, y: 3.64, z: -3.6}
   m_LocalScale: {x: 6.2114124, y: 6.2114124, z: 6.2114124}
   m_Children:
-  - {fileID: 9087477925010929286}
   - {fileID: 2950618480928158035}
   - {fileID: 7090437538552658969}
   - {fileID: 4774610320342833391}
@@ -533,10 +533,10 @@ MonoBehaviour:
   CamFollow: {fileID: 0}
   SpawnCap: 0
   timeBetweenSpawns: 0.15
+  MaxTbs: 5
   tbsDecreaseRate: 0.025
   DecreaseAfter: 1
   MinTbs: 0.1
-  MaxTbs: 5
   spawnPoints:
   - {fileID: 2950618480928158124}
   - {fileID: 3009321316613043682}
@@ -576,7 +576,7 @@ Transform:
   m_Children:
   - {fileID: 245884827038734372}
   m_Father: {fileID: 2950618480692910450}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &6110855666367488409
 CapsuleCollider2D:
@@ -624,7 +624,7 @@ Transform:
   m_Children:
   - {fileID: 5705368311751247107}
   m_Father: {fileID: 2950618480692910450}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &4495945476720250967
 CapsuleCollider2D:
@@ -672,7 +672,7 @@ Transform:
   m_Children:
   - {fileID: 330715470829538497}
   m_Father: {fileID: 2950618480692910450}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &7292532041723830432
 CapsuleCollider2D:
@@ -718,8 +718,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.06637584, z: 79.01566}
   m_LocalScale: {x: 7, y: 7, z: 0.16099398}
   m_Children: []
-  m_Father: {fileID: 2950618480692910450}
-  m_RootOrder: 0
+  m_Father: {fileID: 5896408231586960904}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1604439743464653816
 SpriteRenderer:
