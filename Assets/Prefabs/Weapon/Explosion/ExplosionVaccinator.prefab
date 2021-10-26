@@ -115,8 +115,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionDamage: 65
   explodeTime: 0.2
-  explosionRangeStart: 8
-  explosionRangeEnd: 13
+  explosionRangeStart: 1
+  explosionRangeEnd: 2
   hurtPlayer: 0
   hurtEnemies: 1
 --- !u!114 &2326867964805922634
