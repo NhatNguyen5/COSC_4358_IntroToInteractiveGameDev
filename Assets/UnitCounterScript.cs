@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class UnitCounterScript : MonoBehaviour
 {
-    GameObject[] enemies;
-    GameObject[] enemiesMelee;
-    GameObject[] allies;
+    //GameObject[] enemies;
+    //GameObject[] enemiesMelee;
+    //GameObject[] allies;
     public Text allyCountText;
     public Text enemyCountText;
 
@@ -29,13 +29,13 @@ public class UnitCounterScript : MonoBehaviour
     }
     void Update()
     {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        enemiesMelee = GameObject.FindGameObjectsWithTag("EnemyMelee");
-        allies = GameObject.FindGameObjectsWithTag("Globin");
+        //enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //enemiesMelee = GameObject.FindGameObjectsWithTag("EnemyMelee");
+        //allies = GameObject.FindGameObjectsWithTag("Globin");
 
        
-        enemyLength = float.Parse((enemies.Length + enemiesMelee.Length).ToString());
-        allyLength = float.Parse(allies.Length.ToString());
+        enemyLength = GlobalPlayerVariables.TotalEnemiesAlive;
+        allyLength = GlobalPlayerVariables.GlobinsAndPlayerAlive;
 
         enemyCountText.text = enemyLength.ToString();
         allyCountText.text = allyLength.ToString();
