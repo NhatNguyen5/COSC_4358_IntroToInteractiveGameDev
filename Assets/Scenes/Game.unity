@@ -83926,15 +83926,15 @@ RectTransform:
   m_GameObject: {fileID: 1581419906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1546414055}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000046015, y: -44.4}
-  m_SizeDelta: {x: 60, y: 60}
+  m_AnchoredPosition: {x: -0.000046015, y: -36.4}
+  m_SizeDelta: {x: 128, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1581419908
 MonoBehaviour:
@@ -88021,8 +88021,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7674072803767978065, guid: 004f8d1e3c373fe45bed69bfd2079751, type: 3}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: MaxTbs
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: MinTbs
-      value: 0.3
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: StaInd
@@ -88045,8 +88049,12 @@ PrefabInstance:
       value: 25000
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: DecreaseAfter
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: timeBetweenSpawns
-      value: 0.02
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: chanceToSpawnBrunt
