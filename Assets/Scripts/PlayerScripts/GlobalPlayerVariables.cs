@@ -10,7 +10,8 @@ public class GlobalPlayerVariables : MonoBehaviour
 
     public GameObject DefendMode;
     public GameObject AttackMode;
-    
+
+    public GameObject flagMarker;
     /*
     void Awake()
     {
@@ -227,7 +228,7 @@ public class GlobalPlayerVariables : MonoBehaviour
     //globin positioning
     Vector3 newPosition = Vector3.zero;
     public static Transform newTransformCoords;
-    float deactivateText = 1;
+    float deactivateText = 2.5f;
     float countdown = 0;
     bool resetObject = false;
     public void Update()
@@ -250,6 +251,7 @@ public class GlobalPlayerVariables : MonoBehaviour
                 AttackMode = GameObject.Find("Attack");
                 DefendMode.SetActive(false);
                 AttackMode.SetActive(false);
+                flagMarker.SetActive(false);
                 Defend = true;
                 resetObject = false;
                 countdown = 0;
@@ -278,6 +280,7 @@ public class GlobalPlayerVariables : MonoBehaviour
                     newTransformCoords = transform;
                     DefendMode.SetActive(false);
                     AttackMode.SetActive(true);
+                    flagMarker.SetActive(false);
                     countdown = deactivateText;
 
 
@@ -288,6 +291,7 @@ public class GlobalPlayerVariables : MonoBehaviour
                     Defend = true;
                     DefendMode.SetActive(true);
                     AttackMode.SetActive(false);
+                    flagMarker.SetActive(true);
                     countdown = deactivateText;
                 }
                 //Debug.Log("Mouse 2 ");
