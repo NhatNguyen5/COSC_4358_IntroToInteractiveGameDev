@@ -255,19 +255,19 @@ MonoBehaviour:
     - {fileID: 6945996946943777615, guid: e163425566a083b428b0bd23743d338d, type: 3}
     - {fileID: 6662930850099418146, guid: 60e2807eca38f6748a71871b39003466, type: 3}
     - {fileID: 1218887535022631140, guid: a9fff5c94023816449f11c7055169929, type: 3}
-    DropPercentage: 100
-    NumOfDrop: 100
+    DropPercentage: 15
+    NumOfDrop: 20
   - isCurrency: 0
     isAmmo: 0
     Drops:
     - {fileID: 2056935271745837854, guid: 9729f65a98d9dd14b86e888222ffbcbc, type: 3}
-    DropPercentage: 5
+    DropPercentage: 3
     NumOfDrop: 1
   - isCurrency: 0
     isAmmo: 0
     Drops:
     - {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
-    DropPercentage: 50
+    DropPercentage: 7
     NumOfDrop: 1
   - isCurrency: 0
     isAmmo: 1
@@ -275,7 +275,7 @@ MonoBehaviour:
     - {fileID: 2859806896499263471, guid: 0ba940e800e21e548af87cfccd47b4c4, type: 3}
     - {fileID: 2859806896499263471, guid: 984f67430b7ad7440afb326ad75ab93b, type: 3}
     - {fileID: 2859806896499263471, guid: bf31acb7f6eaf0041bd226f2abc114c6, type: 3}
-    DropPercentage: 50
+    DropPercentage: 7
     NumOfDrop: 50
   - isCurrency: 0
     isAmmo: 0

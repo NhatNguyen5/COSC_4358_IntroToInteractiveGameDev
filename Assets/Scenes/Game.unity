@@ -78576,9 +78576,9 @@ MonoBehaviour:
   - {fileID: 9036960665989413033, guid: a8074c1be8486f2498cf4c9a328041ac, type: 3}
   - {fileID: 3544499261659222557, guid: c60ca7f11bb0daf468d168cf1a0886c7, type: 3}
   - {fileID: 2591568961033913676, guid: 6b3a3f358e63406439d5395875549b39, type: 3}
-  startingWeapon1: Sedator
-  startingWeapon2: Zyzz Cannon
-  startingWeapon3: Vaccinator2.0
+  startingWeapon1: Remedy
+  startingWeapon2: Protogazer
+  startingWeapon3: Denaturator
   PrimaryWeapon: 
   PrimaryWeaponDual: 
   SecondaryWeapon: 
@@ -88022,7 +88022,7 @@ PrefabInstance:
       objectReference: {fileID: 7674072803767978065, guid: 004f8d1e3c373fe45bed69bfd2079751, type: 3}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: MinTbs
-      value: 0.3
+      value: 0.079
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: StaInd
@@ -88045,8 +88045,12 @@ PrefabInstance:
       value: 25000
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: tbsDecreaseRate
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: timeBetweenSpawns
-      value: 0.02
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: chanceToSpawnBrunt
