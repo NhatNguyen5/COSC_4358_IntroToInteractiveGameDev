@@ -28503,7 +28503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!60 &686973081
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -28645,6 +28645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyColony: {fileID: 1769738117}
   WinScreen: {fileID: 1098059709}
+  NextScene: 
 --- !u!61 &686973085
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -78472,6 +78473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 053d4053c4b5dd940be0cd81a8e5cce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadPlayerStats: 0
   currentScoreDeath: {fileID: 0}
   showtotalexp: 0
   PossiblePlayerWeapons:
