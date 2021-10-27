@@ -68,7 +68,7 @@ public class ExitScript : MonoBehaviour
 
         if (collision.tag == "Player")
         {
-            player.enableControl = false;
+            GlobalPlayerVariables.EnablePlayerControl = false;
             player.Components.PlayerRidgitBody.drag = 500;
             Debug.Log("You Won!");
             reached = true;

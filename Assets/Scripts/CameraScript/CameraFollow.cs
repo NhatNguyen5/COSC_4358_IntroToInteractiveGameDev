@@ -30,6 +30,9 @@ public class CameraFollow : MonoBehaviour
     private float defaultZoom;
     private bool moveHold = false;
     private bool zoomHold = false;
+    private float maxZD;
+    private float ADSRange = 0;
+    private float ADSSpeed = 0;
 
     private void Awake()
     {
@@ -37,6 +40,9 @@ public class CameraFollow : MonoBehaviour
         myCamera.orthographicSize = DefaultZoomLevel;
         defaultZoom = cameraZoom;
         defaultSpeed = DefaultCameraMoveSpeed;
+        ADSRange = 0;
+        ADSSpeed = defaultSpeed;
+        maxZD = new Vector3(player.References.MousePosToPlayer.x * ADSRange, player.References.MousePosToPlayer.y * ADSRange).magnitude;
     }
 
     // Update is called once per frame
@@ -64,12 +70,15 @@ public class CameraFollow : MonoBehaviour
             }
         }
 
-        float ADSRange = 0;
-        float ADSSpeed = defaultSpeed;
         if (activeWeapon != null)
         {
             ADSRange = activeWeapon.ADSRange;
             ADSSpeed = activeWeapon.ADSSpeed;
+        }
+        else
+        {
+            ADSRange = 0;
+        ADSSpeed = defaultSpeed;
         }
         
         if (!moveHold)
@@ -86,6 +95,30 @@ public class CameraFollow : MonoBehaviour
 
         if (!AutoADS && Input.GetKey(KeyCode.Mouse1) && !player.Stats.IsDualWield)
         {
+            //New Ads, broken
+            /*
+            var mousePos = Input.mousePosition;
+            mousePos.x -= Screen.width / 2;
+            mousePos.y -= Screen.height / 2;
+
+            float normalizeNum;
+            if (Screen.width > Screen.height)
+                normalizeNum = Screen.height;
+            else
+                normalizeNum = Screen.width;
+
+            float percentagePos = mousePos.magnitude / (normalizeNum/2);
+
+            Vector2 tempPos = new Vector2(Mathf.Abs(mousePos.x / (Screen.width / 2)), Mathf.Abs(mousePos.y / (Screen.height / 2)));
+
+            if (player.References.MousePosToPlayerNotNorm.magnitude >= 1 && player.References.MousePosToPlayerNotNorm.magnitude <= ADSRange)
+                cameraFollowPosition = new Vector3(cameraFollowPosition.x + MP2P.x * (percentagePos - 0.5f) * (player.References.MousePosToPlayerNotNorm.magnitude / ADSRange), cameraFollowPosition.y + MP2P.y * (percentagePos - 0.5f) * (player.References.MousePosToPlayerNotNorm.magnitude / ADSRange));
+            else if (player.References.MousePosToPlayerNotNorm.magnitude >= ADSRange)
+                cameraFollowPosition = new Vector3(cameraFollowPosition.x + MP2P.x * (player.References.MousePosToPlayerNotNorm.magnitude / ADSRange), cameraFollowPosition.y + MP2P.y * (player.References.MousePosToPlayerNotNorm.magnitude / ADSRange));
+
+
+            Debug.Log(player.References.MousePosToPlayerNotNorm.magnitude);
+            */
             cameraFollowPosition = cameraFollowPosition + MP2P;
             if (!moveHold)
                 cameraMoveSpeed = ADSSpeed;
@@ -103,7 +136,7 @@ public class CameraFollow : MonoBehaviour
         float distance = Vector3.Distance(cameraFollowPosition, transform.position);
         if (distance > 0)
         {
-            Vector3 newCameraPosition = transform.position + cameraMoveDir * distance * cameraMoveSpeed * Time.deltaTime;
+            Vector3 newCameraPosition = transform.position + cameraMoveDir * distance * cameraMoveSpeed * Time.deltaTime ;
             float distanceAfterMoving = Vector3.Distance(newCameraPosition, cameraFollowPosition);
 
             if (distanceAfterMoving > distance)

@@ -27,6 +27,14 @@ public class GlobalPlayerVariables : MonoBehaviour
     }
     */
     public static bool EnableAI = false;
+    public static bool EnablePlayerControl = true;
+
+    IEnumerator waitthis()
+    {
+        yield return new WaitForSeconds(5);
+        EnablePlayerControl = true;
+    }
+
     private float fadeInTime = 1;
     public RawImage FadeInImg;
 
@@ -175,6 +183,7 @@ public class GlobalPlayerVariables : MonoBehaviour
             resetObject = true;
         }
         StartCoroutine(FadeIn(1));
+        //StartCoroutine(waitthis());
     }
 
     public void resetStats()
