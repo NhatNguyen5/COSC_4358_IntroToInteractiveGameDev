@@ -684,4 +684,43 @@ public class Player : MonoBehaviour
         RightSlotAvailableToUse = true;
     }
 
+
+    private GameObject RememberLoudout;
+    public void GetPlayerItemsAndArmorValues()
+    {
+        RememberLoudout = GameObject.FindGameObjectWithTag("Loadout");
+        RememberLoadout gitValues = RememberLoudout.GetComponent<RememberLoadout>();
+
+        gitValues.numberOfheals = stats.NumofHeal;
+        gitValues.numberOfPhizerz = stats.NumofPhizer;
+        gitValues.armorRemaining = Stats.Armorz;
+        gitValues.proteinCounter = Stats.NumofProtein;
+        //gitValues.stemCellAmount = Stats.;
+        //gitValues.numberOfStickyNades = stats.num;
+        gitValues.numberOfMollys = Stats.NumofMolly;
+
+
+
+    }
+
+    public void SetPlayerItemsAndArmorValues()
+    {
+        RememberLoudout = GameObject.FindGameObjectWithTag("Loadout");
+        RememberLoadout gitValues = RememberLoudout.GetComponent<RememberLoadout>();
+
+        stats.NumofHeal = gitValues.numberOfheals;
+        stats.NumofPhizer = gitValues.numberOfPhizerz;
+        Stats.Armorz = gitValues.armorRemaining;
+        Stats.NumofProtein = gitValues.proteinCounter;
+        //gitValues.stemCellAmount = Stats.;
+        //gitValues.numberOfStickyNades = stats.num;
+        Stats.NumofMolly = gitValues.numberOfMollys;
+
+
+
+    }
+
+
+
+
 }

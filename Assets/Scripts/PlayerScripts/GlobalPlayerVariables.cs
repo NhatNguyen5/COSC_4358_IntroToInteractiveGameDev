@@ -260,9 +260,12 @@ public class GlobalPlayerVariables : MonoBehaviour
                 Debug.Log("RESETTING OBJECTS");
                 DefendMode = GameObject.Find("Defend");
                 AttackMode = GameObject.Find("Attack");
-                DefendMode.SetActive(false);
-                AttackMode.SetActive(false);
-                flagMarker.SetActive(false);
+                if(DefendMode != null) 
+                    DefendMode.SetActive(false);
+                if (AttackMode != null)
+                    AttackMode.SetActive(false);
+                if (flagMarker != null)
+                    flagMarker.SetActive(false);
                 Defend = true;
                 resetObject = false;
                 countdown = 0;

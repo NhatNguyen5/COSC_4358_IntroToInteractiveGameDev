@@ -17216,7 +17216,7 @@ GameObject:
   - component: {fileID: 946233870}
   m_Layer: 0
   m_Name: RemembaDaLoadout
-  m_TagString: Untagged
+  m_TagString: Loadout
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17234,6 +17234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScoreDeath: {fileID: 0}
+  showtotalexp: 0
   PossiblePlayerWeapons:
   - {fileID: 3387174646696659352, guid: c2380de4bee36c942a48520aea55dd3f, type: 3}
   - {fileID: 4266070238205467168, guid: 639339a3032352442ba8fed8acc6b3b6, type: 3}
@@ -17267,6 +17268,14 @@ MonoBehaviour:
   ThirdWeaponDual: 
   RightArm: {fileID: 0}
   LeftArm: {fileID: 0}
+  player: {fileID: 0}
+  numberOfheals: 0
+  numberOfPhizerz: 0
+  armorRemaining: 0
+  proteinCounter: 0
+  stemCellAmount: 0
+  numberOfStickyNades: 0
+  numberOfMollys: 0
 --- !u!4 &946233871
 Transform:
   m_ObjectHideFlags: 0

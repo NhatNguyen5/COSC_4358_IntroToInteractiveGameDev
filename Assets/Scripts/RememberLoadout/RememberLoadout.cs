@@ -13,6 +13,7 @@ public class RememberLoadout : MonoBehaviour
 
     public Text currentScoreDeath;
     public static int totalExperienceEarned = 0;
+    public int showtotalexp = 0;
 
     public GameObject[] PossiblePlayerWeapons;
 
@@ -35,6 +36,23 @@ public class RememberLoadout : MonoBehaviour
     public GameObject LeftArm;
 
 
+    //Getting values at the end of level
+    public GameObject player;
+    public int numberOfheals = 0;
+    public int numberOfPhizerz = 0;
+    public float armorRemaining = 0;
+    public int proteinCounter = 0;
+    public int stemCellAmount = 0;
+
+    public int numberOfStickyNades = 0;
+    public int numberOfMollys = 0;
+
+
+
+    
+
+
+
 
     void Awake()
     {
@@ -45,6 +63,7 @@ public class RememberLoadout : MonoBehaviour
         else
         {
             instance = this;
+            totalExperienceEarned = 0;
             DontDestroyOnLoad(gameObject);
         }
     }
@@ -67,7 +86,7 @@ public class RememberLoadout : MonoBehaviour
 
         foreach (GameObject go in PossiblePlayerWeapons)
         {
-            Debug.Log("each");
+            //Debug.Log("each");
             if (go.name == startingWeapon1)
             {
                 Debug.Log("Primary");
@@ -76,6 +95,9 @@ public class RememberLoadout : MonoBehaviour
                 newWeapon.name = startingWeapon1;
                 newWeapon.transform.parent = RightArm.transform;
             }
+        }
+        foreach (GameObject go in PossiblePlayerWeapons)
+        {
             if (go.name == startingWeapon2)
             {
                 var newWeapon2 = Instantiate(go, new Vector3(0, 0, 0), Quaternion.identity);
@@ -84,6 +106,9 @@ public class RememberLoadout : MonoBehaviour
                 newWeapon2.transform.parent = RightArm.transform;
                 newWeapon2.SetActive(false);
             }
+        }
+        foreach (GameObject go in PossiblePlayerWeapons)
+        {
             if (go.name == startingWeapon3)
             {
                 var newWeapon3 = Instantiate(go, new Vector3(0, 0, 0), Quaternion.identity);
@@ -92,8 +117,6 @@ public class RememberLoadout : MonoBehaviour
                 newWeapon3.transform.parent = RightArm.transform;
                 newWeapon3.SetActive(false);
             }
-
-
         }
 
         if (LeftArm != null)
@@ -124,6 +147,9 @@ public class RememberLoadout : MonoBehaviour
     {
         rememberScore = totalExperienceEarned;
 
+        showtotalexp = totalExperienceEarned;
+
+
         if (SceneManager.GetActiveScene().name == "Title" || GlobalPlayerVariables.GameOver == true)
         {
             //if (GlobalPlayerVariables.GameOver == true)
@@ -145,11 +171,14 @@ public class RememberLoadout : MonoBehaviour
             {
                 if (go.name == PrimaryWeapon)
                 {
-                    var newWeapon = Instantiate(go, new Vector3(0,0,0), Quaternion.identity);
+                    var newWeapon = Instantiate(go, new Vector3(0, 0, 0), Quaternion.identity);
                     newWeapon.GetComponent<Weapon>().Slot = 1;
                     newWeapon.name = PrimaryWeapon;
                     newWeapon.transform.parent = RightArm.transform;
                 }
+            }
+            foreach (GameObject go in PossiblePlayerWeapons)
+            {
                 if (go.name == SecondaryWeapon)
                 {
                     var newWeapon2 = Instantiate(go, new Vector3(0, 0, 0), Quaternion.identity);
@@ -158,6 +187,9 @@ public class RememberLoadout : MonoBehaviour
                     newWeapon2.transform.parent = RightArm.transform;
                     newWeapon2.SetActive(false);
                 }
+            }
+            foreach (GameObject go in PossiblePlayerWeapons)
+            {
                 if (go.name == ThirdWeapon)
                 {
                     var newWeapon3 = Instantiate(go, new Vector3(0, 0, 0), Quaternion.identity);
@@ -166,9 +198,11 @@ public class RememberLoadout : MonoBehaviour
                     newWeapon3.transform.parent = RightArm.transform;
                     newWeapon3.SetActive(false);
                 }
-
-
             }
+
+            player = GameObject.FindGameObjectWithTag("Player");
+            player.GetComponent<Player>().SetPlayerItemsAndArmorValues();
+
 
 
 
