@@ -5318,6 +5318,12 @@ MonoBehaviour:
     pitch: 1.26
     loop: 0
     source: {fileID: 0}
+  - name: DistantExplosionSuperHighPitch
+    clip: {fileID: 8300000, guid: 77b36e005637c29449e459df71b23b9d, type: 3}
+    volume: 0.56
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
   Music:
   - name: Theme
     clip: {fileID: 8300000, guid: b51a60b59117cf44b931df2e12386abe, type: 3}

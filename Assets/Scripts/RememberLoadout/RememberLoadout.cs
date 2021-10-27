@@ -55,6 +55,8 @@ public class RememberLoadout : MonoBehaviour
     public int Globin5Support = 0;
 
 
+    public int SupportHelicopter = 0;
+
 
 
 
