@@ -182,6 +182,10 @@ public class Enemy1 : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GlobalPlayerVariables.GameOver != false)
+        {
+            player = this.transform;
+        }
         if (GlobalPlayerVariables.EnableAI)
         {
             distancefromplayer = Vector2.Distance(transform.position, player.position);

@@ -13,7 +13,9 @@ public class FlipBoolValue : MonoBehaviour
     {
         RememberLoadout.loadPlayerStats = true;
         player = GameObject.FindGameObjectWithTag("Player");
-        player.GetComponent<Player>().SetPlayerItemsAndArmorValues();
+        //player.GetComponent<Player>().SetPlayerItemsAndArmorValues();
+
+        //spawn globins
     }
 
     // Update is called once per frame

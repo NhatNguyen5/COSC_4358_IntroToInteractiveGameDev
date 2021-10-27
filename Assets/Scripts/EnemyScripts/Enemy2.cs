@@ -175,6 +175,10 @@ public class Enemy2 : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GlobalPlayerVariables.GameOver != false)
+        {
+            player = this.transform;
+        }
         if (GlobalPlayerVariables.EnableAI)
         {
             if (knockback == true)

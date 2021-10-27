@@ -16,6 +16,7 @@ public class RememberLoadout : MonoBehaviour
     public int showtotalexp = 0;
 
     public GameObject[] PossiblePlayerWeapons;
+    public GameObject[] PossibleGlobins;
 
     public string startingWeapon1;
     public string startingWeapon2;
@@ -43,13 +44,17 @@ public class RememberLoadout : MonoBehaviour
     public float armorRemaining = 0;
     public int proteinCounter = 0;
     public int stemCellAmount = 0;
-
     public int numberOfStickyNades = 0;
     public int numberOfMollys = 0;
+    public int numberOfGlobins = 0;
+
+    public int Globin5Advisor = 0;
+    public int Globin5Grenadier = 0;
+    public int Globin5Operator = 0;
+    public int Globin5Rocketeer = 0;
+    public int Globin5Support = 0;
 
 
-
-    
 
 
 
