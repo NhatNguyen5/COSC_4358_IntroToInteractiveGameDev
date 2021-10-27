@@ -252,7 +252,7 @@ MonoBehaviour:
   speed: 5.5
   EXPWorth: 275
   stoppingDistance: 0
-  followPlayer: 1
+  followPlayer: 0
   randomMovement: 1
   timeRunningTwdPlayer: 5
   circleRadius: 100
@@ -299,7 +299,7 @@ MonoBehaviour:
     - {fileID: 2859806896499263471, guid: 984f67430b7ad7440afb326ad75ab93b, type: 3}
     - {fileID: 2859806896499263471, guid: bf31acb7f6eaf0041bd226f2abc114c6, type: 3}
     DropPercentage: 15
-    NumOfDrop: 25
+    NumOfDrop: 75
   spriteLibrary: {fileID: 2830568679307036900}
   targetResolver: {fileID: 4892210458596237394}
   targetCategory: Lebronchite Skin Library Asset

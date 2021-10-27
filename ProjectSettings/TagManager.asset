@@ -17,6 +17,8 @@ TagManager:
   - DefendPos
   - RightArm
   - LeftArm
+  - Loadout
+  - GlobinSpawn
   layers:
   - Default
   - TransparentFX
@@ -62,6 +64,9 @@ TagManager:
     locked: 0
   - name: Items
     uniqueID: 2776728455
+    locked: 0
+  - name: Design
+    uniqueID: 3634149377
     locked: 0
   - name: Walls
     uniqueID: 1577942273

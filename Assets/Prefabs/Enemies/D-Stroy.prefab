@@ -197,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
   contactDamage: 24
-  HP: 280
+  HP: 180
   speed: 2.25
   EXPWorth: 400
   stoppingDistance: 22.5
@@ -257,7 +257,7 @@ MonoBehaviour:
     - {fileID: 2859806896499263471, guid: 984f67430b7ad7440afb326ad75ab93b, type: 3}
     - {fileID: 2859806896499263471, guid: bf31acb7f6eaf0041bd226f2abc114c6, type: 3}
     DropPercentage: 7
-    NumOfDrop: 50
+    NumOfDrop: 100
   - isCurrency: 0
     isAmmo: 0
     Drops:

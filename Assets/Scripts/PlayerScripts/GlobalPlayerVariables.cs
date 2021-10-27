@@ -10,7 +10,8 @@ public class GlobalPlayerVariables : MonoBehaviour
 
     public GameObject DefendMode;
     public GameObject AttackMode;
-    
+
+    public GameObject flagMarker;
     /*
     void Awake()
     {
@@ -39,7 +40,7 @@ public class GlobalPlayerVariables : MonoBehaviour
 
 
     //SCORE
-    public static float TotalScore;
+    public static float TotalScore = 0;
 
     //Hold xp backlog
     public static int expToDistribute;
@@ -158,8 +159,19 @@ public class GlobalPlayerVariables : MonoBehaviour
 
     public static bool Defend = true;
 
+    //stat tracking
+
+    public static int GlobinsAndPlayerAlive = 0;
+    public static int TotalEnemiesAlive = 0;
+    public static int enemiesKilled = 0;
 
 
+    private void Awake()
+    {
+        GlobinsAndPlayerAlive = 0;
+        TotalEnemiesAlive = 0;
+        enemiesKilled = 0;
+    }
 
     private void Start()
     {
@@ -236,7 +248,7 @@ public class GlobalPlayerVariables : MonoBehaviour
     //globin positioning
     Vector3 newPosition = Vector3.zero;
     public static Transform newTransformCoords;
-    float deactivateText = 1;
+    float deactivateText = 2.5f;
     float countdown = 0;
     bool resetObject = false;
     public void Update()
@@ -257,8 +269,12 @@ public class GlobalPlayerVariables : MonoBehaviour
                 Debug.Log("RESETTING OBJECTS");
                 DefendMode = GameObject.Find("Defend");
                 AttackMode = GameObject.Find("Attack");
-                DefendMode.SetActive(false);
-                AttackMode.SetActive(false);
+                if(DefendMode != null) 
+                    DefendMode.SetActive(false);
+                if (AttackMode != null)
+                    AttackMode.SetActive(false);
+                if (flagMarker != null)
+                    flagMarker.SetActive(false);
                 Defend = true;
                 resetObject = false;
                 countdown = 0;
@@ -287,6 +303,7 @@ public class GlobalPlayerVariables : MonoBehaviour
                     newTransformCoords = transform;
                     DefendMode.SetActive(false);
                     AttackMode.SetActive(true);
+                    flagMarker.SetActive(true);
                     countdown = deactivateText;
 
 
@@ -297,6 +314,7 @@ public class GlobalPlayerVariables : MonoBehaviour
                     Defend = true;
                     DefendMode.SetActive(true);
                     AttackMode.SetActive(false);
+                    flagMarker.SetActive(false);
                     countdown = deactivateText;
                 }
                 //Debug.Log("Mouse 2 ");
@@ -319,6 +337,14 @@ public class GlobalPlayerVariables : MonoBehaviour
             fadeInTime = 0;
         Color temp = new Color(0, 0, 0, fadeInTime);
         FadeInImg.color = temp;
+
+
+        if (GameOver == true)
+        {
+            GameObject.Find("DeathCurrentScore").GetComponent<Text>().text = "SCORE: " + TotalScore.ToString();
+
+        }
+
     }
 
     private IEnumerator FadeIn(float Dur)

@@ -681,4 +681,119 @@ public class Player : MonoBehaviour
         RightSlotAvailableToUse = true;
     }
 
+
+    private GameObject RememberLoudout;
+    public void GetPlayerItemsAndArmorValues()
+    {
+        RememberLoudout = GameObject.FindGameObjectWithTag("Loadout");
+        RememberLoadout gitValues = RememberLoudout.GetComponent<RememberLoadout>();
+
+        gitValues.numberOfheals = stats.NumofHeal;
+        gitValues.numberOfPhizerz = stats.NumofPhizer;
+        gitValues.armorRemaining = Stats.Armorz;
+        gitValues.proteinCounter = Stats.NumofProtein;
+        //gitValues.stemCellAmount = Stats.;
+        //gitValues.numberOfStickyNades = stats.num;
+        gitValues.numberOfMollys = Stats.NumofMolly;
+
+        GameObject[] allDaGlobins = GameObject.FindGameObjectsWithTag("Globin");
+        gitValues.numberOfGlobins = allDaGlobins.Length;
+        foreach (GameObject go in allDaGlobins)
+        {
+            if (go.name.Contains("5 Advisor"))
+            {
+                gitValues.Globin5Advisor++;
+            }
+            if (go.name.Contains("5 Grenadier"))
+            {
+                gitValues.Globin5Grenadier++;
+            }
+            if (go.name.Contains("5 Operator"))
+            {
+                gitValues.Globin5Operator++;
+            }
+            if (go.name.Contains("5 Rocketeer"))
+            {
+                gitValues.Globin5Rocketeer++;
+            }
+            if (go.name.Contains("5 Support"))
+            {
+                gitValues.Globin5Support++;
+            }
+        }
+
+
+
+    }
+
+
+    [HideInInspector]
+    public bool hideLevelUPAnimation = false;
+    [HideInInspector]
+    public float timetoblockanimation = 0.5f;
+    public void SetPlayerItemsAndArmorValues()
+    {
+        RememberLoudout = GameObject.FindGameObjectWithTag("Loadout");
+        RememberLoadout gitValues = RememberLoudout.GetComponent<RememberLoadout>();
+
+        stats.NumofHeal = gitValues.numberOfheals;
+        stats.NumofPhizer = gitValues.numberOfPhizerz;
+        Stats.Armorz = gitValues.armorRemaining;
+        Stats.NumofProtein = gitValues.proteinCounter;
+        //gitValues.stemCellAmount = Stats.;
+        //gitValues.numberOfStickyNades = stats.num;
+        Stats.NumofMolly = gitValues.numberOfMollys;
+
+        Transform globinSpawn = GameObject.FindGameObjectWithTag("GlobinSpawn").GetComponent<Transform>();
+
+        foreach (GameObject go in gitValues.PossibleGlobins)
+        {
+            Debug.Log("S P A W N");
+            if (go.name.Contains("5 Advisor"))
+            {
+                for(int i = 0; i < gitValues.Globin5Advisor; i++)
+                { 
+                    var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
+                }
+            }
+            else if (go.name.Contains("5 Grenadier"))
+            {
+                for (int i = 0; i < gitValues.Globin5Grenadier; i++)
+                {
+                    var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
+                }
+            }
+            else if(go.name.Contains("5 Operator"))
+            {
+                for (int i = 0; i < gitValues.Globin5Operator; i++)
+                {
+                    var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
+                }
+            }
+            else if(go.name.Contains("5 Rocketeer"))
+            {
+                for (int i = 0; i < gitValues.Globin5Rocketeer; i++)
+                {
+                    var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
+                }            
+            }
+            else if(go.name.Contains("5 Support"))
+            {
+                for (int i = 0; i < gitValues.Globin5Support; i++)
+                {
+                    var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
+                }
+            }
+        }
+
+
+
+
+
+
+    }
+
+
+
+
 }

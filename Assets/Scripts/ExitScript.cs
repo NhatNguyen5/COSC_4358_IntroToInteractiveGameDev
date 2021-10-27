@@ -82,6 +82,7 @@ public class ExitScript : MonoBehaviour
         OptionSettings.GameisPaused = true;
         if (SceneManager.GetActiveScene().name == "Game 1") //CHANGE THIS TO ENDING SCENE
             GlobalPlayerVariables.GameOver = true;
+        player.GetComponent<Player>().GetPlayerItemsAndArmorValues();
         WinScreen.SetActive(true);
     }
 

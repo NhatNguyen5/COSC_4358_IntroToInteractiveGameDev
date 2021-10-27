@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class RememberLoadout : MonoBehaviour
 {
@@ -10,17 +11,18 @@ public class RememberLoadout : MonoBehaviour
     public static bool loadPlayerStats = false;
 
 
-
+    public Text currentScoreDeath;
     public static int totalExperienceEarned = 0;
+    public int showtotalexp = 0;
 
     public GameObject[] PossiblePlayerWeapons;
+    public GameObject[] PossibleGlobins;
 
     public string startingWeapon1;
     public string startingWeapon2;
     public string startingWeapon3;
 
-
-
+    //public static int rememberScore = 0;
 
     public string PrimaryWeapon;
     public string PrimaryWeaponDual;
@@ -35,6 +37,29 @@ public class RememberLoadout : MonoBehaviour
     public GameObject LeftArm;
 
 
+    //Getting values at the end of level
+    public GameObject player;
+    public int numberOfheals = 0;
+    public int numberOfPhizerz = 0;
+    public float armorRemaining = 0;
+    public int proteinCounter = 0;
+    public int stemCellAmount = 0;
+    public int numberOfStickyNades = 0;
+    public int numberOfMollys = 0;
+    public int numberOfGlobins = 0;
+
+    public int Globin5Advisor = 0;
+    public int Globin5Grenadier = 0;
+    public int Globin5Operator = 0;
+    public int Globin5Rocketeer = 0;
+    public int Globin5Support = 0;
+
+
+    public int SupportHelicopter = 0;
+
+
+
+
 
     void Awake()
     {
@@ -45,6 +70,7 @@ public class RememberLoadout : MonoBehaviour
         else
         {
             instance = this;
+            totalExperienceEarned = 0;
             DontDestroyOnLoad(gameObject);
         }
     }
@@ -53,7 +79,9 @@ public class RememberLoadout : MonoBehaviour
 
     void Start()
     {
-        
+        //currentScoreDeath = GameObject.Find("DeathCurrentScore").GetComponent<Text>();
+
+
         RightArm = GameObject.FindGameObjectWithTag("RightArm");
         LeftArm = GameObject.FindGameObjectWithTag("LeftArm");
 
@@ -65,7 +93,7 @@ public class RememberLoadout : MonoBehaviour
 
         foreach (GameObject go in PossiblePlayerWeapons)
         {
-            Debug.Log("each");
+            //Debug.Log("each");
             if (go.name == startingWeapon1)
             {
                 Debug.Log("Primary");
@@ -74,6 +102,9 @@ public class RememberLoadout : MonoBehaviour
                 newWeapon.name = startingWeapon1;
                 newWeapon.transform.parent = RightArm.transform;
             }
+        }
+        foreach (GameObject go in PossiblePlayerWeapons)
+        {
             if (go.name == startingWeapon2)
             {
                 var newWeapon2 = Instantiate(go, new Vector3(0, 0, 0), Quaternion.identity);
@@ -82,6 +113,9 @@ public class RememberLoadout : MonoBehaviour
                 newWeapon2.transform.parent = RightArm.transform;
                 newWeapon2.SetActive(false);
             }
+        }
+        foreach (GameObject go in PossiblePlayerWeapons)
+        {
             if (go.name == startingWeapon3)
             {
                 var newWeapon3 = Instantiate(go, new Vector3(0, 0, 0), Quaternion.identity);
@@ -90,8 +124,6 @@ public class RememberLoadout : MonoBehaviour
                 newWeapon3.transform.parent = RightArm.transform;
                 newWeapon3.SetActive(false);
             }
-
-
         }
 
         if (LeftArm != null)
@@ -120,15 +152,26 @@ public class RememberLoadout : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //rememberScore = totalExperienceEarned;
+
+        showtotalexp = totalExperienceEarned;
+
 
         if (SceneManager.GetActiveScene().name == "Title" || GlobalPlayerVariables.GameOver == true)
         {
+            //if (GlobalPlayerVariables.GameOver == true)
+            //{
+            //    currentScoreDeath.GetComponent<Text>().text = "SCORE: " + totalExperienceEarned.ToString();
+            //}
+            GlobalPlayerVariables.TotalScore = showtotalexp;
             Destroy(gameObject);
         }
 
         if (loadPlayerStats == true)
         {
             loadPlayerStats = false;
+            player = GameObject.FindGameObjectWithTag("Player");
+            player.GetComponent<Player>().hideLevelUPAnimation = true;
             GlobalPlayerVariables.expToDistribute += totalExperienceEarned;
             RightArm = GameObject.FindGameObjectWithTag("RightArm");
             LeftArm = GameObject.FindGameObjectWithTag("LeftArm");
@@ -138,11 +181,14 @@ public class RememberLoadout : MonoBehaviour
             {
                 if (go.name == PrimaryWeapon)
                 {
-                    var newWeapon = Instantiate(go, new Vector3(0,0,0), Quaternion.identity);
+                    var newWeapon = Instantiate(go, new Vector3(0, 0, 0), Quaternion.identity);
                     newWeapon.GetComponent<Weapon>().Slot = 1;
                     newWeapon.name = PrimaryWeapon;
                     newWeapon.transform.parent = RightArm.transform;
                 }
+            }
+            foreach (GameObject go in PossiblePlayerWeapons)
+            {
                 if (go.name == SecondaryWeapon)
                 {
                     var newWeapon2 = Instantiate(go, new Vector3(0, 0, 0), Quaternion.identity);
@@ -151,6 +197,9 @@ public class RememberLoadout : MonoBehaviour
                     newWeapon2.transform.parent = RightArm.transform;
                     newWeapon2.SetActive(false);
                 }
+            }
+            foreach (GameObject go in PossiblePlayerWeapons)
+            {
                 if (go.name == ThirdWeapon)
                 {
                     var newWeapon3 = Instantiate(go, new Vector3(0, 0, 0), Quaternion.identity);
@@ -159,9 +208,11 @@ public class RememberLoadout : MonoBehaviour
                     newWeapon3.transform.parent = RightArm.transform;
                     newWeapon3.SetActive(false);
                 }
-
-
             }
+
+            
+            player.GetComponent<Player>().SetPlayerItemsAndArmorValues();
+
 
 
 

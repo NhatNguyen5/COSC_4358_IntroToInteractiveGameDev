@@ -127,7 +127,7 @@ public class Globin : MonoBehaviour
             player = this.transform;
         }
         target = player;
-
+        GlobalPlayerVariables.GlobinsAndPlayerAlive += 1;
         InvokeRepeating("UpdatePath", 0f, 0.5f);
 
     }
@@ -567,7 +567,7 @@ public class Globin : MonoBehaviour
                 transform.Find("StickyGrenade(Clone)").GetComponent<StickyGrenade>().stuck = false;
                 transform.Find("StickyGrenade(Clone)").parent = null;
             }
-
+            GlobalPlayerVariables.GlobinsAndPlayerAlive -= 1;
             GameObject.Destroy(gameObject);
         }
     }

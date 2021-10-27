@@ -168,6 +168,8 @@ public class Enemy1 : MonoBehaviour
 
         currSprite = spriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(targetCategory).ToArray();
 
+        GlobalPlayerVariables.TotalEnemiesAlive += 1;
+
         variation();
     }
 
@@ -180,6 +182,10 @@ public class Enemy1 : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GlobalPlayerVariables.GameOver != false)
+        {
+            player = this.transform;
+        }
         if (GlobalPlayerVariables.EnableAI)
         {
             distancefromplayer = Vector2.Distance(transform.position, player.position);
@@ -506,6 +512,8 @@ public class Enemy1 : MonoBehaviour
             isDead = true;
             GlobalPlayerVariables.expToDistribute += EXPWorth;
             RememberLoadout.totalExperienceEarned += EXPWorth;
+            GlobalPlayerVariables.TotalEnemiesAlive -= 1;
+            GlobalPlayerVariables.enemiesKilled += 1;
             if (OnDeath != null)
             {
                 OnDeath();

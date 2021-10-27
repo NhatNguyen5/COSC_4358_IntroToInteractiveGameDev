@@ -7,7 +7,8 @@ public class Explosion : MonoBehaviour
 
 
     public int explosionDamage;
-    public float explodeTime = 0.2f;
+    public float explodeDamageTime = 0.2f;
+    public float explodeTime = 10.0f;
     //private float explosionSize;
     //private bool isBoom = false;
     public float explosionRangeStart = 0;
@@ -19,6 +20,7 @@ public class Explosion : MonoBehaviour
     public bool hurtPlayer = false;
     public bool hurtEnemies = false;
 
+    CircleCollider2D explosionCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,10 @@ public class Explosion : MonoBehaviour
         //Debug.Log(explosionRangeResult);
         transform.localScale = new Vector3(explosionRangeResult, explosionRangeResult, 1);
         //explosionSize = transform.localScale.x;
+
+        explosionCollider = GetComponent<CircleCollider2D>();
+
+
     }
 
 
@@ -71,7 +77,13 @@ public class Explosion : MonoBehaviour
         }
         */
 
+        explodeDamageTime -= Time.deltaTime;
         explodeTime -= Time.deltaTime;
+
+        if (explodeDamageTime < 0)
+            DestroyEnemyProjColl();
+        
+
         if (explodeTime < 0)
             DestroyEnemyProj();
     }
@@ -79,6 +91,11 @@ public class Explosion : MonoBehaviour
     void DestroyEnemyProj()
     {
         Destroy(gameObject);
+    }
+
+    void DestroyEnemyProjColl()
+    {
+        explosionCollider.enabled = false;
     }
 
 
