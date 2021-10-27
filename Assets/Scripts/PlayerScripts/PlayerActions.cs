@@ -150,7 +150,8 @@ public class PlayerActions
 
     public void Dash(Vector2 Dir)
     {
-        player.Components.PlayerRidgitBody.MovePosition(player.Stats.Position + Dir * DashSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight) * Time.fixedDeltaTime);
+
+        player.Components.PlayerRidgitBody.MovePosition(player.Stats.Position + Dir * DashSpeed * Mathf.Abs(GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight) * Time.fixedDeltaTime);
     }
 
     public void Animate()

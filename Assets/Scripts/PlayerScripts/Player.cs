@@ -58,9 +58,6 @@ public class Player : MonoBehaviour
     private float spawnRate;
     private float defaultSR;
 
-    [HideInInspector]
-    public bool enableControl = true;
-
     private bool phaseOverWrite = false;
 
     private bool resetPlayerStatsRequest = false;
@@ -379,148 +376,158 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        //Debug.Log("itemusagecooldown " + GlobalPlayerVariables.baseItemUsageCoolDown + " curr level " + Currentlevel);
-        //Debug.Log("reload speed multiplier " + GlobalPlayerVariables.reloadSpeedBonus + " curr level " + Currentlevel);
-        //Debug.Log("critrate1 " + GlobalPlayerVariables.BaseCritRate + " bcr2 " + GlobalPlayerVariables.BaseCritRate2 + " curr level " + Currentlevel);
-        //Debug.Log("Max reserves " + GlobalPlayerVariables.MaxReserves + " recharge rate " + GlobalPlayerVariables.rechargeRateMultiplyer + " curr level " + Currentlevel);
-        //Debug.Log("walk speed " + holdWalkSpeed + " sprint speed " + holdSprintSpeed + " curr level " + Currentlevel);
-        //Debug.Log(stats.StaminaRegenRate);
-        //Debug.Log(stats.HPRegen);
-        if (GlobalPlayerVariables.expToDistribute > 0)
+        if (GlobalPlayerVariables.EnablePlayerControl)
         {
-            stats.Experience += GlobalPlayerVariables.expToDistribute;
-            GlobalPlayerVariables.expToDistribute = 0;
-            expBar.fillAmount = stats.Experience / levelThreshhold;
-        }
-        if (stats.Experience >= levelThreshhold)
-        {
-            
-            Instantiate(levelUpEff, stats.Position, Quaternion.identity);
-            GameObject levelPopUpTemp;
-            levelPopUpTemp = Instantiate(levelUpPopUp, transform, false);
-            levelPopUpTemp.GetComponent<TextMeshPro>().text = ("LEVEL " + (Currentlevel + 1));
-            Destroy(levelPopUpTemp, 3.45f);
+            //Debug.Log("itemusagecooldown " + GlobalPlayerVariables.baseItemUsageCoolDown + " curr level " + Currentlevel);
+            //Debug.Log("reload speed multiplier " + GlobalPlayerVariables.reloadSpeedBonus + " curr level " + Currentlevel);
+            //Debug.Log("critrate1 " + GlobalPlayerVariables.BaseCritRate + " bcr2 " + GlobalPlayerVariables.BaseCritRate2 + " curr level " + Currentlevel);
+            //Debug.Log("Max reserves " + GlobalPlayerVariables.MaxReserves + " recharge rate " + GlobalPlayerVariables.rechargeRateMultiplyer + " curr level " + Currentlevel);
+            //Debug.Log("walk speed " + holdWalkSpeed + " sprint speed " + holdSprintSpeed + " curr level " + Currentlevel);
+            //Debug.Log(stats.StaminaRegenRate);
+            //Debug.Log(stats.HPRegen);
+            if (GlobalPlayerVariables.expToDistribute > 0)
+            {
+                stats.Experience += GlobalPlayerVariables.expToDistribute;
+                GlobalPlayerVariables.expToDistribute = 0;
+                expBar.fillAmount = stats.Experience / levelThreshhold;
+            }
+            if (stats.Experience >= levelThreshhold)
+            {
 
-            components.PlayerStatusIndicator.StartFlash(0.25f, 0.25f, Color.yellow, ((stats.MaxHealth - stats.Health) / stats.MaxHealth) / 2f, Color.red, 1);
-            levelUP();
+                Instantiate(levelUpEff, stats.Position, Quaternion.identity);
+                GameObject levelPopUpTemp;
+                levelPopUpTemp = Instantiate(levelUpPopUp, transform, false);
+                levelPopUpTemp.GetComponent<TextMeshPro>().text = ("LEVEL " + (Currentlevel + 1));
+                Destroy(levelPopUpTemp, 3.45f);
+
+                components.PlayerStatusIndicator.StartFlash(0.25f, 0.25f, Color.yellow, ((stats.MaxHealth - stats.Health) / stats.MaxHealth) / 2f, Color.red, 1);
+                levelUP();
+            }
+            //utilities.HandleInput();
+            utilities.HandleInput();
+            stats.ArmorLevel = Mathf.CeilToInt(stats.Armorz / stats.ArmorPerArmorLevelz);
+
+            if (Input.GetKey(KeyCode.LeftShift) && stats.Direction != Vector2.zero)
+            {
+                if (stats.Stamina > 0)
+                    stats.Stamina -= Time.deltaTime * (stats.StamDrainRate - stats.StaminaRegenRate);
+                StaminaBar.fillAmount = stats.Stamina / (maxStaminaGrowthRate * Currentlevel + GlobalPlayerVariables.baseMaxStamina); //stats.Stamina / stats.MaxStamina;
+                isRunning = true;
+                sprint = 0;
+            }
+
+
+            if (stats.Stamina <= stats.MaxStamina && isRunning == false && sprint >= stats.TimeBeforeStamRegen)
+            {
+                stats.Stamina += Time.deltaTime * stats.StaminaRegenRate;
+                StaminaBar.fillAmount = stats.Stamina / (maxStaminaGrowthRate * Currentlevel + GlobalPlayerVariables.baseMaxStamina); //stats.Stamina / stats.MaxStamina;
+            }
+            isRunning = false;
+            sprint += Time.deltaTime;
+
+            if (OptionSettings.GameisPaused == false)
+            {
+                if (Input.GetKeyUp(KeyCode.T))
+                    actions.ToggleDual();
+                if (Input.GetKeyUp(KeyCode.E) && RightSlotAvailableToUse)
+                {
+                    if (stats.NumofHeal > 0 && stats.Health < stats.MaxHealth)
+                    {
+                        actions.Heal();
+                        RightSlotCooldownDisplay = stats.TylenolCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown);
+                        StartCoroutine(RightSlotItemCooldown(stats.TylenolCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown)));
+                    }
+                }
+                if (Input.GetKeyUp(KeyCode.G))
+                {
+                    /*
+                    if (stats.NumofMolly > 0)
+                    {
+                        Quaternion newRot = Quaternion.Euler(stats.Direction.x, stats.Direction.y, 0);
+                        Instantiate(Molly, stats.Position, newRot);
+                        stats.NumofMolly -= 1;
+                    }
+                    */
+                    {
+                        Quaternion newRot = Quaternion.Euler(stats.Direction.x, stats.Direction.y, 0);
+                        Instantiate(Gre, stats.Position, newRot);
+                    }
+                }
+                if (Input.GetKeyUp(KeyCode.Q) && LeftSlotAvailableToUse && PhizerIsActive == false)
+                {
+                    if (stats.NumofPhizer > 0)
+                    {
+                        actions.Phizer();
+                        LeftSlotCooldownDisplay = stats.PhizerCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown);
+                        StartCoroutine(ResetStats(stats.PhizerDuration));
+                        StartCoroutine(LeftSlotItemCooldown(stats.PhizerCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown)));
+                    }
+                }
+                if (Input.GetKey(KeyCode.M))
+                {
+
+                    Debug.Log("Map");
+                }
+                actions.SwapWeapon();
+                //Debug.DrawRay(stats.Position, stats.Direction, Color.green, 0.1f);
+                DashProc();
+            }
+            //Debug.Log(VaccineCooldownDisplay);
+            if (resetPlayerStatsRequest && !inEffect)
+            {
+                //Debug.Log("RequestReset");
+                actions.ResetPlayerStats();
+                resetPlayerStatsRequest = false;
+            }
+            //Debug.Log(stats.StaminaRegenRate);
+            if (LeftSlotCooldownDisplay > 0 || RightSlotCooldownDisplay > 0)
+            {
+                LeftSlotCooldownDisplay -= Time.deltaTime;
+                actions.LeftSlotCooldownDisplayUpdate(LeftSlotCooldownDisplay / stats.PhizerCooldown);
+            }
+            else
+            {
+                LeftSlotCooldownDisplay = 0;
+            }
+
+            if (RightSlotCooldownDisplay > 0 || RightSlotCooldownDisplay > 0)
+            {
+                RightSlotCooldownDisplay -= Time.deltaTime;
+                actions.RightSlotCooldownDisplayUpdate(RightSlotCooldownDisplay / stats.TylenolCooldown); ;
+            }
+            else
+            {
+                RightSlotCooldownDisplay = 0;
+            }
         }
-        utilities.HandleInput();
+        else
+        {
+            utilities.HandleInput();
+        }
         references.CalMousePosToPlayer();
         actions.UpdateCountsUI();
         actions.Regen();
-        stats.ArmorLevel = Mathf.CeilToInt(stats.Armorz / stats.ArmorPerArmorLevelz);
-
-        if (Input.GetKey(KeyCode.LeftShift) && stats.Direction != Vector2.zero)
-        {
-            if(stats.Stamina > 0)
-                stats.Stamina -= Time.deltaTime*(stats.StamDrainRate - stats.StaminaRegenRate);
-            StaminaBar.fillAmount = stats.Stamina / (maxStaminaGrowthRate * Currentlevel + GlobalPlayerVariables.baseMaxStamina); //stats.Stamina / stats.MaxStamina;
-            isRunning = true;
-            sprint = 0;
-        }
-
-
-        if (stats.Stamina <= stats.MaxStamina && isRunning == false && sprint >= stats.TimeBeforeStamRegen)
-        { 
-            stats.Stamina += Time.deltaTime * stats.StaminaRegenRate;
-            StaminaBar.fillAmount = stats.Stamina / (maxStaminaGrowthRate * Currentlevel + GlobalPlayerVariables.baseMaxStamina); //stats.Stamina / stats.MaxStamina;
-        }
-        isRunning = false;
-        sprint += Time.deltaTime;
-
-        if (OptionSettings.GameisPaused == false)
-        {
-            if(Input.GetKeyUp(KeyCode.T))
-                actions.ToggleDual();
-            if (Input.GetKeyUp(KeyCode.E) && RightSlotAvailableToUse)
-            {
-                if (stats.NumofHeal > 0 && stats.Health < stats.MaxHealth)
-                {
-                    actions.Heal();
-                    RightSlotCooldownDisplay = stats.TylenolCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown);
-                    StartCoroutine(RightSlotItemCooldown(stats.TylenolCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown)));
-                }
-            }
-            if(Input.GetKeyUp(KeyCode.G))
-            {
-                /*
-                if (stats.NumofMolly > 0)
-                {
-                    Quaternion newRot = Quaternion.Euler(stats.Direction.x, stats.Direction.y, 0);
-                    Instantiate(Molly, stats.Position, newRot);
-                    stats.NumofMolly -= 1;
-                }
-                */
-                {
-                    Quaternion newRot = Quaternion.Euler(stats.Direction.x, stats.Direction.y, 0);
-                    Instantiate(Gre, stats.Position, newRot);
-                }
-            }
-            if (Input.GetKeyUp(KeyCode.Q) && LeftSlotAvailableToUse && PhizerIsActive == false)
-            {
-                if (stats.NumofPhizer > 0)
-                {
-                    actions.Phizer();
-                    LeftSlotCooldownDisplay = stats.PhizerCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown);
-                    StartCoroutine(ResetStats(stats.PhizerDuration));
-                    StartCoroutine(LeftSlotItemCooldown(stats.PhizerCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown)));
-                }
-            }
-            if(Input.GetKey(KeyCode.M))
-            {
-                
-                Debug.Log("Map");
-            }
-            actions.SwapWeapon();
-            //Debug.DrawRay(stats.Position, stats.Direction, Color.green, 0.1f);
-            DashProc();
-        }
-        //Debug.Log(VaccineCooldownDisplay);
-        if(resetPlayerStatsRequest && !inEffect)
-        {
-            //Debug.Log("RequestReset");
-            actions.ResetPlayerStats();
-            resetPlayerStatsRequest = false;
-        }
-        //Debug.Log(stats.StaminaRegenRate);
-        if(LeftSlotCooldownDisplay > 0 || RightSlotCooldownDisplay > 0)
-        {
-            LeftSlotCooldownDisplay -= Time.deltaTime;
-            actions.LeftSlotCooldownDisplayUpdate(LeftSlotCooldownDisplay/stats.PhizerCooldown);
-        }
-        else
-        {
-            LeftSlotCooldownDisplay = 0;
-        }
-
-        if (RightSlotCooldownDisplay > 0 || RightSlotCooldownDisplay > 0)
-        {
-            RightSlotCooldownDisplay -= Time.deltaTime;
-            actions.RightSlotCooldownDisplayUpdate(RightSlotCooldownDisplay / stats.TylenolCooldown); ;
-        }
-        else
-        {
-            RightSlotCooldownDisplay = 0;
-        }
-
         UpdateSpawnrate();
         ArmorEffect();
     }
 
     private void FixedUpdate()
     {
-        
-        if(enableControl)
+        if (GlobalPlayerVariables.EnablePlayerControl)
         {
+            
             actions.Move(transform);
             if (Input.GetKey(KeyCode.LeftShift) && stats.Stamina > 0)
                 actions.Sprint();
             else
                 actions.Walk();
         }
-        
-        actions.Animate();
+        else
+        {
+            stats.Speed = 0;
+        }
         ProteinCounts.text = stats.NumofProtein.ToString();
+        actions.Animate();
     }
 
     private void UpdateSpawnrate()
@@ -648,16 +655,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(duration);
         phaseOverWrite = false;
         gameObject.layer = LayerMask.NameToLayer("Actor");
-    }
-
-    public IEnumerator TakeOver(float duration) //doesn't work!!
-    {
-
-        enableControl = false;
-
-        yield return new WaitForSeconds(duration);
-
-        phaseOverWrite = true;
     }
 
     private IEnumerator ResetStats(float AfterSeconds)
