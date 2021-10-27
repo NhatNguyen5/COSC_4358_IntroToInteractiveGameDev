@@ -22,9 +22,5 @@ public class ChangeScene : MonoBehaviour
 		GlobalPlayerVariables.GameOver = false;
 		Time.timeScale = 1f;
 		SceneManager.LoadScene(sceneName);
-
 	}
-
-
-
 }

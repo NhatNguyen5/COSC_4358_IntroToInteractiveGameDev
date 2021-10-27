@@ -330,7 +330,6 @@ MonoBehaviour:
     targetCategory: DefaultHemo
     playerParticleSystem: {fileID: 8089623419280815895}
   enemyManager: {fileID: 0}
-  enableControl: 1
   ArmorUpEff: {fileID: 382254069925517312, guid: 9f9f5a5683a9f754e9648717380e5a02, type: 3}
   ArmorDownEff: {fileID: 2402746949625836344, guid: c20cbefbda0c40a488b329f1bd483786, type: 3}
   levelUpEff: {fileID: 5589515971331923886, guid: 8ba7fc8e0594956438f4b2fba869e41f, type: 3}
@@ -339,6 +338,7 @@ MonoBehaviour:
   beat: {fileID: 2213989057062135191, guid: e8ab9d29358ca8844878ba1e19596536, type: 3}
   Molly: {fileID: 359814843918546931, guid: b7de69beb589f9b4395c5196638db2de, type: 3}
   Gre: {fileID: 3448305983176618688, guid: 103a9c628a9486b44af60b4f7fcc0ee8, type: 3}
+  NumOfTypesOfNade: 2
   dashSound: 
   levelText1: {fileID: 0}
   levelText10: {fileID: 0}
@@ -361,6 +361,8 @@ MonoBehaviour:
   critRateGrowthRate: 0.01
   reloadSpeedGrowthRate: 0.01
   itemUsageGrowthRate: 0.0035
+  hideLevelUPAnimation: 0
+  timetoblockanimation: 0.5
 --- !u!114 &3517825292825441646
 MonoBehaviour:
   m_ObjectHideFlags: 0

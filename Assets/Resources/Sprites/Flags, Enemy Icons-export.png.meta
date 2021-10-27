@@ -1,34 +1,49 @@
 fileFormatVersion: 2
-guid: 29d6c13f219c2374cae41006d88b194c
+guid: 90db02d87c015034a89f412349a7a22c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2637842246526854257
-    second: Flags, Enemy Icons_0
+      213: -3777442671264000209
+    second: Flags, Enemy Icons-export_0
   - first:
-      213: -7047239794005970675
-    second: Flags, Enemy Icons_1
+      213: -6813734399438993473
+    second: Flags, Enemy Icons-export_1
   - first:
-      213: -4912547918485069038
-    second: Flags, Enemy Icons_2
+      213: 7799717395279605482
+    second: Flags, Enemy Icons-export_2
   - first:
-      213: -6880033053220933233
-    second: Flags, Enemy Icons_3
+      213: -1982448278706097229
+    second: Flags, Enemy Icons-export_3
   - first:
-      213: -8678430496188077045
-    second: Flags, Enemy Icons_4
+      213: -9142733392695355081
+    second: Flags, Enemy Icons-export_4
   - first:
-      213: 1727427610463792303
-    second: Flags, Enemy Icons_5
+      213: 8623944678517833952
+    second: Flags, Enemy Icons-export_5
   - first:
-      213: -3234084461807993146
-    second: Flags, Enemy Icons_6
+      213: 7771788845701659757
+    second: Flags, Enemy Icons-export_6
   - first:
-      213: 5093472978863530101
-    second: Flags, Enemy Icons_7
+      213: 916934151697964641
+    second: Flags, Enemy Icons-export_7
   - first:
-      213: 2356807633168626246
-    second: Flags, Enemy Icons_8
+      213: 1708184854413501059
+    second: Flags, Enemy Icons-export_8
+  - first:
+      213: -2623240086851881065
+    second: Flags, Enemy Icons-export_9
+  - first:
+      213: -8601517402330029222
+    second: Flags, Enemy Icons-export_10
+  - first:
+      213: 6579913439810052518
+    second: Flags, Enemy Icons-export_11
+  - first:
+      213: 968366992645679724
+    second: Flags, Enemy Icons-export_12
+  - first:
+      213: 7037389432782401328
+    second: Flags, Enemy Icons-export_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -130,12 +145,75 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Flags, Enemy Icons_0
+      name: Flags, Enemy Icons-export_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
-        width: 12
+        y: 96
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2718eb77e3d39bc0800000000000000
+      internalID: -3777442671264000209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flags, Enemy Icons-export_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb744971aa0c071a0800000000000000
+      internalID: -6813734399438993473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flags, Enemy Icons-export_2
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 96
+        width: 72
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aee631675a92e3c60800000000000000
+      internalID: 7799717395279605482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flags, Enemy Icons-export_3
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 150
+        width: 48
         height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -144,19 +222,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8b9f32e370846bd0800000000000000
-      internalID: -2637842246526854257
+      spriteID: 3b373224bcdec74e0800000000000000
+      internalID: -1982448278706097229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flags, Enemy Icons_1
+      name: Flags, Enemy Icons-export_4
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
-        width: 12
+        x: 288
+        y: 132
+        width: 48
         height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -165,19 +243,103 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d01f647cebc233e90800000000000000
-      internalID: -7047239794005970675
+      spriteID: 7399a4c6b6c7e1180800000000000000
+      internalID: -9142733392695355081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flags, Enemy Icons_2
+      name: Flags, Enemy Icons-export_5
       rect:
         serializedVersion: 2
-        x: 32
-        y: 16
+        x: 288
+        y: 114
+        width: 48
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e00da55ef76ea770800000000000000
+      internalID: 8623944678517833952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flags, Enemy Icons-export_6
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 108
         width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6cf36947c0fadb60800000000000000
+      internalID: 7771788845701659757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flags, Enemy Icons-export_7
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 108
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16e916ab0ca99bc00800000000000000
+      internalID: 916934151697964641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flags, Enemy Icons-export_8
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 108
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 382e4022311b4b710800000000000000
+      internalID: 1708184854413501059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flags, Enemy Icons-export_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 96
+        width: 48
         height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -186,83 +348,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 213ec9822bf13dbb0800000000000000
-      internalID: -4912547918485069038
+      spriteID: 797f0ae1a01689bd0800000000000000
+      internalID: -2623240086851881065
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flags, Enemy Icons_3
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 18
-        width: 4
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f81f1dbd3663580a0800000000000000
-      internalID: -6880033053220933233
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flags, Enemy Icons_4
-      rect:
-        serializedVersion: 2
-        x: 81
-        y: 18
-        width: 4
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b0ceacaa175009780800000000000000
-      internalID: -8678430496188077045
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flags, Enemy Icons_5
-      rect:
-        serializedVersion: 2
-        x: 97
-        y: 18
-        width: 4
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fac65e8624e09f710800000000000000
-      internalID: 1727427610463792303
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flags, Enemy Icons_6
+      name: Flags, Enemy Icons-export_10
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 10
+        width: 216
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -270,20 +369,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6cef25021593e13d0800000000000000
-      internalID: -3234084461807993146
+      spriteID: a5327c0de7541a880800000000000000
+      internalID: -8601517402330029222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flags, Enemy Icons_7
+      name: Flags, Enemy Icons-export_11
       rect:
         serializedVersion: 2
-        x: 80
+        x: 288
         y: 0
-        width: 16
-        height: 10
+        width: 96
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -291,20 +390,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 570263a10b6afa640800000000000000
-      internalID: 5093472978863530101
+      spriteID: 6a162b0696c805b50800000000000000
+      internalID: 6579913439810052518
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Flags, Enemy Icons_8
+      name: Flags, Enemy Icons-export_12
       rect:
         serializedVersion: 2
-        x: 112
+        x: 480
         y: 0
-        width: 16
-        height: 10
+        width: 96
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -312,8 +411,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 642f1f23e0015b020800000000000000
-      internalID: 2356807633168626246
+      spriteID: c6aebd036a4507d00800000000000000
+      internalID: 968366992645679724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flags, Enemy Icons-export_13
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 96
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03f25174764d9a160800000000000000
+      internalID: 7037389432782401328
       vertices: []
       indices: 
       edges: []

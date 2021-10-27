@@ -100,6 +100,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private StickyGrenade Gre;
 
+    private int nadeSelector = 0;
+
+    public int NumOfTypesOfNade;
+
     public string dashSound;
 
     //LEVELCAP
@@ -247,7 +251,7 @@ public class Player : MonoBehaviour
         MinTbs = enemyManager.MinTbs;
         MaxTbs = enemyManager.MaxTbs;
         defaultTbs = enemyManager.timeBetweenSpawns;
-        defaultSR = 1/enemyManager.timeBetweenSpawns;
+        defaultSR = 1/enemyManager.MaxTbs;
 
         stats.ArmorLevel = Mathf.FloorToInt(stats.Armorz / stats.ArmorPerArmorLevelz);
 
@@ -438,19 +442,35 @@ public class Player : MonoBehaviour
                         StartCoroutine(RightSlotItemCooldown(stats.TylenolCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown)));
                     }
                 }
+                if(Input.GetKeyDown(KeyCode.F))
+                {
+                    nadeSelector += 1;
+                    if(nadeSelector > NumOfTypesOfNade-1)
+                    {
+                        nadeSelector = 0;
+                    }
+                }
                 if (Input.GetKeyUp(KeyCode.G))
                 {
-                    /*
-                    if (stats.NumofMolly > 0)
+                    switch(nadeSelector)
                     {
-                        Quaternion newRot = Quaternion.Euler(stats.Direction.x, stats.Direction.y, 0);
-                        Instantiate(Molly, stats.Position, newRot);
-                        stats.NumofMolly -= 1;
-                    }
-                    */
-                    {
-                        Quaternion newRot = Quaternion.Euler(stats.Direction.x, stats.Direction.y, 0);
-                        Instantiate(Gre, stats.Position, newRot);
+                        case 0:
+                            if (stats.NumofMolly > 0)
+                            {
+                                Quaternion newRot = Quaternion.Euler(stats.Direction.x, stats.Direction.y, 0);
+                                Instantiate(Molly, stats.Position, newRot);
+                                stats.NumofMolly -= 1;
+                            }
+                            break;
+                        case 1:
+                            {
+                                Quaternion newRot = Quaternion.Euler(stats.Direction.x, stats.Direction.y, 0);
+                                Instantiate(Gre, stats.Position, newRot);
+                            }
+                            break;
+                        default:
+                            Debug.LogWarning("Unknown nade!");
+                            break;
                     }
                 }
                 if (Input.GetKeyUp(KeyCode.Q) && LeftSlotAvailableToUse && PhizerIsActive == false)
@@ -557,7 +577,7 @@ public class Player : MonoBehaviour
         }
 
         //Debug.Log(beatTimer);
-
+            
         if (beatTimer == 0)
         {
             beatTimer = 0.75f / (spawnRate / defaultSR);
@@ -566,6 +586,7 @@ public class Player : MonoBehaviour
             //StartCoroutine(beatGen(0.75f / spawnRate));
 
         }
+        //Debug.Log(spawnRate + " " + defaultSR);
     }
 
     private void DashProc()
@@ -696,6 +717,10 @@ public class Player : MonoBehaviour
         //gitValues.numberOfStickyNades = stats.num;
         gitValues.numberOfMollys = Stats.NumofMolly;
 
+        gitValues.startingWeapon1 = transform.Find("RightArm").transform.GetChild(0).name;
+        gitValues.startingWeapon2 = transform.Find("RightArm").transform.GetChild(1).name;
+        gitValues.startingWeapon3 = transform.Find("RightArm").transform.GetChild(2).name;
+
         GameObject[] allDaGlobins = GameObject.FindGameObjectsWithTag("Globin");
         gitValues.numberOfGlobins = allDaGlobins.Length;
         foreach (GameObject go in allDaGlobins)
@@ -721,9 +746,6 @@ public class Player : MonoBehaviour
                 gitValues.Globin5Support++;
             }
         }
-
-
-
     }
 
 

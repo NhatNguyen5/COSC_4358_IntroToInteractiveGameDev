@@ -219,54 +219,52 @@ public class PlayerActions
 
     public void ToggleDual()
     {
-        
-        if(!leftArm.gameObject.activeSelf)
+        if (leftArm.childCount != 0)
         {
-            if (player.Stats.Angle < 0)
+            if (!leftArm.gameObject.activeSelf)
             {
-                leftArm.position = new Vector2(player.Stats.Position.x + 0.3f, player.Stats.Position.y - 0.15f);
-                rightArm.position = new Vector2(player.Stats.Position.x - 0.3f, player.Stats.Position.y - 0.15f);
-            }
-            else
-            {
-                leftArm.position = new Vector2(player.Stats.Position.x - 0.3f, player.Stats.Position.y - 0.15f);
-                rightArm.position = new Vector2(player.Stats.Position.x + 0.3f, player.Stats.Position.y - 0.15f);
-            }
-
-            leftArm.gameObject.SetActive(true);
-            LeftAmmo.gameObject.SetActive(true);
-            player.Stats.IsDualWield = true;
-        }
-        else
-        {
-            foreach (Transform lw in leftArm)
-            {
-                if (lw.gameObject.activeSelf == true)
+                if (player.Stats.Angle < 0)
                 {
-                    Weapon lWeapon = lw.GetComponent<Weapon>();
-                    lWeapon.transform.position = leftArm.transform.position;
-                    lWeapon.transform.rotation = leftArm.transform.rotation;
+                    leftArm.position = new Vector2(player.Stats.Position.x + 0.3f, player.Stats.Position.y - 0.15f);
+                    rightArm.position = new Vector2(player.Stats.Position.x - 0.3f, player.Stats.Position.y - 0.15f);
                 }
-            }
-
-            if (player.Stats.Angle < 0)
-            {
-                leftArm.position = new Vector2(player.Stats.Position.x + 0.05f, player.Stats.Position.y - 0.15f);
-                rightArm.position = new Vector2(player.Stats.Position.x - 0.05f, player.Stats.Position.y - 0.15f);
+                else
+                {
+                    leftArm.position = new Vector2(player.Stats.Position.x - 0.3f, player.Stats.Position.y - 0.15f);
+                    rightArm.position = new Vector2(player.Stats.Position.x + 0.3f, player.Stats.Position.y - 0.15f);
+                }
+                leftArm.gameObject.SetActive(true);
+                LeftAmmo.gameObject.SetActive(true);
+                player.Stats.IsDualWield = true;
             }
             else
             {
-                leftArm.position = new Vector2(player.Stats.Position.x - 0.05f, player.Stats.Position.y - 0.15f);
-                rightArm.position = new Vector2(player.Stats.Position.x + 0.05f, player.Stats.Position.y - 0.15f);
+                foreach (Transform lw in leftArm)
+                {
+                    if (lw.gameObject.activeSelf == true)
+                    {
+                        Weapon lWeapon = lw.GetComponent<Weapon>();
+                        lWeapon.transform.position = leftArm.transform.position;
+                        lWeapon.transform.rotation = leftArm.transform.rotation;
+                    }
+                }
+
+                if (player.Stats.Angle < 0)
+                {
+                    leftArm.position = new Vector2(player.Stats.Position.x + 0.05f, player.Stats.Position.y - 0.15f);
+                    rightArm.position = new Vector2(player.Stats.Position.x - 0.05f, player.Stats.Position.y - 0.15f);
+                }
+                else
+                {
+                    leftArm.position = new Vector2(player.Stats.Position.x - 0.05f, player.Stats.Position.y - 0.15f);
+                    rightArm.position = new Vector2(player.Stats.Position.x + 0.05f, player.Stats.Position.y - 0.15f);
+                }
+
+                leftArm.gameObject.SetActive(false);
+                LeftAmmo.gameObject.SetActive(false);
+                player.Stats.IsDualWield = false;
             }
-
-            leftArm.gameObject.SetActive(false);
-            LeftAmmo.gameObject.SetActive(false);
-            player.Stats.IsDualWield = false;
-
-
         }
-        
     }
 
     public void SwapWeapon()

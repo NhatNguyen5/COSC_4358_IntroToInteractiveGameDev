@@ -351,6 +351,7 @@ public class GlobalPlayerVariables : MonoBehaviour
     {
         yield return new WaitForSeconds(Dur);
         EnableAI = true;
+        EnablePlayerControl = true;
     }
 
 

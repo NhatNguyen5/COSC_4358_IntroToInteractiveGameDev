@@ -9,6 +9,7 @@ public class ExitScript : MonoBehaviour
 
     public EnemyManager enemyColony;
     public GameObject WinScreen;
+    public string NextScene;
     private SpriteRenderer sprite;
     private BoxCollider2D bxCol2D;
     private PolygonCollider2D plgCol2D;
@@ -23,12 +24,12 @@ public class ExitScript : MonoBehaviour
         bxCol2D = GetComponent<BoxCollider2D>();
         plgCol2D = GetComponent<PolygonCollider2D>();
         img = GameObject.Find("FadeOut").GetComponent<RawImage>();
-
+        /*
         img.enabled = false;
         sprite.enabled = false;
         bxCol2D.enabled = false;
         plgCol2D.enabled = false;
-        
+        */
         
     }
     //center of the bcl (-35.83, 18.32)
@@ -69,6 +70,7 @@ public class ExitScript : MonoBehaviour
         if (collision.tag == "Player")
         {
             GlobalPlayerVariables.EnablePlayerControl = false;
+            GlobalPlayerVariables.EnableAI = false;
             player.Components.PlayerRidgitBody.drag = 500;
             Debug.Log("You Won!");
             reached = true;

@@ -114,7 +114,8 @@ public class EnemyManager : MonoBehaviour
 
             if (!isWaiting && bossDeath && !cutSceneFlag)
             {
-                StartCoroutine(player.Phasing(4f));
+                //StartCoroutine(player.Phasing(4f));
+                StartCoroutine(CutScene(4f));
                 //StartCoroutine(player.TakeOver(4f)); //in progress
                 StartCoroutine(CamFollow.MoveTo(new Vector3(-38.47f, 20.26f, -1), 2.8f, 2f));
                 StartCoroutine(CamFollow.ZoomTo(20, 1f));
@@ -158,5 +159,14 @@ public class EnemyManager : MonoBehaviour
 
         SpawnedMobs.RemoveAll(item => item == null);
 
+    }
+
+    private IEnumerator CutScene(float duration)
+    {
+        GlobalPlayerVariables.EnablePlayerControl = false;
+        GlobalPlayerVariables.EnableAI = false;
+        yield return new WaitForSeconds(duration);
+        GlobalPlayerVariables.EnablePlayerControl = true;
+        GlobalPlayerVariables.EnableAI = true;
     }
 }

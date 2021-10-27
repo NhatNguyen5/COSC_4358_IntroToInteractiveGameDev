@@ -78,14 +78,14 @@ public class Weapon : MonoBehaviour
     [HideInInspector]
     public bool IsRightArm;
 
+    private bool Pullout = false;
 
-    public PlayerActions SwapWeapon;
+    private Player player;
+    //public PlayerActions SwapWeapon;
 
     private void Start()
     {
-
- 
-
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         reloadOnStartUp();
         reloadCooldown = reloadTime;
         if (transform.parent.name == "RightArm")
@@ -103,13 +103,6 @@ public class Weapon : MonoBehaviour
             reloadBar = GameObject.Find("ReloadBarR").GetComponent<Image>();
             UIAmmoCount = GameObject.Find("AmmoCountR").GetComponent<Text>();
             UIMaxAmmoCount = GameObject.Find("MaxAmmoCountR").GetComponent<Text>();
-        }
-        else
-        {
-            ammoBar2 = GameObject.Find("AmmoCountBar2").GetComponent<Image>();
-            UIAmmoCount = GameObject.Find("AmmoCountL").GetComponent<Text>();
-            UIMaxAmmoCount = GameObject.Find("MaxAmmoCountL").GetComponent<Text>();
-            setAmmoCount();
         }
     }
 
@@ -175,7 +168,6 @@ public class Weapon : MonoBehaviour
     {
         UIAmmoCount.text = ammoCount.ToString();
         UIMaxAmmoCount.text = maxAmmoInClip.ToString();
-
         countFillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.MaxReserves;
         //Debug.Log(countFillAmount);
         //reloadBar.fillAmount = countFillAmount;
@@ -224,13 +216,25 @@ public class Weapon : MonoBehaviour
         //    ammoBar.fillAmount = (float)ammoCount / (float)maxAmmoInClip;
         //}
 
-        
+        if (!IsRightArm && player.Stats.IsDualWield && Pullout)
+        {
+            Pullout = false;
+            ammoBar2 = GameObject.Find("AmmoCountBar2").GetComponent<Image>();
+            UIAmmoCount = GameObject.Find("AmmoCountL").GetComponent<Text>();
+            UIMaxAmmoCount = GameObject.Find("MaxAmmoCountL").GetComponent<Text>();
+            setAmmoCount();
+        }
+        else
+        {
+            Pullout = true;
+        }
+
 
         if (IsRightArm) // RightArm
         {
             RightArmUpdate();
         }
-        else // LeftArm
+        else if(!IsRightArm && player.Stats.IsDualWield)// LeftArm
         {
             LeftArmUpdate();
         }
