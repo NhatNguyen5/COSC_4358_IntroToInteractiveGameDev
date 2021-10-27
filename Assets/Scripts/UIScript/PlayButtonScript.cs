@@ -33,21 +33,15 @@ public class PlayButtonScript : MonoBehaviour
         }
 
         PlayButton.onClick.AddListener(delegate { ChangeScene(); });
+        
 
         //PlayButton.onClick.RemoveListener(ChangeScene);
     }
 
     private void ChangeScene()
     {
-        StartCoroutine(changeScene());
-        SceneManager.LoadScene(sceneName);
-    }
-    
-    private IEnumerator changeScene()
-    {
-        yield return new WaitForSeconds(0.5f);
         PlayButton.onClick.RemoveAllListeners();
         Debug.Log("listener deleted");
-        //SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName);
     }
 }
