@@ -394,16 +394,27 @@ public class Player : MonoBehaviour
         }
         if (stats.Experience >= levelThreshhold)
         {
-            
-            Instantiate(levelUpEff, stats.Position, Quaternion.identity);
-            GameObject levelPopUpTemp;
-            levelPopUpTemp = Instantiate(levelUpPopUp, transform, false);
-            levelPopUpTemp.GetComponent<TextMeshPro>().text = ("LEVEL " + (Currentlevel + 1));
-            Destroy(levelPopUpTemp, 3.45f);
-
-            components.PlayerStatusIndicator.StartFlash(0.25f, 0.25f, Color.yellow, ((stats.MaxHealth - stats.Health) / stats.MaxHealth) / 2f, Color.red, 1);
+            if (hideLevelUPAnimation == false)
+            {
+                Instantiate(levelUpEff, stats.Position, Quaternion.identity);
+                GameObject levelPopUpTemp;
+                levelPopUpTemp = Instantiate(levelUpPopUp, transform, false);
+                levelPopUpTemp.GetComponent<TextMeshPro>().text = ("LEVEL " + (Currentlevel + 1));
+                Destroy(levelPopUpTemp, 3.45f);
+                components.PlayerStatusIndicator.StartFlash(0.25f, 0.25f, Color.yellow, ((stats.MaxHealth - stats.Health) / stats.MaxHealth) / 2f, Color.red, 1);
+            }
             levelUP();
         }
+
+        if (hideLevelUPAnimation == true)
+        {
+            if (timetoblockanimation < 0)
+            {
+                hideLevelUPAnimation = false;
+            }
+            timetoblockanimation -= Time.deltaTime;
+        }
+
         utilities.HandleInput();
         references.CalMousePosToPlayer();
         actions.UpdateCountsUI();
@@ -729,6 +740,11 @@ public class Player : MonoBehaviour
 
     }
 
+
+    [HideInInspector]
+    public bool hideLevelUPAnimation = false;
+    [HideInInspector]
+    public float timetoblockanimation = 0.5f;
     public void SetPlayerItemsAndArmorValues()
     {
         RememberLoudout = GameObject.FindGameObjectWithTag("Loadout");

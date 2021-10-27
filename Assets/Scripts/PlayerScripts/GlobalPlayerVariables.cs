@@ -32,7 +32,7 @@ public class GlobalPlayerVariables : MonoBehaviour
 
 
     //SCORE
-    public static float TotalScore;
+    public static float TotalScore = 0;
 
     //Hold xp backlog
     public static int expToDistribute;
@@ -328,6 +328,14 @@ public class GlobalPlayerVariables : MonoBehaviour
             fadeInTime = 0;
         Color temp = new Color(0, 0, 0, fadeInTime);
         FadeInImg.color = temp;
+
+
+        if (GameOver == true)
+        {
+            GameObject.Find("DeathCurrentScore").GetComponent<Text>().text = "SCORE: " + TotalScore.ToString();
+
+        }
+
     }
 
     private IEnumerator FadeIn(float Dur)

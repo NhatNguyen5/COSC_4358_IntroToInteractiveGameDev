@@ -22,7 +22,7 @@ public class RememberLoadout : MonoBehaviour
     public string startingWeapon2;
     public string startingWeapon3;
 
-    public static int rememberScore = 0;
+    //public static int rememberScore = 0;
 
     public string PrimaryWeapon;
     public string PrimaryWeaponDual;
@@ -150,7 +150,7 @@ public class RememberLoadout : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rememberScore = totalExperienceEarned;
+        //rememberScore = totalExperienceEarned;
 
         showtotalexp = totalExperienceEarned;
 
@@ -161,12 +161,15 @@ public class RememberLoadout : MonoBehaviour
             //{
             //    currentScoreDeath.GetComponent<Text>().text = "SCORE: " + totalExperienceEarned.ToString();
             //}
+            GlobalPlayerVariables.TotalScore = showtotalexp;
             Destroy(gameObject);
         }
 
         if (loadPlayerStats == true)
         {
             loadPlayerStats = false;
+            player = GameObject.FindGameObjectWithTag("Player");
+            player.GetComponent<Player>().hideLevelUPAnimation = true;
             GlobalPlayerVariables.expToDistribute += totalExperienceEarned;
             RightArm = GameObject.FindGameObjectWithTag("RightArm");
             LeftArm = GameObject.FindGameObjectWithTag("LeftArm");
@@ -205,7 +208,7 @@ public class RememberLoadout : MonoBehaviour
                 }
             }
 
-            player = GameObject.FindGameObjectWithTag("Player");
+            
             player.GetComponent<Player>().SetPlayerItemsAndArmorValues();
 
 
