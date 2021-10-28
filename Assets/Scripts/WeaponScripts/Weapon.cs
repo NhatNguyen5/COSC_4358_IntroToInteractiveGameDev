@@ -166,9 +166,12 @@ public class Weapon : MonoBehaviour
 
     private void setAmmoCount()
     {
-        UIAmmoCount.text = ammoCount.ToString();
-        UIMaxAmmoCount.text = maxAmmoInClip.ToString();
-        countFillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.MaxReserves;
+        if (UIAmmoCount != null && UIMaxAmmoCount != null)
+        {
+            UIAmmoCount.text = ammoCount.ToString();
+            UIMaxAmmoCount.text = maxAmmoInClip.ToString();
+            countFillAmount = GlobalPlayerVariables.Reserves / GlobalPlayerVariables.MaxReserves;
+        }
         //Debug.Log(countFillAmount);
         //reloadBar.fillAmount = countFillAmount;
 
@@ -486,7 +489,7 @@ public class Weapon : MonoBehaviour
 
 
 
-            if (ammoCount <= 0 && Input.GetButton("Fire2") || ammoCount < maxAmmoInClip && Input.GetKeyUp(KeyCode.R))
+        if (ammoCount <= 0 && Input.GetButton("Fire2") || ammoCount < maxAmmoInClip && Input.GetKeyUp(KeyCode.R))
         {
             if (reload == false && fired == false)
             {
