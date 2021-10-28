@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6117163829522669149}
   - component: {fileID: 3786902116148440180}
   - component: {fileID: 6370198004436038642}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: Shrapnel Fast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4816,7 +4816,7 @@ GameObject:
   - component: {fileID: 3707809961122972502}
   - component: {fileID: 3411984836613159068}
   - component: {fileID: 3491773387898444110}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: Smoke Particles Dark Traveling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9620,7 +9620,7 @@ GameObject:
   - component: {fileID: 4992500795123993686}
   - component: {fileID: 7991410105853653030}
   - component: {fileID: 2881531208333865928}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: Smoke Particles Light Traveling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14422,7 +14422,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1644541132009221986}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: HighGraphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14461,7 +14461,7 @@ GameObject:
   - component: {fileID: 6672980328691964771}
   - component: {fileID: 2326867964805922634}
   - component: {fileID: 4421952750671315789}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: ExplosionVaccinator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14612,7 +14612,7 @@ GameObject:
   - component: {fileID: 4642529018748710601}
   - component: {fileID: 7916868356101989596}
   - component: {fileID: 4512708821597236792}
-  m_Layer: 9
+  m_Layer: 14
   m_Name: Shrapnel Super Fast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
