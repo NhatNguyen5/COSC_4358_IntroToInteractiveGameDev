@@ -248,10 +248,14 @@ public class Player : MonoBehaviour
         TrailDur = DashDuration;
         ProteinCounts = GameObject.Find("ProteinCounts").GetComponent<Text>();
         EnemySpawnRate = GameObject.Find("EnemySpawnRateDisplay");
-        MinTbs = enemyManager.MinTbs;
-        MaxTbs = enemyManager.MaxTbs;
-        defaultTbs = enemyManager.timeBetweenSpawns;
-        defaultSR = 1/enemyManager.MaxTbs;
+
+        if(enemyManager!= null)
+        { 
+            MinTbs = enemyManager.MinTbs;
+            MaxTbs = enemyManager.MaxTbs;
+            defaultTbs = enemyManager.timeBetweenSpawns;
+            defaultSR = 1/enemyManager.MaxTbs;
+        }
 
         stats.ArmorLevel = Mathf.FloorToInt(stats.Armorz / stats.ArmorPerArmorLevelz);
 
@@ -527,7 +531,8 @@ public class Player : MonoBehaviour
         references.CalMousePosToPlayer();
         actions.UpdateCountsUI();
         actions.Regen();
-        UpdateSpawnrate();
+        if(enemyManager!=null)
+            UpdateSpawnrate();
         ArmorEffect();
     }
 

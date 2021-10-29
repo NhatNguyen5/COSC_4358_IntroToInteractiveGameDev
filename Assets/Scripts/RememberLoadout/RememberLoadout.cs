@@ -17,6 +17,7 @@ public class RememberLoadout : MonoBehaviour
 
     public GameObject[] PossiblePlayerWeapons;
     public GameObject[] PossibleGlobins;
+    public GameObject[] OwnedWeapons;
 
     public string startingWeapon1;
     public string startingWeapon2;
