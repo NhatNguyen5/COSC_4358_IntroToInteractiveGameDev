@@ -277,7 +277,7 @@ MonoBehaviour:
   IgnoreMe:
     serializedVersion: 2
     m_Bits: 95232
-  shootdistance: 40
+  shootdistance: 38
   distancefromplayer: 0
   canSeeEnemy: 0
   circleRadius: 11
@@ -285,12 +285,12 @@ MonoBehaviour:
   beginningrangetoshoot: 0.8
   endingrangetoshoot: 1.8
   AmountOfBullets: 1
-  bulletSpread: 6
+  bulletSpread: 1.25
   projectile: {fileID: 3622822231550841620, guid: 7e3513cf02994124aa59f20ccd81e00f, type: 3}
   firePoint: {fileID: 6476559031176465842}
   burstFire: 1
-  timeBtwBurst: 0.0425
-  timesToShoot: 55
+  timeBtwBurst: 0.038
+  timesToShoot: 130
 --- !u!114 &6476559030465391993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,8 +544,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7825290643958384604}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.8, y: 0.88, z: 0}
-  m_LocalScale: {x: 80.04168, y: 30.016344, z: 1}
+  m_LocalPosition: {x: -1.81, y: 0.33, z: 0}
+  m_LocalScale: {x: 70.04168, y: 20.01634, z: 1}
   m_Children: []
   m_Father: {fileID: 6476559030465391995}
   m_RootOrder: 2
