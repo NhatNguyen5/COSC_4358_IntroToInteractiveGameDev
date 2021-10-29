@@ -9,7 +9,7 @@ public class GrenadeExplosion : MonoBehaviour
     public float ExplodeDamage;
     public float explodeLifetime;
 
-    private bool isWaiting = false;
+    //private bool isWaiting = false;
     private CircleCollider2D cc2d;
     private ParticleSystem PS;
     private ParticleSystem.MainModule PSMain;

@@ -538,7 +538,9 @@ public class Player : MonoBehaviour
             
             actions.Move(transform);
             if (Input.GetKey(KeyCode.LeftShift) && stats.Stamina > 0)
+            {
                 actions.Sprint();
+            }
             else
                 actions.Walk();
         }
