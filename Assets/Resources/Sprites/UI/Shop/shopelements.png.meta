@@ -1,0 +1,1020 @@
+fileFormatVersion: 2
+guid: 1e61a95232d36f640b299947d6baac77
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8732524146519193812
+    second: shopelements_0
+  - first:
+      213: 5540812016086585363
+    second: shopelements_1
+  - first:
+      213: -8952058862785733337
+    second: shopelements_2
+  - first:
+      213: -494570310027513207
+    second: shopelements_3
+  - first:
+      213: 7186074021512429190
+    second: shopelements_4
+  - first:
+      213: 320691708217517049
+    second: shopelements_5
+  - first:
+      213: 3614580583704769289
+    second: shopelements_6
+  - first:
+      213: 8065752796651738619
+    second: shopelements_7
+  - first:
+      213: 4482003716912680443
+    second: shopelements_8
+  - first:
+      213: -873361966237155610
+    second: shopelements_9
+  - first:
+      213: 8432572713222209678
+    second: shopelements_10
+  - first:
+      213: 38837503350362301
+    second: shopelements_11
+  - first:
+      213: -9058656726705583046
+    second: shopelements_12
+  - first:
+      213: 1712658878774312353
+    second: shopelements_13
+  - first:
+      213: -5016028952080586368
+    second: shopelements_14
+  - first:
+      213: 6238822865412176965
+    second: shopelements_15
+  - first:
+      213: -1050529322680551345
+    second: shopelements_16
+  - first:
+      213: 8980112074591637069
+    second: shopelements_17
+  - first:
+      213: -4478688327753080168
+    second: shopelements_18
+  - first:
+      213: 2931776274488610359
+    second: shopelements_19
+  - first:
+      213: 3372024709261760744
+    second: shopelements_20
+  - first:
+      213: 3010340159438324625
+    second: shopelements_21
+  - first:
+      213: 6546686842921708523
+    second: shopelements_22
+  - first:
+      213: 8646868754300506015
+    second: shopelements_23
+  - first:
+      213: 7992809478264709773
+    second: shopelements_24
+  - first:
+      213: 7128354403934164885
+    second: shopelements_25
+  - first:
+      213: -6995038909740347013
+    second: shopelements_26
+  - first:
+      213: -4758465918584138602
+    second: shopelements_27
+  - first:
+      213: -7511791560715426232
+    second: shopelements_28
+  - first:
+      213: -4264555977851397174
+    second: shopelements_29
+  - first:
+      213: -3580203903786832455
+    second: shopelements_30
+  - first:
+      213: 7822665607053059097
+    second: shopelements_31
+  - first:
+      213: -8165259324668250504
+    second: shopelements_32
+  - first:
+      213: -3917091125533743696
+    second: shopelements_33
+  - first:
+      213: 4284375771107003172
+    second: shopelements_34
+  - first:
+      213: -6634844968537741485
+    second: shopelements_35
+  - first:
+      213: 8855584967072798167
+    second: shopelements_36
+  - first:
+      213: -5369563510828693241
+    second: shopelements_37
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: shopelements_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 204
+        width: 245
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c27c33e3e87dfc680800000000000000
+      internalID: -8732524146519193812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 218
+        width: 245
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3109e021c2be4ec40800000000000000
+      internalID: 5540812016086585363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 176
+        width: 245
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72dd443f4e5e3c380800000000000000
+      internalID: -8952058862785733337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 190
+        width: 245
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 982fa526ceee229f0800000000000000
+      internalID: -494570310027513207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 162
+        width: 245
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68e39e5cf301ab360800000000000000
+      internalID: 7186074021512429190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_5
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 8
+        width: 59
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f3e7b6d863537400800000000000000
+      internalID: 320691708217517049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 134
+        width: 59
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9033fb7d3e1992230800000000000000
+      internalID: 3614580583704769289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_7
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 148
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf55a823f6f4fef60800000000000000
+      internalID: 8065752796651738619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_8
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 148
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfd8f8442a6433e30800000000000000
+      internalID: 4482003716912680443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_9
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 8
+        width: 59
+        height: 152
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eef8124be131e3f0800000000000000
+      internalID: -873361966237155610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_10
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 134
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e80034a7434860570800000000000000
+      internalID: 8432572713222209678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_11
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 134
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db05927e08af98000800000000000000
+      internalID: 38837503350362301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_12
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 120
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3cc28ea3bf294280800000000000000
+      internalID: -9058656726705583046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_13
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 120
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1adf2ca1d2694c710800000000000000
+      internalID: 1712658878774312353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_14
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 120
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08969208e3c736ab0800000000000000
+      internalID: -5016028952080586368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_15
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 120
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54c3a756750c49650800000000000000
+      internalID: 6238822865412176965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_16
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 106
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f487e7f9525cb61f0800000000000000
+      internalID: -1050529322680551345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_17
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 106
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4e0b396a54cf9c70800000000000000
+      internalID: 8980112074591637069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_18
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 106
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 892e69ce1b088d1c0800000000000000
+      internalID: -4478688327753080168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_19
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 92
+        width: 29
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73ecfc90df2cfa820800000000000000
+      internalID: 2931776274488610359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_20
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 92
+        width: 29
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e813697b96dbce20800000000000000
+      internalID: 3372024709261760744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_21
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 92
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1930a60fc60e6c920800000000000000
+      internalID: 3010340159438324625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_22
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 92
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beb62107ff08ada50800000000000000
+      internalID: 6546686842921708523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_23
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 22
+        width: 59
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9f8187a159dff770800000000000000
+      internalID: 8646868754300506015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_24
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 22
+        width: 59
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d82e75d6fd92cee60800000000000000
+      internalID: 7992809478264709773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_25
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 78
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 597569f00900de260800000000000000
+      internalID: 7128354403934164885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_26
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 78
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7114e24c21acee90800000000000000
+      internalID: -6995038909740347013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_27
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 64
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6945dfe557886fdb0800000000000000
+      internalID: -4758465918584138602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_28
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 64
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 846a7ccef51c0c790800000000000000
+      internalID: -7511791560715426232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_29
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 50
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acb1667cee041d4c0800000000000000
+      internalID: -4264555977851397174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_30
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 50
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bda15ba48f805ec0800000000000000
+      internalID: -3580203903786832455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_31
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 36
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91420116ce0bf8c60800000000000000
+      internalID: 7822665607053059097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_32
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 36
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 876f336d7eb2fae80800000000000000
+      internalID: -8165259324668250504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_33
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 22
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b5e9bdff52b3a9c0800000000000000
+      internalID: -3917091125533743696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_34
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 22
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42b8f117019257b30800000000000000
+      internalID: 4284375771107003172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_35
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 8
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 357258e67ab4ce3a0800000000000000
+      internalID: -6634844968537741485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_36
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 8
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d5d9a0db9b55ea70800000000000000
+      internalID: 8855584967072798167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shopelements_37
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 8
+        width: 59
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7090822af6a7b75b0800000000000000
+      internalID: -5369563510828693241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

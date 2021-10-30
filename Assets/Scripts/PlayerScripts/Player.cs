@@ -707,6 +707,16 @@ public class Player : MonoBehaviour
         RightSlotAvailableToUse = true;
     }
 
+    public int getProteinAmount()
+    {
+        return stats.NumofProtein;
+    }
+    public void subtractProtienCounter(int cost)
+    {
+        stats.NumofProtein -= cost;
+        //update text???
+    }
+
 
     private GameObject RememberLoudout;
     public void GetPlayerItemsAndArmorValues()

@@ -5,6 +5,7 @@ using UnityEngine;
 public class SwitchImage : MonoBehaviour
 {
     public GameObject[] ImagesToDisplay;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +39,6 @@ public class SwitchImage : MonoBehaviour
         }
 
     }
-
 
 
 }
