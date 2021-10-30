@@ -128,33 +128,33 @@ public class Player : MonoBehaviour
 
 
     //growth rates
-    
+
     public int levelCapGrowthRate = 200;
-    
+
     public int healthGrowthRate = 8;
-    
+
     public float hpRegenGrowthRate = 0.19f;
-    
+
     public float maxStaminaGrowthRate = 1f;
-    
+
     public float staminaRegenGrowthRate = 0.2f;
-   
+
     public float walkSpeedGrowthRate = 1f;
     [HideInInspector]
     public float holdWalkSpeed = 0f;
 
-    
+
     public float sprintSpeedGrowthRate = 1.5f;
     [HideInInspector]
     public float holdSprintSpeed = 0f;
 
-    
+
     public float maxAmmoReserveGrowthRate = 10f;
 
-    
+
     public float ammoReserveRegen = 0.5f;
 
-    
+
     public float critRateGrowthRate = 0.01f;
 
     public float reloadSpeedGrowthRate = 0.01f;
@@ -251,12 +251,12 @@ public class Player : MonoBehaviour
         ProteinCounts = GameObject.Find("ProteinCounts").GetComponent<Text>();
         EnemySpawnRate = GameObject.Find("EnemySpawnRateDisplay");
 
-        if(enemyManager!= null)
-        { 
+        if (enemyManager != null)
+        {
             MinTbs = enemyManager.MinTbs;
             MaxTbs = enemyManager.MaxTbs;
             defaultTbs = enemyManager.timeBetweenSpawns;
-            defaultSR = 1/enemyManager.MaxTbs;
+            defaultSR = 1 / enemyManager.MaxTbs;
         }
 
         stats.ArmorLevel = Mathf.FloorToInt(stats.Armorz / stats.ArmorPerArmorLevelz);
@@ -286,9 +286,9 @@ public class Player : MonoBehaviour
 
 
         //HealthFunction
-        if(PhizerIsActive == false)
+        if (PhizerIsActive == false)
             stats.MaxHealth = healthGrowthRate * Currentlevel + GlobalPlayerVariables.baseMaxHealth;
-        else if(PhizerIsActive == true)
+        else if (PhizerIsActive == true)
             Stats.MaxHealth += healthGrowthRate;
         if (stats.Health + healthGrowthRate > stats.MaxHealth)
             stats.Health = stats.MaxHealth;
@@ -365,9 +365,9 @@ public class Player : MonoBehaviour
         //Text3.text = temp.ToString();
 
 
-       // temp = ((int)Currentlevel / 10)%10;
+        // temp = ((int)Currentlevel / 10)%10;
         //Text2.text = temp.ToString();
-       
+
         //Text1.text = temp.ToString();
 
         /*
@@ -447,17 +447,17 @@ public class Player : MonoBehaviour
                         StartCoroutine(RightSlotItemCooldown(stats.TylenolCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown)));
                     }
                 }
-                if(Input.GetKeyDown(KeyCode.F))
+                if (Input.GetKeyDown(KeyCode.F))
                 {
                     nadeSelector += 1;
-                    if(nadeSelector > NumOfTypesOfNade-1)
+                    if (nadeSelector > NumOfTypesOfNade - 1)
                     {
                         nadeSelector = 0;
                     }
                 }
                 if (Input.GetKeyUp(KeyCode.G))
                 {
-                    switch(nadeSelector)
+                    switch (nadeSelector)
                     {
                         case 0:
                             if (stats.NumofMolly > 0)
@@ -534,22 +534,23 @@ public class Player : MonoBehaviour
         references.CalMousePosToPlayer();
         actions.UpdateCountsUI();
         actions.Regen();
-        if(enemyManager!=null)
+        if (enemyManager != null)
             UpdateSpawnrate();
         ArmorEffect();
     }
 
     private void FixedUpdate()
     {
-        
+
         actions.Move(transform);
         if (Input.GetKey(KeyCode.LeftShift) && stats.Stamina > 0)
-        {
+        { 
             actions.Sprint();
         }
         else
             actions.Walk();
-        
+
+
         ProteinCounts.text = stats.NumofProtein.ToString();
         actions.Animate();
     }
@@ -558,7 +559,7 @@ public class Player : MonoBehaviour
     {
         EnemySpawnRate.transform.Find("HeartMonitorBG")
             .transform.Find("HeartMonitorLine").GetComponent<RawImage>()
-            .color = new Color(0.75f*((MaxTbs - enemyManager.timeBetweenSpawns) / (MaxTbs - MinTbs)),
+            .color = new Color(0.75f * ((MaxTbs - enemyManager.timeBetweenSpawns) / (MaxTbs - MinTbs)),
                                0.75f * ((enemyManager.timeBetweenSpawns - MinTbs) / (MaxTbs - MinTbs)),
                                0.75f * (1 - Mathf.Abs(2 * ((enemyManager.timeBetweenSpawns - MinTbs) / (MaxTbs - MinTbs)) - 1)));
 
@@ -581,7 +582,7 @@ public class Player : MonoBehaviour
         }
 
         //Debug.Log(beatTimer);
-            
+
         if (beatTimer == 0)
         {
             beatTimer = 0.75f / (spawnRate / defaultSR);
@@ -625,7 +626,7 @@ public class Player : MonoBehaviour
             currDashDuration -= Time.deltaTime;
         else if (currDashDuration < 0)
             currDashDuration = 0;
-        else if(currDashDuration == 0 && !phaseOverWrite)
+        else if (currDashDuration == 0 && !phaseOverWrite)
         {
             gameObject.layer = LayerMask.NameToLayer("Actor");
             dashing = false;
@@ -647,7 +648,7 @@ public class Player : MonoBehaviour
             {
                 Instantiate(ArmorUpEff, stats.Position, Quaternion.identity);
             }
-            else if(currArmor > stats.ArmorLevel)
+            else if (currArmor > stats.ArmorLevel)
             {
                 Instantiate(ArmorDownEff, stats.Position, Quaternion.identity);
             }
@@ -664,7 +665,7 @@ public class Player : MonoBehaviour
         //gendBeat.transform.localScale = HMBG.localScale;
         gendBeat.GetComponent<RawImage>().color = new Color(0.75f * ((MaxTbs - enemyManager.timeBetweenSpawns) / (MaxTbs - MinTbs)),
                                                             0.75f * ((enemyManager.timeBetweenSpawns - MinTbs) / (MaxTbs - MinTbs)),
-                                                            0.75f * (1 - Mathf.Abs(2*((enemyManager.timeBetweenSpawns - MinTbs) / (MaxTbs - MinTbs)) - 1)));
+                                                            0.75f * (1 - Mathf.Abs(2 * ((enemyManager.timeBetweenSpawns - MinTbs) / (MaxTbs - MinTbs)) - 1)));
         //Debug.Log(gendBeat.GetComponent<RawImage>().color);
         //gendBeat.GetComponent<Animator>().SetFloat("BeatRate", spawnRate);
         yield return new WaitForSeconds(duration);
@@ -673,7 +674,7 @@ public class Player : MonoBehaviour
 
     public IEnumerator Phasing(float duration)
     {
-        
+
         phaseOverWrite = true;
         gameObject.layer = LayerMask.NameToLayer("Phase");
 
@@ -710,6 +711,13 @@ public class Player : MonoBehaviour
     {
         return stats.NumofProtein;
     }
+
+    public float getcurrentlevel()
+    {
+        return Currentlevel;
+    }
+
+
     public void subtractProtienCounter(int cost)
     {
         stats.NumofProtein -= cost;
