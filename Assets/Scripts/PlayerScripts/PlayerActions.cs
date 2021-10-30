@@ -115,8 +115,6 @@ public class PlayerActions
             stopSpeed = player.Stats.Speed / player.holdWalkSpeed; //player.Stats.WalkSpeed
             if (ease > 0)
                 ease -= Time.fixedDeltaTime * player.Stats.PFrictionz / stopSpeed;
-            else
-                ease = 0;
         }
         else
         {
@@ -125,7 +123,16 @@ public class PlayerActions
             ease = 1;
         }
 
-        //Debug.Log(ease);
+        
+        /*
+        Debug.Log("ease: " + ease);
+        Debug.Log("stopSpeed: " + stopSpeed);
+        Debug.Log("player.Stats.Speed: " + player.Stats.Speed);
+        Debug.Log("player.holdWalkSpeed: " + player.holdWalkSpeed);
+        Debug.Log("player.player.Stats.Direction: " + player.Stats.Direction);
+        Debug.Log("player.Components.PlayerRidgitBody.velocity: " + player.Components.PlayerRidgitBody.velocity);
+        Debug.Log("player.Components.PlayerRidgitBody.velocity.magnitude: " + player.Components.PlayerRidgitBody.velocity.magnitude);
+        */
         player.Components.PlayerRidgitBody.velocity = ease * (new Vector2(hdir * player.Stats.Speed * Time.deltaTime, vdir * player.Stats.Speed * Time.deltaTime));
     }
 

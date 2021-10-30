@@ -674,10 +674,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1361619116}
     m_Modifications:
+    - target: {fileID: 517302938500259281, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 517302938500259281, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 517302938500259281, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 517302938500259281, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 517302938500259281, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 517302938500259281, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1052225780750680635, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
       propertyPath: m_OverridePixelPerfect
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1590804887662584379, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6622206136570624311, guid: 166d28aea1f995e428e82ef0ddd3f947, type: 3}
     - target: {fileID: 1652964976073782119, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -706,13 +734,121 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 1652964976073782119, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652964976073782119, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652964976073782119, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -420
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652964976073782119, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -487
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: Appear
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: zoomSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
       propertyPath: textWriter
       value: 
       objectReference: {fileID: 288589685}
     - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusAppearPosX
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusAppearPosY
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusAppearPos.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusAppearPos.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
       propertyPath: ThymusDialogSequence.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[0].FontSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[1].FontSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[2].FontSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[4].FontSize
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[5].FontSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[0].DialogSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[0].ThymusScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[1].DialogSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[1].ThymusScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[2].DialogSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[2].ThymusScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[3].DialogSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[3].ThymusScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[4].DialogSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[4].ThymusScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[5].DialogSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[5].ThymusScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[0].EyesCategory
@@ -720,11 +856,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[1].EyesCategory
+      value: ChillEyes
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[2].EyesCategory
+      value: ChillEyes
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[3].EyesCategory
       value: SeriousEyes
       objectReference: {fileID: 0}
     - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[4].EyesCategory
+      value: SeriousEyes
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[5].EyesCategory
+      value: ChillEyes
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[0].DialogContent
-      value: This is a test.
+      value: Welcome new blood! Just came straight from the marrow I see. My name
+        is Thymus and I am your commander!
       objectReference: {fileID: 0}
     - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[0].EyesDirection
@@ -732,27 +885,150 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[1].DialogContent
-      value: This is another test.
+      value: This is the practice range. In here you can tryout guns, test your abilities,
+        utilities and various other things.
       objectReference: {fileID: 0}
     - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[1].EyesDirection
       value: Forward
       objectReference: {fileID: 0}
     - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[2].DialogContent
+      value: On top left you can see the minimap, which allows you to check our host
+        condition in the form of heart beats.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[2].EyesDirection
+      value: Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[3].DialogContent
+      value: The faster their heart beats, the more pathogen there are in the body
+        and the more urgent the situation is!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[3].EyesDirection
+      value: Forward
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[4].DialogContent
+      value: Keep your eyes on it!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[4].EyesDirection
+      value: Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[5].DialogContent
+      value: That's it for now, I'll come add more later.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[5].EyesDirection
+      value: Forward
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[0].DialogBoxScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[0].DialogDuration
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[1].DialogBoxScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[1].DialogDuration
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[2].DialogBoxScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[3].DialogBoxScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[4].DialogBoxScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[5].DialogBoxScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[0].BrowsExpression
       value: Normal
       objectReference: {fileID: 0}
     - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[0].ThymusPositionX
+      value: 396
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[0].ThymusPositionY
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[1].BrowsExpression
+      value: RaiseLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[1].ThymusPositionX
+      value: 396
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[1].ThymusPositionY
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[2].BrowsExpression
       value: Normal
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[2].ThymusPositionX
+      value: 396
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[2].ThymusPositionY
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[3].BrowsExpression
+      value: Angry
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[3].ThymusPositionX
+      value: 396
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[3].ThymusPositionY
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[4].BrowsExpression
+      value: RaiseLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[4].ThymusPositionX
+      value: 396
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[4].ThymusPositionY
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[5].BrowsExpression
+      value: Sad
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[5].ThymusPositionX
+      value: 396
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[5].ThymusPositionY
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[1].ThymusPosition.x
@@ -761,6 +1037,102 @@ PrefabInstance:
     - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[1].ThymusPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[0].DialogBoxPositionX
+      value: 203
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[0].DialogBoxPositionY
+      value: -106
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[1].DialogBoxPositionX
+      value: 203
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[1].DialogBoxPositionY
+      value: -106
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[2].DialogBoxPositionX
+      value: 203
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[2].DialogBoxPositionY
+      value: -106
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[3].DialogBoxPositionX
+      value: 203
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[3].DialogBoxPositionY
+      value: -106
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[4].DialogBoxPositionX
+      value: 203
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[4].DialogBoxPositionY
+      value: -106
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[5].DialogBoxPositionX
+      value: 203
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[5].DialogBoxPositionY
+      value: -106
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[0].DialogBoxPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[0].DialogBoxPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[0].WaitTimeAfterFinish
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[1].DialogBoxPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[1].DialogBoxPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[1].WaitTimeAfterFinish
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[2].DialogBoxPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[2].DialogBoxPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[2].WaitTimeAfterFinish
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[3].WaitTimeAfterFinish
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[4].WaitTimeAfterFinish
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114432933526650800, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[5].WaitTimeAfterFinish
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4569093753384149736, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
       propertyPath: m_RootOrder
@@ -812,6 +1184,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4569093753384149736, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711230159391071886, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711230159391071886, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711230159391071886, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6711230159391071886, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}
+      propertyPath: m_enableAutoSizing
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8631590723691117670, guid: dd8b3b2700d934f4f91e9eb6f9ce12ed, type: 3}

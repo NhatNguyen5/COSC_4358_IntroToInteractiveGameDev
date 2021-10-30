@@ -12,6 +12,8 @@ public class GlobalPlayerVariables : MonoBehaviour
     public GameObject AttackMode;
 
     public GameObject flagMarker;
+
+    private ThymusScript ThymusController;
     /*
     void Awake()
     {
@@ -183,6 +185,8 @@ public class GlobalPlayerVariables : MonoBehaviour
             resetObject = true;
         }
         StartCoroutine(FadeIn(1));
+        ThymusController = GameObject.Find("Thymus").GetComponent<ThymusScript>();
+        StartCoroutine(ThymusAppear(2));
         //StartCoroutine(waitthis());
     }
 
@@ -260,6 +264,11 @@ public class GlobalPlayerVariables : MonoBehaviour
             resetObject = true;
         }*/
 
+        if(!ThymusController.Appear)
+        {
+            EnableAI = true;
+            EnablePlayerControl = true;
+        }
 
         if (SceneManager.GetActiveScene().name != "Title")
         {
@@ -354,7 +363,13 @@ public class GlobalPlayerVariables : MonoBehaviour
         EnablePlayerControl = true;
     }
 
-
+    private IEnumerator ThymusAppear(float after)
+    {
+        yield return new WaitForSeconds(after);
+        ThymusController.Appear = true;
+        EnableAI = false;
+        EnablePlayerControl = false;
+    }
 
 
     public void switchGlobinMode()

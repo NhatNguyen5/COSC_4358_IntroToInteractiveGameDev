@@ -25,10 +25,10 @@ public class TextWriter : MonoBehaviour
         return instance.AddWriter(uiText, textToWrite, timePerCharacter, invisibleCharacter);
     }
 
-    public TextWriterSingle AddWriter(TextMeshProUGUI uiText, string textToWrite, float timePerCharacter, bool invisibleCharacter)
+    private TextWriterSingle AddWriter(TextMeshProUGUI uiText, string textToWrite, float timePerCharacter, bool invisibleCharacter)
     {
         TextWriterSingle textWriterSingle = new TextWriterSingle(uiText, textToWrite, timePerCharacter, invisibleCharacter);
-        textWriterSingleList.Add(new TextWriterSingle(uiText, textToWrite, timePerCharacter, invisibleCharacter));
+        textWriterSingleList.Add(textWriterSingle);
         return textWriterSingle;
     }
 
@@ -54,7 +54,7 @@ public class TextWriter : MonoBehaviour
         for(int i = 0; i < textWriterSingleList.Count; i++)
         {
             bool destroyInstance = textWriterSingleList[i].Update();
-            if(destroyInstance)
+            if (destroyInstance)
             {
                 textWriterSingleList.RemoveAt(i);
                 i--;
@@ -84,7 +84,8 @@ public class TextWriter : MonoBehaviour
             timer -= Time.deltaTime;
             while (timer <= 0)
             {
-                timer += timePerCharacter;
+                if(textToWrite[characterIndex] != ' ')
+                    timer += timePerCharacter;
                 characterIndex++;
                 
                 string text = textToWrite.Substring(0, characterIndex);
@@ -108,8 +109,7 @@ public class TextWriter : MonoBehaviour
 
         public bool IsActive()
         {
-            Debug.Log(characterIndex + " " + textToWrite.Length);
-            return (characterIndex < textToWrite.Length);
+            return characterIndex < textToWrite.Length;
         }
 
         public void WriteAllAndDestroy()
