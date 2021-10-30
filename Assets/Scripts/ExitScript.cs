@@ -57,9 +57,8 @@ public class ExitScript : MonoBehaviour
         if (reached)
         {
             Color imgCl = img.color;
-            imgCl.a += Time.deltaTime/4;
+            imgCl.a += Time.deltaTime/2;
             img.color = imgCl;
-            
         }
         //Debug.Log(player.Stats.Position + "  " + desPos);
     }
@@ -80,14 +79,12 @@ public class ExitScript : MonoBehaviour
 
     private IEnumerator End()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(2);
         OptionSettings.GameisPaused = true;
-        if (SceneManager.GetActiveScene().name == "Game 1") //CHANGE THIS TO ENDING SCENE
-            GlobalPlayerVariables.GameOver = true;
-        player.GetComponent<Player>().GetPlayerItemsAndArmorValues();
-        WinScreen.SetActive(true);
+        SceneManager.LoadScene(NextScene);
+        //if (SceneManager.GetActiveScene().name == NextScene) //CHANGE THIS TO ENDING SCENE
+            //GlobalPlayerVariables.GameOver = true;
+        //player.GetComponent<Player>().GetPlayerItemsAndArmorValues();
+        //WinScreen.SetActive(true);
     }
-
-
-
 }

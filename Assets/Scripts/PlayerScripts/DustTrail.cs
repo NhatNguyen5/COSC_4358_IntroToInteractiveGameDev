@@ -7,6 +7,7 @@ public class DustTrail : MonoBehaviour
     [SerializeField]
     private Player player;
     private ParticleSystem trailPS;
+    private Quaternion keepRot;
 
     // Start is called before the first frame update
     private void Start()
@@ -20,9 +21,11 @@ public class DustTrail : MonoBehaviour
         if (player != null)
         {
             transform.position = player.Stats.Position - new Vector2(0, 0.4f);
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(player.Stats.Direction.y, player.Stats.Direction.x) * Mathf.Rad2Deg - 180));
+            if(player.Stats.Direction.magnitude != 0)
+                keepRot = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(player.Stats.Direction.y, player.Stats.Direction.x) * Mathf.Rad2Deg - 180));
+            transform.rotation = keepRot;
             //Debug.Log(Mathf.Atan2(player.Stats.Direction.y, player.Stats.Direction.x) * Mathf.Rad2Deg);
-            if (player.Components.PlayerRidgitBody.velocity.magnitude > 0)
+            if (player.Components.PlayerRidgitBody.velocity.magnitude > 0.5)
             {
                 if (trailPS.isStopped)
                     trailPS.Play();

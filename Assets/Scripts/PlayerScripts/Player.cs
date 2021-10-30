@@ -411,7 +411,6 @@ public class Player : MonoBehaviour
                 components.PlayerStatusIndicator.StartFlash(0.25f, 0.25f, Color.yellow, ((stats.MaxHealth - stats.Health) / stats.MaxHealth) / 2f, Color.red, 1);
                 levelUP();
             }
-            //utilities.HandleInput();
             utilities.HandleInput();
             stats.ArmorLevel = Mathf.CeilToInt(stats.Armorz / stats.ArmorPerArmorLevelz);
 
@@ -527,6 +526,7 @@ public class Player : MonoBehaviour
         else
         {
             utilities.HandleInput();
+            components.PlayerRidgitBody.velocity = Vector2.zero;
         }
         references.CalMousePosToPlayer();
         actions.UpdateCountsUI();
@@ -538,19 +538,15 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GlobalPlayerVariables.EnablePlayerControl)
+        
+        actions.Move(transform);
+        if (Input.GetKey(KeyCode.LeftShift) && stats.Stamina > 0)
         {
-            
-            actions.Move(transform);
-            if (Input.GetKey(KeyCode.LeftShift) && stats.Stamina > 0)
-                actions.Sprint();
-            else
-                actions.Walk();
+            actions.Sprint();
         }
         else
-        {
-            stats.Speed = 0;
-        }
+            actions.Walk();
+        
         ProteinCounts.text = stats.NumofProtein.ToString();
         actions.Animate();
     }

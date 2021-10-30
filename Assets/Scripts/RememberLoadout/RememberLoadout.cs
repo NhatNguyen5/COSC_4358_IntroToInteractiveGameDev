@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -57,8 +58,6 @@ public class RememberLoadout : MonoBehaviour
 
 
     public int SupportHelicopter = 0;
-
-    private bool firstLoad = false;
 
     void Awake()
     {
@@ -160,8 +159,14 @@ public class RememberLoadout : MonoBehaviour
         RightArm = GameObject.FindGameObjectWithTag("RightArm");
         LeftArm = GameObject.FindGameObjectWithTag("LeftArm");
 
-        if (loadPlayerStats == true || player == null)
+        string[] noLoadLoadoutScene =
         {
+            "Title", "TutorialLoadingScreen", "Tutorial", "GameLoadingScreen"
+        };
+
+        if ((loadPlayerStats == true || player == null) && !noLoadLoadoutScene.Contains(SceneManager.GetActiveScene().name) && !OptionSettings.GameisPaused)
+        {
+            Debug.Log("Loading Loadout");
             loadPlayerStats = false;
             player = GameObject.FindGameObjectWithTag("Player");
             player.GetComponent<Player>().hideLevelUPAnimation = true;

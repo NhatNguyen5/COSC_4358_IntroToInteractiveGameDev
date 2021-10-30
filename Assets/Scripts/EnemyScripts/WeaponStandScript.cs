@@ -10,6 +10,7 @@ public class WeaponStandScript : MonoBehaviour
     private GameObject LeftArm;
     private bool PlayerIsNear;
     private Player player;
+    private bool[] PrimaryWpSlot = { false, false, false };
 
     // Start is called before the first frame update
     private void Start()
@@ -30,29 +31,46 @@ public class WeaponStandScript : MonoBehaviour
             float currSlot = 0;
             if (OptionSettings.GameisPaused == false)
             {
+                bool isHoldingWeapon = false;
                 foreach (Transform wp in RightArm.transform)
                 {
                     if(wp.gameObject.activeSelf)
                     {
                         currSlot = wp.GetComponent<Weapon>().Slot;
+                        isHoldingWeapon = true;
                     }
+                    if (wp.GetComponent<Weapon>().Slot == 1)
+                        PrimaryWpSlot[0] = true;
+                    else if (wp.GetComponent<Weapon>().Slot == 2)
+                        PrimaryWpSlot[1] = true;
+                    else if (wp.GetComponent<Weapon>().Slot == 3)
+                        PrimaryWpSlot[2] = true;
                 }
 
-                if (Input.GetKeyDown(KeyCode.Alpha1) && currSlot == 1)
+                if ((Input.GetKeyDown(KeyCode.Alpha1) && currSlot == 1) || (!isHoldingWeapon && !PrimaryWpSlot[0]))
                 {
-                    DestroyWeaponInSlot(1);
+                    if (isHoldingWeapon)
+                        DestroyWeaponInSlot(1);
+                    else
+                        PrimaryWpSlot[0] = true;
                     var newWeapon = Instantiate(DisplayedWeapon, RightArm.transform, false);
                     newWeapon.GetComponent<Weapon>().Slot = 1;
                 }
-                else if (Input.GetKeyDown(KeyCode.Alpha2) && currSlot == 2)
+                else if ((Input.GetKeyDown(KeyCode.Alpha2) && currSlot == 2) || (!isHoldingWeapon && !PrimaryWpSlot[1]))
                 {
-                    DestroyWeaponInSlot(2);
+                    if (isHoldingWeapon)
+                        DestroyWeaponInSlot(2);
+                    else
+                        PrimaryWpSlot[1] = true;
                     var newWeapon = Instantiate(DisplayedWeapon, RightArm.transform, false);
                     newWeapon.GetComponent<Weapon>().Slot = 2;
                 }
-                else if (Input.GetKeyDown(KeyCode.Alpha3) && currSlot == 3)
+                else if ((Input.GetKeyDown(KeyCode.Alpha3) && currSlot == 3) || (!isHoldingWeapon && !PrimaryWpSlot[2]))
                 {
-                    DestroyWeaponInSlot(3);
+                    if (isHoldingWeapon)
+                        DestroyWeaponInSlot(3);
+                    else
+                        PrimaryWpSlot[2] = true;
                     var newWeapon = Instantiate(DisplayedWeapon, RightArm.transform, false);
                     newWeapon.GetComponent<Weapon>().Slot = 3;
                 }
@@ -66,6 +84,7 @@ public class WeaponStandScript : MonoBehaviour
                     var newWeapon = Instantiate(DisplayedWeapon, LeftArm.transform, false);
                     Destroy(oldWeapon);
                 }
+                //Debug.Log(PrimaryWpSlot[0] + " " + PrimaryWpSlot[1] + " " + PrimaryWpSlot[2]);
             }
         }
     }
@@ -89,7 +108,7 @@ public class WeaponStandScript : MonoBehaviour
     {
         foreach(Transform wp in RightArm.transform)
         {
-            Debug.Log("Destroy weapon");
+            //Debug.Log("Destroy weapon");
             if (wp.GetComponent<Weapon>().Slot == slot)
                 Destroy(wp.gameObject);
         }

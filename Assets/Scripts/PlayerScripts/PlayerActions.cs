@@ -110,7 +110,7 @@ public class PlayerActions
                 ease = 0;
         }
         */
-        if (player.Stats.Direction.magnitude <= 0)
+        if (player.Stats.Direction.magnitude == 0)
         {
             stopSpeed = player.Stats.Speed / player.holdWalkSpeed; //player.Stats.WalkSpeed
             if (ease > 0)
@@ -125,26 +125,57 @@ public class PlayerActions
             ease = 1;
         }
 
-        //Debug.Log(ease);
+        
+        Debug.Log("ease: " + ease);
+        Debug.Log("stopSpeed: " + stopSpeed);
+        Debug.Log("player.Stats.Speed: " + player.Stats.Speed);
+        Debug.Log("player.holdWalkSpeed: " + player.holdWalkSpeed);
+        Debug.Log("player.player.Stats.Direction: " + player.Stats.Direction);
+        Debug.Log("player.Components.PlayerRidgitBody.velocity: " + player.Components.PlayerRidgitBody.velocity);
+        Debug.Log("player.Components.PlayerRidgitBody.velocity.magnitude: " + player.Components.PlayerRidgitBody.velocity.magnitude);
         player.Components.PlayerRidgitBody.velocity = ease * (new Vector2(hdir * player.Stats.Speed * Time.deltaTime, vdir * player.Stats.Speed * Time.deltaTime));
     }
 
     public void Sprint()
     {
-        if(player.Stats.Stamina >= 0)
-            player.Stats.Speed = player.holdSprintSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f); //player.Stats.SprintSpeed
-        if (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f == 0.001)
+        if (player.Stats.Stamina >= 0)
         {
-            Debug.Log("Weapon too heavy!");
+            foreach (Transform wp in rightArm.transform)
+            {
+                if (wp.gameObject.activeSelf)
+                {
+                    player.Stats.Speed = player.holdSprintSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f); //player.Stats.WalkSpeed
+                    if (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f == 0.001)
+                    {
+                        Debug.Log("Weapon too heavy!");
+                    }
+                    break;
+                }
+                else
+                {
+                    player.Stats.Speed = player.holdSprintSpeed * (GlobalPlayerVariables.BaseWeaponWeight);
+                }
+            }
         }
     }
 
     public void Walk()
     {
-        player.Stats.Speed = player.holdWalkSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f); //player.Stats.WalkSpeed
-        if (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f == 0.001)
+        foreach(Transform wp in rightArm.transform)
         {
-            Debug.Log("Weapon too heavy!");
+            if(wp.gameObject.activeSelf)
+            {
+                player.Stats.Speed = player.holdWalkSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f); //player.Stats.WalkSpeed
+                if (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f == 0.001)
+                {
+                    Debug.Log("Weapon too heavy!");
+                }
+                break;
+            }
+            else
+            {
+                player.Stats.Speed = player.holdWalkSpeed * (GlobalPlayerVariables.BaseWeaponWeight);
+            }
         }
     }
 

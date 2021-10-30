@@ -7,7 +7,7 @@ public class LevelUpEff : MonoBehaviour
     private Player player;
     ParticleSystem LevelUpEffPS;
     ParticleSystem.MainModule LevelUpEffPSMain;
-    private float scale = 1;
+    //private float scale = 1;
 
     // Start is called before the first frame update
     private void Start()
