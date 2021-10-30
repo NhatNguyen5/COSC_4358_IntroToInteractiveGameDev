@@ -526,6 +526,7 @@ public class Player : MonoBehaviour
         else
         {
             utilities.HandleInput();
+            components.PlayerRidgitBody.velocity = Vector2.zero;
         }
         references.CalMousePosToPlayer();
         actions.UpdateCountsUI();

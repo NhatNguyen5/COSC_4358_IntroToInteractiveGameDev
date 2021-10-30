@@ -25,7 +25,7 @@ public class DustTrail : MonoBehaviour
                 keepRot = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(player.Stats.Direction.y, player.Stats.Direction.x) * Mathf.Rad2Deg - 180));
             transform.rotation = keepRot;
             //Debug.Log(Mathf.Atan2(player.Stats.Direction.y, player.Stats.Direction.x) * Mathf.Rad2Deg);
-            if (player.Components.PlayerRidgitBody.velocity.magnitude > 0.1)
+            if (player.Components.PlayerRidgitBody.velocity.magnitude > 0.5)
             {
                 if (trailPS.isStopped)
                     trailPS.Play();
