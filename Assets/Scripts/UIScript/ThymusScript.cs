@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Experimental.U2D.Animation;
-using TMPro;
 using System.Linq;
 
 public class ThymusScript : MonoBehaviour
 {
     private Transform Thymus;
     private Transform DialogBox;
-    private TextMeshProUGUI DialogText;
+    private Text DialogText;
     private TextWriter.TextWriterSingle textWriterSingle;
     private bool dialogSequenceFinish = false;
     private int currDialogIdx = 0;
@@ -79,7 +78,7 @@ public class ThymusScript : MonoBehaviour
         ThymusOgScale = Thymus.localScale;
         DialogBox = transform.Find("DialogBox");
         DialogBoxOgScale = DialogBox.localScale;
-        DialogText = DialogBox.Find("Dialog").GetComponent<TextMeshProUGUI>();
+        DialogText = DialogBox.Find("Dialog").GetComponent<Text>();
         currEyesSprite = ThymusSpriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(ThymusDialogSequence[0].EyesCategory).ToArray();
         currBrowsSprite = ThymusSpriteLibrary.spriteLibraryAsset.GetCategoryLabelNames("EyeBrows").ToArray();
     }
@@ -116,6 +115,8 @@ public class ThymusScript : MonoBehaviour
             {
                 Thymus.localPosition = new Vector3(ThymusDialogSequence[currDialogIdx].ThymusPositionX, ThymusDialogSequence[currDialogIdx].ThymusPositionY);
                 DialogBox.localPosition = new Vector3(ThymusDialogSequence[currDialogIdx].DialogBoxPositionX, ThymusDialogSequence[currDialogIdx].DialogBoxPositionY);
+                Thymus.localScale = new Vector3(ThymusOgScale.x * ThymusDialogSequence[currDialogIdx].ThymusScale, ThymusOgScale.y * ThymusDialogSequence[currDialogIdx].ThymusScale, ThymusOgScale.z);
+                DialogBox.localScale = new Vector3(DialogBoxOgScale.x * ThymusDialogSequence[currDialogIdx].DialogBoxScale, DialogBoxOgScale.y * ThymusDialogSequence[currDialogIdx].DialogBoxScale, DialogBoxOgScale.z);
             }
             if (zoom < 1)
             {
@@ -228,7 +229,7 @@ public class ThymusScript : MonoBehaviour
 
         ThymusEyesSpriteResolver.SetCategoryAndLabel(Dialog.EyesCategory, currEyesSprite[tempEyesIdx]);
         ThymusBrowsSpriteResolver.SetCategoryAndLabel("EyeBrows", currBrowsSprite[tempBrowsIdx]);
-        DialogText.fontSize = 30f*(1 + Dialog.FontSize/10);
+        DialogText.fontSize = (int)(25*(1 + Dialog.FontSize/10));
         Thymus.localPosition = new Vector3(Dialog.ThymusPositionX, Dialog.ThymusPositionY);
         Thymus.localScale = new Vector3(ThymusOgScale.x * Dialog.ThymusScale, ThymusOgScale.y * Dialog.ThymusScale, ThymusOgScale.z);
         DialogBox.localPosition = new Vector3(Dialog.DialogBoxPositionX, Dialog.DialogBoxPositionY);

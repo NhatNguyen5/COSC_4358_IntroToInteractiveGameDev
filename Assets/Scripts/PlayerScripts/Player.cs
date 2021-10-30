@@ -104,6 +104,8 @@ public class Player : MonoBehaviour
 
     public int NumOfTypesOfNade;
 
+    public float easeRef;
+
     public string dashSound;
 
     //LEVELCAP
@@ -522,6 +524,7 @@ public class Player : MonoBehaviour
             {
                 RightSlotCooldownDisplay = 0;
             }
+            easeRef = actions.ease;
         }
         else
         {

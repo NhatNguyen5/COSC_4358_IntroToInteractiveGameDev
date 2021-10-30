@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +15,7 @@ public class TextWriter : MonoBehaviour
         textWriterSingleList = new List<TextWriterSingle>();
     }
 
-    public static TextWriterSingle AddWriter_static(TextMeshProUGUI uiText, string textToWrite, float timePerCharacter, bool invisibleCharacter, bool RemoveWriterBeforeAdd)
+    public static TextWriterSingle AddWriter_static(Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacter, bool RemoveWriterBeforeAdd)
     {
         if(RemoveWriterBeforeAdd)
         {
@@ -25,19 +24,19 @@ public class TextWriter : MonoBehaviour
         return instance.AddWriter(uiText, textToWrite, timePerCharacter, invisibleCharacter);
     }
 
-    private TextWriterSingle AddWriter(TextMeshProUGUI uiText, string textToWrite, float timePerCharacter, bool invisibleCharacter)
+    private TextWriterSingle AddWriter(Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacter)
     {
         TextWriterSingle textWriterSingle = new TextWriterSingle(uiText, textToWrite, timePerCharacter, invisibleCharacter);
         textWriterSingleList.Add(textWriterSingle);
         return textWriterSingle;
     }
 
-    public static void RemoveWriter_Static(TextMeshProUGUI uiText)
+    public static void RemoveWriter_Static(Text uiText)
     {
         instance.RemoveWriter(uiText);
     }
 
-    private void RemoveWriter(TextMeshProUGUI uiText)
+    private void RemoveWriter(Text uiText)
     {
         for (int i = 0; i < textWriterSingleList.Count; i++)
         {
@@ -64,13 +63,13 @@ public class TextWriter : MonoBehaviour
 
     public class TextWriterSingle
     {
-        private TextMeshProUGUI uiText;
+        private Text uiText;
         private string textToWrite;
         private int characterIndex;
         private float timePerCharacter;
         private float timer;
         private bool invisibleCharacter;
-        public TextWriterSingle(TextMeshProUGUI uiText, string textToWrite, float timePerCharacter, bool invisibleCharacter)
+        public TextWriterSingle(Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacter)
         {
             this.uiText = uiText;
             this.textToWrite = textToWrite;
@@ -102,7 +101,7 @@ public class TextWriter : MonoBehaviour
             return false;
         }
 
-        public TextMeshProUGUI GetUIText()
+        public Text GetUIText()
         {
             return uiText;
         }
