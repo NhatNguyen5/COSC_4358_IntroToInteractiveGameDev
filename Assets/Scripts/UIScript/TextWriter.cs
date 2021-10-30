@@ -69,6 +69,7 @@ public class TextWriter : MonoBehaviour
         private float timePerCharacter;
         private float timer;
         private bool invisibleCharacter;
+        private bool play = true;
         public TextWriterSingle(Text uiText, string textToWrite, float timePerCharacter, bool invisibleCharacter)
         {
             this.uiText = uiText;
@@ -83,10 +84,15 @@ public class TextWriter : MonoBehaviour
             timer -= Time.deltaTime;
             while (timer <= 0)
             {
-                if(textToWrite[characterIndex] != ' ')
+                if (textToWrite[characterIndex] != ' ')
                     timer += timePerCharacter;
                 characterIndex++;
-                
+
+                if (!play)
+                {
+                    characterIndex--;
+                }
+
                 string text = textToWrite.Substring(0, characterIndex);
                 if (invisibleCharacter)
                 {
@@ -109,6 +115,16 @@ public class TextWriter : MonoBehaviour
         public bool IsActive()
         {
             return characterIndex < textToWrite.Length;
+        }
+
+        public void Play()
+        {
+            play = true;
+        }
+
+        public void Stop()
+        {
+            play = false;
         }
 
         public void WriteAllAndDestroy()

@@ -18,43 +18,79 @@ MonoBehaviour:
     m_CategoryList:
     - m_Name: Forward
       m_Hash: 673977882
-      m_Sprite: {fileID: -6298014910991909844, guid: 166d28aea1f995e428e82ef0ddd3f947, type: 3}
+      m_Sprite: {fileID: 6795592228460467510, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
     - m_Name: Left
       m_Hash: -631945130
-      m_Sprite: {fileID: -3990273382910882501, guid: 166d28aea1f995e428e82ef0ddd3f947, type: 3}
+      m_Sprite: {fileID: -2300610431774894595, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
     - m_Name: Right
       m_Hash: 1963678224
-      m_Sprite: {fileID: -649725774821747366, guid: 166d28aea1f995e428e82ef0ddd3f947, type: 3}
+      m_Sprite: {fileID: -647934878624720133, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
     - m_Name: Down
       m_Hash: -1127399675
-      m_Sprite: {fileID: 6622206136570624311, guid: 166d28aea1f995e428e82ef0ddd3f947, type: 3}
+      m_Sprite: {fileID: -4327982785464354237, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
+    - m_Name: Topleft
+      m_Hash: 296056814
+      m_Sprite: {fileID: 4578210112968105086, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
+    - m_Name: TopRight
+      m_Hash: 1908129429
+      m_Sprite: {fileID: 7524902516418904431, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
+    - m_Name: BotLeft
+      m_Hash: 1075435492
+      m_Sprite: {fileID: -5621619773764508245, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
+    - m_Name: BotRight
+      m_Hash: 1358873647
+      m_Sprite: {fileID: 4504597194781019717, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
+    - m_Name: Up
+      m_Hash: -703542574
+      m_Sprite: {fileID: -4026733933669369617, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
   - m_Name: ChillEyes
     m_Hash: 430868621
     m_CategoryList:
     - m_Name: Forward
       m_Hash: 673977882
-      m_Sprite: {fileID: 5713443403988040371, guid: 166d28aea1f995e428e82ef0ddd3f947, type: 3}
+      m_Sprite: {fileID: -5354125321574353092, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
     - m_Name: Left
       m_Hash: -631945130
-      m_Sprite: {fileID: 3319831578856857862, guid: 166d28aea1f995e428e82ef0ddd3f947, type: 3}
+      m_Sprite: {fileID: 5877478582146683128, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
     - m_Name: Right
       m_Hash: 1963678224
-      m_Sprite: {fileID: 5197790054791035745, guid: 166d28aea1f995e428e82ef0ddd3f947, type: 3}
+      m_Sprite: {fileID: 4801540017476104259, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
     - m_Name: Down
       m_Hash: -1127399675
-      m_Sprite: {fileID: 6992472403893675076, guid: 166d28aea1f995e428e82ef0ddd3f947, type: 3}
+      m_Sprite: {fileID: 7835094785820737388, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
+    - m_Name: Topleft
+      m_Hash: 296056814
+      m_Sprite: {fileID: -1428223487481407158, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
+    - m_Name: TopRight
+      m_Hash: 1908129429
+      m_Sprite: {fileID: 3893706491091144129, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
+    - m_Name: BotLeft
+      m_Hash: 1075435492
+      m_Sprite: {fileID: -9179191151109296419, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
+    - m_Name: BotRight
+      m_Hash: 1358873647
+      m_Sprite: {fileID: 2680857592724899043, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
+    - m_Name: Up
+      m_Hash: -703542574
+      m_Sprite: {fileID: 2785828044706433802, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
   - m_Name: EyeBrows
     m_Hash: 745158757
     m_CategoryList:
     - m_Name: Normal
       m_Hash: 640249298
-      m_Sprite: {fileID: -5227333164264386769, guid: 166d28aea1f995e428e82ef0ddd3f947, type: 3}
+      m_Sprite: {fileID: -4809375614407330652, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
+    - m_Name: RaiseBoth
+      m_Hash: 503978540
+      m_Sprite: {fileID: -524733935700478809, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
     - m_Name: RaiseLeft
       m_Hash: -1615346603
-      m_Sprite: {fileID: 2538714514759856642, guid: 166d28aea1f995e428e82ef0ddd3f947, type: 3}
-    - m_Name: Angry
-      m_Hash: 16779677
-      m_Sprite: {fileID: -4190323775144763438, guid: 166d28aea1f995e428e82ef0ddd3f947, type: 3}
+      m_Sprite: {fileID: -1949048454343759282, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
+    - m_Name: RaiseRight
+      m_Hash: -330831578
+      m_Sprite: {fileID: -7091725243352921842, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
     - m_Name: Sad
       m_Hash: -1484605860
-      m_Sprite: {fileID: -8422924777614949117, guid: 166d28aea1f995e428e82ef0ddd3f947, type: 3}
+      m_Sprite: {fileID: -1866701265330464390, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
+    - m_Name: Angry
+      m_Hash: 16779677
+      m_Sprite: {fileID: -7444058828344533557, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
