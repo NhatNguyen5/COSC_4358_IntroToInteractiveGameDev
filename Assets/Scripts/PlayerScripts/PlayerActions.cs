@@ -38,7 +38,7 @@ public class PlayerActions
 
     private string[] CurrHemoSprite;
 
-    private float ease;
+    public float ease;
 
     private float stopSpeed;
 
@@ -125,7 +125,7 @@ public class PlayerActions
             ease = 1;
         }
 
-        
+        /*
         Debug.Log("ease: " + ease);
         Debug.Log("stopSpeed: " + stopSpeed);
         Debug.Log("player.Stats.Speed: " + player.Stats.Speed);
@@ -133,6 +133,7 @@ public class PlayerActions
         Debug.Log("player.player.Stats.Direction: " + player.Stats.Direction);
         Debug.Log("player.Components.PlayerRidgitBody.velocity: " + player.Components.PlayerRidgitBody.velocity);
         Debug.Log("player.Components.PlayerRidgitBody.velocity.magnitude: " + player.Components.PlayerRidgitBody.velocity.magnitude);
+        */
         player.Components.PlayerRidgitBody.velocity = ease * (new Vector2(hdir * player.Stats.Speed * Time.deltaTime, vdir * player.Stats.Speed * Time.deltaTime));
     }
 
