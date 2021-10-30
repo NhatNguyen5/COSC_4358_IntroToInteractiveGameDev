@@ -264,7 +264,7 @@ public class ThymusScript : MonoBehaviour
                 break;
         }
 
-        textWriterSingle = TextWriter.AddWriter_static(DialogText, Dialog.DialogContent, 1 / Dialog.DialogSpeed, true, true);
+        textWriterSingle = TextWriter.AddWriter_static(DialogText, Dialog.DialogContent + " ", 1 / Dialog.DialogSpeed, true, true);
 
         GlobalPlayerVariables.EnablePlayerControl = ThymusDialogSequence[currDialogIdx].EnablePlayerControl;
         GlobalPlayerVariables.EnableAI = ThymusDialogSequence[currDialogIdx].EnableAI;
