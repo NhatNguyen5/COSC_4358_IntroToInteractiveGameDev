@@ -248,11 +248,12 @@ MonoBehaviour:
   EnemyTarget: {fileID: 0}
   nextWaypointDistance: 3
   rb: {fileID: 0}
-  DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
+  DamageText: {fileID: 5578586631025405740, guid: 9f7757d3160d49940b41a53ce5fcba10, type: 3}
   player: {fileID: 0}
   playerStash: {fileID: 0}
-  HP: 3750
-  speed: 150
+  HP: 1800
+  AR: 40
+  speed: 7000
   stoppingDistance: 11
   lineofsight: 0
   IgnoreMe:
@@ -338,8 +339,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 1.5
+  m_Mass: 6
+  m_LinearDrag: 6
   m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}

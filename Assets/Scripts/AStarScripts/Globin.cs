@@ -34,6 +34,7 @@ public class Globin : MonoBehaviour
 
     //public float contactDamage;
     public float HP = 100;
+    public float AR = 0;
     public float speed = 200f;
     //public float speed = 0;
     //public int EXPWorth = 50;
@@ -505,10 +506,22 @@ public class Globin : MonoBehaviour
             iscrit = true;
             damage *= critDMG;
         }*/
-        Debug.Log("Globin Taking Damage");
-        HP -= damage;
-        showDamage(damage, impact, speed);
-        StartCoroutine(FlashRed());
+
+        //Debug.Log("Globin Taking Damage");
+
+        if (damage > AR)
+        {
+            HP = (HP - (damage - AR));
+            showDamage(damage, impact, speed);
+            StartCoroutine(FlashRed());
+        }
+        else {
+            HP = HP - 1;
+            showDamage(damage, impact, speed);
+            StartCoroutine(FlashRed());
+        }
+        
+        
         if (HP <= 0)
         {
             Die();
@@ -519,8 +532,20 @@ public class Globin : MonoBehaviour
 
     void showDamage(float damage, Transform impact, float speed)
     {
-        damage = Mathf.Round(damage);
-        if (damage > 1)
+        //damage = Mathf.Round(damage - AR);
+
+
+        if (damage > AR)
+        {
+            damage = Mathf.Round(damage - AR);
+        }
+        else
+        {
+            damage = Mathf.Round(1);
+        }
+
+
+        if (damage >= 1)
         {
             Vector3 direction = (transform.position - impact.transform.position).normalized;
 
@@ -529,13 +554,13 @@ public class Globin : MonoBehaviour
 
             //Debug.Log("CRIT");
 
-            Color colorTop = new Color(0.83529f, 0.06667f, 0.06667f);
-            Color colorBottom = new Color(0.98824f, 0.33725f, .90196f);
+            //Color colorTop = new Color(0.83529f, 0.06667f, 0.06667f);
+            //Color colorBottom = new Color(0.98824f, 0.33725f, .90196f);
 
 
             go.GetComponent<TextMeshPro>().text = damage.ToString();
-            go.GetComponent<TextMeshPro>().colorGradient = new VertexGradient(colorTop, colorTop, colorBottom, colorBottom);
-            go.GetComponent<TextMeshPro>().fontSize *= 1.2f;
+            //go.GetComponent<TextMeshPro>().colorGradient = new VertexGradient(colorTop, colorTop, colorBottom, colorBottom);
+            go.GetComponent<TextMeshPro>().fontSize *= 0.8f;
             
             go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, speed / 5);
         }

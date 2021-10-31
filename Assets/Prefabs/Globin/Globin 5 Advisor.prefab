@@ -165,10 +165,11 @@ MonoBehaviour:
   EnemyTarget: {fileID: 0}
   nextWaypointDistance: 3
   rb: {fileID: 0}
-  DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
+  DamageText: {fileID: 5578586631025405740, guid: 9f7757d3160d49940b41a53ce5fcba10, type: 3}
   player: {fileID: 0}
   playerStash: {fileID: 0}
   HP: 325
+  AR: 0
   speed: 375
   stoppingDistance: 6.5
   lineofsight: 0

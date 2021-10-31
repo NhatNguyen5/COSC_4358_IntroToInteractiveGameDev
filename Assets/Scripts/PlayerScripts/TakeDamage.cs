@@ -189,7 +189,7 @@ public class TakeDamage : MonoBehaviour
             //Debug.Log("CRIT");
             go.GetComponent<TextMeshPro>().text = damage.ToString();
             go.GetComponent<TextMeshPro>().color = Color.red;
-            go.GetComponent<TextMeshPro>().fontSize *= 3;
+            go.GetComponent<TextMeshPro>().fontSize *= 1.6f;
         }
         go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, speed / 5);
     }
