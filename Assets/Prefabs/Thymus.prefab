@@ -71,12 +71,12 @@ SpriteRenderer:
   m_SortingLayerID: 1802700937
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 347008817318153173, guid: 166d28aea1f995e428e82ef0ddd3f947, type: 3}
+  m_Sprite: {fileID: 325509525722440343, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.2, y: 3.2}
+  m_Size: {x: 160, y: 160}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -264,6 +264,10 @@ MonoBehaviour:
   ThymusBrowsSpriteResolver: {fileID: 7374163825097479675}
   ThymusDialogSequence:
   - WaitTimeAfterFinish: 10
+    EnablePlayerControl: 0
+    EnableAI: 0
+    HideThymus: 0
+    ShowAgainAfter: 0
     ThymusPositionX: -165
     ThymusPositionY: 0
     ThymusScale: 1
@@ -278,6 +282,10 @@ MonoBehaviour:
     FontSize: 0
     DialogSpeed: 20
   - WaitTimeAfterFinish: 3.5
+    EnablePlayerControl: 0
+    EnableAI: 0
+    HideThymus: 0
+    ShowAgainAfter: 0
     ThymusPositionX: -170
     ThymusPositionY: -175
     ThymusScale: 0.8
@@ -292,6 +300,10 @@ MonoBehaviour:
     FontSize: 0
     DialogSpeed: 20
   - WaitTimeAfterFinish: 3
+    EnablePlayerControl: 0
+    EnableAI: 0
+    HideThymus: 0
+    ShowAgainAfter: 0
     ThymusPositionX: 0
     ThymusPositionY: 0
     ThymusScale: 0.8
@@ -306,6 +318,10 @@ MonoBehaviour:
     FontSize: 0
     DialogSpeed: 20
   - WaitTimeAfterFinish: 4
+    EnablePlayerControl: 0
+    EnableAI: 0
+    HideThymus: 0
+    ShowAgainAfter: 0
     ThymusPositionX: -170
     ThymusPositionY: -175
     ThymusScale: 0.8
@@ -320,6 +336,10 @@ MonoBehaviour:
     FontSize: 0
     DialogSpeed: 20
   - WaitTimeAfterFinish: 3
+    EnablePlayerControl: 0
+    EnableAI: 0
+    HideThymus: 0
+    ShowAgainAfter: 0
     ThymusPositionX: -170
     ThymusPositionY: -175
     ThymusScale: 0.8
@@ -333,6 +353,10 @@ MonoBehaviour:
     FontSize: 2
     DialogSpeed: 20
   - WaitTimeAfterFinish: 3
+    EnablePlayerControl: 0
+    EnableAI: 0
+    HideThymus: 0
+    ShowAgainAfter: 0
     ThymusPositionX: -170
     ThymusPositionY: -175
     ThymusScale: 0.8
@@ -481,13 +505,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1802700937
   m_SortingLayer: 6
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 8903519005336839351, guid: 166d28aea1f995e428e82ef0ddd3f947, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -2381089712637504926, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.2, y: 1.6}
+  m_Size: {x: 160, y: 80}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -566,12 +590,12 @@ SpriteRenderer:
   m_SortingLayerID: 1802700937
   m_SortingLayer: 6
   m_SortingOrder: 1
-  m_Sprite: {fileID: -4190323775144763438, guid: 166d28aea1f995e428e82ef0ddd3f947, type: 3}
+  m_Sprite: {fileID: -7444058828344533557, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.6, y: 1.6}
+  m_Size: {x: 80, y: 80}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -677,12 +701,12 @@ SpriteRenderer:
   m_SortingLayerID: 1802700937
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6298014910991909844, guid: 166d28aea1f995e428e82ef0ddd3f947, type: 3}
+  m_Sprite: {fileID: 6795592228460467510, guid: 064d25b0e514c314bb379dec60e835e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.6, y: 1.6}
+  m_Size: {x: 80, y: 80}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
