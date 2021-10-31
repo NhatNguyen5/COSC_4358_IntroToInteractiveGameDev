@@ -201,7 +201,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8370692966446237527}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 732242145888686756}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &732242145888686756
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +276,7 @@ MonoBehaviour:
   ThymusBrowsSpriteResolver: {fileID: 7374163825097479675}
   ThymusDialogSequence:
   - WaitTimeAfterFinish: 10
-    EnablePlayerControl: 0
+    EnablePlayerControl: 1
     EnableAI: 0
     HideThymus: 0
     ShowAgainAfter: 0
@@ -282,7 +294,7 @@ MonoBehaviour:
     FontSize: 0
     DialogSpeed: 20
   - WaitTimeAfterFinish: 3.5
-    EnablePlayerControl: 0
+    EnablePlayerControl: 1
     EnableAI: 0
     HideThymus: 0
     ShowAgainAfter: 0
@@ -300,7 +312,7 @@ MonoBehaviour:
     FontSize: 0
     DialogSpeed: 20
   - WaitTimeAfterFinish: 3
-    EnablePlayerControl: 0
+    EnablePlayerControl: 1
     EnableAI: 0
     HideThymus: 0
     ShowAgainAfter: 0
@@ -318,7 +330,7 @@ MonoBehaviour:
     FontSize: 0
     DialogSpeed: 20
   - WaitTimeAfterFinish: 4
-    EnablePlayerControl: 0
+    EnablePlayerControl: 1
     EnableAI: 0
     HideThymus: 0
     ShowAgainAfter: 0
@@ -336,7 +348,7 @@ MonoBehaviour:
     FontSize: 0
     DialogSpeed: 20
   - WaitTimeAfterFinish: 3
-    EnablePlayerControl: 0
+    EnablePlayerControl: 1
     EnableAI: 0
     HideThymus: 0
     ShowAgainAfter: 0
@@ -353,7 +365,7 @@ MonoBehaviour:
     FontSize: 2
     DialogSpeed: 20
   - WaitTimeAfterFinish: 3
-    EnablePlayerControl: 0
+    EnablePlayerControl: 1
     EnableAI: 0
     HideThymus: 0
     ShowAgainAfter: 0
@@ -1119,7 +1131,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3287298955883133017}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6257839769071096178}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
+      - m_Target: {fileID: 732242145888686756}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
 --- !u!1 &7533831329410867589
 GameObject:
   m_ObjectHideFlags: 0

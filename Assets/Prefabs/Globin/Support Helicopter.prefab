@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 6476559030465391990}
   - component: {fileID: 6476559030465391991}
   - component: {fileID: 6476559030465391994}
+  - component: {fileID: 5360915772831251900}
   m_Layer: 16
   m_Name: Support Helicopter
   m_TagString: Globin
@@ -319,7 +320,7 @@ MonoBehaviour:
   traversableTags: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
-    value: -1
+    value: -4
 --- !u!58 &6476559030465391990
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -408,6 +409,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5360915772831251900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476559030465391988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49fa40578ddb4a4483390a3c235dc50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6476559031176465843
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +476,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7285027881823167551}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 1.25, z: 0}
+  m_LocalPosition: {x: -1.346, y: 0.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6476559030465391995}
@@ -545,8 +558,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7825290643958384604}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.9874, y: 0.5428, z: 0}
-  m_LocalScale: {x: 53.504856, y: 13.934798, z: 1}
+  m_LocalPosition: {x: -1.4912, y: 0.4766, z: 0}
+  m_LocalScale: {x: 39.77096, y: 10.99441, z: 1}
   m_Children: []
   m_Father: {fileID: 6476559030465391995}
   m_RootOrder: 2
