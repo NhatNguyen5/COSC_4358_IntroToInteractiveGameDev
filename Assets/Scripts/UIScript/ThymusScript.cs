@@ -63,7 +63,7 @@ public class ThymusScript : MonoBehaviour
         [Range(0.1f, 3)]
         public float DialogBoxScale;
         public string DialogContent;
-        [Range(0, 10)]
+        [Range(0, 50)]
         public float FontSize;
         [Range(1, 20)]
         public float DialogSpeed;
@@ -229,7 +229,7 @@ public class ThymusScript : MonoBehaviour
 
         ThymusEyesSpriteResolver.SetCategoryAndLabel(Dialog.EyesCategory, currEyesSprite[tempEyesIdx]);
         ThymusBrowsSpriteResolver.SetCategoryAndLabel("EyeBrows", currBrowsSprite[tempBrowsIdx]);
-        DialogText.fontSize = (int)(25*(1 + Dialog.FontSize/10));
+        DialogText.fontSize = (int)(Dialog.FontSize);
         Thymus.localPosition = new Vector3(Dialog.ThymusPositionX, Dialog.ThymusPositionY);
         Thymus.localScale = new Vector3(ThymusOgScale.x * Dialog.ThymusScale, ThymusOgScale.y * Dialog.ThymusScale, ThymusOgScale.z);
         DialogBox.localPosition = new Vector3(Dialog.DialogBoxPositionX, Dialog.DialogBoxPositionY);
