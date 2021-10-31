@@ -44,6 +44,10 @@ public class ThymusScript : MonoBehaviour
     {
         [Header("General Setting")]
         public float WaitTimeAfterFinish;
+        public bool EnablePlayerControl;
+        public bool EnableAI;
+        public bool HideThymus;
+        public float ShowAgainAfter;
         [Header("Thymus")]
         [Range(-500, 500)]
         public float ThymusPositionX;
@@ -52,8 +56,8 @@ public class ThymusScript : MonoBehaviour
         [Range(0.1f, 3)]
         public float ThymusScale;
         [StringInList("SeriousEyes", "ChillEyes")] public string EyesCategory;
-        [StringInList("Forward", "Down", "Left", "Right")] public string EyesDirection;
-        [StringInList("Normal", "RaiseLeft", "Angry", "Sad")] public string BrowsExpression;
+        [StringInList("Forward", "Down", "Up", "Left", "Right", "TopLeft", "TopRight", "BotLeft", "BotRight")] public string EyesDirection;
+        [StringInList("Normal", "RaiseBoth", "RaiseLeft", "RaiseRight", "Angry", "Sad")] public string BrowsExpression;
 
         [Header("DialogBox")]
         [Range(-500, 500)]
@@ -106,6 +110,12 @@ public class ThymusScript : MonoBehaviour
                 DialogBox.gameObject.SetActive(false);
                 isShown = false;
             }
+
+            if(GlobalPlayerVariables.EnablePlayerControl == false || GlobalPlayerVariables.EnableAI == false)
+            {
+                GlobalPlayerVariables.EnablePlayerControl = true;
+                GlobalPlayerVariables.EnableAI = true;
+            }
         }
 
 
@@ -118,8 +128,11 @@ public class ThymusScript : MonoBehaviour
                 Thymus.localScale = new Vector3(ThymusOgScale.x * ThymusDialogSequence[currDialogIdx].ThymusScale, ThymusOgScale.y * ThymusDialogSequence[currDialogIdx].ThymusScale, ThymusOgScale.z);
                 DialogBox.localScale = new Vector3(DialogBoxOgScale.x * ThymusDialogSequence[currDialogIdx].DialogBoxScale, DialogBoxOgScale.y * ThymusDialogSequence[currDialogIdx].DialogBoxScale, DialogBoxOgScale.z);
             }
+
             if (zoom < 1)
             {
+                if(textWriterSingle != null)
+                    textWriterSingle.Stop();
                 zoom += Time.deltaTime * zoomSpeed;
                 transform.localPosition = new Vector3(ThymusAppearPosX * (1 - zoom), ThymusAppearPosY * (1 - zoom), -1);
                 transform.localScale = new Vector3(zoom, zoom, 1);
@@ -127,6 +140,8 @@ public class ThymusScript : MonoBehaviour
             else
             {
                 zoom = 1;
+                if (textWriterSingle != null)
+                    textWriterSingle.Play();
                 transform.localScale = new Vector3(zoom, zoom, 1);
             }
 
@@ -209,6 +224,22 @@ public class ThymusScript : MonoBehaviour
             case "Down":
                 tempEyesIdx = 3;
                 break;
+            case "TopLeft":
+                tempEyesIdx = 4;
+                break;
+            case "TopRight":
+                tempEyesIdx = 5;
+                break;
+            case "BotLeft":
+                tempEyesIdx = 6;
+                break;
+            case "BotRight":
+                tempEyesIdx = 7;
+                break;
+            case "Up":
+                tempEyesIdx = 8;
+                break;
+
         }
 
         switch (Dialog.BrowsExpression)
@@ -216,17 +247,34 @@ public class ThymusScript : MonoBehaviour
             case "Normal":
                 tempBrowsIdx = 0;
                 break;
-            case "RaiseLeft":
+            case "RaiseBoth":
                 tempBrowsIdx = 1;
                 break;
-            case "Angry":
+            case "RaiseLeft":
                 tempBrowsIdx = 2;
                 break;
-            case "Sad":
+            case "RaiseRight":
                 tempBrowsIdx = 3;
+                break;
+            case "Sad":
+                tempBrowsIdx = 4;
+                break;
+            case "Angry":
+                tempBrowsIdx = 5;
                 break;
         }
 
+        textWriterSingle = TextWriter.AddWriter_static(DialogText, Dialog.DialogContent + " ", 1 / Dialog.DialogSpeed, true, true);
+
+        GlobalPlayerVariables.EnablePlayerControl = ThymusDialogSequence[currDialogIdx].EnablePlayerControl;
+        GlobalPlayerVariables.EnableAI = ThymusDialogSequence[currDialogIdx].EnableAI;
+
+        if (Dialog.HideThymus)
+        {
+            StartCoroutine(ShowThymusAfter(Dialog.ShowAgainAfter));
+        }
+
+        Debug.Log(tempEyesIdx + " " + tempBrowsIdx);
         ThymusEyesSpriteResolver.SetCategoryAndLabel(Dialog.EyesCategory, currEyesSprite[tempEyesIdx]);
         ThymusBrowsSpriteResolver.SetCategoryAndLabel("EyeBrows", currBrowsSprite[tempBrowsIdx]);
         DialogText.fontSize = (int)(Dialog.FontSize);
@@ -234,8 +282,19 @@ public class ThymusScript : MonoBehaviour
         Thymus.localScale = new Vector3(ThymusOgScale.x * Dialog.ThymusScale, ThymusOgScale.y * Dialog.ThymusScale, ThymusOgScale.z);
         DialogBox.localPosition = new Vector3(Dialog.DialogBoxPositionX, Dialog.DialogBoxPositionY);
         DialogBox.localScale = new Vector3(DialogBoxOgScale.x * Dialog.DialogBoxScale, DialogBoxOgScale.y * Dialog.DialogBoxScale, DialogBoxOgScale.z);
-        textWriterSingle = TextWriter.AddWriter_static(DialogText, Dialog.DialogContent, 1/Dialog.DialogSpeed, true, true);
-        DialogText.text = Dialog.DialogContent;
+        
+        //DialogText.text = Dialog.DialogContent;
         currDialogIdx++;
+    }
+
+    private IEnumerator ShowThymusAfter(float dur)
+    {
+        Appear = false;
+        textWriterSingle.Stop();
+        yield return new WaitForSeconds(dur);
+        GlobalPlayerVariables.EnablePlayerControl = ThymusDialogSequence[currDialogIdx].EnablePlayerControl;
+        GlobalPlayerVariables.EnableAI = ThymusDialogSequence[currDialogIdx].EnableAI;
+        Appear = true;
+        //textWriterSingle.Play();
     }
 }
