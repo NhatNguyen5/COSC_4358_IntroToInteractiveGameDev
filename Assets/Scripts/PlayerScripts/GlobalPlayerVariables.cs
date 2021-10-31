@@ -197,6 +197,10 @@ public class GlobalPlayerVariables : MonoBehaviour
     {
         //Debug.Log("Stats Reset");
 
+        //Pause = false;
+        OptionSettings.GameisPaused = false;
+        GameOver = false;
+
         BaseCritRate = bcr1;
         BaseCritDamage = bcd1;
         BaseCritRate2 = bcr2;
