@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     private Vector2 dashDir;
 
     private Text ProteinCounts;
+    private Text ProteinCountsShop;
 
     public EnemyManager enemyManager;
 
@@ -113,6 +114,7 @@ public class Player : MonoBehaviour
     public GameObject levelText1;
     public GameObject levelText10;
     public GameObject levelText100;
+
     public Image expBar;
 
     private Text Text1;
@@ -187,6 +189,9 @@ public class Player : MonoBehaviour
         Text1 = levelText1.GetComponent<Text>();
         Text2 = levelText10.GetComponent<Text>();
         Text3 = levelText100.GetComponent<Text>();
+
+
+
         Text1.text = "0";
         Text2.text = "0";
         Text3.text = "0";
@@ -249,6 +254,7 @@ public class Player : MonoBehaviour
         DashDuration = stats.DashDistance / stats.DashSpeed;
         TrailDur = DashDuration;
         ProteinCounts = GameObject.Find("ProteinCounts").GetComponent<Text>();
+        //ProteinCountsShop = GameObject.Find("ProteinCountsShop").GetComponent<Text>();
         EnemySpawnRate = GameObject.Find("EnemySpawnRateDisplay");
 
         if (enemyManager != null)
@@ -552,6 +558,7 @@ public class Player : MonoBehaviour
 
 
         ProteinCounts.text = stats.NumofProtein.ToString();
+        //ProteinCountsShop.text = stats.NumofProtein.ToString();
         actions.Animate();
     }
 
