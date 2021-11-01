@@ -282,8 +282,14 @@ public class Weapon : MonoBehaviour
             ammoBar.fillAmount = 1;
         }
         */
-        
 
+
+
+        //Debug.Log("AMMO COUNT " + ammoCount);
+        if (ammoCount <= 0)
+        {
+            firingDelay = 0;
+        }
 
 
         if ((ammoCount <= 0 && Input.GetKey(KeyCode.Mouse0) || ammoCount < maxAmmoInClip && Input.GetKeyUp(KeyCode.R)) && firingDelay == 0)
@@ -292,6 +298,8 @@ public class Weapon : MonoBehaviour
             {
                 if (reload == false && fired == false)
                 {
+
+
                     //Debug.Log("Reload activated");
                     WeaponAnim.SetBool("IsShooting", false);
                     WeaponAnim.SetFloat("FireRate", 0);
@@ -316,7 +324,7 @@ public class Weapon : MonoBehaviour
         }
 
 
-        if (reload == false)
+        if (reload == false && Shop.CurrentlyInShop == false)
         {
             if (burstFire == false)
             {
@@ -431,6 +439,8 @@ public class Weapon : MonoBehaviour
                     firingDelay = 0;
             }
         }
+
+
         if (reloadCooldown < reloadTime)
             reloadCooldown += Time.deltaTime * GlobalPlayerVariables.reloadSpeedBonus; //might be inefficient keep close eye on this
         else
@@ -484,8 +494,7 @@ public class Weapon : MonoBehaviour
             //set ammo count here too
         } 
         */
-        
-            
+
 
 
 
@@ -515,7 +524,7 @@ public class Weapon : MonoBehaviour
         }
 
 
-        if (reload == false)
+        if (reload == false && Shop.CurrentlyInShop == false)
         {
             if (burstFire == false)
             {

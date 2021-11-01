@@ -5,25 +5,58 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
+
+    public static bool CurrentlyInShop = false;
+    public GameObject ShopManager;
     public GameObject shop;
+    bool loadOnce = false;
 
-    void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player")) {
-            shop.SetActive(true);
-        }
-    }
-
-    void OnTriggerExit(Collider other)
+    /*
+    void loadStats()
     {
-        if (other.CompareTag("Player"))
+        if (loadOnce == false) 
         {
-            shop.SetActive(false);
+            loadOnce = true;
+            ShopManager.GetComponent<ShopManager>().openShopAndUpdate();
+
         }
     }
+    */
+
+    void OnTriggerEnter2D(Collider2D other) {
+        //Debug.Log("ENTER COLLIDER");
+        if (other.CompareTag("Player") == true) {
+            //loadStats();
+            shop.SetActive(true);
+            CurrentlyInShop = true;
+            Debug.Log("IN SHOP");
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        //Debug.Log("LEAVING COLLIDER");
+        if (other.CompareTag("Player") == true)
+        {
+            Debug.Log("LEAVING SHOP");
+            shop.SetActive(false);
+            CurrentlyInShop = false;
+        }
+    }
+
+    public void leaveShopOnTitle()
+    {
+        CurrentlyInShop = false;
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        CurrentlyInShop = false;
+
+
+
     }
 
     // Update is called once per frame

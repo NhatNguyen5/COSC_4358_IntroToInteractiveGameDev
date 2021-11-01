@@ -49,11 +49,11 @@ public class ShopManager : MonoBehaviour
         PlayerOwnedWeapons = GameObject.FindGameObjectWithTag("Loadout").GetComponent<RememberLoadout>().OwnedWeapons;
         PlayerLoadOut = GameObject.FindGameObjectWithTag("Loadout");
 
-        ItemsToCheck = GameObject.FindGameObjectsWithTag("ItemSlot");
+        //ItemsToCheck = GameObject.FindGameObjectsWithTag("ItemSlot");
         player = GameObject.FindGameObjectWithTag("Player");
         playerRightArm = GameObject.FindGameObjectWithTag("RightArm");
         playerLeftArm = GameObject.FindGameObjectWithTag("LeftArm");
-
+        /*
         foreach (GameObject ownedweapon in PlayerOwnedWeapons)
         {
 
@@ -76,10 +76,10 @@ public class ShopManager : MonoBehaviour
                 {
                     Debug.Log("Item has not been assigned");
                 }
-                */
+                
                 
             }
-        }
+        }*/
     }
 
 
@@ -88,7 +88,7 @@ public class ShopManager : MonoBehaviour
         selectedWeaponSlot = numberOfSlot;
     }
 
-
+    /*
     void updateprices()
     {
         foreach (GameObject ownedweapon in PlayerOwnedWeapons)
@@ -112,14 +112,14 @@ public class ShopManager : MonoBehaviour
                 else
                 {
                     Debug.Log("Item has not been assigned");
-                }
-                */
+                {
+                
 
             }
         }
 
 
-    }
+    }*/
 
 
     public void showText(string text)

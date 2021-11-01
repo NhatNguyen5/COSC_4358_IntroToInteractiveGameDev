@@ -19,6 +19,7 @@ public class HoldItemToSell : MonoBehaviour
     FindText parentOfObj;
     public ShopManager SM;
 
+    bool checkIfOwned = false;
 
     public void switchText()
     {
@@ -54,6 +55,37 @@ public class HoldItemToSell : MonoBehaviour
         num3 = (((int)levelReq / 100) % 10);
         num2 = (((int)levelReq / 10) % 10);
         num1 = ((int)levelReq % 10);
+
+
+        if (ItemBeingSold != null)
+        {
+            Debug.Log("SETTING UP");
+            List<GameObject> PlayerOwnedWeapons = GameObject.FindGameObjectWithTag("Loadout").GetComponent<RememberLoadout>().OwnedWeapons;
+            foreach (GameObject ownedweapon in PlayerOwnedWeapons)
+            {
+
+
+                if (ItemBeingSold != null)
+                {
+                    if (isWeapon == true && ItemBeingSold.name == ownedweapon.name)
+                    {
+                        //Debug.Log("p2");
+                        cost = 0;
+                        owned = true;
+                    }
+                }
+                /*
+                else
+                {
+                    Debug.Log("Item has not been assigned");
+                }
+                */
+
+
+            }
+        }
+
+
 
     }
 
