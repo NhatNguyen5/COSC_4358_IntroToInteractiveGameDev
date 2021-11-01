@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5896408231586960904}
-  - component: {fileID: 8175100634422244890}
   - component: {fileID: 916351143226452417}
   - component: {fileID: 1270911830247238667}
   - component: {fileID: 3083916138999727803}
   - component: {fileID: 2359986598006495498}
+  - component: {fileID: 5156443343528049968}
   m_Layer: 7
   m_Name: ColonyBoss
   m_TagString: Colony
@@ -39,64 +39,6 @@ Transform:
   m_Father: {fileID: 2950618480692910450}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &8175100634422244890
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 301218391734249403}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.44, y: 1.44}
-    newSize: {x: 1.44, y: 1.44}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.375, y: -0.385}
-      - {x: 0.39499998, y: -0.345}
-      - {x: 0.45999998, y: -0.21}
-      - {x: 0.48999998, y: -0.12}
-      - {x: 0.48999998, y: 0.095}
-      - {x: 0.465, y: 0.105}
-      - {x: 0.465, y: 0.21499999}
-      - {x: 0.44, y: 0.25}
-      - {x: 0.38, y: 0.29}
-      - {x: 0.36499998, y: 0.35}
-      - {x: 0.305, y: 0.39999998}
-      - {x: 0.185, y: 0.45999998}
-      - {x: 0.12, y: 0.48999998}
-      - {x: -0.125, y: 0.48999998}
-      - {x: -0.13499999, y: 0.465}
-      - {x: -0.21499999, y: 0.465}
-      - {x: -0.275, y: 0.435}
-      - {x: -0.31, y: 0.41}
-      - {x: -0.34, y: 0.38}
-      - {x: -0.42999998, y: 0.24499999}
-      - {x: -0.48999998, y: 0.125}
-      - {x: -0.52, y: 0.03}
-      - {x: -0.52, y: -0.155}
-      - {x: -0.49499997, y: -0.16499999}
-      - {x: -0.49499997, y: -0.275}
-      - {x: -0.47, y: -0.29}
-      - {x: -0.45499998, y: -0.345}
-      - {x: -0.39499998, y: -0.405}
-      - {x: -0.26, y: -0.45999998}
-      - {x: 0.21, y: -0.45999998}
-      - {x: 0.22, y: -0.45}
-      - {x: 0.275, y: -0.435}
-      - {x: 0.295, y: -0.415}
 --- !u!50 &916351143226452417
 Rigidbody2D:
   serializedVersion: 4
@@ -228,6 +170,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e74e3615ce8efa49984f414aedbecbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!60 &5156443343528049968
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301218391734249403}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.14027941, y: 0.060992543}
+      - {x: 0.120734304, y: 0.081058905}
+      - {x: 0.11086994, y: 0.10278377}
+      - {x: 0.09060566, y: 0.12068819}
+      - {x: 0.07070803, y: 0.13079746}
+      - {x: 0.040610086, y: 0.15172486}
+      - {x: 0.0073531386, y: 0.15158372}
+      - {x: -0.029976476, y: 0.15137066}
+      - {x: -0.07003459, y: 0.13113554}
+      - {x: -0.11125773, y: 0.08993466}
+      - {x: -0.14029872, y: 0.029713916}
+      - {x: -0.15043841, y: 0.0002928041}
+      - {x: -0.15098912, y: -0.050092172}
+      - {x: -0.14138024, y: -0.089976944}
+      - {x: -0.12997375, y: -0.11057716}
+      - {x: -0.099675134, y: -0.14039008}
+      - {x: -0.069476336, y: -0.15005828}
+      - {x: 0.08027454, y: -0.15077607}
+      - {x: 0.10060634, y: -0.13931996}
+      - {x: 0.13053356, y: -0.110615075}
+      - {x: 0.14088558, y: -0.09004649}
+      - {x: 0.15192357, y: -0.068620875}
+      - {x: 0.15055194, y: 0.019175876}
 --- !u!1 &949814357736792046
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4119160410027314497
 Transform:
   m_ObjectHideFlags: 0
