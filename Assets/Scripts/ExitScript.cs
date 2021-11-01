@@ -81,6 +81,7 @@ public class ExitScript : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         OptionSettings.GameisPaused = true;
+        player.GetComponent<Player>().GetPlayerItemsAndArmorValues();
         SceneManager.LoadScene(NextScene);
         //if (SceneManager.GetActiveScene().name == NextScene) //CHANGE THIS TO ENDING SCENE
             //GlobalPlayerVariables.GameOver = true;

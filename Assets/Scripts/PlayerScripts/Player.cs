@@ -791,9 +791,11 @@ public class Player : MonoBehaviour
         stats.NumofPhizer = gitValues.numberOfPhizerz;
         Stats.Armorz = gitValues.armorRemaining;
         Stats.NumofProtein = gitValues.proteinCounter;
+       
         //gitValues.stemCellAmount = Stats.;
         //gitValues.numberOfStickyNades = stats.num;
         Stats.NumofMolly = gitValues.numberOfMollys;
+        Debug.Log(stats.NumofHeal + " armor " + stats.Armorz + " protein " + stats.NumofProtein + " molly " + Stats.NumofMolly);
 
         Transform globinSpawn = GameObject.FindGameObjectWithTag("GlobinSpawn").GetComponent<Transform>();
 
