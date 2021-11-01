@@ -22,6 +22,8 @@ public class PlayerActions
     public Text HPNumber;
     public Text MaxHPNUmber;
 
+    public Text ARNumber;
+
     public Text ExpNumber;
     public Text MaxEXPNumber;
 
@@ -64,7 +66,7 @@ public class PlayerActions
         VaccineCounts = GameObject.Find("VaccineCounts").GetComponent<Text>();
         MollyCounts = GameObject.Find("MollyCounts").GetComponent<Text>();
         HPNumber = GameObject.Find("HPNumber").GetComponent<Text>();
-
+        ARNumber = GameObject.Find("ARNumber").GetComponent<Text>();
 
         ExpNumber = GameObject.Find("EXPNum").GetComponent<Text>();
 
@@ -374,7 +376,12 @@ public class PlayerActions
         HealCounts.text = player.Stats.NumofHeal.ToString();
         VaccineCounts.text = player.Stats.NumofPhizer.ToString();
         MollyCounts.text = player.Stats.NumofMolly.ToString();
-        HPNumber.text = ((int)player.Stats.Health).ToString() + "/" + ((int)player.Stats.MaxHealth).ToString(); ;
+        HPNumber.text = ((int)player.Stats.Health).ToString() + "/" + ((int)player.Stats.MaxHealth).ToString();
+        ARNumber.text = ((int)player.Stats.Armorz).ToString() + "/" + ((int)player.Stats.ArmorPerArmorLevelz * 4).ToString();
+
+        //stats.ArmorPerArmorLevelz
+
+        //+ ((int)player.Stats.Armorz).ToString(); 
         //MaxHPNUmber.text = "/" + ((int)player.Stats.MaxHealth).ToString();
 
         ExpNumber.text = ((int)player.Stats.Experience).ToString() + "/" + ((int)player.levelThreshhold).ToString();
@@ -382,6 +389,7 @@ public class PlayerActions
 
 
         ARBar.fillAmount = player.Stats.Armorz / ((player.Stats.ArmorPerArmorLevelz * 4) - 1);
+
         switch (player.Stats.ArmorLevel)
         {
             case 1:
