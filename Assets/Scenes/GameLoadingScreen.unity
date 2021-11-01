@@ -628,7 +628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ProgressBar: {fileID: 791940764}
   SceneName: Game
-  percentText: {fileID: 0}
+  percentText: {fileID: 2018079109}
 --- !u!114 &1221870632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -801,7 +801,7 @@ GameObject:
   - component: {fileID: 2018079110}
   - component: {fileID: 2018079109}
   m_Layer: 5
-  m_Name: Loading Percent
+  m_Name: LoadingPercent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

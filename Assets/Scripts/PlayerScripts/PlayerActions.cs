@@ -66,7 +66,8 @@ public class PlayerActions
         VaccineCounts = GameObject.Find("VaccineCounts").GetComponent<Text>();
         MollyCounts = GameObject.Find("MollyCounts").GetComponent<Text>();
         HPNumber = GameObject.Find("HPNumber").GetComponent<Text>();
-        ARNumber = GameObject.Find("ARNumber").GetComponent<Text>();
+
+        //ARNumber = GameObject.Find("ARNumber").GetComponent<Text>();
 
         ExpNumber = GameObject.Find("EXPNum").GetComponent<Text>();
 
@@ -377,7 +378,7 @@ public class PlayerActions
         VaccineCounts.text = player.Stats.NumofPhizer.ToString();
         MollyCounts.text = player.Stats.NumofMolly.ToString();
         HPNumber.text = ((int)player.Stats.Health).ToString() + "/" + ((int)player.Stats.MaxHealth).ToString();
-        ARNumber.text = ((int)player.Stats.Armorz).ToString() + "/" + ((int)player.Stats.ArmorPerArmorLevelz * 4).ToString();
+        //ARNumber.text = ((int)player.Stats.Armorz).ToString() + "/" + ((int)player.Stats.ArmorPerArmorLevelz * 4).ToString();
 
         //stats.ArmorPerArmorLevelz
 
