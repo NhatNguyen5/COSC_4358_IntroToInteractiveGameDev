@@ -37269,7 +37269,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!60 &686973081
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -37411,7 +37411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyColony: {fileID: 0}
   WinScreen: {fileID: 1098059709}
-  NextScene: 
+  NextScene: Game
 --- !u!61 &686973085
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -67197,6 +67197,7 @@ MonoBehaviour:
   ownedWeapon: 0
   isWeapon: 0
   weaponTransforms: []
+  getChildrenFromArm: []
 --- !u!4 &1750048324
 Transform:
   m_ObjectHideFlags: 0

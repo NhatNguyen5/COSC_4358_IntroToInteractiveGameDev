@@ -95954,71 +95954,6 @@ RectTransform:
   m_AnchoredPosition: {x: 3.4090004, y: 0.53699994}
   m_SizeDelta: {x: -1.189, y: -1.074}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &1836516279
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 719241135228732510, guid: f2613e48b5572e7499bb923cc720b260, type: 3}
-      propertyPath: graphMask.value
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800548710497326168, guid: f2613e48b5572e7499bb923cc720b260, type: 3}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800548710497326168, guid: f2613e48b5572e7499bb923cc720b260, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -39.6427
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800548710497326168, guid: f2613e48b5572e7499bb923cc720b260, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 11.188274
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800548710497326168, guid: f2613e48b5572e7499bb923cc720b260, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800548710497326168, guid: f2613e48b5572e7499bb923cc720b260, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800548710497326168, guid: f2613e48b5572e7499bb923cc720b260, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800548710497326168, guid: f2613e48b5572e7499bb923cc720b260, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800548710497326168, guid: f2613e48b5572e7499bb923cc720b260, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800548710497326168, guid: f2613e48b5572e7499bb923cc720b260, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800548710497326168, guid: f2613e48b5572e7499bb923cc720b260, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800548710497326168, guid: f2613e48b5572e7499bb923cc720b260, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800548710497326434, guid: f2613e48b5572e7499bb923cc720b260, type: 3}
-      propertyPath: m_Name
-      value: Immunal Carrier Heavy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8492255561812047401, guid: f2613e48b5572e7499bb923cc720b260, type: 3}
-      propertyPath: graphMask.value
-      value: -1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f2613e48b5572e7499bb923cc720b260, type: 3}
 --- !u!1 &1836879236
 GameObject:
   m_ObjectHideFlags: 0
@@ -98352,6 +98287,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2135249306}
   m_CullTransparentMesh: 1
+--- !u!1001 &856603650459643688
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5295597528365086919, guid: f9219c45a2ae70c4fab403a85abb3fdc, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295597528365086919, guid: f9219c45a2ae70c4fab403a85abb3fdc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -39.6427
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295597528365086919, guid: f9219c45a2ae70c4fab403a85abb3fdc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.188274
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295597528365086919, guid: f9219c45a2ae70c4fab403a85abb3fdc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295597528365086919, guid: f9219c45a2ae70c4fab403a85abb3fdc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295597528365086919, guid: f9219c45a2ae70c4fab403a85abb3fdc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295597528365086919, guid: f9219c45a2ae70c4fab403a85abb3fdc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295597528365086919, guid: f9219c45a2ae70c4fab403a85abb3fdc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295597528365086919, guid: f9219c45a2ae70c4fab403a85abb3fdc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295597528365086919, guid: f9219c45a2ae70c4fab403a85abb3fdc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295597528365086919, guid: f9219c45a2ae70c4fab403a85abb3fdc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295597528365087229, guid: f9219c45a2ae70c4fab403a85abb3fdc, type: 3}
+      propertyPath: m_Name
+      value: Immunal Carrier Light
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f9219c45a2ae70c4fab403a85abb3fdc, type: 3}
 --- !u!1001 &2950618480759544787
 PrefabInstance:
   m_ObjectHideFlags: 0

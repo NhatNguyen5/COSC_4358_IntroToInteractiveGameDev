@@ -25,11 +25,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5295597528365086742}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.191, y: -0.48, z: 0}
-  m_LocalScale: {x: 23.91767, y: 8.22713, z: 1}
+  m_LocalPosition: {x: -0.01234, y: 0.00618, z: 0}
+  m_LocalScale: {x: 3.6087942, y: 0.99907887, z: 1}
   m_Children: []
-  m_Father: {fileID: 5295597528365086919}
-  m_RootOrder: 2
+  m_Father: {fileID: 5295597528365086811}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5295597528365087344
 SpriteRenderer:
@@ -107,9 +107,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5295597528365086747}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.195, y: -0.476, z: 0}
+  m_LocalPosition: {x: -0.43, y: -0.514, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 5295597528365086843}
   m_Father: {fileID: 5295597528365086919}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -188,7 +189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5295597528365087228}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.81, y: 0, z: 0}
+  m_LocalPosition: {x: 0.09, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5295597528365086913}
@@ -223,12 +224,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5295597528365087229}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.6427, y: 11.188274, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5295597528365086912}
   - {fileID: 5295597528365086811}
-  - {fileID: 5295597528365086843}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -253,26 +253,26 @@ MonoBehaviour:
   playerStash: {fileID: 0}
   HP: 1500
   AR: 45
-  speed: 10000
+  speed: 7000
   stoppingDistance: 10
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
     m_Bits: 95232
-  shootdistance: 40
+  shootdistance: 32
   distancefromplayer: 0
   canSeeEnemy: 0
-  circleRadius: 6
-  timeTillNextMove: 13
-  beginningrangetoshoot: 2
-  endingrangetoshoot: 3
+  circleRadius: 5
+  timeTillNextMove: 15
+  beginningrangetoshoot: 3
+  endingrangetoshoot: 4
   AmountOfBullets: 1
   bulletSpread: 1.25
   projectile: {fileID: 4159879163825665338, guid: b77758a8d73012848b221568307d1115, type: 3}
   firePoint: {fileID: 5295597528365086918}
   burstFire: 1
-  timeBtwBurst: 0.15
-  timesToShoot: 12
+  timeBtwBurst: 0.13
+  timesToShoot: 13
 --- !u!114 &5295597528365088116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,7 +314,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.051073074, y: -0.6517277}
+  m_Offset: {x: -0.5281372, y: -0.4617715}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -325,7 +325,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.1660118, y: 1.5095215}
+  m_Size: {x: 3.406723, y: 0.8976011}
   m_EdgeRadius: 0
 --- !u!50 &5295597528365087576
 Rigidbody2D:
@@ -471,7 +471,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5295597528365087231}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.676, y: 0.032, z: -0.95}
+  m_LocalPosition: {x: 0.436, y: -0.002, z: -0.95}
   m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children:
   - {fileID: 5295597528365086918}
