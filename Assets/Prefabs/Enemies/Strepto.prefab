@@ -275,7 +275,7 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8907051256185748792, guid: 7e3a28d9dd9325245982e31408c5029f, type: 3}
+  m_Sprite: {fileID: 680914235069949838, guid: c7a0a3df8b4f5f349baedc366349d19e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -324,7 +324,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.96, y: 0.96}
+    oldSize: {x: 0.96003836, y: 0.96003836}
     newSize: {x: 3.03, y: 4.99}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -431,7 +431,7 @@ MonoBehaviour:
     NumOfDrop: 1
   spriteLibrary: {fileID: 1729207426254750165}
   targetResolver: {fileID: 8400854700762438077}
-  targetCategory: Strepto Skin Library Asset
+  targetCategory: Strepto Sprite Library Asset
   isDead: 0
   facing: 0
 --- !u!114 &1729207426254750165
