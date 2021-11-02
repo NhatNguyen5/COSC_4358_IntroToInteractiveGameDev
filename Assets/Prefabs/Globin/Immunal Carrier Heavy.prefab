@@ -615,7 +615,7 @@ MonoBehaviour:
   playerStash: {fileID: 0}
   HP: 2400
   AR: 95
-  speed: 9000
+  speed: 8400
   stoppingDistance: 10
   lineofsight: 0
   IgnoreMe:
@@ -678,7 +678,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.051073074, y: -0.6517277}
+  m_Offset: {x: -0.03492993, y: -0.65011823}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -689,7 +689,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.1660118, y: 1.5095215}
+  m_Size: {x: 3.2207866, y: 0.93557}
   m_EdgeRadius: 0
 --- !u!50 &4800548710497327047
 Rigidbody2D:
