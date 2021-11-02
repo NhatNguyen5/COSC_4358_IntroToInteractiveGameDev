@@ -24,13 +24,13 @@ public class ExitScript : MonoBehaviour
         bxCol2D = GetComponent<BoxCollider2D>();
         plgCol2D = GetComponent<PolygonCollider2D>();
         img = GameObject.Find("FadeOut").GetComponent<RawImage>();
-        /*
-        img.enabled = false;
-        sprite.enabled = false;
-        bxCol2D.enabled = false;
-        plgCol2D.enabled = false;
-        */
-        
+        if (SceneManager.GetActiveScene().name != "Tutorial")
+        {
+            img.enabled = false;
+            sprite.enabled = false;
+            bxCol2D.enabled = false;
+            plgCol2D.enabled = false;
+        }
     }
     //center of the bcl (-35.83, 18.32)
     // Update is called once per frame
@@ -43,6 +43,7 @@ public class ExitScript : MonoBehaviour
             bxCol2D.enabled = true;
             plgCol2D.enabled = true;
         }
+        
         Vector2 desPos = new Vector2(-35.83f, 18.32f);
         player.Stats.Direction = new Vector2(desPos.x - player.Stats.Position.x, desPos.y - player.Stats.Position.y).normalized;
         if (player != null)
