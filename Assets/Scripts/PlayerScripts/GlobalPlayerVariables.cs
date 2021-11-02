@@ -347,6 +347,7 @@ public class GlobalPlayerVariables : MonoBehaviour
             }
 
         }
+
         if (fadeInTime > 0)
             fadeInTime -= Time.deltaTime;
         if (fadeInTime < 0)
