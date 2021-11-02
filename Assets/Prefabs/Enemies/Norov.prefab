@@ -242,7 +242,7 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3913959830933377526, guid: a1d6b9ef2bb7ff043b2d1e20f887d616, type: 3}
+  m_Sprite: {fileID: 8877052042892499996, guid: 6210a8ae40581684dbd379ea10984d85, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -398,7 +398,7 @@ MonoBehaviour:
     NumOfDrop: 1
   spriteLibrary: {fileID: 8223788956223262726}
   targetResolver: {fileID: 1245931748085958766}
-  targetCategory: Norov Sprite Library Asset
+  targetCategory: Norov Skin Library Asset
   isDead: 0
   facing: 0
 --- !u!114 &8223788956223262726
@@ -465,8 +465,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5558633959246625197}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0307, y: 0.0039, z: -1.8205546}
-  m_LocalScale: {x: 4.099191, y: 5.184995, z: 1}
+  m_LocalPosition: {x: -0.0006, y: 0.0039, z: -1.8205546}
+  m_LocalScale: {x: 4.476077, y: 5.184995, z: 1}
   m_Children: []
   m_Father: {fileID: 4069872733990987553}
   m_RootOrder: 1

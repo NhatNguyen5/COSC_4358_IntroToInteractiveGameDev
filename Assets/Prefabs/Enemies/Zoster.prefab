@@ -193,7 +193,7 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3732448931875245000, guid: c292573cbce56d944999b68fc6cf91e2, type: 3}
+  m_Sprite: {fileID: -669594795073765615, guid: 50eee703d1491ee46909d340390755b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -349,7 +349,7 @@ MonoBehaviour:
     NumOfDrop: 1
   spriteLibrary: {fileID: 6454223718159252644}
   targetResolver: {fileID: 4249346839464387788}
-  targetCategory: Zoster Sprite Library Asset
+  targetCategory: Zoster Skin Library Asset
   isDead: 0
   facing: 0
 --- !u!114 &6454223718159252644
@@ -465,8 +465,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3821764791602878603}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0015, y: 0.0002, z: -1.8205546}
-  m_LocalScale: {x: 3.7207768, y: 5.2298512, z: 1}
+  m_LocalPosition: {x: 0, y: 0.0002, z: -1.8205546}
+  m_LocalScale: {x: 4.472183, y: 5.2298512, z: 1}
   m_Children: []
   m_Father: {fileID: 1425901162039282563}
   m_RootOrder: 1

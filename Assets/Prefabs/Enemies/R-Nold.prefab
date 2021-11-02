@@ -74,8 +74,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6944541930523370922}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0002, y: 0.0035, z: -1.8205546}
-  m_LocalScale: {x: 4.4631157, y: 5.1620135, z: 1}
+  m_LocalPosition: {x: 0.0009, y: 0.0035, z: -1.8205546}
+  m_LocalScale: {x: 4.453763, y: 5.1620135, z: 1}
   m_Children: []
   m_Father: {fileID: 7674072803767978071}
   m_RootOrder: 1
@@ -480,7 +480,7 @@ MonoBehaviour:
     NumOfDrop: 1
   spriteLibrary: {fileID: -5747798501272440446}
   targetResolver: {fileID: 4134347511560369730}
-  targetCategory: R-Nold Sprite Library Asset
+  targetCategory: R-Nold Skin Library Asset
   isDead: 0
   facing: 0
 --- !u!114 &-5747798501272440446

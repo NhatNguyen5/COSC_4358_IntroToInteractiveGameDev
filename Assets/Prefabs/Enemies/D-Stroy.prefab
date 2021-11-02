@@ -266,7 +266,7 @@ MonoBehaviour:
     NumOfDrop: 1
   spriteLibrary: {fileID: 6705791291405109900}
   targetResolver: {fileID: 6076571106673511756}
-  targetCategory: D-Stroy Sprite Library Asset
+  targetCategory: D-Stroy Skin Library Asset
   isDead: 0
   facing: 0
 --- !u!114 &6705791291405109900
@@ -416,8 +416,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2634926722348050532}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0006, y: 0, z: -2}
-  m_LocalScale: {x: 4.4727106, y: 4.4810586, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalScale: {x: 4.412501, y: 4.652049, z: 1}
   m_Children: []
   m_Father: {fileID: 525723374113895257}
   m_RootOrder: 1

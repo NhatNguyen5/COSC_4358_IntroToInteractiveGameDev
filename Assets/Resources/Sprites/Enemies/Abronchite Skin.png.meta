@@ -1,55 +1,31 @@
 fileFormatVersion: 2
-guid: 71b9820f89b053b4cbab6f930d69fe9e
+guid: 2756269e42f3d6b4b847bb527d1d55b3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 305460255749921030
-    second: HendraFinal 1_0
+      213: -5307245447749619620
+    second: Abronchite_0
   - first:
-      213: 6065611569751845465
-    second: HendraFinal 1_1
+      213: -8654954401773924179
+    second: Abronchite_1
   - first:
-      213: 5322190673498356834
-    second: HendraFinal 1_2
+      213: 1919546812795796354
+    second: Abronchite_2
   - first:
-      213: 8418140116008487268
-    second: HendraFinal 1_3
+      213: 817320281378824081
+    second: Abronchite_3
   - first:
-      213: 8321348547974914297
-    second: HendraFinal 1_4
+      213: -8999390221101633138
+    second: Abronchite_4
   - first:
-      213: -4614330586778799161
-    second: HendraFinal 1_5
+      213: -5156629277895062767
+    second: Abronchite_5
   - first:
-      213: -9157832714548976641
-    second: HendraFinal 1_6
+      213: -9097123729709328414
+    second: Abronchite_6
   - first:
-      213: -2993846380717781491
-    second: HendraFinal 1_7
-  - first:
-      213: -6210764883049453364
-    second: HendraFinal_0
-  - first:
-      213: 3112870074066643491
-    second: HendraFinal_1
-  - first:
-      213: -550634731228479725
-    second: HendraFinal_2
-  - first:
-      213: 1934269637985175796
-    second: HendraFinal_3
-  - first:
-      213: -8161517478902303833
-    second: HendraFinal_4
-  - first:
-      213: -823636087481898027
-    second: HendraFinal_5
-  - first:
-      213: 7989416441764556631
-    second: HendraFinal_6
-  - first:
-      213: -1373458638767617210
-    second: HendraFinal_7
+      213: 9149055709727903107
+    second: Abronchite_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -139,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HendraFinal_0
+      name: Abronchite_0
       rect:
         serializedVersion: 2
         x: 0
@@ -153,14 +129,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cc8ed52be3eeec9a0800000000000000
-      internalID: -6210764883049453364
+      spriteID: c50331f5260e856b0800000000000000
+      internalID: -5307245447749619620
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HendraFinal_1
+      name: Abronchite_1
       rect:
         serializedVersion: 2
         x: 16
@@ -174,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32aafa4f6d2233b20800000000000000
-      internalID: 3112870074066643491
+      spriteID: da0df07d3dc63e780800000000000000
+      internalID: -8654954401773924179
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HendraFinal_2
+      name: Abronchite_2
       rect:
         serializedVersion: 2
         x: 0
@@ -195,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31f322c11a0cb58f0800000000000000
-      internalID: -550634731228479725
+      spriteID: 28b3d62f7a993aa10800000000000000
+      internalID: 1919546812795796354
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HendraFinal_3
+      name: Abronchite_3
       rect:
         serializedVersion: 2
         x: 16
@@ -216,14 +192,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f80eefccf7e7da10800000000000000
-      internalID: 1934269637985175796
+      spriteID: 19f9e4f2774b75b00800000000000000
+      internalID: 817320281378824081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HendraFinal_4
+      name: Abronchite_4
       rect:
         serializedVersion: 2
         x: 0
@@ -237,14 +213,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a3f2e138177cbe80800000000000000
-      internalID: -8161517478902303833
+      spriteID: e81fc14564ebb1380800000000000000
+      internalID: -8999390221101633138
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HendraFinal_5
+      name: Abronchite_5
       rect:
         serializedVersion: 2
         x: 16
@@ -258,14 +234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5dbe27d975bd194f0800000000000000
-      internalID: -823636087481898027
+      spriteID: 11b8fa42ef8ff68b0800000000000000
+      internalID: -5156629277895062767
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HendraFinal_6
+      name: Abronchite_6
       rect:
         serializedVersion: 2
         x: 0
@@ -279,14 +255,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75faa0e8ceb10ee60800000000000000
-      internalID: 7989416441764556631
+      spriteID: 2e716ec9a2680c180800000000000000
+      internalID: -9097123729709328414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HendraFinal_7
+      name: Abronchite_7
       rect:
         serializedVersion: 2
         x: 16
@@ -300,8 +276,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64b809a15ae70fce0800000000000000
-      internalID: -1373458638767617210
+      spriteID: 38d4798b1b9f7fe70800000000000000
+      internalID: 9149055709727903107
       vertices: []
       indices: 
       edges: []
