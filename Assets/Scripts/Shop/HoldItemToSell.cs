@@ -51,7 +51,6 @@ public class HoldItemToSell : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SM = GameObject.FindGameObjectWithTag("ShopManager").GetComponent<ShopManager>();
         parentOfObj = transform.parent.GetComponent<FindText>();
         num3 = (((int)levelReq / 100) % 10);
         num2 = (((int)levelReq / 10) % 10);

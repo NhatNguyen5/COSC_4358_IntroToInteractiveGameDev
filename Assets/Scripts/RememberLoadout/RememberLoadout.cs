@@ -214,19 +214,18 @@ public class RememberLoadout : MonoBehaviour
                 LeftArm.SetActive(false);
             }
 
-            
             if (loadPlayerStats == false)
             {
-                PrimaryWeapon = startingWeapon1;
-                SecondaryWeapon = startingWeapon2;
-                ThirdWeapon = startingWeapon3;
+                PrimaryWeapon = rightArmTrans.GetChild(0).name;
+                SecondaryWeapon = rightArmTrans.GetChild(1).name;
+                ThirdWeapon = rightArmTrans.GetChild(2).name;
 
                 //var myNewSmoke = Instantiate(poisonSmoke, Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
                 //myNewSmoke.transform.parent = gameObject.transform;
 
 
             }
-            
+
             
             player.GetComponent<Player>().SetPlayerItemsAndArmorValues();
         }

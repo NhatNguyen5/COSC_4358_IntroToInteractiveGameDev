@@ -209,10 +209,10 @@ public class ShopManager : MonoBehaviour
         //ebug.Log(holdChildren.Length);
         if (selectedWeapon != null && button.GetComponent<HoldItemToSell>().owned == true)
         {
-            Debug.Log(selectedWeapon.name);
+
             if (PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon == selectedWeapon.name || PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon == selectedWeapon.name || PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon == selectedWeapon.name)
             {
-                Debug.Log("PATH 1");
+              
                 
                 for (int i = 0; i < weaponTransforms.Count; i++)
                 {
@@ -267,13 +267,11 @@ public class ShopManager : MonoBehaviour
                         PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = go.name;
                     }
                 }
-                int temp = (selectedWeaponSlot + 1);
-                showText(selectedWeapon.name.ToUpper() + " HAS BEEN EQUIPPED TO SLOT " + temp);
 
             }
             else
             {
-                Debug.Log("PATH 2");
+
                 bool checkIFExist = false;
 
                 for (int i = 0; i < weaponTransforms.Count; i++)
@@ -308,7 +306,7 @@ public class ShopManager : MonoBehaviour
                         PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon3 = newWeapon.name;
                         PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = newWeapon.name;
                     }
-                    showText(selectedWeapon.name.ToUpper() + " HAS BEEN EQUIPPED TO SLOT " + temp);
+                    showText("WEAPON EQUIPPED TO SLOT " + temp);
 
                 }
 
