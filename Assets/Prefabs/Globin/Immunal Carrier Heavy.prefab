@@ -635,6 +635,8 @@ MonoBehaviour:
   burstFire: 1
   timeBtwBurst: 0.3
   timesToShoot: 12
+  StartToFollowAfterCertainDist: 0
+  distToStartFollow: 0
 --- !u!114 &4800548710497325547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,7 +664,7 @@ MonoBehaviour:
   traversableTags: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
-    value: -2
+    value: -6
 --- !u!61 &8334507962342814404
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -867,6 +869,8 @@ MonoBehaviour:
   burstFire: 1
   timeBtwBurst: 10
   timesToShoot: 2
+  StartToFollowAfterCertainDist: 0
+  distToStartFollow: 0
 --- !u!212 &3023557367685933460
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1103,6 +1107,8 @@ MonoBehaviour:
   burstFire: 1
   timeBtwBurst: 0.05
   timesToShoot: 5
+  StartToFollowAfterCertainDist: 0
+  distToStartFollow: 0
 --- !u!212 &7367193205810788500
 SpriteRenderer:
   m_ObjectHideFlags: 0
