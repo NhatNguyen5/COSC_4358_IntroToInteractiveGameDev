@@ -103,6 +103,10 @@ public class Globin : MonoBehaviour
     public int timesToShoot;
     private int TimesShot = 0;
 
+    [Header("Follow Player After Certain Dist")]
+    public bool StartToFollowAfterCertainDist = false;
+    public float distToStartFollow = 0f;
+
 
     //ANIMATION VARIABLES
 
@@ -192,24 +196,35 @@ public class Globin : MonoBehaviour
             if (player != null)
                 distancefromplayer = Vector2.Distance(rb.position, player.position);
 
-
-
-            if (distancefromplayer >= stoppingDistance || lineofsight == false)
+            if (StartToFollowAfterCertainDist == true)
             {
-                Astar();
-            }
-            else //RANDOM MOVEMENT
-            {
-                if (reachedDestination == false)
+                if (distancefromplayer <= distToStartFollow)
                 {
-                    Vector2 direction = (randPos - rb.position).normalized;
-                    Vector2 force = direction * speed * Time.deltaTime;
-                    rb.AddForce(force);
-                    //transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime); //need to make it where it walks in that direction
+                    StartToFollowAfterCertainDist = false;
                 }
-                if (transform.position.x == randPos.x && transform.position.y == randPos.y)
+            }
+
+
+            if (StartToFollowAfterCertainDist == false)
+            {
+
+                if (distancefromplayer >= stoppingDistance || lineofsight == false)
                 {
-                    reachedDestination = true;
+                    Astar();
+                }
+                else //RANDOM MOVEMENT
+                {
+                    if (reachedDestination == false)
+                    {
+                        Vector2 direction = (randPos - rb.position).normalized;
+                        Vector2 force = direction * speed * Time.deltaTime;
+                        rb.AddForce(force);
+                        //transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime); //need to make it where it walks in that direction
+                    }
+                    if (transform.position.x == randPos.x && transform.position.y == randPos.y)
+                    {
+                        reachedDestination = true;
+                    }
                 }
             }
         }

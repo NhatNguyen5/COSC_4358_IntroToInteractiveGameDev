@@ -244,6 +244,13 @@ public class EnemyColony : MonoBehaviour
                 }
             }
 
+            if (isDead == true)
+            {
+                knockbacktime = 0;
+                //knockback = false;
+            }
+
+
 
             if (distancefromplayer <= DetectRange && GlobalPlayerVariables.GameOver == false)
             {
@@ -477,15 +484,17 @@ public class EnemyColony : MonoBehaviour
 
     void randomPos()
     {
+        if (isDead == false)
+        {
+            NextMoveCoolDown = Random.Range(0f, timeTillNextMove);
 
-        NextMoveCoolDown = Random.Range(0f, timeTillNextMove);
+            randPos = transform.position;
 
-        randPos = transform.position;
-
-        randPos += Random.insideUnitCircle * circleRadius;
-        //Vector3 zfix = new Vector3(randPos.x, randPos.y, 0);
-        //randPos = zfix;
-        reachedDestination = false;
+            randPos += Random.insideUnitCircle * circleRadius;
+            //Vector3 zfix = new Vector3(randPos.x, randPos.y, 0);
+            //randPos = zfix;
+            reachedDestination = false;
+        }
 
 
     }
@@ -497,6 +506,8 @@ public class EnemyColony : MonoBehaviour
         if (isDead == false)
         {
             isDead = true;
+            reachedDestination = true;
+            NextMoveCoolDown = 15f;
             GlobalPlayerVariables.expToDistribute += EXPWorth;
             RememberLoadout.totalExperienceEarned += EXPWorth;
             GlobalPlayerVariables.TotalEnemiesAlive -= 1;

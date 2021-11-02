@@ -29,7 +29,12 @@ public class EnemyManager : MonoBehaviour
     //int enemiesRemainingToSpawn;
     private float nextSpawnTime;
     private float nextDecrease;
-    public GameObject[] spawnPoints;
+    public List<GameObject> spawnPoints;
+
+
+    public List<float> DistToSpawnFromPlayer;
+    public List<float> spawnPointDistances;
+
     public enemyType[] EnemyTypes;
 
     public Animator[] SpawnPointAnim;
@@ -44,8 +49,15 @@ public class EnemyManager : MonoBehaviour
     private List<GameObject> SpawnedMobs = new List<GameObject>();
 
 
+
     private void Start()
     {
+        for (int i = 0; i < spawnPoints.Count; i++)
+        {
+            spawnPointDistances.Add(0f);
+        }
+
+
         //enemiesRemainingToSpawn = enemiesFromColony;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         timeBetweenSpawns = MaxTbs;
@@ -55,6 +67,20 @@ public class EnemyManager : MonoBehaviour
     {
         if (GlobalPlayerVariables.EnableAI)
         {
+
+            //float[] distances
+            //ListGameObject
+            for (int i = 0; i < spawnPoints.Count; i++)
+            {
+                float temp = Vector2.Distance(spawnPoints[i].transform.position, player.transform.position);
+                spawnPointDistances[i] = temp;
+
+
+            }
+
+
+
+
             if (/*colonyHealth > 0 && */timeBetweenSpawns > 0 && Time.time > nextDecrease && (timeBetweenSpawns > MinTbs || timeBetweenSpawns < MaxTbs))
             {
                 nextDecrease = Time.time + DecreaseAfter;
@@ -74,33 +100,39 @@ public class EnemyManager : MonoBehaviour
                 tbsDecreaseRate = 0;
                 timeBetweenSpawns = 1000000;
             }
-            int randomSpawn = Random.Range(0, spawnPoints.Length);
-            if (SPAnimReset)
-            {
-                ChosenSP = randomSpawn;
-                SpawnPointAnim[randomSpawn].SetBool("WasChosen", true);
-                SpawnPointAnim[randomSpawn].SetFloat("SpawnRate", 1 / timeBetweenSpawns);
-                SPAnimReset = false;
-            }
-            //Debug.Log(timeBetweenSpawns);
-            if (/*enemiesRemainingToSpawn > 0 && colonyHealth > 0 &&*/ Time.time > nextSpawnTime && SpawnedMobs.Count < SpawnCap)
-            {
-                //enemiesRemainingToSpawn--;
-                nextSpawnTime = Time.time + timeBetweenSpawns;
+            int randomSpawn = Random.Range(0, spawnPoints.Count);
 
-                //print("randomSpawn = " + randomSpawn);
-                int randomEnemeies = Random.Range(0, 100);
-                //Debug.Log(randomEnemeies);
-                foreach (enemyType et in EnemyTypes)
+
+            if (spawnPointDistances[randomSpawn] <= DistToSpawnFromPlayer[randomSpawn])
+            {
+
+                if (SPAnimReset)
                 {
-                    if (randomEnemeies >= et.StartSpawnRange && randomEnemeies <= et.EndSpawnRange)
-                        SpawnedMobs.Add(Instantiate(et.Enemies, spawnPoints[ChosenSP].transform.position, Quaternion.identity));
+                    ChosenSP = randomSpawn;
+                    SpawnPointAnim[randomSpawn].SetBool("WasChosen", true);
+                    SpawnPointAnim[randomSpawn].SetFloat("SpawnRate", 1 / timeBetweenSpawns);
+                    SPAnimReset = false;
                 }
-                //Debug.Log("Spawned");
+                //Debug.Log(timeBetweenSpawns);
+                if (/*enemiesRemainingToSpawn > 0 && colonyHealth > 0 &&*/ Time.time > nextSpawnTime && SpawnedMobs.Count < SpawnCap)
+                {
+                    //enemiesRemainingToSpawn--;
+                    nextSpawnTime = Time.time + timeBetweenSpawns;
 
-                SpawnPointAnim[ChosenSP].SetBool("WasChosen", false);
-                SPAnimReset = true;
-                //spawnedEnemy.OnDeath += OnEnemyDeath;
+                    //print("randomSpawn = " + randomSpawn);
+                    int randomEnemeies = Random.Range(0, 100);
+                    //Debug.Log(randomEnemeies);
+                    foreach (enemyType et in EnemyTypes)
+                    {
+                        if (randomEnemeies >= et.StartSpawnRange && randomEnemeies <= et.EndSpawnRange)
+                            SpawnedMobs.Add(Instantiate(et.Enemies, spawnPoints[ChosenSP].transform.position, Quaternion.identity));
+                    }
+                    //Debug.Log("Spawned");
+
+                    SpawnPointAnim[ChosenSP].SetBool("WasChosen", false);
+                    SPAnimReset = true;
+                    //spawnedEnemy.OnDeath += OnEnemyDeath;
+                }
             }
 
             StartCoroutine(RemoveDeadMobs());

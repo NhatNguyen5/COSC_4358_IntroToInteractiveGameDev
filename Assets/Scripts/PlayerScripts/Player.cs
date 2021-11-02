@@ -733,6 +733,9 @@ public class Player : MonoBehaviour
 
 
     private GameObject RememberLoudout;
+    [HideInInspector]
+    public List<Transform> weaponTransforms;
+
     public void GetPlayerItemsAndArmorValues()
     {
         RememberLoudout = GameObject.FindGameObjectWithTag("Loadout");
@@ -746,10 +749,50 @@ public class Player : MonoBehaviour
         //gitValues.numberOfStickyNades = stats.num;
         gitValues.numberOfMollys = Stats.NumofMolly;
 
+
+        GameObject rightArmy;
+        rightArmy = transform.Find("RightArm").transform.gameObject;
+        Transform[] listOfRightWeapons = rightArmy.transform.gameObject.GetComponentsInChildren<Transform>(true);
+
+        //List<Transform> weaponTransforms;
+
+
+
+
+
+        for (int i = 0; i < listOfRightWeapons.Length; i++)
+        {
+            //if (playerRightArm.transform.GetChild(1) != null)
+            if (listOfRightWeapons[i].transform.parent.transform.name.Contains("RightArm") == true)
+            {
+                GameObject newWeapon = listOfRightWeapons[i].transform.gameObject;
+                if (newWeapon.GetComponent<Weapon>().Slot == 1)
+                {
+                    gitValues.startingWeapon1 = newWeapon.name;
+                    //PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon = newWeapon.name;
+                }
+                if (newWeapon.GetComponent<Weapon>().Slot == 2)
+                {
+                    gitValues.startingWeapon2 = newWeapon.name;
+                    //PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = newWeapon.name;
+                }
+                if (newWeapon.GetComponent<Weapon>().Slot == 3)
+                {
+                    gitValues.startingWeapon3 = newWeapon.name;
+                    //PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = newWeapon.name;
+                }
+
+
+                //weaponTransforms.Add(listOfRightWeapons[i]);
+            }
+        }
+
+
+        /*
         gitValues.startingWeapon1 = transform.Find("RightArm").transform.GetChild(0).name;
         gitValues.startingWeapon2 = transform.Find("RightArm").transform.GetChild(1).name;
         gitValues.startingWeapon3 = transform.Find("RightArm").transform.GetChild(2).name;
-
+        */
         GameObject[] allDaGlobins = GameObject.FindGameObjectsWithTag("Globin");
         gitValues.numberOfGlobins = allDaGlobins.Length;
         foreach (GameObject go in allDaGlobins)
