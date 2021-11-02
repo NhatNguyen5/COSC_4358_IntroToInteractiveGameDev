@@ -89621,6 +89621,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  DistToSpawnFromPlayer: []
+  spawnPointDistances: []
   EnemyTypes: []
   SpawnPointAnim: []
 --- !u!4 &1079025800
@@ -98753,6 +98755,10 @@ PrefabInstance:
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: chanceToSpawnR_Nold
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: DistToSpawnFromPlayer
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: EnemyTypes.Array.size
