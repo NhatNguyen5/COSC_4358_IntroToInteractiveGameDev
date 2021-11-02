@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5295597528365086843}
   - component: {fileID: 5295597528365087344}
-  m_Layer: 18
+  m_Layer: 16
   m_Name: MinimapIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5295597528365086811}
   - component: {fileID: 5295597528365087418}
-  m_Layer: 18
+  m_Layer: 16
   m_Name: APC Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5295597528365086918}
-  m_Layer: 18
+  m_Layer: 16
   m_Name: GlobinFirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 8667558662541123163}
   - component: {fileID: 5295597528365087576}
   - component: {fileID: 5295597528365087409}
-  m_Layer: 18
+  m_Layer: 16
   m_Name: Immunal Carrier Light
   m_TagString: Globin
   m_Icon: {fileID: 0}
@@ -411,7 +411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5295597528365086912}
   - component: {fileID: 5295597528365088118}
-  m_Layer: 18
+  m_Layer: 16
   m_Name: GlobinAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5295597528365086913}
   - component: {fileID: 5295597528365087410}
-  m_Layer: 18
+  m_Layer: 16
   m_Name: WeaponSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
