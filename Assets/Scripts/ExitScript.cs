@@ -9,7 +9,7 @@ public class ExitScript : MonoBehaviour
 
     public EnemyManager enemyColony;
     public GameObject WinScreen;
-    public string NextScene;
+    //public string NextScene;
     private SpriteRenderer sprite;
     private BoxCollider2D bxCol2D;
     private PolygonCollider2D plgCol2D;
@@ -82,10 +82,10 @@ public class ExitScript : MonoBehaviour
         yield return new WaitForSeconds(2);
         OptionSettings.GameisPaused = true;
         player.GetComponent<Player>().GetPlayerItemsAndArmorValues();
-        SceneManager.LoadScene(NextScene);
+        //SceneManager.LoadScene(NextScene);
         //if (SceneManager.GetActiveScene().name == NextScene) //CHANGE THIS TO ENDING SCENE
             //GlobalPlayerVariables.GameOver = true;
         //player.GetComponent<Player>().GetPlayerItemsAndArmorValues();
-        //WinScreen.SetActive(true);
+        WinScreen.SetActive(true);
     }
 }

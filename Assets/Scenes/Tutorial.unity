@@ -18261,7 +18261,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyColony: {fileID: 1769738117}
   WinScreen: {fileID: 1098059709}
-  NextScene: Title
 --- !u!61 &686973085
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -88537,7 +88536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6257839769071096178, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[6].DialogContent
-      value: That's it for now, I'll add more later.
+      value: '*Detail tutorial will be in a later build*'
       objectReference: {fileID: 0}
     - target: {fileID: 6257839769071096178, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[6].EyesDirection
@@ -88705,7 +88704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6257839769071096178, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[6].WaitTimeAfterFinish
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7714774732123643301, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: m_Pivot.x

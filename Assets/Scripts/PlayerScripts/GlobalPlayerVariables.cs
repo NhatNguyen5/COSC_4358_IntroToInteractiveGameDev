@@ -185,6 +185,7 @@ public class GlobalPlayerVariables : MonoBehaviour
             resetObject = true;
         }
         StartCoroutine(FadeIn(1));
+
         if (GameObject.Find("Thymus") != null)
         {
             ThymusController = GameObject.Find("Thymus").GetComponent<ThymusScript>();

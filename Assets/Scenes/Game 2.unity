@@ -26342,7 +26342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!60 &686973081
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -26427,7 +26427,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyColony: {fileID: 1769738117}
   WinScreen: {fileID: 1098059709}
-  NextScene: Game 1
 --- !u!61 &686973085
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26599,7 +26598,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Game 2
+          m_StringArgument: Game2LoadingScreen
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &703550977
@@ -77568,7 +77567,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: GameLoadingScreeen
+          m_StringArgument: Game1LoadingScreen
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1353500524

@@ -31,6 +31,10 @@ public class PlayButtonScript : MonoBehaviour
         {
             sceneName = "GameLoadingScreen";
         }
+        else if (ModeSelection == "SURVIVAL")
+        {
+            sceneName = "GameLoadingScreen";
+        }
 
         PlayButton.onClick.AddListener(delegate { ChangeScene(); });
         
