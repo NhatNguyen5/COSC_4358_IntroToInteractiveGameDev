@@ -4446,7 +4446,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: ZYZZ CANNON
 --- !u!1 &8035387254763058603
 GameObject:
   m_ObjectHideFlags: 0
@@ -5421,7 +5421,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: asdf
+          m_StringArgument: Denaturator
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 8035387254789206826}
@@ -5472,9 +5472,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 200
   levelReq: 0
-  ItemBeingSold: {fileID: 0}
+  ItemBeingSold: {fileID: 8725768441343987252, guid: 9f449af8056b6764aa76953d39063aee, type: 3}
   owned: 0
   isWeapon: 1
   SM: {fileID: 0}
@@ -17300,7 +17300,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: asdf
+          m_StringArgument: Protogazer
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 8035387255408205007}
@@ -17351,9 +17351,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 250
   levelReq: 0
-  ItemBeingSold: {fileID: 0}
+  ItemBeingSold: {fileID: 5700064688437328001, guid: 287635c9e8bfc0345a88108797a0455a, type: 3}
   owned: 0
   isWeapon: 1
   SM: {fileID: 0}
@@ -22214,7 +22214,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: ULTRASOUND
 --- !u!1 &8035387255632845503
 GameObject:
   m_ObjectHideFlags: 0
@@ -22293,7 +22293,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: DENATURATOR
 --- !u!1 &8035387255636380075
 GameObject:
   m_ObjectHideFlags: 0
@@ -27814,7 +27814,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: sadf
+          m_StringArgument: Ultrasound
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 8035387255894283329}
@@ -27865,9 +27865,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 250
   levelReq: 0
-  ItemBeingSold: {fileID: 0}
+  ItemBeingSold: {fileID: 3806027147059302337, guid: 04b7148d0145af14f86d3710927204cd, type: 3}
   owned: 0
   isWeapon: 1
   SM: {fileID: 0}
@@ -37296,7 +37296,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: asdf
+          m_StringArgument: Zyzz Cannon
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 8035387256569259565}
@@ -37347,9 +37347,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 200
   levelReq: 0
-  ItemBeingSold: {fileID: 0}
+  ItemBeingSold: {fileID: 2591568961033913676, guid: 6b3a3f358e63406439d5395875549b39, type: 3}
   owned: 0
   isWeapon: 1
   SM: {fileID: 0}
@@ -41436,7 +41436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8035387256744568168
 RectTransform:
   m_ObjectHideFlags: 0
