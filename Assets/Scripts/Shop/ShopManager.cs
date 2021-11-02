@@ -290,6 +290,7 @@ public class ShopManager : MonoBehaviour
                     var newWeapon = Instantiate(selectedWeapon, playerRightArm.transform, false);
                     newWeapon.GetComponent<Weapon>().Slot = selectedWeaponSlot + 1;
                     newWeapon.name = selectedWeapon.name;
+                    newWeapon.SetActive(false);
                     int temp = (selectedWeaponSlot + 1);
                    
 
@@ -333,6 +334,7 @@ public class ShopManager : MonoBehaviour
                                 var newWeapon = Instantiate(selectedWeapon, playerRightArm.transform, false);
                                 newWeapon.GetComponent<Weapon>().Slot = 1;
                                 newWeapon.name = selectedWeapon.name;
+                                newWeapon.SetActive(false);
                                 PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon1 = selectedWeapon.name;
                                 PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon = selectedWeapon.name;
                             }
