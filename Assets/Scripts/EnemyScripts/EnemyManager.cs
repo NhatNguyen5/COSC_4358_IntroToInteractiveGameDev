@@ -48,6 +48,11 @@ public class EnemyManager : MonoBehaviour
     private Player player;
     private List<GameObject> SpawnedMobs = new List<GameObject>();
 
+    [Header("Cut Scene Settings")]
+    public float xPos;
+    public float yPos;
+
+
 
 
     private void Start()
@@ -149,7 +154,7 @@ public class EnemyManager : MonoBehaviour
                 //StartCoroutine(player.Phasing(4f));
                 StartCoroutine(CutScene(4f));
                 //StartCoroutine(player.TakeOver(4f)); //in progress
-                StartCoroutine(CamFollow.MoveTo(new Vector3(-38.47f, 20.26f, -1), 2.8f, 2f));
+                StartCoroutine(CamFollow.MoveTo(new Vector3(xPos, yPos, -1), 2.8f, 2f));
                 StartCoroutine(CamFollow.ZoomTo(20, 1f));
                 cutSceneFlag = true;
             }
