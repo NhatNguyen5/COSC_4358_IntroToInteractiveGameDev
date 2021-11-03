@@ -384,8 +384,8 @@ MonoBehaviour:
   HP: 160
   speed: 4
   EXPWorth: 225
-  stoppingDistance: 24
-  retreatDistance: 12
+  stoppingDistance: 12
+  retreatDistance: 7
   followPlayer: 1
   retreat: 1
   randomMovement: 1
@@ -394,9 +394,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 87168
   unstuckTime: 0
-  shootdistance: 18
+  shootdistance: 20
   distancefromplayer: 0
-  circleRadius: 12
+  circleRadius: 30
   timeTillNextMove: 0.3
   knockForcePlayerContact: 0.5
   knockbackstartrange: 0.3
@@ -450,7 +450,7 @@ MonoBehaviour:
     NumOfDrop: 1
   spriteLibrary: {fileID: 3296103301601802847}
   targetResolver: {fileID: 5680350110539309623}
-  targetCategory: Cocci Sprite Library Asset
+  targetCategory: Staphy Sprite Library Asset
   isDead: 0
   facing: 0
 --- !u!114 &3296103301601802847

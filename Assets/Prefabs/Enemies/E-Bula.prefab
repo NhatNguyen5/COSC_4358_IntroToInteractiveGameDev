@@ -170,9 +170,9 @@ MonoBehaviour:
   HP: 310
   speed: 3.25
   EXPWorth: 320
-  stoppingDistance: 46
-  retreatDistance: 17
-  followPlayer: 0
+  stoppingDistance: 15
+  retreatDistance: 7
+  followPlayer: 1
   retreat: 1
   randomMovement: 1
   lineofsight: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 87168
   unstuckTime: 0
-  shootdistance: 21
+  shootdistance: 23
   distancefromplayer: 0
   circleRadius: 11
   timeTillNextMove: 1

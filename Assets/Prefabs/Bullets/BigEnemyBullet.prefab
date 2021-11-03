@@ -166,7 +166,7 @@ TrailRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Time: 0.2245
+  m_Time: 0.3
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
@@ -183,8 +183,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.5337875
-        value: 0.68765193
+        time: 0.5758407
+        value: 0.7340463
         inSlope: -1.4998437
         outSlope: -1.4998437
         tangentMode: 0
@@ -193,7 +193,7 @@ TrailRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0
+        value: 0.56185913
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -271,14 +271,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
   explosion: {fileID: 4186919218777762152, guid: 5a75f88db0aa2f84dbf1379aa6dd9454, type: 3}
-  HP: 140
-  speed: 9
+  HP: 100
+  speed: 20
   despawn: 0
   despawnTime: 0
   isExplosiveBullet: 1
-  damage: 65
-  explodeTimeStartRange: 0.2
-  explodeTimeEndRange: 0.45
+  damage: 55
+  explodeTimeStartRange: 0.1
+  explodeTimeEndRange: 0.35
   homing: 0
   explodeOnSpawn: 0
   circleRadius: 0.05
@@ -307,8 +307,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7860306948678888700}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0021, y: -0.0035, z: 277.93704}
-  m_LocalScale: {x: 1.77467, y: 6.640732, z: 1}
+  m_LocalPosition: {x: -0.0014, y: -0.0053, z: 277.93704}
+  m_LocalScale: {x: 1.0374023, y: 4.1929274, z: 1}
   m_Children: []
   m_Father: {fileID: 3694935387232324588}
   m_RootOrder: 0

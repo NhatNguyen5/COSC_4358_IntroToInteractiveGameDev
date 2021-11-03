@@ -281,10 +281,10 @@ MonoBehaviour:
   DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
   contactDamage: 20
   HP: 65
-  speed: 6.5
+  speed: 6
   EXPWorth: 200
-  stoppingDistance: 3
-  retreatDistance: 1
+  stoppingDistance: 7
+  retreatDistance: 5
   followPlayer: 1
   retreat: 1
   randomMovement: 1
@@ -300,8 +300,8 @@ MonoBehaviour:
   knockForcePlayerContact: 0.7
   knockbackstartrange: 0.2
   knockbackendrange: 0.2
-  beginningrangetoshoot: 1
-  endingrangetoshoot: 3
+  beginningrangetoshoot: 0.1
+  endingrangetoshoot: 0.3
   AmountOfBullets: 1
   bulletSpread: 4
   projectile: {fileID: 3812985790077842512, guid: b8a4215f89377b140b6b3b8efc37eeff, type: 3}
@@ -349,7 +349,7 @@ MonoBehaviour:
     NumOfDrop: 1
   spriteLibrary: {fileID: 4914168825106020468}
   targetResolver: {fileID: 2835040892258246684}
-  targetCategory: E-Bula Sprite Library Asset
+  targetCategory: Poxer Sprite Library Asset
   isDead: 0
   facing: 0
 --- !u!114 &4914168825106020468

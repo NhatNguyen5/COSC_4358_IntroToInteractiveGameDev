@@ -281,11 +281,11 @@ MonoBehaviour:
   DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
   contactDamage: 20
   HP: 120
-  speed: 2.25
+  speed: 4
   EXPWorth: 350
-  stoppingDistance: 50
-  retreatDistance: 12
-  followPlayer: 0
+  stoppingDistance: 21
+  retreatDistance: 11
+  followPlayer: 1
   retreat: 1
   randomMovement: 1
   lineofsight: 0
@@ -349,7 +349,7 @@ MonoBehaviour:
     NumOfDrop: 1
   spriteLibrary: {fileID: 5605992540673688442}
   targetResolver: {fileID: 3361594807438023442}
-  targetCategory: E-Bula Sprite Library Asset
+  targetCategory: Hendra Sprite Library Asset
   isDead: 0
   facing: 0
 --- !u!114 &5605992540673688442
