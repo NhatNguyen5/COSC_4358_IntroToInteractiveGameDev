@@ -308,8 +308,8 @@ MonoBehaviour:
   firePoint: {fileID: 1573083553429597592}
   player: {fileID: 0}
   burstFire: 1
-  timeBtwBurst: 0.22
-  timesToShoot: 18
+  timeBtwBurst: 0.07
+  timesToShoot: 35
   Drops:
   - isCurrency: 1
     isAmmo: 0

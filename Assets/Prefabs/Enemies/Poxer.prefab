@@ -285,7 +285,7 @@ MonoBehaviour:
   EXPWorth: 200
   stoppingDistance: 3
   retreatDistance: 1
-  followPlayer: 0
+  followPlayer: 1
   retreat: 1
   randomMovement: 1
   lineofsight: 0
@@ -308,8 +308,8 @@ MonoBehaviour:
   firePoint: {fileID: 1038485748638027281}
   player: {fileID: 0}
   burstFire: 1
-  timeBtwBurst: 0.18
-  timesToShoot: 13
+  timeBtwBurst: 0.13
+  timesToShoot: 14
   Drops:
   - isCurrency: 1
     isAmmo: 0

@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4129532735728092333, guid: 4c4400bcde8a79142af5ce484ce12b91, type: 3}
+  m_Sprite: {fileID: -5223919323732446560, guid: 006bfcda7b650f14c80748f0a02c8c6c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -236,7 +236,7 @@ MonoBehaviour:
     NumOfDrop: 1
   spriteLibrary: {fileID: 6891381498398414047}
   targetResolver: {fileID: 4380224375861857463}
-  targetCategory: E-Bula Sprite Library Asset
+  targetCategory: D-Stroy Sprite Library Asset
   isDead: 0
   facing: 0
 --- !u!114 &6891381498398414047
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CategoryHash: -1.7421604e+17
+  m_CategoryHash: -5.4820617e-11
   m_labelHash: -0.025054464
 --- !u!114 &53416258048472492
 MonoBehaviour:
@@ -465,8 +465,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3690904846860382448}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0015, y: 0.0002, z: -1.8205546}
-  m_LocalScale: {x: 3.7207768, y: 5.2298512, z: 1}
+  m_LocalPosition: {x: -0.0029, y: 0.0046, z: -1.8205546}
+  m_LocalScale: {x: 4.374086, y: 4.5225058, z: 1}
   m_Children: []
   m_Father: {fileID: 1583236537722594296}
   m_RootOrder: 1

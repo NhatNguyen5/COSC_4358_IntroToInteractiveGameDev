@@ -293,7 +293,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 87168
   unstuckTime: 0
-  shootdistance: 18
+  shootdistance: 19
   distancefromplayer: 0
   circleRadius: 7
   timeTillNextMove: 0.8
@@ -308,8 +308,8 @@ MonoBehaviour:
   firePoint: {fileID: 1425901161643657921}
   player: {fileID: 0}
   burstFire: 1
-  timeBtwBurst: 0.22
-  timesToShoot: 18
+  timeBtwBurst: 0.12
+  timesToShoot: 13
   Drops:
   - isCurrency: 1
     isAmmo: 0

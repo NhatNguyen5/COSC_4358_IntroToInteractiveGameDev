@@ -84618,7 +84618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: MinTbs
-      value: 0.2
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: StaInd
@@ -84914,11 +84914,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480928158035, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.74
+      value: -12.339
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480928158035, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.652
+      value: 7.575
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480928158124, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: m_Layer
@@ -84982,11 +84982,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4774610320342833391, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.34
+      value: -14.929
       objectReference: {fileID: 0}
     - target: {fileID: 4774610320342833391, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.679
+      value: 4.149
       objectReference: {fileID: 0}
     - target: {fileID: 5285938711777640152, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: EnemyUI
@@ -85030,11 +85030,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7090437538552658969, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.048
+      value: -12.111
       objectReference: {fileID: 0}
     - target: {fileID: 7090437538552658969, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.455
+      value: 5.437
       objectReference: {fileID: 0}
     - target: {fileID: 7173795859414960366, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: EnemyUI

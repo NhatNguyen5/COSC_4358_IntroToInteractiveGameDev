@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6016165945460987173}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.03, y: -0.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7674072803634583658}
@@ -104,7 +104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7674072803634583657}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.29, y: -0.159, z: 0}
+  m_LocalPosition: {x: 0.29, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7674072803375499541}
@@ -342,7 +342,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 95360
   unstuckTime: 0
-  shootdistance: 15
+  shootdistance: 17
   distancefromplayer: 0
   circleRadius: 5
   timeTillNextMove: 1
@@ -352,13 +352,13 @@ MonoBehaviour:
   beginningrangetoshoot: 1
   endingrangetoshoot: 2
   AmountOfBullets: 1
-  bulletSpread: 12
+  bulletSpread: 5
   projectile: {fileID: 3812985790077842512, guid: b8a4215f89377b140b6b3b8efc37eeff, type: 3}
   firePoint: {fileID: 7674072803375499541}
   player: {fileID: 0}
   burstFire: 1
-  timeBtwBurst: 0.35
-  timesToShoot: 5
+  timeBtwBurst: 0.28
+  timesToShoot: 7
   Drops:
   - isCurrency: 1
     isAmmo: 0
