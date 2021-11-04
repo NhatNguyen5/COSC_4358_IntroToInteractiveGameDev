@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 8800349694535609277}
   - component: {fileID: 8800349694535609276}
   - component: {fileID: 8800349694535609265}
+  - component: {fileID: -5348495548925746613}
   m_Layer: 16
   m_Name: Globin 5 Grenadier
   m_TagString: Globin
@@ -190,6 +191,8 @@ MonoBehaviour:
   burstFire: 1
   timeBtwBurst: 0.19
   timesToShoot: 1
+  StartToFollowAfterCertainDist: 0
+  distToStartFollow: 0
 --- !u!114 &8800349694535609266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +309,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-5348495548925746613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8800349694535609279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c86d968fbe3a944ae8b7fb698b28a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8800349694720813876
 GameObject:
   m_ObjectHideFlags: 0

@@ -111,6 +111,7 @@ public class Enemy1 : MonoBehaviour
     public float bulletSpread = 0.0f;
     public GameObject projectile;
     public Transform firePoint;
+    public Transform playerStash;
     public Transform player;
     private Rigidbody2D rb;
 
@@ -170,6 +171,9 @@ public class Enemy1 : MonoBehaviour
 
         GlobalPlayerVariables.TotalEnemiesAlive += 1;
 
+        playerStash = player;
+
+
         variation();
     }
 
@@ -188,13 +192,17 @@ public class Enemy1 : MonoBehaviour
         }
         if (GlobalPlayerVariables.EnableAI)
         {
-            distancefromplayer = Vector2.Distance(transform.position, player.position);
+            if(player!=null)
+                distancefromplayer = Vector2.Distance(transform.position, player.position);
             if (knockback == true)
             {
 
                 //Debug.Log("KNOCKBACK");
                 if (unstuck == false)
-                    transform.position = Vector2.MoveTowards(transform.position, player.position, -knockbackForce * speed * Time.deltaTime);
+                {
+                    if(player != null)
+                        transform.position = Vector2.MoveTowards(transform.position, player.position, -knockbackForce * speed * Time.deltaTime);
+                }
                 else
                 {
                     //Debug.Log("COMMENCING UNSTUCK");
@@ -211,7 +219,8 @@ public class Enemy1 : MonoBehaviour
                 {
                     reachedDestination = true;
                     easeOM = 1;
-                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                    if(player != null)
+                        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
                     getDirection(player);
                 }
                 else if ((distancefromplayer >= retreatDistance) || GlobalPlayerVariables.GameOver == true || lineofsight == false) //stop /*(Vector2.Distance(transform.position, player.position) <= stoppingDistance && */ 
@@ -270,10 +279,55 @@ public class Enemy1 : MonoBehaviour
     {
         if (GlobalPlayerVariables.EnableAI)
         {
+            if(player == null)
+                player = playerStash;
+
+
+
             if (GlobalPlayerVariables.GameOver != false)
             {
                 player = this.transform;
             }
+
+            //working on clearing up globin vision
+            float closestDistanceSqr = Mathf.Infinity;
+            Collider2D[] ColliderArray = Physics2D.OverlapCircleAll(transform.position, shootdistance);
+            foreach (Collider2D collider2D in ColliderArray)
+            {
+                if (collider2D.TryGetComponent<GoodGuyMarker>(out GoodGuyMarker marked))
+                {
+                    if (collider2D.TryGetComponent<Transform>(out Transform enemy))
+                    {
+                        //Debug.Log("good guy detected");
+                        //CAN THEY SEE THEM
+
+                        //can probably optimize this later
+                        RaycastHit2D hit2 = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
+
+
+                        if (hit2.collider.gameObject.tag == "Player" || hit2.collider.gameObject.tag == "Globin")
+                        {
+                            lineofsight = true;
+                            Vector3 directionToTarget = enemy.position - transform.position;
+                            float dSqrToTarget = directionToTarget.sqrMagnitude;
+                            if (dSqrToTarget < closestDistanceSqr)
+                            {
+                                closestDistanceSqr = dSqrToTarget;
+                                player = enemy;
+                                //closest = true;
+                                //Debug.Log("Found target");
+
+                                //if (EnemyTarget != null && canSeeEnemy == true && closest == true && EnemyTarget == enemy)
+                            }
+                        }
+
+
+                        //target = enemy;
+                    }
+                }
+            }
+
+
             knockbacktime -= Time.deltaTime;
             if (knockbacktime <= 0)
             {
@@ -285,8 +339,8 @@ public class Enemy1 : MonoBehaviour
             {
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
                 //var rayDirection = player.position - transform.position;
-                //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
-                if (hit.collider.gameObject.tag == "Player")
+                Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
+                if (hit.collider.gameObject.tag == "Player" || hit.collider.gameObject.tag == "Globin")
                 {
                     lineofsight = true;
                     //Debug.Log("Player is Visable");

@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 370946251004088093}
   - component: {fileID: 370946251004088092}
   - component: {fileID: 370946251004088081}
+  - component: {fileID: 5540483567680152796}
   m_Layer: 16
   m_Name: Globin 5 Advisor
   m_TagString: Globin
@@ -190,6 +191,8 @@ MonoBehaviour:
   burstFire: 1
   timeBtwBurst: 0.09
   timesToShoot: 14
+  StartToFollowAfterCertainDist: 0
+  distToStartFollow: 0
 --- !u!114 &370946251004088082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +309,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5540483567680152796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370946251004088095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c86d968fbe3a944ae8b7fb698b28a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &370946251221536660
 GameObject:
   m_ObjectHideFlags: 0

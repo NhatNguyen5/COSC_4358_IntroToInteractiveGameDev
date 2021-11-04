@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 4651131086350033939}
   - component: {fileID: 4651131086350033938}
   - component: {fileID: 4651131086350033951}
+  - component: {fileID: 6104639734651292305}
   m_Layer: 16
   m_Name: Globin 5 Support
   m_TagString: Globin
@@ -125,6 +126,8 @@ MonoBehaviour:
   burstFire: 1
   timeBtwBurst: 0.055
   timesToShoot: 20
+  StartToFollowAfterCertainDist: 0
+  distToStartFollow: 0
 --- !u!114 &4651131086350033948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +244,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6104639734651292305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4651131086350033937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c86d968fbe3a944ae8b7fb698b28a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4651131086955291989
 GameObject:
   m_ObjectHideFlags: 0

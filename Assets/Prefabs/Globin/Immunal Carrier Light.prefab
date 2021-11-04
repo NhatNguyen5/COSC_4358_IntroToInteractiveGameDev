@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 8667558662541123163}
   - component: {fileID: 5295597528365087576}
   - component: {fileID: 5295597528365087409}
+  - component: {fileID: -2609622509787311601}
   m_Layer: 16
   m_Name: Immunal Carrier Light
   m_TagString: Globin
@@ -401,6 +402,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-2609622509787311601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5295597528365087229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c86d968fbe3a944ae8b7fb698b28a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5295597528365087230
 GameObject:
   m_ObjectHideFlags: 0

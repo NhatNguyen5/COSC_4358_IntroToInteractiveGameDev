@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 3517825292825441640}
   - component: {fileID: 8089623419280815895}
   - component: {fileID: 3701182200377039657}
+  - component: {fileID: 2978117872277438315}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -339,6 +340,7 @@ MonoBehaviour:
   Molly: {fileID: 359814843918546931, guid: b7de69beb589f9b4395c5196638db2de, type: 3}
   Gre: {fileID: 3448305983176618688, guid: 103a9c628a9486b44af60b4f7fcc0ee8, type: 3}
   NumOfTypesOfNade: 2
+  easeRef: 0
   dashSound: 
   levelText1: {fileID: 0}
   levelText10: {fileID: 0}
@@ -361,6 +363,7 @@ MonoBehaviour:
   critRateGrowthRate: 0.01
   reloadSpeedGrowthRate: 0.01
   itemUsageGrowthRate: 0.0035
+  weaponTransforms: []
   hideLevelUPAnimation: 0
   timetoblockanimation: 0.5
 --- !u!114 &3517825292825441646
@@ -5268,6 +5271,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &2978117872277438315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3517825292825441639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c86d968fbe3a944ae8b7fb698b28a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3517825294137245977
 GameObject:
   m_ObjectHideFlags: 0
