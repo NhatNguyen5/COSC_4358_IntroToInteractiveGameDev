@@ -274,7 +274,7 @@ public class ThymusScript : MonoBehaviour
             StartCoroutine(ShowThymusAfter(Dialog.ShowAgainAfter));
         }
 
-        Debug.Log(tempEyesIdx + " " + tempBrowsIdx);
+        //Debug.Log(tempEyesIdx + " " + tempBrowsIdx);
         ThymusEyesSpriteResolver.SetCategoryAndLabel(Dialog.EyesCategory, currEyesSprite[tempEyesIdx]);
         ThymusBrowsSpriteResolver.SetCategoryAndLabel("EyeBrows", currBrowsSprite[tempBrowsIdx]);
         DialogText.fontSize = (int)(Dialog.FontSize);

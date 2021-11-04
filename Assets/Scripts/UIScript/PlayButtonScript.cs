@@ -17,6 +17,7 @@ public class PlayButtonScript : MonoBehaviour
     {
         ModeDropdown = GameObject.Find("GamemodeDropdown").GetComponent<Dropdown>();
         PlayButton = transform.GetComponent<Button>();
+        PlayButton.onClick.AddListener(delegate { ChangeScene(); });
     }
 
     // Update is called once per frame
@@ -35,10 +36,6 @@ public class PlayButtonScript : MonoBehaviour
         {
             sceneName = "GameLoadingScreen";
         }
-
-        PlayButton.onClick.AddListener(delegate { ChangeScene(); });
-        
-
         //PlayButton.onClick.RemoveListener(ChangeScene);
     }
 

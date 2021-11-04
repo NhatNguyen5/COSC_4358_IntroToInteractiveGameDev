@@ -43,7 +43,7 @@ public class LoadingScreenScript : MonoBehaviour
         StartCoroutine(LoadAsynchronously(sceneName));
     }
 
-    IEnumerator LoadAsynchronously(string sceneName)
+    private IEnumerator LoadAsynchronously(string sceneName)
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
 

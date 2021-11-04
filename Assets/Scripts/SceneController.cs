@@ -26,6 +26,8 @@ public class SceneController : MonoBehaviour
 
     private bool doneFadeIn = false;
 
+    private bool played = false;
+
     private void Start()
     {
         Color tempColor = new Color(0, 0, 0, 1);
@@ -72,17 +74,20 @@ public class SceneController : MonoBehaviour
         }
 
 
-        if (!isWaiting)
+
+
+        if (!isWaiting && !video.isPlaying && !played)
         {
             video.Play();
+            played = true;
+        }
 
-            if (!video.isPlaying && coverTransparent > 1)
-                changeSceneFlag = true;
+        if (!video.isPlaying && played)
+            changeSceneFlag = true;
 
-            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space) || changeSceneFlag)
-            {
-                SceneManager.LoadScene("Title");
-            }
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space) || changeSceneFlag)
+        {
+            SceneManager.LoadScene("Title");
         }
         //Debug.Log(video.isPlaying);
     }
