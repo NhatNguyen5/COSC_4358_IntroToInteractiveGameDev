@@ -13,6 +13,9 @@ public class PlayButtonScript : MonoBehaviour
     private Button PlayButton;
     private string sceneName;
 
+    public string CampaignLoadingScreenName;
+    public string SurvivalLoadingScreenName;
+
     void Start()
     {
         ModeDropdown = GameObject.Find("GamemodeDropdown").GetComponent<Dropdown>();
@@ -30,11 +33,11 @@ public class PlayButtonScript : MonoBehaviour
         }
         else if(ModeSelection == "CAMPAIGN")
         {
-            sceneName = "GameLoadingScreen";
+            sceneName = CampaignLoadingScreenName; ;
         }
         else if (ModeSelection == "SURVIVAL")
         {
-            sceneName = "GameLoadingScreen";
+            sceneName = SurvivalLoadingScreenName;
         }
         //PlayButton.onClick.RemoveListener(ChangeScene);
     }
