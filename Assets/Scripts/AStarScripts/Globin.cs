@@ -324,12 +324,12 @@ public class Globin : MonoBehaviour
                 {
                     if (hit.collider.gameObject.tag == "DefendPos")
                     {
-                        Debug.Log("Player is Visable");
+                        //Debug.Log("Player is Visable");
                         lineofsight = true;
                     }
                     else
                     {
-                        Debug.Log("Player is Not Visable");
+                        //Debug.Log("Player is Not Visable");
                         lineofsight = false;
                     }
                 }
@@ -397,7 +397,7 @@ public class Globin : MonoBehaviour
                     if (hit3.collider.gameObject.tag == "EnemyMelee" || hit3.collider.gameObject.tag == "Enemy" || hit3.collider.gameObject.tag == "Colony")
                     {
                         canSeeEnemy = true;
-                        Debug.DrawRay(transform.position, EnemyTarget.transform.position - transform.position, Color.red);
+                        //Debug.DrawRay(transform.position, EnemyTarget.transform.position - transform.position, Color.red);
                     }
                     else
                     {

@@ -25,14 +25,21 @@ public class EnemyWeapon : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player").transform;
         if(isNotEnemy1 == false)
             enemy1 = transform.parent.GetComponent<Enemy1>();
+
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player != null && GlobalPlayerVariables.GameOver == false && enemy1 != null &&  isNotEnemy1 == false)
+        if(enemy1.player != null)
+            player = enemy1.player;
+        if (enemy1.playerStash != null && GlobalPlayerVariables.GameOver == false && enemy1 != null &&  isNotEnemy1 == false)
         {
-            Vector2 direction = player.position - transform.position;
+            Vector2 direction = Vector2.zero;
+            if(enemy1.player != null)
+                direction = player.position - transform.position;
             if ((enemy1.lineofsight && enemy1.distancefromplayer <= enemy1.shootdistance) || (enemy1.lineofsight && enemy1.followPlayer == true))
                 angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             else

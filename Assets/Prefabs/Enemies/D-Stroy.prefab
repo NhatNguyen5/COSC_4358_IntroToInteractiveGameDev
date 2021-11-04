@@ -208,7 +208,7 @@ MonoBehaviour:
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 87168
+    m_Bits: 29824
   unstuckTime: 0
   shootdistance: 21
   distancefromplayer: 0
@@ -223,6 +223,7 @@ MonoBehaviour:
   bulletSpread: 22
   projectile: {fileID: 7738925325800699999, guid: 47d335fd8e3c2204c928145b4d0b89bb, type: 3}
   firePoint: {fileID: 525723373986181659}
+  playerStash: {fileID: 0}
   player: {fileID: 0}
   burstFire: 1
   timeBtwBurst: 5

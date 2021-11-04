@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 1910549285011330655}
   - component: {fileID: 3150062573400273756}
   - component: {fileID: 3150062573400273589}
+  - component: {fileID: 1561758929082258589}
   m_Layer: 16
   m_Name: Immunal Carrier Medium
   m_TagString: Globin
@@ -401,6 +402,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1561758929082258589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3150062573400273401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c86d968fbe3a944ae8b7fb698b28a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3150062573400273402
 GameObject:
   m_ObjectHideFlags: 0
