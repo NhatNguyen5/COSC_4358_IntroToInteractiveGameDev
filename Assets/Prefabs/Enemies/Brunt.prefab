@@ -260,6 +260,7 @@ MonoBehaviour:
   knockbackstartrange: 2
   knockbackendrange: 3
   player: {fileID: 0}
+  playerStash: {fileID: 0}
   beginningrangetomove: 0.7
   endingrangetomove: 1.2
   RetreatSpeed: 0.6
@@ -303,6 +304,7 @@ MonoBehaviour:
   spriteLibrary: {fileID: -1873635527342343803}
   targetResolver: {fileID: -9127901303579602637}
   targetCategory: Brunt Sprite Library Asset
+  recalcshortestDist: 3
 --- !u!114 &-1873635527342343803
 MonoBehaviour:
   m_ObjectHideFlags: 0

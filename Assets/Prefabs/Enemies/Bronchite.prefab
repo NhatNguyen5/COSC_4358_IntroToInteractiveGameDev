@@ -260,6 +260,7 @@ MonoBehaviour:
   knockbackstartrange: 2
   knockbackendrange: 3
   player: {fileID: 0}
+  playerStash: {fileID: 0}
   beginningrangetomove: 0.4
   endingrangetomove: 0.8
   RetreatSpeed: 0.3
@@ -301,6 +302,7 @@ MonoBehaviour:
   spriteLibrary: {fileID: 7227182355474802920}
   targetResolver: {fileID: 63244208746446942}
   targetCategory: Bronchite Sprite Library Asset
+  recalcshortestDist: 3
 --- !u!114 &7227182355474802920
 MonoBehaviour:
   m_ObjectHideFlags: 0

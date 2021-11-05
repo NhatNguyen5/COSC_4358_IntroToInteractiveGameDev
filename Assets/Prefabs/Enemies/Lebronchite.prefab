@@ -260,6 +260,7 @@ MonoBehaviour:
   knockbackstartrange: 3
   knockbackendrange: 4
   player: {fileID: 0}
+  playerStash: {fileID: 0}
   beginningrangetomove: 1.2
   endingrangetomove: 0.6
   RetreatSpeed: 0.8
@@ -303,6 +304,7 @@ MonoBehaviour:
   spriteLibrary: {fileID: 2830568679307036900}
   targetResolver: {fileID: 4892210458596237394}
   targetCategory: Lebronchite Sprite Library Asset
+  recalcshortestDist: 3
 --- !u!114 &2830568679307036900
 MonoBehaviour:
   m_ObjectHideFlags: 0

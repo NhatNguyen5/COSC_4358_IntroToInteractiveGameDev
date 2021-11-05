@@ -260,6 +260,7 @@ MonoBehaviour:
   knockbackstartrange: 2
   knockbackendrange: 3
   player: {fileID: 0}
+  playerStash: {fileID: 0}
   beginningrangetomove: 0.6
   endingrangetomove: 1.2
   RetreatSpeed: 0.6
@@ -303,6 +304,7 @@ MonoBehaviour:
   spriteLibrary: {fileID: 8486430893350191487}
   targetResolver: {fileID: 1254665523035056585}
   targetCategory: Abronchite Sprite Library Asset
+  recalcshortestDist: 3
 --- !u!114 &8486430893350191487
 MonoBehaviour:
   m_ObjectHideFlags: 0
