@@ -167,6 +167,8 @@ public class GlobalPlayerVariables : MonoBehaviour
     public static int TotalEnemiesAlive = 0;
     public static int enemiesKilled = 0;
 
+    public static float bulletLifeTime = 3f;
+
 
     private void Awake()
     {

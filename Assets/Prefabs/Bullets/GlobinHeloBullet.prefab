@@ -5111,6 +5111,7 @@ MonoBehaviour:
   explosion: {fileID: 3168538512206728152, guid: 15da6144ad5ee8f42ae90126b4855073, type: 3}
   isExplosiveBullet: 0
   circleRadius: 0.5
+  bulletLife: 3
 --- !u!114 &2740594692678934445
 MonoBehaviour:
   m_ObjectHideFlags: 0

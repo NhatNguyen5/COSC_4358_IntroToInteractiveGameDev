@@ -74,6 +74,7 @@ public class Weapon : MonoBehaviour
     private bool reload;
     private float countFillAmount;
     public int CostPerBullet;
+    public float bulletLifeTime = 3f;
 
     [HideInInspector]
     public bool IsRightArm;
@@ -208,6 +209,8 @@ public class Weapon : MonoBehaviour
             GlobalPlayerVariables.bulletDamageDropOff2 = bulletDamageDropOff;
             GlobalPlayerVariables.timeToDropDmg2 = timeToDropDmg;
         }
+
+        GlobalPlayerVariables.bulletLifeTime = bulletLifeTime;
     }
 
 

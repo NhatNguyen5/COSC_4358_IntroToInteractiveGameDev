@@ -35,6 +35,8 @@ public class Bullet : MonoBehaviour
 
     private Transform BParticle;
 
+    public float bulletLife = 3;
+
     /*
     private Vector3 spawnPos;
     private float distanceFromStart = 0;
@@ -86,6 +88,9 @@ public class Bullet : MonoBehaviour
                 critDMG = GlobalPlayerVariables.critDmg2;
                 isExplosiveBullet = GlobalPlayerVariables.bulletExplosion2;
             }
+
+            bulletLife = GlobalPlayerVariables.bulletLifeTime;
+
         }
 
         
@@ -214,6 +219,10 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
+
+
+
+
         /*
         if (isExplosiveBullet == true)
         {
@@ -233,6 +242,21 @@ public class Bullet : MonoBehaviour
             timebeforedrop = 0;
             damage *= (1 - bulletDamageDropOff);
         }
+
+        bulletLife -= Time.deltaTime;
+        if (bulletLife <= 0)
+        {
+            if (isExplosiveBullet == true)
+            {
+                explode();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
+
     }
 
 
