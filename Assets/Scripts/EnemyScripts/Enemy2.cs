@@ -101,6 +101,7 @@ public class Enemy2 : MonoBehaviour
 
 
     public Transform player;
+    public Transform playerStash;
     private Rigidbody2D rb;
 
 
@@ -159,6 +160,8 @@ public class Enemy2 : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player").transform;
         else
             player = this.transform;
+
+        playerStash = player;
         sprite = GetComponent<SpriteRenderer>();
         attack();
         GlobalPlayerVariables.TotalEnemiesAlive += 1;
@@ -186,7 +189,10 @@ public class Enemy2 : MonoBehaviour
 
                 //Debug.Log("KNOCKBACK");
                 if (hitPlayer == false)
-                    transform.position = Vector2.MoveTowards(transform.position, player.position, -knockbackForce * speed * Time.deltaTime);
+                {
+                    if(player != null)
+                        transform.position = Vector2.MoveTowards(transform.position, player.position, -knockbackForce * speed * Time.deltaTime);
+                }
                 else
                 {
                     //Vector2 Offset = player.position;
@@ -198,71 +204,126 @@ public class Enemy2 : MonoBehaviour
             }
             else
             {
-
-                if (Vector2.Distance(transform.position, player.position) > stoppingDistance && followPlayer == true) //follow player
+                if (player != null)
                 {
-                    easeOM = 1;
-                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime * easeOM);
-                    //go to position 
-                    getDirection(player);
 
-                    //Debug.Log(transform);
-                }
-                else
-                {
-                    if (randomMovement == false)
-                        transform.position = this.transform.position;
-                    else //RANDOM MOVEMENT
+                    if (Vector2.Distance(transform.position, player.position) > stoppingDistance && followPlayer == true) //follow player
                     {
-                        float disToRandPos = (new Vector2(transform.position.x, transform.position.y) - randPos).magnitude;
-                        if (disToRandPos < speed)
-                        {
-                            if (easeOM > 0)
-                                easeOM -= Time.fixedDeltaTime;
-                            else
-                                easeOM = 0;
-                        }
-                        else
-                        {
-                            easeOM = 1;
-                        }
-                        //Debug.Log(easeOM);
-                        //Debug.Log("RANDOMPOS");
-                        if (reachedDestination == false)
-                            transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime * easeOM);
-                        else
-                            transform.position = this.transform.position;
+                        easeOM = 1;
+                        if (player != null)
+                            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime * easeOM);
+                        //go to position 
+                        getDirection(player);
 
-                        if (transform.position.x == randPos.x && transform.position.y == randPos.y)
-                        {
-                            reachedDestination = true;
-                        }
-                        direction = randPos;
-                        a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
+                        //Debug.Log(transform);
                     }
-                }
-                /*
-                else if (Vector2.Distance(transform.position, player.position) < retreatDistance && retreat == true) //retreat
-                {
-                    reachedDestination = true;
-                    transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
-                }
-                */
+                    else
+                    {
+                        if (randomMovement == false)
+                            transform.position = this.transform.position;
+                        else //RANDOM MOVEMENT
+                        {
+                            float disToRandPos = (new Vector2(transform.position.x, transform.position.y) - randPos).magnitude;
+                            if (disToRandPos < speed)
+                            {
+                                if (easeOM > 0)
+                                    easeOM -= Time.fixedDeltaTime;
+                                else
+                                    easeOM = 0;
+                            }
+                            else
+                            {
+                                easeOM = 1;
+                            }
+                            //Debug.Log(easeOM);
+                            //Debug.Log("RANDOMPOS");
+                            if (reachedDestination == false)
+                                transform.position = Vector2.MoveTowards(transform.position, randPos, speed * Time.deltaTime * easeOM);
+                            else
+                                transform.position = this.transform.position;
 
+                            if (transform.position.x == randPos.x && transform.position.y == randPos.y)
+                            {
+                                reachedDestination = true;
+                            }
+                            direction = randPos;
+                            a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+                        }
+                    }
+                    /*
+                    else if (Vector2.Distance(transform.position, player.position) < retreatDistance && retreat == true) //retreat
+                    {
+                        reachedDestination = true;
+                        transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+                    }
+                    */
+                }
             }
         }
     }
 
     void getDirection(Transform objectpos)
     {
-        direction = objectpos.position - transform.position;
+        if (objectpos != null)
+            direction = objectpos.position - transform.position;
         a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (player == null)
+            player = playerStash;
+
+
+        //working on clearing up globin vision
+        if (NextMoveCoolDown <= 0)
+        {
+            float closestDistanceSqr = Mathf.Infinity;
+            Collider2D[] ColliderArray = Physics2D.OverlapCircleAll(transform.position, circleRadius);
+            foreach (Collider2D collider2D in ColliderArray)
+            {
+                if (collider2D.TryGetComponent<GoodGuyMarker>(out GoodGuyMarker marked))
+                {
+                    if (collider2D.TryGetComponent<Transform>(out Transform enemy))
+                    {
+                        //Debug.Log("good guy detected");
+                        //CAN THEY SEE THEM
+
+                        //can probably optimize this later
+                        RaycastHit2D hit2 = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
+
+
+                        if (hit2.collider.gameObject.tag == "Player" || hit2.collider.gameObject.tag == "Globin")
+                        {
+                            LineOfSight = true;
+                            Vector3 directionToTarget = enemy.position - transform.position;
+                            float dSqrToTarget = directionToTarget.sqrMagnitude;
+                            if (dSqrToTarget < closestDistanceSqr)
+                            {
+                                closestDistanceSqr = dSqrToTarget;
+                                player = enemy;
+                                //closest = true;
+                                //Debug.Log("Found target");
+
+                                //if (EnemyTarget != null && canSeeEnemy == true && closest == true && EnemyTarget == enemy)
+                            }
+                        }
+
+
+                        //target = enemy;
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
         Animate(facing);
         if (GlobalPlayerVariables.GameOver != false)
         {
@@ -279,8 +340,8 @@ public class Enemy2 : MonoBehaviour
         {
             RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
             //var rayDirection = player.position - transform.position;
-            //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
-            if (hit.collider.gameObject.tag == "Player")
+            Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
+            if (hit.collider.gameObject.tag == "Player" || hit.collider.gameObject.tag == "Globin")
             {
                 LineOfSight = true;
                 //Debug.Log("Player is Visable");

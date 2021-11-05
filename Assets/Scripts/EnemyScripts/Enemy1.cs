@@ -259,7 +259,8 @@ public class Enemy1 : MonoBehaviour
                 else if (distancefromplayer <= retreatDistance && retreat == true && lineofsight == true) //retreat
                 {
                     reachedDestination = true;
-                    transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+                    if (player != null)
+                        transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
                     getDirection(player);
                 }
 
@@ -269,7 +270,8 @@ public class Enemy1 : MonoBehaviour
 
     void getDirection(Transform objectpos)
     {
-        direction = objectpos.position - transform.position;
+        if (objectpos != null)
+            direction = objectpos.position - transform.position;
         facing = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
     }
 
