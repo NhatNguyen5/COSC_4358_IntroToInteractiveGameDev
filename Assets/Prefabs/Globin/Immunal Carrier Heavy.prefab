@@ -616,7 +616,7 @@ MonoBehaviour:
   playerStash: {fileID: 0}
   HP: 2400
   AR: 95
-  speed: 8400
+  speed: 8000
   stoppingDistance: 10
   lineofsight: 0
   IgnoreMe:
@@ -705,7 +705,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 6
-  m_LinearDrag: 6
+  m_LinearDrag: 10
   m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
