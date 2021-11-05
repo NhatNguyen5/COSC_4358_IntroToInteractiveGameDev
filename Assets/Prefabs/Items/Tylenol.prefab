@@ -101,6 +101,7 @@ MonoBehaviour:
   flingRange: 5
   PickUpRange: 0.5
   DespawnTime: 20
+  ProteinAdd: 0
   AmmoReserveAdd: 0
 --- !u!95 &5280829901517362271
 Animator:
@@ -113,7 +114,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: aa30e0d68199b8f44a4f76369896ce91, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
