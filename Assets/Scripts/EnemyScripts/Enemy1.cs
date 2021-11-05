@@ -290,39 +290,42 @@ public class Enemy1 : MonoBehaviour
             }
 
             //working on clearing up globin vision
-            float closestDistanceSqr = Mathf.Infinity;
-            Collider2D[] ColliderArray = Physics2D.OverlapCircleAll(transform.position, shootdistance);
-            foreach (Collider2D collider2D in ColliderArray)
+            if (timeBtwShots <= 0)
             {
-                if (collider2D.TryGetComponent<GoodGuyMarker>(out GoodGuyMarker marked))
+                float closestDistanceSqr = Mathf.Infinity;
+                Collider2D[] ColliderArray = Physics2D.OverlapCircleAll(transform.position, shootdistance);
+                foreach (Collider2D collider2D in ColliderArray)
                 {
-                    if (collider2D.TryGetComponent<Transform>(out Transform enemy))
+                    if (collider2D.TryGetComponent<GoodGuyMarker>(out GoodGuyMarker marked))
                     {
-                        //Debug.Log("good guy detected");
-                        //CAN THEY SEE THEM
-
-                        //can probably optimize this later
-                        RaycastHit2D hit2 = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
-
-
-                        if (hit2.collider.gameObject.tag == "Player" || hit2.collider.gameObject.tag == "Globin")
+                        if (collider2D.TryGetComponent<Transform>(out Transform enemy))
                         {
-                            lineofsight = true;
-                            Vector3 directionToTarget = enemy.position - transform.position;
-                            float dSqrToTarget = directionToTarget.sqrMagnitude;
-                            if (dSqrToTarget < closestDistanceSqr)
+                            //Debug.Log("good guy detected");
+                            //CAN THEY SEE THEM
+
+                            //can probably optimize this later
+                            RaycastHit2D hit2 = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
+
+
+                            if (hit2.collider.gameObject.tag == "Player" || hit2.collider.gameObject.tag == "Globin")
                             {
-                                closestDistanceSqr = dSqrToTarget;
-                                player = enemy;
-                                //closest = true;
-                                //Debug.Log("Found target");
+                                lineofsight = true;
+                                Vector3 directionToTarget = enemy.position - transform.position;
+                                float dSqrToTarget = directionToTarget.sqrMagnitude;
+                                if (dSqrToTarget < closestDistanceSqr)
+                                {
+                                    closestDistanceSqr = dSqrToTarget;
+                                    player = enemy;
+                                    //closest = true;
+                                    //Debug.Log("Found target");
 
-                                //if (EnemyTarget != null && canSeeEnemy == true && closest == true && EnemyTarget == enemy)
+                                    //if (EnemyTarget != null && canSeeEnemy == true && closest == true && EnemyTarget == enemy)
+                                }
                             }
+
+
+                            //target = enemy;
                         }
-
-
-                        //target = enemy;
                     }
                 }
             }
