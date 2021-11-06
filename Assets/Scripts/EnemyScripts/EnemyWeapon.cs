@@ -20,9 +20,9 @@ public class EnemyWeapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        if(GlobalPlayerVariables.GameOver == false)
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+        //rb = GetComponent<Rigidbody2D>();
+        //if(GlobalPlayerVariables.GameOver == false)
+            //player = GameObject.FindGameObjectWithTag("Player").transform;
         if(isNotEnemy1 == false)
             enemy1 = transform.parent.GetComponent<Enemy1>();
 

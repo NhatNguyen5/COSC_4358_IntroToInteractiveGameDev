@@ -111,7 +111,10 @@ public class EnemyColony : MonoBehaviour
     public float bulletSpread = 0.0f;
     public GameObject projectile;
     public Transform firePoint;
-    private Transform player;
+    [HideInInspector]
+    public Transform player;
+    [HideInInspector]
+    public Transform playerStash;
     private Rigidbody2D rb;
 
     [Header("Burst Settings")]
@@ -138,6 +141,11 @@ public class EnemyColony : MonoBehaviour
     private bool hideing = false;
 
 
+    [Header("Reset Check Setting")]
+    public float recalcshortestDist = 3f;
+    private float timer2reset;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -160,6 +168,8 @@ public class EnemyColony : MonoBehaviour
         else
             player = this.transform;
 
+
+        playerStash = player;
         GlobalPlayerVariables.TotalEnemiesAlive += 1;
         variation();
 
@@ -176,7 +186,8 @@ public class EnemyColony : MonoBehaviour
     {
         if (GlobalPlayerVariables.EnableAI)
         {
-            distancefromplayer = Vector2.Distance(transform.position, player.position);
+            if(player!=null)
+                distancefromplayer = Vector2.Distance(transform.position, player.position);
             if (knockback == true)
             {
                 transform.position = Vector2.MoveTowards(transform.position, randPos, -speed * Time.deltaTime);
@@ -224,7 +235,8 @@ public class EnemyColony : MonoBehaviour
 
     void getDirection(Transform objectpos)
     {
-        direction = objectpos.position - transform.position;
+        if(player!=null)
+            direction = objectpos.position - transform.position;
         a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
     }
 
@@ -235,6 +247,55 @@ public class EnemyColony : MonoBehaviour
     {
         if (GlobalPlayerVariables.EnableAI)
         {
+            if (player == null)
+                player = playerStash;
+
+
+            //working on clearing up globin vision
+            if (timer2reset <= 0)
+            {
+                timer2reset = recalcshortestDist;
+                float closestDistanceSqr = Mathf.Infinity;
+                Collider2D[] ColliderArray = Physics2D.OverlapCircleAll(transform.position, shootdistance);
+                foreach (Collider2D collider2D in ColliderArray)
+                {
+                    if (collider2D.TryGetComponent<GoodGuyMarker>(out GoodGuyMarker marked))
+                    {
+                        if (collider2D.TryGetComponent<Transform>(out Transform enemy))
+                        {
+                            //Debug.Log("good guy detected");
+                            //CAN THEY SEE THEM
+
+                            //can probably optimize this later
+                            RaycastHit2D hit2 = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
+
+
+                            if (hit2.collider.gameObject.tag == "Player" || hit2.collider.gameObject.tag == "Globin")
+                            {
+                                lineofsight = true;
+                                Vector3 directionToTarget = enemy.position - transform.position;
+                                float dSqrToTarget = directionToTarget.sqrMagnitude;
+                                if (dSqrToTarget < closestDistanceSqr)
+                                {
+                                    closestDistanceSqr = dSqrToTarget;
+                                    player = enemy;
+                                    //closest = true;
+                                    //Debug.Log("Found target");
+
+                                    //if (EnemyTarget != null && canSeeEnemy == true && closest == true && EnemyTarget == enemy)
+                                }
+                            }
+
+
+                            //target = enemy;
+                        }
+                    }
+                }
+            }
+
+
+
+
             if (GlobalPlayerVariables.GameOver != false)
             {
                 if (hideing == false)
@@ -273,8 +334,8 @@ public class EnemyColony : MonoBehaviour
             {
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
                 //var rayDirection = player.position - transform.position;
-                //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
-                if (hit.collider.gameObject.tag == "Player")
+                Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
+                if (hit.collider.gameObject.tag == "Player" || hit.collider.gameObject.tag == "Globin")
                 {
                     lineofsight = true;
                     //Debug.Log("Player is Visable");
@@ -341,6 +402,9 @@ public class EnemyColony : MonoBehaviour
                 NextMoveCoolDown -= Time.deltaTime;
             }
         }
+
+        timer2reset -= Time.deltaTime;
+
     }
 
     
