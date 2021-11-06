@@ -363,9 +363,9 @@ MonoBehaviour:
   critRateGrowthRate: 0.01
   reloadSpeedGrowthRate: 0.01
   itemUsageGrowthRate: 0.0035
-  weaponTransforms: []
   hideLevelUPAnimation: 0
-  timetoblockanimation: 0.5
+  timetoblockanimation: 5
+  weaponTransforms: []
 --- !u!114 &3517825292825441646
 MonoBehaviour:
   m_ObjectHideFlags: 0

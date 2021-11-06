@@ -165,6 +165,12 @@ public class Player : MonoBehaviour
 
     public float itemUsageGrowthRate = 0.0035f;
 
+
+    [HideInInspector]
+    public bool hideLevelUPAnimation = true;
+    [Header("Animations upon spawning")]
+    public float timetoblockanimation = 0.5f;
+
     private void Awake()
     {
 
@@ -392,6 +398,20 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (hideLevelUPAnimation == true)
+        {
+            Debug.Log("its true");
+            if (timetoblockanimation >= 0)
+            {
+                timetoblockanimation -= Time.deltaTime;
+            }
+            else
+            {
+                hideLevelUPAnimation = false;
+            }
+        }
+
+
         if (GlobalPlayerVariables.EnablePlayerControl)
         {
             //Debug.Log("itemusagecooldown " + GlobalPlayerVariables.baseItemUsageCoolDown + " curr level " + Currentlevel);
@@ -409,14 +429,16 @@ public class Player : MonoBehaviour
             }
             if (stats.Experience >= levelThreshhold)
             {
+                if (hideLevelUPAnimation == false)
+                {
+                    Instantiate(levelUpEff, stats.Position, Quaternion.identity);
+                    GameObject levelPopUpTemp;
+                    levelPopUpTemp = Instantiate(levelUpPopUp, transform, false);
+                    levelPopUpTemp.GetComponent<TextMeshPro>().text = ("LEVEL " + (Currentlevel + 1));
+                    Destroy(levelPopUpTemp, 3.45f);
 
-                Instantiate(levelUpEff, stats.Position, Quaternion.identity);
-                GameObject levelPopUpTemp;
-                levelPopUpTemp = Instantiate(levelUpPopUp, transform, false);
-                levelPopUpTemp.GetComponent<TextMeshPro>().text = ("LEVEL " + (Currentlevel + 1));
-                Destroy(levelPopUpTemp, 3.45f);
-
-                components.PlayerStatusIndicator.StartFlash(0.25f, 0.25f, Color.yellow, ((stats.MaxHealth - stats.Health) / stats.MaxHealth) / 2f, Color.red, 1);
+                    components.PlayerStatusIndicator.StartFlash(0.25f, 0.25f, Color.yellow, ((stats.MaxHealth - stats.Health) / stats.MaxHealth) / 2f, Color.red, 1);
+                }
                 levelUP();
             }
             utilities.HandleInput();
@@ -820,11 +842,6 @@ public class Player : MonoBehaviour
         }
     }
 
-
-    [HideInInspector]
-    public bool hideLevelUPAnimation = false;
-    [HideInInspector]
-    public float timetoblockanimation = 0.5f;
     public void SetPlayerItemsAndArmorValues()
     {
         RememberLoudout = GameObject.FindGameObjectWithTag("Loadout");

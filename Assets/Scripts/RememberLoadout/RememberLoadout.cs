@@ -156,8 +156,8 @@ public class RememberLoadout : MonoBehaviour
             Destroy(gameObject);
         }
 
-        RightArm = GameObject.FindGameObjectWithTag("RightArm");
-        LeftArm = GameObject.FindGameObjectWithTag("LeftArm");
+        //RightArm = GameObject.FindGameObjectWithTag("RightArm");
+        //LeftArm = GameObject.FindGameObjectWithTag("LeftArm");
 
         string[] noLoadLoadoutScene =
         {
@@ -167,68 +167,71 @@ public class RememberLoadout : MonoBehaviour
         if ((loadPlayerStats == true || player == null) && !noLoadLoadoutScene.Contains(SceneManager.GetActiveScene().name) && !OptionSettings.GameisPaused)
         {
             Debug.Log("Loading Loadout");
-            loadPlayerStats = false;
             player = GameObject.FindGameObjectWithTag("Player");
-            player.GetComponent<Player>().hideLevelUPAnimation = true;
-            GlobalPlayerVariables.expToDistribute += totalExperienceEarned;
-            RightArm = GameObject.FindGameObjectWithTag("RightArm");
-            LeftArm = GameObject.FindGameObjectWithTag("LeftArm");
-
-            Transform rightArmTrans = RightArm.GetComponent<Transform>();
-            Transform leftArmTrans = LeftArm.GetComponent<Transform>();
-
-            foreach (GameObject go in PossiblePlayerWeapons)
+            if (player != null)
             {
-                //Debug.Log("each");
-                if (go.name == startingWeapon1)
+                loadPlayerStats = false;
+                player.GetComponent<Player>().hideLevelUPAnimation = true;
+                GlobalPlayerVariables.expToDistribute += totalExperienceEarned;
+                RightArm = GameObject.FindGameObjectWithTag("RightArm");
+                LeftArm = GameObject.FindGameObjectWithTag("LeftArm");
+
+                Transform rightArmTrans = RightArm.GetComponent<Transform>();
+                Transform leftArmTrans = LeftArm.GetComponent<Transform>();
+
+                foreach (GameObject go in PossiblePlayerWeapons)
                 {
-                    Debug.Log("Primary");
-                    var newWeapon = Instantiate(go, rightArmTrans, false);
-                    newWeapon.GetComponent<Weapon>().Slot = 1;
-                    newWeapon.name = startingWeapon1;
+                    //Debug.Log("each");
+                    if (go.name == startingWeapon1)
+                    {
+                        Debug.Log("Primary");
+                        var newWeapon = Instantiate(go, rightArmTrans, false);
+                        newWeapon.GetComponent<Weapon>().Slot = 1;
+                        newWeapon.name = startingWeapon1;
+                    }
                 }
-            }
-            foreach (GameObject go in PossiblePlayerWeapons)
-            {
-                if (go.name == startingWeapon2)
+                foreach (GameObject go in PossiblePlayerWeapons)
                 {
-                    var newWeapon2 = Instantiate(go, rightArmTrans, false);
-                    newWeapon2.GetComponent<Weapon>().Slot = 2;
-                    newWeapon2.name = startingWeapon2;
-                    newWeapon2.SetActive(false);
+                    if (go.name == startingWeapon2)
+                    {
+                        var newWeapon2 = Instantiate(go, rightArmTrans, false);
+                        newWeapon2.GetComponent<Weapon>().Slot = 2;
+                        newWeapon2.name = startingWeapon2;
+                        newWeapon2.SetActive(false);
+                    }
                 }
-            }
-            foreach (GameObject go in PossiblePlayerWeapons)
-            {
-                if (go.name == startingWeapon3)
+                foreach (GameObject go in PossiblePlayerWeapons)
                 {
-                    var newWeapon3 = Instantiate(go, rightArmTrans, false);
-                    newWeapon3.GetComponent<Weapon>().Slot = 3;
-                    newWeapon3.name = startingWeapon3;
-                    newWeapon3.SetActive(false);
+                    if (go.name == startingWeapon3)
+                    {
+                        var newWeapon3 = Instantiate(go, rightArmTrans, false);
+                        newWeapon3.GetComponent<Weapon>().Slot = 3;
+                        newWeapon3.name = startingWeapon3;
+                        newWeapon3.SetActive(false);
+                    }
                 }
+
+                if (LeftArm != null)
+                {
+                    LeftArm.SetActive(false);
+                }
+
+
+                if (loadPlayerStats == false)
+                {
+                    PrimaryWeapon = startingWeapon1;
+                    SecondaryWeapon = startingWeapon2;
+                    ThirdWeapon = startingWeapon3;
+
+                    //var myNewSmoke = Instantiate(poisonSmoke, Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                    //myNewSmoke.transform.parent = gameObject.transform;
+
+
+                }
+
+
+                player.GetComponent<Player>().SetPlayerItemsAndArmorValues();
             }
-
-            if (LeftArm != null)
-            {
-                LeftArm.SetActive(false);
-            }
-
-            
-            if (loadPlayerStats == false)
-            {
-                PrimaryWeapon = startingWeapon1;
-                SecondaryWeapon = startingWeapon2;
-                ThirdWeapon = startingWeapon3;
-
-                //var myNewSmoke = Instantiate(poisonSmoke, Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-                //myNewSmoke.transform.parent = gameObject.transform;
-
-
-            }
-            
-            
-            player.GetComponent<Player>().SetPlayerItemsAndArmorValues();
         }
     }
 
