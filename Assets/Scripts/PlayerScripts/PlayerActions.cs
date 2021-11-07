@@ -67,7 +67,7 @@ public class PlayerActions
         MollyCounts = GameObject.Find("MollyCounts").GetComponent<Text>();
         HPNumber = GameObject.Find("HPNumber").GetComponent<Text>();
 
-        //ARNumber = GameObject.Find("ARNumber").GetComponent<Text>();
+        ARNumber = GameObject.Find("ARNumber").GetComponent<Text>();
 
         ExpNumber = GameObject.Find("EXPNum").GetComponent<Text>();
 
@@ -378,7 +378,7 @@ public class PlayerActions
         VaccineCounts.text = player.Stats.NumofPhizer.ToString();
         MollyCounts.text = player.Stats.NumofMolly.ToString();
         HPNumber.text = ((int)player.Stats.Health).ToString() + "/" + ((int)player.Stats.MaxHealth).ToString();
-        //ARNumber.text = ((int)player.Stats.Armorz).ToString() + "/" + ((int)player.Stats.ArmorPerArmorLevelz * 4).ToString();
+        ARNumber.text = ((int)player.Stats.Armorz).ToString() + "/" + ((int)player.Stats.ArmorPerArmorLevelz * 4).ToString();
 
         //stats.ArmorPerArmorLevelz
 
@@ -394,16 +394,16 @@ public class PlayerActions
         switch (player.Stats.ArmorLevel)
         {
             case 1:
-                ARBar.color = Color.white;
+                ARBar.color = new Color(129 / 255f, 45 / 255f, 121 / 255f);
                 break;
             case 2:
-                ARBar.color = new Color(55 / 255f, 195 / 255f, 255 / 255f);
+                ARBar.color = new Color(129 / 255f, 45 / 255f, 121 / 255f);
                 break;
             case 3:
-                ARBar.color = new Color(166 / 255f, 50 / 255f, 168 / 255f);
+                ARBar.color = new Color(129 / 255f, 45 / 255f, 121 / 255f);
                 break;
             case 4:
-                ARBar.color = Color.yellow;
+                ARBar.color = new Color(129 / 255f, 45 / 255f, 121 / 255f);
                 break;
                 /*
             case 5:
