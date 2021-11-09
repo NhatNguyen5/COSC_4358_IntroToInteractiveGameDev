@@ -449,7 +449,7 @@ public class Globin : MonoBehaviour
                         timeBtwShots -= Time.deltaTime;
                     }
 
-                    if (NextMoveCoolDown <= 0 && reachedDestination == true)
+                    if (NextMoveCoolDown <= 0 || reachedDestination == true)
                     {
                         //Vector2 temp = randPos;
                         randomPos();

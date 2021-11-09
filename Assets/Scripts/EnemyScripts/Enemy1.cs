@@ -157,6 +157,11 @@ public class Enemy1 : MonoBehaviour
     public float facing;
 
 
+    [Header("Reset Check Setting")]
+    public float recalcshortestDist = 1f;
+    private float timer2reset;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -292,8 +297,9 @@ public class Enemy1 : MonoBehaviour
             }
 
             //working on clearing up globin vision
-            if (timeBtwShots <= 0)
+            if (timer2reset <= 0)
             {
+                timer2reset = recalcshortestDist;
                 float closestDistanceSqr = Mathf.Infinity;
                 Collider2D[] ColliderArray = Physics2D.OverlapCircleAll(transform.position, shootdistance);
                 foreach (Collider2D collider2D in ColliderArray)
@@ -419,6 +425,7 @@ public class Enemy1 : MonoBehaviour
             }
             //Debug.Log(lineofsight + " " +facing);
             Animate(facing);
+            timer2reset -= Time.deltaTime;
         }
     }
 

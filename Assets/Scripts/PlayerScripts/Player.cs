@@ -400,7 +400,7 @@ public class Player : MonoBehaviour
     {
         if (hideLevelUPAnimation == true)
         {
-            Debug.Log("its true");
+            //Debug.Log("its true");
             if (timetoblockanimation >= 0)
             {
                 timetoblockanimation -= Time.deltaTime;

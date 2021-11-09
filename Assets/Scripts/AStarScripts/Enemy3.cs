@@ -57,7 +57,42 @@ public class Enemy3 : MonoBehaviour
 
 
     [Header("Enemy3 Stats")]
+    public float HP = 100;
+    public float AR = 0;
     public float speed = 200f;
+
+    [Header("Chase Settings")]
+    public float time2chase;
+    private float chaseInProgress;
+
+
+
+    private float timeBtwShots;
+    [Header("Gun Settings")]
+    public float beginningrangetoshoot;
+    public float endingrangetoshoot;
+    private float startTimeBtwShots;
+
+    public int AmountOfBullets;
+    public float bulletSpread = 0.0f;
+    public GameObject projectile;
+    public Transform firePoint;
+    //private Rigidbody2D rb;
+
+
+    [Header("Burst Settings")]
+    public bool burstFire;
+    public float timeBtwBurst;
+    private float burstTime = 0;
+
+    public int timesToShoot;
+    private int TimesShot = 0;
+
+    //DEATH VARIABLE
+    private bool isDead = false;
+
+
+
 
 
     // Start is called before the first frame update
@@ -77,6 +112,8 @@ public class Enemy3 : MonoBehaviour
             player = this.transform;
         }
         target = player;
+        playerStash = player;
+        EnemyTarget = player;
         //GlobalPlayerVariables.GlobinsAndPlayerAlive += 1;
         GlobalPlayerVariables.TotalEnemiesAlive += 1;
         InvokeRepeating("UpdatePath", 0f, 0.5f);
@@ -145,7 +182,7 @@ public class Enemy3 : MonoBehaviour
 
   
 
-            if (distancefromplayer >= stoppingDistance || lineofsight == false)
+            if (distancefromplayer >= stoppingDistance && lineofsight == false && chaseInProgress > 0)
             {
                 Astar();
             }
@@ -179,12 +216,59 @@ public class Enemy3 : MonoBehaviour
     }
 
 
+    void burst()
+    {
+        for (int i = 0; i < AmountOfBullets; i++)
+        {
+            float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
+            Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
+            Instantiate(projectile, firePoint.position, newRot);
+            burstTime = timeBtwBurst;
+        }
+    }
+
+    void variation()
+    {
+        startTimeBtwShots = Random.Range(beginningrangetoshoot, endingrangetoshoot);
+        timeBtwShots = startTimeBtwShots;
+    }
+
+    void shoot()
+    {
+        for (int i = 0; i < AmountOfBullets; i++)
+        {
+            //EnemyWeapon.WeaponAnim.SetBool("IsShooting", true);
+            float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
+            Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
+            Instantiate(projectile, firePoint.position, newRot);
+            variation();
+        }
+
+    }
+
 
 
     private void Update()
     {
         if (GlobalPlayerVariables.EnableAI)
         {
+
+            if (playerStash == null)
+            {
+                player = this.transform;
+            }
+
+
+            if (target == null || EnemyTarget == null)
+            {
+                target = playerStash;
+                EnemyTarget = playerStash;
+                chaseInProgress = 0f;
+            }
+
+           
+
+
             /*
             if (GlobalPlayerVariables.Defend == false)
             {
@@ -206,7 +290,7 @@ public class Enemy3 : MonoBehaviour
             if (player != null && player != this.transform)
             {
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, player.position - transform.position, Mathf.Infinity, ~IgnoreMe);
-                Debug.DrawRay(transform.position, player.position - transform.position, Color.green);
+                //Debug.DrawRay(transform.position, player.position - transform.position, Color.green);
                 //var rayDirection = player.position - transform.position;
                 //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
 
@@ -256,12 +340,12 @@ public class Enemy3 : MonoBehaviour
 
 
                 //working on clearing up globin vision
-                /*
+                
                 float closestDistanceSqr = Mathf.Infinity;
                 Collider2D[] ColliderArray = Physics2D.OverlapCircleAll(transform.position, shootdistance);
                 foreach (Collider2D collider2D in ColliderArray)
                 {
-                    if (collider2D.TryGetComponent<EnemyMarker>(out EnemyMarker marked))
+                    if (collider2D.TryGetComponent<GoodGuyMarker>(out GoodGuyMarker marked))
                     {
                         if (collider2D.TryGetComponent<Transform>(out Transform enemy))
                         {
@@ -271,7 +355,7 @@ public class Enemy3 : MonoBehaviour
                             RaycastHit2D hit2 = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
 
 
-                            if (hit2.collider.gameObject.tag == "EnemyMelee" || hit2.collider.gameObject.tag == "Enemy" || hit2.collider.gameObject.tag == "Colony")
+                            if (hit2.collider.gameObject.tag == "Player" || hit2.collider.gameObject.tag == "Globin")
                             {
                                 canSeeEnemy = true;
                                 Vector3 directionToTarget = enemy.position - transform.position;
@@ -280,6 +364,7 @@ public class Enemy3 : MonoBehaviour
                                 {
                                     closestDistanceSqr = dSqrToTarget;
                                     EnemyTarget = enemy;
+                                    target = enemy;
                                     closest = true;
                                     //Debug.Log("Found target");
 
@@ -292,7 +377,7 @@ public class Enemy3 : MonoBehaviour
                         }
                     }
                 }
-                */
+                
                 /*
                 if (canSeeEnemy == false)
                     Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.white);
@@ -303,18 +388,23 @@ public class Enemy3 : MonoBehaviour
                 if (EnemyTarget != null)
                 {
                     RaycastHit2D hit3 = Physics2D.Raycast(transform.position, EnemyTarget.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
-                    if (hit3.collider.gameObject.tag == "EnemyMelee" || hit3.collider.gameObject.tag == "Enemy" || hit3.collider.gameObject.tag == "Colony")
+                    if (hit3.collider.gameObject.tag == "Globin" || hit3.collider.gameObject.tag == "Player")
                     {
+                        lineofsight = true;
                         canSeeEnemy = true;
-                        //Debug.DrawRay(transform.position, EnemyTarget.transform.position - transform.position, Color.red);
+                        chaseInProgress = time2chase;
+
+                        Debug.DrawRay(transform.position, EnemyTarget.transform.position - transform.position, Color.red);
                     }
                     else
                     {
+                        lineofsight = false;
                         canSeeEnemy = false;
                     }
                 }
                 else
                 {
+                    lineofsight = false;
                     canSeeEnemy = false;
                 }
 
@@ -324,7 +414,7 @@ public class Enemy3 : MonoBehaviour
                 if (EnemyTarget != null && canSeeEnemy == true && closest == false)
                     Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.black);
                 */
-                /*
+                
                 if (canSeeEnemy == true && GlobalPlayerVariables.GameOver == false)
                 {
 
@@ -361,17 +451,158 @@ public class Enemy3 : MonoBehaviour
 
                     
                 }
-                */
-                if (NextMoveCoolDown <= 0 && reachedDestination == true)
+                
+                if (NextMoveCoolDown <= 0 || reachedDestination == true)
                 {
                     //Vector2 temp = randPos;
                     randomPos();
                     //facing = Mathf.Atan2((temp - randPos).x, (temp - randPos).y) * Mathf.Rad2Deg;
                 }
+                chaseInProgress -= Time.deltaTime;
                 NextMoveCoolDown -= Time.deltaTime;
 
 
             }
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.tag == "EnemyBullet")
+        {
+            float damage = collision.gameObject.GetComponent<EnemyProj>().damage;
+            float speed = collision.gameObject.GetComponent<EnemyProj>().speed;
+
+
+            takeDamage(damage, collision.transform, speed);
+        }
+        if (collision.tag == "EnemyBullet2")
+        {
+            float damage = collision.gameObject.GetComponent<EnemyProj2>().damage;
+            float speed = collision.gameObject.GetComponent<EnemyProj2>().speed;
+
+
+            takeDamage(damage, collision.transform, speed);
+        }
+
+    }
+
+    public void takeDamage(float damage, Transform impact, float speed)
+    {
+        //Debug.Log(damage);
+        //bool iscrit = false;
+        //float chance2crit = Random.Range(0f, 1f);
+        /*
+        if (chance2crit <= critRate)
+        {
+            iscrit = true;
+            damage *= critDMG;
+        }*/
+
+        //Debug.Log("Globin Taking Damage");
+
+        if (damage > AR)
+        {
+            HP = (HP - (damage - AR));
+            showDamage(damage, impact, speed);
+            StartCoroutine(FlashRed());
+        }
+        else
+        {
+            HP = HP - 1;
+            showDamage(damage, impact, speed);
+            StartCoroutine(FlashRed());
+        }
+
+
+        if (HP <= 0)
+        {
+            Die();
+        }
+
+    }
+
+
+    void showDamage(float damage, Transform impact, float speed)
+    {
+        //damage = Mathf.Round(damage - AR);
+
+
+        if (damage > AR)
+        {
+            damage = Mathf.Round(damage - AR);
+        }
+        else
+        {
+            damage = Mathf.Round(1);
+        }
+
+
+        if (damage >= 1)
+        {
+            Vector3 direction = (transform.position - impact.transform.position).normalized;
+
+            //might add to impact to make it go past enemy
+            var go = Instantiate(DamageText, impact.position, Quaternion.identity);
+
+            //Debug.Log("CRIT");
+
+            //Color colorTop = new Color(0.83529f, 0.06667f, 0.06667f);
+            //Color colorBottom = new Color(0.98824f, 0.33725f, .90196f);
+
+
+            go.GetComponent<TextMeshPro>().text = damage.ToString();
+            //go.GetComponent<TextMeshPro>().colorGradient = new VertexGradient(colorTop, colorTop, colorBottom, colorBottom);
+            go.GetComponent<TextMeshPro>().fontSize *= 0.8f;
+
+            go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, speed / 5);
+        }
+    }
+
+
+    public IEnumerator FlashRed()
+    {
+        sprite.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sprite.color = Color.white;
+    }
+
+
+
+
+
+
+    void Die()
+    {
+        if (isDead == false)
+        {
+            isDead = true;
+            //lobalPlayerVariables.expToDistribute += EXPWorth;
+
+
+            if (transform.Find("StickyGrenade(Clone)") != null)
+            {
+                transform.Find("StickyGrenade(Clone)").GetComponent<StickyGrenade>().stuck = false;
+                transform.Find("StickyGrenade(Clone)").parent = null;
+            }
+            GlobalPlayerVariables.GlobinsAndPlayerAlive -= 1;
+            GameObject.Destroy(gameObject);
+        }
+    }
+
 }
