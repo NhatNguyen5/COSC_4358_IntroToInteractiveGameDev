@@ -60,10 +60,33 @@ public class Enemy3 : MonoBehaviour
     public float HP = 100;
     public float AR = 0;
     public float speed = 200f;
+    public float contactDamage = 12;
 
     [Header("Chase Settings")]
     public float time2chase;
     private float chaseInProgress;
+
+    [Header("Special Movement/Abilities")]
+    public bool canDash = false;
+    public float dashForce;
+    public float beginningRangeToDash;
+    public float endingRangeToDash;
+    private float DashTimer;
+    public bool canDoAirStrike = false;
+    public float beginningRangeToCallAirStrike;
+    public float endingRangeToCallAirStrike;
+    private float AirStrikeTimer;
+
+
+
+
+    private float knockbackForce = 0;
+    [Header("KnockBack Settings")]
+    public float knockForcePlayerContact;
+    private bool knockback = false;
+    public float knockbackstartrange = 0.4f;
+    public float knockbackendrange = 1.0f;
+    private float knockbacktime;
 
 
 
@@ -92,6 +115,8 @@ public class Enemy3 : MonoBehaviour
     private bool isDead = false;
 
 
+    private float critRate = 0;
+    private float critDMG = 0;
 
 
 
@@ -180,7 +205,6 @@ public class Enemy3 : MonoBehaviour
                 distancefromplayer = Vector2.Distance(rb.position, player.position);
 
 
-  
 
             if (distancefromplayer >= stoppingDistance && lineofsight == false && chaseInProgress > 0)
             {
@@ -200,6 +224,7 @@ public class Enemy3 : MonoBehaviour
                     reachedDestination = true;
                 }
             }
+            
             
         }
     }
@@ -253,6 +278,17 @@ public class Enemy3 : MonoBehaviour
         if (GlobalPlayerVariables.EnableAI)
         {
 
+            if (knockback == true)
+            {
+                knockbacktime -= Time.deltaTime;
+                if (knockbacktime <= 0)
+                {
+                    knockback = false;
+                }
+            }
+
+
+
             if (playerStash == null)
             {
                 player = this.transform;
@@ -266,7 +302,31 @@ public class Enemy3 : MonoBehaviour
                 chaseInProgress = 0f;
             }
 
-           
+
+            if (DashTimer <= 0 && canDash == true)
+            { 
+                float newDashTimer = Random.Range(beginningRangeToDash, endingRangeToDash);
+                Vector2 direction = Vector2.zero;
+                if (lineofsight == true)
+                {
+                    if(target != null)
+                        direction = (target.position - transform.position).normalized;
+                }
+                else
+                {
+                    Vector3 newpos = new Vector3(randPos.x, randPos.y, 0);
+                    direction = (newpos - transform.position).normalized;
+                }
+                Vector2 force = direction * dashForce;
+                rb.AddForce(force, ForceMode2D.Impulse);
+                
+
+                DashTimer = newDashTimer;
+                
+            }
+
+            DashTimer -= Time.deltaTime;
+
 
 
             /*
@@ -468,8 +528,44 @@ public class Enemy3 : MonoBehaviour
 
 
 
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        Vector2 direction = (collision.transform.position - transform.position).normalized;
+    
+        Vector2 force = direction * dashForce;
+        rb.AddForce(-force*2, ForceMode2D.Impulse);
 
 
+        //reachedDestination = true;
+        //NextMoveCoolDown = timeTillNextMove;
+
+        /*
+
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Globin")
+        {
+            randomPos();
+            /*
+            //Debug.Log("PLAYER CONTACT");
+            knockbackForce = knockForcePlayerContact;
+            knockbacktime = Random.Range(knockbackstartrange, knockbackendrange);
+            knockback = true;
+            
+        }
+        else if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "Player")
+        {
+            //Debug.Log("ENEMY IS HITTING WALL");
+            //UNSTUCKPOS = collision.gameObject.GetComponent<Transform>();
+            //knockbacktime = unstuckTime;
+            //knockback = true;
+            //unstuck = true;
+            randomPos();
+        }
+        */
+    }
+
+    
 
 
 
@@ -482,22 +578,27 @@ public class Enemy3 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (collision.tag == "EnemyBullet")
+        if (collision.tag == "Bullet")
         {
-            float damage = collision.gameObject.GetComponent<EnemyProj>().damage;
-            float speed = collision.gameObject.GetComponent<EnemyProj>().speed;
+            float damage = collision.gameObject.GetComponent<Bullet>().damage;
+            float speed = collision.gameObject.GetComponent<Bullet>().speed;
+            critRate = collision.gameObject.GetComponent<Bullet>().critRate;
+            critDMG = collision.gameObject.GetComponent<Bullet>().critDMG;
+            knockbackForce = collision.gameObject.GetComponent<Bullet>().knockbackForce;
 
 
             takeDamage(damage, collision.transform, speed);
-        }
-        if (collision.tag == "EnemyBullet2")
-        {
-            float damage = collision.gameObject.GetComponent<EnemyProj2>().damage;
-            float speed = collision.gameObject.GetComponent<EnemyProj2>().speed;
+
+            reachedDestination = true;
 
 
-            takeDamage(damage, collision.transform, speed);
+            Vector2 direction = (collision.transform.position - transform.position).normalized;
+            Vector2 force = direction * knockbackForce;
+            rb.AddForce(force, ForceMode2D.Impulse);
+
+            knockbacktime = Random.Range(knockbackstartrange, knockbackendrange);
+            knockback = true;
+
         }
 
     }
@@ -506,13 +607,13 @@ public class Enemy3 : MonoBehaviour
     {
         //Debug.Log(damage);
         //bool iscrit = false;
-        //float chance2crit = Random.Range(0f, 1f);
-        /*
+        float chance2crit = Random.Range(0f, 1f);
+        
         if (chance2crit <= critRate)
         {
-            iscrit = true;
+            //iscrit = true;
             damage *= critDMG;
-        }*/
+        }
 
         //Debug.Log("Globin Taking Damage");
 
@@ -600,7 +701,7 @@ public class Enemy3 : MonoBehaviour
                 transform.Find("StickyGrenade(Clone)").GetComponent<StickyGrenade>().stuck = false;
                 transform.Find("StickyGrenade(Clone)").parent = null;
             }
-            GlobalPlayerVariables.GlobinsAndPlayerAlive -= 1;
+            GlobalPlayerVariables.TotalEnemiesAlive -= 1;
             GameObject.Destroy(gameObject);
         }
     }

@@ -37,7 +37,12 @@ public class GrenadeExplosion : MonoBehaviour
             if (CaughtObject.tag == "EnemyMelee") { CaughtObject.GetComponent<Enemy2>().takeDamage(ExplodeDamage, CaughtObject.transform, 10);
                 CaughtObject.GetComponent<Rigidbody2D>().AddForce(-(transform.position - CaughtObject.transform.position) * knockBackForce, ForceMode2D.Impulse);
             }
-            if (CaughtObject.tag == "Enemy") { CaughtObject.GetComponent<Enemy1>().takeDamage(ExplodeDamage, CaughtObject.transform, 10);
+            if (CaughtObject.tag == "Enemy") {
+                if (CaughtObject.GetComponent<Enemy1>() != null)
+                    CaughtObject.GetComponent<Enemy1>().takeDamage(ExplodeDamage, CaughtObject.transform, 10);
+                else
+                    CaughtObject.GetComponent<Enemy3>().takeDamage(ExplodeDamage, CaughtObject.transform, 10);
+
                 CaughtObject.GetComponent<Rigidbody2D>().AddForce(-(transform.position - CaughtObject.transform.position) * knockBackForce, ForceMode2D.Impulse);
             }
             if (CaughtObject.tag == "Colony") { CaughtObject.GetComponent<EnemyColony>().takeDamage(ExplodeDamage, CaughtObject.transform, 10);

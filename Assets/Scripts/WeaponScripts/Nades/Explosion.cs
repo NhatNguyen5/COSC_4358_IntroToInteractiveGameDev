@@ -46,7 +46,14 @@ public class Explosion : MonoBehaviour
         if (hurtEnemies == true)
         {
             if (collision.tag == "EnemyMelee") { collision.GetComponent<Enemy2>().takeDamage(explosionDamage, collision.transform, 10); }
-            if (collision.tag == "Enemy") { collision.GetComponent<Enemy1>().takeDamage(explosionDamage, collision.transform, 10); }
+            if (collision.tag == "Enemy") { 
+                if(collision.GetComponent<Enemy1>()!=null)
+                    collision.GetComponent<Enemy1>().takeDamage(explosionDamage, collision.transform, 10);
+                else
+                    collision.GetComponent<Enemy3>().takeDamage(explosionDamage, collision.transform, 10);
+
+
+            }
             if (collision.tag == "Colony") { collision.GetComponent<EnemyColony>().takeDamage(explosionDamage, collision.transform, 10); }
         }
     }

@@ -468,8 +468,23 @@ public class Globin : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            float contactDamage = collision.gameObject.GetComponent<Enemy1>().contactDamage;
-            float speed = collision.gameObject.GetComponent<Enemy1>().speed;
+
+            float contactDamage = 0;
+            float speed = 0;
+            if (collision.gameObject.GetComponent<Enemy1>() != null)
+            {
+                contactDamage = collision.gameObject.GetComponent<Enemy1>().contactDamage;
+                speed = collision.gameObject.GetComponent<Enemy1>().speed;
+            }
+            else
+            {
+                contactDamage = collision.gameObject.GetComponent<Enemy3>().contactDamage;
+                speed = collision.gameObject.GetComponent<Enemy3>().speed;
+            }
+
+
+            //float contactDamage = collision.gameObject.GetComponent<Enemy1>().contactDamage;
+            //float speed = collision.gameObject.GetComponent<Enemy1>().speed;
             takeDamage(contactDamage, collision.transform, speed);
         }
         if (collision.gameObject.tag == "EnemyMelee")

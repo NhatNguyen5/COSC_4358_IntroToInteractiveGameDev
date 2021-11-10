@@ -109,7 +109,12 @@ public class Puddle : MonoBehaviour
         foreach (var objectToBurn in objectsToBurn)
         {
             if (objectToBurn.tag == "EnemyMelee") { objectToBurn.GetComponent<Enemy2>().takeDamage(currDamage, objectToBurn.transform, 10); }
-            if (objectToBurn.tag == "Enemy") { objectToBurn.GetComponent<Enemy1>().takeDamage(currDamage, objectToBurn.transform, 10); }
+            if (objectToBurn.tag == "Enemy") {
+                if (objectToBurn.GetComponent<Enemy1>() != null)
+                    objectToBurn.GetComponent<Enemy1>().takeDamage(currDamage, objectToBurn.transform, 10); 
+                else
+                    objectToBurn.GetComponent<Enemy3>().takeDamage(currDamage, objectToBurn.transform, 10);
+            }
             if (objectToBurn.tag == "Colony") { objectToBurn.GetComponent<EnemyColony>().takeDamage(currDamage, objectToBurn.transform, 10); }
             if (objectToBurn.tag == "Player") { objectToBurn.GetComponent<TakeDamage>().takeDamage(currDamage, objectToBurn.transform, 10); }
             if (objectToBurn.tag == "Globin") { objectToBurn.GetComponent<Globin>().takeDamage(currDamage, objectToBurn.transform, 10); }
