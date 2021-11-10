@@ -69,6 +69,7 @@ public class Enemy3 : MonoBehaviour
     [Header("Special Movement/Abilities")]
     public bool canDash = false;
     public float dashForce;
+    public float dashBackOnHit;
     public float beginningRangeToDash;
     public float endingRangeToDash;
     private float DashTimer;
@@ -534,8 +535,8 @@ public class Enemy3 : MonoBehaviour
 
         Vector2 direction = (collision.transform.position - transform.position).normalized;
     
-        Vector2 force = direction * dashForce;
-        rb.AddForce(-force*2, ForceMode2D.Impulse);
+        Vector2 force = direction * dashBackOnHit;
+        rb.AddForce(-force, ForceMode2D.Impulse);
 
 
         //reachedDestination = true;
