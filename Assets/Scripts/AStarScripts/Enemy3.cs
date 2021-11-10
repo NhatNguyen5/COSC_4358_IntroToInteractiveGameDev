@@ -10,6 +10,8 @@ public class Enemy3 : MonoBehaviour
 
     public Transform EnemyTarget;
 
+    public Transform BossObject;
+
 
     public float nextWaypointDistance = 3f;
 
@@ -67,12 +69,16 @@ public class Enemy3 : MonoBehaviour
     private float chaseInProgress;
 
     [Header("Special Movement/Abilities")]
+    public bool retreatToBoss = false;
+    public float retreatDist;
+
     public bool canDash = false;
     public float dashForce;
     public float dashBackOnHit;
     public float beginningRangeToDash;
     public float endingRangeToDash;
     private float DashTimer;
+
     public bool canDoAirStrike = false;
     public float beginningRangeToCallAirStrike;
     public float endingRangeToCallAirStrike;
@@ -137,6 +143,12 @@ public class Enemy3 : MonoBehaviour
         {
             player = this.transform;
         }
+
+        if (retreatToBoss == true)
+        {
+            BossObject = GameObject.FindGameObjectWithTag("Colony").transform;
+        }
+
         target = player;
         playerStash = player;
         EnemyTarget = player;
@@ -205,9 +217,13 @@ public class Enemy3 : MonoBehaviour
             if (player != null)
                 distancefromplayer = Vector2.Distance(rb.position, player.position);
 
-
-
-            if (distancefromplayer >= stoppingDistance && lineofsight == false && chaseInProgress > 0)
+            if (retreatToBoss == true && distancefromplayer <= retreatDist)
+            {
+                //need logic to make it where target system doesn't conflict
+                target = BossObject;
+                Astar();
+            }
+            else if (distancefromplayer >= stoppingDistance && lineofsight == false && chaseInProgress > 0)
             {
                 Astar();
             }
@@ -329,6 +345,10 @@ public class Enemy3 : MonoBehaviour
             DashTimer -= Time.deltaTime;
 
 
+            //AIRSTRIKES
+            //have enemy retreat to boss lmaoooo
+
+
 
             /*
             if (GlobalPlayerVariables.Defend == false)
@@ -425,7 +445,8 @@ public class Enemy3 : MonoBehaviour
                                 {
                                     closestDistanceSqr = dSqrToTarget;
                                     EnemyTarget = enemy;
-                                    target = enemy;
+                                    if(retreatToBoss == false)
+                                        target = enemy;
                                     closest = true;
                                     //Debug.Log("Found target");
 
