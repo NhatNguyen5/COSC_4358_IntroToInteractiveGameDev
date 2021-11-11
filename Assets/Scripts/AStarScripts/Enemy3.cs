@@ -73,6 +73,7 @@ public class Enemy3 : MonoBehaviour
     public float retreatDist;
 
     public bool canDash = false;
+    public bool randomDash = false;
     public float dashForce;
     public float dashBackOnHit;
     public float beginningRangeToDash;
@@ -326,8 +327,14 @@ public class Enemy3 : MonoBehaviour
                 Vector2 direction = Vector2.zero;
                 if (lineofsight == true)
                 {
-                    if(target != null)
+                    if (target != null && randomDash == false || target != null && distancefromplayer >= shootdistance / 2)
                         direction = (target.position - transform.position).normalized;
+                    else if (target != null && randomDash == true)
+                    {
+                        randomPos();
+                        Vector3 newpos = new Vector3(randPos.x, randPos.y, 0);
+                        direction = (newpos - transform.position).normalized;
+                    }
                 }
                 else
                 {
