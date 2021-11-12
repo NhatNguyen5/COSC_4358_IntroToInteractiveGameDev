@@ -120,8 +120,8 @@ MonoBehaviour:
   distanceToTarget: 0
   landingPad: {fileID: 5974538805177197}
   explosion: {fileID: 4186919218777762152, guid: 5a75f88db0aa2f84dbf1379aa6dd9454, type: 3}
-  startTimerRangeForStrikes: 5
-  endTimerRangeForStrikes: 10
+  startTimerRangeForStrikes: 1.5
+  endTimerRangeForStrikes: 3
   strikeTimer: 0
 --- !u!1 &5974538805177198
 GameObject:
