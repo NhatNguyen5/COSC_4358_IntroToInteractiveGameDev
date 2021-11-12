@@ -81,6 +81,8 @@ public class Enemy3 : MonoBehaviour
     private float DashTimer;
 
     public bool canDoAirStrike = false;
+    public GameObject AirStrike;
+    public int amountOfAirStrikes;
     public float beginningRangeToCallAirStrike;
     public float endingRangeToCallAirStrike;
     private float AirStrikeTimer;
@@ -221,7 +223,12 @@ public class Enemy3 : MonoBehaviour
             if (retreatToBoss == true && distancefromplayer <= retreatDist)
             {
                 //need logic to make it where target system doesn't conflict
-                target = BossObject;
+                if(BossObject != null)
+                    target = BossObject;
+                else if (BossObject == null)
+                {
+                    target = playerStash;
+                }
                 Astar();
             }
             else if (distancefromplayer >= stoppingDistance && lineofsight == false && chaseInProgress > 0)
@@ -348,12 +355,27 @@ public class Enemy3 : MonoBehaviour
                 DashTimer = newDashTimer;
                 
             }
-
-            DashTimer -= Time.deltaTime;
+            if(DashTimer >= 0)
+                DashTimer -= Time.deltaTime;
 
 
             //AIRSTRIKES
-            //have enemy retreat to boss lmaoooo
+            if (canDoAirStrike == true && AirStrike != null && AirStrikeTimer <= 0 && lineofsight == true)
+            {
+                float newAirStrikeTimer = Random.Range(beginningRangeToCallAirStrike, endingRangeToCallAirStrike);
+                AirStrikeTimer = newAirStrikeTimer;
+
+                for (int i = 0; i < amountOfAirStrikes; i++)
+                {
+                    Vector2 AOE = player.position;
+                    //randPos = transform.position;
+                    AOE += Random.insideUnitCircle * circleRadius;
+                    Instantiate(AirStrike, AOE, Quaternion.Euler(0, 0, 0));
+                }
+
+            }
+            if (AirStrikeTimer >= 0)
+                AirStrikeTimer -= Time.deltaTime;
 
 
 
