@@ -119,9 +119,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceToTarget: 0
   landingPad: {fileID: 5974538805177197}
-  explosion: {fileID: 4186919218777762152, guid: 5a75f88db0aa2f84dbf1379aa6dd9454, type: 3}
-  startTimerRangeForStrikes: 1.5
-  endTimerRangeForStrikes: 3
+  explosion: {fileID: 1876110042829793437, guid: 9d9b2fa3f8501c24692b84d18ccc9edc, type: 3}
+  startTimerRangeForStrikes: 3
+  endTimerRangeForStrikes: 6
   strikeTimer: 0
 --- !u!1 &5974538805177198
 GameObject:
@@ -196,7 +196,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a0ecdf67ba30de74f97cf5a6c197d84d, type: 3}
-  m_Color: {r: 1, g: 0.008716989, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.008716989, b: 0, a: 0.41960785}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

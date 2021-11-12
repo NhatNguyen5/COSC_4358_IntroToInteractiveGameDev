@@ -655,7 +655,7 @@ MonoBehaviour:
   player: {fileID: 0}
   playerStash: {fileID: 0}
   stoppingDistance: 0
-  circleRadius: 5
+  circleRadius: 30
   timeTillNextMove: 0.5
   lineofsight: 0
   IgnoreMe:
