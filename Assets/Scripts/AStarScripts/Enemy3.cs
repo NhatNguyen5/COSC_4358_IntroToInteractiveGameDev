@@ -426,7 +426,7 @@ public class Enemy3 : MonoBehaviour
 
                 for (int i = 0; i < amountOfAirStrikes; i++)
                 {
-                    Vector2 AOE = player.position;
+                    Vector2 AOE = EnemyTarget.position;
                     //randPos = transform.position;
                     AOE += Random.insideUnitCircle * circleRadius;
                     Instantiate(AirStrike, AOE, Quaternion.Euler(0, 0, 0));
