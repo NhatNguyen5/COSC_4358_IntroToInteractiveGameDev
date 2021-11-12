@@ -3,9 +3,64 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 using TMPro;
+using UnityEngine.UI;
 
 public class Enemy3 : MonoBehaviour
 {
+    public delegate void EnemyKilled();
+    public static event EnemyKilled OnEnemyKilled;
+
+    [System.Serializable]
+    public struct ItemDrops
+    {
+        public bool isCurrency;
+        public bool isAmmo;
+        public GameObject[] Drops;
+        public float DropPercentage;
+        public int NumOfDrop;
+        public int[] convertProtein()
+        {
+            int numOfDigits;
+            if (NumOfDrop.ToString().Length >= Drops.Length)
+                numOfDigits = Drops.Length;
+            else
+                numOfDigits = NumOfDrop.ToString().Length;
+
+            int[] convertedArr = new int[numOfDigits];
+
+            float multten = 1;
+            for (int i = 0; i < numOfDigits; i++)
+            {
+                if (i < numOfDigits - 1)
+                    convertedArr[i] = (Mathf.FloorToInt(NumOfDrop / multten) % 10);
+                else
+                    convertedArr[i] = (Mathf.FloorToInt(NumOfDrop / multten));
+                multten *= 10;
+            }
+            return convertedArr;
+        }
+        public int[] convertAmmo()
+        {
+            int[] convertedArr = new int[3];
+            convertedArr[2] = Mathf.FloorToInt(NumOfDrop / 100f);
+
+            if ((NumOfDrop / 100f) - convertedArr[2] > 0.5)
+            {
+                convertedArr[1] = 1;
+                convertedArr[0] = 1;
+            }
+            else if ((NumOfDrop / 100f) - convertedArr[2] == 0.5)
+                convertedArr[1] = 1;
+            else if ((NumOfDrop / 100f) - convertedArr[2] > 0 && (NumOfDrop / 100f) - convertedArr[2] < 0.5)
+                convertedArr[0] = 1;
+
+            return convertedArr;
+        }
+    }
+
+    [Header("Drops")]
+    public ItemDrops[] Drops;
+
     public Transform target;
 
     public Transform EnemyTarget;
@@ -59,10 +114,13 @@ public class Enemy3 : MonoBehaviour
 
 
     [Header("Enemy3 Stats")]
+    public Image HPbar;
     public float HP = 100;
+    public float maxHP = 100;
     public float AR = 0;
     public float speed = 200f;
     public float contactDamage = 12;
+    public int EXPWorth = 50;
 
     [Header("Chase Settings")]
     public float time2chase;
@@ -133,6 +191,7 @@ public class Enemy3 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //maxHP = HP;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
@@ -681,7 +740,7 @@ public class Enemy3 : MonoBehaviour
             StartCoroutine(FlashRed());
         }
 
-
+        HPbar.fillAmount = HP / maxHP;
         if (HP <= 0)
         {
             Die();
@@ -744,15 +803,53 @@ public class Enemy3 : MonoBehaviour
         if (isDead == false)
         {
             isDead = true;
-            //lobalPlayerVariables.expToDistribute += EXPWorth;
-
-
+            GlobalPlayerVariables.expToDistribute += EXPWorth;
+            RememberLoadout.totalExperienceEarned += EXPWorth;
+            GlobalPlayerVariables.TotalEnemiesAlive -= 1;
+            GlobalPlayerVariables.enemiesKilled += 1;
+            if (OnEnemyKilled != null)
+            {
+                OnEnemyKilled();
+            }
+            foreach (ItemDrops id in Drops)
+            {
+                if (Random.Range(0, 100) <= id.DropPercentage)
+                {
+                    if (id.isAmmo == false)
+                    {
+                        if (id.isCurrency == false)
+                        {
+                            for (int i = 0; i < id.NumOfDrop; i++)
+                                Instantiate(id.Drops[0], transform.position, Quaternion.identity);
+                        }
+                        else if (id.isCurrency == true)
+                        {
+                            int[] NumArr = id.convertProtein();
+                            for (int i = 0; i < NumArr.Length; i++)
+                            {
+                                for (int j = 0; j < NumArr[i]; j++)
+                                    Instantiate(id.Drops[i], transform.position, Quaternion.identity);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        int[] NumArr = id.convertAmmo();
+                        for (int i = 0; i < NumArr.Length; i++)
+                        {
+                            for (int j = 0; j < NumArr[i]; j++)
+                                Instantiate(id.Drops[i], transform.position, Quaternion.identity);
+                        }
+                    }
+                }
+            }
             if (transform.Find("StickyGrenade(Clone)") != null)
             {
                 transform.Find("StickyGrenade(Clone)").GetComponent<StickyGrenade>().stuck = false;
+                transform.Find("StickyGrenade(Clone)").GetComponent<StickyGrenade>().landed = true;
                 transform.Find("StickyGrenade(Clone)").parent = null;
             }
-            GlobalPlayerVariables.TotalEnemiesAlive -= 1;
+
             GameObject.Destroy(gameObject);
         }
     }
