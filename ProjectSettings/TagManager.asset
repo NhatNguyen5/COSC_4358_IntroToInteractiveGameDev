@@ -22,6 +22,7 @@ TagManager:
   - ItemSlot
   - ShopManager
   - Thymus
+  - ObjectPool
   layers:
   - Default
   - TransparentFX

@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  DespawnTimeHolder: 0.8
   despawnTime: 0.8
   damage: 0
   homing: 1

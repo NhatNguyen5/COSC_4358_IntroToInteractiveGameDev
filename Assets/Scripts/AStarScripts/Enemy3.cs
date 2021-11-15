@@ -331,7 +331,22 @@ public class Enemy3 : MonoBehaviour
         {
             float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
             Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
-            Instantiate(projectile, firePoint.position, newRot);
+            if (projectile.name == "EnemyBullet")
+            {
+
+                GameObject bullet = ObjectPool.instance.GetBulletFromPool();
+                if (bullet != null)
+                {
+                    bullet.transform.position = firePoint.position;
+                    //bullet.transform.rotation = firePoint.rotation;
+                    bullet.transform.rotation = newRot;
+                    bullet.GetComponent<EnemyProj>().despawnTime = bullet.GetComponent<EnemyProj>().DespawnTimeHolder;
+                    //bullet.GetComponent<EnemyProj>().resetSpeed();
+                }
+
+            }
+            else
+                Instantiate(projectile, firePoint.position, newRot);
             burstTime = timeBtwBurst;
         }
     }
@@ -349,7 +364,22 @@ public class Enemy3 : MonoBehaviour
             //EnemyWeapon.WeaponAnim.SetBool("IsShooting", true);
             float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
             Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
-            Instantiate(projectile, firePoint.position, newRot);
+            if (projectile.name == "EnemyBullet")
+            {
+
+                GameObject bullet = ObjectPool.instance.GetBulletFromPool();
+                if (bullet != null)
+                {
+                    bullet.transform.position = firePoint.position;
+                    //bullet.transform.rotation = firePoint.rotation;
+                    bullet.transform.rotation = newRot;
+                    bullet.GetComponent<EnemyProj>().despawnTime = bullet.GetComponent<EnemyProj>().DespawnTimeHolder;
+                    //bullet.GetComponent<EnemyProj>().resetSpeed();
+                }
+
+            }
+            else
+                Instantiate(projectile, firePoint.position, newRot);
             variation();
         }
 
@@ -426,7 +456,9 @@ public class Enemy3 : MonoBehaviour
 
                 for (int i = 0; i < amountOfAirStrikes; i++)
                 {
-                    Vector2 AOE = EnemyTarget.position;
+                    Vector2 AOE = Vector2.zero;
+                    if(EnemyTarget != null)
+                        AOE = EnemyTarget.position;
                     //randPos = transform.position;
                     AOE += Random.insideUnitCircle * circleRadius;
                     Instantiate(AirStrike, AOE, Quaternion.Euler(0, 0, 0));

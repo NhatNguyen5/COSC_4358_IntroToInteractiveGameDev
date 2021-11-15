@@ -543,7 +543,24 @@ public class Enemy1 : MonoBehaviour
         {
             float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
             Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
-            Instantiate(projectile, firePoint.position, newRot);
+
+            if (projectile.name == "EnemyBullet")
+            {
+                foreach (Transform t in transform)
+                {
+                    GameObject bullet = ObjectPool.instance.GetBulletFromPool();
+                    if (bullet != null)
+                    {
+                        bullet.transform.position = firePoint.position;
+                        //bullet.transform.rotation = firePoint.rotation;
+                        bullet.transform.rotation = newRot;
+                        bullet.GetComponent<EnemyProj>().despawnTime = bullet.GetComponent<EnemyProj>().DespawnTimeHolder;
+                        //bullet.GetComponent<EnemyProj>().resetSpeed(); 
+                    }
+                }
+            }
+            else
+                Instantiate(projectile, firePoint.position, newRot);
             burstTime = timeBtwBurst;
         }
     }
@@ -555,7 +572,22 @@ public class Enemy1 : MonoBehaviour
             //EnemyWeapon.WeaponAnim.SetBool("IsShooting", true);
             float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
             Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
-            Instantiate(projectile, firePoint.position, newRot);
+            if (projectile.name == "EnemyBullet")
+            {
+               
+                GameObject bullet = ObjectPool.instance.GetBulletFromPool();
+                if (bullet != null)
+                {
+                    bullet.transform.position = firePoint.position;
+                    //bullet.transform.rotation = firePoint.rotation;
+                    bullet.transform.rotation = newRot;
+                    bullet.GetComponent<EnemyProj>().despawnTime = bullet.GetComponent<EnemyProj>().DespawnTimeHolder;
+                    //bullet.GetComponent<EnemyProj>().resetSpeed();
+                }
+                
+            }
+            else
+                Instantiate(projectile, firePoint.position, newRot);
             variation();
         }
 
