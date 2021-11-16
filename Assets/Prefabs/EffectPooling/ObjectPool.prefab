@@ -49,3 +49,5 @@ MonoBehaviour:
   BulletPoolEffectSizeStart: 500
   DamagePopUp: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
   DamagePopUpSizeStart: 100
+  HeartBeatObj: {fileID: 2213989057062135191, guid: e8ab9d29358ca8844878ba1e19596536, type: 3}
+  HeartBeatPoolStartSize: 30

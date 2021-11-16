@@ -488,7 +488,7 @@ public class Enemy2 : MonoBehaviour
 
             //might add to impact to make it go past enemy
             GameObject go = ObjectPool.instance.GetDamagePopUpFromPool();
-            //go.GetComponent<Animator>().Play("DamagePopUp", -1, 0f);
+            go.GetComponent<Animator>().Play("DamagePopUp", -1, 0f);
             go.transform.SetParent(null);
             go.transform.position = impact.position;
             go.transform.rotation = Quaternion.identity;

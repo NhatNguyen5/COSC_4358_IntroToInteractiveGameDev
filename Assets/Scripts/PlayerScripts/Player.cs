@@ -688,9 +688,17 @@ public class Player : MonoBehaviour
 
     private IEnumerator beatGen(float duration)
     {
-        GameObject gendBeat;
-        Transform HMBG = EnemySpawnRate.transform.Find("HeartMonitorBG").transform.Find("HeartMonitorLine");
-        gendBeat = Instantiate(beat, HMBG, false);
+        //GameObject gendBeat;
+        //Transform HMBG = EnemySpawnRate.transform.Find("HeartMonitorBG").transform.Find("HeartMonitorLine");
+        //gendBeat = Instantiate(beat, HMBG, false);
+        GameObject gendBeat = ObjectPool.instance.GetHeartBeatFromPool();
+        //gendBeat.transform.position = HMBG.transform.position;
+        //gendBeat.SetActive(true);
+
+        gendBeat.GetComponent<Animator>().Play("HeartRateAnim");
+        //gendBeat.GetComponent<Animator>().Play("HeartRateAnim", -1, 0f);
+        //gendBeat.transform.parent = HMBG;
+        //gendBeat.transform.position = HMBG.position;
         //gendBeat.transform.localScale = HMBG.localScale;
         gendBeat.GetComponent<RawImage>().color = new Color(0.75f * ((MaxTbs - enemyManager.timeBetweenSpawns) / (MaxTbs - MinTbs)),
                                                             0.75f * ((enemyManager.timeBetweenSpawns - MinTbs) / (MaxTbs - MinTbs)),
@@ -698,7 +706,8 @@ public class Player : MonoBehaviour
         //Debug.Log(gendBeat.GetComponent<RawImage>().color);
         //gendBeat.GetComponent<Animator>().SetFloat("BeatRate", spawnRate);
         yield return new WaitForSeconds(duration);
-        Destroy(gendBeat);
+        ObjectPool.instance.ReturnHeartBeatToPool(gendBeat);
+        //Destroy(gendBeat);
     }
 
     public IEnumerator Phasing(float duration)

@@ -19,8 +19,13 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] private GameObject DamagePopUp;
     private Queue<GameObject> DamagePopUpPool = new Queue<GameObject>();
     [SerializeField] private int DamagePopUpSizeStart = 10;
-    
 
+
+    [SerializeField] private GameObject HeartBeatObj;
+    private Queue<GameObject> HeartBeatPool = new Queue<GameObject>();
+    [SerializeField] private int HeartBeatPoolStartSize = 10;
+
+    private GameObject EnemySpawnRate;
 
     private void Awake()
     {
@@ -33,6 +38,7 @@ public class ObjectPool : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EnemySpawnRate = GameObject.Find("EnemySpawnRateDisplay");
         for (int i = 0; i < BulletPoolSizeStart; i++)
         {
             GameObject mosaicBullet = Instantiate(EnemyBullets);
@@ -56,6 +62,19 @@ public class ObjectPool : MonoBehaviour
             dmgPopUp.transform.SetParent(gameObject.transform);
             dmgPopUp.SetActive(false);
         }
+
+        Transform HMBG = EnemySpawnRate.transform.Find("HeartMonitorBG").transform.Find("HeartMonitorLine");
+        for (int i = 0; i < HeartBeatPoolStartSize; i++)
+        {
+            //GameObject hrtBeat;
+
+            GameObject hrtBeat = Instantiate(HeartBeatObj, HMBG);
+            //GameObject hrtBeat = Instantiate(HeartBeatObj);
+            HeartBeatPool.Enqueue(hrtBeat);
+            //hrtBeat.transform.SetParent(gameObject.transform);
+            hrtBeat.SetActive(false);
+        }
+
 
 
     }
@@ -109,7 +128,27 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-
+    public GameObject GetHeartBeatFromPool()
+    {
+        if (HeartBeatPool.Count > 0)
+        {
+            GameObject hrtbeat = HeartBeatPool.Dequeue();
+            hrtbeat.SetActive(true);
+            return hrtbeat;
+        }
+        else
+        {
+            GameObject gendBeat;
+            Transform HMBG = EnemySpawnRate.transform.Find("HeartMonitorBG").transform.Find("HeartMonitorLine");
+            gendBeat = Instantiate(HeartBeatObj, HMBG, false);
+            //GameObject hrtBeat = Instantiate(HeartBeatObj);
+            //DamagePopUpPool.Enqueue(HeartBeatObj);
+            //Transform HMBG = EnemySpawnRate.transform.Find("HeartMonitorBG").transform.Find("HeartMonitorLine");
+            //GameObject hrtbeat = Instantiate(HeartBeatObj);
+            //hrtbeat.transform.SetParent(gameObject.transform);
+            return gendBeat;
+        }
+    }
 
 
 
@@ -130,6 +169,12 @@ public class ObjectPool : MonoBehaviour
     {
         DamagePopUpPool.Enqueue(popUp);
         popUp.SetActive(false);
+    }
+
+    public void ReturnHeartBeatToPool(GameObject hrtBeat)
+    {
+        HeartBeatPool.Enqueue(hrtBeat);
+        hrtBeat.SetActive(false);
     }
 
 
