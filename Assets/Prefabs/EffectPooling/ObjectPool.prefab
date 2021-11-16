@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyBullets: {fileID: 3812985790077842512, guid: b8a4215f89377b140b6b3b8efc37eeff, type: 3}
-  BulletPoolSizeStart: 1000
+  BulletPoolSizeStart: 500
   EnemyBulletsEffect: {fileID: 6569476350955756427, guid: ed3d98c238c13d243a12b41dea61cb34, type: 3}
   BulletPoolEffectSizeStart: 500
+  DamagePopUp: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
+  DamagePopUpSizeStart: 100

@@ -28044,8 +28044,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4250463167313063130, guid: a9534845caf411840b212ba59d4965db, type: 3}
+      propertyPath: DamagePopUp
+      value: 
+      objectReference: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
+    - target: {fileID: 4250463167313063130, guid: a9534845caf411840b212ba59d4965db, type: 3}
       propertyPath: BulletPoolSizeStart
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250463167313063130, guid: a9534845caf411840b212ba59d4965db, type: 3}
+      propertyPath: DamagePopUpSizeStart
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4250463167313063131, guid: a9534845caf411840b212ba59d4965db, type: 3}
       propertyPath: m_Name

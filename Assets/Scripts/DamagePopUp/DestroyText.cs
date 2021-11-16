@@ -41,11 +41,25 @@ public class DestroyText : MonoBehaviour
         TextSpeed = Speed/3;
         //Offset = new Vector3(x, y, 0);
         //rb.MovePosition(rb.position + movement);
-        Destroy(gameObject, DestroyTime);
+        if (gameObject.activeSelf == true && gameObject.name == ("DamagePopup(Clone)") || gameObject.name == ("DamagePopup"))
+        {
+            //transform.SetParent(ObjectPool.instance.transform);
+            StartCoroutine("DestroyEffect");
+        }
+        else
+            Destroy(gameObject, DestroyTime);
+        //StartCoroutine("DestroyEffect");
         //movement.x = 
         //transform.localPosition += Offset;
     }
-    
+
+    IEnumerator DestroyEffect()
+    {
+        yield return new WaitForSeconds(DestroyTime);
+        ObjectPool.instance.ReturnDamagePopUpToPool(gameObject);
+    }
+
+
 
     /*maplestory damage popup
     public void spawnPos(float x = 0, float y = 0, float Speed = 0)
