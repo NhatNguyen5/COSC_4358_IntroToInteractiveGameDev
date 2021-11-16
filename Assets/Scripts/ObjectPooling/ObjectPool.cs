@@ -15,6 +15,13 @@ public class ObjectPool : MonoBehaviour
     private Queue<GameObject> EnemyBulletEffectPool = new Queue<GameObject>();
     [SerializeField] private int BulletPoolEffectSizeStart = 10;
 
+    /*
+    [SerializeField] private GameObject DamagePopUp;
+    private Queue<GameObject> DamagePopUpPool = new Queue<GameObject>();
+    [SerializeField] private int BulletPoolEffectSizeStart = 10;
+    */
+
+
     private void Awake()
     {
         if (instance == null)

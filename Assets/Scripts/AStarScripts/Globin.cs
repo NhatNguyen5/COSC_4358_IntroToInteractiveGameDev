@@ -306,7 +306,7 @@ public class Globin : MonoBehaviour
 
                 if (GlobalPlayerVariables.Defend == true)
                 {
-                    if (hit.collider.gameObject.tag == "Player")
+                    if (hit.collider.gameObject.CompareTag("Player"))
                     {
                         lineofsight = true;
                         //Debug.Log("Player is Visable");
@@ -322,7 +322,7 @@ public class Globin : MonoBehaviour
                 }
                 else if (GlobalPlayerVariables.Defend == false)
                 {
-                    if (hit.collider.gameObject.tag == "DefendPos")
+                    if (hit.collider.gameObject.CompareTag("DefendPos"))
                     {
                         //Debug.Log("Player is Visable");
                         lineofsight = true;
@@ -363,7 +363,7 @@ public class Globin : MonoBehaviour
                             RaycastHit2D hit2 = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
 
 
-                            if (hit2.collider.gameObject.tag == "EnemyMelee" || hit2.collider.gameObject.tag == "Enemy" || hit2.collider.gameObject.tag == "Colony")
+                            if (hit2.collider.gameObject.CompareTag("EnemyMelee") || hit2.collider.gameObject.CompareTag("Enemy") || hit2.collider.gameObject.CompareTag("Colony"))
                             {
                                 canSeeEnemy = true;
                                 Vector3 directionToTarget = enemy.position - transform.position;
@@ -394,7 +394,7 @@ public class Globin : MonoBehaviour
                 if (EnemyTarget != null)
                 {
                     RaycastHit2D hit3 = Physics2D.Raycast(transform.position, EnemyTarget.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
-                    if (hit3.collider.gameObject.tag == "EnemyMelee" || hit3.collider.gameObject.tag == "Enemy" || hit3.collider.gameObject.tag == "Colony")
+                    if (hit3.collider.gameObject.CompareTag("EnemyMelee") || hit3.collider.gameObject.CompareTag("Enemy") || hit3.collider.gameObject.CompareTag("Colony"))
                     {
                         canSeeEnemy = true;
                         //Debug.DrawRay(transform.position, EnemyTarget.transform.position - transform.position, Color.red);
@@ -466,7 +466,7 @@ public class Globin : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.CompareTag("Enemy"))
         {
 
             float contactDamage = 0;
@@ -487,13 +487,13 @@ public class Globin : MonoBehaviour
             //float speed = collision.gameObject.GetComponent<Enemy1>().speed;
             takeDamage(contactDamage, collision.transform, speed);
         }
-        if (collision.gameObject.tag == "EnemyMelee")
+        if (collision.gameObject.CompareTag("EnemyMelee"))
         {
             float contactDamage = collision.gameObject.GetComponent<Enemy2>().contactDamage;
             float speed = collision.gameObject.GetComponent<Enemy2>().speed;
             takeDamage(contactDamage, collision.transform, speed);
         }
-        if (collision.gameObject.tag == "Colony")
+        if (collision.gameObject.CompareTag("Colony"))
         {
             float contactDamage = collision.gameObject.GetComponent<EnemyColony>().contactDamage;
             float speed = collision.gameObject.GetComponent<EnemyColony>().speed;
@@ -506,7 +506,7 @@ public class Globin : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.tag == "EnemyBullet")
+        if (collision.CompareTag("EnemyBullet"))
         {
             float damage = collision.gameObject.GetComponent<EnemyProj>().damage;
             float speed = collision.gameObject.GetComponent<EnemyProj>().speed;
@@ -514,7 +514,7 @@ public class Globin : MonoBehaviour
 
             takeDamage(damage, collision.transform, speed);
         }
-        if (collision.tag == "EnemyBullet2")
+        if (collision.CompareTag("EnemyBullet2"))
         {
             float damage = collision.gameObject.GetComponent<EnemyProj2>().damage;
             float speed = collision.gameObject.GetComponent<EnemyProj2>().speed;

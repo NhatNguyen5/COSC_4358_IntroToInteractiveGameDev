@@ -79,7 +79,7 @@ public class EnemyProj : MonoBehaviour
         if (destroyable == false)
         {
             //if (collision.tag != "Enemy" && collision.tag != "EnemyMelee" && collision.tag != "Bullet" && collision.tag != "EnemyBullet")
-            if (collision.tag == "Player" || collision.tag == "Walls" || collision.tag == "Globin")
+            if (collision.CompareTag("Player") || collision.CompareTag("Walls") || collision.CompareTag("Globin"))
             {
 
                 GameObject BParticle2 = ObjectPool.instance.GetBulletEffectFromPool();
@@ -114,7 +114,7 @@ public class EnemyProj : MonoBehaviour
         else
         {
             //if (collision.tag != "Enemy" && collision.tag != "EnemyMelee" && collision.tag != "EnemyBullet")
-            if (collision.tag == "Player" || collision.tag == "Bullet" || collision.tag == "Walls")
+            if (collision.CompareTag("Player") || collision.CompareTag("Bullet") || collision.CompareTag("Walls"))
             {
                 
                 GameObject BParticle2 = ObjectPool.instance.GetBulletEffectFromPool();
