@@ -301,7 +301,7 @@ public class Enemy2 : MonoBehaviour
                         RaycastHit2D hit2 = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
 
 
-                        if (hit2.collider.gameObject.tag == "Player" || hit2.collider.gameObject.tag == "Globin")
+                        if (hit2.collider.gameObject.CompareTag("Player") || hit2.collider.gameObject.CompareTag("Globin"))
                         {
                             LineOfSight = true;
                             Vector3 directionToTarget = enemy.position - transform.position;
@@ -346,7 +346,7 @@ public class Enemy2 : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
             //var rayDirection = player.position - transform.position;
             Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
-            if (hit.collider.gameObject.tag == "Player" || hit.collider.gameObject.tag == "Globin")
+            if (hit.collider.gameObject.CompareTag("Player") || hit.collider.gameObject.CompareTag("Globin"))
             {
                 LineOfSight = true;
                 //Debug.Log("Player is Visable");
@@ -421,7 +421,7 @@ public class Enemy2 : MonoBehaviour
         reachedDestination = true;
         NextMoveCoolDown = timeTillNextMove;
 
-        if (collision.gameObject.tag != "Enemy")
+        if (!collision.gameObject.CompareTag("Enemy"))
         {
             //knockbackForce = knockForcePlayerContact;
             knockbacktime = retreatTime;
@@ -435,7 +435,7 @@ public class Enemy2 : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.tag == "Bullet")
+        if (collision.CompareTag("Bullet"))
         {
             float damage = collision.gameObject.GetComponent<Bullet>().damage;
             float speed = collision.gameObject.GetComponent<Bullet>().speed;
@@ -487,7 +487,12 @@ public class Enemy2 : MonoBehaviour
             Vector3 direction = (transform.position - impact.transform.position).normalized;
 
             //might add to impact to make it go past enemy
-            var go = Instantiate(DamageText, impact.position, Quaternion.identity);
+            GameObject go = ObjectPool.instance.GetDamagePopUpFromPool();
+            //go.GetComponent<Animator>().Play("DamagePopUp", -1, 0f);
+            go.transform.SetParent(null);
+            go.transform.position = impact.position;
+            go.transform.rotation = Quaternion.identity;
+            //var go = Instantiate(DamageText, impact.position, Quaternion.identity);
             if (crit == false)
             {
                 go.GetComponent<TextMeshPro>().text = damage.ToString();

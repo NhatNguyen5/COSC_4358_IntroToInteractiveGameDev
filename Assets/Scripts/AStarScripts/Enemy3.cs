@@ -556,7 +556,7 @@ public class Enemy3 : MonoBehaviour
                             RaycastHit2D hit2 = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
 
 
-                            if (hit2.collider.gameObject.tag == "Player" || hit2.collider.gameObject.tag == "Globin")
+                            if (hit2.collider.gameObject.CompareTag("Player") || hit2.collider.gameObject.CompareTag("Globin"))
                             {
                                 canSeeEnemy = true;
                                 Vector3 directionToTarget = enemy.position - transform.position;
@@ -590,7 +590,7 @@ public class Enemy3 : MonoBehaviour
                 if (EnemyTarget != null)
                 {
                     RaycastHit2D hit3 = Physics2D.Raycast(transform.position, EnemyTarget.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
-                    if (hit3.collider.gameObject.tag == "Globin" || hit3.collider.gameObject.tag == "Player")
+                    if (hit3.collider.gameObject.CompareTag("Globin") || hit3.collider.gameObject.CompareTag("Player"))
                     {
                         lineofsight = true;
                         canSeeEnemy = true;
@@ -720,7 +720,7 @@ public class Enemy3 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Bullet")
+        if (collision.CompareTag("Bullet"))
         {
             float damage = collision.gameObject.GetComponent<Bullet>().damage;
             float speed = collision.gameObject.GetComponent<Bullet>().speed;
@@ -801,7 +801,12 @@ public class Enemy3 : MonoBehaviour
             Vector3 direction = (transform.position - impact.transform.position).normalized;
 
             //might add to impact to make it go past enemy
-            var go = Instantiate(DamageText, impact.position, Quaternion.identity);
+            //var go = Instantiate(DamageText, impact.position, Quaternion.identity);
+            GameObject go = ObjectPool.instance.GetDamagePopUpFromPool();
+            go.GetComponent<Animator>().Play("DamagePopUp", -1, 0f);
+            go.transform.SetParent(null);
+            go.transform.position = impact.position;
+            go.transform.rotation = Quaternion.identity;
 
             //Debug.Log("CRIT");
 

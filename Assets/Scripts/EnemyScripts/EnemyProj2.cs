@@ -197,9 +197,9 @@ public class EnemyProj2 : MonoBehaviour
     {
 
         //if (collision.tag != "Enemy" && collision.tag != "EnemyMelee" && collision.tag != "Bullet" && collision.tag != "EnemyBullet")
-        if ((collision.tag == "Player" || collision.tag == "Walls" || collision.tag == "Globin") && isExplosiveBullet == false)
+        if ((collision.CompareTag("Player") || collision.CompareTag("Walls") || collision.CompareTag("Globin")) && isExplosiveBullet == false)
             DestroyEnemyProj();
-        else if (collision.tag == "Player" || collision.tag == "Walls" || collision.tag == "Globin")
+        else if (collision.CompareTag("Player") || collision.CompareTag("Walls") || collision.CompareTag("Globin"))
         {
             reachedDestination = true;
             randPos = transform.position;
@@ -211,7 +211,7 @@ public class EnemyProj2 : MonoBehaviour
         
 
 
-        if (collision.tag == "Bullet")
+        if (collision.CompareTag("Bullet"))
         {
             float damage = collision.gameObject.GetComponent<Bullet>().damage;
             float speed = collision.gameObject.GetComponent<Bullet>().speed;
