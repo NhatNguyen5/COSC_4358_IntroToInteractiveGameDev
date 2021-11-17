@@ -387,7 +387,7 @@ public class Enemy3 : MonoBehaviour
 
     }
 
-
+    Vector3 directionToTarget = Vector3.zero;
 
     private void Update()
     {
@@ -561,7 +561,7 @@ public class Enemy3 : MonoBehaviour
                             if (hit2.collider.gameObject.CompareTag("Player") || hit2.collider.gameObject.CompareTag("Globin"))
                             {
                                 canSeeEnemy = true;
-                                Vector3 directionToTarget = enemy.position - transform.position;
+                                directionToTarget = enemy.position - transform.position;
                                 float dSqrToTarget = directionToTarget.sqrMagnitude;
                                 if (dSqrToTarget < closestDistanceSqr)
                                 {
