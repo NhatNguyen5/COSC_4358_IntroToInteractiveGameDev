@@ -720,16 +720,27 @@ public class Enemy3 : MonoBehaviour
 
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (collision.CompareTag("Bullet"))
+        if (col.CompareTag("Bullet"))
         {
+
+
+            Bullet collision = col.gameObject.GetComponent<Bullet>();
+
+            float damage = collision.damage;
+            float speed = collision.speed;
+            critRate = collision.critRate;
+            critDMG = collision.critDMG;
+            knockbackForce = collision.knockbackForce;
+
+            /*
             float damage = collision.gameObject.GetComponent<Bullet>().damage;
             float speed = collision.gameObject.GetComponent<Bullet>().speed;
             critRate = collision.gameObject.GetComponent<Bullet>().critRate;
             critDMG = collision.gameObject.GetComponent<Bullet>().critDMG;
             knockbackForce = collision.gameObject.GetComponent<Bullet>().knockbackForce;
-
+            */
 
             takeDamage(damage, collision.transform, speed);
 
