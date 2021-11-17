@@ -42,4 +42,16 @@ public class PlaySound : MonoBehaviour
         }
     }
 
+    public void replaySound()
+    {
+        if (PlayOnArrival == true)
+        {
+            if (SoundEffect == true)
+                AudioManager.instance.PlayEffect(SoundClip);
+            else
+                AudioManager.instance.PlayMusic(SoundClip);
+        }
+    }
+
+
 }

@@ -560,6 +560,7 @@ public class Enemy1 : MonoBehaviour
                     //bullet.transform.rotation = firePoint.rotation;
                     bullet.transform.rotation = newRot;
                     bullet.GetComponent<EnemyProj>().despawnTime = bullet.GetComponent<EnemyProj>().DespawnTimeHolder;
+                    bullet.GetComponent<PlaySound>().replaySound();
                     //bullet.GetComponent<EnemyProj>().resetSpeed(); 
                 }
                 
@@ -587,6 +588,7 @@ public class Enemy1 : MonoBehaviour
                     //bullet.transform.rotation = firePoint.rotation;
                     bullet.transform.rotation = newRot;
                     bullet.GetComponent<EnemyProj>().despawnTime = bullet.GetComponent<EnemyProj>().DespawnTimeHolder;
+                    bullet.GetComponent<PlaySound>().replaySound();
                     //bullet.GetComponent<EnemyProj>().resetSpeed();
                 }
                 
