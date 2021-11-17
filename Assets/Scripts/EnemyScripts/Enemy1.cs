@@ -516,6 +516,7 @@ public class Enemy1 : MonoBehaviour
             if (crit == false)
             {
                 go.GetComponent<TextMeshPro>().text = damage.ToString();
+                go.GetComponent<TextMeshPro>().fontSize = 9f;
             }
             else
             {
@@ -551,18 +552,17 @@ public class Enemy1 : MonoBehaviour
 
             if (projectile.name == "EnemyBullet")
             {
-                foreach (Transform t in transform)
+               
+                GameObject bullet = ObjectPool.instance.GetBulletFromPool();
+                if (bullet != null)
                 {
-                    GameObject bullet = ObjectPool.instance.GetBulletFromPool();
-                    if (bullet != null)
-                    {
-                        bullet.transform.position = firePoint.position;
-                        //bullet.transform.rotation = firePoint.rotation;
-                        bullet.transform.rotation = newRot;
-                        bullet.GetComponent<EnemyProj>().despawnTime = bullet.GetComponent<EnemyProj>().DespawnTimeHolder;
-                        //bullet.GetComponent<EnemyProj>().resetSpeed(); 
-                    }
+                    bullet.transform.position = firePoint.position;
+                    //bullet.transform.rotation = firePoint.rotation;
+                    bullet.transform.rotation = newRot;
+                    bullet.GetComponent<EnemyProj>().despawnTime = bullet.GetComponent<EnemyProj>().DespawnTimeHolder;
+                    //bullet.GetComponent<EnemyProj>().resetSpeed(); 
                 }
+                
             }
             else
                 Instantiate(projectile, firePoint.position, newRot);

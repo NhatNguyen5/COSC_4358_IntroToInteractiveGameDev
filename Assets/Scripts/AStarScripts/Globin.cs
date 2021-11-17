@@ -511,7 +511,7 @@ public class Globin : MonoBehaviour
             float damage = collision.gameObject.GetComponent<EnemyProj>().damage;
             float speed = collision.gameObject.GetComponent<EnemyProj>().speed;
 
-
+            //collision.gameObject.GetComponent<EnemyProj>().hit = true;
             takeDamage(damage, collision.transform, speed);
         }
         if (collision.CompareTag("EnemyBullet2"))
@@ -519,7 +519,7 @@ public class Globin : MonoBehaviour
             float damage = collision.gameObject.GetComponent<EnemyProj2>().damage;
             float speed = collision.gameObject.GetComponent<EnemyProj2>().speed;
 
-
+            //collision.gameObject.GetComponent<EnemyProj>().hit = true;
             takeDamage(damage, collision.transform, speed);
         }
 

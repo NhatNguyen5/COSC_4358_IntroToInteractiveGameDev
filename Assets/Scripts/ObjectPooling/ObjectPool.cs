@@ -101,6 +101,7 @@ public class ObjectPool : MonoBehaviour
         if (EnemyBulletEffectPool.Count > 0)
         {
             GameObject Effect = EnemyBulletEffectPool.Dequeue();
+            //Effect.GetComponent<EnemyProj>().hit = false;
             Effect.SetActive(true);
             return Effect;
         }

@@ -68,6 +68,7 @@ public class TakeDamage : MonoBehaviour
             
             takeDamage(contactDamage, collision.transform, speed);
         }
+        /*
         if (collision.gameObject.CompareTag("EnemyBullet"))
         {
             float contactDamage = collision.gameObject.GetComponent<Enemy2>().contactDamage;
@@ -80,7 +81,7 @@ public class TakeDamage : MonoBehaviour
             float speed = collision.gameObject.GetComponent<EnemyColony>().speed;
             takeDamage(contactDamage, collision.transform, speed);
         }
-
+        */
 
     }
 

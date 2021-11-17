@@ -496,6 +496,7 @@ public class Enemy2 : MonoBehaviour
             if (crit == false)
             {
                 go.GetComponent<TextMeshPro>().text = damage.ToString();
+                go.GetComponent<TextMeshPro>().fontSize = 9f;
             }
             else
             {

@@ -816,7 +816,7 @@ public class Enemy3 : MonoBehaviour
 
             go.GetComponent<TextMeshPro>().text = damage.ToString();
             //go.GetComponent<TextMeshPro>().colorGradient = new VertexGradient(colorTop, colorTop, colorBottom, colorBottom);
-            go.GetComponent<TextMeshPro>().fontSize *= 0.8f;
+            //go.GetComponent<TextMeshPro>().fontSize *= 0.8f;
 
             go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, speed / 5);
         }
