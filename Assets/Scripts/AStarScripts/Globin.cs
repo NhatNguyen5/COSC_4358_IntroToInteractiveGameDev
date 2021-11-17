@@ -277,7 +277,7 @@ public class Globin : MonoBehaviour
 
 
 
-
+    Vector3 directionToTarget = Vector3.zero;
     private void Update()
     {
         if (GlobalPlayerVariables.EnableAI)
@@ -366,7 +366,7 @@ public class Globin : MonoBehaviour
                             if (hit2.collider.gameObject.CompareTag("EnemyMelee") || hit2.collider.gameObject.CompareTag("Enemy") || hit2.collider.gameObject.CompareTag("Colony"))
                             {
                                 canSeeEnemy = true;
-                                Vector3 directionToTarget = enemy.position - transform.position;
+                                directionToTarget = enemy.position - transform.position;
                                 float dSqrToTarget = directionToTarget.sqrMagnitude;
                                 if (dSqrToTarget < closestDistanceSqr)
                                 {

@@ -274,6 +274,9 @@ public class Enemy2 : MonoBehaviour
         a = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
     }
 
+
+    Vector3 directionToTarget = Vector3.zero;
+
     // Update is called once per frame
     void Update()
     {
@@ -304,7 +307,7 @@ public class Enemy2 : MonoBehaviour
                         if (hit2.collider.gameObject.CompareTag("Player") || hit2.collider.gameObject.CompareTag("Globin"))
                         {
                             LineOfSight = true;
-                            Vector3 directionToTarget = enemy.position - transform.position;
+                            directionToTarget = enemy.position - transform.position;
                             float dSqrToTarget = directionToTarget.sqrMagnitude;
                             if (dSqrToTarget < closestDistanceSqr)
                             {
@@ -432,17 +435,27 @@ public class Enemy2 : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D col)
     {
 
-        if (collision.CompareTag("Bullet"))
+        if (col.CompareTag("Bullet"))
         {
+
+            Bullet collision = col.gameObject.GetComponent<Bullet>();
+
+            float damage = collision.damage;
+            float speed = collision.speed;
+            critRate = collision.critRate;
+            critDMG = collision.critDMG;
+            knockbackForce = collision.knockbackForce;
+
+            /*
             float damage = collision.gameObject.GetComponent<Bullet>().damage;
             float speed = collision.gameObject.GetComponent<Bullet>().speed;
             critRate = collision.gameObject.GetComponent<Bullet>().critRate;
             critDMG = collision.gameObject.GetComponent<Bullet>().critDMG;
             knockbackForce = collision.gameObject.GetComponent<Bullet>().knockbackForce;
-
+            */
             takeDamage(damage, collision.transform, speed);
 
             //reachedDestination = true;
