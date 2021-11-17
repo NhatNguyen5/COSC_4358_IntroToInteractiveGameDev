@@ -761,12 +761,12 @@ public class Enemy3 : MonoBehaviour
     public void takeDamage(float damage, Transform impact, float speed)
     {
         //Debug.Log(damage);
-        //bool iscrit = false;
+        bool iscrit = false;
         float chance2crit = Random.Range(0f, 1f);
         
         if (chance2crit <= critRate)
         {
-            //iscrit = true;
+            iscrit = true;
             damage *= critDMG;
         }
 
@@ -775,13 +775,13 @@ public class Enemy3 : MonoBehaviour
         if (damage > AR)
         {
             HP = (HP - (damage - AR));
-            showDamage(damage, impact, speed);
+            showDamage(damage, impact, speed, iscrit);
             StartCoroutine(FlashRed());
         }
         else
         {
             HP = HP - 1;
-            showDamage(damage, impact, speed);
+            showDamage(damage, impact, speed, iscrit);
             StartCoroutine(FlashRed());
         }
 
@@ -794,7 +794,7 @@ public class Enemy3 : MonoBehaviour
     }
 
 
-    void showDamage(float damage, Transform impact, float speed)
+    void showDamage(float damage, Transform impact, float speed, bool crit)
     {
         //damage = Mathf.Round(damage - AR);
 
@@ -821,13 +821,32 @@ public class Enemy3 : MonoBehaviour
             go.transform.position = impact.position;
             go.transform.rotation = Quaternion.identity;
 
+            if (crit == false)
+            {
+                go.GetComponent<TextMeshPro>().text = damage.ToString();
+                go.GetComponent<TextMeshPro>().fontSize = 9f;
+            }
+            else
+            {
+                //Debug.Log("CRIT");
+
+                Color colorTop = new Color(0.83529f, 0.06667f, 0.06667f);
+                Color colorBottom = new Color(0.98824f, 0.33725f, .90196f);
+
+
+                go.GetComponent<TextMeshPro>().text = damage.ToString();
+                go.GetComponent<TextMeshPro>().colorGradient = new VertexGradient(colorTop, colorTop, colorBottom, colorBottom);
+                go.GetComponent<TextMeshPro>().fontSize *= 1.2f;
+            }
+
+
             //Debug.Log("CRIT");
 
             //Color colorTop = new Color(0.83529f, 0.06667f, 0.06667f);
             //Color colorBottom = new Color(0.98824f, 0.33725f, .90196f);
 
 
-            go.GetComponent<TextMeshPro>().text = damage.ToString();
+            //go.GetComponent<TextMeshPro>().text = damage.ToString();
             //go.GetComponent<TextMeshPro>().colorGradient = new VertexGradient(colorTop, colorTop, colorBottom, colorBottom);
             //go.GetComponent<TextMeshPro>().fontSize *= 0.8f;
 
