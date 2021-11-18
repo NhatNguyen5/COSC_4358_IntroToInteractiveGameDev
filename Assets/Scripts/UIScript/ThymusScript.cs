@@ -271,7 +271,15 @@ public class ThymusScript : MonoBehaviour
 
         if (Dialog.HideThymus)
         {
-            StartCoroutine(ShowThymusAfter(Dialog.ShowAgainAfter));
+            if (Dialog.ShowAgainAfter < 0)
+            {
+                StartCoroutine(ShowThymusAfter(Dialog.ShowAgainAfter));
+            }
+            else 
+            {
+                Appear = false;
+                textWriterSingle.Stop();
+            }
         }
 
         //Debug.Log(tempEyesIdx + " " + tempBrowsIdx);

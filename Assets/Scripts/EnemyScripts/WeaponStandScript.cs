@@ -34,17 +34,31 @@ public class WeaponStandScript : MonoBehaviour
                 bool isHoldingWeapon = false;
                 foreach (Transform wp in RightArm.transform)
                 {
-                    if(wp.gameObject.activeSelf)
+                    if (wp.GetComponent<Weapon>() != null)
                     {
-                        currSlot = wp.GetComponent<Weapon>().Slot;
-                        isHoldingWeapon = true;
+                        if (wp.gameObject.activeSelf)
+                        {
+                            currSlot = wp.GetComponent<Weapon>().Slot;
+                            isHoldingWeapon = true;
+                        }
+                        if (wp.GetComponent<Weapon>().Slot == 1)
+                            PrimaryWpSlot[0] = true;
+                        else if (wp.GetComponent<Weapon>().Slot == 2)
+                            PrimaryWpSlot[1] = true;
+                        else if (wp.GetComponent<Weapon>().Slot == 3)
+                            PrimaryWpSlot[2] = true;
                     }
-                    if (wp.GetComponent<Weapon>().Slot == 1)
-                        PrimaryWpSlot[0] = true;
-                    else if (wp.GetComponent<Weapon>().Slot == 2)
-                        PrimaryWpSlot[1] = true;
-                    else if (wp.GetComponent<Weapon>().Slot == 3)
-                        PrimaryWpSlot[2] = true;
+
+                    if (wp.GetComponent<MeleeWeapon>() != null)
+                    {
+                        if (wp.gameObject.activeSelf)
+                        {
+                            currSlot = 4;
+                            isHoldingWeapon = true;
+                        }
+                    }
+
+                    Debug.Log(wp.gameObject.name + " " + currSlot);
                 }
 
                 if ((Input.GetKeyDown(KeyCode.Alpha1) && currSlot == 1) || (!isHoldingWeapon && !PrimaryWpSlot[0]))
@@ -109,8 +123,9 @@ public class WeaponStandScript : MonoBehaviour
         foreach(Transform wp in RightArm.transform)
         {
             //Debug.Log("Destroy weapon");
-            if (wp.GetComponent<Weapon>().Slot == slot)
-                Destroy(wp.gameObject);
+            if(wp.GetComponent<Weapon>() != null)
+                if (wp.GetComponent<Weapon>().Slot == slot)
+                    Destroy(wp.gameObject);
         }
     }
 }

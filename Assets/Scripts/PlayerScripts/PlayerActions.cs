@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -80,12 +81,23 @@ public class PlayerActions
 
         foreach (Transform rw in rightArm)
         {
+            Debug.Log(rw.gameObject.GetType());
             if (rw.gameObject.activeSelf)
             {
-                Transform tempWI = RWeaponIcon.transform.Find("WeaponIcon");
-                tempWI.GetComponent<Image>().sprite = rw.GetComponent<Weapon>().WeapnIcon;
-                tempWI.localScale = new Vector3(rw.GetComponent<Weapon>().IconScale, rw.GetComponent<Weapon>().IconScale, 1);
-                RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<Weapon>().WeaponLabel;
+                if (rw.GetComponent<Weapon>() != null)
+                {
+                    Transform tempWI = RWeaponIcon.transform.Find("WeaponIcon");
+                    tempWI.GetComponent<Image>().sprite = rw.GetComponent<Weapon>().WeapnIcon;
+                    tempWI.localScale = new Vector3(rw.GetComponent<Weapon>().IconScale, rw.GetComponent<Weapon>().IconScale, 1);
+                    RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<Weapon>().WeaponLabel;
+                }
+                else
+                {
+                    Transform tempWI = RWeaponIcon.transform.Find("WeaponIcon");
+                    tempWI.GetComponent<Image>().sprite = rw.GetComponent<MeleeWeapon>().WeapnIcon;
+                    tempWI.localScale = new Vector3(rw.GetComponent<MeleeWeapon>().IconScale, rw.GetComponent<MeleeWeapon>().IconScale, 1);
+                    RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<MeleeWeapon>().WeaponLabel;
+                }
             }
         }
         currSpriteCategory = player.Components.PlayerTargetCategory;
@@ -305,33 +317,62 @@ public class PlayerActions
     public void SwapWeapon()
     {
         //bool cond = false;
+        float[] allowSlot = { 1, 2, 3, 4 };
         float input;
-        if(float.TryParse(Input.inputString, out input))
+        if((float.TryParse(Input.inputString, out input)))
         {
-            foreach (Transform rw in rightArm)
-            {
-                //Debug.Log(rw.gameObject.activeSelf);
-                if (rw.GetComponent<Weapon>().Slot == input)
+            if (Array.Exists(allowSlot, x => x == input))
+                foreach (Transform rw in rightArm)
                 {
-                    //cond = true;
-                    rw.gameObject.SetActive(true);
-                    if (rw.gameObject.activeSelf)
+                    if (rw.GetComponent<Weapon>() != null)
                     {
-                        Transform tempWI = RWeaponIcon.transform.Find("WeaponIcon");
-                        tempWI.GetComponent<Image>().sprite = rw.GetComponent<Weapon>().WeapnIcon;
-                        tempWI.localScale = new Vector3(rw.GetComponent<Weapon>().IconScale, rw.GetComponent<Weapon>().IconScale, 1);
-                        RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<Weapon>().WeaponLabel;
+                        //Debug.Log(rw.gameObject.activeSelf);
+                        if (rw.GetComponent<Weapon>().Slot == input)
+                        {
+                            //cond = true;
+                            rw.gameObject.SetActive(true);
+                            if (rw.gameObject.activeSelf)
+                            {
+                                Transform tempWI = RWeaponIcon.transform.Find("WeaponIcon");
+                                tempWI.GetComponent<Image>().sprite = rw.GetComponent<Weapon>().WeapnIcon;
+                                tempWI.localScale = new Vector3(rw.GetComponent<Weapon>().IconScale, rw.GetComponent<Weapon>().IconScale, 1);
+                                RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<Weapon>().WeaponLabel;
+                            }
+                            //start swap counter???
+                        }
+                        else
+                        {
+                            Weapon RWeapon = rw.GetComponent<Weapon>();
+                            RWeapon.transform.position = rightArm.transform.position;
+                            RWeapon.transform.rotation = rightArm.transform.rotation;
+                            rw.gameObject.SetActive(false);
+                        }
                     }
-                    //start swap counter???
+                    if (rw.GetComponent<MeleeWeapon>() != null)
+                    {
+                        //Debug.Log(rw.gameObject.activeSelf);
+                        if (rw.GetComponent<MeleeWeapon>().Slot == input)
+                        {
+                            //cond = true;
+                            rw.gameObject.SetActive(true);
+                            if (rw.gameObject.activeSelf)
+                            {
+                                Transform tempWI = RWeaponIcon.transform.Find("WeaponIcon");
+                                tempWI.GetComponent<Image>().sprite = rw.GetComponent<MeleeWeapon>().WeapnIcon;
+                                tempWI.localScale = new Vector3(rw.GetComponent<MeleeWeapon>().IconScale, rw.GetComponent<MeleeWeapon>().IconScale, 1);
+                                RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<MeleeWeapon>().WeaponLabel;
+                            }
+                            //start swap counter???
+                        }
+                        else
+                        {
+                            MeleeWeapon RWeapon = rw.GetComponent<MeleeWeapon>();
+                            RWeapon.transform.position = rightArm.transform.position;
+                            RWeapon.transform.rotation = rightArm.transform.rotation;
+                            rw.gameObject.SetActive(false);
+                        }
+                    }
                 }
-                else
-                {
-                    Weapon RWeapon = rw.GetComponent<Weapon>();
-                    RWeapon.transform.position = rightArm.transform.position;
-                    RWeapon.transform.rotation = rightArm.transform.rotation;
-                    rw.gameObject.SetActive(false);
-                }
-            }
         }
     }
 

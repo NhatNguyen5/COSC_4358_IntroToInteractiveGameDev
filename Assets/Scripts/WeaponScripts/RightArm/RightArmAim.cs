@@ -36,13 +36,19 @@ public class RightArmAim : MonoBehaviour
             //transform.position.y *= -1;
             aimLocalScale.y = -1f;
             //aimLocalScale.y = -1f * scaleX;
-            aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, 1f);
+            if(transform.GetComponentInChildren<Weapon>() != null)
+                aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, 1f);
+            if (transform.GetComponentInChildren<MeleeWeapon>() != null)
+                aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, aimTransform.position.z);
         }
         else
         {
             aimLocalScale.y = +1f;
             //aimLocalScale.y = -1f * scaleX;
-            aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, -1f);
+            if (transform.GetComponentInChildren<Weapon>() != null)
+                aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, -1f);
+            if (transform.GetComponentInChildren<MeleeWeapon>() != null)
+                aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, aimTransform.position.z*-1);
         }
         aimTransform.localScale = aimLocalScale;
 

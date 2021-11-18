@@ -78,7 +78,7 @@ public class CameraFollow : MonoBehaviour
         else
         {
             ADSRange = 0;
-        ADSSpeed = defaultSpeed;
+            ADSSpeed = defaultSpeed;
         }
         
         if (!moveHold)
