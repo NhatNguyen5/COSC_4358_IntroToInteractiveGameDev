@@ -40,12 +40,6 @@ public class TakeDamage : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
-    {
-
-    }
-
-
     // Update is called once per frame
     void Update()
     {
@@ -57,7 +51,7 @@ public class TakeDamage : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             float contactDamage = 0;
             float speed = 0;
@@ -74,26 +68,27 @@ public class TakeDamage : MonoBehaviour
             
             takeDamage(contactDamage, collision.transform, speed);
         }
-        if (collision.gameObject.tag == "EnemyMelee")
+        /*
+        if (collision.gameObject.CompareTag("EnemyBullet"))
         {
             float contactDamage = collision.gameObject.GetComponent<Enemy2>().contactDamage;
             float speed = collision.gameObject.GetComponent<Enemy2>().speed;
             takeDamage(contactDamage, collision.transform, speed);
         }
-        if (collision.gameObject.tag == "Colony")
+        if (collision.gameObject.CompareTag("EnemyBullet2"))
         {
             float contactDamage = collision.gameObject.GetComponent<EnemyColony>().contactDamage;
             float speed = collision.gameObject.GetComponent<EnemyColony>().speed;
             takeDamage(contactDamage, collision.transform, speed);
         }
-
+        */
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.tag == "EnemyBullet")
+        if (collision.CompareTag("EnemyBullet"))
         {
             float damage = collision.gameObject.GetComponent<EnemyProj>().damage;
             float speed = collision.gameObject.GetComponent<EnemyProj>().speed;
@@ -101,7 +96,7 @@ public class TakeDamage : MonoBehaviour
 
             takeDamage(damage, collision.transform, speed);
         }
-        if (collision.tag == "EnemyBullet2")
+        if (collision.CompareTag("EnemyBullet2"))
         {
             float damage = collision.gameObject.GetComponent<EnemyProj2>().damage;
             float speed = collision.gameObject.GetComponent<EnemyProj2>().speed;

@@ -331,7 +331,23 @@ public class Enemy3 : MonoBehaviour
         {
             float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
             Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
-            Instantiate(projectile, firePoint.position, newRot);
+            if (projectile.name == "EnemyBullet")
+            {
+
+                GameObject bullet = ObjectPool.instance.GetBulletFromPool();
+                if (bullet != null)
+                {
+                    bullet.transform.position = firePoint.position;
+                    //bullet.transform.rotation = firePoint.rotation;
+                    bullet.transform.rotation = newRot;
+                    bullet.GetComponent<EnemyProj>().despawnTime = bullet.GetComponent<EnemyProj>().DespawnTimeHolder;
+                    bullet.GetComponent<PlaySound>().replaySound();
+                    //bullet.GetComponent<EnemyProj>().resetSpeed();
+                }
+
+            }
+            else
+                Instantiate(projectile, firePoint.position, newRot);
             burstTime = timeBtwBurst;
         }
     }
@@ -349,13 +365,29 @@ public class Enemy3 : MonoBehaviour
             //EnemyWeapon.WeaponAnim.SetBool("IsShooting", true);
             float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
             Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
-            Instantiate(projectile, firePoint.position, newRot);
+            if (projectile.name == "EnemyBullet")
+            {
+
+                GameObject bullet = ObjectPool.instance.GetBulletFromPool();
+                if (bullet != null)
+                {
+                    bullet.transform.position = firePoint.position;
+                    //bullet.transform.rotation = firePoint.rotation;
+                    bullet.transform.rotation = newRot;
+                    bullet.GetComponent<EnemyProj>().despawnTime = bullet.GetComponent<EnemyProj>().DespawnTimeHolder;
+                    bullet.GetComponent<PlaySound>().replaySound();
+                    //bullet.GetComponent<EnemyProj>().resetSpeed();
+                }
+
+            }
+            else
+                Instantiate(projectile, firePoint.position, newRot);
             variation();
         }
 
     }
 
-
+    Vector3 directionToTarget = Vector3.zero;
 
     private void Update()
     {
@@ -426,7 +458,9 @@ public class Enemy3 : MonoBehaviour
 
                 for (int i = 0; i < amountOfAirStrikes; i++)
                 {
-                    Vector2 AOE = EnemyTarget.position;
+                    Vector2 AOE = Vector2.zero;
+                    if(EnemyTarget != null)
+                        AOE = EnemyTarget.position;
                     //randPos = transform.position;
                     AOE += Random.insideUnitCircle * circleRadius;
                     Instantiate(AirStrike, AOE, Quaternion.Euler(0, 0, 0));
@@ -524,10 +558,10 @@ public class Enemy3 : MonoBehaviour
                             RaycastHit2D hit2 = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
 
 
-                            if (hit2.collider.gameObject.tag == "Player" || hit2.collider.gameObject.tag == "Globin")
+                            if (hit2.collider.gameObject.CompareTag("Player") || hit2.collider.gameObject.CompareTag("Globin"))
                             {
                                 canSeeEnemy = true;
-                                Vector3 directionToTarget = enemy.position - transform.position;
+                                directionToTarget = enemy.position - transform.position;
                                 float dSqrToTarget = directionToTarget.sqrMagnitude;
                                 if (dSqrToTarget < closestDistanceSqr)
                                 {
@@ -558,7 +592,7 @@ public class Enemy3 : MonoBehaviour
                 if (EnemyTarget != null)
                 {
                     RaycastHit2D hit3 = Physics2D.Raycast(transform.position, EnemyTarget.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
-                    if (hit3.collider.gameObject.tag == "Globin" || hit3.collider.gameObject.tag == "Player")
+                    if (hit3.collider.gameObject.CompareTag("Globin") || hit3.collider.gameObject.CompareTag("Player"))
                     {
                         lineofsight = true;
                         canSeeEnemy = true;
@@ -686,16 +720,27 @@ public class Enemy3 : MonoBehaviour
 
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (collision.tag == "Bullet")
+        if (col.CompareTag("Bullet"))
         {
+
+
+            Bullet collision = col.gameObject.GetComponent<Bullet>();
+
+            float damage = collision.damage;
+            float speed = collision.speed;
+            critRate = collision.critRate;
+            critDMG = collision.critDMG;
+            knockbackForce = collision.knockbackForce;
+
+            /*
             float damage = collision.gameObject.GetComponent<Bullet>().damage;
             float speed = collision.gameObject.GetComponent<Bullet>().speed;
             critRate = collision.gameObject.GetComponent<Bullet>().critRate;
             critDMG = collision.gameObject.GetComponent<Bullet>().critDMG;
             knockbackForce = collision.gameObject.GetComponent<Bullet>().knockbackForce;
-
+            */
 
             takeDamage(damage, collision.transform, speed);
 
@@ -716,12 +761,12 @@ public class Enemy3 : MonoBehaviour
     public void takeDamage(float damage, Transform impact, float speed)
     {
         //Debug.Log(damage);
-        //bool iscrit = false;
+        bool iscrit = false;
         float chance2crit = Random.Range(0f, 1f);
         
         if (chance2crit <= critRate)
         {
-            //iscrit = true;
+            iscrit = true;
             damage *= critDMG;
         }
 
@@ -730,13 +775,13 @@ public class Enemy3 : MonoBehaviour
         if (damage > AR)
         {
             HP = (HP - (damage - AR));
-            showDamage(damage, impact, speed);
+            showDamage(damage, impact, speed, iscrit);
             StartCoroutine(FlashRed());
         }
         else
         {
             HP = HP - 1;
-            showDamage(damage, impact, speed);
+            showDamage(damage, impact, speed, iscrit);
             StartCoroutine(FlashRed());
         }
 
@@ -749,7 +794,7 @@ public class Enemy3 : MonoBehaviour
     }
 
 
-    void showDamage(float damage, Transform impact, float speed)
+    void showDamage(float damage, Transform impact, float speed, bool crit)
     {
         //damage = Mathf.Round(damage - AR);
 
@@ -769,7 +814,31 @@ public class Enemy3 : MonoBehaviour
             Vector3 direction = (transform.position - impact.transform.position).normalized;
 
             //might add to impact to make it go past enemy
-            var go = Instantiate(DamageText, impact.position, Quaternion.identity);
+            //var go = Instantiate(DamageText, impact.position, Quaternion.identity);
+            GameObject go = ObjectPool.instance.GetDamagePopUpFromPool();
+            go.GetComponent<Animator>().Play("DamagePopUp", -1, 0f);
+            go.transform.SetParent(null);
+            go.transform.position = impact.position;
+            go.transform.rotation = Quaternion.identity;
+
+            if (crit == false)
+            {
+                go.GetComponent<TextMeshPro>().text = damage.ToString();
+                go.GetComponent<TextMeshPro>().fontSize = 9f;
+            }
+            else
+            {
+                //Debug.Log("CRIT");
+
+                Color colorTop = new Color(0.83529f, 0.06667f, 0.06667f);
+                Color colorBottom = new Color(0.98824f, 0.33725f, .90196f);
+
+
+                go.GetComponent<TextMeshPro>().text = damage.ToString();
+                go.GetComponent<TextMeshPro>().colorGradient = new VertexGradient(colorTop, colorTop, colorBottom, colorBottom);
+                go.GetComponent<TextMeshPro>().fontSize *= 1.2f;
+            }
+
 
             //Debug.Log("CRIT");
 
@@ -777,9 +846,9 @@ public class Enemy3 : MonoBehaviour
             //Color colorBottom = new Color(0.98824f, 0.33725f, .90196f);
 
 
-            go.GetComponent<TextMeshPro>().text = damage.ToString();
+            //go.GetComponent<TextMeshPro>().text = damage.ToString();
             //go.GetComponent<TextMeshPro>().colorGradient = new VertexGradient(colorTop, colorTop, colorBottom, colorBottom);
-            go.GetComponent<TextMeshPro>().fontSize *= 0.8f;
+            //go.GetComponent<TextMeshPro>().fontSize *= 0.8f;
 
             go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, speed / 5);
         }

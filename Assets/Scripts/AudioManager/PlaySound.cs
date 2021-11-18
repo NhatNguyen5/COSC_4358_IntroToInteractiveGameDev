@@ -12,9 +12,9 @@ public class PlaySound : MonoBehaviour
     public void playSound() //used for button pressing
     {
         if(SoundEffect == true)
-            FindObjectOfType<AudioManager>().PlayEffect(SoundClip);
+            AudioManager.instance.PlayEffect(SoundClip);
         else
-            FindObjectOfType<AudioManager>().PlayMusic(SoundClip);
+            AudioManager.instance.PlayMusic(SoundClip);
     }
 
     void StopAllAudio()
@@ -36,10 +36,22 @@ public class PlaySound : MonoBehaviour
         if (PlayOnArrival == true)
         {
             if(SoundEffect == true)
-                FindObjectOfType<AudioManager>().PlayEffect(SoundClip);
+                AudioManager.instance.PlayEffect(SoundClip);
             else
-                FindObjectOfType<AudioManager>().PlayMusic(SoundClip);
+                AudioManager.instance.PlayMusic(SoundClip);
         }
     }
+
+    public void replaySound()
+    {
+        if (PlayOnArrival == true)
+        {
+            if (SoundEffect == true)
+                AudioManager.instance.PlayEffect(SoundClip);
+            else
+                AudioManager.instance.PlayMusic(SoundClip);
+        }
+    }
+
 
 }

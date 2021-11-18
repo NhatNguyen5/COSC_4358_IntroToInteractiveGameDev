@@ -11,9 +11,9 @@ public class Hit : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
         if(hitInfo.tag == "Bullet" && isObjectEnemy == true)
-            FindObjectOfType<AudioManager>().PlayEffect(HitNoise);
+            AudioManager.instance.PlayEffect(HitNoise);
         if(hitInfo.tag == "EnemyBullet" && isObjectEnemy == false)
-            FindObjectOfType<AudioManager>().PlayEffect(HitNoise);
+            AudioManager.instance.PlayEffect(HitNoise);
     }
 
 
@@ -21,9 +21,9 @@ public class Hit : MonoBehaviour
     {
         //Debug.Log(hitInfo.gameObject.tag);
         if (hitInfo.gameObject.tag == "Player" && isObjectEnemy == true)
-            FindObjectOfType<AudioManager>().PlayEffect(ContactNoise);
+            AudioManager.instance.PlayEffect(ContactNoise);
         if (hitInfo.gameObject.tag == "Enemy" && isObjectEnemy == false)
-            FindObjectOfType<AudioManager>().PlayEffect(ContactNoise);
+            AudioManager.instance.PlayEffect(ContactNoise);
 
     }
 

@@ -107,7 +107,7 @@ public class Bullet : MonoBehaviour
         {
             if (isExplosiveBullet == false)
             {
-                if (hitInfo.tag == "Enemy" || hitInfo.tag == "EnemyMelee" || hitInfo.tag == "Walls" || hitInfo.tag == "Colony" || hitInfo.tag == "EnemyBullet2")
+                if (hitInfo.CompareTag("Enemy") || hitInfo.CompareTag("EnemyMelee") || hitInfo.CompareTag("Walls") || hitInfo.CompareTag("Colony") || hitInfo.CompareTag("EnemyBullet2"))
                 {
                     //Debug.Log(hitInfo.name);
                     BParticle.GetComponent<ParticleSystem>().Play();
@@ -118,7 +118,7 @@ public class Bullet : MonoBehaviour
             }
             else
             {
-                if (hitInfo.tag == "Enemy" || hitInfo.tag == "EnemyMelee" || hitInfo.tag == "Walls" || hitInfo.tag == "Colony" || hitInfo.tag == "EnemyBullet2")
+                if (hitInfo.CompareTag("Enemy") || hitInfo.CompareTag("EnemyMelee") || hitInfo.CompareTag("Walls") || hitInfo.CompareTag("Colony") || hitInfo.CompareTag("EnemyBullet2"))
                 {
                     BParticle.GetComponent<ParticleSystem>().Play();
                     BParticle.parent = null;
@@ -132,7 +132,7 @@ public class Bullet : MonoBehaviour
 
         if (pierce == true)
         {
-            if (hitInfo.tag == "Walls")
+            if (hitInfo.CompareTag("Walls"))
             {
                 
                 BParticle.GetComponent<ParticleSystem>().Play();
@@ -142,7 +142,7 @@ public class Bullet : MonoBehaviour
                 //Debug.Log(hitInfo.name);
                 Destroy(gameObject);
             }
-            if (hitInfo.tag == "Enemy" || hitInfo.tag == "EnemyMelee" || hitInfo.tag == "Colony" || hitInfo.tag == "EnemyBullet2")
+            if (hitInfo.CompareTag("Enemy") || hitInfo.CompareTag("EnemyMelee") || hitInfo.CompareTag("Colony") || hitInfo.CompareTag("EnemyBullet2"))
             {
                 //Debug.Log(hitInfo.name);
 
@@ -207,7 +207,7 @@ public class Bullet : MonoBehaviour
         if (pierce == true)
         {
 
-            if (collision.tag == "Enemy" || collision.tag == "EnemyMelee" || collision.tag == "Colony")
+            if (collision.CompareTag("Enemy") || collision.CompareTag("EnemyMelee") || collision.CompareTag("Colony"))
             {
                 damage *= (1 - dropOffPerTarget);
             }

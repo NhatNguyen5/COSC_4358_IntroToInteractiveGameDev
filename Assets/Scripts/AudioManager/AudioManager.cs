@@ -1,6 +1,7 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class AudioManager : MonoBehaviour
 	public Sound[] SoundEffects;
 
 	public Sound[] Music;
+
 
 	void Awake()
 	{
@@ -51,7 +53,9 @@ public class AudioManager : MonoBehaviour
 
 	}
 
-	public void PlayEffect(string sound)
+
+
+    public void PlayEffect(string sound)
 	{
 		Sound s = Array.Find(SoundEffects, item => item.name == sound);
 		if (s == null)

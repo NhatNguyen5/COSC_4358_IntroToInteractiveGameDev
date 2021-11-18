@@ -280,7 +280,7 @@ public class Enemy1 : MonoBehaviour
         facing = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
     }
 
-
+    Vector3 directionToTarget = Vector3.zero;
     // Update is called once per frame
     void Update()
     {
@@ -315,10 +315,10 @@ public class Enemy1 : MonoBehaviour
                             RaycastHit2D hit2 = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
 
 
-                            if (hit2.collider.gameObject.tag == "Player" || hit2.collider.gameObject.tag == "Globin")
+                            if (hit2.collider.gameObject.CompareTag("Player") || hit2.collider.gameObject.CompareTag("Globin"))
                             {
                                 lineofsight = true;
-                                Vector3 directionToTarget = enemy.position - transform.position;
+                                directionToTarget = enemy.position - transform.position;
                                 float dSqrToTarget = directionToTarget.sqrMagnitude;
                                 if (dSqrToTarget < closestDistanceSqr)
                                 {
@@ -351,7 +351,7 @@ public class Enemy1 : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
                 //var rayDirection = player.position - transform.position;
                 Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
-                if (hit.collider.gameObject.tag == "Player" || hit.collider.gameObject.tag == "Globin")
+                if (hit.collider.gameObject.CompareTag("Player")|| hit.collider.gameObject.CompareTag("Globin"))
                 {
                     lineofsight = true;
                     //Debug.Log("Player is Visable");
@@ -434,14 +434,14 @@ public class Enemy1 : MonoBehaviour
         reachedDestination = true;
         NextMoveCoolDown = timeTillNextMove;
 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             //Debug.Log("PLAYER CONTACT");
             knockbackForce = knockForcePlayerContact;
             knockbacktime = Random.Range(knockbackstartrange, knockbackendrange);
             knockback = true;
         }
-        else if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "Player")
+        else if (!collision.gameObject.CompareTag("Enemy") && !collision.gameObject.CompareTag("Player"))
         {
             //Debug.Log("ENEMY IS HITTING WALL");
             //UNSTUCKPOS = collision.gameObject.GetComponent<Transform>();
@@ -453,16 +453,18 @@ public class Enemy1 : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D col)
     {
 
-        if (collision.tag == "Bullet")
+        if (col.CompareTag("Bullet"))
         {
-            float damage = collision.gameObject.GetComponent<Bullet>().damage;
-            float speed = collision.gameObject.GetComponent<Bullet>().speed;
-            critRate = collision.gameObject.GetComponent<Bullet>().critRate;
-            critDMG = collision.gameObject.GetComponent<Bullet>().critDMG;
-            knockbackForce = collision.gameObject.GetComponent<Bullet>().knockbackForce;
+            Bullet collision = col.gameObject.GetComponent<Bullet>();
+
+            float damage = collision.damage;
+            float speed = collision.speed;
+            critRate = collision.critRate;
+            critDMG = collision.critDMG;
+            knockbackForce = collision.knockbackForce;
 
 
             takeDamage(damage, collision.transform, speed);
@@ -507,10 +509,16 @@ public class Enemy1 : MonoBehaviour
             Vector3 direction = (transform.position - impact.transform.position).normalized;
 
             //might add to impact to make it go past enemy
-            var go = Instantiate(DamageText, impact.position, Quaternion.identity);
+            //var go = Instantiate(DamageText, impact.position, Quaternion.identity);
+            GameObject go = ObjectPool.instance.GetDamagePopUpFromPool();
+            go.GetComponent<Animator>().Play("DamagePopUp", -1, 0f);
+            go.transform.SetParent(null);
+            go.transform.position = impact.position;
+            go.transform.rotation = Quaternion.identity;
             if (crit == false)
             {
                 go.GetComponent<TextMeshPro>().text = damage.ToString();
+                go.GetComponent<TextMeshPro>().fontSize = 9f;
             }
             else
             {
@@ -543,7 +551,24 @@ public class Enemy1 : MonoBehaviour
         {
             float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
             Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
-            Instantiate(projectile, firePoint.position, newRot);
+
+            if (projectile.name == "EnemyBullet")
+            {
+               
+                GameObject bullet = ObjectPool.instance.GetBulletFromPool();
+                if (bullet != null)
+                {
+                    bullet.transform.position = firePoint.position;
+                    //bullet.transform.rotation = firePoint.rotation;
+                    bullet.transform.rotation = newRot;
+                    bullet.GetComponent<EnemyProj>().despawnTime = bullet.GetComponent<EnemyProj>().DespawnTimeHolder;
+                    bullet.GetComponent<PlaySound>().replaySound();
+                    //bullet.GetComponent<EnemyProj>().resetSpeed(); 
+                }
+                
+            }
+            else
+                Instantiate(projectile, firePoint.position, newRot);
             burstTime = timeBtwBurst;
         }
     }
@@ -555,7 +580,23 @@ public class Enemy1 : MonoBehaviour
             //EnemyWeapon.WeaponAnim.SetBool("IsShooting", true);
             float WeaponSpread = Random.Range(-bulletSpread, bulletSpread);
             Quaternion newRot = Quaternion.Euler(firePoint.eulerAngles.x, firePoint.eulerAngles.y, firePoint.eulerAngles.z + WeaponSpread);
-            Instantiate(projectile, firePoint.position, newRot);
+            if (projectile.name == "EnemyBullet")
+            {
+               
+                GameObject bullet = ObjectPool.instance.GetBulletFromPool();
+                if (bullet != null)
+                {
+                    bullet.transform.position = firePoint.position;
+                    //bullet.transform.rotation = firePoint.rotation;
+                    bullet.transform.rotation = newRot;
+                    bullet.GetComponent<EnemyProj>().despawnTime = bullet.GetComponent<EnemyProj>().DespawnTimeHolder;
+                    bullet.GetComponent<PlaySound>().replaySound();
+                    //bullet.GetComponent<EnemyProj>().resetSpeed();
+                }
+                
+            }
+            else
+                Instantiate(projectile, firePoint.position, newRot);
             variation();
         }
 
