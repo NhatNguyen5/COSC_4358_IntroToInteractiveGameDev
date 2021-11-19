@@ -270,7 +270,7 @@ public class EnemyColony : MonoBehaviour
                             RaycastHit2D hit2 = Physics2D.Raycast(transform.position, enemy.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
 
 
-                            if (hit2.collider.gameObject.tag == "Player" || hit2.collider.gameObject.tag == "Globin")
+                            if (hit2.collider.gameObject.CompareTag("Player") || hit2.collider.gameObject.CompareTag("Globin"))
                             {
                                 lineofsight = true;
                                 Vector3 directionToTarget = enemy.position - transform.position;
@@ -335,7 +335,7 @@ public class EnemyColony : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
                 //var rayDirection = player.position - transform.position;
                 Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
-                if (hit.collider.gameObject.tag == "Player" || hit.collider.gameObject.tag == "Globin")
+                if (hit.collider.gameObject.CompareTag("Player") || hit.collider.gameObject.CompareTag("Globin"))
                 {
                     lineofsight = true;
                     //Debug.Log("Player is Visable");
@@ -418,14 +418,14 @@ public class EnemyColony : MonoBehaviour
         reachedDestination = true;
         NextMoveCoolDown = timeTillNextMove;
 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             //Debug.Log("PLAYER CONTACT");
             knockbackForce = knockForcePlayerContact;
             knockbacktime = Random.Range(knockbackstartrange, knockbackendrange);
             knockback = true;
         }
-        else if (collision.gameObject.tag != "Enemy" && collision.gameObject.tag != "Player")
+        else if (!collision.gameObject.CompareTag("Enemy") && !collision.gameObject.CompareTag("Player"))
         {
             //Debug.Log("ENEMY IS HITTING WALL");
             //UNSTUCKPOS = collision.gameObject.GetComponent<Transform>();
@@ -442,7 +442,7 @@ public class EnemyColony : MonoBehaviour
 
 
 
-        if (collision.tag == "Bullet")
+        if (collision.CompareTag("Bullet"))
         {
             float damage = collision.gameObject.GetComponent<Bullet>().damage;
             float speed = collision.gameObject.GetComponent<Bullet>().speed;
