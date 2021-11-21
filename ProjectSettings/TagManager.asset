@@ -23,6 +23,7 @@ TagManager:
   - ShopManager
   - Thymus
   - ObjectPool
+  - MeleeWeapon
   layers:
   - Default
   - TransparentFX
@@ -43,7 +44,7 @@ TagManager:
   - Globin
   - Minimap
   - GlobinVehicle
-  - 
+  - MeleeWeapon
   - 
   - 
   - 
