@@ -85,6 +85,7 @@ public class ObjectPool : MonoBehaviour
         {
             GameObject Bullet = EnemyBulletPool.Dequeue();
             Bullet.GetComponent<TrailRenderer>().Clear();
+            Bullet.GetComponent<EnemyProj>().isDeflected = false;
             Bullet.SetActive(true);
             return Bullet;
         }

@@ -508,19 +508,25 @@ public class Globin : MonoBehaviour
 
         if (collision.CompareTag("EnemyBullet"))
         {
-            float damage = collision.gameObject.GetComponent<EnemyProj>().damage;
-            float speed = collision.gameObject.GetComponent<EnemyProj>().speed;
+            if (collision.gameObject.GetComponent<EnemyProj>().isDeflected == false)
+            {
+                float damage = collision.gameObject.GetComponent<EnemyProj>().damage;
+                float speed = collision.gameObject.GetComponent<EnemyProj>().speed;
 
-            //collision.gameObject.GetComponent<EnemyProj>().hit = true;
-            takeDamage(damage, collision.transform, speed);
+                //collision.gameObject.GetComponent<EnemyProj>().hit = true;
+                takeDamage(damage, collision.transform, speed);
+            }
         }
         if (collision.CompareTag("EnemyBullet2"))
         {
-            float damage = collision.gameObject.GetComponent<EnemyProj2>().damage;
-            float speed = collision.gameObject.GetComponent<EnemyProj2>().speed;
+            if (collision.gameObject.GetComponent<EnemyProj2>().isDeflected == false)
+            {
+                float damage = collision.gameObject.GetComponent<EnemyProj2>().damage;
+                float speed = collision.gameObject.GetComponent<EnemyProj2>().speed;
 
-            //collision.gameObject.GetComponent<EnemyProj>().hit = true;
-            takeDamage(damage, collision.transform, speed);
+                //collision.gameObject.GetComponent<EnemyProj>().hit = true;
+                takeDamage(damage, collision.transform, speed);
+            }
         }
 
     }

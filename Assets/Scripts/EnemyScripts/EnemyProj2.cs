@@ -49,6 +49,8 @@ public class EnemyProj2 : MonoBehaviour
     private Vector2 randPos;
     public float circleRadius;
 
+    public bool isDeflected;
+
 
     // Start is called before the first frame update
     void Start()
@@ -63,10 +65,6 @@ public class EnemyProj2 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         distance = Vector3.Distance(player.position, transform.position);
-        if (homing == false)
-        {
-            rb.velocity = transform.right * speed;
-        }
 
         explodeTimeResult = Random.Range(explodeTimeStartRange, explodeTimeEndRange);
 
@@ -76,6 +74,10 @@ public class EnemyProj2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (homing == false)
+        {
+            rb.velocity = transform.right * speed;
+        }
         distance2 = Vector3.Distance(spawnPos, transform.position);
 
 
@@ -197,18 +199,39 @@ public class EnemyProj2 : MonoBehaviour
     {
 
         //if (collision.tag != "Enemy" && collision.tag != "EnemyMelee" && collision.tag != "Bullet" && collision.tag != "EnemyBullet")
-        if ((collision.CompareTag("Player") || collision.CompareTag("Walls") || collision.CompareTag("Globin")) && isExplosiveBullet == false)
-            DestroyEnemyProj();
-        else if (collision.CompareTag("Player") || collision.CompareTag("Walls") || collision.CompareTag("Globin"))
+        if (isDeflected == false)
         {
-            reachedDestination = true;
-            randPos = transform.position;
-            randPos += Random.insideUnitCircle * circleRadius;
-            Instantiate(explosion, randPos, Quaternion.Euler(0, 0, 0));
-            DestroyEnemyProj();
-            //explode(); 
+            if ((collision.CompareTag("Player") || collision.CompareTag("Walls") || collision.CompareTag("Globin")) && isExplosiveBullet == false)
+                DestroyEnemyProj();
+            else if (collision.CompareTag("Player") || collision.CompareTag("Walls") || collision.CompareTag("Globin"))
+            {
+                reachedDestination = true;
+                randPos = transform.position;
+                randPos += Random.insideUnitCircle * circleRadius;
+                Instantiate(explosion, randPos, Quaternion.Euler(0, 0, 0));
+                DestroyEnemyProj();
+                //explode(); 
+            }
         }
-        
+        else if (isDeflected == true)
+        {
+            if ((collision.CompareTag("Enemy") || collision.CompareTag("EnemyMelee") || collision.CompareTag("Colony") || collision.CompareTag("Walls")) && isExplosiveBullet == false)
+            {
+                hurtEnemy(collision);
+                DestroyEnemyProj();
+            }
+            else if ((collision.CompareTag("Enemy") || collision.CompareTag("EnemyMelee") || collision.CompareTag("Colony") || collision.CompareTag("Walls")) && isExplosiveBullet == true)
+            {
+                reachedDestination = true;
+                randPos = transform.position;
+                randPos += Random.insideUnitCircle * circleRadius;
+                explosion.GetComponent<Explosion>().hurtEnemies = true;
+                Instantiate(explosion, randPos, Quaternion.Euler(0, 0, 0));
+                explosion.GetComponent<Explosion>().hurtEnemies = false;
+                DestroyEnemyProj();
+            }
+        }
+
 
 
         if (collision.CompareTag("Bullet"))
@@ -234,7 +257,21 @@ public class EnemyProj2 : MonoBehaviour
     }
 
 
-
+    void hurtEnemy(Collider2D collision)
+    {
+        if (collision.CompareTag("EnemyMelee"))
+        {
+            collision.GetComponent<Enemy2>().takeDamage(damage, collision.transform, 10);
+        }
+        if (collision.CompareTag("Enemy"))
+        {
+            if (collision.GetComponent<Enemy1>() != null)
+                collision.GetComponent<Enemy1>().takeDamage(damage, collision.transform, 10);
+            else
+                collision.GetComponent<Enemy3>().takeDamage(damage, collision.transform, 10);
+        }
+        if (collision.CompareTag("Colony")) { collision.GetComponent<EnemyColony>().takeDamage(damage, collision.transform, 10); }
+    }
 
 
 

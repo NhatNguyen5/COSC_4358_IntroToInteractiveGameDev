@@ -10,6 +10,7 @@ public class EnemyProj : MonoBehaviour
     public int damage;
     public bool homing;
     public bool destroyable = false;
+    public bool isDeflected = false;
 
     private Vector2 followMovement;
 
@@ -79,7 +80,7 @@ public class EnemyProj : MonoBehaviour
         if (destroyable == false)
         {
             //if (collision.tag != "Enemy" && collision.tag != "EnemyMelee" && collision.tag != "Bullet" && collision.tag != "EnemyBullet")
-            if (collision.CompareTag("Player") || collision.CompareTag("Walls") || collision.CompareTag("Globin"))
+            if ((collision.CompareTag("Player") || collision.CompareTag("Walls") || collision.CompareTag("Globin")) && isDeflected == false)
             {
 
                 GameObject BParticle2 = ObjectPool.instance.GetBulletEffectFromPool();
@@ -89,32 +90,25 @@ public class EnemyProj : MonoBehaviour
                     BParticle2.transform.position = gameObject.transform.position;
                     BParticle2.transform.parent = ObjectPool.instance.transform;
                 }
-                //BParticle.transform.parent = this.transform;
-                //GameObject BParticle2 = transform.Find("BulletParticle").gameObject;
-
-
-
-
-                //GameObject BParticle2 = Instantiate(BParticle.gameObject, transform.position, transform.rotation);
-                //BParticle2.transform.localScale = new Vector3(0.1666f, 0.1666f, 1);
-                //BParticle2.GetComponent<ParticleSystem>().Stop();
-
-
-                //BParticle2.GetComponent<ParticleSystem>().Play();
-
-
-                //BParticle2.transform.parent = null;
-
-
-
-                //Destroy(BParticle2.gameObject, BParticle.GetComponent<ParticleSystem>().main.duration * 2);
+                DestroyEnemyProj();
+            }
+            else if ((collision.CompareTag("Enemy") || collision.CompareTag("EnemyMelee") || collision.CompareTag("Colony") || collision.CompareTag("Walls")) && isDeflected == true)
+            {
+                GameObject BParticle2 = ObjectPool.instance.GetBulletEffectFromPool();
+                if (BParticle2 != null)
+                {
+                    BParticle2.transform.localScale = new Vector3(0.1666f, 0.1666f, 1);
+                    BParticle2.transform.position = gameObject.transform.position;
+                    BParticle2.transform.parent = ObjectPool.instance.transform;
+                }
+                hurtEnemy(collision);
                 DestroyEnemyProj();
             }
         }
         else
         {
             //if (collision.tag != "Enemy" && collision.tag != "EnemyMelee" && collision.tag != "EnemyBullet")
-            if (collision.CompareTag("Player") || collision.CompareTag("Bullet") || collision.CompareTag("Walls"))
+            if ((collision.CompareTag("Player") || collision.CompareTag("Bullet") || collision.CompareTag("Walls")) && isDeflected == false)
             {
                 
                 GameObject BParticle2 = ObjectPool.instance.GetBulletEffectFromPool();
@@ -124,31 +118,44 @@ public class EnemyProj : MonoBehaviour
                     BParticle2.transform.position = gameObject.transform.position;
                     BParticle2.transform.parent = ObjectPool.instance.transform;
                 }
-                //BParticle.transform.parent = this.transform;
-                //GameObject BParticle2 = transform.Find("BulletParticle").gameObject;
-
-
-
-
-                //partti = BParticle2;
-                //BParticle2.GetComponent<ParticleSystem>().Stop();
-                //BParticle2.GetComponent<ParticleSystem>().Play();
-
-
-                //BParticle2.transform.parent = null;
-
-
-
-                //destroy object through pooling
-
-                //Destroy(BParticle2.gameObject, BParticle.GetComponent<ParticleSystem>().main.duration * 2);
-
-
                 DestroyEnemyProj();
-                //BParticle.transform.parent = this.transform;
+            }
+            else if (isDeflected == true)
+            {
+                if (collision.CompareTag("Enemy") || collision.CompareTag("EnemyMelee") || collision.CompareTag("Colony") || collision.CompareTag("Walls"))
+                {
+                    Debug.Log("deflected and found tag");
+                    GameObject BParticle2 = ObjectPool.instance.GetBulletEffectFromPool();
+                    if (BParticle2 != null)
+                    {
+                        BParticle2.transform.localScale = new Vector3(0.1666f, 0.1666f, 1);
+                        BParticle2.transform.position = gameObject.transform.position;
+                        BParticle2.transform.parent = ObjectPool.instance.transform;
+                    }
+                    hurtEnemy(collision);
+                    DestroyEnemyProj();
+                }
             }
         }
     }
+
+    void hurtEnemy(Collider2D collision)
+    {
+        Debug.Log("hurt da enemy");
+        if (collision.CompareTag("EnemyMelee"))
+        {
+            collision.GetComponent<Enemy2>().takeDamage(damage, collision.transform, 10);
+        }
+        if (collision.CompareTag("Enemy"))
+        {
+            if (collision.GetComponent<Enemy1>() != null)
+                collision.GetComponent<Enemy1>().takeDamage(damage, collision.transform, 10);
+            else
+                collision.GetComponent<Enemy3>().takeDamage(damage, collision.transform, 10);
+        }
+        if (collision.CompareTag("Colony")) { collision.GetComponent<EnemyColony>().takeDamage(damage, collision.transform, 10); }
+    }
+
 
 
 

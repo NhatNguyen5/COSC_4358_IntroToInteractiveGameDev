@@ -93490,7 +93490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1270911830247238667, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: bulletSpread
-      value: 80
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1270911830247238667, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: followPlayer

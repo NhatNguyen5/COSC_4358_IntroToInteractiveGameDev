@@ -187,8 +187,18 @@ public class MeleeWeapon : MonoBehaviour
         }
         if(collision.CompareTag("EnemyBullet") || collision.CompareTag("EnemyBullet2"))
         {
+            if (collision.CompareTag("EnemyBullet"))
+            {
+                collision.GetComponent<EnemyProj>().isDeflected = true;
+            }
+            else
+            {
+                collision.GetComponent<EnemyProj2>().isDeflected = true;
+            }
+
             Quaternion newRot = Quaternion.Euler(0, 0, player.Stats.Angle);
             collision.transform.rotation = newRot;
+
             //Instantiate(collision.gameObject, collision.transform.position, newRot);
             //Destroy(collision.gameObject);
             
