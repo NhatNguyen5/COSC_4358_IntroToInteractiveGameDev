@@ -10,7 +10,7 @@ public class EnemyColony2 : MonoBehaviour
 
     public Transform target;
 
-    //public Transform EnemyTarget;
+    public Transform EnemyTarget;
 
 
     public float nextWaypointDistance = 3f;
@@ -95,6 +95,35 @@ public class EnemyColony2 : MonoBehaviour
     public bool followPlayer;
     public bool retreat;
     public bool randomMovement;
+
+
+    [Header("Special Movement/Abilities")]
+    //public bool retreatToBoss = false;
+    //public float retreatDist;
+
+    public bool canDash = false;
+    public bool randomDash = false;
+    public float dashForce;
+    public float dashBackOnHit;
+    public float beginningRangeToDash;
+    public float endingRangeToDash;
+    private float DashTimer;
+    public float dashAroundPlayerRadius;
+
+    public bool canDoAirStrike = false;
+    public GameObject AirStrike;
+    public int amountOfAirStrikes;
+    public float beginningRangeToCallAirStrike;
+    public float endingRangeToCallAirStrike;
+    private float AirStrikeTimer;
+
+    private bool dashIntoPlayer = false;
+
+
+    [Header("Chase Settings")]
+    public float time2chase;
+    private float chaseInProgress;
+
 
     [Header("Line Of Sight")]
     public bool lineofsight;
@@ -267,7 +296,7 @@ public class EnemyColony2 : MonoBehaviour
             if (distancefromplayer >= stoppingDistance || lineofsight == false)
             {
                 Astar();
-                Debug.Log("Astar");
+                //Debug.Log("Astar");
             }
             else //RANDOM MOVEMENT
             {
@@ -295,14 +324,143 @@ public class EnemyColony2 : MonoBehaviour
     }
 
 
+    void randomDashPos(bool goForPlayer)
+    {
+        //NextMoveCoolDown = Random.Range(0f, timeTillNextMove);
+
+        randPos = target.position;
+
+        randPos += Random.insideUnitCircle * dashAroundPlayerRadius;
+
+        Vector3 newpos = new Vector3(randPos.x, randPos.y, 0);
+        //Vector3 zfix = new Vector3(randPos.x, randPos.y, 0);
+        //randPos = zfix;
+        reachedDestination = false;
+        Vector2 direction = Vector2.zero;
+        //RaycastHit2D hit2 = Physics2D.Raycast(transform.position, newpos - transform.position, Mathf.Infinity, ~IgnoreMe);
+        if (lineofsight == true /*&& !hit2.collider.gameObject.CompareTag("Walls")*/ && goForPlayer == false)
+        {
+            //dash around player
+            direction = (newpos - transform.position).normalized;
+            /*
+            if (target != null && randomDash == false || target != null && distancefromplayer >= shootdistance / 2)
+                direction = (target.position - transform.position).normalized;
+            else if (target != null && randomDash == true)
+            {
+                //randomDashPos();
+                newpos = new Vector3(randPos.x, randPos.y, 0);
+                direction = (newpos - transform.position).normalized;
+            }
+            */
+        }
+        else if (goForPlayer == true && lineofsight == true)
+        {
+            //newpos = new Vector3(randPos.x, randPos.y, 0);
+            direction = (target.position - transform.position).normalized;
+            //direction = (newpos - transform.position).normalized;
+        }
+        else if (lineofsight == false)
+        {
+            //lineofsight == false;
+            randPos = transform.position;
+            randPos += Random.insideUnitCircle * dashAroundPlayerRadius;
+            newpos = new Vector3(randPos.x, randPos.y, 0);
+            direction = (newpos - transform.position).normalized;
+
+        }
+
+        Vector2 force = direction * dashForce;
+        rb.AddForce(force, ForceMode2D.Impulse);
+
+
+
+    }
+
 
     // Update is called once per frame
     void Update()
     {
         if (GlobalPlayerVariables.EnableAI)
         {
-            if (player == null)
+            if (target == null)
+            {
                 player = playerStash;
+                chaseInProgress = 0f;
+            }
+
+
+
+
+
+            if (playerStash == null)
+            {
+                player = this.transform;
+            }
+
+
+            
+            /*
+            if (target == null)
+            {
+                target = playerStash;
+                //EnemyTarget = playerStash;
+                chaseInProgress = 0f;
+            }
+            */
+
+
+
+            //  NEED TO MAKE IT WHERE ENEMYTARGET IS THE CLOSEST ENEMY AND IF THAT DIES THEN IT DEFAULTS TO PLAYERSTASH AS
+            //  IT IS SET NOW THE PLAYER CHANGES WILL MESS WITH THE PLAYERSTASH DUE TO POINTERS
+
+            
+            if (DashTimer <= 0 && canDash == true && distancefromplayer <= stoppingDistance && lineofsight == true)
+            {
+
+                float newDashTimer = Random.Range(beginningRangeToDash, endingRangeToDash);
+                DashTimer = newDashTimer;
+                StartCoroutine(DashAttackPattern());
+
+            }
+            if (DashTimer >= 0)
+                DashTimer -= Time.deltaTime;
+
+            
+
+
+
+
+
+
+
+            /*
+            //AIRSTRIKES
+            if (canDoAirStrike == true && AirStrike != null && AirStrikeTimer <= 0 && lineofsight == true)
+            {
+                float newAirStrikeTimer = Random.Range(beginningRangeToCallAirStrike, endingRangeToCallAirStrike);
+                AirStrikeTimer = newAirStrikeTimer;
+
+                for (int i = 0; i < amountOfAirStrikes; i++)
+                {
+                    Vector2 AOE = Vector2.zero;
+                    if (EnemyTarget != null)
+                        AOE = EnemyTarget.position;
+                    //randPos = transform.position;
+                    AOE += Random.insideUnitCircle * circleRadius;
+                    Instantiate(AirStrike, AOE, Quaternion.Euler(0, 0, 0));
+                }
+
+            }
+            if (AirStrikeTimer >= 0)
+                AirStrikeTimer -= Time.deltaTime;
+
+            */
+
+
+
+
+
+
 
 
             //working on clearing up globin vision
@@ -333,7 +491,8 @@ public class EnemyColony2 : MonoBehaviour
                                 {
                                     
                                     closestDistanceSqr = dSqrToTarget;
-                                    player = enemy;
+                                    target = enemy;
+                                    //EnemyTarget = enemy;
                                     //Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.black);
                                     //closest = true;
                                     //Debug.Log("Found target");
@@ -388,9 +547,9 @@ public class EnemyColony2 : MonoBehaviour
             }
             if (player != null && player != this.transform)
             {
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, target.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
                 //var rayDirection = player.position - transform.position;
-                Debug.DrawRay(transform.position, player.transform.position - transform.position, Color.green);
+                Debug.DrawRay(transform.position, target.transform.position - transform.position, Color.green);
                 if (hit.collider.gameObject.CompareTag("Player") || hit.collider.gameObject.CompareTag("Globin"))
                 {
                     lineofsight = true;
@@ -641,6 +800,22 @@ public class EnemyColony2 : MonoBehaviour
         }
 
     }
+
+
+    IEnumerator DashAttackPattern()
+    {
+        randomDashPos(false);
+        yield return new WaitForSecondsRealtime(0.6f);
+        randomDashPos(false);
+        yield return new WaitForSecondsRealtime(0.6f);
+        randomDashPos(false);
+        yield return new WaitForSecondsRealtime(0.6f);
+        randomDashPos(true);
+    }
+
+
+
+
 
     IEnumerator Dying()
     {
