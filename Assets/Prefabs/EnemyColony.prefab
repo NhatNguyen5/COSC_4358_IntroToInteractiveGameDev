@@ -103,6 +103,8 @@ MonoBehaviour:
   bulletSpread: 0
   projectile: {fileID: 836386443634150724, guid: f7490fbaebaefc34c91a846a3bbbc06d, type: 3}
   firePoint: {fileID: 1789805099114577666}
+  player: {fileID: 0}
+  playerStash: {fileID: 0}
   burstFire: 0
   timeBtwBurst: 0
   timesToShoot: 0
@@ -143,6 +145,7 @@ MonoBehaviour:
     - {fileID: 2056935271745837854, guid: 953376de06b619b4898731a5bab67558, type: 3}
     DropPercentage: 100
     NumOfDrop: 3
+  recalcshortestDist: 3
 --- !u!114 &3083916138999727803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,7 +230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6130911342840827726}
-  - component: {fileID: 5741480610435392489}
+  - component: {fileID: 7166338454050605978}
   m_Layer: 7
   m_Name: EnemyAim
   m_TagString: Untagged
@@ -250,23 +253,21 @@ Transform:
   m_Father: {fileID: 5896408231586960904}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5741480610435392489
+--- !u!114 &7166338454050605978
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949814357736792046}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5f1eeedd96b50143accd4dce112c3b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d9b5951a5acaeb48b3b3283fbbf8dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   WeaponAnim: {fileID: 0}
   AimDir: 0
-  isNotEnemy1: 1
-  isNotHoldingWeapon: 1
 --- !u!1 &1067879679887400978
 GameObject:
   m_ObjectHideFlags: 0

@@ -431,6 +431,10 @@ public class EnemyColony2 : MonoBehaviour
             {
                 Debug.Log("Swinging");
                 //STUCK ON SWINGING
+                //ALSO NEED TO MAKE DISTANCE FROM TARGET SO HE CAN PROPERLY ATTACK GLOBINS
+
+
+
                 //StartCoroutine(Swing());
             }
 

@@ -53,6 +53,7 @@ public class TakeDamage : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("contact with enemy");
             float contactDamage = 0;
             float speed = 0;
             if (collision.gameObject.GetComponent<Enemy1>() != null)
@@ -66,6 +67,19 @@ public class TakeDamage : MonoBehaviour
                 speed = collision.gameObject.GetComponent<Enemy3>().speed;
             }
             
+            takeDamage(contactDamage, collision.transform, speed);
+        }
+        if (collision.gameObject.CompareTag("EnemyMelee"))
+        {
+            Debug.Log("contact with melee enemy");
+            float contactDamage = 0;
+            float speed = 0;
+            if (collision.gameObject.GetComponent<Enemy2>() != null)
+            {
+                contactDamage = collision.gameObject.GetComponent<Enemy2>().contactDamage;
+                speed = collision.gameObject.GetComponent<Enemy2>().speed;
+            }
+
             takeDamage(contactDamage, collision.transform, speed);
         }
         /*

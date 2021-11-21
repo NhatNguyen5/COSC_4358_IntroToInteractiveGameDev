@@ -93272,6 +93272,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Adeno
       objectReference: {fileID: 0}
+    - target: {fileID: 1573083553838886103, guid: 0153d165de8e10e4796fa2f414040529, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1573083553838886106, guid: 0153d165de8e10e4796fa2f414040529, type: 3}
       propertyPath: m_RootOrder
       value: 1

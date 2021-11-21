@@ -168,28 +168,30 @@ public class MeleeWeapon : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "EnemyMelee") 
+        if (collision.CompareTag("EnemyMelee")) 
         { 
             collision.GetComponent<Enemy2>().takeDamage(damage, collision.transform, 10); 
         }
-        if (collision.tag == "Enemy")
+        if (collision.CompareTag("Enemy"))
         {
             if (collision.GetComponent<Enemy1>() != null)
                 collision.GetComponent<Enemy1>().takeDamage(damage, collision.transform, 10);
             else
                 collision.GetComponent<Enemy3>().takeDamage(damage, collision.transform, 10);
         }
-        if (collision.tag == "Colony") { collision.GetComponent<EnemyColony>().takeDamage(damage, collision.transform, 10); }
-        if (collision.tag == "Globin") { collision.GetComponent<Globin>().takeDamage(damage, collision.transform, 10); }
+        if (collision.CompareTag("Colony")) { collision.GetComponent<EnemyColony>().takeDamage(damage, collision.transform, 10); }
+        if (collision.CompareTag("Globin")) { collision.GetComponent<Globin>().takeDamage(damage, collision.transform, 10); }
         if(collision.GetComponent<Rigidbody2D>() != null)
         {
             collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(Mathf.Cos(player.Stats.Angle * Mathf.Deg2Rad), Mathf.Sin(player.Stats.Angle * Mathf.Deg2Rad)) * knockBackForce, ForceMode2D.Impulse);
         }
-        if(collision.tag == "EnemyBullet" || collision.tag == "EnemyBullet2")
+        if(collision.CompareTag("EnemyBullet") || collision.CompareTag("EnemyBullet2"))
         {
             Quaternion newRot = Quaternion.Euler(0, 0, player.Stats.Angle);
-            Instantiate(collision.gameObject, collision.transform.position, newRot);
-            Destroy(collision.gameObject);
+            collision.transform.rotation = newRot;
+            //Instantiate(collision.gameObject, collision.transform.position, newRot);
+            //Destroy(collision.gameObject);
+            
         }
     }
 }
