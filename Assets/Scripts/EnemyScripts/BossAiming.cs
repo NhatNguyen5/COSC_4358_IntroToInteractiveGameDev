@@ -16,8 +16,8 @@ public class BossAiming : MonoBehaviour
     [HideInInspector]
     public float AimDir = 0;
     private float angle;
-    public bool isNotEnemy1 = false;
-    public bool isNotHoldingWeapon = false;
+    //public bool isNotEnemy1 = false;
+    //public bool isNotHoldingWeapon = false;
     // Start is called before the first frame update
 
 
