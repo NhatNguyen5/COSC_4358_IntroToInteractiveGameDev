@@ -291,7 +291,7 @@ MonoBehaviour:
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 29824
+    m_Bits: 554112
   unstuckTime: 0
   shootdistance: 6
   distancefromplayer: 0
@@ -353,6 +353,7 @@ MonoBehaviour:
   targetCategory: Imploder Sprite Library Asset
   isDead: 0
   facing: 0
+  recalcshortestDist: 1
 --- !u!114 &5001651235345489292
 MonoBehaviour:
   m_ObjectHideFlags: 0

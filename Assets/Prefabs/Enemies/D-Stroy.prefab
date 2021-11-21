@@ -208,7 +208,7 @@ MonoBehaviour:
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 29824
+    m_Bits: 554112
   unstuckTime: 0
   shootdistance: 21
   distancefromplayer: 0
@@ -270,6 +270,7 @@ MonoBehaviour:
   targetCategory: E-Bula Sprite Library Asset
   isDead: 0
   facing: 0
+  recalcshortestDist: 1
 --- !u!114 &6705791291405109900
 MonoBehaviour:
   m_ObjectHideFlags: 0

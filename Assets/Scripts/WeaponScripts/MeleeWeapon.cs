@@ -23,6 +23,9 @@ public class MeleeWeapon : MonoBehaviour
 
     public float weaponWeight = 1;
 
+    [HideInInspector]
+    public bool hitMelee = false;
+
     private List<GameObject> slashDetect = new List<GameObject>();
     private BoxCollider2D hitBox;
     private Animator animCtrl;
@@ -184,10 +187,9 @@ public class MeleeWeapon : MonoBehaviour
         }
         if(collision.tag == "EnemyBullet" || collision.tag == "EnemyBullet2")
         {
-            Quaternion newRot = Quaternion.Euler(new Vector2(Mathf.Cos(player.Stats.Angle * Mathf.Deg2Rad), Mathf.Sin(player.Stats.Angle * Mathf.Deg2Rad)));
-            Instantiate(collision, collision.transform.position, newRot);
+            Quaternion newRot = Quaternion.Euler(0, 0, player.Stats.Angle);
+            Instantiate(collision.gameObject, collision.transform.position, newRot);
             Destroy(collision.gameObject);
         }
-        
     }
 }

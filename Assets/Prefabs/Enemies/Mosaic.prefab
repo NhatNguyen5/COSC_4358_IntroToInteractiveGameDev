@@ -340,7 +340,7 @@ MonoBehaviour:
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 29824
+    m_Bits: 554112
   unstuckTime: 0
   shootdistance: 17
   distancefromplayer: 0
@@ -402,6 +402,7 @@ MonoBehaviour:
   targetCategory: Mosaic Sprite Library Asset
   isDead: 0
   facing: 0
+  recalcshortestDist: 1
 --- !u!114 &2316006094040792944
 MonoBehaviour:
   m_ObjectHideFlags: 0

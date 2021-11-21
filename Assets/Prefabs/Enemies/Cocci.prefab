@@ -227,7 +227,7 @@ MonoBehaviour:
   lineofsight: 1
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 29824
+    m_Bits: 554112
   unstuckTime: 0
   shootdistance: 18
   distancefromplayer: 0
@@ -289,6 +289,7 @@ MonoBehaviour:
   targetCategory: Cocci Sprite Library Asset
   isDead: 0
   facing: 0
+  recalcshortestDist: 1
 --- !u!114 &8226067464753016066
 MonoBehaviour:
   m_ObjectHideFlags: 0

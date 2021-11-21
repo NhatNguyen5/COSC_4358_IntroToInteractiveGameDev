@@ -291,7 +291,7 @@ MonoBehaviour:
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 29824
+    m_Bits: 554112
   unstuckTime: 0
   shootdistance: 12
   distancefromplayer: 0
@@ -353,6 +353,7 @@ MonoBehaviour:
   targetCategory: Adeno Sprite Library Asset
   isDead: 0
   facing: 0
+  recalcshortestDist: 1
 --- !u!114 &6885833283833175037
 MonoBehaviour:
   m_ObjectHideFlags: 0
