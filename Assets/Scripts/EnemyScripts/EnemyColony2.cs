@@ -84,6 +84,8 @@ public class EnemyColony2 : MonoBehaviour
     [Header("Enemy Stats")]
 
     public float contactDamage;
+    public float meleeDamage;
+    public float spinDamage;
     private EnemyManager enemyColony;
     private float MaxHP = 0;
     public float speed = 0;
@@ -118,6 +120,8 @@ public class EnemyColony2 : MonoBehaviour
     private float AirStrikeTimer;
 
     private bool dashIntoPlayer = false;
+    private bool inmiddleofdash = false;
+    private bool inmiddleofSwing = false;
 
 
     [Header("Chase Settings")]
@@ -190,6 +194,10 @@ public class EnemyColony2 : MonoBehaviour
     public float recalcshortestDist = 3f;
     private float timer2reset;
 
+    [Header("Weapon Animator")]
+    public Animator weapon;
+    public PolygonCollider2D weaponHurtBox;
+
 
 
     // Start is called before the first frame update
@@ -220,7 +228,8 @@ public class EnemyColony2 : MonoBehaviour
         GlobalPlayerVariables.TotalEnemiesAlive += 1;
         InvokeRepeating("UpdatePath", 0f, 0.5f);
         variation();
-
+        weapon.enabled = false;
+        weaponHurtBox.enabled = false;
     }
 
     void variation()
@@ -291,7 +300,7 @@ public class EnemyColony2 : MonoBehaviour
                 distancefromplayer = Vector2.Distance(rb.position, player.position);
 
 
-         
+
 
             if (distancefromplayer >= stoppingDistance || lineofsight == false)
             {
@@ -312,7 +321,7 @@ public class EnemyColony2 : MonoBehaviour
                     reachedDestination = true;
                 }
             }
-            
+
         }
     }
 
@@ -370,6 +379,11 @@ public class EnemyColony2 : MonoBehaviour
         }
 
         Vector2 force = direction * dashForce;
+        if (goForPlayer == true)
+        {
+            force = direction * dashForce * 2;
+        }
+
         rb.AddForce(force, ForceMode2D.Impulse);
 
 
@@ -398,7 +412,7 @@ public class EnemyColony2 : MonoBehaviour
             }
 
 
-            
+
             /*
             if (target == null)
             {
@@ -408,13 +422,24 @@ public class EnemyColony2 : MonoBehaviour
             }
             */
 
+            if (inmiddleofdash == true)
+            {
+                hurtCircle();
+            }
+
+            if (distancefromplayer <= 5 && inmiddleofdash == false && DashTimer > 0 && inmiddleofSwing == false && lineofsight == true)
+            {
+                Debug.Log("Swinging");
+                //STUCK ON SWINGING
+                //StartCoroutine(Swing());
+            }
 
 
             //  NEED TO MAKE IT WHERE ENEMYTARGET IS THE CLOSEST ENEMY AND IF THAT DIES THEN IT DEFAULTS TO PLAYERSTASH AS
             //  IT IS SET NOW THE PLAYER CHANGES WILL MESS WITH THE PLAYERSTASH DUE TO POINTERS
 
-            
-            if (DashTimer <= 0 && canDash == true && distancefromplayer <= stoppingDistance && lineofsight == true)
+
+            if (DashTimer <= 0 && canDash == true && distancefromplayer <= stoppingDistance && lineofsight == true && inmiddleofSwing == false)
             {
 
                 float newDashTimer = Random.Range(beginningRangeToDash, endingRangeToDash);
@@ -425,7 +450,7 @@ public class EnemyColony2 : MonoBehaviour
             if (DashTimer >= 0)
                 DashTimer -= Time.deltaTime;
 
-            
+
 
 
 
@@ -489,7 +514,7 @@ public class EnemyColony2 : MonoBehaviour
                                 float dSqrToTarget = directionToTarget.sqrMagnitude;
                                 if (dSqrToTarget < closestDistanceSqr)
                                 {
-                                    
+
                                     closestDistanceSqr = dSqrToTarget;
                                     target = enemy;
                                     //EnemyTarget = enemy;
@@ -614,17 +639,21 @@ public class EnemyColony2 : MonoBehaviour
 
                     randomPos();
                 }
-               
+
             }
         }
         NextMoveCoolDown -= Time.deltaTime;
         timer2reset -= Time.deltaTime;
-
     }
 
 
-
-
+    [Header("SpinAttackRange")]
+    public float spinattackrange;
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, spinattackrange);
+    }
 
 
 
@@ -801,16 +830,75 @@ public class EnemyColony2 : MonoBehaviour
 
     }
 
+    void hurtCircle()
+    {
+        Collider2D[] objectsToBurn = Physics2D.OverlapCircleAll(transform.position, 1);
+        foreach (var objectToBurn in objectsToBurn)
+        {
+            /*
+            if (objectToBurn.tag == "EnemyMelee") { objectToBurn.GetComponent<Enemy2>().takeDamage(contactDamage, objectToBurn.transform, 10); }
+            if (objectToBurn.tag == "Enemy")
+            {
+                if (objectToBurn.GetComponent<Enemy1>() != null)
+                    objectToBurn.GetComponent<Enemy1>().takeDamage(contactDamage, objectToBurn.transform, 10);
+                else
+                    objectToBurn.GetComponent<Enemy3>().takeDamage(contactDamage, objectToBurn.transform, 10);
+            }
+            */
+            //if (objectToBurn.tag == "Colony") { objectToBurn.GetComponent<EnemyColony>().takeDamage(contactDamage, objectToBurn.transform, 10); }
+            if (objectToBurn.tag == "Player") { objectToBurn.GetComponent<TakeDamage>().takeDamage(spinDamage, objectToBurn.transform, 10); }
+            if (objectToBurn.tag == "Globin") { objectToBurn.GetComponent<Globin>().takeDamage(spinDamage, objectToBurn.transform, 10); }
+        }
+        //yield return new WaitForSecondsRealtime(0.3f);
+    }
+
+
+    IEnumerator Swing()
+    {
+        Debug.Log("coro");
+        weapon.enabled = true;
+        inmiddleofSwing = true;
+        weaponHurtBox.enabled = true;
+        weapon.Play("ColonyWeaponSwing", 0, 0f);
+        yield return new WaitForSecondsRealtime(0.25f);
+        Debug.Log("Return");
+        weaponHurtBox.enabled = false;
+        inmiddleofSwing = false;
+        weapon.Play("ColonyWeaponNoAnimation", 0, 0f);
+        weapon.enabled = false;
+    }
+
+
+
+    IEnumerator InDash()
+    {
+        inmiddleofdash = true;
+        yield return new WaitForSecondsRealtime(0.25f);
+        inmiddleofdash = false;
+    }
+
 
     IEnumerator DashAttackPattern()
     {
+        weapon.enabled = true;
         randomDashPos(false);
+        weapon.Play("ColonyWeapon",0,0f);
+        StartCoroutine(InDash());
         yield return new WaitForSecondsRealtime(0.6f);
         randomDashPos(false);
+        weapon.Play("ColonyWeapon", 0, 0f);
+        StartCoroutine(InDash());
         yield return new WaitForSecondsRealtime(0.6f);
         randomDashPos(false);
+        weapon.Play("ColonyWeapon", 0, 0f);
+        StartCoroutine(InDash());
         yield return new WaitForSecondsRealtime(0.6f);
         randomDashPos(true);
+        weapon.Play("ColonyWeapon", 0, 0f);
+        StartCoroutine(InDash());
+        yield return new WaitForSecondsRealtime(0.6f);
+        weapon.Play("ColonyWeaponNoAnimation", 0, 0f);
+        weapon.enabled = false;
     }
 
 
