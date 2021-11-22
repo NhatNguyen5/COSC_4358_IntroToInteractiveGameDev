@@ -531,7 +531,7 @@ GameObject:
   - component: {fileID: 2591568961033913677}
   - component: {fileID: 1972363697159010131}
   m_Layer: 19
-  m_Name: Muramasa
+  m_Name: Shield
   m_TagString: MeleeWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -544,8 +544,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2591568961033913676}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3407271019711370815}
@@ -560,7 +560,7 @@ Transform:
   - {fileID: 3608077255011056269}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2591568961033913664
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -600,8 +600,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1272439681
   m_SortingLayer: 2
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -4602715723989805340, guid: 6e687677f0e284d45bc23b72fd7bb40a, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 4387523032619836062, guid: 9e6ef33aa7720ac439b1e8d4e698d386, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -622,22 +622,22 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.79022694, y: -0.24359083}
+  m_Offset: {x: 0.0029825568, y: -0.0029825866}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.1584699, y: 0.72882605}
-    oldSize: {x: 1.882353, y: 0.9411765}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.3714286, y: 2.7428572}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2315516, y: 0.06605756}
-  m_EdgeRadius: 0.2
+  m_Size: {x: 0.8763164, y: 1.0547032}
+  m_EdgeRadius: 0
 --- !u!114 &8951015506565099234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,7 +675,7 @@ Animator:
   m_GameObject: {fileID: 2591568961033913676}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 33287ff62df04334899af2449c1d0fee, type: 2}
+  m_Controller: {fileID: 9100000, guid: 15bad71daa0ce1a43891e6b2248762b6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -692,7 +692,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2591568961033913676}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

@@ -12,21 +12,23 @@ public class MeleeWeapon : MonoBehaviour
     public Sprite WeapnIcon;
     public float IconScale = 1;
     public string WeaponLabel;
-    public float damage;
+    public float BaseDamage;
+    public float GrowthRate = 1;
+    public float BaseSwingSpeed = 1;
     public float delay = 0.2f;
     float firingDelay = 0.0f;
     public float ADSRange;
     public float ADSSpeed;
     public Color trailColor;
-    public float swingSpeed;
-
+    
 
     public float weaponWeight = 1;
 
     [HideInInspector]
     public bool hitMelee = false;
 
-    private List<GameObject> slashDetect = new List<GameObject>();
+    private float damage;
+    private float currDmg;
     private BoxCollider2D hitBox;
     private Animator animCtrl;
     private Image reloadBar;
@@ -70,17 +72,19 @@ public class MeleeWeapon : MonoBehaviour
             transform.Find("BladeTrail (" + i + ")").GetComponent<TrailRenderer>().startColor = trailColor;
             transform.Find("BladeTrail (" + i + ")").GetComponent<TrailRenderer>().enabled = false;
         }
-
+        GlobalPlayerVariables.weaponWeight = weaponWeight;
         animCtrl = transform.GetComponent<Animator>();
-        animCtrl.SetFloat("SwingSpeed", swingSpeed);
+        hitBox = transform.GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        GlobalPlayerVariables.weaponWeight = weaponWeight;
+        
+        damage = GrowthRate * player.Currentlevel + BaseDamage;
+        animCtrl.SetFloat("SwingSpeed", BaseSwingSpeed + GrowthRate/50 * player.Currentlevel);
 
-        if(firingDelay > 0)
+        if (firingDelay > 0)
         {
             firingDelay -= Time.deltaTime;
         }
@@ -89,8 +93,9 @@ public class MeleeWeapon : MonoBehaviour
             firingDelay = 0;
         }
         
-        if(animCtrl.GetBool("StopSwing") && animCtrl.GetCurrentAnimatorStateInfo(0).IsName("Standby"))
+        if(!animCtrl.GetBool("Blocking") && animCtrl.GetBool("StopSwing") && animCtrl.GetCurrentAnimatorStateInfo(0).IsName("Standby"))
         {
+            currDmg = damage / 5;
             for (int i = 0; i < 10; i++)
             {
                 transform.Find("BladeTrail (" + i + ")").GetComponent<TrailRenderer>().enabled = false;
@@ -99,67 +104,86 @@ public class MeleeWeapon : MonoBehaviour
 
         if (OptionSettings.GameisPaused == false && firingDelay == 0)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.Mouse1))
             {
+                currDmg = damage;
                 animCtrl.SetBool("StopSwing", false);
                 for (int i = 0; i < 10; i++)
                 {
                     transform.Find("BladeTrail (" + i + ")").GetComponent<TrailRenderer>().enabled = true;
                 }
             }
-
-            if (Input.GetKeyUp(KeyCode.Mouse0))
+            else if(!Input.GetKey(KeyCode.Mouse0))
             {
                 animCtrl.SetBool("StopSwing", true);
             }
-                /*
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    switch (swingCount)
-                    {
-                        case 1:
-                            animCtrl.SetBool("firstSwing", true);
-                            break;
-                        case 2:
-                            animCtrl.SetBool("secondSwing", true);
-                            break;
-                        case 3:
-                            animCtrl.SetBool("thirdSwing", true);
-                            break;
-                    }
-                }
 
-                if (Input.GetKeyUp(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.Mouse1) && !Input.GetKey(KeyCode.Mouse0))
+            {
+                GlobalPlayerVariables.weaponWeight = weaponWeight * 5;
+                currDmg = damage / 5;
+                hitBox.edgeRadius = 0.3f;
+                animCtrl.SetBool("Blocking", true);
+                for (int i = 0; i < 10; i++)
                 {
-                    switch (swingCount)
-                    {
-                        case 1:
-                            if (animCtrl.GetBool("firstSwing"))
-                            {
-                                animCtrl.SetBool("firstSwing", false);
-                                firingDelay = delay;
-                                swingCount++;
-                            }
-                            break;
-                        case 2:
-                            if (animCtrl.GetBool("secondSwing"))
-                            {
-                                animCtrl.SetBool("secondSwing", false);
-                                firingDelay = delay;
-                                swingCount++;
-                            }
-                            break;
-                        case 3:
-                            if (animCtrl.GetBool("thirdSwing"))
-                            {
-                                animCtrl.SetBool("thirdSwing", false);
-                                firingDelay = delay;
-                                swingCount = 1;
-                            }
-                            break;
-                    }
+                    transform.Find("BladeTrail (" + i + ")").GetComponent<TrailRenderer>().enabled = true;
                 }
-                */
+            }
+            else if(!Input.GetKey(KeyCode.Mouse1))
+            {
+                GlobalPlayerVariables.weaponWeight = weaponWeight;
+                hitBox.edgeRadius = 0.2f;
+                animCtrl.SetBool("Blocking", false);
+            }
+
+            /*
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                switch (swingCount)
+                {
+                    case 1:
+                        animCtrl.SetBool("firstSwing", true);
+                        break;
+                    case 2:
+                        animCtrl.SetBool("secondSwing", true);
+                        break;
+                    case 3:
+                        animCtrl.SetBool("thirdSwing", true);
+                        break;
+                }
+            }
+
+            if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                switch (swingCount)
+                {
+                    case 1:
+                        if (animCtrl.GetBool("firstSwing"))
+                        {
+                            animCtrl.SetBool("firstSwing", false);
+                            firingDelay = delay;
+                            swingCount++;
+                        }
+                        break;
+                    case 2:
+                        if (animCtrl.GetBool("secondSwing"))
+                        {
+                            animCtrl.SetBool("secondSwing", false);
+                            firingDelay = delay;
+                            swingCount++;
+                        }
+                        break;
+                    case 3:
+                        if (animCtrl.GetBool("thirdSwing"))
+                        {
+                            animCtrl.SetBool("thirdSwing", false);
+                            firingDelay = delay;
+                            swingCount = 1;
+                        }
+                        break;
+                }
+            }
+            */
         }
 
         //Debug.Log(animCtrl.GetCurrentAnimatorStateInfo(0).IsName("1stSwingAnim"));
@@ -170,17 +194,17 @@ public class MeleeWeapon : MonoBehaviour
     {
         if (collision.CompareTag("EnemyMelee")) 
         { 
-            collision.GetComponent<Enemy2>().takeDamage(damage, collision.transform, 10); 
+            collision.GetComponent<Enemy2>().takeDamage(currDmg, collision.transform, 10); 
         }
         if (collision.CompareTag("Enemy"))
         {
             if (collision.GetComponent<Enemy1>() != null)
-                collision.GetComponent<Enemy1>().takeDamage(damage, collision.transform, 10);
+                collision.GetComponent<Enemy1>().takeDamage(currDmg, collision.transform, 10);
             else
-                collision.GetComponent<Enemy3>().takeDamage(damage, collision.transform, 10);
+                collision.GetComponent<Enemy3>().takeDamage(currDmg, collision.transform, 10);
         }
-        if (collision.CompareTag("Colony")) { collision.GetComponent<EnemyColony>().takeDamage(damage, collision.transform, 10); }
-        if (collision.CompareTag("Globin")) { collision.GetComponent<Globin>().takeDamage(damage, collision.transform, 10); }
+        if (collision.CompareTag("Colony")) { collision.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10); }
+        if (collision.CompareTag("Globin")) { collision.GetComponent<Globin>().takeDamage(currDmg, collision.transform, 10); }
         if(collision.GetComponent<Rigidbody2D>() != null)
         {
             collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(Mathf.Cos(player.Stats.Angle * Mathf.Deg2Rad), Mathf.Sin(player.Stats.Angle * Mathf.Deg2Rad)) * knockBackForce, ForceMode2D.Impulse);

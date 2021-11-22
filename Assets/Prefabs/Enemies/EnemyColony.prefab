@@ -940,8 +940,6 @@ MonoBehaviour:
   player: {fileID: 0}
   WeaponAnim: {fileID: 0}
   AimDir: 0
-  isNotEnemy1: 0
-  isNotHoldingWeapon: 0
 --- !u!1 &8862447435758746111
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,7 +1030,7 @@ MonoBehaviour:
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 1152
+    m_Bits: 160896
   shootdistance: 20
   circleRadius: 5
   timeTillNextMove: 2

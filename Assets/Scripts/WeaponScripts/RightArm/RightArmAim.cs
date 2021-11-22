@@ -38,6 +38,8 @@ public class RightArmAim : MonoBehaviour
             //aimLocalScale.y = -1f * scaleX;
             if(transform.GetComponentInChildren<Weapon>() != null)
                 aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, 1f);
+            if (transform.GetComponentInChildren<MeleeWeapon>() != null)
+                aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, 1f);
         }
         else
         {
@@ -45,9 +47,10 @@ public class RightArmAim : MonoBehaviour
             //aimLocalScale.y = -1f * scaleX;
             if (transform.GetComponentInChildren<Weapon>() != null)
                 aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, -1f);
+            if (transform.GetComponentInChildren<MeleeWeapon>() != null)
+                aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, -1f);
         }
         aimTransform.localScale = aimLocalScale;
-
     }
 
 
