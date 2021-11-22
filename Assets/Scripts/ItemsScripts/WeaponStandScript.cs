@@ -49,7 +49,7 @@ public class WeaponStandScript : MonoBehaviour
                             PrimaryWpSlot[2] = true;
                     }
 
-                    if (wp.GetComponent<MeleeWeapon>() != null)
+                    if (wp.GetComponent<MeleeWeapon>() != null || wp.GetComponent<ShieldScript>() != null)
                     {
                         if (wp.gameObject.activeSelf)
                         {

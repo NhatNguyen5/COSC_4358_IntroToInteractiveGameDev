@@ -349,7 +349,7 @@ public class EnemyProj2 : MonoBehaviour
     }
 
 
-    void DestroyEnemyProj()
+    public void DestroyEnemyProj()
     {
         Destroy(gameObject);
     }

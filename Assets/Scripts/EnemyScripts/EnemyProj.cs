@@ -77,30 +77,20 @@ public class EnemyProj : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //BParticle.transform.parent = this.transform;
+        if (collision.CompareTag("MeleeWeapon"))
+            isDeflected = true;
         if (destroyable == false)
         {
             //if (collision.tag != "Enemy" && collision.tag != "EnemyMelee" && collision.tag != "Bullet" && collision.tag != "EnemyBullet")
             if ((collision.CompareTag("Player") || collision.CompareTag("Walls") || collision.CompareTag("Globin")) && isDeflected == false)
             {
 
-                GameObject BParticle2 = ObjectPool.instance.GetBulletEffectFromPool();
-                if (BParticle2 != null)
-                {
-                    BParticle2.transform.localScale = new Vector3(0.1666f, 0.1666f, 1);
-                    BParticle2.transform.position = gameObject.transform.position;
-                    BParticle2.transform.parent = ObjectPool.instance.transform;
-                }
+                
                 DestroyEnemyProj();
             }
             else if ((collision.CompareTag("Enemy") || collision.CompareTag("EnemyMelee") || collision.CompareTag("Colony") || collision.CompareTag("Walls")) && isDeflected == true)
             {
-                GameObject BParticle2 = ObjectPool.instance.GetBulletEffectFromPool();
-                if (BParticle2 != null)
-                {
-                    BParticle2.transform.localScale = new Vector3(0.1666f, 0.1666f, 1);
-                    BParticle2.transform.position = gameObject.transform.position;
-                    BParticle2.transform.parent = ObjectPool.instance.transform;
-                }
+                
                 hurtEnemy(collision);
                 DestroyEnemyProj();
             }
@@ -111,13 +101,6 @@ public class EnemyProj : MonoBehaviour
             if ((collision.CompareTag("Player") || collision.CompareTag("Bullet") || collision.CompareTag("Walls")) && isDeflected == false)
             {
                 
-                GameObject BParticle2 = ObjectPool.instance.GetBulletEffectFromPool();
-                if (BParticle2 != null)
-                {
-                    BParticle2.transform.localScale = new Vector3(0.1666f, 0.1666f, 1);
-                    BParticle2.transform.position = gameObject.transform.position;
-                    BParticle2.transform.parent = ObjectPool.instance.transform;
-                }
                 DestroyEnemyProj();
             }
             else if (isDeflected == true)
@@ -125,13 +108,6 @@ public class EnemyProj : MonoBehaviour
                 if (collision.CompareTag("Enemy") || collision.CompareTag("EnemyMelee") || collision.CompareTag("Colony") || collision.CompareTag("Walls"))
                 {
                     Debug.Log("deflected and found tag");
-                    GameObject BParticle2 = ObjectPool.instance.GetBulletEffectFromPool();
-                    if (BParticle2 != null)
-                    {
-                        BParticle2.transform.localScale = new Vector3(0.1666f, 0.1666f, 1);
-                        BParticle2.transform.position = gameObject.transform.position;
-                        BParticle2.transform.parent = ObjectPool.instance.transform;
-                    }
                     hurtEnemy(collision);
                     DestroyEnemyProj();
                 }
@@ -166,11 +142,18 @@ public class EnemyProj : MonoBehaviour
     }
 
 
-    void DestroyEnemyProj()
+    public void DestroyEnemyProj()
     {
         
         if (gameObject.name.Contains("EnemyBullet"))
         {
+            GameObject BParticle2 = ObjectPool.instance.GetBulletEffectFromPool();
+            if (BParticle2 != null)
+            {
+                BParticle2.transform.localScale = new Vector3(0.1666f, 0.1666f, 1);
+                BParticle2.transform.position = gameObject.transform.position;
+                BParticle2.transform.parent = ObjectPool.instance.transform;
+            }
             ObjectPool.instance.ReturnBulletToPool(gameObject);
         }
         else

@@ -91,12 +91,19 @@ public class PlayerActions
                     tempWI.localScale = new Vector3(rw.GetComponent<Weapon>().IconScale, rw.GetComponent<Weapon>().IconScale, 1);
                     RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<Weapon>().WeaponLabel;
                 }
-                else
+                else if(rw.GetComponent<MeleeWeapon>() != null)
                 {
                     Transform tempWI = RWeaponIcon.transform.Find("WeaponIcon");
                     tempWI.GetComponent<Image>().sprite = rw.GetComponent<MeleeWeapon>().WeapnIcon;
                     tempWI.localScale = new Vector3(rw.GetComponent<MeleeWeapon>().IconScale, rw.GetComponent<MeleeWeapon>().IconScale, 1);
                     RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<MeleeWeapon>().WeaponLabel;
+                }
+                else
+                {
+                    Transform tempWI = RWeaponIcon.transform.Find("WeaponIcon");
+                    tempWI.GetComponent<Image>().sprite = rw.GetComponent<ShieldScript>().WeapnIcon;
+                    tempWI.localScale = new Vector3(rw.GetComponent<ShieldScript>().IconScale, rw.GetComponent<ShieldScript>().IconScale, 1);
+                    RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<ShieldScript>().WeaponLabel;
                 }
             }
         }
@@ -266,7 +273,7 @@ public class PlayerActions
 
     public void ToggleDual()
     {
-        if (leftArm.childCount != 0)
+        if (leftArm.childCount != 0 && !player.transform.Find("Shield").gameObject.activeSelf)
         {
             if (!leftArm.gameObject.activeSelf)
             {
@@ -318,7 +325,7 @@ public class PlayerActions
     {
         //bool cond = false;
         float[] allowSlot = { 1, 2, 3, 4 };
-        float input;
+        float input = 1;
         if((float.TryParse(Input.inputString, out input)))
         {
             if (Array.Exists(allowSlot, x => x == input))
@@ -367,6 +374,44 @@ public class PlayerActions
                         else
                         {
                             MeleeWeapon RWeapon = rw.GetComponent<MeleeWeapon>();
+                            RWeapon.transform.position = rightArm.transform.position;
+                            RWeapon.transform.rotation = rightArm.transform.rotation;
+                            rw.gameObject.SetActive(false);
+                        }
+                    }
+                    if (rw.GetComponent<ShieldScript>() != null)
+                    {
+                        //Debug.Log(rw.gameObject.activeSelf);
+                       
+                        if (rw.GetComponent<ShieldScript>().Slot == input)
+                        {
+                            player.transform.Find("RightArm").transform.position = player.transform.position;
+                            player.transform.Find("LeftArm").transform.position = player.transform.position;
+                            //cond = true;
+                            rw.gameObject.SetActive(true);
+                            if (rw.gameObject.activeSelf)
+                            {
+                                Transform tempWI = RWeaponIcon.transform.Find("WeaponIcon");
+                                tempWI.GetComponent<Image>().sprite = rw.GetComponent<ShieldScript>().WeapnIcon;
+                                tempWI.localScale = new Vector3(rw.GetComponent<ShieldScript>().IconScale, rw.GetComponent<ShieldScript>().IconScale, 1);
+                                RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<ShieldScript>().WeaponLabel;
+
+                            }
+                            //start swap counter???
+                        }
+                        else
+                        {
+                            if (player.Stats.Angle < 0)
+                            {
+                                leftArm.position = new Vector2(player.Stats.Position.x + 0.05f, player.Stats.Position.y - 0.15f);
+                                rightArm.position = new Vector2(player.Stats.Position.x - 0.05f, player.Stats.Position.y - 0.15f);
+                            }
+                            else
+                            {
+                                leftArm.position = new Vector2(player.Stats.Position.x - 0.05f, player.Stats.Position.y - 0.15f);
+                                rightArm.position = new Vector2(player.Stats.Position.x + 0.05f, player.Stats.Position.y - 0.15f);
+                            }
+                            ShieldScript RWeapon = rw.GetComponent<ShieldScript>();
                             RWeapon.transform.position = rightArm.transform.position;
                             RWeapon.transform.rotation = rightArm.transform.rotation;
                             rw.gameObject.SetActive(false);

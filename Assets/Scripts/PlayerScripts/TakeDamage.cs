@@ -117,7 +117,6 @@ public class TakeDamage : MonoBehaviour
                 float damage = collision.gameObject.GetComponent<EnemyProj>().damage;
                 float speed = collision.gameObject.GetComponent<EnemyProj>().speed;
 
-
                 takeDamage(damage, collision.transform, speed);
             }
         }
@@ -127,7 +126,6 @@ public class TakeDamage : MonoBehaviour
             {
                 float damage = collision.gameObject.GetComponent<EnemyProj2>().damage;
                 float speed = collision.gameObject.GetComponent<EnemyProj2>().speed;
-
 
                 takeDamage(damage, collision.transform, speed);
             }
