@@ -34,9 +34,10 @@ public class ShieldScript : MonoBehaviour
     private Text UIMaxAmmoCount;
     private int swingCount = 1;
     public float knockBackForce;
-    private bool deploy = false;
+    [HideInInspector]
+    public bool deploy = false;
 
-    private int numDep = 0;
+    private int numDep = 1;
 
     [HideInInspector]
     public bool IsRightArm;
@@ -61,56 +62,57 @@ public class ShieldScript : MonoBehaviour
 
         GlobalPlayerVariables.weaponWeight = weaponWeight;
         animCtrl = transform.GetComponent<Animator>();
-        
     }
 
     // Update is called once per frame
     private void Update()
     {
-        damage = GrowthRate * player.Currentlevel + BaseDamage;
-
-        if(numDep == 8)
-        {
-            animCtrl.SetBool("ShieldDeploy", true);
-        }
-        else
-        {
-            animCtrl.SetBool("ShieldDeploy", false);
-        }
-
         if (OptionSettings.GameisPaused == false)
         {
-            if (Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.Mouse1))
-            {
-                currDmg = damage;
-                GlobalPlayerVariables.weaponWeight = 1;
-                deploy = true;
-            }
-            else if (!Input.GetKey(KeyCode.Mouse0))
-            {
-                
-            }
-
-            if (Input.GetKey(KeyCode.Mouse1) && !Input.GetKey(KeyCode.Mouse0))
-            {
-                deploy = false;
-                numDep = 0;
-                GlobalPlayerVariables.weaponWeight = weaponWeight;
-                
-            }
-            else if (!Input.GetKey(KeyCode.Mouse1))
-            {
-                
-            }
-
-            if (!deploy)
-                animateThis();
-            else
+            if (deploy)
             {
                 deployShield();
+                GlobalPlayerVariables.weaponWeight = 1;
+                animCtrl.SetBool("ShieldDeploy", true);
+                Collider2D[] shieldedBullets = Physics2D.OverlapCircleAll(transform.position, 1.6f);
+                foreach (var shieldedBullet in shieldedBullets)
+                {
+                    if (shieldedBullet.CompareTag("EnemyBullet") || shieldedBullet.CompareTag("EnemyBullet2"))
+                    {
+                        if (shieldedBullet.CompareTag("EnemyBullet"))
+                        {
+                            shieldedBullet.GetComponent<EnemyProj>().DestroyEnemyProj();
+
+                        }
+                        else
+                        {
+                            shieldedBullet.GetComponent<EnemyProj2>().DestroyEnemyProj();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                animCtrl.SetBool("ShieldDeploy", false);
+                animateThis();
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                if (!deploy)
+                {
+                    currDmg = damage;
+                    deploy = true;
+                }
+                else
+                {
+                    deploy = false;
+                    GlobalPlayerVariables.weaponWeight = weaponWeight;
+                }
             }
         }
-
+        
         //Debug.Log(animCtrl.GetCurrentAnimatorStateInfo(0).IsName("1stSwingAnim"));
         //Debug.Log(swingCount);
     }
@@ -173,7 +175,6 @@ public class ShieldScript : MonoBehaviour
         foreach (Transform shieldDir in transform)
         {
             shieldDir.gameObject.SetActive(true);
-            numDep += 1;
         }
     }
 
@@ -185,6 +186,42 @@ public class ShieldScript : MonoBehaviour
                 shieldDir.gameObject.SetActive(false);
             else
                 shieldDir.gameObject.SetActive(true);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        float damage = GrowthRate * player.Currentlevel + BaseDamage;
+        float currDmg = damage;
+
+        if (collision.CompareTag("EnemyMelee"))
+        {
+            collision.GetComponent<Enemy2>().takeDamage(currDmg, collision.transform, 10);
+        }
+        if (collision.CompareTag("Enemy"))
+        {
+            if (collision.GetComponent<Enemy1>() != null)
+                collision.GetComponent<Enemy1>().takeDamage(currDmg, collision.transform, 10);
+            else
+                collision.GetComponent<Enemy3>().takeDamage(currDmg, collision.transform, 10);
+        }
+        if (collision.CompareTag("Colony")) { collision.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10); }
+        if (collision.CompareTag("Globin")) { collision.GetComponent<Globin>().takeDamage(currDmg, collision.transform, 10); }
+        if (collision.GetComponent<Rigidbody2D>() != null)
+        {
+            collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(Mathf.Cos(player.Stats.Angle * Mathf.Deg2Rad), Mathf.Sin(player.Stats.Angle * Mathf.Deg2Rad)) * knockBackForce, ForceMode2D.Impulse);
+        }
+        if (collision.CompareTag("EnemyBullet") || collision.CompareTag("EnemyBullet2"))
+        {
+            if (collision.CompareTag("EnemyBullet"))
+            {
+                collision.GetComponent<EnemyProj>().DestroyEnemyProj();
+
+            }
+            else
+            {
+                collision.GetComponent<EnemyProj2>().DestroyEnemyProj();
+            }
         }
     }
 }

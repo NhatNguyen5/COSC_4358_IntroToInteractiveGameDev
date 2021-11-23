@@ -50,13 +50,11 @@ public class Shielding : MonoBehaviour
             if (collision.CompareTag("EnemyBullet"))
             {
                 collision.GetComponent<EnemyProj>().DestroyEnemyProj();
-                collision.GetComponent<EnemyProj>().isDeflected = false;
 
             }
             else
             {
                 collision.GetComponent<EnemyProj2>().DestroyEnemyProj();
-                collision.GetComponent<EnemyProj2>().isDeflected = false;
             }
 
             //Instantiate(collision.gameObject, collision.transform.position, newRot);

@@ -125,28 +125,35 @@ public class TakeDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (collision.CompareTag("EnemyBullet"))
+        bool shielded = false;
+        if (transform.Find("RightArm").transform.Find("Shield") != null)
         {
-            if (collision.gameObject.GetComponent<EnemyProj>().isDeflected == false)
-            {
-                float damage = collision.gameObject.GetComponent<EnemyProj>().damage;
-                float speed = collision.gameObject.GetComponent<EnemyProj>().speed;
-
-                takeDamage(damage, collision.transform, speed);
-            }
-        }
-        if (collision.CompareTag("EnemyBullet2"))
-        {
-            if (collision.gameObject.GetComponent<EnemyProj2>().isDeflected == false)
-            {
-                float damage = collision.gameObject.GetComponent<EnemyProj2>().damage;
-                float speed = collision.gameObject.GetComponent<EnemyProj2>().speed;
-
-                takeDamage(damage, collision.transform, speed);
-            }
+            shielded = transform.Find("RightArm").transform.Find("Shield").gameObject.GetComponent<ShieldScript>().deploy;
         }
 
+        if (!shielded)
+        {
+            if (collision.CompareTag("EnemyBullet"))
+            {
+                if (collision.gameObject.GetComponent<EnemyProj>().isDeflected == false)
+                {
+                    float damage = collision.gameObject.GetComponent<EnemyProj>().damage;
+                    float speed = collision.gameObject.GetComponent<EnemyProj>().speed;
+
+                    takeDamage(damage, collision.transform, speed);
+                }
+            }
+            if (collision.CompareTag("EnemyBullet2"))
+            {
+                if (collision.gameObject.GetComponent<EnemyProj2>().isDeflected == false)
+                {
+                    float damage = collision.gameObject.GetComponent<EnemyProj2>().damage;
+                    float speed = collision.gameObject.GetComponent<EnemyProj2>().speed;
+
+                    takeDamage(damage, collision.transform, speed);
+                }
+            }
+        }
     }
 
     public void takeDamage(float damage, Transform impact, float speed)

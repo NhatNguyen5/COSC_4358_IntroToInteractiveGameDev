@@ -8,14 +8,14 @@ public class RightArmAim : MonoBehaviour
     float scaleY;
     private Transform aimTransform;
     private Player player;
-    public GameObject shield;
+    private GameObject shield;
     //float scaleX;
     
     private void Start()
     {
         aimTransform = GameObject.Find("RightArm").transform;
         scaleY = transform.localScale.y;
-        shield = transform.Find("Shield").gameObject;
+        
         //scaleX = transform.localScale.x;
     }
     private void Update()
@@ -26,40 +26,51 @@ public class RightArmAim : MonoBehaviour
 
     private void handleAiming()
     {
+        
+        Vector3 mousePosition = GetMouseWorldPosition();
+        Vector3 aimDirection = (mousePosition - transform.position).normalized;
+        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        aimTransform.eulerAngles = new Vector3(0, 0, angle);
 
-        if (shield == null)
+        Vector3 aimLocalScale = Vector3.one;
+        if (angle > 90 || angle < -90)
         {
-            Vector3 mousePosition = GetMouseWorldPosition();
-            Vector3 aimDirection = (mousePosition - transform.position).normalized;
-            float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-            aimTransform.eulerAngles = new Vector3(0, 0, angle);
-
-            Vector3 aimLocalScale = Vector3.one;
-            if (angle > 90 || angle < -90)
-            {
-                //transform.position.y *= -1;
-                aimLocalScale.y = -1f;
-                //aimLocalScale.y = -1f * scaleX;
-                if (transform.GetComponentInChildren<Weapon>() != null)
-                    aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, 1f);
-                if (transform.GetComponentInChildren<MeleeWeapon>() != null)
-                    aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, 1f);
-            }
-            else
-            {
-                aimLocalScale.y = +1f;
-                //aimLocalScale.y = -1f * scaleX;
-                if (transform.GetComponentInChildren<Weapon>() != null)
-                    aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, -1f);
-                if (transform.GetComponentInChildren<MeleeWeapon>() != null)
-                    aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, -1f);
-            }
-            aimTransform.localScale = aimLocalScale;
+            //transform.position.y *= -1;
+            aimLocalScale.y = -1f;
+            //aimLocalScale.y = -1f * scaleX;
+            if (transform.GetComponentInChildren<Weapon>() != null)
+                aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, 1f);
+            if (transform.GetComponentInChildren<MeleeWeapon>() != null)
+                aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, 1f);
         }
         else
         {
-            altHandleAiming();
+            aimLocalScale.y = +1f;
+            //aimLocalScale.y = -1f * scaleX;
+            if (transform.GetComponentInChildren<Weapon>() != null)
+                aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, -1f);
+            if (transform.GetComponentInChildren<MeleeWeapon>() != null)
+                aimTransform.position = new Vector3(aimTransform.position.x, aimTransform.position.y, -1f);
         }
+
+        if(transform.Find("Shield") != null)
+        {
+            if (transform.Find("Shield").gameObject.activeSelf)
+            {
+                aimTransform.eulerAngles = new Vector3(0, 0, 0);
+                aimTransform.localScale = new Vector3(1, 1, 1);
+            }
+            else
+            {
+                aimTransform.localScale = aimLocalScale;
+            }
+        }
+        else
+        {
+            aimTransform.localScale = aimLocalScale;
+        }
+
+
     }
 
 
@@ -97,12 +108,8 @@ public class RightArmAim : MonoBehaviour
         }
         else
         {
-            aimTransform.eulerAngles = new Vector3(0, 0, 0);
-            aimTransform.localScale = new Vector3(1, 1, 1);
+            
         }
-
-
-
     }
 
 

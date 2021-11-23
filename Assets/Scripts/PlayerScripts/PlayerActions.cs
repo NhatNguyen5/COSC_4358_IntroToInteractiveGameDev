@@ -48,6 +48,8 @@ public class PlayerActions
     private float hdir;
     private float vdir;
 
+    private GameObject Shield;
+
     //private ArmorDown ArmorDownEff;
 
     //private bool isWaiting = false;
@@ -109,6 +111,14 @@ public class PlayerActions
         }
         currSpriteCategory = player.Components.PlayerTargetCategory;
         CurrHemoSprite = player.Components.PlayerSpriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(currSpriteCategory + (player.Stats.ArmorLevel).ToString()).ToArray();
+        if(player.transform.Find("RightArm").transform.Find("Shield") != null)
+        {
+            if (player.transform.Find("RightArm").transform.Find("Shield").gameObject.activeSelf)
+            {
+                player.transform.Find("RightArm").transform.position = player.transform.position;
+                player.transform.Find("LeftArm").transform.position = player.transform.position;
+            }
+        }
     }
 
     public void Move(Transform transform)
@@ -379,6 +389,7 @@ public class PlayerActions
                             rw.gameObject.SetActive(false);
                         }
                     }
+                    
                     if (rw.GetComponent<ShieldScript>() != null)
                     {
                         //Debug.Log(rw.gameObject.activeSelf);
@@ -388,7 +399,11 @@ public class PlayerActions
                             player.transform.Find("RightArm").transform.position = player.transform.position;
                             player.transform.Find("LeftArm").transform.position = player.transform.position;
                             //cond = true;
+                            ShieldScript RWeapon = rw.GetComponent<ShieldScript>();
+                            
                             rw.gameObject.SetActive(true);
+                            
+                            //rw.gameObject.SetActive(true);
                             if (rw.gameObject.activeSelf)
                             {
                                 Transform tempWI = RWeaponIcon.transform.Find("WeaponIcon");
@@ -398,6 +413,7 @@ public class PlayerActions
 
                             }
                             //start swap counter???
+
                         }
                         else
                         {
@@ -414,7 +430,9 @@ public class PlayerActions
                             ShieldScript RWeapon = rw.GetComponent<ShieldScript>();
                             RWeapon.transform.position = rightArm.transform.position;
                             RWeapon.transform.rotation = rightArm.transform.rotation;
+                            RWeapon.deploy = false;
                             rw.gameObject.SetActive(false);
+                            
                         }
                     }
                 }
