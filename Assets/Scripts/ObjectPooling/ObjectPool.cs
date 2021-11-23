@@ -133,7 +133,7 @@ public class ObjectPool : MonoBehaviour
         {
             GameObject popUp = Instantiate(DamagePopUp);
             popUp.transform.SetParent(gameObject.transform);
-            return null;
+            return popUp;
         }
     }
 
