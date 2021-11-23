@@ -54,7 +54,13 @@ public class Explosion : MonoBehaviour
 
 
             }
-            if (collision.tag == "Colony") { collision.GetComponent<EnemyColony>().takeDamage(explosionDamage, collision.transform, 10); }
+            if (collision.tag == "Colony") {
+
+                if (collision.GetComponent<EnemyColony>() != null)
+                    collision.GetComponent<EnemyColony>().takeDamage(explosionDamage, collision.transform, 10);
+                else
+                    collision.GetComponent<EnemyColony2>().takeDamage(explosionDamage, collision.transform, 10);
+            }
         }
     }
 

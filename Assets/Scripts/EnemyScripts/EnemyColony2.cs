@@ -305,7 +305,7 @@ public class EnemyColony2 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GlobalPlayerVariables.EnableAI)
+        if (GlobalPlayerVariables.EnableAI && isDead == false)
         {
             if (inmiddleofdash == true)
             {
@@ -418,7 +418,7 @@ public class EnemyColony2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GlobalPlayerVariables.EnableAI)
+        if (GlobalPlayerVariables.EnableAI && isDead == false)
         {
             if (target == null)
             {
@@ -857,7 +857,7 @@ public class EnemyColony2 : MonoBehaviour
             GlobalPlayerVariables.enemiesKilled += 1;
             transform.position = this.transform.position;
             transform.Find("BossSprite").GetComponent<Animator>().SetBool("IsDead", isDead);
-            GetComponent<PolygonCollider2D>().enabled = false;
+            GetComponent<CircleCollider2D>().enabled = false;
             StartCoroutine(Dying());
             //GameObject.Destroy(gameObject);
         }

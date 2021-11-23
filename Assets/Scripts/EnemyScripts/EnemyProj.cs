@@ -129,7 +129,13 @@ public class EnemyProj : MonoBehaviour
             else
                 collision.GetComponent<Enemy3>().takeDamage(damage, collision.transform, 10);
         }
-        if (collision.CompareTag("Colony")) { collision.GetComponent<EnemyColony>().takeDamage(damage, collision.transform, 10); }
+        if (collision.CompareTag("Colony")) {
+
+            if (collision.GetComponent<EnemyColony>() != null)
+                collision.GetComponent<EnemyColony>().takeDamage(damage, collision.transform, 10);
+            else
+                collision.GetComponent<EnemyColony2>().takeDamage(damage, collision.transform, 10);
+        }
     }
 
 
