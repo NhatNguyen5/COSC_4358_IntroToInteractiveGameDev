@@ -12,6 +12,8 @@ public class EnemyColony2 : MonoBehaviour
 
     public Transform EnemyTarget;
 
+    public ParticleSystem spinRing;
+
 
     public float nextWaypointDistance = 3f;
 
@@ -110,6 +112,8 @@ public class EnemyColony2 : MonoBehaviour
     public float beginningRangeToDash;
     public float endingRangeToDash;
     private float DashTimer;
+    public float timebetweenmultiDash;
+    private float timebtwdashtimers;
     public float dashAroundPlayerRadius;
 
     public bool canDoAirStrike = false;
@@ -122,6 +126,8 @@ public class EnemyColony2 : MonoBehaviour
     private bool dashIntoPlayer = false;
     private bool inmiddleofdash = false;
     private bool inmiddleofSwing = false;
+    public float swingCoolDown = 1f;
+    private float swingTimer;
 
 
     [Header("Chase Settings")]
@@ -134,6 +140,7 @@ public class EnemyColony2 : MonoBehaviour
     public LayerMask IgnoreMe;
     public float shootdistance;
     private float distancefromplayer;
+    private float distancefromtarget;
 
     [Header("Random Movement Settings")]
     public float circleRadius;
@@ -230,6 +237,8 @@ public class EnemyColony2 : MonoBehaviour
         variation();
         weapon.enabled = false;
         weaponHurtBox.enabled = false;
+        //spinRing.GetComponent<ParticleSystem>();
+        spinRing.Stop();
     }
 
     void variation()
@@ -296,13 +305,26 @@ public class EnemyColony2 : MonoBehaviour
     {
         if (GlobalPlayerVariables.EnableAI)
         {
+            if (inmiddleofdash == true)
+            {
+                hurtCircle();
+            }
+
             if (player != null)
                 distancefromplayer = Vector2.Distance(rb.position, player.position);
+            if (target == player)
+            {
+                distancefromtarget = distancefromplayer;
+            }
+            else
+            {
+                distancefromtarget = Vector2.Distance(rb.position, target.position);
+            }
 
 
 
 
-            if (distancefromplayer >= stoppingDistance || lineofsight == false)
+            if (distancefromtarget >= stoppingDistance || lineofsight == false)
             {
                 Astar();
                 //Debug.Log("Astar");
@@ -422,33 +444,35 @@ public class EnemyColony2 : MonoBehaviour
             }
             */
 
-            if (inmiddleofdash == true)
+            if (distancefromtarget <= 5 && swingTimer <= 0 && inmiddleofdash == false && DashTimer > 0) //inmiddleofdash == false && DashTimer > 0 && inmiddleofSwing == false && lineofsight == true)
             {
-                hurtCircle();
-            }
-
-            if (distancefromplayer <= 5 && inmiddleofdash == false && DashTimer > 0 && inmiddleofSwing == false && lineofsight == true)
-            {
+                swingTimer = swingCoolDown;
                 Debug.Log("Swinging");
                 //STUCK ON SWINGING
                 //ALSO NEED TO MAKE DISTANCE FROM TARGET SO HE CAN PROPERLY ATTACK GLOBINS
 
 
 
-                //StartCoroutine(Swing());
+                StartCoroutine(Swing());
             }
-
+            if (swingTimer >= 0)
+                swingTimer -= Time.deltaTime;
 
             //  NEED TO MAKE IT WHERE ENEMYTARGET IS THE CLOSEST ENEMY AND IF THAT DIES THEN IT DEFAULTS TO PLAYERSTASH AS
             //  IT IS SET NOW THE PLAYER CHANGES WILL MESS WITH THE PLAYERSTASH DUE TO POINTERS
 
 
-            if (DashTimer <= 0 && canDash == true && distancefromplayer <= stoppingDistance && lineofsight == true && inmiddleofSwing == false)
+            if (DashTimer <= 0 && canDash == true && distancefromtarget <= stoppingDistance && lineofsight == true && inmiddleofSwing == false)
             {
 
                 float newDashTimer = Random.Range(beginningRangeToDash, endingRangeToDash);
                 DashTimer = newDashTimer;
                 StartCoroutine(DashAttackPattern());
+
+                //NEED TO MAKE ANIMATION CONTINOUS SPINNING;
+
+
+
 
             }
             if (DashTimer >= 0)
@@ -595,7 +619,7 @@ public class EnemyColony2 : MonoBehaviour
 
             }
 
-            if (lineofsight == true && GlobalPlayerVariables.GameOver == false && isDead == false && distancefromplayer <= shootdistance)
+            if (lineofsight == true && GlobalPlayerVariables.GameOver == false && isDead == false && distancefromtarget <= shootdistance)
             {
 
                 if (timeBtwShots <= 0)
@@ -744,7 +768,11 @@ public class EnemyColony2 : MonoBehaviour
             Vector3 direction = (transform.position - impact.transform.position).normalized;
 
             //might add to impact to make it go past enemy
-            var go = Instantiate(DamageText, impact.position, Quaternion.identity);
+            GameObject go = ObjectPool.instance.GetDamagePopUpFromPool();
+            go.GetComponent<Animator>().Play("DamagePopUp", -1, 0f);
+            go.transform.SetParent(null);
+            go.transform.position = impact.position;
+            go.transform.rotation = Quaternion.identity;
             if (crit == false)
             {
                 go.GetComponent<TextMeshPro>().text = damage.ToString();
@@ -834,24 +862,80 @@ public class EnemyColony2 : MonoBehaviour
 
     }
 
+    void LifeSteal(float damage)
+    {
+        if (enemyColony.colonyHealth < MaxHP)
+        {
+            enemyColony.colonyHealth += damage;
+            damage = Mathf.Round(damage);
+            if (damage > 1)
+            {
+                Vector3 direction = (transform.position - weapon.transform.position).normalized;
+
+                //might add to impact to make it go past enemy
+                //var go = Instantiate(DamageText, weapon.transform.position, Quaternion.identity);
+
+                GameObject go = ObjectPool.instance.GetDamagePopUpFromPool();
+                go.GetComponent<Animator>().Play("DamagePopUp", -1, 0f);
+                go.transform.SetParent(null);
+                go.transform.position = weapon.transform.position;
+                go.transform.rotation = Quaternion.identity;
+
+
+                //Debug.Log("CRIT");
+
+                Color colorTop = Color.green;
+                Color colorBottom = Color.green;
+
+                go.GetComponent<TextMeshPro>().text = damage.ToString();
+                go.GetComponent<TextMeshPro>().colorGradient = new VertexGradient(colorTop, colorTop, colorBottom, colorBottom);
+                go.GetComponent<TextMeshPro>().fontSize *= 1.2f;
+                
+                go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, 10);
+            }
+
+
+
+
+
+        }
+        else if (enemyColony.colonyHealth + damage >= MaxHP)
+            enemyColony.colonyHealth = MaxHP;
+
+
+
+        HealthBar.fillAmount = enemyColony.colonyHealth / MaxHP;
+    }
+
+
     void hurtCircle()
     {
-        Collider2D[] objectsToBurn = Physics2D.OverlapCircleAll(transform.position, 1);
+        Collider2D[] objectsToBurn = Physics2D.OverlapCircleAll(transform.position, spinattackrange);
         foreach (var objectToBurn in objectsToBurn)
         {
-            /*
-            if (objectToBurn.tag == "EnemyMelee") { objectToBurn.GetComponent<Enemy2>().takeDamage(contactDamage, objectToBurn.transform, 10); }
+            
+            if (objectToBurn.tag == "EnemyMelee") { 
+                objectToBurn.GetComponent<Enemy2>().takeDamage(spinDamage, objectToBurn.transform, 10);
+                LifeSteal(spinDamage);
+            }
             if (objectToBurn.tag == "Enemy")
             {
                 if (objectToBurn.GetComponent<Enemy1>() != null)
-                    objectToBurn.GetComponent<Enemy1>().takeDamage(contactDamage, objectToBurn.transform, 10);
+                    objectToBurn.GetComponent<Enemy1>().takeDamage(spinDamage, objectToBurn.transform, 10);
                 else
-                    objectToBurn.GetComponent<Enemy3>().takeDamage(contactDamage, objectToBurn.transform, 10);
+                    objectToBurn.GetComponent<Enemy3>().takeDamage(spinDamage, objectToBurn.transform, 10);
+                LifeSteal(spinDamage);
             }
-            */
+            
             //if (objectToBurn.tag == "Colony") { objectToBurn.GetComponent<EnemyColony>().takeDamage(contactDamage, objectToBurn.transform, 10); }
-            if (objectToBurn.tag == "Player") { objectToBurn.GetComponent<TakeDamage>().takeDamage(spinDamage, objectToBurn.transform, 10); }
-            if (objectToBurn.tag == "Globin") { objectToBurn.GetComponent<Globin>().takeDamage(spinDamage, objectToBurn.transform, 10); }
+            if (objectToBurn.tag == "Player") { 
+                objectToBurn.GetComponent<TakeDamage>().takeDamage(spinDamage, objectToBurn.transform, 10);
+                LifeSteal(spinDamage);
+            }
+            if (objectToBurn.tag == "Globin") { 
+                objectToBurn.GetComponent<Globin>().takeDamage(spinDamage, objectToBurn.transform, 10);
+                LifeSteal(spinDamage);
+            }
         }
         //yield return new WaitForSecondsRealtime(0.3f);
     }
@@ -864,45 +948,78 @@ public class EnemyColony2 : MonoBehaviour
         inmiddleofSwing = true;
         weaponHurtBox.enabled = true;
         weapon.Play("ColonyWeaponSwing", 0, 0f);
-        yield return new WaitForSecondsRealtime(0.25f);
+        yield return new WaitForSecondsRealtime(0.6f);
         Debug.Log("Return");
         weaponHurtBox.enabled = false;
         inmiddleofSwing = false;
-        weapon.Play("ColonyWeaponNoAnimation", 0, 0f);
+        //weapon.Play("ColonyWeaponNoAnimation", 0, 0f);
         weapon.enabled = false;
     }
 
+    /*
+    IEnumerator SwingShoot()
+    {
+        Debug.Log("coro");
+        weapon.enabled = true;
+        inmiddleofSwing = true;
+        weaponHurtBox.enabled = true;
+        weapon.Play("ColonyWeaponSwing", 0, 0f);
+        yield return new WaitForSecondsRealtime(0.6f);
+        Debug.Log("Return");
+        weaponHurtBox.enabled = false;
+        inmiddleofSwing = false;
+        //weapon.Play("ColonyWeaponNoAnimation", 0, 0f);
+        weapon.enabled = false;
+    }
+    */
 
-
+    /*
     IEnumerator InDash()
     {
-        inmiddleofdash = true;
+        //inmiddleofdash = true;
         yield return new WaitForSecondsRealtime(0.25f);
-        inmiddleofdash = false;
+        //inmiddleofdash = false;
     }
+    */
+
+    IEnumerator clearParticles()
+    {
+        yield return new WaitForSeconds(0.1f);
+        spinRing.Clear();
+    }
+
+
+
+
 
 
     IEnumerator DashAttackPattern()
     {
+        spinRing.Play();
+        inmiddleofdash = true;
         weapon.enabled = true;
         randomDashPos(false);
         weapon.Play("ColonyWeapon",0,0f);
-        StartCoroutine(InDash());
-        yield return new WaitForSecondsRealtime(0.6f);
+        //StartCoroutine(clearParticles());
+
+        yield return new WaitForSeconds(0.6f);
         randomDashPos(false);
-        weapon.Play("ColonyWeapon", 0, 0f);
-        StartCoroutine(InDash());
-        yield return new WaitForSecondsRealtime(0.6f);
+        //weapon.Play("ColonyWeapon", 0, 0f);
+        //StartCoroutine(clearParticles());
+        yield return new WaitForSeconds(0.6f);
         randomDashPos(false);
-        weapon.Play("ColonyWeapon", 0, 0f);
-        StartCoroutine(InDash());
-        yield return new WaitForSecondsRealtime(0.6f);
+        //weapon.Play("ColonyWeapon", 0, 0f);
+        //StartCoroutine(clearParticles());
+        yield return new WaitForSeconds(0.6f);
         randomDashPos(true);
-        weapon.Play("ColonyWeapon", 0, 0f);
-        StartCoroutine(InDash());
-        yield return new WaitForSecondsRealtime(0.6f);
+        //weapon.Play("ColonyWeapon", 0, 0f);
+        //StartCoroutine(clearParticles());
+        yield return new WaitForSeconds(0.6f);
+        spinRing.Clear();
         weapon.Play("ColonyWeaponNoAnimation", 0, 0f);
         weapon.enabled = false;
+        inmiddleofdash = false;
+        spinRing.Stop();
     }
 
 

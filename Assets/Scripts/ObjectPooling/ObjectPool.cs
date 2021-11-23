@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ObjectPool : MonoBehaviour
 {
@@ -114,12 +115,18 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
+
+    public Color topGrad;
+    public Color bottomGrad;
+
     public GameObject GetDamagePopUpFromPool()
     {
         if (DamagePopUpPool.Count > 0)
         {
             GameObject popUp = DamagePopUpPool.Dequeue();
             popUp.SetActive(true);
+            popUp.GetComponent<TextMeshPro>().colorGradient = DamagePopUp.GetComponent<TextMeshPro>().colorGradient;
+            popUp.GetComponent<TextMeshPro>().fontSize = DamagePopUp.GetComponent<TextMeshPro>().fontSize;
             return popUp;
         }
         else

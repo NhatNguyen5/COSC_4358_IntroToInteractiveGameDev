@@ -85,8 +85,24 @@ public class TakeDamage : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Colony"))
         {
-            float contactDamage = collision.gameObject.GetComponent<EnemyColony>().contactDamage;
-            float speed = collision.gameObject.GetComponent<EnemyColony>().speed;
+            float contactDamage = 0;
+
+
+            // collision.gameObject.GetComponent<EnemyColony>().contactDamage;
+            float speed = 0;
+
+            if (collision.gameObject.GetComponent<EnemyColony>() != null)
+            {
+                contactDamage = collision.gameObject.GetComponent<EnemyColony>().contactDamage;
+                speed = collision.gameObject.GetComponent<EnemyColony>().speed;
+            }
+            else if(collision.gameObject.GetComponent<EnemyColony2>() != null)
+            {
+                contactDamage = collision.gameObject.GetComponent<EnemyColony2>().contactDamage;
+                speed = collision.gameObject.GetComponent<EnemyColony2>().speed * 0.1f;
+            }
+
+            //collision.gameObject.GetComponent<EnemyColony>().speed;
             takeDamage(contactDamage, collision.transform, speed);
         }
 
