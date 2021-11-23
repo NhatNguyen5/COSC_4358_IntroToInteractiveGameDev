@@ -15,7 +15,10 @@ public class RightArmAim : MonoBehaviour
     {
         aimTransform = GameObject.Find("RightArm").transform;
         scaleY = transform.localScale.y;
-        shield = transform.Find("Shield").gameObject;
+
+        Transform item = transform.Find("Shield");
+        if (item != null)
+            shield = item.gameObject;
         //scaleX = transform.localScale.x;
     }
     private void Update()
