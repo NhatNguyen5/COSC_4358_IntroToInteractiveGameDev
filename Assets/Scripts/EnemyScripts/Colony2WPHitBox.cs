@@ -9,7 +9,7 @@ public class Colony2WPHitBox : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        weaponHurtBox.GetComponent<PolygonCollider2D>();
+        //weaponHurtBox.GetComponent<PolygonCollider2D>();
         damage = transform.parent.gameObject.GetComponent<EnemyColony2>().meleeDamage;
     }
 
