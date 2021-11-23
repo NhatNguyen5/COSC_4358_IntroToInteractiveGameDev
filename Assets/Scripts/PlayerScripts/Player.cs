@@ -797,23 +797,65 @@ public class Player : MonoBehaviour
             if (listOfRightWeapons[i].transform.parent.transform.name.Contains("RightArm") == true)
             {
                 GameObject newWeapon = listOfRightWeapons[i].transform.gameObject;
-                if (newWeapon.GetComponent<Weapon>().Slot == 1)
-                {
-                    gitValues.startingWeapon1 = newWeapon.name;
-                    //PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon = newWeapon.name;
-                }
-                if (newWeapon.GetComponent<Weapon>().Slot == 2)
-                {
-                    gitValues.startingWeapon2 = newWeapon.name;
-                    //PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = newWeapon.name;
-                }
-                if (newWeapon.GetComponent<Weapon>().Slot == 3)
-                {
-                    gitValues.startingWeapon3 = newWeapon.name;
-                    //PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = newWeapon.name;
-                }
 
 
+                if (newWeapon.GetComponent<Weapon>() != null)
+                {
+                    if (newWeapon.GetComponent<Weapon>().Slot == 1)
+                    {
+                        gitValues.startingWeapon1 = newWeapon.name;
+                    }
+
+                    if (newWeapon.GetComponent<Weapon>().Slot == 2)
+                    {
+                        gitValues.startingWeapon2 = newWeapon.name;
+                        //PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = newWeapon.name;
+                    }
+                    if (newWeapon.GetComponent<Weapon>().Slot == 3)
+                    {
+                        gitValues.startingWeapon3 = newWeapon.name;
+                        //PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = newWeapon.name;
+                    }
+
+                }
+                else if (newWeapon.GetComponent<MeleeWeapon>() != null)
+                {
+
+                    if (newWeapon.GetComponent<MeleeWeapon>().Slot == 1)
+                    {
+                        gitValues.startingWeapon1 = newWeapon.name;
+                    }
+
+                    if (newWeapon.GetComponent<MeleeWeapon>().Slot == 2)
+                    {
+                        gitValues.startingWeapon2 = newWeapon.name;
+                        //PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = newWeapon.name;
+                    }
+                    if (newWeapon.GetComponent<MeleeWeapon>().Slot == 3)
+                    {
+                        gitValues.startingWeapon3 = newWeapon.name;
+                        //PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = newWeapon.name;
+                    }
+                }
+                else
+                {
+                    if (newWeapon.GetComponent<ShieldScript>().Slot == 1)
+                    {
+                        gitValues.startingWeapon1 = newWeapon.name;
+                    }
+
+                    if (newWeapon.GetComponent<ShieldScript>().Slot == 2)
+                    {
+                        gitValues.startingWeapon2 = newWeapon.name;
+                        //PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = newWeapon.name;
+                    }
+                    if (newWeapon.GetComponent<ShieldScript>().Slot == 3)
+                    {
+                        gitValues.startingWeapon3 = newWeapon.name;
+                        //PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = newWeapon.name;
+                    }
+
+                }
                 //weaponTransforms.Add(listOfRightWeapons[i]);
             }
         }
