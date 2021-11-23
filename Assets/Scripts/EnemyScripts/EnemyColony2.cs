@@ -305,20 +305,25 @@ public class EnemyColony2 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GlobalPlayerVariables.EnableAI)
+        if (GlobalPlayerVariables.EnableAI && isDead == false)
         {
+            if (target == null)
+            {
+                player = playerStash;
+                chaseInProgress = 0f;
+            }
             if (inmiddleofdash == true)
             {
                 hurtCircle();
             }
 
-            if (player != null)
+            if (player != null && target != null)
                 distancefromplayer = Vector2.Distance(rb.position, player.position);
             if (target == player)
             {
                 distancefromtarget = distancefromplayer;
             }
-            else
+            else if(target != null)
             {
                 distancefromtarget = Vector2.Distance(rb.position, target.position);
             }
@@ -418,7 +423,7 @@ public class EnemyColony2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GlobalPlayerVariables.EnableAI)
+        if (GlobalPlayerVariables.EnableAI && isDead == false)
         {
             if (target == null)
             {
@@ -600,7 +605,7 @@ public class EnemyColony2 : MonoBehaviour
                 knockbacktime = 0;
                 knockback = false;
             }
-            if (player != null && player != this.transform)
+            if (player != null && player != this.transform && target != null)
             {
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, target.transform.position - transform.position, Mathf.Infinity, ~IgnoreMe);
                 //var rayDirection = player.position - transform.position;
@@ -857,7 +862,7 @@ public class EnemyColony2 : MonoBehaviour
             GlobalPlayerVariables.enemiesKilled += 1;
             transform.position = this.transform.position;
             transform.Find("BossSprite").GetComponent<Animator>().SetBool("IsDead", isDead);
-            GetComponent<PolygonCollider2D>().enabled = false;
+            GetComponent<CircleCollider2D>().enabled = false;
             StartCoroutine(Dying());
             //GameObject.Destroy(gameObject);
         }
