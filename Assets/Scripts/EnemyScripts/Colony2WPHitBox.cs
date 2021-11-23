@@ -10,7 +10,7 @@ public class Colony2WPHitBox : MonoBehaviour
     void Start()
     {
         //weaponHurtBox.GetComponent<PolygonCollider2D>();
-        damage = transform.parent.gameObject.GetComponent<EnemyColony2>().meleeDamage;
+        damage = transform.parent.transform.parent.gameObject.GetComponent<EnemyColony2>().meleeDamage;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
