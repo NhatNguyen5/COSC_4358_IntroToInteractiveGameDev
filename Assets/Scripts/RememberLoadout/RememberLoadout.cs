@@ -186,7 +186,12 @@ public class RememberLoadout : MonoBehaviour
                     {
                         Debug.Log("Primary");
                         var newWeapon = Instantiate(go, rightArmTrans, false);
-                        newWeapon.GetComponent<Weapon>().Slot = 1;
+                        if(newWeapon.GetComponent<Weapon>() != null)
+                            newWeapon.GetComponent<Weapon>().Slot = 1;
+                        else if(newWeapon.GetComponent<MeleeWeapon>() != null)
+                            newWeapon.GetComponent<MeleeWeapon>().Slot = 1;
+                        else
+                            newWeapon.GetComponent<ShieldScript>().Slot = 1;
                         newWeapon.name = startingWeapon1;
                     }
                 }
@@ -195,7 +200,12 @@ public class RememberLoadout : MonoBehaviour
                     if (go.name == startingWeapon2)
                     {
                         var newWeapon2 = Instantiate(go, rightArmTrans, false);
-                        newWeapon2.GetComponent<Weapon>().Slot = 2;
+                        if (newWeapon2.GetComponent<Weapon>() != null)
+                            newWeapon2.GetComponent<Weapon>().Slot = 2;
+                        else if (newWeapon2.GetComponent<MeleeWeapon>() != null)
+                            newWeapon2.GetComponent<MeleeWeapon>().Slot = 2;
+                        else
+                            newWeapon2.GetComponent<ShieldScript>().Slot = 2;
                         newWeapon2.name = startingWeapon2;
                         newWeapon2.SetActive(false);
                     }
@@ -205,7 +215,12 @@ public class RememberLoadout : MonoBehaviour
                     if (go.name == startingWeapon3)
                     {
                         var newWeapon3 = Instantiate(go, rightArmTrans, false);
-                        newWeapon3.GetComponent<Weapon>().Slot = 3;
+                        if (newWeapon3.GetComponent<Weapon>() != null)
+                            newWeapon3.GetComponent<Weapon>().Slot = 3;
+                        else if (newWeapon3.GetComponent<MeleeWeapon>() != null)
+                            newWeapon3.GetComponent<MeleeWeapon>().Slot = 3;
+                        else
+                            newWeapon3.GetComponent<ShieldScript>().Slot = 3;
                         newWeapon3.name = startingWeapon3;
                         newWeapon3.SetActive(false);
                     }
