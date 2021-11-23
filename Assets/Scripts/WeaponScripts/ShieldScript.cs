@@ -71,6 +71,7 @@ public class ShieldScript : MonoBehaviour
         {
             if (deploy)
             {
+                transform.position = player.transform.position;
                 deployShield();
                 GlobalPlayerVariables.weaponWeight = 1;
                 animCtrl.SetBool("ShieldDeploy", true);

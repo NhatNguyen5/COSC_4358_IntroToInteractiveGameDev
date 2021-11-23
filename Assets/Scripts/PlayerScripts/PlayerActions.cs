@@ -48,7 +48,7 @@ public class PlayerActions
     private float hdir;
     private float vdir;
 
-    private GameObject Shield;
+    private float storedWeight;
 
     //private ArmorDown ArmorDownEff;
 
@@ -177,7 +177,15 @@ public class PlayerActions
             {
                 if (wp.gameObject.activeSelf)
                 {
-                    player.Stats.Speed = player.holdSprintSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f); //player.Stats.WalkSpeed
+                    if (rightArm.transform.Find("Shield") != null)
+                    {
+                        if (rightArm.transform.Find("Shield").GetComponent<ShieldScript>().deploy)
+                            player.Stats.Speed = player.holdSprintSpeed * (GlobalPlayerVariables.BaseWeaponWeight - 1 + 0.001f);
+                        else
+                            player.Stats.Speed = player.holdSprintSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f);
+                    }
+                    else
+                        player.Stats.Speed = player.holdSprintSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f); //player.Stats.WalkSpeed
                     if (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f == 0.001)
                     {
                         Debug.Log("Weapon too heavy!");
@@ -198,7 +206,15 @@ public class PlayerActions
         {
             if(wp.gameObject.activeSelf)
             {
-                player.Stats.Speed = player.holdWalkSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f); //player.Stats.WalkSpeed
+                if(rightArm.transform.Find("Shield") != null)
+                {
+                    if (rightArm.transform.Find("Shield").GetComponent<ShieldScript>().deploy)
+                        player.Stats.Speed = player.holdWalkSpeed * (GlobalPlayerVariables.BaseWeaponWeight - 1 + 0.001f);
+                    else
+                        player.Stats.Speed = player.holdWalkSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f);
+                }
+                else
+                    player.Stats.Speed = player.holdWalkSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f); //player.Stats.WalkSpeed
                 if (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f == 0.001)
                 {
                     Debug.Log("Weapon too heavy!");
@@ -336,6 +352,7 @@ public class PlayerActions
         //bool cond = false;
         float[] allowSlot = { 1, 2, 3, 4 };
         float input = 1;
+
         if((float.TryParse(Input.inputString, out input)))
         {
             if (Array.Exists(allowSlot, x => x == input))
@@ -430,8 +447,8 @@ public class PlayerActions
                             ShieldScript RWeapon = rw.GetComponent<ShieldScript>();
                             RWeapon.transform.position = rightArm.transform.position;
                             RWeapon.transform.rotation = rightArm.transform.rotation;
-                            RWeapon.deploy = false;
-                            rw.gameObject.SetActive(false);
+                            if(!RWeapon.deploy)
+                                rw.gameObject.SetActive(false);
                             
                         }
                     }
