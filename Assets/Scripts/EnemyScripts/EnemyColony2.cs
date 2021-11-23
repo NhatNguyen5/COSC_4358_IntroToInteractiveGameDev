@@ -206,6 +206,8 @@ public class EnemyColony2 : MonoBehaviour
     public PolygonCollider2D weaponHurtBox;
 
 
+    private float HPgained = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -867,32 +869,7 @@ public class EnemyColony2 : MonoBehaviour
         if (enemyColony.colonyHealth < MaxHP)
         {
             enemyColony.colonyHealth += damage;
-            damage = Mathf.Round(damage);
-            if (damage > 1)
-            {
-                Vector3 direction = (transform.position - weapon.transform.position).normalized;
-
-                //might add to impact to make it go past enemy
-                //var go = Instantiate(DamageText, weapon.transform.position, Quaternion.identity);
-
-                GameObject go = ObjectPool.instance.GetDamagePopUpFromPool();
-                go.GetComponent<Animator>().Play("DamagePopUp", -1, 0f);
-                go.transform.SetParent(null);
-                go.transform.position = weapon.transform.position;
-                go.transform.rotation = Quaternion.identity;
-
-
-                //Debug.Log("CRIT");
-
-                Color colorTop = Color.green;
-                Color colorBottom = Color.green;
-
-                go.GetComponent<TextMeshPro>().text = damage.ToString();
-                go.GetComponent<TextMeshPro>().colorGradient = new VertexGradient(colorTop, colorTop, colorBottom, colorBottom);
-                go.GetComponent<TextMeshPro>().fontSize *= 1.2f;
-                
-                go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, 10);
-            }
+            HPgained += damage;
 
 
 
@@ -906,6 +883,37 @@ public class EnemyColony2 : MonoBehaviour
 
         HealthBar.fillAmount = enemyColony.colonyHealth / MaxHP;
     }
+
+    void showLifeGained(float damage)
+    {
+        damage = Mathf.Round(damage);
+        if (damage > 1)
+        {
+            Vector3 direction = (transform.position - weapon.transform.position).normalized;
+
+            //might add to impact to make it go past enemy
+            //var go = Instantiate(DamageText, weapon.transform.position, Quaternion.identity);
+
+            GameObject go = ObjectPool.instance.GetDamagePopUpFromPool();
+            go.GetComponent<Animator>().Play("DamagePopUp", -1, 0f);
+            go.transform.SetParent(null);
+            go.transform.position = weapon.transform.position;
+            go.transform.rotation = Quaternion.identity;
+
+
+            //Debug.Log("CRIT");
+
+            Color colorTop = Color.green;
+            Color colorBottom = Color.green;
+
+            go.GetComponent<TextMeshPro>().text = damage.ToString();
+            go.GetComponent<TextMeshPro>().colorGradient = new VertexGradient(colorTop, colorTop, colorBottom, colorBottom);
+            go.GetComponent<TextMeshPro>().fontSize *= 1.2f;
+
+            go.GetComponent<DestroyText>().spawnPos(direction.x, direction.y, 10);
+        }
+    }
+
 
 
     void hurtCircle()
@@ -995,6 +1003,7 @@ public class EnemyColony2 : MonoBehaviour
 
     IEnumerator DashAttackPattern()
     {
+        HPgained = 0;
         spinRing.Play();
         inmiddleofdash = true;
         weapon.enabled = true;
@@ -1020,6 +1029,7 @@ public class EnemyColony2 : MonoBehaviour
         weapon.enabled = false;
         inmiddleofdash = false;
         spinRing.Stop();
+        showLifeGained(HPgained);
     }
 
 
