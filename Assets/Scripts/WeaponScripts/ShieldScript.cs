@@ -32,12 +32,15 @@ public class ShieldScript : MonoBehaviour
     private Text UIMaxAmmoCount;
     private int swingCount = 1;
     public float knockBackForce;
+    public float deploySpeed;
     [HideInInspector]
     public bool deploy = false;
 
     private int numDep = 1;
 
     private float deployDelay;
+    private bool doneDeploy = false;
+    private bool doneUndeploy = true;
 
     private int shieldDirIdx;
     private int shieldDirLeftIdx;
@@ -83,47 +86,63 @@ public class ShieldScript : MonoBehaviour
     {
         if (OptionSettings.GameisPaused == false)
         {
-            GlobalPlayerVariables.weaponWeight = weaponWeight;
-            if (deploy)
-            {
-                transform.position = player.transform.position;
-                deployShield();
-                GlobalPlayerVariables.weaponWeight = 1;
-                animCtrl.SetBool("ShieldDeploy", true);
-                Collider2D[] shieldedBullets = Physics2D.OverlapCircleAll(transform.position, 1.6f);
-                foreach (var shieldedBullet in shieldedBullets)
-                {
-                    if (shieldedBullet.CompareTag("EnemyBullet") || shieldedBullet.CompareTag("EnemyBullet2"))
-                    {
-                        if (shieldedBullet.CompareTag("EnemyBullet"))
-                        {
-                            shieldedBullet.GetComponent<EnemyProj>().DestroyEnemyProj();
-
-                        }
-                        else
-                        {
-                            shieldedBullet.GetComponent<EnemyProj2>().DestroyEnemyProj();
-                        }
-                    }
-                }
-            }
-            else
-            {
-                animCtrl.SetBool("ShieldDeploy", false);
-                animateThis();
-            }
-
-
+            //Debug.Log(doneDeploy);
+            animCtrl.SetFloat("DeploySpeed", deploySpeed);
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
                 if (!deploy)
                 {
                     deploy = true;
+                    doneDeploy = false;
                 }
                 else
                 {
                     deploy = false;
+                    doneUndeploy = false;
+                }
+            }
+
+            if (deploy)
+            {
+                transform.position = player.transform.position;
+                GlobalPlayerVariables.weaponWeight = 1;
+                if (doneDeploy)
+                {
+                    getOppoDir();
+                    animCtrl.SetBool("ShieldDeploy", true);
+                    Collider2D[] shieldedBullets = Physics2D.OverlapCircleAll(transform.position, 1.6f);
+                    foreach (var shieldedBullet in shieldedBullets)
+                    {
+                        if (shieldedBullet.CompareTag("EnemyBullet") || shieldedBullet.CompareTag("EnemyBullet2"))
+                        {
+                            if (shieldedBullet.CompareTag("EnemyBullet"))
+                            {
+                                shieldedBullet.GetComponent<EnemyProj>().DestroyEnemyProj();
+                            }
+                            else
+                            {
+                                shieldedBullet.GetComponent<EnemyProj2>().DestroyEnemyProj();
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    deployShield();
+                }
+            }
+            else
+            {
+                if (doneUndeploy)
+                {
+                    getDir();
+                    animCtrl.SetBool("ShieldDeploy", false);
+                    animateThis();
                     GlobalPlayerVariables.weaponWeight = weaponWeight;
+                }
+                else
+                {
+                    undeployShield();
                 }
             }
         }
@@ -133,65 +152,35 @@ public class ShieldScript : MonoBehaviour
     }
 
     private void animateThis()
+    {   
+        enableDir(direction[shieldDirIdx]);
+        //Debug.Log(direction[shieldDirLeftIdx > 7 ? 0 : shieldDirLeftIdx]);
+    }
+
+    private void getDir()
+    {
+        float relaMouseAngle = player.Stats.Angle;
+
+        if (relaMouseAngle < 0)
+            relaMouseAngle = relaMouseAngle + 360;
+        shieldDirIdx = Mathf.FloorToInt((relaMouseAngle + 22.5f) / 45);
+        shieldDirIdx = shieldDirIdx > 7 ? 0 : shieldDirIdx;
+        shieldDirRightIdx = shieldDirIdx - 1 >= 0 ? shieldDirIdx - 1 : 7;
+        shieldDirLeftIdx = shieldDirIdx + 1 <= 7 ? shieldDirIdx + 1 : 0;
+    }
+
+    private void getOppoDir()
     {
         float relaMouseAngle = player.Stats.Angle;
 
         if (relaMouseAngle < 0)
             relaMouseAngle = relaMouseAngle + 360;
 
-        //Debug.Log(relaMouseAngle);
-        //New 8 directions system
-        /*[0]Down
-         *[1]Up
-         *[2]Left
-         *[3]Right
-         *[4]TopLeft
-         *[5]TopRight
-         *[6]BotLeft
-         *[7]BotRight
-         */
-
-        /*
-        if (relaMouseAngle <= 22.5 || relaMouseAngle > 337.5) //Right
-        {
-            enableDir("ShieldRight");
-        }
-        else if (relaMouseAngle > 22.5 && relaMouseAngle <= 67.5) //TopRight
-        {
-            enableDir("ShieldTopRight");
-        }
-        else if (relaMouseAngle > 67.5 && relaMouseAngle <= 112.5) //Up
-        {
-            enableDir("ShieldUp");
-        }
-        else if (relaMouseAngle > 112.5 && relaMouseAngle <= 157.5) //TopLeft
-        {
-            enableDir("ShieldTopLeft");
-        }
-        else if (relaMouseAngle > 157.5 && relaMouseAngle <= 202.5) //Left
-        {
-            enableDir("ShieldLeft");
-        }
-        else if (relaMouseAngle > 202.5 && relaMouseAngle <= 247.5) //BotLeft
-        {
-            enableDir("ShieldBotLeft");
-        }
-        else if (relaMouseAngle > 247.5 && relaMouseAngle <= 292.5) //Down
-        {
-            enableDir("ShieldDown");
-        }
-        else if (relaMouseAngle > 292.5 && relaMouseAngle <= 337.5) //BotRight
-        {
-            enableDir("ShieldBotRight");
-        }
-        */
-        Debug.Log(shieldDirIdx);
         shieldDirIdx = Mathf.FloorToInt((relaMouseAngle + 22.5f) / 45);
         shieldDirIdx = shieldDirIdx > 7 ? 0 : shieldDirIdx;
+        shieldDirIdx = shieldDirIdx < 4 ? shieldDirIdx + 4 : shieldDirIdx - 4;
         shieldDirRightIdx = shieldDirIdx - 1 >= 0 ? shieldDirIdx - 1 : 7;
         shieldDirLeftIdx = shieldDirIdx + 1 <= 7 ? shieldDirIdx + 1 : 0;
-        enableDir(direction[shieldDirIdx]);
-        //Debug.Log(direction[shieldDirLeftIdx > 7 ? 0 : shieldDirLeftIdx]);
     }
 
     private void deployShield()
@@ -206,10 +195,14 @@ public class ShieldScript : MonoBehaviour
             deployDelay = 0;
         }
 
+
         foreach (Transform shieldDir in transform)
         {
             if (!shieldDir.gameObject.activeSelf)
+            {
                 finishDeploy = false;
+                break;
+            }
         }
 
         if (!finishDeploy && deployDelay == 0)
@@ -229,6 +222,64 @@ public class ShieldScript : MonoBehaviour
                 shieldDirRightIdx = shieldDirRightIdx >= 0 ? shieldDirRightIdx : 7; 
             }
             deployDelay = delay;
+        }
+        else if(finishDeploy && deployDelay == 0)
+        {
+            doneDeploy = true;
+        }
+    }
+
+    private void undeployShield()
+    {
+        bool finishDeploy = true;
+        if (deployDelay > 0)
+        {
+            deployDelay -= Time.deltaTime;
+        }
+        else
+        {
+            deployDelay = 0;
+        }
+        //Debug.Log(deployDelay);
+        int noOfActive = 0;
+        foreach (Transform shieldDir in transform)
+        {
+            if (shieldDir.gameObject.activeSelf)
+            {
+                noOfActive++;
+            }
+        }
+        if(noOfActive > 1)
+        {
+            finishDeploy = false;
+        }
+        Debug.Log(finishDeploy);
+
+        if (!finishDeploy && deployDelay == 0)
+        {
+            if (transform.GetChild(shieldDirIdx).gameObject.activeSelf)
+            {
+                transform.GetChild(shieldDirIdx).gameObject.SetActive(false);
+            }
+            if (transform.GetChild(shieldDirLeftIdx).gameObject.activeSelf)
+            {
+                //Debug.Log(shieldDirLeftIdx);
+                transform.GetChild(shieldDirLeftIdx).gameObject.SetActive(false);
+                shieldDirLeftIdx++;
+                shieldDirLeftIdx = shieldDirLeftIdx <= 7 ? shieldDirLeftIdx : 0;
+            }
+            if (transform.GetChild(shieldDirRightIdx).gameObject.activeSelf)
+            {
+                //Debug.Log(shieldDirRightIdx);
+                transform.GetChild(shieldDirRightIdx).gameObject.SetActive(false);
+                shieldDirRightIdx--;
+                shieldDirRightIdx = shieldDirRightIdx >= 0 ? shieldDirRightIdx : 7;
+            }
+            deployDelay = delay;
+        }
+        else if (finishDeploy && deployDelay == 0)
+        {
+            doneUndeploy = true;
         }
     }
 

@@ -38,6 +38,7 @@ public class MeleeWeapon : MonoBehaviour
     private Text UIMaxAmmoCount;
     private int swingCount = 1;
     public float knockBackForce;
+    private bool abilityInUse = false;
 
     [HideInInspector]
     public bool IsRightArm;
@@ -145,6 +146,27 @@ public class MeleeWeapon : MonoBehaviour
                 hitBox.edgeRadius = 0.2f;
                 animCtrl.SetBool("Blocking", false);
             }
+            /*
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                if (!abilityInUse)
+                {
+                    abilityInUse = true;
+                    Time.timeScale = 0.25f;
+                    player.holdWalkSpeed *= 4;
+                    player.holdSprintSpeed *= 4;
+                    BaseSwingSpeed *= 4;
+                }
+                else
+                {
+                    abilityInUse = false;
+                    Time.timeScale = 1;
+                    player.holdWalkSpeed /= 4;
+                    player.holdSprintSpeed /= 4;
+                    BaseSwingSpeed /= 4;
+                }
+            }
+            */
 
             /*
             if (Input.GetKeyDown(KeyCode.Mouse0))
