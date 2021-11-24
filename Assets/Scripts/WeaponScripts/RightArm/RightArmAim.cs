@@ -14,8 +14,7 @@ public class RightArmAim : MonoBehaviour
     private void Start()
     {
         aimTransform = GameObject.Find("RightArm").transform;
-        if (transform.Find("Shield") != null)
-            shield = transform.Find("Shield");
+        
         scaleY = transform.localScale.y;
         
         //scaleX = transform.localScale.x;
@@ -23,7 +22,12 @@ public class RightArmAim : MonoBehaviour
     private void Update()
     {
         if(OptionSettings.GameisPaused == false)
+        {
+            if (transform.Find("Shield") != null)
+                shield = transform.Find("Shield");
             handleAiming();
+        }
+            
     }
 
     private void handleAiming()

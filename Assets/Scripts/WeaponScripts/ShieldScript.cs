@@ -23,8 +23,6 @@ public class ShieldScript : MonoBehaviour
 
     public float weaponWeight = 1;
 
-    private float damage;
-    private float currDmg;
     private BoxCollider2D hitBox;
     private Animator animCtrl;
     private Image reloadBar;
@@ -60,7 +58,6 @@ public class ShieldScript : MonoBehaviour
             UIMaxAmmoCount = GameObject.Find("MaxAmmoCountR").GetComponent<Text>();
         }
 
-        GlobalPlayerVariables.weaponWeight = weaponWeight;
         animCtrl = transform.GetComponent<Animator>();
     }
 
@@ -69,6 +66,7 @@ public class ShieldScript : MonoBehaviour
     {
         if (OptionSettings.GameisPaused == false)
         {
+            GlobalPlayerVariables.weaponWeight = weaponWeight;
             if (deploy)
             {
                 transform.position = player.transform.position;
@@ -103,7 +101,6 @@ public class ShieldScript : MonoBehaviour
             {
                 if (!deploy)
                 {
-                    currDmg = damage;
                     deploy = true;
                 }
                 else
@@ -190,38 +187,38 @@ public class ShieldScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         float damage = GrowthRate * player.Currentlevel + BaseDamage;
         float currDmg = damage;
 
-        if (collision.CompareTag("EnemyMelee"))
+        if (collision.gameObject.CompareTag("EnemyMelee"))
         {
-            collision.GetComponent<Enemy2>().takeDamage(currDmg, collision.transform, 10);
+            collision.gameObject.GetComponent<Enemy2>().takeDamage(currDmg, collision.transform, 10);
         }
-        if (collision.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (collision.GetComponent<Enemy1>() != null)
-                collision.GetComponent<Enemy1>().takeDamage(currDmg, collision.transform, 10);
+            if (collision.gameObject.GetComponent<Enemy1>() != null)
+                collision.gameObject.GetComponent<Enemy1>().takeDamage(currDmg, collision.transform, 10);
             else
-                collision.GetComponent<Enemy3>().takeDamage(currDmg, collision.transform, 10);
+                collision.gameObject.GetComponent<Enemy3>().takeDamage(currDmg, collision.transform, 10);
         }
-        if (collision.CompareTag("Colony")) { collision.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10); }
-        if (collision.CompareTag("Globin")) { collision.GetComponent<Globin>().takeDamage(currDmg, collision.transform, 10); }
-        if (collision.GetComponent<Rigidbody2D>() != null)
+        if (collision.gameObject.CompareTag("Colony")) { collision.gameObject.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10); }
+        if (collision.gameObject.CompareTag("Globin")) { collision.gameObject.GetComponent<Globin>().takeDamage(currDmg, collision.transform, 10); }
+        if (collision.gameObject.GetComponent<Rigidbody2D>() != null)
         {
-            collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(Mathf.Cos(player.Stats.Angle * Mathf.Deg2Rad), Mathf.Sin(player.Stats.Angle * Mathf.Deg2Rad)) * knockBackForce, ForceMode2D.Impulse);
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Mathf.Cos(player.Stats.Angle * Mathf.Deg2Rad), Mathf.Sin(player.Stats.Angle * Mathf.Deg2Rad)) * knockBackForce, ForceMode2D.Impulse);
         }
-        if (collision.CompareTag("EnemyBullet") || collision.CompareTag("EnemyBullet2"))
+        if (collision.gameObject.CompareTag("EnemyBullet") || collision.gameObject.CompareTag("EnemyBullet2"))
         {
-            if (collision.CompareTag("EnemyBullet"))
+            if (collision.gameObject.CompareTag("EnemyBullet"))
             {
-                collision.GetComponent<EnemyProj>().DestroyEnemyProj();
+                collision.gameObject.GetComponent<EnemyProj>().DestroyEnemyProj();
 
             }
             else
             {
-                collision.GetComponent<EnemyProj2>().DestroyEnemyProj();
+                collision.gameObject.GetComponent<EnemyProj2>().DestroyEnemyProj();
             }
         }
     }

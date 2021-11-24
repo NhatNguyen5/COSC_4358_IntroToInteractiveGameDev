@@ -171,6 +171,8 @@ public class Player : MonoBehaviour
     [Header("Animations upon spawning")]
     public float timetoblockanimation = 0.5f;
 
+    private GameObject shield = null;
+
     private void Awake()
     {
 
@@ -276,6 +278,11 @@ public class Player : MonoBehaviour
         components.PlayerParticleSystem.Stop();
 
         currArmor = stats.ArmorLevel;
+
+        if(transform.Find("RightArm").Find("Shield") != null)
+        {
+            shield = transform.Find("RightArm").Find("Shield").gameObject;
+        }
     }
 
 
@@ -523,7 +530,15 @@ public class Player : MonoBehaviour
                 }
                 actions.SwapWeapon();
                 //Debug.DrawRay(stats.Position, stats.Direction, Color.green, 0.1f);
-                DashProc();
+                if(shield != null)
+                {
+                    if (!shield.activeSelf)
+                    {
+                        DashProc();
+                    }
+                }
+                else
+                    DashProc();
             }
             //Debug.Log(VaccineCooldownDisplay);
             if (resetPlayerStatsRequest && !inEffect)
@@ -565,6 +580,15 @@ public class Player : MonoBehaviour
         if (enemyManager != null)
             UpdateSpawnrate();
         ArmorEffect();
+
+        if (transform.Find("RightArm").transform.Find("Shield") != null)
+        {
+            if (transform.Find("RightArm").transform.Find("Shield").gameObject.activeSelf)
+            {
+                transform.Find("RightArm").transform.position = transform.position;
+                transform.Find("LeftArm").transform.position = transform.position;
+            }
+        }
     }
 
     private void FixedUpdate()

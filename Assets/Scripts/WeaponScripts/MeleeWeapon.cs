@@ -72,15 +72,25 @@ public class MeleeWeapon : MonoBehaviour
             transform.Find("BladeTrail (" + i + ")").GetComponent<TrailRenderer>().startColor = trailColor;
             transform.Find("BladeTrail (" + i + ")").GetComponent<TrailRenderer>().enabled = false;
         }
-        GlobalPlayerVariables.weaponWeight = weaponWeight;
+        
         animCtrl = transform.GetComponent<Animator>();
         hitBox = transform.GetComponent<BoxCollider2D>();
+        if (player.Stats.Angle < 0)
+        {
+            player.transform.Find("LeftArm").transform.localPosition = new Vector2(0.05f, -0.15f);
+            player.transform.Find("RightArm").transform.localPosition = new Vector2(-0.05f, -0.15f);
+        }
+        else
+        {
+            player.transform.Find("LeftArm").transform.localPosition = new Vector2(-0.05f, -0.15f);
+            player.transform.Find("RightArm").transform.localPosition = new Vector2(0.05f, -0.15f);
+        }
     }
 
     // Update is called once per frame
     private void Update()
     {
-        
+        GlobalPlayerVariables.weaponWeight = weaponWeight;
         damage = GrowthRate * player.Currentlevel + BaseDamage;
         animCtrl.SetFloat("SwingSpeed", BaseSwingSpeed + GrowthRate/50 * player.Currentlevel);
 

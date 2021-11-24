@@ -23,42 +23,39 @@ public class Shielding : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         float damage = GrowthRate * player.Currentlevel + BaseDamage;
         float currDmg = damage;
 
-        if (collision.CompareTag("EnemyMelee"))
+        if (collision.gameObject.CompareTag("EnemyMelee"))
         {
-            collision.GetComponent<Enemy2>().takeDamage(currDmg, collision.transform, 10);
+            collision.gameObject.GetComponent<Enemy2>().takeDamage(currDmg, collision.transform, 10);
         }
-        if (collision.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (collision.GetComponent<Enemy1>() != null)
-                collision.GetComponent<Enemy1>().takeDamage(currDmg, collision.transform, 10);
+            if (collision.gameObject.GetComponent<Enemy1>() != null)
+                collision.gameObject.GetComponent<Enemy1>().takeDamage(currDmg, collision.transform, 10);
             else
-                collision.GetComponent<Enemy3>().takeDamage(currDmg, collision.transform, 10);
+                collision.gameObject.GetComponent<Enemy3>().takeDamage(currDmg, collision.transform, 10);
         }
-        if (collision.CompareTag("Colony")) { collision.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10); }
-        if (collision.CompareTag("Globin")) { collision.GetComponent<Globin>().takeDamage(currDmg, collision.transform, 10); }
-        if (collision.GetComponent<Rigidbody2D>() != null)
+        if (collision.gameObject.CompareTag("Colony")) { collision.gameObject.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10); }
+        if (collision.gameObject.CompareTag("Globin")) { collision.gameObject.GetComponent<Globin>().takeDamage(currDmg, collision.transform, 10); }
+        if (collision.gameObject.GetComponent<Rigidbody2D>() != null)
         {
-            collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(Mathf.Cos(player.Stats.Angle * Mathf.Deg2Rad), Mathf.Sin(player.Stats.Angle * Mathf.Deg2Rad)) * knockBackForce, ForceMode2D.Impulse);
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Mathf.Cos(player.Stats.Angle * Mathf.Deg2Rad), Mathf.Sin(player.Stats.Angle * Mathf.Deg2Rad)) * knockBackForce, ForceMode2D.Impulse);
         }
-        if (collision.CompareTag("EnemyBullet") || collision.CompareTag("EnemyBullet2"))
+        if (collision.gameObject.CompareTag("EnemyBullet") || collision.gameObject.CompareTag("EnemyBullet2"))
         {
-            if (collision.CompareTag("EnemyBullet"))
+            if (collision.gameObject.CompareTag("EnemyBullet"))
             {
-                collision.GetComponent<EnemyProj>().DestroyEnemyProj();
+                collision.gameObject.GetComponent<EnemyProj>().DestroyEnemyProj();
 
             }
             else
             {
-                collision.GetComponent<EnemyProj2>().DestroyEnemyProj();
+                collision.gameObject.GetComponent<EnemyProj2>().DestroyEnemyProj();
             }
-
-            //Instantiate(collision.gameObject, collision.transform.position, newRot);
-            //Destroy(collision.gameObject);
         }
     }
 }

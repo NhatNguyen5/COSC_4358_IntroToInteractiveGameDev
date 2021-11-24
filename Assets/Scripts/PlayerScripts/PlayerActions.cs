@@ -209,7 +209,7 @@ public class PlayerActions
                 if(rightArm.transform.Find("Shield") != null)
                 {
                     if (rightArm.transform.Find("Shield").GetComponent<ShieldScript>().deploy)
-                        player.Stats.Speed = player.holdWalkSpeed * (GlobalPlayerVariables.BaseWeaponWeight - 1 + 0.001f);
+                        player.Stats.Speed = 0.001f;
                     else
                         player.Stats.Speed = player.holdWalkSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f);
                 }
@@ -230,7 +230,6 @@ public class PlayerActions
 
     public void Dash(Vector2 Dir)
     {
-
         player.Components.PlayerRidgitBody.MovePosition(player.Stats.Position + Dir * DashSpeed * Mathf.Abs(GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight) * Time.fixedDeltaTime);
     }
 
@@ -400,6 +399,16 @@ public class PlayerActions
                         }
                         else
                         {
+                            if (player.Stats.Angle < 0)
+                            {
+                                leftArm.position = new Vector2(player.Stats.Position.x + 0.05f, player.Stats.Position.y - 0.15f);
+                                rightArm.position = new Vector2(player.Stats.Position.x - 0.05f, player.Stats.Position.y - 0.15f);
+                            }
+                            else
+                            {
+                                leftArm.position = new Vector2(player.Stats.Position.x - 0.05f, player.Stats.Position.y - 0.15f);
+                                rightArm.position = new Vector2(player.Stats.Position.x + 0.05f, player.Stats.Position.y - 0.15f);
+                            }
                             MeleeWeapon RWeapon = rw.GetComponent<MeleeWeapon>();
                             RWeapon.transform.position = rightArm.transform.position;
                             RWeapon.transform.rotation = rightArm.transform.rotation;
@@ -449,7 +458,6 @@ public class PlayerActions
                             RWeapon.transform.rotation = rightArm.transform.rotation;
                             if(!RWeapon.deploy)
                                 rw.gameObject.SetActive(false);
-                            
                         }
                     }
                 }
