@@ -132,6 +132,7 @@ MonoBehaviour:
   maxAmmoInClip: 35
   reloadTime: 0.75
   CostPerBullet: 3
+  bulletLifeTime: 3
   IsRightArm: 0
 --- !u!95 &3387174646696659353
 Animator:
@@ -176,7 +177,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3387174647569606329}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.66, y: 0.025, z: 0}
+  m_LocalPosition: {x: 0.574, y: 0.015, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3387174646696659349}

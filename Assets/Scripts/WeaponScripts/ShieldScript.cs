@@ -37,10 +37,27 @@ public class ShieldScript : MonoBehaviour
 
     private int numDep = 1;
 
+    private float deployDelay;
+
+    private int shieldDirIdx;
+    private int shieldDirLeftIdx;
+    private int shieldDirRightIdx;
+
     [HideInInspector]
     public bool IsRightArm;
 
     private bool Pullout = false;
+
+    private string[] direction = { 
+        "ShieldRight",
+        "ShieldTopRight",
+        "ShieldUp",
+        "ShieldTopLeft",
+        "ShieldLeft",
+        "ShieldBotLeft",
+        "ShieldDown",
+        "ShieldBotRight"
+        };
 
     private Player player;
     //public PlayerActions SwapWeapon;
@@ -57,7 +74,7 @@ public class ShieldScript : MonoBehaviour
             UIAmmoCount = GameObject.Find("AmmoCountR").GetComponent<Text>();
             UIMaxAmmoCount = GameObject.Find("MaxAmmoCountR").GetComponent<Text>();
         }
-
+        deployDelay = delay;
         animCtrl = transform.GetComponent<Animator>();
     }
 
@@ -134,6 +151,7 @@ public class ShieldScript : MonoBehaviour
          *[7]BotRight
          */
 
+        /*
         if (relaMouseAngle <= 22.5 || relaMouseAngle > 337.5) //Right
         {
             enableDir("ShieldRight");
@@ -166,13 +184,51 @@ public class ShieldScript : MonoBehaviour
         {
             enableDir("ShieldBotRight");
         }
+        */
+        Debug.Log(shieldDirIdx);
+        shieldDirIdx = Mathf.FloorToInt((relaMouseAngle + 22.5f) / 45);
+        shieldDirIdx = shieldDirIdx > 7 ? 0 : shieldDirIdx;
+        shieldDirRightIdx = shieldDirIdx - 1 >= 0 ? shieldDirIdx - 1 : 7;
+        shieldDirLeftIdx = shieldDirIdx + 1 <= 7 ? shieldDirIdx + 1 : 0;
+        enableDir(direction[shieldDirIdx]);
+        //Debug.Log(direction[shieldDirLeftIdx > 7 ? 0 : shieldDirLeftIdx]);
     }
 
     private void deployShield()
     {
+        bool finishDeploy = true;
+        if (deployDelay > 0)
+        {
+            deployDelay -= Time.deltaTime;
+        }
+        else
+        {
+            deployDelay = 0;
+        }
+
         foreach (Transform shieldDir in transform)
         {
-            shieldDir.gameObject.SetActive(true);
+            if (!shieldDir.gameObject.activeSelf)
+                finishDeploy = false;
+        }
+
+        if (!finishDeploy && deployDelay == 0)
+        {
+            if (!transform.GetChild(shieldDirLeftIdx).gameObject.activeSelf)
+            {
+                //Debug.Log(shieldDirLeftIdx);
+                transform.GetChild(shieldDirLeftIdx).gameObject.SetActive(true);
+                shieldDirLeftIdx++;
+                shieldDirLeftIdx = shieldDirLeftIdx <= 7 ? shieldDirLeftIdx : 0;
+            }
+            if (!transform.GetChild(shieldDirRightIdx).gameObject.activeSelf)
+            {
+                //Debug.Log(shieldDirRightIdx);
+                transform.GetChild(shieldDirRightIdx).gameObject.SetActive(true);
+                shieldDirRightIdx--;
+                shieldDirRightIdx = shieldDirRightIdx >= 0 ? shieldDirRightIdx : 7; 
+            }
+            deployDelay = delay;
         }
     }
 
