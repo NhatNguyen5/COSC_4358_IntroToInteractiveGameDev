@@ -387,6 +387,81 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: CARBINE
+--- !u!1 &2173811190591149764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6178645502088444905}
+  - component: {fileID: 6919297005517373253}
+  - component: {fileID: 5728397891683038525}
+  m_Layer: 5
+  m_Name: Ancile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &6178645502088444905
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2173811190591149764}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8035387255871587513}
+  m_RootOrder: 28
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 210.11989, y: -17.999985}
+  m_SizeDelta: {x: 176.43, y: 380}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6919297005517373253
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2173811190591149764}
+  m_CullTransparentMesh: 1
+--- !u!114 &5728397891683038525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2173811190591149764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 6525866708602139434, guid: 21266276ff07ad14a8a699814665ddd2, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2232051595249413773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1761,6 +1836,81 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: SHOTGUN
+--- !u!1 &7693043987676123922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9061680524724885365}
+  - component: {fileID: 6595576720255025461}
+  - component: {fileID: 8854170097063051804}
+  m_Layer: 5
+  m_Name: Muramasa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &9061680524724885365
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693043987676123922}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8035387255871587513}
+  m_RootOrder: 27
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 210.11989, y: -17.999985}
+  m_SizeDelta: {x: 176.43, y: 380}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6595576720255025461
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693043987676123922}
+  m_CullTransparentMesh: 1
+--- !u!114 &8854170097063051804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7693043987676123922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -3588867867613364772, guid: 21266276ff07ad14a8a699814665ddd2, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &7693723192482051190
 GameObject:
   m_ObjectHideFlags: 0
@@ -3927,7 +4077,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: asdf
+          m_StringArgument: Ancile
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 8035387254737158707}
@@ -3980,7 +4130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 0
   levelReq: 0
-  ItemBeingSold: {fileID: 0}
+  ItemBeingSold: {fileID: 2591568961033913676, guid: f85181c0160ed0b4cb152fa5f3b8ea9b, type: 3}
   owned: 0
   isWeapon: 1
   SM: {fileID: 0}
@@ -18387,7 +18537,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: MURAMASA
 --- !u!1 &8035387255486352175
 GameObject:
   m_ObjectHideFlags: 0
@@ -23186,7 +23336,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: ANCILE
 --- !u!1 &8035387255702762001
 GameObject:
   m_ObjectHideFlags: 0
@@ -26880,7 +27030,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: asdf
+          m_StringArgument: Muramasa
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 8035387255865585021}
@@ -26931,9 +27081,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 1000
   levelReq: 0
-  ItemBeingSold: {fileID: 0}
+  ItemBeingSold: {fileID: 2591568961033913676, guid: 6b4de3ae7dba8614faa152a60189a26d, type: 3}
   owned: 0
   isWeapon: 1
   SM: {fileID: 0}
@@ -26992,6 +27142,8 @@ RectTransform:
   - {fileID: 8035387255166558559}
   - {fileID: 6093974684901822755}
   - {fileID: 163034216842932746}
+  - {fileID: 9061680524724885365}
+  - {fileID: 6178645502088444905}
   m_Father: {fileID: 8035387255030187508}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -27040,6 +27192,8 @@ MonoBehaviour:
   - {fileID: 8035387256226549962}
   - {fileID: 5016660126422248513}
   - {fileID: 5847057526722982031}
+  - {fileID: 7693043987676123922}
+  - {fileID: 2173811190591149764}
 --- !u!1 &8035387255875024422
 GameObject:
   m_ObjectHideFlags: 0
@@ -33551,7 +33705,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8035387256278874652
 RectTransform:
   m_ObjectHideFlags: 0
