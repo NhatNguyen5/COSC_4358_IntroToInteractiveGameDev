@@ -235,7 +235,14 @@ public class MeleeWeapon : MonoBehaviour
             else
                 collision.GetComponent<Enemy3>().takeDamage(currDmg, collision.transform, 10);
         }
-        if (collision.CompareTag("Colony")) { collision.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10); }
+        if (collision.CompareTag("Colony")) {
+
+            if (collision.GetComponent<EnemyColony>() != null)
+                collision.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10);
+            else
+                collision.GetComponent<EnemyColony2>().takeDamage(currDmg, collision.transform, 10);
+            //collision.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10); 
+        }
         if (collision.CompareTag("Globin")) { collision.GetComponent<Globin>().takeDamage(currDmg, collision.transform, 10); }
         if(collision.GetComponent<Rigidbody2D>() != null)
         {

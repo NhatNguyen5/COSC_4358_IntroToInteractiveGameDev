@@ -310,7 +310,13 @@ public class ShieldScript : MonoBehaviour
             else
                 collision.gameObject.GetComponent<Enemy3>().takeDamage(currDmg, collision.transform, 10);
         }
-        if (collision.gameObject.CompareTag("Colony")) { collision.gameObject.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10); }
+        if (collision.gameObject.CompareTag("Colony")) {
+            if (collision.gameObject.GetComponent<EnemyColony>() != null)
+                collision.gameObject.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10);
+            else
+                collision.gameObject.GetComponent<EnemyColony2>().takeDamage(currDmg, collision.transform, 10);
+            //collision.gameObject.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10); 
+        }
         if (collision.gameObject.CompareTag("Globin")) { collision.gameObject.GetComponent<Globin>().takeDamage(currDmg, collision.transform, 10); }
         if (collision.gameObject.GetComponent<Rigidbody2D>() != null)
         {

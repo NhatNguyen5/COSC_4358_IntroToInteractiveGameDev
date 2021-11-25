@@ -366,7 +366,10 @@ public class EnemyColony2 : MonoBehaviour
     {
         //NextMoveCoolDown = Random.Range(0f, timeTillNextMove);
 
-        randPos = target.position;
+        if (target != null)
+            randPos = target.position;
+        else
+            randPos = transform.position;
 
         randPos += Random.insideUnitCircle * dashAroundPlayerRadius;
 
