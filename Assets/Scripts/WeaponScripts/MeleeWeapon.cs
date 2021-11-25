@@ -45,6 +45,12 @@ public class MeleeWeapon : MonoBehaviour
 
     private bool Pullout = false;
 
+    private float playerWalkSpeed;
+    private float playerSprintSpeed;
+    private float playerFriction;
+
+    private ParticleSystem bloodParticle;
+
     private Player player;
     //public PlayerActions SwapWeapon;
     // Start is called before the first frame update
@@ -86,6 +92,9 @@ public class MeleeWeapon : MonoBehaviour
             player.transform.Find("LeftArm").transform.localPosition = new Vector2(-0.05f, -0.15f);
             player.transform.Find("RightArm").transform.localPosition = new Vector2(0.05f, -0.15f);
         }
+
+        bloodParticle = transform.GetComponent<ParticleSystem>();
+        bloodParticle.Stop();
     }
 
     // Update is called once per frame
@@ -95,29 +104,14 @@ public class MeleeWeapon : MonoBehaviour
         damage = GrowthRate * player.Currentlevel + BaseDamage;
         animCtrl.SetFloat("SwingSpeed", BaseSwingSpeed + GrowthRate/50 * player.Currentlevel);
 
-        if (firingDelay > 0)
-        {
-            firingDelay -= Time.deltaTime;
-        }
-        else
-        {
-            firingDelay = 0;
-        }
-        
-        if(!animCtrl.GetBool("Blocking") && animCtrl.GetBool("StopSwing") && animCtrl.GetCurrentAnimatorStateInfo(0).IsName("Standby"))
-        {
-            currDmg = damage / 5;
-            for (int i = 0; i < 10; i++)
-            {
-                transform.Find("BladeTrail (" + i + ")").GetComponent<TrailRenderer>().enabled = false;
-            }
-        }
-
         if (OptionSettings.GameisPaused == false && firingDelay == 0)
         {
             if (Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.Mouse1))
             {
-                currDmg = damage;
+                if (!abilityInUse)
+                    currDmg = damage;
+                else
+                    currDmg = damage * (player.Stats.MaxHealth / player.Stats.Health);
                 animCtrl.SetBool("StopSwing", false);
                 for (int i = 0; i < 10; i++)
                 {
@@ -146,27 +140,66 @@ public class MeleeWeapon : MonoBehaviour
                 hitBox.edgeRadius = 0.2f;
                 animCtrl.SetBool("Blocking", false);
             }
-            /*
-            if (Input.GetKeyDown(KeyCode.Alpha4))
+            
+            if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3))
             {
                 if (!abilityInUse)
                 {
                     abilityInUse = true;
-                    Time.timeScale = 0.25f;
-                    player.holdWalkSpeed *= 4;
-                    player.holdSprintSpeed *= 4;
-                    BaseSwingSpeed *= 4;
                 }
                 else
                 {
                     abilityInUse = false;
-                    Time.timeScale = 1;
-                    player.holdWalkSpeed /= 4;
-                    player.holdSprintSpeed /= 4;
-                    BaseSwingSpeed /= 4;
+                    player.holdWalkSpeed = playerWalkSpeed;
+                    player.holdSprintSpeed = playerSprintSpeed;
+                    player.Stats.PFrictionz = playerFriction;
                 }
             }
-            */
+
+            if (!abilityInUse)
+            {
+                Time.timeScale = 1;
+                playerWalkSpeed = player.holdWalkSpeed;
+                playerSprintSpeed = player.holdSprintSpeed;
+                playerFriction = player.Stats.pfriction;
+                if(bloodParticle.isPlaying)
+                    bloodParticle.Stop();
+                player.Components.PlayerSpriteRenderer.color = new Color(1, 1, 1);
+            }
+            else
+            {
+                Time.timeScale = 0.33f;
+                player.holdWalkSpeed = playerWalkSpeed * 3;
+                player.holdSprintSpeed = playerSprintSpeed * 3;
+                player.Stats.PFrictionz = playerFriction * 3;
+                player.Components.PlayerSpriteRenderer.color = new Color(
+                    (255 - (143 * (1 - player.Stats.Health / player.Stats.MaxHealth))) / 255f,
+                    (255 - (214 * (1 - player.Stats.Health / player.Stats.MaxHealth))) / 255f,
+                    (255 - (156 * (1 - player.Stats.Health / player.Stats.MaxHealth))) / 255f);
+                if (player.Stats.Health > 10)
+                    player.Stats.Health -= 8*Time.deltaTime * (player.Stats.MaxHealth / player.Stats.Health);
+                if(bloodParticle.isStopped)
+                    bloodParticle.Play();
+            }
+
+            if (firingDelay > 0)
+            {
+                firingDelay -= Time.deltaTime;
+            }
+            else
+            {
+                firingDelay = 0;
+            }
+
+            if (!animCtrl.GetBool("Blocking") && animCtrl.GetBool("StopSwing") && animCtrl.GetCurrentAnimatorStateInfo(0).IsName("Standby"))
+            {
+                currDmg = damage / 5;
+                for (int i = 0; i < 10; i++)
+                {
+                    transform.Find("BladeTrail (" + i + ")").GetComponent<TrailRenderer>().enabled = false;
+                }
+            }
+
 
             /*
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -266,5 +299,14 @@ public class MeleeWeapon : MonoBehaviour
             //Destroy(collision.gameObject);
             
         }
+    }
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1;
+        player.holdWalkSpeed = playerWalkSpeed;
+        player.holdSprintSpeed = playerSprintSpeed;
+        player.Stats.PFrictionz = playerFriction;
+        //bloodParticle.Stop();
     }
 }

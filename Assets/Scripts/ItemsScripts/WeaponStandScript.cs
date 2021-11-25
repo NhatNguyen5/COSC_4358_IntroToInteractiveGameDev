@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class WeaponStandScript : MonoBehaviour
 {
     public GameObject DisplayedWeapon;
-    private GameObject RightArm;
-    private GameObject LeftArm;
+    private Transform RightArm;
+    private Transform LeftArm;
     private bool PlayerIsNear;
-    private Player player;
+    private Transform player;
     private bool[] PrimaryWpSlot = { false, false, false };
     public bool isMeleeWeapon;
     
@@ -31,14 +31,14 @@ public class WeaponStandScript : MonoBehaviour
     {
         if (PlayerIsNear)
         {
-            Player player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-            GameObject RightArm = GameObject.FindGameObjectWithTag("RightArm");
-            GameObject LeftArm = GameObject.FindGameObjectWithTag("LeftArm");
+            RightArm = player.Find("RightArm");
+            LeftArm = player.Find("LeftArm");
             float currSlot = 0;
             if (OptionSettings.GameisPaused == false)
             {
                 bool isHoldingWeapon = false;
                 bool isHoldingMelee = false;
+                bool haveMelee = false;
                 foreach (Transform wp in RightArm.transform)
                 {
                     if (wp.GetComponent<Weapon>() != null)
@@ -64,6 +64,7 @@ public class WeaponStandScript : MonoBehaviour
                             isHoldingWeapon = true;
                             isHoldingMelee = true;
                         }
+                        haveMelee = true;
                     }
 
                     Debug.Log(wp.gameObject.name + " " + currSlot);
@@ -73,7 +74,7 @@ public class WeaponStandScript : MonoBehaviour
                     if ((Input.GetKeyDown(KeyCode.Alpha1) && currSlot == 1) || (!isHoldingWeapon && !PrimaryWpSlot[0]))
                     {
                         if (isHoldingWeapon)
-                            DestroyWeaponInSlot(1, RightArm);
+                            DestroyWeaponInSlot();
                         else
                             PrimaryWpSlot[0] = true;
                         var newWeapon = Instantiate(DisplayedWeapon, RightArm.transform, false);
@@ -82,7 +83,7 @@ public class WeaponStandScript : MonoBehaviour
                     else if ((Input.GetKeyDown(KeyCode.Alpha2) && currSlot == 2) || (!isHoldingWeapon && !PrimaryWpSlot[1]))
                     {
                         if (isHoldingWeapon)
-                            DestroyWeaponInSlot(2, RightArm);
+                            DestroyWeaponInSlot();
                         else
                             PrimaryWpSlot[1] = true;
                         var newWeapon = Instantiate(DisplayedWeapon, RightArm.transform, false);
@@ -91,7 +92,7 @@ public class WeaponStandScript : MonoBehaviour
                     else if ((Input.GetKeyDown(KeyCode.Alpha3) && currSlot == 3) || (!isHoldingWeapon && !PrimaryWpSlot[2]))
                     {
                         if (isHoldingWeapon)
-                            DestroyWeaponInSlot(3, RightArm);
+                            DestroyWeaponInSlot();
                         else
                             PrimaryWpSlot[2] = true;
                         var newWeapon = Instantiate(DisplayedWeapon, RightArm.transform, false);
@@ -111,10 +112,10 @@ public class WeaponStandScript : MonoBehaviour
                 else if(isMeleeWeapon && currSlot != 1 && currSlot != 2 && currSlot != 3)
                 {
                     Debug.Log("PickupMelee");
-                    if ((Input.GetKeyDown(KeyCode.Alpha4)) || (!isHoldingMelee))
+                    if ((Input.GetKeyDown(KeyCode.Alpha4)) || (!haveMelee))
                     {
                         if (isHoldingMelee)
-                            DestroyWeaponInSlot(4, RightArm);
+                            DestroyWeaponInSlot();
                         var newWeapon = Instantiate(DisplayedWeapon, RightArm.transform, false);
                         if(DisplayedWeapon.GetComponent<ShieldScript>() != null)
                         {
@@ -129,35 +130,36 @@ public class WeaponStandScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.CompareTag("Player"))
         {
             PlayerIsNear = true;
+            player = collision.transform;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
             PlayerIsNear = false;
+            player = null;
         }
     }
 
-    private void DestroyWeaponInSlot(float slot, GameObject RightArm)
+    private void DestroyWeaponInSlot()
     {
         foreach (Transform wp in RightArm.transform)
         {
-        //Debug.Log("Destroy weapon");
-            if (slot != 4)
-            {
-                if (wp.GetComponent<Weapon>() != null)
-                    if (wp.GetComponent<Weapon>().Slot == slot)
-                        Destroy(wp.gameObject);
-            }
-            else
-            {
-                if(wp.gameObject.activeSelf)
+            //Debug.Log("Destroy weapon");
+            if(wp.gameObject.activeSelf)
+                Destroy(wp.gameObject);
+        /*
+            if (wp.GetComponent<Weapon>() != null)
+                if (wp.GetComponent<Weapon>().Slot == slot)
                     Destroy(wp.gameObject);
-            }
+            if (wp.GetComponent<MeleeWeapon>() != null)
+                Destroy(wp.gameObject);
+            if (wp.GetComponent<ShieldScript>() != null)
+                */
         }
     }
 }

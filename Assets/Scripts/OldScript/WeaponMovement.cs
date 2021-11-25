@@ -56,7 +56,7 @@ public class WeaponMovement : MonoBehaviour
 
         if (dashTime > 0)
         {
-            rb.MovePosition(rb.position + movement * dashSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + movement * dashSpeed * Time.deltaTime);
             dashTime -= Time.deltaTime; 
         }
         else if (dashTime < 0)
@@ -88,14 +88,14 @@ public class WeaponMovement : MonoBehaviour
         //movement
         if (dashTime > 0)
         {
-            rb.MovePosition(rb.position + movement * dashSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + movement * dashSpeed * Time.deltaTime);
             //dashTime -= Time.deltaTime;
-            //Debug.Log(moveSpeed * Time.fixedDeltaTime);
+            //Debug.Log(moveSpeed * Time.deltaTime);
         }
         else
         { 
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-            //Debug.Log(moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
+            //Debug.Log(moveSpeed * Time.deltaTime);
         }
     }
 

@@ -50,6 +50,9 @@ public class PlayerActions
 
     private float storedWeight;
 
+    private float playerHealthRegen;
+    private float playerStamRegen;
+
     //private ArmorDown ArmorDownEff;
 
     //private bool isWaiting = false;
@@ -129,7 +132,7 @@ public class PlayerActions
             hdir = player.Stats.Direction.x;
             vdir = player.Stats.Direction.y;
             if (ease < 1)
-                ease += Time.fixedDeltaTime * player.Stats.PFrictionz / stopSpeed;
+                ease += Time.deltaTime * player.Stats.PFrictionz / stopSpeed;
             else
                 ease = 1;
         }
@@ -137,7 +140,7 @@ public class PlayerActions
         {
             stopSpeed = player.Stats.Speed / player.Stats.WalkSpeed;
             if (ease > 0)
-                ease -= Time.fixedDeltaTime * player.Stats.PFrictionz / stopSpeed;
+                ease -= Time.deltaTime * player.Stats.PFrictionz / stopSpeed;
             else
                 ease = 0;
         }
@@ -351,6 +354,7 @@ public class PlayerActions
         //bool cond = false;
         float[] allowSlot = { 1, 2, 3, 4 };
         float input = 1;
+        bool muraAbiInUse = false;
 
         if((float.TryParse(Input.inputString, out input)))
         {
@@ -476,7 +480,9 @@ public class PlayerActions
         //player.Stats.Health += player.Stats.MaxHealth - tempMH;
         player.Stats.MaxStamina += player.Stats.MaxStamina * player.Stats.StamAdd / 100;
         //player.Stats.Stamina += player.Stats.MaxStamina - tempMS;
+        playerHealthRegen = player.Stats.HPRegen;
         player.Stats.HPRegen += player.Stats.HPRegenAdd;
+        playerStamRegen = player.Stats.StaminaRegenRate;
         player.Stats.StaminaRegenRate += player.Stats.StamRegenAdd;
         player.Components.PlayerTrailRenderer.endColor = new Color(0, 76 / 255f, 134 / 255f);
         currSpriteCategory = "PhizerHemo";

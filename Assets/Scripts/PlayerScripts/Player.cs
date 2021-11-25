@@ -193,7 +193,6 @@ public class Player : MonoBehaviour
 
 
 
-
         Text1 = levelText1.GetComponent<Text>();
         Text2 = levelText10.GetComponent<Text>();
         Text3 = levelText100.GetComponent<Text>();

@@ -14,6 +14,7 @@ public class GlobalPlayerVariables : MonoBehaviour
     public GameObject flagMarker;
 
     private ThymusScript ThymusController = null;
+
     /*
     void Awake()
     {

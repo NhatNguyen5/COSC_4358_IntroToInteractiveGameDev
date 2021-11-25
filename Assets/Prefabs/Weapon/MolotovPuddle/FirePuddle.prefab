@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 415259740987960179}
   - component: {fileID: 8383026692712737651}
   - component: {fileID: 4771493260390014491}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: FirePuddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 4522501117207048229}
   - component: {fileID: 5900131061406573777}
   - component: {fileID: 6690761294838170010}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4916,7 +4916,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6873999636367112263}
   - component: {fileID: 4662812119299248768}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
