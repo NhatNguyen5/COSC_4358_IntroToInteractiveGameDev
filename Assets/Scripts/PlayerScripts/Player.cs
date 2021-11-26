@@ -843,41 +843,12 @@ public class Player : MonoBehaviour
                 }
                 else if (newWeapon.GetComponent<MeleeWeapon>() != null)
                 {
-
-                    if (newWeapon.GetComponent<MeleeWeapon>().Slot == 1)
-                    {
-                        gitValues.startingWeapon1 = newWeapon.name;
-                    }
-
-                    if (newWeapon.GetComponent<MeleeWeapon>().Slot == 2)
-                    {
-                        gitValues.startingWeapon2 = newWeapon.name;
-                        //PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = newWeapon.name;
-                    }
-                    if (newWeapon.GetComponent<MeleeWeapon>().Slot == 3)
-                    {
-                        gitValues.startingWeapon3 = newWeapon.name;
+                    gitValues.startingWeapon4 = newWeapon.name;
                         //PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = newWeapon.name;
-                    }
                 }
-                else
+                else if (newWeapon.GetComponent<ShieldScript>() != null)
                 {
-                    if (newWeapon.GetComponent<ShieldScript>().Slot == 1)
-                    {
-                        gitValues.startingWeapon1 = newWeapon.name;
-                    }
-
-                    if (newWeapon.GetComponent<ShieldScript>().Slot == 2)
-                    {
-                        gitValues.startingWeapon2 = newWeapon.name;
-                        //PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = newWeapon.name;
-                    }
-                    if (newWeapon.GetComponent<ShieldScript>().Slot == 3)
-                    {
-                        gitValues.startingWeapon3 = newWeapon.name;
-                        //PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = newWeapon.name;
-                    }
-
+                    gitValues.startingWeapon4 = newWeapon.name;
                 }
                 //weaponTransforms.Add(listOfRightWeapons[i]);
             }

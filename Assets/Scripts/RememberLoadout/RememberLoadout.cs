@@ -23,6 +23,7 @@ public class RememberLoadout : MonoBehaviour
     public string startingWeapon1;
     public string startingWeapon2;
     public string startingWeapon3;
+    public string startingWeapon4;
 
     //public static int rememberScore = 0;
 
@@ -34,6 +35,9 @@ public class RememberLoadout : MonoBehaviour
 
     public string ThirdWeapon;
     public string ThirdWeaponDual;
+
+    public string ForthWeapon;
+    public string ForthWeaponDual;
 
     public GameObject RightArm;
     public GameObject LeftArm;
@@ -188,10 +192,6 @@ public class RememberLoadout : MonoBehaviour
                         var newWeapon = Instantiate(go, rightArmTrans, false);
                         if(newWeapon.GetComponent<Weapon>() != null)
                             newWeapon.GetComponent<Weapon>().Slot = 1;
-                        else if(newWeapon.GetComponent<MeleeWeapon>() != null)
-                            newWeapon.GetComponent<MeleeWeapon>().Slot = 1;
-                        else
-                            newWeapon.GetComponent<ShieldScript>().Slot = 1;
                         newWeapon.name = startingWeapon1;
                     }
                 }
@@ -202,11 +202,7 @@ public class RememberLoadout : MonoBehaviour
                         var newWeapon2 = Instantiate(go, rightArmTrans, false);
                         if (newWeapon2.GetComponent<Weapon>() != null)
                             newWeapon2.GetComponent<Weapon>().Slot = 2;
-                        else if (newWeapon2.GetComponent<MeleeWeapon>() != null)
-                            newWeapon2.GetComponent<MeleeWeapon>().Slot = 2;
-                        else
-                            newWeapon2.GetComponent<ShieldScript>().Slot = 2;
-                        newWeapon2.name = startingWeapon2;
+                      
                         newWeapon2.SetActive(false);
                     }
                 }
@@ -217,12 +213,21 @@ public class RememberLoadout : MonoBehaviour
                         var newWeapon3 = Instantiate(go, rightArmTrans, false);
                         if (newWeapon3.GetComponent<Weapon>() != null)
                             newWeapon3.GetComponent<Weapon>().Slot = 3;
-                        else if (newWeapon3.GetComponent<MeleeWeapon>() != null)
-                            newWeapon3.GetComponent<MeleeWeapon>().Slot = 3;
-                        else
-                            newWeapon3.GetComponent<ShieldScript>().Slot = 3;
-                        newWeapon3.name = startingWeapon3;
+                        
                         newWeapon3.SetActive(false);
+                    }
+                }
+                foreach (GameObject go in PossiblePlayerWeapons)
+                {
+                    if (go.name == startingWeapon4)
+                    {
+                        var newWeapon4 = Instantiate(go, rightArmTrans, false);
+                        if (newWeapon4.GetComponent<MeleeWeapon>() != null)
+                            newWeapon4.GetComponent<MeleeWeapon>().Slot = 4;
+                        else
+                            newWeapon4.GetComponent<ShieldScript>().Slot = 4;
+                        newWeapon4.name = startingWeapon4;
+                        newWeapon4.SetActive(false);
                     }
                 }
 
@@ -237,7 +242,7 @@ public class RememberLoadout : MonoBehaviour
                     PrimaryWeapon = startingWeapon1;
                     SecondaryWeapon = startingWeapon2;
                     ThirdWeapon = startingWeapon3;
-
+                    ForthWeapon = startingWeapon4;
                     //var myNewSmoke = Instantiate(poisonSmoke, Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
                     //myNewSmoke.transform.parent = gameObject.transform;
 

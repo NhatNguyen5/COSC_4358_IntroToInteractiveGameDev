@@ -78,6 +78,7 @@ public class WeaponStandScript : MonoBehaviour
                         else
                             PrimaryWpSlot[0] = true;
                         var newWeapon = Instantiate(DisplayedWeapon, RightArm.transform, false);
+                        newWeapon.name = DisplayedWeapon.name;
                         newWeapon.GetComponent<Weapon>().Slot = 1;
                     }
                     else if ((Input.GetKeyDown(KeyCode.Alpha2) && currSlot == 2) || (!isHoldingWeapon && !PrimaryWpSlot[1]))
@@ -87,6 +88,7 @@ public class WeaponStandScript : MonoBehaviour
                         else
                             PrimaryWpSlot[1] = true;
                         var newWeapon = Instantiate(DisplayedWeapon, RightArm.transform, false);
+                        newWeapon.name = DisplayedWeapon.name;
                         newWeapon.GetComponent<Weapon>().Slot = 2;
                     }
                     else if ((Input.GetKeyDown(KeyCode.Alpha3) && currSlot == 3) || (!isHoldingWeapon && !PrimaryWpSlot[2]))
@@ -96,6 +98,7 @@ public class WeaponStandScript : MonoBehaviour
                         else
                             PrimaryWpSlot[2] = true;
                         var newWeapon = Instantiate(DisplayedWeapon, RightArm.transform, false);
+                        newWeapon.name = DisplayedWeapon.name;
                         newWeapon.GetComponent<Weapon>().Slot = 3;
                     }
                     else if (Input.GetKeyDown(KeyCode.Y) && LeftArm != null)
@@ -106,6 +109,7 @@ public class WeaponStandScript : MonoBehaviour
                             oldWeapon = LeftArm.transform.GetChild(0).gameObject;
                         }
                         var newWeapon = Instantiate(DisplayedWeapon, LeftArm.transform, false);
+                        newWeapon.name = DisplayedWeapon.name;
                         Destroy(oldWeapon);
                     }
                 }
@@ -117,10 +121,7 @@ public class WeaponStandScript : MonoBehaviour
                         if (isHoldingMelee)
                             DestroyWeaponInSlot();
                         var newWeapon = Instantiate(DisplayedWeapon, RightArm.transform, false);
-                        if(DisplayedWeapon.GetComponent<ShieldScript>() != null)
-                        {
-                            newWeapon.name = DisplayedWeapon.name;
-                        }
+                        newWeapon.name = DisplayedWeapon.name;
                     }
                 }
                 //Debug.Log(PrimaryWpSlot[0] + " " + PrimaryWpSlot[1] + " " + PrimaryWpSlot[2]);
