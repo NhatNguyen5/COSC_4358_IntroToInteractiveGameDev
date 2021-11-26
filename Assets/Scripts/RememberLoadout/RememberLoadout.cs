@@ -202,7 +202,8 @@ public class RememberLoadout : MonoBehaviour
                         var newWeapon2 = Instantiate(go, rightArmTrans, false);
                         if (newWeapon2.GetComponent<Weapon>() != null)
                             newWeapon2.GetComponent<Weapon>().Slot = 2;
-                      
+
+                        newWeapon2.name = startingWeapon2;
                         newWeapon2.SetActive(false);
                     }
                 }
@@ -213,7 +214,8 @@ public class RememberLoadout : MonoBehaviour
                         var newWeapon3 = Instantiate(go, rightArmTrans, false);
                         if (newWeapon3.GetComponent<Weapon>() != null)
                             newWeapon3.GetComponent<Weapon>().Slot = 3;
-                        
+
+                        newWeapon3.name = startingWeapon3;
                         newWeapon3.SetActive(false);
                     }
                 }

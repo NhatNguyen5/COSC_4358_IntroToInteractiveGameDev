@@ -289,6 +289,36 @@ public class ShopManager : MonoBehaviour
 
     }
 
+    void equipHelper4(Transform go)
+    {
+        Destroy(go.transform.gameObject);
+        var newWeapon = Instantiate(selectedWeapon, playerRightArm.transform, false);
+        if (newWeapon.GetComponent<MeleeWeapon>() != null)
+            newWeapon.GetComponent<MeleeWeapon>().Slot = 4;
+        else if (newWeapon.GetComponent<ShieldScript>() != null)
+            newWeapon.GetComponent<ShieldScript>().Slot = 4;
+        newWeapon.name = selectedWeapon.name;
+        newWeapon.SetActive(false);
+        PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon4 = selectedWeapon.name;
+        PlayerLoadOut.GetComponent<RememberLoadout>().ForthWeapon = selectedWeapon.name;
+    }
+
+
+    void spawningWeapon()
+    {
+        var newWeapon = Instantiate(selectedWeapon, playerRightArm.transform, false);
+        if (newWeapon.GetComponent<MeleeWeapon>() != null)
+            newWeapon.GetComponent<MeleeWeapon>().Slot = 4;
+        else if (newWeapon.GetComponent<ShieldScript>() != null)
+            newWeapon.GetComponent<ShieldScript>().Slot = 4;
+        newWeapon.name = selectedWeapon.name;
+        newWeapon.SetActive(false);
+        PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon4 = selectedWeapon.name;
+        PlayerLoadOut.GetComponent<RememberLoadout>().ForthWeapon = selectedWeapon.name;
+    }
+
+
+
 
 
 
@@ -321,358 +351,391 @@ public class ShopManager : MonoBehaviour
 
 
 
-
         //ebug.Log(holdChildren.Length);
         if (selectedWeapon != null && button.GetComponent<HoldItemToSell>().owned == true)
         {
+
             Debug.Log(selectedWeapon.name);
-            if (PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon == selectedWeapon.name || PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon == selectedWeapon.name || PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon == selectedWeapon.name)
+
+
+
+            if (selectedWeapon.transform.gameObject.GetComponent<MeleeWeapon>() != null)
             {
-                Debug.Log("PATH 1");
-                
-                for (int i = 0; i < weaponTransforms.Count; i++)
+                if (weaponTransforms.Count >= 4)
                 {
-                    Transform go = weaponTransforms[i];
-                    //Debug.Log(go.transform.gameObject.name);
-                    if (go.transform.gameObject.GetComponent<Weapon>() != null)
-                    {
-                        if (go.transform.gameObject.GetComponent<Weapon>().Slot == selectedWeaponSlot + 1 && go.transform.gameObject.name.Contains(selectedWeapon.name) == false)
-                        {
-                            Destroy(go.transform.gameObject);
-                            weaponTransforms.RemoveAt(i);
-                        }
-                    }
-                    else if (go.transform.gameObject.GetComponent<MeleeWeapon>() != null)
-                    {
-                        if (go.transform.gameObject.GetComponent<MeleeWeapon>().Slot == selectedWeaponSlot + 1 && go.transform.gameObject.name.Contains(selectedWeapon.name) == false)
-                        {
-                            Destroy(go.transform.gameObject);
-                            weaponTransforms.RemoveAt(i);
-                        }
-                    }
-                    else if (go.transform.gameObject.GetComponent<ShieldScript>() != null)
-                    {
-                        if (go.transform.gameObject.GetComponent<ShieldScript>().Slot == selectedWeaponSlot + 1 && go.transform.gameObject.name.Contains(selectedWeapon.name) == false)
-                        {
-                            Destroy(go.transform.gameObject);
-                            weaponTransforms.RemoveAt(i);
-                        }
-                    }
+                    Transform go = weaponTransforms[3];
+                    equipHelper4(go);
+                    showText(selectedWeapon.name.ToUpper() + " HAS BEEN EQUIPPED TO SLOT 4");
                 }
-
-                for (int i = 0; i < weaponTransforms.Count; i++)
+                else
                 {
-                    Transform go = weaponTransforms[i];
-                    //Debug.Log(go.transform.gameObject.name);
-                    if (go.transform.gameObject.name.Contains(selectedWeapon.name) == true)
-                    {
-                        if (go.transform.gameObject.GetComponent<Weapon>() != null)
-                        {
-                            go.transform.gameObject.GetComponent<Weapon>().Slot = selectedWeaponSlot + 1;
-                        }
-                        else if (go.transform.gameObject.GetComponent<MeleeWeapon>() != null)
-                        {
-                            go.transform.gameObject.GetComponent<MeleeWeapon>().Slot = selectedWeaponSlot + 1;
-                        }
-                        else if (go.transform.gameObject.GetComponent<ShieldScript>() != null)
-                        {
-                            go.transform.gameObject.GetComponent<ShieldScript>().Slot = selectedWeaponSlot + 1;
-                        }
-                    }
+                    spawningWeapon();
                 }
-
-
-
-                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon1 = "";
-                PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon = "";
-                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon2 = "";
-                PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = "";
-                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon3 = "";
-                PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = "";
-
-
-
-                //Debug.Log(weaponTransforms.Count);
-                for (int i = 0; i < weaponTransforms.Count; i++)
+            }
+            else if (selectedWeapon.transform.gameObject.GetComponent<ShieldScript>() != null)
+            {
+                if (weaponTransforms.Count >= 4)
                 {
-                    //Debug.Log("LOOP");
-                    Transform go = weaponTransforms[i];
-                    if (go.transform.gameObject.GetComponent<Weapon>() != null)
-                    {
-                        if (go.transform.gameObject.GetComponent<Weapon>().Slot == 1)
-                        {
-                            PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon1 = go.name;
-                            PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon = go.name;
-                        }
-                        if (go.transform.gameObject.GetComponent<Weapon>().Slot == 2)
-                        {
-                            PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon2 = go.name;
-                            PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = go.name;
-                        }
-                        if (go.transform.gameObject.GetComponent<Weapon>().Slot == 3)
-                        {
-                            PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon3 = go.name;
-                            PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = go.name;
-                        }
-                    }
-                    else if (go.transform.gameObject.GetComponent<MeleeWeapon>() != null)
-                    {
-                        if (go.transform.gameObject.GetComponent<MeleeWeapon>().Slot == 1)
-                        {
-                            PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon1 = go.name;
-                            PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon = go.name;
-                        }
-                        if (go.transform.gameObject.GetComponent<MeleeWeapon>().Slot == 2)
-                        {
-                            PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon2 = go.name;
-                            PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = go.name;
-                        }
-                        if (go.transform.gameObject.GetComponent<MeleeWeapon>().Slot == 3)
-                        {
-                            PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon3 = go.name;
-                            PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = go.name;
-                        }
-                    }
-                    else if (go.transform.gameObject.GetComponent<ShieldScript>() != null)
-                    {
-                        if (go.transform.gameObject.GetComponent<ShieldScript>().Slot == 1)
-                        {
-                            PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon1 = go.name;
-                            PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon = go.name;
-                        }
-                        if (go.transform.gameObject.GetComponent<ShieldScript>().Slot == 2)
-                        {
-                            PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon2 = go.name;
-                            PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = go.name;
-                        }
-                        if (go.transform.gameObject.GetComponent<ShieldScript>().Slot == 3)
-                        {
-                            PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon3 = go.name;
-                            PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = go.name;
-                        }
-                    }
+                    Transform go = weaponTransforms[3];
+                    equipHelper4(go);
+                    showText(selectedWeapon.name.ToUpper() + " HAS BEEN EQUIPPED TO SLOT 4");
                 }
-                int temp = (selectedWeaponSlot + 1);
-                showText(selectedWeapon.name.ToUpper() + " HAS BEEN EQUIPPED TO SLOT " + temp);
-
+                else
+                {
+                    spawningWeapon();
+                    showText(selectedWeapon.name.ToUpper() + " HAS BEEN EQUIPPED TO SLOT 4");
+                }
             }
             else
             {
-                Debug.Log("PATH 2");
-                bool checkIFExist = false;
-
-                for (int i = 0; i < weaponTransforms.Count; i++)
+                if (PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon == selectedWeapon.name || PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon == selectedWeapon.name || PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon == selectedWeapon.name)
                 {
-                    Transform go = weaponTransforms[i];
-
-                    if (go.transform.gameObject.GetComponent<Weapon>() != null)
-                    {
-                        if (go.transform.gameObject.GetComponent<Weapon>().Slot == selectedWeaponSlot + 1)
-                        {
-                            checkIFExist = true;
-                        }
-                    }
-                    else if (go.transform.gameObject.GetComponent<MeleeWeapon>() != null)
-                    {
-                        if (go.transform.gameObject.GetComponent<MeleeWeapon>().Slot == selectedWeaponSlot + 1)
-                        {
-                            checkIFExist = true;
-                        }
-                    }
-                    else if (go.transform.gameObject.GetComponent<ShieldScript>() != null)
-                    {
-                        if (go.transform.gameObject.GetComponent<ShieldScript>().Slot == selectedWeaponSlot + 1)
-                        {
-                            checkIFExist = true;
-                        }
-                    }
-                }
-
-                if (checkIFExist == false)
-                {
-                    var newWeapon = Instantiate(selectedWeapon, playerRightArm.transform, false);
-                    if (newWeapon.GetComponent<Weapon>() != null)
-                    {
-                        newWeapon.GetComponent<Weapon>().Slot = selectedWeaponSlot + 1;
-                    }
-                    else if (newWeapon.GetComponent<MeleeWeapon>() != null)
-                    {
-                        newWeapon.GetComponent<MeleeWeapon>().Slot = selectedWeaponSlot + 1;
-                    }
-                    else if (newWeapon.GetComponent<ShieldScript>() != null)
-                    {
-                        newWeapon.GetComponent<ShieldScript>().Slot = selectedWeaponSlot + 1;
-                    }
-                    newWeapon.name = selectedWeapon.name;
-                    newWeapon.SetActive(false);
-                    int temp = (selectedWeaponSlot + 1);
-
-
-                    if (newWeapon.GetComponent<Weapon>() != null)
-                    {
-                        if (newWeapon.GetComponent<Weapon>().Slot == 1)
-                        {
-                            PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon1 = newWeapon.name;
-                            PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon = newWeapon.name;
-                        }
-                        if (newWeapon.GetComponent<Weapon>().Slot == 2)
-                        {
-                            PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon2 = newWeapon.name;
-                            PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = newWeapon.name;
-                        }
-                        if (newWeapon.GetComponent<Weapon>().Slot == 3)
-                        {
-                            PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon3 = newWeapon.name;
-                            PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = newWeapon.name;
-                        }
-                    }
-                    else if (newWeapon.GetComponent<MeleeWeapon>() != null)
-                    {
-                        if (newWeapon.GetComponent<MeleeWeapon>().Slot == 1)
-                        {
-                            PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon1 = newWeapon.name;
-                            PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon = newWeapon.name;
-                        }
-                        if (newWeapon.GetComponent<MeleeWeapon>().Slot == 2)
-                        {
-                            PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon2 = newWeapon.name;
-                            PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = newWeapon.name;
-                        }
-                        if (newWeapon.GetComponent<MeleeWeapon>().Slot == 3)
-                        {
-                            PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon3 = newWeapon.name;
-                            PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = newWeapon.name;
-                        }
-                    }
-                    else if (newWeapon.GetComponent<ShieldScript>() != null)
-                    {
-                        if (newWeapon.GetComponent<ShieldScript>().Slot == 1)
-                        {
-                            PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon1 = newWeapon.name;
-                            PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon = newWeapon.name;
-                        }
-                        if (newWeapon.GetComponent<ShieldScript>().Slot == 2)
-                        {
-                            PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon2 = newWeapon.name;
-                            PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = newWeapon.name;
-                        }
-                        if (newWeapon.GetComponent<ShieldScript>().Slot == 3)
-                        {
-                            PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon3 = newWeapon.name;
-                            PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = newWeapon.name;
-                        }
-                    }
-
-                    showText(selectedWeapon.name.ToUpper() + " HAS BEEN EQUIPPED TO SLOT " + temp);
-
-                }
-
-
-
-                if (selectedWeaponSlot == 0 && checkIFExist == true)
-                {
+                    Debug.Log("PATH 1");
 
                     for (int i = 0; i < weaponTransforms.Count; i++)
                     {
                         Transform go = weaponTransforms[i];
-                        Debug.Log(go.transform.gameObject.name);
+                        //Debug.Log(go.transform.gameObject.name);
+                        if (go.transform.gameObject.GetComponent<Weapon>() != null)
+                        {
+                            if (go.transform.gameObject.GetComponent<Weapon>().Slot == selectedWeaponSlot + 1 && go.transform.gameObject.name.Contains(selectedWeapon.name) == false)
+                            {
+                                Destroy(go.transform.gameObject);
+                                weaponTransforms.RemoveAt(i);
+                            }
+                        }
+                        else if (go.transform.gameObject.GetComponent<MeleeWeapon>() != null)
+                        {
+                            if (go.transform.gameObject.GetComponent<MeleeWeapon>().Slot == selectedWeaponSlot + 1 && go.transform.gameObject.name.Contains(selectedWeapon.name) == false)
+                            {
+                                Destroy(go.transform.gameObject);
+                                weaponTransforms.RemoveAt(i);
+                            }
+                        }
+                        else if (go.transform.gameObject.GetComponent<ShieldScript>() != null)
+                        {
+                            if (go.transform.gameObject.GetComponent<ShieldScript>().Slot == selectedWeaponSlot + 1 && go.transform.gameObject.name.Contains(selectedWeapon.name) == false)
+                            {
+                                Destroy(go.transform.gameObject);
+                                weaponTransforms.RemoveAt(i);
+                            }
+                        }
+                    }
 
-                        //int tempslot = 0;
+                    for (int i = 0; i < weaponTransforms.Count; i++)
+                    {
+                        Transform go = weaponTransforms[i];
+                        //Debug.Log(go.transform.gameObject.name);
+                        if (go.transform.gameObject.name.Contains(selectedWeapon.name) == true)
+                        {
+                            if (go.transform.gameObject.GetComponent<Weapon>() != null)
+                            {
+                                go.transform.gameObject.GetComponent<Weapon>().Slot = selectedWeaponSlot + 1;
+                            }
+                            else if (go.transform.gameObject.GetComponent<MeleeWeapon>() != null)
+                            {
+                                go.transform.gameObject.GetComponent<MeleeWeapon>().Slot = selectedWeaponSlot + 1;
+                            }
+                            else if (go.transform.gameObject.GetComponent<ShieldScript>() != null)
+                            {
+                                go.transform.gameObject.GetComponent<ShieldScript>().Slot = selectedWeaponSlot + 1;
+                            }
+                        }
+                    }
 
+
+
+                    PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon1 = "";
+                    PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon = "";
+                    PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon2 = "";
+                    PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = "";
+                    PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon3 = "";
+                    PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = "";
+
+
+
+                    //Debug.Log(weaponTransforms.Count);
+                    for (int i = 0; i < weaponTransforms.Count; i++)
+                    {
+                        //Debug.Log("LOOP");
+                        Transform go = weaponTransforms[i];
                         if (go.transform.gameObject.GetComponent<Weapon>() != null)
                         {
                             if (go.transform.gameObject.GetComponent<Weapon>().Slot == 1)
                             {
-                                equipHelper1(go);
+                                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon1 = go.name;
+                                PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon = go.name;
+                            }
+                            if (go.transform.gameObject.GetComponent<Weapon>().Slot == 2)
+                            {
+                                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon2 = go.name;
+                                PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = go.name;
+                            }
+                            if (go.transform.gameObject.GetComponent<Weapon>().Slot == 3)
+                            {
+                                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon3 = go.name;
+                                PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = go.name;
                             }
                         }
                         else if (go.transform.gameObject.GetComponent<MeleeWeapon>() != null)
                         {
                             if (go.transform.gameObject.GetComponent<MeleeWeapon>().Slot == 1)
                             {
-                                equipHelper1(go);
+                                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon1 = go.name;
+                                PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon = go.name;
+                            }
+                            if (go.transform.gameObject.GetComponent<MeleeWeapon>().Slot == 2)
+                            {
+                                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon2 = go.name;
+                                PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = go.name;
+                            }
+                            if (go.transform.gameObject.GetComponent<MeleeWeapon>().Slot == 3)
+                            {
+                                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon3 = go.name;
+                                PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = go.name;
                             }
                         }
                         else if (go.transform.gameObject.GetComponent<ShieldScript>() != null)
                         {
                             if (go.transform.gameObject.GetComponent<ShieldScript>().Slot == 1)
                             {
-                                equipHelper1(go);
+                                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon1 = go.name;
+                                PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon = go.name;
                             }
-                        }
-
-
-
-                    }
-                }
-                if (selectedWeaponSlot == 1 && checkIFExist == true)
-                {
-
-                    for (int i = 0; i < weaponTransforms.Count; i++)
-                    {
-                        Transform go = weaponTransforms[i];
-                        Debug.Log(go.transform.gameObject.name);
-
-                        if (go.transform.gameObject.GetComponent<Weapon>() != null)
-                        {
-                            if (go.transform.gameObject.GetComponent<Weapon>().Slot == 2)
-                            {
-                                equipHelper2(go);
-                            }
-                        }
-                        else if (go.transform.gameObject.GetComponent<MeleeWeapon>() != null)
-                        {
-                            if (go.transform.gameObject.GetComponent<MeleeWeapon>().Slot == 2)
-                            {
-                                equipHelper2(go);
-                            }
-                        }
-                        else if (go.transform.gameObject.GetComponent<ShieldScript>() != null)
-                        {
                             if (go.transform.gameObject.GetComponent<ShieldScript>().Slot == 2)
                             {
-                                equipHelper2(go);
+                                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon2 = go.name;
+                                PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = go.name;
+                            }
+                            if (go.transform.gameObject.GetComponent<ShieldScript>().Slot == 3)
+                            {
+                                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon3 = go.name;
+                                PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = go.name;
                             }
                         }
-
                     }
+                    int temp = (selectedWeaponSlot + 1);
+                    showText(selectedWeapon.name.ToUpper() + " HAS BEEN EQUIPPED TO SLOT " + temp);
+
                 }
-                if (selectedWeaponSlot == 2 && checkIFExist == true)
+                else
                 {
+                    Debug.Log("PATH 2");
+                    bool checkIFExist = false;
 
                     for (int i = 0; i < weaponTransforms.Count; i++)
                     {
                         Transform go = weaponTransforms[i];
-                        Debug.Log(go.transform.gameObject.name);
-
-
 
                         if (go.transform.gameObject.GetComponent<Weapon>() != null)
                         {
-                            if (go.transform.gameObject.GetComponent<Weapon>().Slot == 3)
+                            if (go.transform.gameObject.GetComponent<Weapon>().Slot == selectedWeaponSlot + 1)
                             {
-                                equipHelper3(go);
+                                checkIFExist = true;
                             }
                         }
                         else if (go.transform.gameObject.GetComponent<MeleeWeapon>() != null)
                         {
-                            if (go.transform.gameObject.GetComponent<MeleeWeapon>().Slot == 3)
+                            if (go.transform.gameObject.GetComponent<MeleeWeapon>().Slot == selectedWeaponSlot + 1)
                             {
-                                equipHelper3(go);
+                                checkIFExist = true;
                             }
                         }
                         else if (go.transform.gameObject.GetComponent<ShieldScript>() != null)
                         {
-                            if (go.transform.gameObject.GetComponent<ShieldScript>().Slot == 3)
+                            if (go.transform.gameObject.GetComponent<ShieldScript>().Slot == selectedWeaponSlot + 1)
                             {
-                                equipHelper3(go);
+                                checkIFExist = true;
                             }
                         }
                     }
+
+                    if (checkIFExist == false)
+                    {
+                        var newWeapon = Instantiate(selectedWeapon, playerRightArm.transform, false);
+                        if (newWeapon.GetComponent<Weapon>() != null)
+                        {
+                            newWeapon.GetComponent<Weapon>().Slot = selectedWeaponSlot + 1;
+                        }
+                        else if (newWeapon.GetComponent<MeleeWeapon>() != null)
+                        {
+                            newWeapon.GetComponent<MeleeWeapon>().Slot = selectedWeaponSlot + 1;
+                        }
+                        else if (newWeapon.GetComponent<ShieldScript>() != null)
+                        {
+                            newWeapon.GetComponent<ShieldScript>().Slot = selectedWeaponSlot + 1;
+                        }
+                        newWeapon.name = selectedWeapon.name;
+                        newWeapon.SetActive(false);
+                        int temp = (selectedWeaponSlot + 1);
+
+
+                        if (newWeapon.GetComponent<Weapon>() != null)
+                        {
+                            if (newWeapon.GetComponent<Weapon>().Slot == 1)
+                            {
+                                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon1 = newWeapon.name;
+                                PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon = newWeapon.name;
+                            }
+                            if (newWeapon.GetComponent<Weapon>().Slot == 2)
+                            {
+                                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon2 = newWeapon.name;
+                                PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = newWeapon.name;
+                            }
+                            if (newWeapon.GetComponent<Weapon>().Slot == 3)
+                            {
+                                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon3 = newWeapon.name;
+                                PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = newWeapon.name;
+                            }
+                        }
+                        else if (newWeapon.GetComponent<MeleeWeapon>() != null)
+                        {
+                            if (newWeapon.GetComponent<MeleeWeapon>().Slot == 1)
+                            {
+                                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon1 = newWeapon.name;
+                                PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon = newWeapon.name;
+                            }
+                            if (newWeapon.GetComponent<MeleeWeapon>().Slot == 2)
+                            {
+                                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon2 = newWeapon.name;
+                                PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = newWeapon.name;
+                            }
+                            if (newWeapon.GetComponent<MeleeWeapon>().Slot == 3)
+                            {
+                                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon3 = newWeapon.name;
+                                PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = newWeapon.name;
+                            }
+                        }
+                        else if (newWeapon.GetComponent<ShieldScript>() != null)
+                        {
+                            if (newWeapon.GetComponent<ShieldScript>().Slot == 1)
+                            {
+                                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon1 = newWeapon.name;
+                                PlayerLoadOut.GetComponent<RememberLoadout>().PrimaryWeapon = newWeapon.name;
+                            }
+                            if (newWeapon.GetComponent<ShieldScript>().Slot == 2)
+                            {
+                                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon2 = newWeapon.name;
+                                PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = newWeapon.name;
+                            }
+                            if (newWeapon.GetComponent<ShieldScript>().Slot == 3)
+                            {
+                                PlayerLoadOut.GetComponent<RememberLoadout>().startingWeapon3 = newWeapon.name;
+                                PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = newWeapon.name;
+                            }
+                        }
+
+                        showText(selectedWeapon.name.ToUpper() + " HAS BEEN EQUIPPED TO SLOT " + temp);
+
+                    }
+
+
+
+                    if (selectedWeaponSlot == 0 && checkIFExist == true)
+                    {
+
+                        for (int i = 0; i < weaponTransforms.Count; i++)
+                        {
+                            Transform go = weaponTransforms[i];
+                            Debug.Log(go.transform.gameObject.name);
+
+                            //int tempslot = 0;
+
+                            if (go.transform.gameObject.GetComponent<Weapon>() != null)
+                            {
+                                if (go.transform.gameObject.GetComponent<Weapon>().Slot == 1)
+                                {
+                                    equipHelper1(go);
+                                }
+                            }
+                            else if (go.transform.gameObject.GetComponent<MeleeWeapon>() != null)
+                            {
+                                if (go.transform.gameObject.GetComponent<MeleeWeapon>().Slot == 1)
+                                {
+                                    equipHelper1(go);
+                                }
+                            }
+                            else if (go.transform.gameObject.GetComponent<ShieldScript>() != null)
+                            {
+                                if (go.transform.gameObject.GetComponent<ShieldScript>().Slot == 1)
+                                {
+                                    equipHelper1(go);
+                                }
+                            }
+
+
+
+                        }
+                    }
+                    if (selectedWeaponSlot == 1 && checkIFExist == true)
+                    {
+
+                        for (int i = 0; i < weaponTransforms.Count; i++)
+                        {
+                            Transform go = weaponTransforms[i];
+                            Debug.Log(go.transform.gameObject.name);
+
+                            if (go.transform.gameObject.GetComponent<Weapon>() != null)
+                            {
+                                if (go.transform.gameObject.GetComponent<Weapon>().Slot == 2)
+                                {
+                                    equipHelper2(go);
+                                }
+                            }
+                            else if (go.transform.gameObject.GetComponent<MeleeWeapon>() != null)
+                            {
+                                if (go.transform.gameObject.GetComponent<MeleeWeapon>().Slot == 2)
+                                {
+                                    equipHelper2(go);
+                                }
+                            }
+                            else if (go.transform.gameObject.GetComponent<ShieldScript>() != null)
+                            {
+                                if (go.transform.gameObject.GetComponent<ShieldScript>().Slot == 2)
+                                {
+                                    equipHelper2(go);
+                                }
+                            }
+
+                        }
+                    }
+                    if (selectedWeaponSlot == 2 && checkIFExist == true)
+                    {
+
+                        for (int i = 0; i < weaponTransforms.Count; i++)
+                        {
+                            Transform go = weaponTransforms[i];
+                            Debug.Log(go.transform.gameObject.name);
+
+
+
+                            if (go.transform.gameObject.GetComponent<Weapon>() != null)
+                            {
+                                if (go.transform.gameObject.GetComponent<Weapon>().Slot == 3)
+                                {
+                                    equipHelper3(go);
+                                }
+                            }
+                            else if (go.transform.gameObject.GetComponent<MeleeWeapon>() != null)
+                            {
+                                if (go.transform.gameObject.GetComponent<MeleeWeapon>().Slot == 3)
+                                {
+                                    equipHelper3(go);
+                                }
+                            }
+                            else if (go.transform.gameObject.GetComponent<ShieldScript>() != null)
+                            {
+                                if (go.transform.gameObject.GetComponent<ShieldScript>().Slot == 3)
+                                {
+                                    equipHelper3(go);
+                                }
+                            }
+                        }
+                    }
+
+
+
                 }
-
-
-
             }
 
         }
