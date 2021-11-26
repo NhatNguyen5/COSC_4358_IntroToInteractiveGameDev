@@ -39,6 +39,7 @@ public class MeleeWeapon : MonoBehaviour
     private int swingCount = 1;
     public float knockBackForce;
     private bool abilityInUse = false;
+    private bool initBurst = false;
 
     [HideInInspector]
     public bool IsRightArm;
@@ -108,7 +109,7 @@ public class MeleeWeapon : MonoBehaviour
         damage = GrowthRate * player.Currentlevel + BaseDamage;
         animCtrl.SetFloat("SwingSpeed", BaseSwingSpeed + GrowthRate/50 * player.Currentlevel);
 
-        if (OptionSettings.GameisPaused == false && firingDelay == 0)
+        if (OptionSettings.GameisPaused == false)
         {
             if (Input.GetKey(KeyCode.Mouse0) && !Input.GetKey(KeyCode.Mouse1))
             {
@@ -145,7 +146,7 @@ public class MeleeWeapon : MonoBehaviour
                 animCtrl.SetBool("Blocking", false);
             }
             
-            if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3))
+            if ((Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Alpha3)) && firingDelay == 0)
             {
                 if (!abilityInUse)
                 {
@@ -159,6 +160,7 @@ public class MeleeWeapon : MonoBehaviour
                     player.holdSprintSpeed = playerSprintSpeed;
                     player.Stats.PFrictionz = playerFriction;
                 }
+                firingDelay = delay;
             }
 
             if (!abilityInUse)
@@ -185,7 +187,8 @@ public class MeleeWeapon : MonoBehaviour
                     player.Stats.Health -= (player.Stats.MaxHealth / 80) * Time.deltaTime * (player.Stats.MaxHealth / player.Stats.Health);
                 if (bloodParticle.isStopped)
                     bloodParticle.Play();
-                bloodParticleEmission.rateOverTime = 50*(player.Stats.MaxHealth / player.Stats.Health);
+                if(initBurst)
+                    bloodParticleEmission.rateOverTime = 50*(player.Stats.MaxHealth / player.Stats.Health);
             }
 
             if (firingDelay > 0)
@@ -335,13 +338,14 @@ public class MeleeWeapon : MonoBehaviour
 
     private IEnumerator bloodBurstEff(float newROT)
     {
+        initBurst = false;
         animCtrl.SetBool("ActivateAbility", true);
         bloodParticleEmission.rateOverTime = newROT;
         bloodParticleMain.startSpeed = -10;
         yield return new WaitForSeconds(0.1f / BaseSwingSpeed);
+        initBurst = true;
         if (player.Stats.Health > 20)
             player.Stats.Health /= 1.33f;
-        bloodParticleEmission.rateOverTime = 50;
         bloodParticleMain.startSpeed = -4;
         animCtrl.SetBool("ActivateAbility", false);
     }
