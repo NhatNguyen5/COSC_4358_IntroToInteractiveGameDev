@@ -108,6 +108,10 @@ public class ShieldScript : MonoBehaviour
                 GlobalPlayerVariables.weaponWeight = 1;
                 if (doneDeploy)
                 {
+                    if(player.Stats.Armorz < 780)
+                        player.Stats.Armorz += 20*Time.deltaTime;
+                    else
+                        player.Stats.Armorz = 800;
                     getOppoDir();
                     animCtrl.SetBool("ShieldDeploy", true);
                     Collider2D[] shieldedBullets = Physics2D.OverlapCircleAll(transform.position, 1.6f);

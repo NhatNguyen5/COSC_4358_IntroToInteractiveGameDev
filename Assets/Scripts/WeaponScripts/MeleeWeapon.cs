@@ -50,6 +50,8 @@ public class MeleeWeapon : MonoBehaviour
     private float playerFriction;
 
     private ParticleSystem bloodParticle;
+    private ParticleSystem.EmissionModule bloodParticleEmission;
+    private ParticleSystem.MainModule bloodParticleMain;
 
     private Player player;
     //public PlayerActions SwapWeapon;
@@ -93,7 +95,9 @@ public class MeleeWeapon : MonoBehaviour
             player.transform.Find("RightArm").transform.localPosition = new Vector2(0.05f, -0.15f);
         }
 
-        bloodParticle = transform.GetComponent<ParticleSystem>();
+        bloodParticle = transform.Find("BloodParticle").GetComponent<ParticleSystem>();
+        bloodParticleEmission = bloodParticle.emission;
+        bloodParticleMain = bloodParticle.main;
         bloodParticle.Stop();
     }
 
@@ -146,6 +150,7 @@ public class MeleeWeapon : MonoBehaviour
                 if (!abilityInUse)
                 {
                     abilityInUse = true;
+                    StartCoroutine(bloodBurstEff(2000));
                 }
                 else
                 {
@@ -176,10 +181,11 @@ public class MeleeWeapon : MonoBehaviour
                     (255 - (143 * (1 - player.Stats.Health / player.Stats.MaxHealth))) / 255f,
                     (255 - (214 * (1 - player.Stats.Health / player.Stats.MaxHealth))) / 255f,
                     (255 - (156 * (1 - player.Stats.Health / player.Stats.MaxHealth))) / 255f);
-                if (player.Stats.Health > 10)
-                    player.Stats.Health -= 8*Time.deltaTime * (player.Stats.MaxHealth / player.Stats.Health);
-                if(bloodParticle.isStopped)
+                if (player.Stats.Health > player.Stats.MaxHealth/20)
+                    player.Stats.Health -= (player.Stats.MaxHealth / 80) * Time.deltaTime * (player.Stats.MaxHealth / player.Stats.Health);
+                if (bloodParticle.isStopped)
                     bloodParticle.Play();
+                bloodParticleEmission.rateOverTime = 50*(player.Stats.MaxHealth / player.Stats.Health);
             }
 
             if (firingDelay > 0)
@@ -259,7 +265,9 @@ public class MeleeWeapon : MonoBehaviour
     {
         if (collision.CompareTag("EnemyMelee")) 
         { 
-            collision.GetComponent<Enemy2>().takeDamage(currDmg, collision.transform, 10); 
+            collision.GetComponent<Enemy2>().takeDamage(currDmg, collision.transform, 10);
+            if(player.Stats.Health < player.Stats.MaxHealth*0.5f && abilityInUse)
+                player.Stats.Health += player.Stats.MaxHealth * 0.02f;
         }
         if (collision.CompareTag("Enemy"))
         {
@@ -267,6 +275,8 @@ public class MeleeWeapon : MonoBehaviour
                 collision.GetComponent<Enemy1>().takeDamage(currDmg, collision.transform, 10);
             else
                 collision.GetComponent<Enemy3>().takeDamage(currDmg, collision.transform, 10);
+            if (player.Stats.Health < player.Stats.MaxHealth * 0.5f && abilityInUse)
+                player.Stats.Health += player.Stats.MaxHealth * 0.02f;
         }
         if (collision.CompareTag("Colony")) {
 
@@ -274,12 +284,20 @@ public class MeleeWeapon : MonoBehaviour
                 collision.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10);
             else
                 collision.GetComponent<EnemyColony2>().takeDamage(currDmg, collision.transform, 10);
+            if (player.Stats.Health < player.Stats.MaxHealth * 0.5f && abilityInUse)
+                player.Stats.Health += player.Stats.MaxHealth * 0.02f;
             //collision.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10); 
         }
-        if (collision.CompareTag("Globin")) { collision.GetComponent<Globin>().takeDamage(currDmg, collision.transform, 10); }
+        if (collision.CompareTag("Globin")) 
+        { 
+            collision.GetComponent<Globin>().takeDamage(currDmg, collision.transform, 10);
+            if (player.Stats.Health < player.Stats.MaxHealth * 0.5f && abilityInUse)
+                player.Stats.Health += player.Stats.MaxHealth * 0.04f;
+        }
         if(collision.GetComponent<Rigidbody2D>() != null)
         {
             collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(Mathf.Cos(player.Stats.Angle * Mathf.Deg2Rad), Mathf.Sin(player.Stats.Angle * Mathf.Deg2Rad)) * knockBackForce, ForceMode2D.Impulse);
+
         }
         if(collision.CompareTag("EnemyBullet") || collision.CompareTag("EnemyBullet2"))
         {
@@ -307,6 +325,20 @@ public class MeleeWeapon : MonoBehaviour
         player.holdWalkSpeed = playerWalkSpeed;
         player.holdSprintSpeed = playerSprintSpeed;
         player.Stats.PFrictionz = playerFriction;
+        player.Components.PlayerSpriteRenderer.color = new Color(1, 1, 1);
         //bloodParticle.Stop();
+    }
+
+    private IEnumerator bloodBurstEff(float newROT)
+    {
+        animCtrl.SetBool("ActivateAbility", true);
+        bloodParticleEmission.rateOverTime = newROT;
+        bloodParticleMain.startSpeed = -10;
+        yield return new WaitForSeconds(0.1f / BaseSwingSpeed);
+        if (player.Stats.Health > 20)
+            player.Stats.Health /= 1.33f;
+        bloodParticleEmission.rateOverTime = 50;
+        bloodParticleMain.startSpeed = -4;
+        animCtrl.SetBool("ActivateAbility", false);
     }
 }
