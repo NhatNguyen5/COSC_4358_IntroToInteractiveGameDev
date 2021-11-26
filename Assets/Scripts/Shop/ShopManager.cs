@@ -238,16 +238,15 @@ public class ShopManager : MonoBehaviour
 
     void equipHelper4()
     {
-        var newWeapon = Instantiate(selectedWeapon, playerRightArm.transform, false);
         foreach (Transform wp in playerRightArm.transform)
         {
-            Debug.Log(wp.gameObject.name.Replace("(Clone)", "") + " " + selectedWeapon.gameObject.name);
-            if (wp.gameObject.GetComponent<Weapon>() == null && wp.gameObject.name.Replace("(Clone)", "") != selectedWeapon.gameObject.name)
+            if (wp.gameObject.GetComponent<Weapon>() == null)
             {
                 Debug.Log("destroy");
                 Destroy(wp.gameObject);
             }
         }
+        var newWeapon = Instantiate(selectedWeapon, playerRightArm.transform, false);
         if (newWeapon.GetComponent<MeleeWeapon>() != null)
             newWeapon.GetComponent<MeleeWeapon>().Slot = 4;
         else if(newWeapon.GetComponent<ShieldScript>() != null)
@@ -409,20 +408,18 @@ public class ShopManager : MonoBehaviour
 
                 if (checkIFExist == false)
                 {
-                    var newWeapon = Instantiate(selectedWeapon, playerRightArm.transform, false);
                     if (selectedWeapon.GetComponent<MeleeWeapon>() != null || selectedWeapon.GetComponent<ShieldScript>() != null)
                     {
-                        foreach(Transform wp in playerRightArm.transform)
+                        foreach (Transform wp in playerRightArm.transform)
                         {
-                            Debug.Log(wp.gameObject.name.Replace("(Clone)", "") + " " + selectedWeapon.gameObject.name);
-                            if (wp.gameObject.GetComponent<Weapon>() == null && wp.gameObject.name.Replace("(Clone)", "") != selectedWeapon.gameObject.name)
+                            if (wp.gameObject.GetComponent<Weapon>() == null)
                             {
                                 Debug.Log("destroy");
                                 Destroy(wp.gameObject);
                             }
-                                
                         }
                     }
+                    var newWeapon = Instantiate(selectedWeapon, playerRightArm.transform, false);
                     if (newWeapon.GetComponent<Weapon>() != null)
                     {
                         newWeapon.GetComponent<Weapon>().Slot = selectedWeaponSlot + 1;
@@ -436,7 +433,11 @@ public class ShopManager : MonoBehaviour
                         newWeapon.GetComponent<ShieldScript>().Slot = 4;
                     }
                     newWeapon.name = selectedWeapon.name;
-                    newWeapon.SetActive(false);
+                    foreach (Transform wp in playerRightArm.transform)
+                    {
+                        wp.gameObject.SetActive(false);
+                    }
+                    newWeapon.SetActive(true);
                     int temp = (selectedWeaponSlot + 1);
 
 
