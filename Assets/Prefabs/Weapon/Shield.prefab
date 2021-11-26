@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7736401489199316463}
   - component: {fileID: 1103472508329123102}
   - component: {fileID: 6161932188701241285}
-  m_Layer: 19
+  m_Layer: 20
   m_Name: ShieldTopRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,8 +97,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 999
+  m_LinearDrag: 999
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -116,7 +116,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.2, y: 0.3}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 3436382258479014233}
   - component: {fileID: 7696944949770680111}
   - component: {fileID: 7295712160647937478}
-  m_Layer: 19
+  m_Layer: 20
   m_Name: ShieldRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,8 +241,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 999
+  m_LinearDrag: 999
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -260,7 +260,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.1, y: 0}
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 2144847471120395259}
   - component: {fileID: 2001208279239033442}
   - component: {fileID: 2002586029827074973}
-  m_Layer: 19
+  m_Layer: 20
   m_Name: ShieldLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -385,8 +385,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 999
+  m_LinearDrag: 999
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -404,7 +404,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.1, y: 0}
@@ -443,9 +443,9 @@ GameObject:
   - component: {fileID: 2591568961033913665}
   - component: {fileID: 5663821926029892175}
   - component: {fileID: 2591568961033913677}
-  - component: {fileID: 1172165721408140220}
   - component: {fileID: 701609700126260381}
-  m_Layer: 19
+  - component: {fileID: 1172165721408140220}
+  m_Layer: 20
   m_Name: Shield
   m_TagString: MeleeWeapon
   m_Icon: {fileID: 0}
@@ -544,6 +544,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &701609700126260381
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2591568961033913676}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.2
 --- !u!114 &1172165721408140220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,22 +587,6 @@ MonoBehaviour:
   deploySpeed: 2
   deploy: 0
   IsRightArm: 0
---- !u!58 &701609700126260381
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2591568961033913676}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!1 &2877561021016512355
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +600,7 @@ GameObject:
   - component: {fileID: 1348339550583396735}
   - component: {fileID: 5464377082315076879}
   - component: {fileID: 6537742381935346188}
-  m_Layer: 19
+  m_Layer: 20
   m_Name: ShieldTopLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -684,8 +684,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 999
+  m_LinearDrag: 999
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -703,7 +703,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.2, y: 0.3}
@@ -744,7 +744,7 @@ GameObject:
   - component: {fileID: 1946733330029077592}
   - component: {fileID: 1762127999236121851}
   - component: {fileID: 813396551158617523}
-  m_Layer: 19
+  m_Layer: 20
   m_Name: ShieldDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -828,8 +828,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 999
+  m_LinearDrag: 999
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -847,7 +847,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.4}
@@ -888,7 +888,7 @@ GameObject:
   - component: {fileID: 7837950596435879454}
   - component: {fileID: 1921442801346128880}
   - component: {fileID: 2294094694293682757}
-  m_Layer: 19
+  m_Layer: 20
   m_Name: ShieldUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -972,8 +972,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 999
+  m_LinearDrag: 999
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -991,7 +991,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.4}
@@ -1032,7 +1032,7 @@ GameObject:
   - component: {fileID: 6963870184727677758}
   - component: {fileID: 3526140267835018389}
   - component: {fileID: 1579120835504046669}
-  m_Layer: 19
+  m_Layer: 20
   m_Name: ShieldBotRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1116,8 +1116,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 999
+  m_LinearDrag: 999
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1135,7 +1135,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.2, y: -0.3}
@@ -1176,7 +1176,7 @@ GameObject:
   - component: {fileID: 380777276022339238}
   - component: {fileID: 8237602987362336721}
   - component: {fileID: 2267181713930738998}
-  m_Layer: 19
+  m_Layer: 20
   m_Name: ShieldBotLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1260,8 +1260,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 999
+  m_LinearDrag: 999
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1279,7 +1279,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.2, y: -0.3}

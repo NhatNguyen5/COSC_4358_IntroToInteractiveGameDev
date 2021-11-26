@@ -10245,7 +10245,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 655359
+    m_Bits: 1703935
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -73227,12 +73227,15 @@ MonoBehaviour:
   startingWeapon1: Abdominal
   startingWeapon2: Lymphakilla
   startingWeapon3: Vaccinator2.0
+  startingWeapon4: Shield
   PrimaryWeapon: 
   PrimaryWeaponDual: 
   SecondaryWeapon: 
   SecondaryWeaponDual: 
   ThirdWeapon: 
   ThirdWeaponDual: 
+  ForthWeapon: 
+  ForthWeaponDual: 
   RightArm: {fileID: 0}
   LeftArm: {fileID: 0}
   player: {fileID: 0}

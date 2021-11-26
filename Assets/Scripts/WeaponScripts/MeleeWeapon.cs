@@ -322,12 +322,15 @@ public class MeleeWeapon : MonoBehaviour
     private void OnDisable()
     {
         Time.timeScale = 1;
-        player.holdWalkSpeed = playerWalkSpeed;
-        player.holdSprintSpeed = playerSprintSpeed;
-        player.Stats.PFrictionz = playerFriction;
-        player.Components.PlayerSpriteRenderer.color = new Color(1, 1, 1);
-        abilityInUse = false;
-        //bloodParticle.Stop();
+        if(player != null)
+        {
+            player.holdWalkSpeed = playerWalkSpeed;
+            player.holdSprintSpeed = playerSprintSpeed;
+            player.Stats.PFrictionz = playerFriction;
+            player.Components.PlayerSpriteRenderer.color = new Color(1, 1, 1);
+            abilityInUse = false;
+            //bloodParticle.Stop();
+        }
     }
 
     private IEnumerator bloodBurstEff(float newROT)

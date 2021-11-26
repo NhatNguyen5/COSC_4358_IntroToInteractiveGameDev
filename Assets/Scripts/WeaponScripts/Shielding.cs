@@ -22,8 +22,8 @@ public class Shielding : MonoBehaviour
     {
         
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         float damage = GrowthRate * player.Currentlevel + BaseDamage;
         float currDmg = damage;
@@ -39,29 +39,31 @@ public class Shielding : MonoBehaviour
             else
                 collision.gameObject.GetComponent<Enemy3>().takeDamage(currDmg, collision.transform, 10);
         }
-        if (collision.gameObject.CompareTag("Colony")) {
+        if (collision.gameObject.CompareTag("Colony"))
+        {
             if (collision.gameObject.GetComponent<EnemyColony>() != null)
                 collision.gameObject.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10);
             else
                 collision.gameObject.GetComponent<EnemyColony2>().takeDamage(currDmg, collision.transform, 10);
-
             //collision.gameObject.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10); 
         }
         if (collision.gameObject.CompareTag("Globin")) { collision.gameObject.GetComponent<Globin>().takeDamage(currDmg, collision.transform, 10); }
+
         if (collision.gameObject.GetComponent<Rigidbody2D>() != null)
         {
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Mathf.Cos(player.Stats.Angle * Mathf.Deg2Rad), Mathf.Sin(player.Stats.Angle * Mathf.Deg2Rad)) * knockBackForce, ForceMode2D.Impulse);
         }
-        if (collision.gameObject.CompareTag("EnemyBullet") || collision.gameObject.CompareTag("EnemyBullet2"))
+        if (collision.CompareTag("EnemyBullet") || collision.CompareTag("EnemyBullet2"))
         {
-            if (collision.gameObject.CompareTag("EnemyBullet"))
+            if (collision.CompareTag("EnemyBullet"))
             {
-                collision.gameObject.GetComponent<EnemyProj>().DestroyEnemyProj();
-
+                collision.GetComponent<EnemyProj>().DestroyEnemyProj();
+                collision.GetComponent<EnemyProj>().isDeflected = false;
             }
             else
             {
-                collision.gameObject.GetComponent<EnemyProj2>().DestroyEnemyProj();
+                collision.GetComponent<EnemyProj2>().DestroyEnemyProj();
+                collision.GetComponent<EnemyProj2>().isDeflected = false;
             }
         }
     }

@@ -331,11 +331,12 @@ public class ShieldScript : MonoBehaviour
             if (collision.gameObject.CompareTag("EnemyBullet"))
             {
                 collision.gameObject.GetComponent<EnemyProj>().DestroyEnemyProj();
-
+                collision.gameObject.GetComponent<EnemyProj>().isDeflected = false;
             }
             else
             {
                 collision.gameObject.GetComponent<EnemyProj2>().DestroyEnemyProj();
+                collision.gameObject.GetComponent<EnemyProj2>().isDeflected = false;
             }
         }
     }
