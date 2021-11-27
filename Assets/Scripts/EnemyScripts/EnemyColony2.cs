@@ -118,7 +118,7 @@ public class EnemyColony2 : MonoBehaviour
 
     public bool canDoAirStrike = false;
     public GameObject AirStrike;
-    public int amountOfAirStrikes;
+    //public int amountOfAirStrikes;
     public float beginningRangeToCallAirStrike;
     public float endingRangeToCallAirStrike;
     private float AirStrikeTimer;
@@ -496,28 +496,22 @@ public class EnemyColony2 : MonoBehaviour
 
 
 
-            /*
+            
             //AIRSTRIKES
             if (canDoAirStrike == true && AirStrike != null && AirStrikeTimer <= 0 && lineofsight == true)
             {
                 float newAirStrikeTimer = Random.Range(beginningRangeToCallAirStrike, endingRangeToCallAirStrike);
                 AirStrikeTimer = newAirStrikeTimer;
 
-                for (int i = 0; i < amountOfAirStrikes; i++)
-                {
-                    Vector2 AOE = Vector2.zero;
-                    if (EnemyTarget != null)
-                        AOE = EnemyTarget.position;
-                    //randPos = transform.position;
-                    AOE += Random.insideUnitCircle * circleRadius;
-                    Instantiate(AirStrike, AOE, Quaternion.Euler(0, 0, 0));
-                }
+                //call in backup;
+                Instantiate(AirStrike, transform.position, Quaternion.Euler(0, 0, 0));
+                
 
             }
             if (AirStrikeTimer >= 0)
                 AirStrikeTimer -= Time.deltaTime;
 
-            */
+            
 
 
 
