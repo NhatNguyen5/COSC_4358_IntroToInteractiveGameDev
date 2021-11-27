@@ -160,6 +160,7 @@ public class Enemy3 : MonoBehaviour
 
     private float timeBtwShots;
     [Header("Gun Settings")]
+    public bool canUseGun = false;
     public float beginningrangetoshoot;
     public float endingrangetoshoot;
     private float startTimeBtwShots;
@@ -619,7 +620,7 @@ public class Enemy3 : MonoBehaviour
                     Debug.DrawRay(transform.position, enemy.transform.position - transform.position, Color.black);
                 */
                 
-                if (canSeeEnemy == true && GlobalPlayerVariables.GameOver == false)
+                if (canSeeEnemy == true && GlobalPlayerVariables.GameOver == false && canUseGun == true)
                 {
 
                     if (timeBtwShots <= 0)
