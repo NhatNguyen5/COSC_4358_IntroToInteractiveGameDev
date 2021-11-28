@@ -14,6 +14,7 @@ public class RememberLoadout : MonoBehaviour
 
     public Text currentScoreDeath;
     public static int totalExperienceEarned = 0;
+    public static int holdEXPEachLevel = 0;
     public int showtotalexp = 0;
 
     public GameObject[] PossiblePlayerWeapons;
@@ -72,7 +73,7 @@ public class RememberLoadout : MonoBehaviour
         else
         {
             instance = this;
-            //totalExperienceEarned = 0;
+            //totalExperienceEarned = holdEXPEachLevel;
             DontDestroyOnLoad(gameObject);
         }
     }
@@ -157,6 +158,14 @@ public class RememberLoadout : MonoBehaviour
             //    currentScoreDeath.GetComponent<Text>().text = "SCORE: " + totalExperienceEarned.ToString();
             //}
             GlobalPlayerVariables.TotalScore = showtotalexp;
+
+
+            if (SceneManager.GetActiveScene().name == "Title")
+            {
+                holdEXPEachLevel = 0;
+            }
+
+
             Destroy(gameObject);
         }
 
@@ -177,6 +186,7 @@ public class RememberLoadout : MonoBehaviour
                 loadPlayerStats = false;
                 player.GetComponent<Player>().hideLevelUPAnimation = true;
                 GlobalPlayerVariables.expToDistribute += totalExperienceEarned;
+                holdEXPEachLevel = totalExperienceEarned;
                 RightArm = GameObject.FindGameObjectWithTag("RightArm");
                 LeftArm = GameObject.FindGameObjectWithTag("LeftArm");
 
