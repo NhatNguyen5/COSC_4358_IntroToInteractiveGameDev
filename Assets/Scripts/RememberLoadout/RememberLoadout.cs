@@ -72,7 +72,7 @@ public class RememberLoadout : MonoBehaviour
         else
         {
             instance = this;
-            totalExperienceEarned = 0;
+            //totalExperienceEarned = 0;
             DontDestroyOnLoad(gameObject);
         }
     }
@@ -89,7 +89,7 @@ public class RememberLoadout : MonoBehaviour
         RightArm = GameObject.FindGameObjectWithTag("RightArm");
         LeftArm = GameObject.FindGameObjectWithTag("LeftArm");
 
-        Transform rightArmTrans = RightArm.GetComponent<Transform>();
+        Transform RightArm.transform = RightArm.GetComponent<Transform>();
         Transform leftArmTrans = LeftArm.GetComponent<Transform>();
 
         foreach (GameObject go in PossiblePlayerWeapons)
@@ -98,7 +98,7 @@ public class RememberLoadout : MonoBehaviour
             if (go.name == startingWeapon1)
             {
                 Debug.Log("Primary");
-                var newWeapon = Instantiate(go, rightArmTrans, false);
+                var newWeapon = Instantiate(go, RightArm.transform, false);
                 newWeapon.GetComponent<Weapon>().Slot = 1;
                 newWeapon.name = startingWeapon1;
             }
@@ -107,7 +107,7 @@ public class RememberLoadout : MonoBehaviour
         {
             if (go.name == startingWeapon2)
             {
-                var newWeapon2 = Instantiate(go, rightArmTrans, false);
+                var newWeapon2 = Instantiate(go, RightArm.transform, false);
                 newWeapon2.GetComponent<Weapon>().Slot = 2;
                 newWeapon2.name = startingWeapon2;
                 newWeapon2.SetActive(false);
@@ -117,7 +117,7 @@ public class RememberLoadout : MonoBehaviour
         {
             if (go.name == startingWeapon3)
             {
-                var newWeapon3 = Instantiate(go, rightArmTrans, false);
+                var newWeapon3 = Instantiate(go, RightArm.transform, false);
                 newWeapon3.GetComponent<Weapon>().Slot = 3;
                 newWeapon3.name = startingWeapon3;
                 newWeapon3.SetActive(false);
@@ -131,9 +131,9 @@ public class RememberLoadout : MonoBehaviour
 
         if (loadPlayerStats == false)
         {
-            PrimaryWeapon = rightArmTrans.GetChild(0).name;
-            SecondaryWeapon = rightArmTrans.GetChild(1).name;
-            ThirdWeapon = rightArmTrans.GetChild(2).name;
+            PrimaryWeapon = RightArm.transform.GetChild(0).name;
+            SecondaryWeapon = RightArm.transform.GetChild(1).name;
+            ThirdWeapon = RightArm.transform.GetChild(2).name;
 
             //var myNewSmoke = Instantiate(poisonSmoke, Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             //myNewSmoke.transform.parent = gameObject.transform;
@@ -165,7 +165,7 @@ public class RememberLoadout : MonoBehaviour
 
         string[] noLoadLoadoutScene =
         {
-            "Title", "TutorialLoadingScreen", "Tutorial", "GameLoadingScreen"
+            "Title"//, "TutorialLoadingScreen", "Tutorial", "GameLoadingScreen"
         };
 
         if ((loadPlayerStats == true || player == null) && !noLoadLoadoutScene.Contains(SceneManager.GetActiveScene().name) && !OptionSettings.GameisPaused)
@@ -180,16 +180,13 @@ public class RememberLoadout : MonoBehaviour
                 RightArm = GameObject.FindGameObjectWithTag("RightArm");
                 LeftArm = GameObject.FindGameObjectWithTag("LeftArm");
 
-                Transform rightArmTrans = RightArm.GetComponent<Transform>();
-                Transform leftArmTrans = LeftArm.GetComponent<Transform>();
-
                 foreach (GameObject go in PossiblePlayerWeapons)
                 {
                     //Debug.Log("each");
                     if (go.name == startingWeapon1)
                     {
                         Debug.Log("Primary");
-                        var newWeapon = Instantiate(go, rightArmTrans, false);
+                        var newWeapon = Instantiate(go, RightArm.transform, false);
                         if(newWeapon.GetComponent<Weapon>() != null)
                             newWeapon.GetComponent<Weapon>().Slot = 1;
                         newWeapon.name = startingWeapon1;
@@ -199,7 +196,7 @@ public class RememberLoadout : MonoBehaviour
                 {
                     if (go.name == startingWeapon2)
                     {
-                        var newWeapon2 = Instantiate(go, rightArmTrans, false);
+                        var newWeapon2 = Instantiate(go, RightArm.transform, false);
                         if (newWeapon2.GetComponent<Weapon>() != null)
                             newWeapon2.GetComponent<Weapon>().Slot = 2;
                       
@@ -210,7 +207,7 @@ public class RememberLoadout : MonoBehaviour
                 {
                     if (go.name == startingWeapon3)
                     {
-                        var newWeapon3 = Instantiate(go, rightArmTrans, false);
+                        var newWeapon3 = Instantiate(go, RightArm.transform, false);
                         if (newWeapon3.GetComponent<Weapon>() != null)
                             newWeapon3.GetComponent<Weapon>().Slot = 3;
                         
@@ -221,7 +218,7 @@ public class RememberLoadout : MonoBehaviour
                 {
                     if (go.name == startingWeapon4)
                     {
-                        var newWeapon4 = Instantiate(go, rightArmTrans, false);
+                        var newWeapon4 = Instantiate(go, RightArm.transform, false);
                         if (newWeapon4.GetComponent<MeleeWeapon>() != null)
                             newWeapon4.GetComponent<MeleeWeapon>().Slot = 4;
                         else

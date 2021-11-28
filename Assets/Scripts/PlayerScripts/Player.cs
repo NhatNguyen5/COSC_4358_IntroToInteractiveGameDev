@@ -171,7 +171,7 @@ public class Player : MonoBehaviour
     [Header("Animations upon spawning")]
     public float timetoblockanimation = 0.5f;
 
-    private GameObject shield = null;
+    private Transform shield = null;
 
     private void Awake()
     {
@@ -278,10 +278,6 @@ public class Player : MonoBehaviour
 
         currArmor = stats.ArmorLevel;
 
-        if(transform.Find("RightArm").Find("Shield") != null)
-        {
-            shield = transform.Find("RightArm").Find("Shield").gameObject;
-        }
     }
 
 
@@ -404,6 +400,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        GetPlayerItemsAndArmorValues();
         if (hideLevelUPAnimation == true)
         {
             //Debug.Log("its true");
@@ -529,15 +526,18 @@ public class Player : MonoBehaviour
                 }
                 actions.SwapWeapon();
                 //Debug.DrawRay(stats.Position, stats.Direction, Color.green, 0.1f);
-                if(shield != null)
+                shield = transform.Find("RightArm").Find("Shield");
+                if (shield == null)
                 {
-                    if (!shield.activeSelf)
+                    DashProc();
+                }
+                else
+                {
+                    if (!shield.GetComponent<ShieldScript>().deploy)
                     {
                         DashProc();
                     }
                 }
-                else
-                    DashProc();
             }
             //Debug.Log(VaccineCooldownDisplay);
             if (resetPlayerStatsRequest && !inEffect)
@@ -862,28 +862,33 @@ public class Player : MonoBehaviour
         */
         GameObject[] allDaGlobins = GameObject.FindGameObjectsWithTag("Globin");
         gitValues.numberOfGlobins = allDaGlobins.Length;
-        foreach (GameObject go in allDaGlobins)
+        bool didThis = false;
+        if (!didThis)
         {
-            if (go.name.Contains("5 Advisor"))
+            foreach (GameObject go in allDaGlobins)
             {
-                gitValues.Globin5Advisor++;
+                if (go.name.Contains("5 Advisor"))
+                {
+                    gitValues.Globin5Advisor++;
+                }
+                if (go.name.Contains("5 Grenadier"))
+                {
+                    gitValues.Globin5Grenadier++;
+                }
+                if (go.name.Contains("5 Operator"))
+                {
+                    gitValues.Globin5Operator++;
+                }
+                if (go.name.Contains("5 Rocketeer"))
+                {
+                    gitValues.Globin5Rocketeer++;
+                }
+                if (go.name.Contains("5 Support"))
+                {
+                    gitValues.Globin5Support++;
+                }
             }
-            if (go.name.Contains("5 Grenadier"))
-            {
-                gitValues.Globin5Grenadier++;
-            }
-            if (go.name.Contains("5 Operator"))
-            {
-                gitValues.Globin5Operator++;
-            }
-            if (go.name.Contains("5 Rocketeer"))
-            {
-                gitValues.Globin5Rocketeer++;
-            }
-            if (go.name.Contains("5 Support"))
-            {
-                gitValues.Globin5Support++;
-            }
+            didThis = true;
         }
     }
 
