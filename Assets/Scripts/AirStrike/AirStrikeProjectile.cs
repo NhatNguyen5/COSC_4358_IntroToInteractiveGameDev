@@ -7,6 +7,7 @@ public class AirStrikeProjectile : MonoBehaviour
     public float distanceToTarget;
     public Transform landingPad;
     public GameObject explosion;
+    public GameObject[] Spawnlist;
     //public float projectileSpeed;
     //public float secondsToland;
     float t;
@@ -18,6 +19,8 @@ public class AirStrikeProjectile : MonoBehaviour
     public float startTimerRangeForStrikes;
     public float endTimerRangeForStrikes;
     public float strikeTimer;
+    public bool spawnEnemy = false;
+    public int howManyToSpawn;
 
 
     // Start is called before the first frame update
@@ -75,7 +78,16 @@ public class AirStrikeProjectile : MonoBehaviour
             //spawn proj
 
             Vector3 offset = new Vector3(transform.position.x, transform.position.y, 0);
-            Instantiate(explosion, offset, Quaternion.Euler(0, 0, 0));
+            if(spawnEnemy == false)
+                Instantiate(explosion, offset, Quaternion.Euler(0, 0, 0));
+            else
+            {
+                for (int i = 0; i < howManyToSpawn; i++)
+                {
+                    int whatToSpawn = Random.Range(0, Spawnlist.Length - 1);
+                    Instantiate(Spawnlist[whatToSpawn], offset, Quaternion.Euler(0, 0, 0));
+                }
+            }
             Destroy(gameObject.transform.parent.gameObject);
         }
     }

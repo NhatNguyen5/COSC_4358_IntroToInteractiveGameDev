@@ -15,6 +15,8 @@ public class Pause : MonoBehaviour
     public GameObject OptionMenuUI;
     public GameObject PauseMenuUI;
     public GameObject PlayerUI;
+
+    public GameObject[] uiToTurnOffOrOn;
     //public GameObject StatusIndicator;
 
     /*
@@ -32,6 +34,13 @@ public class Pause : MonoBehaviour
         PlayerUI.SetActive(true);
         OptionMenuUI.SetActive(false);
         PauseMenuUI.SetActive(false);
+
+        for (int i = 0; i < uiToTurnOffOrOn.Length; i++)
+        {
+            uiToTurnOffOrOn[i].SetActive(false);
+        }
+
+
         OptionSettings.GameisPaused = false;
 
         //CursorManager.Instance.SetActiveCursorType(CursorManager.CursorType.Target);
