@@ -10478,6 +10478,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1100163532}
     - target: {fileID: 4753137488125671040, guid: e17d6ec20a3ec444c98f2e68cb2e2b39, type: 3}
+      propertyPath: GlobinSpawn
+      value: 
+      objectReference: {fileID: 7470529520530021172}
+    - target: {fileID: 4753137488125671040, guid: e17d6ec20a3ec444c98f2e68cb2e2b39, type: 3}
       propertyPath: ShowErrorOrNot
       value: 
       objectReference: {fileID: 1636540727}
@@ -88469,3 +88473,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eebc1d9bfc1cc043a961340405dd5cb, type: 3}
+--- !u!1 &7470529520530021172 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5628111448461542200, guid: 1eebc1d9bfc1cc043a961340405dd5cb, type: 3}
+  m_PrefabInstance: {fileID: 7470529520530021171}
+  m_PrefabAsset: {fileID: 0}
