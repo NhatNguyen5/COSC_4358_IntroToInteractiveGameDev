@@ -33,8 +33,8 @@ public class Boss2Aim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Colony.player != null)
-            player = Colony.player;
+        if (Colony.target != null)
+            player = Colony.target;
         if (GlobalPlayerVariables.GameOver == false && player != null)
         {
             Vector2 direction = player.position - transform.position;
