@@ -36,7 +36,10 @@ public class HoldItemToSell : MonoBehaviour
     public void updateSelect()
     {
         ShopManager ShopM = SM.GetComponent<ShopManager>();
-        ShopM.selectedWeapon = ItemBeingSold;
+        if (isWeapon == true)
+            ShopM.selectedWeapon = ItemBeingSold;
+        else
+            ShopM.selectedWeapon = null;
         ShopM.costOfSelectedItem = cost;
         ShopM.levelReqOfSelectedItem = levelReq;
         ShopM.ownedWeapon = owned;
