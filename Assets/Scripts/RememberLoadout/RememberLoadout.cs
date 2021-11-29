@@ -73,7 +73,7 @@ public class RememberLoadout : MonoBehaviour
         else
         {
             instance = this;
-            //totalExperienceEarned = holdEXPEachLevel;
+            totalExperienceEarned = holdEXPEachLevel;
             DontDestroyOnLoad(gameObject);
         }
     }
