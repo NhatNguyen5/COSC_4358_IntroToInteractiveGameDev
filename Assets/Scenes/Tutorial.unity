@@ -82119,10 +82119,10 @@ MonoBehaviour:
   - {fileID: 4651131086350033937, guid: f64ed1a4e76136840b4961460d40674a, type: 3}
   - {fileID: 6476559030465391988, guid: ca790e5a9896022428e6b81ff4c09421, type: 3}
   OwnedWeapons: []
-  startingWeapon1: Abdominal
-  startingWeapon2: Lymphakilla
-  startingWeapon3: Vaccinator2.0
-  startingWeapon4: Shield
+  startingWeapon1: 
+  startingWeapon2: 
+  startingWeapon3: 
+  startingWeapon4: 
   PrimaryWeapon: 
   PrimaryWeaponDual: 
   SecondaryWeapon: 
@@ -90141,7 +90141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 732242145888686756, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1048291891272765184, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: m_LocalPosition.x
@@ -90371,12 +90371,16 @@ PrefabInstance:
       value: -165
       objectReference: {fileID: 0}
     - target: {fileID: 6257839769071096178, guid: ce118972a784a5b429e1873a15f70337, type: 3}
+      propertyPath: ThymusDialogSequence.Array.data[0].DialogBoxPositionY
+      value: -130
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257839769071096178, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[1].DialogBoxPositionX
       value: 45.5
       objectReference: {fileID: 0}
     - target: {fileID: 6257839769071096178, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[1].DialogBoxPositionY
-      value: 18.5
+      value: -130
       objectReference: {fileID: 0}
     - target: {fileID: 6257839769071096178, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[2].DialogBoxPositionX
@@ -90384,7 +90388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6257839769071096178, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[2].DialogBoxPositionY
-      value: 18.5
+      value: -130
       objectReference: {fileID: 0}
     - target: {fileID: 6257839769071096178, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[3].DialogBoxPositionX
@@ -90392,7 +90396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6257839769071096178, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[3].DialogBoxPositionY
-      value: 18.5
+      value: -130
       objectReference: {fileID: 0}
     - target: {fileID: 6257839769071096178, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[4].DialogBoxPositionX
@@ -90400,7 +90404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6257839769071096178, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[4].DialogBoxPositionY
-      value: 18.5
+      value: -130
       objectReference: {fileID: 0}
     - target: {fileID: 6257839769071096178, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[5].DialogBoxPositionX
@@ -90408,7 +90412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6257839769071096178, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[5].DialogBoxPositionY
-      value: 18.5
+      value: -130
       objectReference: {fileID: 0}
     - target: {fileID: 6257839769071096178, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[6].DialogBoxPositionX
@@ -90416,7 +90420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6257839769071096178, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[6].DialogBoxPositionY
-      value: 18.5
+      value: -130
       objectReference: {fileID: 0}
     - target: {fileID: 6257839769071096178, guid: ce118972a784a5b429e1873a15f70337, type: 3}
       propertyPath: ThymusDialogSequence.Array.data[0].EnablePlayerControl

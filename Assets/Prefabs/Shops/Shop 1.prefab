@@ -37978,7 +37978,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8035387256584911483
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39115,11 +39115,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 50
   levelReq: 0
-  ItemBeingSold: {fileID: 0}
+  ItemBeingSold: {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
   owned: 0
-  isWeapon: 1
+  isWeapon: 0
   SM: {fileID: 0}
 --- !u!1 &8035387256614617998
 GameObject:
@@ -41590,7 +41590,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8035387256744568168
 RectTransform:
   m_ObjectHideFlags: 0

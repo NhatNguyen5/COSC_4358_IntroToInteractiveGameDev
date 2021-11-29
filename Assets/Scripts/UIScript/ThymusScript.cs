@@ -49,10 +49,12 @@ public class ThymusScript : MonoBehaviour
         public bool HideThymus;
         public float ShowAgainAfter;
         [Header("Thymus")]
+        /*
         [Range(-500, 500)]
         public float ThymusPositionX;
         [Range(-250, 250)]
         public float ThymusPositionY;
+        */
         [Range(0.1f, 3)]
         public float ThymusScale;
         [StringInList("SeriousEyes", "ChillEyes")] public string EyesCategory;
@@ -123,7 +125,7 @@ public class ThymusScript : MonoBehaviour
         {
             if (zoom == 0)
             {
-                Thymus.localPosition = new Vector3(ThymusDialogSequence[currDialogIdx].ThymusPositionX, ThymusDialogSequence[currDialogIdx].ThymusPositionY);
+                Thymus.localPosition = new Vector3(ThymusDialogSequence[currDialogIdx].DialogBoxPositionX - 210, ThymusDialogSequence[currDialogIdx].DialogBoxPositionY - 20);
                 DialogBox.localPosition = new Vector3(ThymusDialogSequence[currDialogIdx].DialogBoxPositionX, ThymusDialogSequence[currDialogIdx].DialogBoxPositionY);
                 Thymus.localScale = new Vector3(ThymusOgScale.x * ThymusDialogSequence[currDialogIdx].ThymusScale, ThymusOgScale.y * ThymusDialogSequence[currDialogIdx].ThymusScale, ThymusOgScale.z);
                 DialogBox.localScale = new Vector3(DialogBoxOgScale.x * ThymusDialogSequence[currDialogIdx].DialogBoxScale, DialogBoxOgScale.y * ThymusDialogSequence[currDialogIdx].DialogBoxScale, DialogBoxOgScale.z);
@@ -286,7 +288,7 @@ public class ThymusScript : MonoBehaviour
         ThymusEyesSpriteResolver.SetCategoryAndLabel(Dialog.EyesCategory, currEyesSprite[tempEyesIdx]);
         ThymusBrowsSpriteResolver.SetCategoryAndLabel("EyeBrows", currBrowsSprite[tempBrowsIdx]);
         DialogText.fontSize = (int)(Dialog.FontSize);
-        Thymus.localPosition = new Vector3(Dialog.ThymusPositionX, Dialog.ThymusPositionY);
+        Thymus.localPosition = new Vector3(Dialog.DialogBoxPositionX - 210, Dialog.DialogBoxPositionY - 20);
         Thymus.localScale = new Vector3(ThymusOgScale.x * Dialog.ThymusScale, ThymusOgScale.y * Dialog.ThymusScale, ThymusOgScale.z);
         DialogBox.localPosition = new Vector3(Dialog.DialogBoxPositionX, Dialog.DialogBoxPositionY);
         DialogBox.localScale = new Vector3(DialogBoxOgScale.x * Dialog.DialogBoxScale, DialogBoxOgScale.y * Dialog.DialogBoxScale, DialogBoxOgScale.z);

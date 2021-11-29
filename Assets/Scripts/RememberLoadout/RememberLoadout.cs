@@ -74,8 +74,10 @@ public class RememberLoadout : MonoBehaviour
         else
         {
             instance = this;
-            if(penalty == true)
+            if (penalty == true)
                 totalExperienceEarned = (int)(Mathf.Round((float)totalExperienceEarned * 0.80f));
+            else
+                totalExperienceEarned = 0;
             penalty = true;
             DontDestroyOnLoad(gameObject);
         }

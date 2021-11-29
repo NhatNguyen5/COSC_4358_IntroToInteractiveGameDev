@@ -169,6 +169,10 @@ public class ShopManager : MonoBehaviour
                 showText("THIS WEAPON IS ALREADY OWNED");
             }
         }
+        else if (isWeapon == false && button.GetComponent<HoldItemToSell>().ItemBeingSold != null)
+        {
+            //var Item = Instantiate(selectedWeapon, playerRightArm.transform, false);
+        }
         else
         {
             showText("PLEASE SELECT A VALID WEAPON OR ITEM");
