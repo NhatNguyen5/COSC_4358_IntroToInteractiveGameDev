@@ -11,6 +11,7 @@ public class HoldItemToSell : MonoBehaviour
     public GameObject ItemBeingSold;
     public bool owned = false;
     public bool isWeapon = false;
+    public bool isGlobin = false;
 
     private int num1;
     private int num2;

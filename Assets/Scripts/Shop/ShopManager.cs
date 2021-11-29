@@ -19,6 +19,7 @@ public class ShopManager : MonoBehaviour
     public GameObject Frame3;
 
     public GameObject ShopKeeper;
+    public GameObject GlobinSpawn;
 
     public void turnOffOtherFrames()
     {
@@ -178,7 +179,15 @@ public class ShopManager : MonoBehaviour
             if (player.GetComponent<Player>().getProteinAmount() >= button.GetComponent<HoldItemToSell>().cost)
             {
                 player.GetComponent<Player>().subtractProtienCounter(button.GetComponent<HoldItemToSell>().cost);
-                var Item = Instantiate(button.GetComponent<HoldItemToSell>().ItemBeingSold, ShopKeeper.transform.position, Quaternion.identity);
+                if (button.GetComponent<HoldItemToSell>().isGlobin == true)
+                {
+                    var Item = Instantiate(button.GetComponent<HoldItemToSell>().ItemBeingSold, GlobinSpawn.transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    var Item = Instantiate(button.GetComponent<HoldItemToSell>().ItemBeingSold, ShopKeeper.transform.position, Quaternion.identity);
+                }
+
                 showText("PURCHASE SUCCESSFUL");
             }
             else
