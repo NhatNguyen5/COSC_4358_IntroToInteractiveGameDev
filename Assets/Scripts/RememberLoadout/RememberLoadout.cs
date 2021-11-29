@@ -10,6 +10,7 @@ public class RememberLoadout : MonoBehaviour
     // Start is called before the first frame update
     public static RememberLoadout instance;
     public bool loadPlayerStats = false;
+    public static bool penalty = false;
 
 
     public Text currentScoreDeath;
@@ -73,7 +74,9 @@ public class RememberLoadout : MonoBehaviour
         else
         {
             instance = this;
-            //totalExperienceEarned = holdEXPEachLevel;
+            if(penalty == true)
+                totalExperienceEarned = (int)(Mathf.Round((float)totalExperienceEarned * 0.80f));
+            penalty = true;
             DontDestroyOnLoad(gameObject);
         }
     }
@@ -163,6 +166,8 @@ public class RememberLoadout : MonoBehaviour
             if (SceneManager.GetActiveScene().name == "Title")
             {
                 holdEXPEachLevel = 0;
+                penalty = false;
+                //totalExperienceEarned = 0;
             }
 
 
