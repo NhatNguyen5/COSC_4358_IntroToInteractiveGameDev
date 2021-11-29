@@ -242,6 +242,7 @@ public class Player : MonoBehaviour
         stats.NumofProtein = stats.numofprotein;
         stats.NumofPhizer = stats.numofphizer;
         stats.NumofMolly = stats.numofmolly;
+        stats.NumofSticky = stats.numofsticky;
 
         stats.PhizerDurationz = stats.PhizerDuration;
         stats.PhizerCooldownz = stats.PhizerCooldown;
@@ -485,6 +486,21 @@ public class Player : MonoBehaviour
                     {
                         nadeSelector = 0;
                     }
+
+                    switch (nadeSelector)
+                    {
+                        case 0:
+                            actions.UtilLabel.text = "MOLLY";
+                            actions.UltiSelector.localPosition = new Vector3(0.85f, -5.1f, 0);
+                            break;
+                        case 1:
+                            actions.UtilLabel.text = "STICKY";
+                            actions.UltiSelector.localPosition = new Vector3(0.85f, 12.9f, 0);
+                            break;
+                        default:
+                            actions.UtilLabel.text = "UNKNOWN";
+                            break;
+                    }
                 }
                 if (Input.GetKeyUp(KeyCode.G))
                 {
@@ -493,15 +509,19 @@ public class Player : MonoBehaviour
                         case 0:
                             if (stats.NumofMolly > 0)
                             {
+                                actions.UtilLabel.text = "MOLLY";
                                 Quaternion newRot = Quaternion.Euler(stats.Direction.x, stats.Direction.y, 0);
                                 Instantiate(Molly, stats.Position, newRot);
                                 stats.NumofMolly -= 1;
                             }
                             break;
                         case 1:
+                            if (stats.NumofSticky > 0)
                             {
+                                actions.UtilLabel.text = "STICKY";
                                 Quaternion newRot = Quaternion.Euler(stats.Direction.x, stats.Direction.y, 0);
                                 Instantiate(Gre, stats.Position, newRot);
+                                stats.NumofSticky -= 1;
                             }
                             break;
                         default:
@@ -800,7 +820,7 @@ public class Player : MonoBehaviour
         gitValues.armorRemaining = Stats.Armorz;
         gitValues.proteinCounter = Stats.NumofProtein;
         //gitValues.stemCellAmount = Stats.;
-        //gitValues.numberOfStickyNades = stats.num;
+        gitValues.numberOfStickyNades = stats.NumofSticky;
         gitValues.numberOfMollys = Stats.NumofMolly;
 
 
@@ -901,11 +921,11 @@ public class Player : MonoBehaviour
         stats.NumofPhizer = gitValues.numberOfPhizerz;
         Stats.Armorz = gitValues.armorRemaining;
         Stats.NumofProtein = gitValues.proteinCounter;
-       
+
         //gitValues.stemCellAmount = Stats.;
-        //gitValues.numberOfStickyNades = stats.num;
+        Stats.NumofSticky = gitValues.numberOfStickyNades;
         Stats.NumofMolly = gitValues.numberOfMollys;
-        Debug.Log(stats.NumofHeal + " armor " + stats.Armorz + " protein " + stats.NumofProtein + " molly " + Stats.NumofMolly);
+        Debug.Log(stats.NumofHeal + " armor " + stats.Armorz + " protein " + stats.NumofProtein + " molly " + Stats.NumofMolly + "sticky " + Stats.NumofSticky);
 
         Transform globinSpawn = GameObject.FindGameObjectWithTag("GlobinSpawn").GetComponent<Transform>();
 

@@ -44,6 +44,7 @@ public class PlayerStats
     public int NumofProtein { get; set; }
     public int NumofPhizer { get; set; }
     public int NumofMolly { get; set; }
+    public int NumofSticky { get; set; }
 
     public bool IsDualWield = false;
 
@@ -110,6 +111,8 @@ public class PlayerStats
     private int NumOfPhizer;
     [SerializeField]
     private int NumOfMolly;
+    [SerializeField]
+    private int NumOfSticky;
     [Header("Phizer")]
     [SerializeField]
     private float Phizerduration;
@@ -172,6 +175,8 @@ public class PlayerStats
     public int numofphizer { get => NumOfPhizer; }
 
     public int numofmolly { get => NumOfMolly; }
+
+    public int numofsticky { get => NumOfSticky; }
 
     public float PhizerDuration { get => Phizerduration; }
     public float PhizerCooldown { get => Phizercooldown; }

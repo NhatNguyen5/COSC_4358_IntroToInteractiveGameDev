@@ -128,6 +128,8 @@ GameObject:
   - component: {fileID: 370946251004088092}
   - component: {fileID: 370946251004088081}
   - component: {fileID: 5540483567680152796}
+  - component: {fileID: -7542700185886244675}
+  - component: {fileID: -1270999863076875540}
   m_Layer: 16
   m_Name: Globin 5 Advisor
   m_TagString: Globin
@@ -176,7 +178,7 @@ MonoBehaviour:
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 95232
+    m_Bits: 1668096
   shootdistance: 14
   distancefromplayer: 0
   canSeeEnemy: 0
@@ -193,6 +195,9 @@ MonoBehaviour:
   timesToShoot: 14
   StartToFollowAfterCertainDist: 0
   distToStartFollow: 0
+  spriteLibrary: {fileID: -7542700185886244675}
+  targetResolver: {fileID: -1270999863076875540}
+  targetCategory: GlobinDefault
 --- !u!114 &370946251004088082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,6 +326,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c86d968fbe3a944ae8b7fb698b28a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-7542700185886244675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370946251004088095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SpriteLibraryAsset: {fileID: 11400000, guid: 634c2fadac842bc47b03caed030c4a1b, type: 2}
+--- !u!114 &-1270999863076875540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370946251004088095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 4.8067858e+29
+  m_labelHash: -0.025054464
 --- !u!1 &370946251221536660
 GameObject:
   m_ObjectHideFlags: 0

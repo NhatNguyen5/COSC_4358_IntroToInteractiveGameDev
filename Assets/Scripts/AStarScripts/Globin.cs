@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 using TMPro;
+using UnityEngine.Experimental.U2D.Animation;
+using System.Linq;
+
 public class Globin : MonoBehaviour
 {
     public Transform target;
 
     public Transform EnemyTarget;
 
-
+    public bool isVehicle;
     public float nextWaypointDistance = 3f;
 
     Path path;
@@ -107,8 +110,22 @@ public class Globin : MonoBehaviour
     public bool StartToFollowAfterCertainDist = false;
     public float distToStartFollow = 0f;
 
-
     //ANIMATION VARIABLES
+    [Header("SkinModule")]
+    [SerializeField]
+    private SpriteLibrary spriteLibrary = default;
+    [SerializeField]
+    private SpriteResolver targetResolver = default;
+    [SerializeField]
+    private string targetCategory = default;
+
+    private string[] currSprite;
+
+    private float relaMouseAngle;
+
+    [HideInInspector]
+    public float facing;
+
 
     //DEATH VARIABLE
     private bool isDead = false;
@@ -134,7 +151,8 @@ public class Globin : MonoBehaviour
         target = player;
         GlobalPlayerVariables.GlobinsAndPlayerAlive += 1;
         InvokeRepeating("UpdatePath", 0f, 0.5f);
-
+        if(!isVehicle)
+            currSprite = spriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(targetCategory).ToArray();
     }
 
     private void UpdatePath()
@@ -174,6 +192,7 @@ public class Globin : MonoBehaviour
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
+
         rb.AddForce(force);
 
 
@@ -184,7 +203,6 @@ public class Globin : MonoBehaviour
             currentWaypoint++;
         }
         //return;
-
 
     }
 
@@ -226,6 +244,11 @@ public class Globin : MonoBehaviour
                         reachedDestination = true;
                     }
                 }
+            }
+            if (!isVehicle)
+            {
+                facing = transform.Find("GlobinAim").GetComponent<GlobinAim>().AimDir;
+                Animate(facing);
             }
         }
     }
@@ -648,7 +671,58 @@ public class Globin : MonoBehaviour
     }
 
 
-
+    public void Animate(float angle)
+    {
+        //transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(player.Stats.Direction.y, player.Stats.Direction.x) * Mathf.Rad2Deg - 180));
+        //relaMouseAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        relaMouseAngle = angle;
+        if (relaMouseAngle < 0)
+            relaMouseAngle = relaMouseAngle + 360;
+        //Debug.Log(relaMouseAngle);
+        //Debug.Log(relaMouseAngle);
+        //New 8 directions system
+        /*[0]Down
+         *[1]Up
+         *[2]Left
+         *[3]Right
+         *[4]TopLeft
+         *[5]TopRight
+         *[6]BotLeft
+         *[7]BotRight
+         */
+        if (relaMouseAngle <= 22.5 || relaMouseAngle > 337.5) //Right
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[3]);
+        }
+        else if (relaMouseAngle > 22.5 && relaMouseAngle <= 67.5) //TopRight
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[5]);
+        }
+        else if (relaMouseAngle > 67.5 && relaMouseAngle <= 112.5) //Up
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[1]);
+        }
+        else if (relaMouseAngle > 112.5 && relaMouseAngle <= 157.5) //TopLeft
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[4]);
+        }
+        else if (relaMouseAngle > 157.5 && relaMouseAngle <= 202.5) //Left
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[2]);
+        }
+        else if (relaMouseAngle > 202.5 && relaMouseAngle <= 247.5) //BotLeft
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[6]);
+        }
+        else if (relaMouseAngle > 247.5 && relaMouseAngle <= 292.5) //Down
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[0]);
+        }
+        else if (relaMouseAngle > 292.5 && relaMouseAngle <= 337.5) //BotRight
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[7]);
+        }
+    }
 
 
 

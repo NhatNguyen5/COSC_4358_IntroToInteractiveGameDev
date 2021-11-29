@@ -19,7 +19,12 @@ public class PlayerActions
     private Image ARBar;
     public Text HealCounts;
     public Text VaccineCounts;
+    //Util
+    public Transform UltiSelector;
+    public Text UtilLabel;
     public Text MollyCounts;
+    public Text StickyCounts;
+
     public Text HPNumber;
     public Text MaxHPNUmber;
 
@@ -70,7 +75,12 @@ public class PlayerActions
         RWeaponIcon = GameObject.Find("WeaponBorderR");
         HealCounts = GameObject.Find("HealCounts").GetComponent<Text>();
         VaccineCounts = GameObject.Find("VaccineCounts").GetComponent<Text>();
+        //nades
+        UltiSelector = GameObject.Find("Util Selector Icon").transform;
+        UtilLabel = GameObject.Find("Util Label").GetComponent<Text>();
         MollyCounts = GameObject.Find("MollyCounts").GetComponent<Text>();
+        StickyCounts = GameObject.Find("StickyCounts").GetComponent<Text>();
+
         HPNumber = GameObject.Find("HPNumber").GetComponent<Text>();
 
         ARNumber = GameObject.Find("ARNumber").GetComponent<Text>();
@@ -354,7 +364,6 @@ public class PlayerActions
         //bool cond = false;
         float[] allowSlot = { 1, 2, 3, 4 };
         float input = 1;
-        bool muraAbiInUse = false;
 
         if((float.TryParse(Input.inputString, out input)))
         {
@@ -512,6 +521,7 @@ public class PlayerActions
         HealCounts.text = player.Stats.NumofHeal.ToString();
         VaccineCounts.text = player.Stats.NumofPhizer.ToString();
         MollyCounts.text = player.Stats.NumofMolly.ToString();
+        StickyCounts.text = player.Stats.NumofSticky.ToString();
         HPNumber.text = ((int)player.Stats.Health).ToString() + "/" + ((int)player.Stats.MaxHealth).ToString();
         ARNumber.text = ((int)player.Stats.Armorz).ToString() + "/" + ((int)player.Stats.ArmorPerArmorLevelz * 4).ToString();
 

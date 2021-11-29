@@ -47,6 +47,7 @@ MonoBehaviour:
   Glob: {fileID: 0}
   WeaponAnim: {fileID: 0}
   AimDir: 0
+  angle: 0
 --- !u!1 &4651131086350033937
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,6 +63,8 @@ GameObject:
   - component: {fileID: 4651131086350033938}
   - component: {fileID: 4651131086350033951}
   - component: {fileID: 6104639734651292305}
+  - component: {fileID: -6913191504921859958}
+  - component: {fileID: -2866866842205024693}
   m_Layer: 16
   m_Name: Globin 5 Support
   m_TagString: Globin
@@ -111,7 +114,7 @@ MonoBehaviour:
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 95232
+    m_Bits: 1668096
   shootdistance: 19
   distancefromplayer: 0
   canSeeEnemy: 0
@@ -128,6 +131,10 @@ MonoBehaviour:
   timesToShoot: 20
   StartToFollowAfterCertainDist: 0
   distToStartFollow: 0
+  spriteLibrary: {fileID: -6913191504921859958}
+  targetResolver: {fileID: -2866866842205024693}
+  targetCategory: GlobinDefault
+  facing: 0
 --- !u!114 &4651131086350033948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +263,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c86d968fbe3a944ae8b7fb698b28a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6913191504921859958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4651131086350033937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SpriteLibraryAsset: {fileID: 11400000, guid: 634c2fadac842bc47b03caed030c4a1b, type: 2}
+--- !u!114 &-2866866842205024693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4651131086350033937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 4.8067858e+29
+  m_labelHash: -0.025054464
 --- !u!1 &4651131086955291989
 GameObject:
   m_ObjectHideFlags: 0

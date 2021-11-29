@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf7c34a0dc4e6348bea04faa70406ee, type: 3}
+  m_Name: GlobinsSkins
+  m_EditorClassIdentifier: 
+  m_Labels:
+  - m_Name: GlobinDefault
+    m_Hash: 1891771648
+    m_CategoryList:
+    - m_Name: Down
+      m_Hash: -1127399675
+      m_Sprite: {fileID: 2470925077525222866, guid: d77f1b9841a34da4285e77b0791636e4, type: 3}
+    - m_Name: Up
+      m_Hash: -703542574
+      m_Sprite: {fileID: 1117915781750120786, guid: d77f1b9841a34da4285e77b0791636e4, type: 3}
+    - m_Name: Left
+      m_Hash: -631945130
+      m_Sprite: {fileID: -2447228734396421299, guid: d77f1b9841a34da4285e77b0791636e4, type: 3}
+    - m_Name: Right
+      m_Hash: 1963678224
+      m_Sprite: {fileID: 965882746150308016, guid: d77f1b9841a34da4285e77b0791636e4, type: 3}
+    - m_Name: TopLeft
+      m_Hash: -1315448624
+      m_Sprite: {fileID: -2661711941028093866, guid: d77f1b9841a34da4285e77b0791636e4, type: 3}
+    - m_Name: TopRight
+      m_Hash: 1908129429
+      m_Sprite: {fileID: -7741842543755608163, guid: d77f1b9841a34da4285e77b0791636e4, type: 3}
+    - m_Name: BotLeft
+      m_Hash: 1075435492
+      m_Sprite: {fileID: 5896744434261509852, guid: d77f1b9841a34da4285e77b0791636e4, type: 3}
+    - m_Name: BotRight
+      m_Hash: 1358873647
+      m_Sprite: {fileID: 2268299993848996506, guid: d77f1b9841a34da4285e77b0791636e4, type: 3}

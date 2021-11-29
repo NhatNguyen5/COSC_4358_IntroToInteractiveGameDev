@@ -173,6 +173,8 @@ GameObject:
   - component: {fileID: 8299276445152824112}
   - component: {fileID: 8299276445152824118}
   - component: {fileID: 8299276445152824009}
+  - component: {fileID: -1996001613845851076}
+  - component: {fileID: -3775977239223367994}
   m_Layer: 7
   m_Name: D-Stroy
   m_TagString: Enemy
@@ -385,6 +387,10 @@ MonoBehaviour:
   burstFire: 0
   timeBtwBurst: 0
   timesToShoot: 0
+  spriteLibrary: {fileID: -1996001613845851076}
+  targetResolver: {fileID: -3775977239223367994}
+  targetCategory: D-Stroy Sprite Library Asset
+  facing: 0
 --- !u!114 &8299276445152824112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,6 +457,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e74e3615ce8efa49984f414aedbecbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1996001613845851076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8299276445152824113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SpriteLibraryAsset: {fileID: 11400000, guid: fff37d40dc4fbe34ca519a7f3b24d121, type: 2}
+--- !u!114 &-3775977239223367994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8299276445152824113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: -5.4820617e-11
+  m_labelHash: -0.025054464
 --- !u!1 &8299276445945533834
 GameObject:
   m_ObjectHideFlags: 0

@@ -137,6 +137,19 @@ public class ItemPickup : MonoBehaviour
                     }
                     break;
 
+                case "Sticky":
+                    //Debug.Log(GlobalPlayerVariables.Reserves);
+                    if (player.Stats.NumofSticky < 9)
+                    {
+                        Follow();
+                        if (distance <= PickUpRange)
+                        {
+                            player.Stats.NumofSticky += 1;
+                            Destroy(gameObject);
+                        }
+                    }
+                    break;
+
                 default:
                     Follow();
                     Debug.Log("Unknow item!");

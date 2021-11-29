@@ -213,6 +213,7 @@ MonoBehaviour:
   Glob: {fileID: 0}
   WeaponAnim: {fileID: 0}
   AimDir: 0
+  angle: 0
 --- !u!1 &4178851107264257981
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +261,7 @@ MonoBehaviour:
   Glob: {fileID: 0}
   WeaponAnim: {fileID: 0}
   AimDir: 0
+  angle: 0
 --- !u!1 &4800548710497326212
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,6 +557,7 @@ MonoBehaviour:
   Glob: {fileID: 0}
   WeaponAnim: {fileID: 0}
   AimDir: 0
+  angle: 0
 --- !u!1 &4800548710497326434
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,6 +612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 3517825292825441637, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
   EnemyTarget: {fileID: 0}
+  isVehicle: 1
   nextWaypointDistance: 3
   rb: {fileID: 0}
   DamageText: {fileID: 5578586631025405740, guid: 9f7757d3160d49940b41a53ce5fcba10, type: 3}
@@ -621,7 +625,7 @@ MonoBehaviour:
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 95232
+    m_Bits: 1668096
   shootdistance: 40
   distancefromplayer: 0
   canSeeEnemy: 0
@@ -638,6 +642,10 @@ MonoBehaviour:
   timesToShoot: 12
   StartToFollowAfterCertainDist: 0
   distToStartFollow: 0
+  spriteLibrary: {fileID: 0}
+  targetResolver: {fileID: 0}
+  targetCategory: 
+  facing: 0
 --- !u!114 &4800548710497325547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,6 +863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 3517825292825441637, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
   EnemyTarget: {fileID: 0}
+  isVehicle: 0
   nextWaypointDistance: 3
   rb: {fileID: 0}
   DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
@@ -884,6 +893,10 @@ MonoBehaviour:
   timesToShoot: 2
   StartToFollowAfterCertainDist: 0
   distToStartFollow: 0
+  spriteLibrary: {fileID: 0}
+  targetResolver: {fileID: 0}
+  targetCategory: 
+  facing: 0
 --- !u!212 &3023557367685933460
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1093,6 +1106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 3517825292825441637, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
   EnemyTarget: {fileID: 0}
+  isVehicle: 0
   nextWaypointDistance: 3
   rb: {fileID: 0}
   DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
@@ -1122,6 +1136,10 @@ MonoBehaviour:
   timesToShoot: 5
   StartToFollowAfterCertainDist: 0
   distToStartFollow: 0
+  spriteLibrary: {fileID: 0}
+  targetResolver: {fileID: 0}
+  targetCategory: 
+  facing: 0
 --- !u!212 &7367193205810788500
 SpriteRenderer:
   m_ObjectHideFlags: 0

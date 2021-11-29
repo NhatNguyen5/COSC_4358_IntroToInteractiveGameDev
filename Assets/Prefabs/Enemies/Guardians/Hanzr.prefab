@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 257568515384690894}
   - component: {fileID: 257568515384690888}
   - component: {fileID: 257568515384690999}
+  - component: {fileID: -3874065444227202703}
+  - component: {fileID: 4391452575076444498}
   m_Layer: 7
   m_Name: Hanzr
   m_TagString: Enemy
@@ -228,6 +230,10 @@ MonoBehaviour:
   burstFire: 0
   timeBtwBurst: 0
   timesToShoot: 0
+  spriteLibrary: {fileID: -3874065444227202703}
+  targetResolver: {fileID: 4391452575076444498}
+  targetCategory: Hanzr Sprite Library Asset
+  facing: 0
 --- !u!114 &257568515384690894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +300,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e74e3615ce8efa49984f414aedbecbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3874065444227202703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257568515384690895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SpriteLibraryAsset: {fileID: 11400000, guid: fff37d40dc4fbe34ca519a7f3b24d121, type: 2}
+--- !u!114 &4391452575076444498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257568515384690895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 1.9497446e+9
+  m_labelHash: -0.025054464
 --- !u!1 &257568515444616643
 GameObject:
   m_ObjectHideFlags: 0

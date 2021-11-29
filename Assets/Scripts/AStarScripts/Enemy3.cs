@@ -4,6 +4,8 @@ using UnityEngine;
 using Pathfinding;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Experimental.U2D.Animation;
+using System.Linq;
 
 public class Enemy3 : MonoBehaviour
 {
@@ -187,6 +189,22 @@ public class Enemy3 : MonoBehaviour
     private float critRate = 0;
     private float critDMG = 0;
 
+    //ANIMATION VARIABLES
+    [Header("SkinModule")]
+    [SerializeField]
+    private SpriteLibrary spriteLibrary = default;
+    [SerializeField]
+    private SpriteResolver targetResolver = default;
+    [SerializeField]
+    private string targetCategory = default;
+
+    private string[] currSprite;
+
+    private float relaMouseAngle;
+
+    [HideInInspector]
+    public float facing;
+
 
 
     // Start is called before the first frame update
@@ -218,6 +236,8 @@ public class Enemy3 : MonoBehaviour
         //GlobalPlayerVariables.GlobinsAndPlayerAlive += 1;
         GlobalPlayerVariables.TotalEnemiesAlive += 1;
         InvokeRepeating("UpdatePath", 0f, 0.5f);
+
+        currSprite = spriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(targetCategory).ToArray();
     }
 
     private void UpdatePath()
@@ -309,8 +329,9 @@ public class Enemy3 : MonoBehaviour
                     reachedDestination = true;
                 }
             }
-            
-            
+
+            facing = transform.Find("EnemyAim").GetComponent<Enemy3AIM>().AimDir;
+            Animate(facing);
         }
     }
 
@@ -924,4 +945,56 @@ public class Enemy3 : MonoBehaviour
         }
     }
 
+    public void Animate(float angle)
+    {
+        //transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(player.Stats.Direction.y, player.Stats.Direction.x) * Mathf.Rad2Deg - 180));
+        //relaMouseAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        relaMouseAngle = angle;
+        if (relaMouseAngle < 0)
+            relaMouseAngle = relaMouseAngle + 360;
+        //Debug.Log(relaMouseAngle);
+        //Debug.Log(relaMouseAngle);
+        //New 8 directions system
+        /*[0]Down
+         *[1]Up
+         *[2]Left
+         *[3]Right
+         *[4]TopLeft
+         *[5]TopRight
+         *[6]BotLeft
+         *[7]BotRight
+         */
+        if (relaMouseAngle <= 22.5 || relaMouseAngle > 337.5) //Right
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[3]);
+        }
+        else if (relaMouseAngle > 22.5 && relaMouseAngle <= 67.5) //TopRight
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[5]);
+        }
+        else if (relaMouseAngle > 67.5 && relaMouseAngle <= 112.5) //Up
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[1]);
+        }
+        else if (relaMouseAngle > 112.5 && relaMouseAngle <= 157.5) //TopLeft
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[4]);
+        }
+        else if (relaMouseAngle > 157.5 && relaMouseAngle <= 202.5) //Left
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[2]);
+        }
+        else if (relaMouseAngle > 202.5 && relaMouseAngle <= 247.5) //BotLeft
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[6]);
+        }
+        else if (relaMouseAngle > 247.5 && relaMouseAngle <= 292.5) //Down
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[0]);
+        }
+        else if (relaMouseAngle > 292.5 && relaMouseAngle <= 337.5) //BotRight
+        {
+            targetResolver.SetCategoryAndLabel(targetCategory, currSprite[7]);
+        }
+    }
 }
