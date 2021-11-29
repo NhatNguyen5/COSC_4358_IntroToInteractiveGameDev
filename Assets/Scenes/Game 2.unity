@@ -10474,6 +10474,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1636540726}
     - target: {fileID: 4753137488125671040, guid: e17d6ec20a3ec444c98f2e68cb2e2b39, type: 3}
+      propertyPath: ShopKeeper
+      value: 
+      objectReference: {fileID: 1100163532}
+    - target: {fileID: 4753137488125671040, guid: e17d6ec20a3ec444c98f2e68cb2e2b39, type: 3}
       propertyPath: ShowErrorOrNot
       value: 
       objectReference: {fileID: 1636540727}
@@ -76387,6 +76391,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e70be8321c329e943b866bfb84d5aa3e, type: 3}
+--- !u!1 &1100163532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7918610016732384324, guid: e70be8321c329e943b866bfb84d5aa3e, type: 3}
+  m_PrefabInstance: {fileID: 1100163531}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1108824128
 GameObject:
   m_ObjectHideFlags: 0

@@ -3673,11 +3673,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 150
   levelReq: 0
-  ItemBeingSold: {fileID: 0}
+  ItemBeingSold: {fileID: 2056935271745837854, guid: 953376de06b619b4898731a5bab67558, type: 3}
   owned: 0
-  isWeapon: 1
+  isWeapon: 0
   SM: {fileID: 0}
 --- !u!1 &8035387254728091648
 GameObject:
@@ -18851,7 +18851,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: MOLLY
 --- !u!1 &8035387255491361115
 GameObject:
   m_ObjectHideFlags: 0
@@ -21522,7 +21522,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: STICKY GRENADE
 --- !u!1 &8035387255607527121
 GameObject:
   m_ObjectHideFlags: 0
@@ -29291,7 +29291,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: PHIZER
 --- !u!1 &8035387256009981150
 GameObject:
   m_ObjectHideFlags: 0
@@ -37768,11 +37768,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 500
   levelReq: 0
-  ItemBeingSold: {fileID: 0}
+  ItemBeingSold: {fileID: 2056935271745837854, guid: 9729f65a98d9dd14b86e888222ffbcbc, type: 3}
   owned: 0
-  isWeapon: 1
+  isWeapon: 0
   SM: {fileID: 0}
 --- !u!1 &8035387256579192404
 GameObject:
@@ -39115,7 +39115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 50
+  cost: 250
   levelReq: 0
   ItemBeingSold: {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
   owned: 0
@@ -41380,11 +41380,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 300
   levelReq: 0
-  ItemBeingSold: {fileID: 0}
+  ItemBeingSold: {fileID: 2056935271745837854, guid: f6f4be9ac3368a74287b960666063ebb, type: 3}
   owned: 0
-  isWeapon: 1
+  isWeapon: 0
   SM: {fileID: 0}
 --- !u!1 &8035387256734280753
 GameObject:
@@ -41715,7 +41715,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: TYLENOL
 --- !u!1 &8814955616908538688
 GameObject:
   m_ObjectHideFlags: 0

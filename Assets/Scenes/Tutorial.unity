@@ -3024,6 +3024,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 173344948}
     - target: {fileID: 4753137488125671040, guid: e17d6ec20a3ec444c98f2e68cb2e2b39, type: 3}
+      propertyPath: ShopKeeper
+      value: 
+      objectReference: {fileID: 459406494}
+    - target: {fileID: 4753137488125671040, guid: e17d6ec20a3ec444c98f2e68cb2e2b39, type: 3}
       propertyPath: ShowErrorOrNot
       value: 
       objectReference: {fileID: 173344949}
@@ -3704,6 +3708,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3563851459045876628, guid: e70be8321c329e943b866bfb84d5aa3e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563851459045876628, guid: e70be8321c329e943b866bfb84d5aa3e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 3707468661933574673, guid: e70be8321c329e943b866bfb84d5aa3e, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -3766,6 +3778,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e70be8321c329e943b866bfb84d5aa3e, type: 3}
+--- !u!1 &459406494 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7918610016732384324, guid: e70be8321c329e943b866bfb84d5aa3e, type: 3}
+  m_PrefabInstance: {fileID: 459406493}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &460158725 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4753137488125671041, guid: e17d6ec20a3ec444c98f2e68cb2e2b39, type: 3}

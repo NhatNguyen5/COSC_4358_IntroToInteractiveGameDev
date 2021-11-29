@@ -18,6 +18,8 @@ public class ShopManager : MonoBehaviour
     public GameObject Frame2;
     public GameObject Frame3;
 
+    public GameObject ShopKeeper;
+
     public void turnOffOtherFrames()
     {
         Frame1.SetActive(false);
@@ -171,7 +173,18 @@ public class ShopManager : MonoBehaviour
         }
         else if (isWeapon == false && button.GetComponent<HoldItemToSell>().ItemBeingSold != null)
         {
-            //var Item = Instantiate(selectedWeapon, playerRightArm.transform, false);
+
+
+            if (player.GetComponent<Player>().getProteinAmount() >= button.GetComponent<HoldItemToSell>().cost)
+            {
+                player.GetComponent<Player>().subtractProtienCounter(button.GetComponent<HoldItemToSell>().cost);
+                var Item = Instantiate(button.GetComponent<HoldItemToSell>().ItemBeingSold, ShopKeeper.transform.position, Quaternion.identity);
+                showText("PURCHASE SUCCESSFUL");
+            }
+            else
+            {
+                showText("ERROR NOT ENOUGH PROTEIN");
+            }
         }
         else
         {
