@@ -859,7 +859,7 @@ public class EnemyColony2 : MonoBehaviour
             GlobalPlayerVariables.enemiesKilled += 1;
             transform.position = this.transform.position;
             transform.Find("BossSprite").GetComponent<Animator>().SetBool("IsDead", isDead);
-            GetComponent<CircleCollider2D>().enabled = false;
+            GetComponent<PolygonCollider2D>().enabled = false;
             StartCoroutine(Dying());
             //GameObject.Destroy(gameObject);
         }
