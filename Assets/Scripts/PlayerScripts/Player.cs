@@ -475,6 +475,7 @@ public class Player : MonoBehaviour
                     if (stats.NumofHeal > 0 && stats.Health < stats.MaxHealth)
                     {
                         actions.Heal();
+                        AudioManager.instance.PlayEffect("Heal");
                         RightSlotCooldownDisplay = stats.TylenolCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown);
                         StartCoroutine(RightSlotItemCooldown(stats.TylenolCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown)));
                     }
@@ -534,6 +535,7 @@ public class Player : MonoBehaviour
                     if (stats.NumofPhizer > 0)
                     {
                         actions.Phizer();
+                        AudioManager.instance.PlayEffect("Heal");
                         LeftSlotCooldownDisplay = stats.PhizerCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown);
                         StartCoroutine(ResetStats(stats.PhizerDuration));
                         StartCoroutine(LeftSlotItemCooldown(stats.PhizerCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown)));
@@ -610,16 +612,47 @@ public class Player : MonoBehaviour
         }
     }
 
+    private bool playWalkingSound = true;
+    private bool walk1 = true;
+    private IEnumerator playWalkSound(float AfterSeconds)
+    {
+        if (playWalkingSound == true)
+        {
+            playWalkingSound = false; 
+            if (walk1 == true)
+            {
+                walk1 = false;
+                AudioManager.instance.PlayEffect("Walk1");
+            }
+            else
+                walk1 = true;
+                AudioManager.instance.PlayEffect("Walk2");
+            yield return new WaitForSeconds(AfterSeconds);
+            playWalkingSound = true;
+        }
+    }
+
+
     private void FixedUpdate()
     {
 
         actions.Move(transform);
         if (Input.GetKey(KeyCode.LeftShift) && stats.Stamina > 0)
-        { 
+        {
             actions.Sprint();
+            if (components.PlayerRidgitBody.velocity != Vector2.zero)
+            {
+                StartCoroutine(playWalkSound(0.25f));
+            }
         }
         else
+        {
             actions.Walk();
+            if (components.PlayerRidgitBody.velocity != Vector2.zero)
+            {
+                StartCoroutine(playWalkSound(0.5f));
+            }
+        }
 
 
         ProteinCounts.text = stats.NumofProtein.ToString();
@@ -671,8 +704,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && currDashCooldown == 0 && stats.Stamina >= stats.DashStamCost && stats.Direction.magnitude != 0 && !phaseOverWrite)
         {
             //Debug.Log("Dash");
-
-            FindObjectOfType<AudioManager>().PlayEffect(dashSound);
+            AudioManager.instance.PlayEffect(dashSound);
+            //FindObjectOfType<AudioManager>().PlayEffect(dashSound);
             components.PlayerTrailRenderer.enabled = true;
             dashDir = stats.Direction;
             currTrailDur = TrailDur;

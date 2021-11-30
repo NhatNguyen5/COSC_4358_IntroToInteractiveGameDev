@@ -77,6 +77,7 @@ public class ItemPickup : MonoBehaviour
                         if (distance <= PickUpRange)
                         {
                             player.Stats.NumofHeal += 1;
+                            AudioManager.instance.PlayEffect("ItemPickup");
                             Destroy(gameObject);
                         }
                     }
@@ -91,6 +92,7 @@ public class ItemPickup : MonoBehaviour
                             player.Stats.NumofProtein += ProteinAdd;
                             if (player.Stats.NumofProtein > 9999999)
                                 player.Stats.NumofProtein = 9999999;
+                            AudioManager.instance.PlayEffect("ItemPickup");
                             Destroy(gameObject);
                         }
                     }
@@ -106,6 +108,7 @@ public class ItemPickup : MonoBehaviour
                             GlobalPlayerVariables.Reserves += AmmoReserveAdd;
                             if (GlobalPlayerVariables.Reserves > GlobalPlayerVariables.MaxReserves)
                                 GlobalPlayerVariables.Reserves = GlobalPlayerVariables.MaxReserves;
+                            AudioManager.instance.PlayEffect("ItemPickup");
                             Destroy(gameObject);
                         }
                     }
@@ -119,6 +122,7 @@ public class ItemPickup : MonoBehaviour
                         if (distance <= PickUpRange)
                         {
                             player.Stats.NumofPhizer += 1;
+                            AudioManager.instance.PlayEffect("ItemPickup");
                             Destroy(gameObject);
                         }
                     }
@@ -132,6 +136,7 @@ public class ItemPickup : MonoBehaviour
                         if (distance <= PickUpRange)
                         {
                             player.Stats.NumofMolly += 1;
+                            AudioManager.instance.PlayEffect("ItemPickup");
                             Destroy(gameObject);
                         }
                     }
@@ -145,6 +150,7 @@ public class ItemPickup : MonoBehaviour
                         if (distance <= PickUpRange)
                         {
                             player.Stats.NumofSticky += 1;
+                            AudioManager.instance.PlayEffect("ItemPickup");
                             Destroy(gameObject);
                         }
                     }
