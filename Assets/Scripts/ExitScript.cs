@@ -82,11 +82,16 @@ public class ExitScript : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         OptionSettings.GameisPaused = true;
-        player.GetComponent<Player>().GetPlayerItemsAndArmorValues();
+        if (SceneManager.GetActiveScene().name == "Tutorial")
+            SceneManager.LoadScene("Title");
+        else
+        {
+            player.GetComponent<Player>().GetPlayerItemsAndArmorValues();
+            WinScreen.SetActive(true);
+        }
+        //player.GetComponent<Player>().GetPlayerItemsAndArmorValues();
         //SceneManager.LoadScene(NextScene);
         //if (SceneManager.GetActiveScene().name == NextScene) //CHANGE THIS TO ENDING SCENE
             //GlobalPlayerVariables.GameOver = true;
-        //player.GetComponent<Player>().GetPlayerItemsAndArmorValues();
-        WinScreen.SetActive(true);
     }
 }

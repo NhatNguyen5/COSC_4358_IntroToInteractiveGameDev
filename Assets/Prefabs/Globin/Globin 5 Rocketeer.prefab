@@ -160,7 +160,6 @@ MonoBehaviour:
   Glob: {fileID: 0}
   WeaponAnim: {fileID: 0}
   AimDir: 0
-  angle: 0
 --- !u!1 &8226548698390147028
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 3517825292825441637, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
   EnemyTarget: {fileID: 0}
+  isVehicle: 0
   nextWaypointDistance: 3
   rb: {fileID: 0}
   DamageText: {fileID: 5578586631025405740, guid: 9f7757d3160d49940b41a53ce5fcba10, type: 3}
@@ -227,7 +227,7 @@ MonoBehaviour:
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 1668096
+    m_Bits: 3765248
   shootdistance: 20
   distancefromplayer: 0
   canSeeEnemy: 0

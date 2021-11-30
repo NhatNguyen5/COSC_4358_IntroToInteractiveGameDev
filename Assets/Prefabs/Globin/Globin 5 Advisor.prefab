@@ -166,6 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 3517825292825441637, guid: 0d9b930441c21044991b016bc2748bd2, type: 3}
   EnemyTarget: {fileID: 0}
+  isVehicle: 0
   nextWaypointDistance: 3
   rb: {fileID: 0}
   DamageText: {fileID: 5578586631025405740, guid: 9f7757d3160d49940b41a53ce5fcba10, type: 3}
@@ -178,7 +179,7 @@ MonoBehaviour:
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 1668096
+    m_Bits: 3765248
   shootdistance: 14
   distancefromplayer: 0
   canSeeEnemy: 0
@@ -198,6 +199,7 @@ MonoBehaviour:
   spriteLibrary: {fileID: -7542700185886244675}
   targetResolver: {fileID: -1270999863076875540}
   targetCategory: GlobinDefault
+  facing: 0
 --- !u!114 &370946251004088082
 MonoBehaviour:
   m_ObjectHideFlags: 0

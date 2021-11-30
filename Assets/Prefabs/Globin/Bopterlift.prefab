@@ -518,7 +518,6 @@ MonoBehaviour:
   Glob: {fileID: 0}
   WeaponAnim: {fileID: 0}
   AimDir: 0
-  angle: 0
 --- !u!1 &6476559030465391988
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,7 +588,7 @@ MonoBehaviour:
   lineofsight: 0
   IgnoreMe:
     serializedVersion: 2
-    m_Bits: 1668096
+    m_Bits: 3765248
   shootdistance: 38
   distancefromplayer: 0
   canSeeEnemy: 0
