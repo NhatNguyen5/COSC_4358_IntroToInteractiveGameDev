@@ -597,11 +597,12 @@ public class Player : MonoBehaviour
         }
         references.CalMousePosToPlayer();
         actions.UpdateCountsUI();
+        actions.updateWeaponIcon();
         actions.Regen();
         if (enemyManager != null)
             UpdateSpawnrate();
         ArmorEffect();
-
+        
         if (transform.Find("RightArm").transform.Find("Shield") != null)
         {
             if (transform.Find("RightArm").transform.Find("Shield").gameObject.activeSelf)

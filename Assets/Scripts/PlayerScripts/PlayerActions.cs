@@ -479,6 +479,44 @@ public class PlayerActions
         }
     }
 
+    public void updateWeaponIcon()
+    {
+        bool weaponActive = false;
+        foreach (Transform rw in rightArm)
+        {
+            Debug.Log(rw.gameObject.GetType());
+            if (rw.gameObject.activeSelf)
+            {
+                Transform tempWI = RWeaponIcon.transform.Find("WeaponIcon");
+                tempWI.gameObject.SetActive(true);
+                if (rw.GetComponent<Weapon>() != null)
+                {
+                    tempWI.GetComponent<Image>().sprite = rw.GetComponent<Weapon>().WeapnIcon;
+                    tempWI.localScale = new Vector3(rw.GetComponent<Weapon>().IconScale, rw.GetComponent<Weapon>().IconScale, 1);
+                    RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<Weapon>().WeaponLabel;
+                }
+                else if (rw.GetComponent<MeleeWeapon>() != null)
+                {
+                    tempWI.GetComponent<Image>().sprite = rw.GetComponent<MeleeWeapon>().WeapnIcon;
+                    tempWI.localScale = new Vector3(rw.GetComponent<MeleeWeapon>().IconScale, rw.GetComponent<MeleeWeapon>().IconScale, 1);
+                    RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<MeleeWeapon>().WeaponLabel;
+                }
+                else
+                {
+                    tempWI.GetComponent<Image>().sprite = rw.GetComponent<ShieldScript>().WeapnIcon;
+                    tempWI.localScale = new Vector3(rw.GetComponent<ShieldScript>().IconScale, rw.GetComponent<ShieldScript>().IconScale, 1);
+                    RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<ShieldScript>().WeaponLabel;
+                }
+                weaponActive = true;
+            }
+        }
+        if (!weaponActive)
+        {
+            RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = "N/A";
+            Transform tempWI = RWeaponIcon.transform.Find("WeaponIcon");
+            tempWI.gameObject.SetActive(false);
+        }
+    }
     public void Phizer()
     {
         player.Stats.NumofPhizer -= 1;
