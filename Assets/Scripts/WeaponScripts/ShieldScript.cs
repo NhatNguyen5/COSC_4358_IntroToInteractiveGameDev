@@ -86,9 +86,17 @@ public class ShieldScript : MonoBehaviour
     {
         if (OptionSettings.GameisPaused == false)
         {
+            if (firingDelay > 0)
+            {
+                firingDelay -= Time.deltaTime;
+            }
+            else
+            {
+                firingDelay = 0;
+            }
             //Debug.Log(doneDeploy);
             animCtrl.SetFloat("DeploySpeed", deploySpeed);
-            if (Input.GetKeyDown(KeyCode.Alpha4))
+            if (Input.GetKeyDown(KeyCode.Alpha4) && firingDelay == 0)
             {
                 if (!deploy)
                 {
@@ -100,6 +108,7 @@ public class ShieldScript : MonoBehaviour
                     deploy = false;
                     doneUndeploy = false;
                 }
+                firingDelay = delay * 8;
             }
 
             if (deploy)

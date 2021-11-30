@@ -15,6 +15,8 @@ public class GlobalPlayerVariables : MonoBehaviour
 
     private ThymusScript ThymusController = null;
 
+    private GameObject ThymusAsk;
+
     /*
     void Awake()
     {
@@ -187,10 +189,19 @@ public class GlobalPlayerVariables : MonoBehaviour
             resetStats();
             resetObject = true;
         }
-        StartCoroutine(FadeIn(1));
+        
+        if(SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            ThymusAsk = GameObject.Find("ThymusAsk");
+            ThymusAsk.SetActive(false);
+            EnableAI = false;
+            EnablePlayerControl = false;
+        }
 
+        StartCoroutine(FadeIn(1));
         if (GameObject.Find("Thymus") != null)
         {
+            
             ThymusController = GameObject.Find("Thymus").GetComponent<ThymusScript>();
             StartCoroutine(ThymusAppear(2));
         }
@@ -371,6 +382,19 @@ public class GlobalPlayerVariables : MonoBehaviour
     private IEnumerator FadeIn(float Dur)
     {
         yield return new WaitForSeconds(Dur);
+        if(SceneManager.GetActiveScene().name != "Tutorial")
+        {
+            EnableAI = true;
+            EnablePlayerControl = true;
+        }
+        else
+        {
+            ThymusAsk.SetActive(true);
+        }
+    }
+
+    public void enableAIandControl()
+    {
         EnableAI = true;
         EnablePlayerControl = true;
     }
