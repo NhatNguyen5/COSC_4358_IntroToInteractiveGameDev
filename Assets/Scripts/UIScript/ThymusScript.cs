@@ -307,4 +307,9 @@ public class ThymusScript : MonoBehaviour
         Appear = true;
         //textWriterSingle.Play();
     }
+
+    public void showThymus()
+    {
+        Appear = true;
+    }
 }
