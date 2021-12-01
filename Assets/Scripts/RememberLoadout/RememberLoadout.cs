@@ -65,6 +65,14 @@ public class RememberLoadout : MonoBehaviour
 
     public int SupportHelicopter = 0;
 
+    public static int HoldProtein = 0;
+
+    public void setTein(int number)
+    {
+        HoldProtein = number;
+    }
+
+
     void Awake()
     {
         if (instance != null)
@@ -75,9 +83,15 @@ public class RememberLoadout : MonoBehaviour
         {
             instance = this;
             if (penalty == true)
+            {
                 totalExperienceEarned = (int)(Mathf.Round((float)totalExperienceEarned * 0.80f));
+                proteinCounter = HoldProtein;
+            }
             else
+            {
                 totalExperienceEarned = 0;
+                HoldProtein = 0;
+            }
             penalty = true;
             DontDestroyOnLoad(gameObject);
         }
