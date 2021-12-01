@@ -250,13 +250,13 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 549542af900256b47aaebd3bd1662dbb, type: 3}
     volume: 0.39
     pitch: 1
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - name: Lose
     clip: {fileID: 8300000, guid: 8839d33a4563b284698d4bc3ddea5c97, type: 3}
     volume: 0.5
     pitch: 1
-    loop: 1
+    loop: 0
     source: {fileID: 0}
 --- !u!114 &4473883346109478652
 MonoBehaviour:
