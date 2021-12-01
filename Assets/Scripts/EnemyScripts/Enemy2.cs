@@ -161,7 +161,8 @@ public class Enemy2 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         if (GlobalPlayerVariables.GameOver == false)
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+            player = Player.instance.transform;
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
         else
             player = this.transform;
 

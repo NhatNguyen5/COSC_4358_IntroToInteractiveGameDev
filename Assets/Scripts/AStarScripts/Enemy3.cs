@@ -216,7 +216,8 @@ public class Enemy3 : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         if (GlobalPlayerVariables.GameOver == false)
         {
-            playerStash = GameObject.FindGameObjectWithTag("Player").transform;
+            playerStash = Player.instance.transform;
+            //playerStash = GameObject.FindGameObjectWithTag("Player").transform;
             Debug.Log("Player transform acquired");
             player = playerStash;
         }

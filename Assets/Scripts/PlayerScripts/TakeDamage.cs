@@ -231,6 +231,7 @@ public class TakeDamage : MonoBehaviour
             //player.GetPlayerItemsAndArmorValues();
             FindObjectOfType<AudioManager>().PlayEffect(onDeathSound);
             GlobalPlayerVariables.GlobinsAndPlayerAlive -= 1;
+            Player.instance = null;
             Destroy(gameObject);
             //SceneManager.LoadScene("Title");
             //GO TO TITLE OR GAME OVER SCREEN;

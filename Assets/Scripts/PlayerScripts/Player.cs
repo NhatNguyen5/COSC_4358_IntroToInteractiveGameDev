@@ -173,9 +173,12 @@ public class Player : MonoBehaviour
 
     private Transform shield = null;
 
+    public static Player instance;
     private void Awake()
     {
-
+        instance = this;
+        
+            
         /*
         public static float baseMaxHealth = 0; done
         public static float baseHealthRegen = 0; done
@@ -945,6 +948,33 @@ public class Player : MonoBehaviour
                 {
                     gitValues.Globin5Support++;
                 }
+
+
+                //globin vehicles
+                if (go.name.Contains("Carrier Light"))
+                {
+                    gitValues.ImmunalCarrierLight++;
+                }
+                if (go.name.Contains("Carrier Medium"))
+                {
+                    gitValues.ImmunalCarrierMedium++;
+                }
+                if (go.name.Contains("Carrier Heavy"))
+                {
+                    gitValues.ImmunalCarrierHeavy++;
+                }
+                if (go.name.Contains("Bopterlift"))
+                {
+                    gitValues.Bopterlift++;
+                }
+                if (go.name.Contains("Boptervac"))
+                {
+                    gitValues.Boptervac++;
+                }
+
+
+
+
             }
             didThis = true;
         }
@@ -1001,6 +1031,41 @@ public class Player : MonoBehaviour
             else if(go.name.Contains("5 Support"))
             {
                 for (int i = 0; i < gitValues.Globin5Support; i++)
+                {
+                    var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
+                }
+            }
+            else if (go.name.Contains("Carrier Light"))
+            {
+                for (int i = 0; i < gitValues.ImmunalCarrierLight; i++)
+                {
+                    var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
+                }
+            }
+            else if (go.name.Contains("Carrier Medium"))
+            {
+                for (int i = 0; i < gitValues.ImmunalCarrierMedium; i++)
+                {
+                    var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
+                }
+            }
+            else if (go.name.Contains("Carrier Heavy"))
+            {
+                for (int i = 0; i < gitValues.ImmunalCarrierHeavy; i++)
+                {
+                    var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
+                }
+            }
+            else if (go.name.Contains("Bopterlift"))
+            {
+                for (int i = 0; i < gitValues.Bopterlift; i++)
+                {
+                    var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
+                }
+            }
+            else if (go.name.Contains("Boptervac"))
+            {
+                for (int i = 0; i < gitValues.Boptervac; i++)
                 {
                     var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
                 }

@@ -140,7 +140,8 @@ public class Globin : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         if (GlobalPlayerVariables.GameOver == false)
         {
-            playerStash = GameObject.FindGameObjectWithTag("Player").transform;
+            //playerStash = GameObject.FindGameObjectWithTag("Player").transform;
+            playerStash = Player.instance.transform;
             Debug.Log("Player transform acquired");
             player = playerStash;
         }
@@ -213,6 +214,11 @@ public class Globin : MonoBehaviour
         {
             if (player != null)
                 distancefromplayer = Vector2.Distance(rb.position, player.position);
+            else
+            {
+                distancefromplayer = 0;
+                reachedDestination = true;
+            }
 
             if (StartToFollowAfterCertainDist == true)
             {
