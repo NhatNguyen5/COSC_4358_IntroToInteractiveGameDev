@@ -51,13 +51,15 @@ public class Shielding : MonoBehaviour
             //collision.gameObject.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10); 
         }
         if (collision.gameObject.CompareTag("Globin")) { 
-            collision.gameObject.GetComponent<Globin>().takeDamage(currDmg, collision.transform, 10);
             AudioManager.instance.PlayEffect("ShieldHit");
         }
 
         if (collision.gameObject.GetComponent<Rigidbody2D>() != null)
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Mathf.Cos(player.Stats.Angle * Mathf.Deg2Rad), Mathf.Sin(player.Stats.Angle * Mathf.Deg2Rad)) * knockBackForce, ForceMode2D.Impulse);
+            if(!collision.gameObject.CompareTag("Globin"))
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Mathf.Cos(player.Stats.Angle * Mathf.Deg2Rad), Mathf.Sin(player.Stats.Angle * Mathf.Deg2Rad)) * knockBackForce, ForceMode2D.Impulse);
+            else
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - player.transform.position) * 2, ForceMode2D.Impulse);
         }
         if (collision.CompareTag("EnemyBullet") || collision.CompareTag("EnemyBullet2"))
         {
