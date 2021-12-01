@@ -23,6 +23,7 @@ public class ShopManager : MonoBehaviour
 
     public void turnOffOtherFrames()
     {
+        AudioManager.instance.PlayEffect("Button");
         Frame1.SetActive(false);
         Frame2.SetActive(false);
         Frame3.SetActive(false);
@@ -151,16 +152,19 @@ public class ShopManager : MonoBehaviour
                         button.GetComponent<HoldItemToSell>().owned = true;
                         button.GetComponent<HoldItemToSell>().cost = 0;
                         button.GetComponent<HoldItemToSell>().switchText();
+                        AudioManager.instance.PlayEffect("Buy");
                         showText("PURCHASE SUCCESSFUL");
                         //add text object to notify player something has been bought
                     }
                     else
                     {
+                        AudioManager.instance.PlayEffect("NoClick");
                         showText("ERROR NOT A HIGH ENOUGH LEVEL");
                     }
                 }
                 else
                 {
+                    AudioManager.instance.PlayEffect("NoClick");
                     showText("ERROR NOT ENOUGH PROTEIN");
                 }
 
@@ -169,6 +173,7 @@ public class ShopManager : MonoBehaviour
             }
             else
             {
+                AudioManager.instance.PlayEffect("NoClick");
                 showText("THIS WEAPON IS ALREADY OWNED");
             }
         }
@@ -187,16 +192,18 @@ public class ShopManager : MonoBehaviour
                 {
                     var Item = Instantiate(button.GetComponent<HoldItemToSell>().ItemBeingSold, ShopKeeper.transform.position, Quaternion.identity);
                 }
-
+                AudioManager.instance.PlayEffect("Buy");
                 showText("PURCHASE SUCCESSFUL");
             }
             else
             {
+                AudioManager.instance.PlayEffect("NoClick");
                 showText("ERROR NOT ENOUGH PROTEIN");
             }
         }
         else
         {
+            AudioManager.instance.PlayEffect("NoClick");
             showText("PLEASE SELECT A VALID WEAPON OR ITEM");
         }
     }
@@ -221,6 +228,7 @@ public class ShopManager : MonoBehaviour
         
         int temp = (selectedWeaponSlot + 1);
         showText(selectedWeapon.name.ToUpper() + " HAS BEEN EQUIPPED TO SLOT " + temp);
+        AudioManager.instance.PlayEffect("RifleReload");
     }
 
     void equipHelper2(Transform go)
@@ -241,6 +249,7 @@ public class ShopManager : MonoBehaviour
         
         int temp = (selectedWeaponSlot + 1);
         showText(selectedWeapon.name.ToUpper() + " HAS BEEN EQUIPPED TO SLOT " + temp);
+        AudioManager.instance.PlayEffect("RifleReload");
     }
 
     void equipHelper3(Transform go)
@@ -260,6 +269,7 @@ public class ShopManager : MonoBehaviour
         
         int temp = (selectedWeaponSlot + 1);
         showText(selectedWeapon.name.ToUpper() + " HAS BEEN EQUIPPED TO SLOT " + temp);
+        AudioManager.instance.PlayEffect("RifleReload");
     }
 
     void equipHelper4()
@@ -274,9 +284,16 @@ public class ShopManager : MonoBehaviour
         }
         var newWeapon = Instantiate(selectedWeapon, playerRightArm.transform, false);
         if (newWeapon.GetComponent<MeleeWeapon>() != null)
+        {
             newWeapon.GetComponent<MeleeWeapon>().Slot = 4;
-        else if(newWeapon.GetComponent<ShieldScript>() != null)
+            AudioManager.instance.PlayEffect("Slash1");
+        }
+        else if (newWeapon.GetComponent<ShieldScript>() != null)
+        { 
             newWeapon.GetComponent<ShieldScript>().Slot = 4;
+            AudioManager.instance.PlayEffect("ShieldDeploy");
+
+        }
         newWeapon.name = selectedWeapon.name;
         foreach (Transform wp in playerRightArm.transform)
         {
@@ -568,6 +585,7 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
+            AudioManager.instance.PlayEffect("NoClick");
             showText("PLEASE SELECT A OWNED WEAPON");
         }
     }

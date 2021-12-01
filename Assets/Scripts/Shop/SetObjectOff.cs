@@ -6,21 +6,11 @@ public class SetObjectOff : MonoBehaviour
 {
     public GameObject[] listOfCols;
 
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void TurnDemObjectsOffYo()
     {
+        AudioManager.instance.PlayEffect("Button");
         listOfCols = transform.parent.gameObject.GetComponent<SetObjectOff>().listOfCols;
         foreach (GameObject go in listOfCols)
         {

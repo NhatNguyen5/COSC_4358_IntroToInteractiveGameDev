@@ -36,6 +36,7 @@ public class HoldItemToSell : MonoBehaviour
 
     public void updateSelect()
     {
+        AudioManager.instance.PlayEffect("Button");
         ShopManager ShopM = SM.GetComponent<ShopManager>();
         if (isWeapon == true)
             ShopM.selectedWeapon = ItemBeingSold;

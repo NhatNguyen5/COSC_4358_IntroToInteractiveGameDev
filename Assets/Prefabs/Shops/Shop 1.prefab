@@ -11780,6 +11780,7 @@ GameObject:
   - component: {fileID: 8035387255080255607}
   - component: {fileID: 8035387255080255604}
   - component: {fileID: 8035387255080255605}
+  - component: {fileID: 8351256835949430489}
   m_Layer: 5
   m_Name: LeaveShop
   m_TagString: Untagged
@@ -11912,6 +11913,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8351256835949430489}
+        m_TargetAssemblyTypeName: PlaySound, Assembly-CSharp
+        m_MethodName: playSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8035387255080255605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11925,6 +11938,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfCols: []
+--- !u!114 &8351256835949430489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8035387255080255603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec4861c341fc164584416993b204a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundClip: Button
+  SoundEffect: 1
+  PlayOnArrival: 0
+  ResetSoundForNewScene: 0
 --- !u!1 &8035387255091183981
 GameObject:
   m_ObjectHideFlags: 0
