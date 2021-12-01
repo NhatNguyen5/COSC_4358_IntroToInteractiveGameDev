@@ -483,7 +483,7 @@ public class Player : MonoBehaviour
                         StartCoroutine(RightSlotItemCooldown(stats.TylenolCooldown * (1 - GlobalPlayerVariables.baseItemUsageCoolDown)));
                     }
                 }
-                if (Input.GetKeyDown(KeyCode.F))
+                if (Input.GetKeyDown(KeyCode.Alpha5))
                 {
                     nadeSelector += 1;
                     if (nadeSelector > NumOfTypesOfNade - 1)
