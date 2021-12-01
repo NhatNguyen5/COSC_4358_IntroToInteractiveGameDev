@@ -19,6 +19,13 @@ public class ThymusScript : MonoBehaviour
     private float zoom = 0;
     private string[] currEyesSprite;
     private string[] currBrowsSprite;
+    private Player player;
+    private Coroutine cameraCoroutine;
+    private Coroutine zoomCoroutine;
+    [HideInInspector]
+    public bool allowWeaponPickup;
+
+    public CameraFollow Camera;
 
     [Header("Thymus")]
     [Range(-500, 500)]
@@ -38,6 +45,8 @@ public class ThymusScript : MonoBehaviour
 
     private Vector3 ThymusOgScale;
     private Vector3 DialogBoxOgScale;
+    private float oriWalkSpeed;
+    private float oriSprintSpeed;
 
     [System.Serializable]
     public struct ThymusDialog
@@ -73,6 +82,26 @@ public class ThymusScript : MonoBehaviour
         public float FontSize;
         [Range(1, 20)]
         public float DialogSpeed;
+
+        [Header("Spawn Things")]
+        public GameObject SpawnThis;
+        public Vector2 SpawnLoc;
+
+        [Header("Camera Control")]
+        public bool moveCameraToObject;
+        public GameObject TargetObject;
+        public bool keepPrevPos;
+        public Vector2 MoveCameraTo;
+        [Range(1, 7)]
+        public float zoomLevel;
+        public float HoldFor;
+        [Range(1, 10)]
+        public float CameraSpeed;
+
+        [Header("Player Interaction")]
+        public bool InteractWithPlayer;
+        public float damagePlayer;
+        public bool allowPlayerPickup;
     }
 
     public ThymusDialog[] ThymusDialogSequence;
@@ -87,12 +116,17 @@ public class ThymusScript : MonoBehaviour
         DialogText = DialogBox.Find("Dialog").GetComponent<Text>();
         currEyesSprite = ThymusSpriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(ThymusDialogSequence[0].EyesCategory).ToArray();
         currBrowsSprite = ThymusSpriteLibrary.spriteLibraryAsset.GetCategoryLabelNames("EyeBrows").ToArray();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        //oriWalkSpeed = player.holdWalkSpeed;
+        //oriSprintSpeed = player.holdSprintSpeed;
+        //player.holdWalkSpeed = 100;
+        //player.holdSprintSpeed = 200;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if(!Appear && isShown)
+        if (!Appear && isShown)
         {
             if (zoom > 0)
             {
@@ -113,7 +147,7 @@ public class ThymusScript : MonoBehaviour
                 isShown = false;
             }
 
-            if(GlobalPlayerVariables.EnablePlayerControl == false || GlobalPlayerVariables.EnableAI == false)
+            if (GlobalPlayerVariables.EnablePlayerControl == false || GlobalPlayerVariables.EnableAI == false)
             {
                 GlobalPlayerVariables.EnablePlayerControl = true;
                 GlobalPlayerVariables.EnableAI = true;
@@ -121,7 +155,7 @@ public class ThymusScript : MonoBehaviour
         }
 
 
-        if(Appear)
+        if (Appear)
         {
             if (zoom == 0)
             {
@@ -133,7 +167,7 @@ public class ThymusScript : MonoBehaviour
 
             if (zoom < 1)
             {
-                if(textWriterSingle != null)
+                if (textWriterSingle != null)
                     textWriterSingle.Stop();
                 zoom += Time.deltaTime * zoomSpeed;
                 transform.localPosition = new Vector3(ThymusAppearPosX * (1 - zoom), ThymusAppearPosY * (1 - zoom), -1);
@@ -206,10 +240,56 @@ public class ThymusScript : MonoBehaviour
                 //Debug.Log("dialogSequenceFinish " + dialogSequenceFinish);
             }
         }
+
+        if(currDialogIdx > 1)
+            if (ThymusDialogSequence[currDialogIdx-1].allowPlayerPickup)
+            {
+                if (checkForWeapon())
+                {
+                    showThymus();
+                }
+            }
+
+        if (dialogSequenceFinish)
+        {
+            if (cameraCoroutine != null && zoomCoroutine != null)
+            {
+                StopCoroutine(cameraCoroutine);
+                cameraCoroutine = StartCoroutine(Camera.MoveTo(player.Stats.Position, 0.1f, 10));
+                cameraCoroutine = null;
+                StopCoroutine(zoomCoroutine);
+                cameraCoroutine = StartCoroutine(Camera.ZoomTo(7, 0.1f));
+                cameraCoroutine = null;
+            }
+            //player.holdWalkSpeed = oriWalkSpeed;
+            //player.holdSprintSpeed = oriSprintSpeed;
+            GlobalPlayerVariables.EnablePlayerControl = true;
+            GlobalPlayerVariables.EnableAI = true;
+            StartCoroutine(DisableThymus(1));
+        }
     }
 
     private void ThymusDialogPlay(ThymusDialog Dialog)
     {
+        if(Dialog.zoomLevel == 0)
+        {
+            Dialog.zoomLevel = 1;
+        }
+        if(Dialog.CameraSpeed == 0)
+        {
+            Dialog.CameraSpeed = 10;
+        }
+
+        if (!Dialog.keepPrevPos && cameraCoroutine != null && zoomCoroutine != null)
+        {
+            StopCoroutine(cameraCoroutine);
+            cameraCoroutine = StartCoroutine(Camera.MoveTo(player.Stats.Position, 0.1f, 10));
+            cameraCoroutine = null;
+            StopCoroutine(zoomCoroutine);
+            cameraCoroutine = StartCoroutine(Camera.ZoomTo(7, 0.1f));
+            cameraCoroutine = null;
+        }
+
         int tempEyesIdx = 0;
         int tempBrowsIdx = 0;
         switch (Dialog.EyesDirection)
@@ -265,19 +345,22 @@ public class ThymusScript : MonoBehaviour
                 tempBrowsIdx = 5;
                 break;
         }
-
-        textWriterSingle = TextWriter.AddWriter_static(DialogText, Dialog.DialogContent + " ", 1 / Dialog.DialogSpeed, true, true);
+        if (Dialog.DialogContent.Any(char.IsLetterOrDigit))
+            textWriterSingle = TextWriter.AddWriter_static(DialogText, Dialog.DialogContent + " ", 1 / Dialog.DialogSpeed, true, true);
+        else
+            DialogText.text = "";
 
         GlobalPlayerVariables.EnablePlayerControl = ThymusDialogSequence[currDialogIdx].EnablePlayerControl;
         GlobalPlayerVariables.EnableAI = ThymusDialogSequence[currDialogIdx].EnableAI;
 
         if (Dialog.HideThymus)
         {
-            if (Dialog.ShowAgainAfter < 0)
+            Debug.Log("Hidden");
+            if (Dialog.ShowAgainAfter > 0)
             {
                 StartCoroutine(ShowThymusAfter(Dialog.ShowAgainAfter));
             }
-            else 
+            else
             {
                 Appear = false;
                 textWriterSingle.Stop();
@@ -292,7 +375,68 @@ public class ThymusScript : MonoBehaviour
         Thymus.localScale = new Vector3(ThymusOgScale.x * Dialog.ThymusScale, ThymusOgScale.y * Dialog.ThymusScale, ThymusOgScale.z);
         DialogBox.localPosition = new Vector3(Dialog.DialogBoxPositionX, Dialog.DialogBoxPositionY);
         DialogBox.localScale = new Vector3(DialogBoxOgScale.x * Dialog.DialogBoxScale, DialogBoxOgScale.y * Dialog.DialogBoxScale, DialogBoxOgScale.z);
-        
+        allowWeaponPickup = Dialog.allowPlayerPickup;
+        if (Dialog.SpawnThis != null)
+        {
+            var spawnedObject = Instantiate(Dialog.SpawnThis, player.Stats.Position + Dialog.SpawnLoc, Quaternion.identity);
+            if (spawnedObject.GetComponent<ItemPickup>() != null)
+            {
+                spawnedObject.GetComponent<ItemPickup>().DespawnTime = 999;
+                spawnedObject.GetComponent<ItemPickup>().flingRange = 0;
+            }
+        }
+
+        Vector2 moveTo;
+
+        if (Dialog.moveCameraToObject)
+        {
+            moveTo = Dialog.TargetObject.transform.position;
+        }
+        else
+        {
+            moveTo = new Vector2(0, 0);
+        }
+
+        if (Dialog.MoveCameraTo != new Vector2(0, 0))
+        {
+            moveTo = player.Stats.Position + Dialog.MoveCameraTo;
+        }
+        else
+        {
+            moveTo = new Vector2(0, 0);
+        }
+
+        if (moveTo != new Vector2(0, 0) || Dialog.moveCameraToObject)
+        {
+            if (Dialog.HoldFor == -1)
+            {
+                cameraCoroutine = StartCoroutine(Camera.MoveTo(moveTo, 999, Dialog.CameraSpeed));
+            }
+            else
+            {
+                cameraCoroutine = StartCoroutine(Camera.MoveTo(moveTo, Dialog.HoldFor, Dialog.CameraSpeed));
+            }
+        }
+        if (Dialog.zoomLevel != 1)
+        {
+            if (Dialog.HoldFor == -1)
+            {
+                zoomCoroutine = StartCoroutine(Camera.ZoomTo(7 / Dialog.zoomLevel, 999));
+            }
+            else
+            {
+                zoomCoroutine = StartCoroutine(Camera.ZoomTo(7 / Dialog.zoomLevel, Dialog.HoldFor));
+            }
+        }
+
+        if (Dialog.InteractWithPlayer)
+        {
+            if (Dialog.damagePlayer != 0)
+            {
+                player.GetComponent<TakeDamage>().takeDamage(Dialog.damagePlayer, player.transform, 10);
+            }
+        }
+
         //DialogText.text = Dialog.DialogContent;
         currDialogIdx++;
     }
@@ -302,6 +446,7 @@ public class ThymusScript : MonoBehaviour
         Appear = false;
         textWriterSingle.Stop();
         yield return new WaitForSeconds(dur);
+        //Thymus.localScale = new Vector3(ThymusOgScale.x * ThymusDialogSequence[currDialogIdx].ThymusScale, ThymusOgScale.y * ThymusDialogSequence[currDialogIdx].ThymusScale, ThymusOgScale.z);
         GlobalPlayerVariables.EnablePlayerControl = ThymusDialogSequence[currDialogIdx].EnablePlayerControl;
         GlobalPlayerVariables.EnableAI = ThymusDialogSequence[currDialogIdx].EnableAI;
         Appear = true;
@@ -310,6 +455,27 @@ public class ThymusScript : MonoBehaviour
 
     public void showThymus()
     {
+        GlobalPlayerVariables.EnablePlayerControl = ThymusDialogSequence[currDialogIdx].EnablePlayerControl;
+        GlobalPlayerVariables.EnableAI = ThymusDialogSequence[currDialogIdx].EnableAI;
         Appear = true;
+    }
+
+    private IEnumerator DisableThymus(float dur)
+    {
+        yield return new WaitForSeconds(dur);
+        gameObject.SetActive(false);
+    }
+    
+    private bool checkForWeapon()
+    {
+        Transform RightArm = player.transform.Find("RightArm");
+        foreach(Transform wp in RightArm)
+        {
+            if (wp.gameObject.activeSelf)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

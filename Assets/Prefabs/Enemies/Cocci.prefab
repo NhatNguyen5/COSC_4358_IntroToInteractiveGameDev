@@ -284,6 +284,12 @@ MonoBehaviour:
     - {fileID: 2056935271745837854, guid: 953376de06b619b4898731a5bab67558, type: 3}
     DropPercentage: 5
     NumOfDrop: 1
+  - isCurrency: 0
+    isAmmo: 0
+    Drops:
+    - {fileID: 2056935271745837854, guid: f6f4be9ac3368a74287b960666063ebb, type: 3}
+    DropPercentage: 5
+    NumOfDrop: 1
   spriteLibrary: {fileID: 8226067464753016066}
   targetResolver: {fileID: 1243671825624085866}
   targetCategory: Cocci Sprite Library Asset

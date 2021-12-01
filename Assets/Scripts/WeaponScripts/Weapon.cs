@@ -672,4 +672,9 @@ public class Weapon : MonoBehaviour
             Instantiate(bulletPrefab, firePoint.position, newRot);
         }
     }
+    private void OnDisable()
+    {
+        UIAmmoCount.text = "0";
+        UIMaxAmmoCount.text = "0";
+    }
 }
