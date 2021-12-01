@@ -249,7 +249,15 @@ public class TakeDamage : MonoBehaviour
         Vector3 direction = (transform.position - impact.transform.position).normalized;
 
         //might add to impact to make it go past enemy
-        var go = Instantiate(typeOfDamage, impact.position, Quaternion.identity);
+        //var go = Instantiate(typeOfDamage, impact.position, Quaternion.identity);
+        GameObject go = ObjectPool.instance.GetDamagePopUpFromPool();
+        go.GetComponent<Animator>().Play("DamagePopUp", -1, 0f);
+        go.transform.SetParent(null);
+        go.transform.position = impact.position;
+        go.transform.rotation = Quaternion.identity;
+        go.GetComponent<TextMeshPro>().colorGradient = typeOfDamage.GetComponent<TextMeshPro>().colorGradient;
+        go.GetComponent<TextMeshPro>().fontSize = typeOfDamage.GetComponent<TextMeshPro>().fontSize;
+
         if (crit == false)
         {
             go.GetComponent<TextMeshPro>().text = damage.ToString();
