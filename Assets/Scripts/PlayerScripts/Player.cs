@@ -859,6 +859,8 @@ public class Player : MonoBehaviour
         gitValues.numberOfStickyNades = stats.NumofSticky;
         gitValues.numberOfMollys = Stats.NumofMolly;
 
+        RememberLoadout.instance.setTein(Stats.NumofProtein);
+
 
         GameObject rightArmy;
         rightArmy = transform.Find("RightArm").transform.gameObject;

@@ -405,6 +405,8 @@ public class MeleeWeapon : MonoBehaviour
             player.Stats.PFrictionz = playerFriction;
             player.Components.PlayerSpriteRenderer.color = new Color(1, 1, 1);
             abilityInUse = false;
+            playWhiffSound = true;
+            playSlashingSound = true;
             //bloodParticle.Stop();
         }
     }

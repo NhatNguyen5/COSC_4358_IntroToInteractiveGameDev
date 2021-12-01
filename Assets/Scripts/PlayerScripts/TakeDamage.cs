@@ -228,10 +228,9 @@ public class TakeDamage : MonoBehaviour
         if (HP <= 0)
         {
             player.transform.Find("LeftArm").gameObject.SetActive(true);
-            player.GetPlayerItemsAndArmorValues();
+            //player.GetPlayerItemsAndArmorValues();
             FindObjectOfType<AudioManager>().PlayEffect(onDeathSound);
             GlobalPlayerVariables.GlobinsAndPlayerAlive -= 1;
-            RememberLoadout.instance.setTein(player.Stats.NumofProtein);
             Destroy(gameObject);
             //SceneManager.LoadScene("Title");
             //GO TO TITLE OR GAME OVER SCREEN;
