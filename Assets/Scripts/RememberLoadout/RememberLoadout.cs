@@ -62,8 +62,13 @@ public class RememberLoadout : MonoBehaviour
     public int Globin5Rocketeer = 0;
     public int Globin5Support = 0;
 
+    public int ImmunalCarrierLight = 0;
+    public int ImmunalCarrierMedium = 0;
+    public int ImmunalCarrierHeavy = 0;
 
-    public int SupportHelicopter = 0;
+
+    public int Bopterlift = 0;
+    public int Boptervac = 0;
 
     public static int HoldProtein = 0;
 
