@@ -315,6 +315,7 @@ public class ShieldScript : MonoBehaviour
         if (collision.gameObject.CompareTag("EnemyMelee"))
         {
             collision.gameObject.GetComponent<Enemy2>().takeDamage(currDmg, collision.transform, 10);
+            AudioManager.instance.PlayEffect("ShieldHit");
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -322,15 +323,20 @@ public class ShieldScript : MonoBehaviour
                 collision.gameObject.GetComponent<Enemy1>().takeDamage(currDmg, collision.transform, 10);
             else
                 collision.gameObject.GetComponent<Enemy3>().takeDamage(currDmg, collision.transform, 10);
+            AudioManager.instance.PlayEffect("ShieldHit");
         }
         if (collision.gameObject.CompareTag("Colony")) {
             if (collision.gameObject.GetComponent<EnemyColony>() != null)
                 collision.gameObject.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10);
             else
                 collision.gameObject.GetComponent<EnemyColony2>().takeDamage(currDmg, collision.transform, 10);
+            AudioManager.instance.PlayEffect("ShieldHit");
             //collision.gameObject.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10); 
         }
-        if (collision.gameObject.CompareTag("Globin")) { collision.gameObject.GetComponent<Globin>().takeDamage(currDmg, collision.transform, 10); }
+        if (collision.gameObject.CompareTag("Globin")) { 
+            collision.gameObject.GetComponent<Globin>().takeDamage(currDmg, collision.transform, 10);
+            AudioManager.instance.PlayEffect("ShieldHit");
+        }
         if (collision.gameObject.GetComponent<Rigidbody2D>() != null)
         {
             collision.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Mathf.Cos(player.Stats.Angle * Mathf.Deg2Rad), Mathf.Sin(player.Stats.Angle * Mathf.Deg2Rad)) * knockBackForce, ForceMode2D.Impulse);
@@ -341,11 +347,13 @@ public class ShieldScript : MonoBehaviour
             {
                 collision.gameObject.GetComponent<EnemyProj>().DestroyEnemyProj();
                 collision.gameObject.GetComponent<EnemyProj>().isDeflected = false;
+                AudioManager.instance.PlayEffect("ShieldHit");
             }
             else
             {
                 collision.gameObject.GetComponent<EnemyProj2>().DestroyEnemyProj();
                 collision.gameObject.GetComponent<EnemyProj2>().isDeflected = false;
+                AudioManager.instance.PlayEffect("ShieldHit");
             }
         }
     }
