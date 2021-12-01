@@ -12,6 +12,8 @@ public class WeaponStandScript : MonoBehaviour
     private Transform player;
     private bool[] PrimaryWpSlot = { false, false, false };
     public bool isMeleeWeapon;
+    private ThymusScript Thymus;
+    private bool allowWeaponPickup;
     
 
     // Start is called before the first frame update
@@ -24,12 +26,21 @@ public class WeaponStandScript : MonoBehaviour
             transform.Find("Canvas").transform.Find("WeaponName").GetComponent<Text>().text = DisplayedWeapon.transform.GetComponent<MeleeWeapon>().WeaponLabel;
         else if (DisplayedWeapon.transform.GetComponent<ShieldScript>() != null)
             transform.Find("Canvas").transform.Find("WeaponName").GetComponent<Text>().text = DisplayedWeapon.transform.GetComponent<ShieldScript>().WeaponLabel;
+        
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (PlayerIsNear)
+        if (GameObject.Find("Thymus") != null)
+        {
+            allowWeaponPickup = GameObject.Find("Thymus").GetComponent<ThymusScript>().allowWeaponPickup;
+        }
+        else
+        {
+            allowWeaponPickup = true;
+        }
+        if (PlayerIsNear && allowWeaponPickup)
         {
             RightArm = player.Find("RightArm");
             LeftArm = player.Find("LeftArm");
@@ -113,10 +124,11 @@ public class WeaponStandScript : MonoBehaviour
                         Destroy(oldWeapon);
                     }
                 }
-                else if(isMeleeWeapon && currSlot != 1 && currSlot != 2 && currSlot != 3)
+                else if(isMeleeWeapon && currSlot != 1 && currSlot != 2 && currSlot != 3 && GameObject.Find("Thymus") == null)
                 {
                     Debug.Log("PickupMelee");
-                    if ((Input.GetKeyDown(KeyCode.Alpha4)) || (!haveMelee))
+                    Debug.Log(haveMelee);
+                    if ((Input.GetKeyDown(KeyCode.Alpha4) && isHoldingMelee) || (!haveMelee))
                     {
                         if (isHoldingMelee)
                             DestroyWeaponInSlot();

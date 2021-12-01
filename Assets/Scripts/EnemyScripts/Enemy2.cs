@@ -626,6 +626,7 @@ public class Enemy2 : MonoBehaviour
             {
                 transform.Find("StickyGrenade(Clone)").GetComponent<StickyGrenade>().stuck = false;
                 transform.Find("StickyGrenade(Clone)").GetComponent<StickyGrenade>().landed = true;
+                transform.Find("StickyGrenade(Clone)").GetComponent<CircleCollider2D>().isTrigger = false;
                 transform.Find("StickyGrenade(Clone)").parent = null;
             }
 

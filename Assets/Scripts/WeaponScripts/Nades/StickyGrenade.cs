@@ -105,8 +105,9 @@ public class StickyGrenade : MonoBehaviour
             oldPos = newPos;
         }
         */
-        if (!stuck)
+        if (!stuck || landed)
         {
+            Debug.Log("Stuck");
             rb.drag = 50;
             rb.velocity = Vector2.zero;
             rb.angularVelocity = 0;

@@ -132,6 +132,7 @@ public class PlayerActions
                 player.transform.Find("LeftArm").transform.position = player.transform.position;
             }
         }
+        
     }
 
     public void Move(Transform transform)
@@ -186,6 +187,7 @@ public class PlayerActions
     {
         if (player.Stats.Stamina >= 0)
         {
+            player.Stats.Speed = player.holdSprintSpeed;
             foreach (Transform wp in rightArm.transform)
             {
                 if (wp.gameObject.activeSelf)
@@ -199,15 +201,11 @@ public class PlayerActions
                     }
                     else
                         player.Stats.Speed = player.holdSprintSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f); //player.Stats.WalkSpeed
-                    if (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f == 0.001)
+                    if (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight <= 0)
                     {
                         Debug.Log("Weapon too heavy!");
                     }
                     break;
-                }
-                else
-                {
-                    player.Stats.Speed = player.holdSprintSpeed * (GlobalPlayerVariables.BaseWeaponWeight);
                 }
             }
         }
@@ -215,9 +213,10 @@ public class PlayerActions
 
     public void Walk()
     {
-        foreach(Transform wp in rightArm.transform)
+        player.Stats.Speed = player.holdWalkSpeed;
+        foreach (Transform wp in rightArm.transform)
         {
-            if(wp.gameObject.activeSelf)
+            if (wp.gameObject.activeSelf)
             {
                 if(rightArm.transform.Find("Shield") != null)
                 {
@@ -228,15 +227,11 @@ public class PlayerActions
                 }
                 else
                     player.Stats.Speed = player.holdWalkSpeed * (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f); //player.Stats.WalkSpeed
-                if (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight + 0.001f == 0.001)
+                if (GlobalPlayerVariables.BaseWeaponWeight - GlobalPlayerVariables.weaponWeight <= 0)
                 {
                     Debug.Log("Weapon too heavy!");
                 }
                 break;
-            }
-            else
-            {
-                player.Stats.Speed = player.holdWalkSpeed * (GlobalPlayerVariables.BaseWeaponWeight);
             }
         }
     }
