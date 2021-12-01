@@ -156,6 +156,19 @@ public class TakeDamage : MonoBehaviour
         }
     }
 
+
+    private AudioSource[] allAudioSources;
+    void GameOverMusic()
+    {
+        allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        foreach (AudioSource audioS in allAudioSources)
+        {
+            if(audioS.clip.name == "gamesongfastpacev2")
+                audioS.Stop();
+        }
+        AudioManager.instance.PlayMusic("Lose");
+    }
+
     public void takeDamage(float damage, Transform impact, float speed)
     {
         //Debug.Log(damage);
@@ -225,6 +238,7 @@ public class TakeDamage : MonoBehaviour
             OptionSettings.GameisPaused = true;
             GlobalPlayerVariables.GameOver = true;
             gameOverScreen.SetActive(true);
+            GameOverMusic();
             //Time.timeScale = 0f;
         }
     }
