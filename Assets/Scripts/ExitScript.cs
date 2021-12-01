@@ -78,6 +78,20 @@ public class ExitScript : MonoBehaviour
         }
     }
 
+
+    private AudioSource[] allAudioSources;
+    void WinMusic()
+    {
+        allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        foreach (AudioSource audioS in allAudioSources)
+        {
+            if (audioS.clip.name == "gamesongfastpacev2")
+                audioS.Stop();
+        }
+        AudioManager.instance.PlayMusic("Win");
+    }
+
+
     private IEnumerator End()
     {
         yield return new WaitForSeconds(2);
@@ -88,6 +102,7 @@ public class ExitScript : MonoBehaviour
         {
             player.GetComponent<Player>().GetPlayerItemsAndArmorValues();
             WinScreen.SetActive(true);
+            WinMusic();
         }
         //player.GetComponent<Player>().GetPlayerItemsAndArmorValues();
         //SceneManager.LoadScene(NextScene);
