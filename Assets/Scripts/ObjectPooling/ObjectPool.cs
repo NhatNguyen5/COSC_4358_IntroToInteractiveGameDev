@@ -166,6 +166,7 @@ public class ObjectPool : MonoBehaviour
     public void ReturnBulletToPool(GameObject bullet)
     {
         EnemyBulletPool.Enqueue(bullet);
+        bullet.GetComponent<TrailRenderer>().Clear();
         bullet.SetActive(false);
     }
     public void ReturnBulletEffectToPool(GameObject effect)
