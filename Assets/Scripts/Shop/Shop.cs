@@ -25,7 +25,7 @@ public class Shop : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) {
         //Debug.Log("ENTER COLLIDER");
-        if (other.CompareTag("Player") == true) {
+        if (other.CompareTag("Player") == true && GameObject.Find("Thymus") == null) {
             //loadStats();
             shop.SetActive(true);
             CurrentlyInShop = true;

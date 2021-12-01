@@ -45,6 +45,7 @@ public class ThymusScript : MonoBehaviour
 
     private Vector3 ThymusOgScale;
     private Vector3 DialogBoxOgScale;
+    private Vector2 playerOriPos;
     private float oriWalkSpeed;
     private float oriSprintSpeed;
 
@@ -86,6 +87,7 @@ public class ThymusScript : MonoBehaviour
         [Header("Spawn Things")]
         public GameObject SpawnThis;
         public Vector2 SpawnLoc;
+        public bool moveCameraToLoc;
 
         [Header("Camera Control")]
         public bool moveCameraToObject;
@@ -117,6 +119,7 @@ public class ThymusScript : MonoBehaviour
         currEyesSprite = ThymusSpriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(ThymusDialogSequence[0].EyesCategory).ToArray();
         currBrowsSprite = ThymusSpriteLibrary.spriteLibraryAsset.GetCategoryLabelNames("EyeBrows").ToArray();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        playerOriPos = player.Stats.Position;
         //oriWalkSpeed = player.holdWalkSpeed;
         //oriSprintSpeed = player.holdSprintSpeed;
         //player.holdWalkSpeed = 100;
@@ -378,11 +381,12 @@ public class ThymusScript : MonoBehaviour
         allowWeaponPickup = Dialog.allowPlayerPickup;
         if (Dialog.SpawnThis != null)
         {
-            var spawnedObject = Instantiate(Dialog.SpawnThis, player.Stats.Position + Dialog.SpawnLoc, Quaternion.identity);
+            var spawnedObject = Instantiate(Dialog.SpawnThis, playerOriPos + Dialog.SpawnLoc, Quaternion.identity);
             if (spawnedObject.GetComponent<ItemPickup>() != null)
             {
                 spawnedObject.GetComponent<ItemPickup>().DespawnTime = 999;
                 spawnedObject.GetComponent<ItemPickup>().flingRange = 0;
+                spawnedObject.GetComponent<ItemPickup>().PickUpRange = 0.1f;
             }
         }
 
@@ -394,19 +398,24 @@ public class ThymusScript : MonoBehaviour
         }
         else
         {
-            moveTo = new Vector2(0, 0);
+            if (Dialog.moveCameraToLoc)
+            {
+                moveTo = playerOriPos + Dialog.SpawnLoc;
+            }
+            else
+            {
+                if (Dialog.MoveCameraTo != new Vector2(0, 0))
+                {
+                    moveTo = player.Stats.Position + Dialog.MoveCameraTo;
+                }
+                else
+                {
+                    moveTo = new Vector2(0, 0);
+                }
+            }
         }
 
-        if (Dialog.MoveCameraTo != new Vector2(0, 0))
-        {
-            moveTo = player.Stats.Position + Dialog.MoveCameraTo;
-        }
-        else
-        {
-            moveTo = new Vector2(0, 0);
-        }
-
-        if (moveTo != new Vector2(0, 0) || Dialog.moveCameraToObject)
+        if (moveTo != new Vector2(0, 0))
         {
             if (Dialog.HoldFor == -1)
             {

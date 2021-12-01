@@ -57,7 +57,8 @@ public class ItemPickup : MonoBehaviour
         //Debug.Log(transform.GetComponent<Rigidbody2D>().velocity.magnitude);
         if(transform.GetComponent<Rigidbody2D>().velocity.magnitude == 0 && triggerDetect)
         {
-            bcd.edgeRadius = DetectRange;
+            if(GameObject.Find("Thymus") == null)
+                bcd.edgeRadius = DetectRange;
             bcd.isTrigger = true;
             //Debug.Log("change");
             triggerDetect = false;

@@ -327,7 +327,7 @@ public class Weapon : MonoBehaviour
         }
 
 
-        if (reload == false && Shop.CurrentlyInShop == false)
+        if (reload == false && Shop.CurrentlyInShop == false && GameObject.Find("Thymus") == null)
         {
             if (burstFire == false)
             {
