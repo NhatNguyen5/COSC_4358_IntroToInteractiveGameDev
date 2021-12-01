@@ -84,6 +84,9 @@ public class Weapon : MonoBehaviour
     private Player player;
     //public PlayerActions SwapWeapon;
 
+    [HideInInspector]
+    public bool ThymusPresent = false;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -327,7 +330,7 @@ public class Weapon : MonoBehaviour
         }
 
 
-        if (reload == false && Shop.CurrentlyInShop == false && GameObject.Find("Thymus") == null)
+        if (reload == false && Shop.CurrentlyInShop == false && !ThymusPresent)
         {
             if (burstFire == false)
             {

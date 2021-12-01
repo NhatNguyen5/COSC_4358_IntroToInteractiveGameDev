@@ -10,6 +10,8 @@ public class Shop : MonoBehaviour
     public GameObject ShopManager;
     public GameObject shop;
     bool loadOnce = false;
+    [HideInInspector]
+    public bool ThymusPresent = false;
 
     /*
     void loadStats()
@@ -25,7 +27,7 @@ public class Shop : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other) {
         //Debug.Log("ENTER COLLIDER");
-        if (other.CompareTag("Player") == true && GameObject.Find("Thymus") == null) {
+        if (other.CompareTag("Player") == true && !ThymusPresent) {
             //loadStats();
             shop.SetActive(true);
             CurrentlyInShop = true;

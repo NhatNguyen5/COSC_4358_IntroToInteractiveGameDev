@@ -12,7 +12,8 @@ public class WeaponStandScript : MonoBehaviour
     private Transform player;
     private bool[] PrimaryWpSlot = { false, false, false };
     public bool isMeleeWeapon;
-    private ThymusScript Thymus;
+    [HideInInspector]
+    public bool ThymusPresent = false;
     private bool allowWeaponPickup;
     
 

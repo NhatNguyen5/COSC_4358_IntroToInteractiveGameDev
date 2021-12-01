@@ -58,6 +58,8 @@ public class PlayerActions
     private float playerHealthRegen;
     private float playerStamRegen;
 
+    private float currSlot = 1;
+
     //private ArmorDown ArmorDownEff;
 
     //private bool isWaiting = false;
@@ -378,7 +380,9 @@ public class PlayerActions
                                 tempWI.GetComponent<Image>().sprite = rw.GetComponent<Weapon>().WeapnIcon;
                                 tempWI.localScale = new Vector3(rw.GetComponent<Weapon>().IconScale, rw.GetComponent<Weapon>().IconScale, 1);
                                 RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<Weapon>().WeaponLabel;
-                                AudioManager.instance.PlayEffect("SwitchGun");
+                                if(currSlot != input)
+                                    AudioManager.instance.PlayEffect("SwitchGun");
+                                currSlot = input;
                             }
                             //start swap counter???
                         }
@@ -403,7 +407,9 @@ public class PlayerActions
                                 tempWI.GetComponent<Image>().sprite = rw.GetComponent<MeleeWeapon>().WeapnIcon;
                                 tempWI.localScale = new Vector3(rw.GetComponent<MeleeWeapon>().IconScale, rw.GetComponent<MeleeWeapon>().IconScale, 1);
                                 RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<MeleeWeapon>().WeaponLabel;
-                                AudioManager.instance.PlayEffect("SwitchGun");
+                                if (currSlot != input)
+                                    AudioManager.instance.PlayEffect("SwitchGun");
+                                currSlot = input;
                             }
                             //start swap counter???
                         }
@@ -446,7 +452,9 @@ public class PlayerActions
                                 tempWI.GetComponent<Image>().sprite = rw.GetComponent<ShieldScript>().WeapnIcon;
                                 tempWI.localScale = new Vector3(rw.GetComponent<ShieldScript>().IconScale, rw.GetComponent<ShieldScript>().IconScale, 1);
                                 RWeaponIcon.transform.Find("WeaponLabel").GetComponent<Text>().text = rw.GetComponent<ShieldScript>().WeaponLabel;
-                                AudioManager.instance.PlayEffect("SwitchGun");
+                                if (currSlot != input)
+                                    AudioManager.instance.PlayEffect("SwitchGun");
+                                currSlot = input;
                             }
                             //start swap counter???
 

@@ -49,6 +49,8 @@ public class ThymusScript : MonoBehaviour
     private float oriWalkSpeed;
     private float oriSprintSpeed;
 
+    private Weapon currWeapon;
+
     [System.Serializable]
     public struct ThymusDialog
     {
@@ -120,6 +122,12 @@ public class ThymusScript : MonoBehaviour
         currBrowsSprite = ThymusSpriteLibrary.spriteLibraryAsset.GetCategoryLabelNames("EyeBrows").ToArray();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         playerOriPos = player.Stats.Position;
+        GameObject.Find("Shop").GetComponent<Shop>().ThymusPresent = true;
+        WeaponStandScript[] Stands = GameObject.FindObjectsOfType<WeaponStandScript>();
+        foreach(WeaponStandScript ws in Stands)
+        {
+            ws.ThymusPresent = true;
+        }
         //oriWalkSpeed = player.holdWalkSpeed;
         //oriSprintSpeed = player.holdSprintSpeed;
         //player.holdWalkSpeed = 100;
@@ -349,7 +357,7 @@ public class ThymusScript : MonoBehaviour
                 break;
         }
         if (Dialog.DialogContent.Any(char.IsLetterOrDigit))
-            textWriterSingle = TextWriter.AddWriter_static(DialogText, Dialog.DialogContent + " ", 1 / Dialog.DialogSpeed, true, true);
+            textWriterSingle = TextWriter.AddWriter_static(DialogText, Dialog.DialogContent.ToUpper() + " ", 1 / Dialog.DialogSpeed, true, true);
         else
             DialogText.text = "";
 
@@ -472,6 +480,13 @@ public class ThymusScript : MonoBehaviour
 
     private IEnumerator DisableThymus(float dur)
     {
+        currWeapon.ThymusPresent = false;
+        GameObject.Find("Shop").GetComponent<Shop>().ThymusPresent = false;
+        WeaponStandScript[] Stands = GameObject.FindObjectsOfType<WeaponStandScript>();
+        foreach (WeaponStandScript ws in Stands)
+        {
+            ws.ThymusPresent = false;
+        }
         yield return new WaitForSeconds(dur);
         gameObject.SetActive(false);
     }
@@ -483,6 +498,8 @@ public class ThymusScript : MonoBehaviour
         {
             if (wp.gameObject.activeSelf)
             {
+                currWeapon = wp.GetComponent<Weapon>();
+                currWeapon.ThymusPresent = true;
                 return true;
             }
         }

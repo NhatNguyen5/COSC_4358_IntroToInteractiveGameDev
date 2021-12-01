@@ -220,6 +220,7 @@ public class ShieldScript : MonoBehaviour
 
         if (!finishDeploy && deployDelay == 0)
         {
+            AudioManager.instance.PlayEffect("ShieldDeploy");
             if (!transform.GetChild(shieldDirLeftIdx).gameObject.activeSelf)
             {
                 //Debug.Log(shieldDirLeftIdx);
@@ -270,24 +271,29 @@ public class ShieldScript : MonoBehaviour
 
         if (!finishDeploy && deployDelay == 0)
         {
+            AudioManager.instance.PlayEffect("ShieldDeploy");
             if (transform.GetChild(shieldDirIdx).gameObject.activeSelf)
             {
                 transform.GetChild(shieldDirIdx).gameObject.SetActive(false);
             }
-            if (transform.GetChild(shieldDirLeftIdx).gameObject.activeSelf)
+            else
             {
-                //Debug.Log(shieldDirLeftIdx);
-                transform.GetChild(shieldDirLeftIdx).gameObject.SetActive(false);
-                shieldDirLeftIdx++;
-                shieldDirLeftIdx = shieldDirLeftIdx <= 7 ? shieldDirLeftIdx : 0;
+                if (transform.GetChild(shieldDirLeftIdx).gameObject.activeSelf)
+                {
+                    //Debug.Log(shieldDirLeftIdx);
+                    transform.GetChild(shieldDirLeftIdx).gameObject.SetActive(false);
+                    shieldDirLeftIdx++;
+                    shieldDirLeftIdx = shieldDirLeftIdx <= 7 ? shieldDirLeftIdx : 0;
+                }
+                if (transform.GetChild(shieldDirRightIdx).gameObject.activeSelf)
+                {
+                    //Debug.Log(shieldDirRightIdx);
+                    transform.GetChild(shieldDirRightIdx).gameObject.SetActive(false);
+                    shieldDirRightIdx--;
+                    shieldDirRightIdx = shieldDirRightIdx >= 0 ? shieldDirRightIdx : 7;
+                }
             }
-            if (transform.GetChild(shieldDirRightIdx).gameObject.activeSelf)
-            {
-                //Debug.Log(shieldDirRightIdx);
-                transform.GetChild(shieldDirRightIdx).gameObject.SetActive(false);
-                shieldDirRightIdx--;
-                shieldDirRightIdx = shieldDirRightIdx >= 0 ? shieldDirRightIdx : 7;
-            }
+            
             deployDelay = delay;
         }
         else if (finishDeploy && deployDelay == 0)

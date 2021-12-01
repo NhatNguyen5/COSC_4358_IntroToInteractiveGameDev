@@ -65,14 +65,13 @@ public class Shielding : MonoBehaviour
             {
                 collision.GetComponent<EnemyProj>().DestroyEnemyProj();
                 collision.GetComponent<EnemyProj>().isDeflected = false;
-                AudioManager.instance.PlayEffect("ShieldHit");
             }
             else
             {
                 collision.GetComponent<EnemyProj2>().DestroyEnemyProj();
                 collision.GetComponent<EnemyProj2>().isDeflected = false;
-                AudioManager.instance.PlayEffect("ShieldHit");
             }
+            AudioManager.instance.PlayEffect("ShieldHit");
         }
     }
 }

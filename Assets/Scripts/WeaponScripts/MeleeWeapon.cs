@@ -53,6 +53,7 @@ public class MeleeWeapon : MonoBehaviour
     private ParticleSystem bloodParticle;
     private ParticleSystem.EmissionModule bloodParticleEmission;
     private ParticleSystem.MainModule bloodParticleMain;
+    private bool slash;
 
     private Player player;
     //public PlayerActions SwapWeapon;
@@ -176,7 +177,8 @@ public class MeleeWeapon : MonoBehaviour
                 else
                     currDmg = damage * (player.Stats.MaxHealth / player.Stats.Health);
                 animCtrl.SetBool("StopSwing", false);
-                StartCoroutine(playWhiffingSound(0.3f));
+
+                StartCoroutine(playWhiffingSound(0.6f/(BaseSwingSpeed + GrowthRate / 50 * player.Currentlevel)));
                 for (int i = 0; i < 10; i++)
                 {
                     transform.Find("BladeTrail (" + i + ")").GetComponent<TrailRenderer>().enabled = true;
@@ -209,11 +211,13 @@ public class MeleeWeapon : MonoBehaviour
             {
                 if (!abilityInUse)
                 {
+                    AudioManager.instance.PlayEffect("SwordAbility");
                     abilityInUse = true;
                     StartCoroutine(bloodBurstEff(2000));
                 }
                 else
                 {
+                    AudioManager.instance.PlayEffect("SwordAbility2");
                     abilityInUse = false;
                     player.holdWalkSpeed = playerWalkSpeed;
                     player.holdSprintSpeed = playerSprintSpeed;
@@ -330,6 +334,7 @@ public class MeleeWeapon : MonoBehaviour
             collision.GetComponent<Enemy2>().takeDamage(currDmg, collision.transform, 10);
             if(player.Stats.Health < player.Stats.MaxHealth*0.5f && abilityInUse)
                 player.Stats.Health += player.Stats.MaxHealth * 0.02f;
+            slash = true;
             StartCoroutine(playSlashSound(0.2f));
         }
         if (collision.CompareTag("Enemy"))
@@ -340,6 +345,7 @@ public class MeleeWeapon : MonoBehaviour
                 collision.GetComponent<Enemy3>().takeDamage(currDmg, collision.transform, 10);
             if (player.Stats.Health < player.Stats.MaxHealth * 0.5f && abilityInUse)
                 player.Stats.Health += player.Stats.MaxHealth * 0.02f;
+            slash = true;
             StartCoroutine(playSlashSound(0.2f));
         }
         if (collision.CompareTag("Colony")) {
@@ -350,6 +356,7 @@ public class MeleeWeapon : MonoBehaviour
                 collision.GetComponent<EnemyColony2>().takeDamage(currDmg, collision.transform, 10);
             if (player.Stats.Health < player.Stats.MaxHealth * 0.5f && abilityInUse)
                 player.Stats.Health += player.Stats.MaxHealth * 0.02f;
+            slash = true;
             StartCoroutine(playSlashSound(0.2f));
             //collision.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10); 
         }
@@ -358,6 +365,7 @@ public class MeleeWeapon : MonoBehaviour
             collision.GetComponent<Globin>().takeDamage(currDmg, collision.transform, 10);
             if (player.Stats.Health < player.Stats.MaxHealth * 0.5f && abilityInUse)
                 player.Stats.Health += player.Stats.MaxHealth * 0.04f;
+            slash = true;
             StartCoroutine(playSlashSound(0.2f));
         }
         if(collision.GetComponent<Rigidbody2D>() != null)
@@ -370,14 +378,14 @@ public class MeleeWeapon : MonoBehaviour
             if (collision.CompareTag("EnemyBullet"))
             {
                 collision.GetComponent<EnemyProj>().isDeflected = true;
-                StartCoroutine(playWhiffingSound(0.05f));
             }
             else
             {
                 collision.GetComponent<EnemyProj2>().isDeflected = true;
-                StartCoroutine(playWhiffingSound(0.05f));
+                
             }
-
+            slash = true;
+            AudioManager.instance.PlayEffect("DeflectSound");
             Quaternion newRot = Quaternion.Euler(0, 0, player.Stats.Angle);
             collision.transform.rotation = newRot;
 
