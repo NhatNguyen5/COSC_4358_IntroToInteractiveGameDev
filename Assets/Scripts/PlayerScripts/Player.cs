@@ -619,15 +619,17 @@ public class Player : MonoBehaviour
     {
         if (playWalkingSound == true)
         {
-            playWalkingSound = false; 
+            playWalkingSound = false;
             if (walk1 == true)
             {
                 walk1 = false;
                 AudioManager.instance.PlayEffect("Walk1");
             }
             else
+            {
                 walk1 = true;
                 AudioManager.instance.PlayEffect("Walk2");
+            }
             yield return new WaitForSeconds(AfterSeconds);
             playWalkingSound = true;
         }

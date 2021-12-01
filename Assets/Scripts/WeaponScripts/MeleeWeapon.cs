@@ -103,6 +103,64 @@ public class MeleeWeapon : MonoBehaviour
     }
 
     // Update is called once per frame
+
+
+
+
+
+    private bool playSlashingSound = true;
+    private bool Slash1 = true;
+    private IEnumerator playSlashSound(float AfterSeconds)
+    {
+        if (playSlashingSound == true)
+        {
+            playSlashingSound = false;
+            if (Slash1 == true)
+            {
+                Slash1 = false;
+                AudioManager.instance.PlayEffect("SwordSound1");
+            }
+            else
+            {
+                Slash1 = true;
+                AudioManager.instance.PlayEffect("SwordSound2");
+            }
+            yield return new WaitForSeconds(AfterSeconds);
+            playSlashingSound = true;
+        }
+    }
+
+    private bool playWhiffSound = true;
+    int pickSound = 0;
+    private IEnumerator playWhiffingSound(float AfterSeconds)
+    {
+        if (playWhiffSound == true)
+        {
+            playWhiffSound = false;
+            pickSound = Random.Range(1, 3);
+            if (pickSound == 1)
+            {
+                AudioManager.instance.PlayEffect("Slash1");
+            }
+            else if (pickSound == 2)
+            {
+                AudioManager.instance.PlayEffect("Slash2");
+            }
+            else
+            {
+                AudioManager.instance.PlayEffect("Slash3");
+            }
+            yield return new WaitForSeconds(AfterSeconds);
+            playWhiffSound = true;
+        }
+    }
+
+
+
+
+
+
+
     private void Update()
     {
         GlobalPlayerVariables.weaponWeight = weaponWeight;
@@ -118,6 +176,7 @@ public class MeleeWeapon : MonoBehaviour
                 else
                     currDmg = damage * (player.Stats.MaxHealth / player.Stats.Health);
                 animCtrl.SetBool("StopSwing", false);
+                StartCoroutine(playWhiffingSound(0.3f));
                 for (int i = 0; i < 10; i++)
                 {
                     transform.Find("BladeTrail (" + i + ")").GetComponent<TrailRenderer>().enabled = true;
@@ -271,6 +330,7 @@ public class MeleeWeapon : MonoBehaviour
             collision.GetComponent<Enemy2>().takeDamage(currDmg, collision.transform, 10);
             if(player.Stats.Health < player.Stats.MaxHealth*0.5f && abilityInUse)
                 player.Stats.Health += player.Stats.MaxHealth * 0.02f;
+            StartCoroutine(playSlashSound(0.2f));
         }
         if (collision.CompareTag("Enemy"))
         {
@@ -280,6 +340,7 @@ public class MeleeWeapon : MonoBehaviour
                 collision.GetComponent<Enemy3>().takeDamage(currDmg, collision.transform, 10);
             if (player.Stats.Health < player.Stats.MaxHealth * 0.5f && abilityInUse)
                 player.Stats.Health += player.Stats.MaxHealth * 0.02f;
+            StartCoroutine(playSlashSound(0.2f));
         }
         if (collision.CompareTag("Colony")) {
 
@@ -289,6 +350,7 @@ public class MeleeWeapon : MonoBehaviour
                 collision.GetComponent<EnemyColony2>().takeDamage(currDmg, collision.transform, 10);
             if (player.Stats.Health < player.Stats.MaxHealth * 0.5f && abilityInUse)
                 player.Stats.Health += player.Stats.MaxHealth * 0.02f;
+            StartCoroutine(playSlashSound(0.2f));
             //collision.GetComponent<EnemyColony>().takeDamage(currDmg, collision.transform, 10); 
         }
         if (collision.CompareTag("Globin")) 
@@ -296,6 +358,7 @@ public class MeleeWeapon : MonoBehaviour
             collision.GetComponent<Globin>().takeDamage(currDmg, collision.transform, 10);
             if (player.Stats.Health < player.Stats.MaxHealth * 0.5f && abilityInUse)
                 player.Stats.Health += player.Stats.MaxHealth * 0.04f;
+            StartCoroutine(playSlashSound(0.2f));
         }
         if(collision.GetComponent<Rigidbody2D>() != null)
         {
@@ -307,10 +370,12 @@ public class MeleeWeapon : MonoBehaviour
             if (collision.CompareTag("EnemyBullet"))
             {
                 collision.GetComponent<EnemyProj>().isDeflected = true;
+                StartCoroutine(playWhiffingSound(0.05f));
             }
             else
             {
                 collision.GetComponent<EnemyProj2>().isDeflected = true;
+                StartCoroutine(playWhiffingSound(0.05f));
             }
 
             Quaternion newRot = Quaternion.Euler(0, 0, player.Stats.Angle);

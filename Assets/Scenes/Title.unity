@@ -6186,6 +6186,48 @@ MonoBehaviour:
     pitch: 1.5
     loop: 0
     source: {fileID: 0}
+  - name: NoClick
+    clip: {fileID: 8300000, guid: 23164c472a1bd684799f1ae8dfa78447, type: 3}
+    volume: 0.56
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: ShieldHit
+    clip: {fileID: 8300000, guid: 11999e3a7f7f70e479f706705ddc780d, type: 3}
+    volume: 0.56
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Slash1
+    clip: {fileID: 8300000, guid: a3e20a1956b172549ac74d37ba49fda4, type: 3}
+    volume: 0.56
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Slash2
+    clip: {fileID: 8300000, guid: 92476d9a983078d48a7b8fb8ef136a6e, type: 3}
+    volume: 0.56
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: Slash3
+    clip: {fileID: 8300000, guid: f4d12b53ea9e7534aad62e4f7625ef0a, type: 3}
+    volume: 0.56
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: SwordSound1
+    clip: {fileID: 8300000, guid: d907649d811b1e340b407de516b6409a, type: 3}
+    volume: 0.56
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: SwordSound2
+    clip: {fileID: 8300000, guid: 611b90d54c7edc948bf6c26aa5359d57, type: 3}
+    volume: 0.56
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
   Music:
   - name: Theme
     clip: {fileID: 8300000, guid: b51a60b59117cf44b931df2e12386abe, type: 3}
@@ -6195,6 +6237,18 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Game
     clip: {fileID: 8300000, guid: ba65fad91d8750c459f6fcf28ba0054c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Win
+    clip: {fileID: 8300000, guid: 549542af900256b47aaebd3bd1662dbb, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Lose
+    clip: {fileID: 8300000, guid: 8839d33a4563b284698d4bc3ddea5c97, type: 3}
     volume: 0.5
     pitch: 1
     loop: 1
