@@ -35,6 +35,8 @@ public class ItemPickup : MonoBehaviour
     private Vector2 randomDirection;
     private BoxCollider2D bcd;
     private bool triggerDetect = true;
+    [HideInInspector]
+    public bool ThymusSpawn = false;
 
     private void Start()
     {
@@ -57,7 +59,7 @@ public class ItemPickup : MonoBehaviour
         //Debug.Log(transform.GetComponent<Rigidbody2D>().velocity.magnitude);
         if(transform.GetComponent<Rigidbody2D>().velocity.magnitude == 0 && triggerDetect)
         {
-            if(GameObject.Find("Thymus") == null)
+            if(!ThymusSpawn)
                 bcd.edgeRadius = DetectRange;
             bcd.isTrigger = true;
             //Debug.Log("change");

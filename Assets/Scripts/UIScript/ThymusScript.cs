@@ -386,6 +386,7 @@ public class ThymusScript : MonoBehaviour
             {
                 spawnedObject.GetComponent<ItemPickup>().DespawnTime = 999;
                 spawnedObject.GetComponent<ItemPickup>().flingRange = 0;
+                spawnedObject.GetComponent<ItemPickup>().ThymusSpawn = true;
                 spawnedObject.GetComponent<ItemPickup>().PickUpRange = 0.1f;
             }
         }
