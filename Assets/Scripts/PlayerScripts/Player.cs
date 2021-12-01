@@ -173,9 +173,12 @@ public class Player : MonoBehaviour
 
     private Transform shield = null;
 
+    public static Player instance;
     private void Awake()
     {
-
+        instance = this;
+        
+            
         /*
         public static float baseMaxHealth = 0; done
         public static float baseHealthRegen = 0; done

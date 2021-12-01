@@ -18874,6 +18874,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: RemembaDaLoadout
       objectReference: {fileID: 0}
+    - target: {fileID: 5954936024769064902, guid: d99dffe818180c943bf035026cbaf2b2, type: 3}
+      propertyPath: startingWeapon1
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954936024769064902, guid: d99dffe818180c943bf035026cbaf2b2, type: 3}
+      propertyPath: startingWeapon2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954936024769064902, guid: d99dffe818180c943bf035026cbaf2b2, type: 3}
+      propertyPath: startingWeapon3
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954936024769064902, guid: d99dffe818180c943bf035026cbaf2b2, type: 3}
+      propertyPath: startingWeapon4
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5954936024769064903, guid: d99dffe818180c943bf035026cbaf2b2, type: 3}
       propertyPath: m_RootOrder
       value: 20
