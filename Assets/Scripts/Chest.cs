@@ -22,7 +22,6 @@ public class Chest : Interactable
     // Start is called before the first frame update
     void Start()
     {
-        chestPosition = transform.position;
         anim = GetComponent<Animator>();
         for (int i = 0; i < droppables.Length; i++)
         {
@@ -61,7 +60,7 @@ public class Chest : Interactable
             {
                 for (int j = 0; j < droppables[i].items.Length; j++)
                 {
-                    Instantiate(droppables[i].items[j], chestPosition, Quaternion.identity);
+                    Instantiate(droppables[i].items[j], transform.position, Quaternion.identity);
                 }
                 break;
             }
