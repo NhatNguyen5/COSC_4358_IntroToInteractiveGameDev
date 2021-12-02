@@ -92323,6 +92323,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyReinforcements
       objectReference: {fileID: 0}
+    - target: {fileID: 193648665268400394, guid: af3798a260229214396cbb30c9ca6e80, type: 3}
+      propertyPath: endTimerRangeForStrikes
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 193648665268400394, guid: af3798a260229214396cbb30c9ca6e80, type: 3}
+      propertyPath: startTimerRangeForStrikes
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af3798a260229214396cbb30c9ca6e80, type: 3}
 --- !u!1 &1819652234
@@ -101506,8 +101514,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1887939819}
     - target: {fileID: 5363578993084675525, guid: 0691acd4deecd86468eb62b7df4a0017, type: 3}
+      propertyPath: endingRangeToDash
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363578993084675525, guid: 0691acd4deecd86468eb62b7df4a0017, type: 3}
+      propertyPath: beginningRangeToDash
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363578993084675525, guid: 0691acd4deecd86468eb62b7df4a0017, type: 3}
+      propertyPath: dashAroundPlayerRadius
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363578993084675525, guid: 0691acd4deecd86468eb62b7df4a0017, type: 3}
+      propertyPath: endingRangeToCallAirStrike
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363578993084675525, guid: 0691acd4deecd86468eb62b7df4a0017, type: 3}
       propertyPath: Drops.Array.data[0].NumOfDrop
       value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363578993084675525, guid: 0691acd4deecd86468eb62b7df4a0017, type: 3}
+      propertyPath: beginningRangeToCallAirStrike
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7400493655620455181, guid: 0691acd4deecd86468eb62b7df4a0017, type: 3}
       propertyPath: m_RootOrder
