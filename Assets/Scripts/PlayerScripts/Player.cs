@@ -700,7 +700,6 @@ public class Player : MonoBehaviour
             //for(int i = 0; i < 2; i++)
             StartCoroutine(beatGen(0.75f));
             //StartCoroutine(beatGen(0.75f / spawnRate));
-
         }
         //Debug.Log(spawnRate + " " + defaultSR);
     }

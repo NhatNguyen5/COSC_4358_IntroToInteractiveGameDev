@@ -11,6 +11,8 @@ public class SceneController : MonoBehaviour
     public float FadeInAndOutSpeed;
     public float DisclaimerShowDuration;
     public float StartIntroAfter;
+    [Range(0,1)]
+    public float videoVolume;
 
     public GameObject DisclaimerScreen;
 
@@ -79,6 +81,7 @@ public class SceneController : MonoBehaviour
         if (!isWaiting && !video.isPlaying && !played)
         {
             video.Play();
+            video.SetDirectAudioVolume(0, videoVolume);
             played = true;
         }
 

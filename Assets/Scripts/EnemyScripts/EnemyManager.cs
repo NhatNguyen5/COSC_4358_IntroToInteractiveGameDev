@@ -93,7 +93,7 @@ public class EnemyManager : MonoBehaviour
                     spawnPointDistances[i] = temp;
                 }
 
-                if (colonyHealth > 0 && timeBetweenSpawns > 0 && Time.time > nextDecrease && (timeBetweenSpawns > MinTbs || timeBetweenSpawns < MaxTbs))
+                if (/*colonyHealth > 0 &&*/ timeBetweenSpawns > 0 && Time.time > nextDecrease && (timeBetweenSpawns > MinTbs || timeBetweenSpawns < MaxTbs))
                 {
                     nextDecrease = Time.time + DecreaseAfter;
                     timeBetweenSpawns -= tbsDecreaseRate;
@@ -127,7 +127,7 @@ public class EnemyManager : MonoBehaviour
                         SPAnimReset = false;
                     }
                     //Debug.Log(timeBetweenSpawns);
-                    if (/*enemiesRemainingToSpawn > 0 && */ colonyHealth > 0 && Time.time > nextSpawnTime && SpawnedMobs.Count < SpawnCap)
+                    if (/*enemiesRemainingToSpawn > 0 &&  colonyHealth > 0 &&*/ Time.time > nextSpawnTime && SpawnedMobs.Count < SpawnCap)
                     {
                         //enemiesRemainingToSpawn--;
                         nextSpawnTime = Time.time + timeBetweenSpawns;
@@ -175,9 +175,8 @@ public class EnemyManager : MonoBehaviour
 
     private void BossDeath()
     {
-        tbsDecreaseRate = -2*tbsDecreaseRate;
+        tbsDecreaseRate = -3*tbsDecreaseRate;
         StaInd.StartShake(Mcamera, 1, 0.5f);
-        
     }
 
     public void OnEnemyDeath(int type)
