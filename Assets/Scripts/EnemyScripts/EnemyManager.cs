@@ -182,13 +182,16 @@ public class EnemyManager : MonoBehaviour
         switch (type)
         {
             case 1:
-                timeBetweenSpawns += Enemy1DieIncrease;
+                if(timeBetweenSpawns < MaxTbs - Enemy1DieIncrease || timeBetweenSpawns > MinTbs + Enemy1DieIncrease)
+                    timeBetweenSpawns += Enemy1DieIncrease;
                 break;
             case 2:
-                timeBetweenSpawns += Enemy2DieIncrease;
+                if (timeBetweenSpawns < MaxTbs - Enemy2DieIncrease || timeBetweenSpawns > MinTbs + Enemy2DieIncrease)
+                    timeBetweenSpawns += Enemy2DieIncrease;
                 break;
             case 3:
-                timeBetweenSpawns += Enemy3DieIncrease;
+                if (timeBetweenSpawns < MaxTbs - Enemy3DieIncrease || timeBetweenSpawns > MinTbs + Enemy3DieIncrease)
+                    timeBetweenSpawns += Enemy3DieIncrease;
                 break;
             default:
                 Debug.Log("Unknown type");
