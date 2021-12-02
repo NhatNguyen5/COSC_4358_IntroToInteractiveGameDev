@@ -207,7 +207,7 @@ MonoBehaviour:
   maxHP: 1000
   AR: 25
   speed: 250
-  contactDamage: 1
+  contactDamage: 50
   EXPWorth: 500
   time2chase: 6
   retreatToBoss: 1

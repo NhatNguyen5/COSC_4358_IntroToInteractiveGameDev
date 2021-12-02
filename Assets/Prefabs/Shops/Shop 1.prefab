@@ -2673,7 +2673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 200
+  cost: 450
   levelReq: 0
   ItemBeingSold: {fileID: 6038429324505745235, guid: 7c85118272fa17048b4d30474e6c48fe, type: 3}
   owned: 0
@@ -3866,7 +3866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 500
+  cost: 400
   levelReq: 0
   ItemBeingSold: {fileID: 370946251004088095, guid: 22b0d12206ec09549b2f39685a7f2d2b, type: 3}
   owned: 0
@@ -4134,7 +4134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 1000
   levelReq: 0
   ItemBeingSold: {fileID: 2591568961033913676, guid: f85181c0160ed0b4cb152fa5f3b8ea9b, type: 3}
   owned: 0
@@ -5364,7 +5364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 2000
+  cost: 2150
   levelReq: 0
   ItemBeingSold: {fileID: 4800548710497326434, guid: f2613e48b5572e7499bb923cc720b260, type: 3}
   owned: 0
@@ -5632,8 +5632,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 200
-  levelReq: 0
+  cost: 450
+  levelReq: 10
   ItemBeingSold: {fileID: 8725768441343987252, guid: 9f449af8056b6764aa76953d39063aee, type: 3}
   owned: 0
   isWeapon: 1
@@ -6710,7 +6710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 1000
+  cost: 1150
   levelReq: 0
   ItemBeingSold: {fileID: 5295597528365087229, guid: f9219c45a2ae70c4fab403a85abb3fdc, type: 3}
   owned: 0
@@ -6978,8 +6978,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 250
-  levelReq: 0
+  cost: 500
+  levelReq: 13
   ItemBeingSold: {fileID: 1181104393984936639, guid: f7183562ec4699746bed47cb3dbfdd9a, type: 3}
   owned: 0
   isWeapon: 1
@@ -8910,8 +8910,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 250
-  levelReq: 0
+  cost: 500
+  levelReq: 5
   ItemBeingSold: {fileID: 5932730024843355163, guid: a4d8581e79a06ab47a77259f466b1bd4, type: 3}
   owned: 0
   isWeapon: 1
@@ -11492,7 +11492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 4000
+  cost: 4150
   levelReq: 0
   ItemBeingSold: {fileID: 4661130396362425928, guid: 1d6cbc3c60a162a48820ed955a8170fc, type: 3}
   owned: 0
@@ -12766,7 +12766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 500
+  cost: 450
   levelReq: 0
   ItemBeingSold: {fileID: 4231248221470822520, guid: 0e9f24cceb80ae24faf2802ab4960478, type: 3}
   owned: 0
@@ -14360,8 +14360,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 225
-  levelReq: 0
+  cost: 475
+  levelReq: 5
   ItemBeingSold: {fileID: 2314615936899718399, guid: 6ec42872cec7efa48b035f67949f77ea, type: 3}
   owned: 0
   isWeapon: 1
@@ -16034,7 +16034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 500
+  cost: 475
   levelReq: 0
   ItemBeingSold: {fileID: 8226548698390147028, guid: dd4f97dbc610d2945a0ce4b230ba8ce1, type: 3}
   owned: 0
@@ -17576,8 +17576,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 250
-  levelReq: 0
+  cost: 500
+  levelReq: 15
   ItemBeingSold: {fileID: 5700064688437328001, guid: 287635c9e8bfc0345a88108797a0455a, type: 3}
   owned: 0
   isWeapon: 1
@@ -19838,8 +19838,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 300
-  levelReq: 0
+  cost: 550
+  levelReq: 5
   ItemBeingSold: {fileID: 5709717270153538171, guid: 5b58777b1d862814a9cf9d563a658ad3, type: 3}
   owned: 0
   isWeapon: 1
@@ -22102,7 +22102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 500
+  cost: 425
   levelReq: 0
   ItemBeingSold: {fileID: 8800349694535609279, guid: 700468c6819b23b459d433e8edd6b3bb, type: 3}
   owned: 0
@@ -24192,8 +24192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 250
-  levelReq: 0
+  cost: 500
+  levelReq: 11
   ItemBeingSold: {fileID: 8587654299976819029, guid: 9b622603e717a5e459d5f3171a0e0853, type: 3}
   owned: 0
   isWeapon: 1
@@ -24831,7 +24831,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: asdf
+          m_StringArgument: Abdominal
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 8035387255769473364}
@@ -24882,9 +24882,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 0
+  cost: 100
   levelReq: 0
-  ItemBeingSold: {fileID: 0}
+  ItemBeingSold: {fileID: 3387174646696659352, guid: c2380de4bee36c942a48520aea55dd3f, type: 3}
   owned: 0
   isWeapon: 1
   isGlobin: 0
@@ -25071,7 +25071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 200
+  cost: 450
   levelReq: 0
   ItemBeingSold: {fileID: 3523908505254954136, guid: b9e9f580a7497694c908dfdd43b76649, type: 3}
   owned: 0
@@ -27937,7 +27937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 225
+  cost: 475
   levelReq: 0
   ItemBeingSold: {fileID: 4266070238205467168, guid: 639339a3032352442ba8fed8acc6b3b6, type: 3}
   owned: 0
@@ -28126,8 +28126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 250
-  levelReq: 0
+  cost: 500
+  levelReq: 14
   ItemBeingSold: {fileID: 3806027147059302337, guid: 04b7148d0145af14f86d3710927204cd, type: 3}
   owned: 0
   isWeapon: 1
@@ -29317,8 +29317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 500
-  levelReq: 0
+  cost: 1250
+  levelReq: 15
   ItemBeingSold: {fileID: 3544499261659222557, guid: c60ca7f11bb0daf468d168cf1a0886c7, type: 3}
   owned: 0
   isWeapon: 1
@@ -30231,7 +30231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 3000
+  cost: 3150
   levelReq: 0
   ItemBeingSold: {fileID: 6476559030465391988, guid: ca790e5a9896022428e6b81ff4c09421, type: 3}
   owned: 0
@@ -31493,7 +31493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 250
+  cost: 500
   levelReq: 0
   ItemBeingSold: {fileID: 8233479261077972575, guid: 63119e7d5f6f5cc489b30cedb287fc86, type: 3}
   owned: 0
@@ -31950,8 +31950,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 250
-  levelReq: 0
+  cost: 500
+  levelReq: 10
   ItemBeingSold: {fileID: 2993377497966877745, guid: ba08ef7a32f2b1644808f14a8ca380b8, type: 3}
   owned: 0
   isWeapon: 1
@@ -35300,8 +35300,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 250
-  levelReq: 0
+  cost: 500
+  levelReq: 12
   ItemBeingSold: {fileID: 3556159641590399313, guid: e36e305817e0f9d4e930d2167d9f378f, type: 3}
   owned: 0
   isWeapon: 1
@@ -36943,8 +36943,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 225
-  levelReq: 0
+  cost: 475
+  levelReq: 5
   ItemBeingSold: {fileID: 3556159641590399313, guid: 471bd23a45c03b54c9510a9e653b2fb4, type: 3}
   owned: 0
   isWeapon: 1
@@ -37635,8 +37635,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 200
-  levelReq: 0
+  cost: 950
+  levelReq: 15
   ItemBeingSold: {fileID: 2591568961033913676, guid: 6b3a3f358e63406439d5395875549b39, type: 3}
   owned: 0
   isWeapon: 1
@@ -37903,7 +37903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 500
+  cost: 250
   levelReq: 0
   ItemBeingSold: {fileID: 2056935271745837854, guid: 9729f65a98d9dd14b86e888222ffbcbc, type: 3}
   owned: 0
@@ -38344,7 +38344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 1500
+  cost: 1650
   levelReq: 0
   ItemBeingSold: {fileID: 3150062573400273401, guid: 2f6894e202d635d43b533d843005ee50, type: 3}
   owned: 0
@@ -39256,7 +39256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 250
+  cost: 100
   levelReq: 0
   ItemBeingSold: {fileID: 2056935271745837854, guid: da593d588006d8246b89463b4dabc544, type: 3}
   owned: 0
@@ -39719,7 +39719,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: ABDOMINAL
 --- !u!1 &8035387256633465395
 GameObject:
   m_ObjectHideFlags: 0
@@ -40224,7 +40224,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: PROTOGAZER
 --- !u!1 &8035387256681929616
 GameObject:
   m_ObjectHideFlags: 0
@@ -41528,7 +41528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653fa6996ba04bb4db81a3b18c2852b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 300
+  cost: 150
   levelReq: 0
   ItemBeingSold: {fileID: 2056935271745837854, guid: f6f4be9ac3368a74287b960666063ebb, type: 3}
   owned: 0

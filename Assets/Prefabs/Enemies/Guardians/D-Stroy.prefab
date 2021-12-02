@@ -364,13 +364,13 @@ MonoBehaviour:
   maxHP: 1000
   AR: 25
   speed: 250
-  contactDamage: 1
+  contactDamage: 50
   EXPWorth: 500
   time2chase: 6
   retreatToBoss: 1
   retreatDist: 10
-  canDash: 1
-  randomDash: 1
+  canDash: 0
+  randomDash: 0
   dashForce: 5
   dashBackOnHit: 10
   beginningRangeToDash: 0.25
@@ -378,8 +378,8 @@ MonoBehaviour:
   canDoAirStrike: 1
   AirStrike: {fileID: 5974539760832893, guid: 5a8700ee66670364c83f15c57a3070b2, type: 3}
   amountOfAirStrikes: 3
-  beginningRangeToCallAirStrike: 5
-  endingRangeToCallAirStrike: 10
+  beginningRangeToCallAirStrike: 2
+  endingRangeToCallAirStrike: 6
   knockForcePlayerContact: 0
   knockbackstartrange: 0.125
   knockbackendrange: 0.125

@@ -760,10 +760,10 @@ MonoBehaviour:
   maxHP: 1000
   AR: 25
   speed: 250
-  contactDamage: 1
+  contactDamage: 50
   EXPWorth: 500
   time2chase: 6
-  retreatToBoss: 1
+  retreatToBoss: 0
   retreatDist: 10
   canDash: 1
   randomDash: 1
@@ -783,7 +783,7 @@ MonoBehaviour:
   beginningrangetoshoot: 0.5
   endingrangetoshoot: 1
   AmountOfBullets: 5
-  bulletSpread: 18
+  bulletSpread: 8
   projectile: {fileID: 3812985790077842512, guid: b8a4215f89377b140b6b3b8efc37eeff, type: 3}
   firePoint: {fileID: 7865572294934639478}
   burstFire: 0
