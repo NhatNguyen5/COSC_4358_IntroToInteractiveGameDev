@@ -854,13 +854,13 @@ public class Player : MonoBehaviour
         RememberLoudout = GameObject.FindGameObjectWithTag("Loadout");
         RememberLoadout gitValues = RememberLoudout.GetComponent<RememberLoadout>();
 
-        gitValues.numberOfheals = stats.NumofHeal;
-        gitValues.numberOfPhizerz = stats.NumofPhizer;
-        gitValues.armorRemaining = Stats.Armorz;
-        gitValues.proteinCounter = Stats.NumofProtein;
+        RememberLoadout.numberOfheals = stats.NumofHeal;
+        RememberLoadout.numberOfPhizerz = stats.NumofPhizer;
+        RememberLoadout.armorRemaining = Stats.Armorz;
+        RememberLoadout.proteinCounter = Stats.NumofProtein;
         //gitValues.stemCellAmount = Stats.;
-        gitValues.numberOfStickyNades = stats.NumofSticky;
-        gitValues.numberOfMollys = Stats.NumofMolly;
+        RememberLoadout.numberOfStickyNades = stats.NumofSticky;
+        RememberLoadout.numberOfMollys = Stats.NumofMolly;
 
         RememberLoadout.instance.setTein(Stats.NumofProtein);
 
@@ -888,16 +888,19 @@ public class Player : MonoBehaviour
                     if (newWeapon.GetComponent<Weapon>().Slot == 1)
                     {
                         gitValues.startingWeapon1 = newWeapon.name;
+                        RememberLoadout.weap1 = newWeapon.name;
                     }
 
                     if (newWeapon.GetComponent<Weapon>().Slot == 2)
                     {
                         gitValues.startingWeapon2 = newWeapon.name;
+                        RememberLoadout.weap2 = newWeapon.name;
                         //PlayerLoadOut.GetComponent<RememberLoadout>().SecondaryWeapon = newWeapon.name;
                     }
                     if (newWeapon.GetComponent<Weapon>().Slot == 3)
                     {
                         gitValues.startingWeapon3 = newWeapon.name;
+                        RememberLoadout.weap3 = newWeapon.name;
                         //PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = newWeapon.name;
                     }
 
@@ -905,11 +908,13 @@ public class Player : MonoBehaviour
                 else if (newWeapon.GetComponent<MeleeWeapon>() != null)
                 {
                     gitValues.startingWeapon4 = newWeapon.name;
-                        //PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = newWeapon.name;
+                    RememberLoadout.weap4 = newWeapon.name;
+                    //PlayerLoadOut.GetComponent<RememberLoadout>().ThirdWeapon = newWeapon.name;
                 }
                 else if (newWeapon.GetComponent<ShieldScript>() != null)
                 {
                     gitValues.startingWeapon4 = newWeapon.name;
+                    RememberLoadout.weap4 = newWeapon.name;
                 }
                 //weaponTransforms.Add(listOfRightWeapons[i]);
             }
@@ -922,7 +927,7 @@ public class Player : MonoBehaviour
         gitValues.startingWeapon3 = transform.Find("RightArm").transform.GetChild(2).name;
         */
         GameObject[] allDaGlobins = GameObject.FindGameObjectsWithTag("Globin");
-        gitValues.numberOfGlobins = allDaGlobins.Length;
+        RememberLoadout.numberOfGlobins = allDaGlobins.Length;
         bool didThis = false;
         if (!didThis)
         {
@@ -930,46 +935,46 @@ public class Player : MonoBehaviour
             {
                 if (go.name.Contains("5 Advisor"))
                 {
-                    gitValues.Globin5Advisor++;
+                    RememberLoadout.Globin5Advisor++;
                 }
                 if (go.name.Contains("5 Grenadier"))
                 {
-                    gitValues.Globin5Grenadier++;
+                    RememberLoadout.Globin5Grenadier++;
                 }
                 if (go.name.Contains("5 Operator"))
                 {
-                    gitValues.Globin5Operator++;
+                    RememberLoadout.Globin5Operator++;
                 }
                 if (go.name.Contains("5 Rocketeer"))
                 {
-                    gitValues.Globin5Rocketeer++;
+                    RememberLoadout.Globin5Rocketeer++;
                 }
                 if (go.name.Contains("5 Support"))
                 {
-                    gitValues.Globin5Support++;
+                    RememberLoadout.Globin5Support++;
                 }
 
 
                 //globin vehicles
                 if (go.name.Contains("Carrier Light"))
                 {
-                    gitValues.ImmunalCarrierLight++;
+                    RememberLoadout.ImmunalCarrierLight++;
                 }
                 if (go.name.Contains("Carrier Medium"))
                 {
-                    gitValues.ImmunalCarrierMedium++;
+                    RememberLoadout.ImmunalCarrierMedium++;
                 }
                 if (go.name.Contains("Carrier Heavy"))
                 {
-                    gitValues.ImmunalCarrierHeavy++;
+                    RememberLoadout.ImmunalCarrierHeavy++;
                 }
                 if (go.name.Contains("Bopterlift"))
                 {
-                    gitValues.Bopterlift++;
+                    RememberLoadout.Bopterlift++;
                 }
                 if (go.name.Contains("Boptervac"))
                 {
-                    gitValues.Boptervac++;
+                    RememberLoadout.Boptervac++;
                 }
 
 
@@ -985,14 +990,14 @@ public class Player : MonoBehaviour
         RememberLoudout = GameObject.FindGameObjectWithTag("Loadout");
         RememberLoadout gitValues = RememberLoudout.GetComponent<RememberLoadout>();
 
-        stats.NumofHeal = gitValues.numberOfheals;
-        stats.NumofPhizer = gitValues.numberOfPhizerz;
-        Stats.Armorz = gitValues.armorRemaining;
-        Stats.NumofProtein = gitValues.proteinCounter;
+        stats.NumofHeal = RememberLoadout.numberOfheals;
+        stats.NumofPhizer = RememberLoadout.numberOfPhizerz;
+        Stats.Armorz = RememberLoadout.armorRemaining;
+        Stats.NumofProtein = RememberLoadout.proteinCounter;
 
         //gitValues.stemCellAmount = Stats.;
-        Stats.NumofSticky = gitValues.numberOfStickyNades;
-        Stats.NumofMolly = gitValues.numberOfMollys;
+        Stats.NumofSticky = RememberLoadout.numberOfStickyNades;
+        Stats.NumofMolly = RememberLoadout.numberOfMollys;
         Debug.Log(stats.NumofHeal + " armor " + stats.Armorz + " protein " + stats.NumofProtein + " molly " + Stats.NumofMolly + "sticky " + Stats.NumofSticky);
 
         Transform globinSpawn = GameObject.FindGameObjectWithTag("GlobinSpawn").GetComponent<Transform>();
@@ -1002,70 +1007,70 @@ public class Player : MonoBehaviour
             Debug.Log("S P A W N");
             if (go.name.Contains("5 Advisor"))
             {
-                for(int i = 0; i < gitValues.Globin5Advisor; i++)
+                for(int i = 0; i < RememberLoadout.Globin5Advisor; i++)
                 { 
                     var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
                 }
             }
             else if (go.name.Contains("5 Grenadier"))
             {
-                for (int i = 0; i < gitValues.Globin5Grenadier; i++)
+                for (int i = 0; i < RememberLoadout.Globin5Grenadier; i++)
                 {
                     var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
                 }
             }
             else if(go.name.Contains("5 Operator"))
             {
-                for (int i = 0; i < gitValues.Globin5Operator; i++)
+                for (int i = 0; i < RememberLoadout.Globin5Operator; i++)
                 {
                     var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
                 }
             }
             else if(go.name.Contains("5 Rocketeer"))
             {
-                for (int i = 0; i < gitValues.Globin5Rocketeer; i++)
+                for (int i = 0; i < RememberLoadout.Globin5Rocketeer; i++)
                 {
                     var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
                 }            
             }
             else if(go.name.Contains("5 Support"))
             {
-                for (int i = 0; i < gitValues.Globin5Support; i++)
+                for (int i = 0; i < RememberLoadout.Globin5Support; i++)
                 {
                     var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
                 }
             }
             else if (go.name.Contains("Carrier Light"))
             {
-                for (int i = 0; i < gitValues.ImmunalCarrierLight; i++)
+                for (int i = 0; i < RememberLoadout.ImmunalCarrierLight; i++)
                 {
                     var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
                 }
             }
             else if (go.name.Contains("Carrier Medium"))
             {
-                for (int i = 0; i < gitValues.ImmunalCarrierMedium; i++)
+                for (int i = 0; i < RememberLoadout.ImmunalCarrierMedium; i++)
                 {
                     var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
                 }
             }
             else if (go.name.Contains("Carrier Heavy"))
             {
-                for (int i = 0; i < gitValues.ImmunalCarrierHeavy; i++)
+                for (int i = 0; i < RememberLoadout.ImmunalCarrierHeavy; i++)
                 {
                     var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
                 }
             }
             else if (go.name.Contains("Bopterlift"))
             {
-                for (int i = 0; i < gitValues.Bopterlift; i++)
+                for (int i = 0; i < RememberLoadout.Bopterlift; i++)
                 {
                     var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
                 }
             }
             else if (go.name.Contains("Boptervac"))
             {
-                for (int i = 0; i < gitValues.Boptervac; i++)
+                for (int i = 0; i < RememberLoadout.Boptervac; i++)
                 {
                     var newGlobin = Instantiate(go, globinSpawn.position, Quaternion.identity);
                 }

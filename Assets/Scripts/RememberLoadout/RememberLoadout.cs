@@ -47,35 +47,76 @@ public class RememberLoadout : MonoBehaviour
 
     //Getting values at the end of level
     public GameObject player;
-    public int numberOfheals = 0;
-    public int numberOfPhizerz = 0;
-    public float armorRemaining = 0;
-    public int proteinCounter = 0;
-    public int stemCellAmount = 0;
-    public int numberOfStickyNades = 0;
-    public int numberOfMollys = 0;
-    public int numberOfGlobins = 0;
+    public static int numberOfheals = 0;
+    public static int numberOfPhizerz = 0;
+    public static float armorRemaining = 0;
+    public static int proteinCounter = 0;
+    public static int stemCellAmount = 0;
+    public static int numberOfStickyNades = 0;
+    public static int numberOfMollys = 0;
+    public static int numberOfGlobins = 0;
 
-    public int Globin5Advisor = 0;
-    public int Globin5Grenadier = 0;
-    public int Globin5Operator = 0;
-    public int Globin5Rocketeer = 0;
-    public int Globin5Support = 0;
+    public static int Globin5Advisor = 0;
+    public static int Globin5Grenadier = 0;
+    public static int Globin5Operator = 0;
+    public static int Globin5Rocketeer = 0;
+    public static int Globin5Support = 0;
 
-    public int ImmunalCarrierLight = 0;
-    public int ImmunalCarrierMedium = 0;
-    public int ImmunalCarrierHeavy = 0;
+    public static int ImmunalCarrierLight = 0;
+    public static int ImmunalCarrierMedium = 0;
+    public static int ImmunalCarrierHeavy = 0;
 
 
-    public int Bopterlift = 0;
-    public int Boptervac = 0;
+    public static int Bopterlift = 0;
+    public static int Boptervac = 0;
 
     public static int HoldProtein = 0;
+
+    public static string weap1 = "";
+    public static string weap2 = "";
+    public static string weap3 = "";
+    public static string weap4 = "";
+
 
     public void setTein(int number)
     {
         HoldProtein = number;
     }
+
+
+    private void ResetValues()
+    {
+        numberOfheals = 0;
+        numberOfPhizerz = 0;
+        armorRemaining = 0;
+        proteinCounter = 0;
+        stemCellAmount = 0;
+        numberOfStickyNades = 0;
+        numberOfMollys = 0;
+        numberOfGlobins = 0;
+
+        Globin5Advisor = 0;
+        Globin5Grenadier = 0;
+        Globin5Operator = 0;
+        Globin5Rocketeer = 0;
+        Globin5Support = 0;
+
+        ImmunalCarrierLight = 0;
+        ImmunalCarrierMedium = 0;
+        ImmunalCarrierHeavy = 0;
+
+
+        Bopterlift = 0;
+        Boptervac = 0;
+
+        HoldProtein = 0;
+
+        weap1 = "";
+        weap2 = "";
+        weap3 = "";
+        weap4 = "";
+
+}
 
 
     void Awake()
@@ -91,11 +132,31 @@ public class RememberLoadout : MonoBehaviour
             {
                 totalExperienceEarned = (int)(Mathf.Round((float)totalExperienceEarned * 0.80f));
                 proteinCounter = HoldProtein;
+
+                if (weap1 != "")
+                {
+                    startingWeapon1 = weap1;
+                }
+                if (weap2 != "")
+                {
+                    startingWeapon2 = weap2;
+                }
+                if (weap3 != "")
+                {
+                    startingWeapon3 = weap3;
+                }
+                if (weap4 != "")
+                {
+                    startingWeapon4 = weap4;
+                }
+
+
             }
             else
             {
                 totalExperienceEarned = 0;
                 HoldProtein = 0;
+                ResetValues();
             }
             penalty = true;
             DontDestroyOnLoad(gameObject);
@@ -188,6 +249,7 @@ public class RememberLoadout : MonoBehaviour
             {
                 holdEXPEachLevel = 0;
                 penalty = false;
+                ResetValues();
                 //totalExperienceEarned = 0;
             }
 

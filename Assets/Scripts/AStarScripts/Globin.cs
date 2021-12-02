@@ -207,11 +207,16 @@ public class Globin : MonoBehaviour
 
     }
 
+    private float disttofollow = 0;
     // Update is called once per frame
     void FixedUpdate()
     {
         if (GlobalPlayerVariables.EnableAI)
         {
+            if (playerStash != null)
+            {
+                disttofollow = Vector2.Distance(rb.position, playerStash.position);
+            }
             if (player != null)
                 distancefromplayer = Vector2.Distance(rb.position, player.position);
             else
@@ -222,7 +227,7 @@ public class Globin : MonoBehaviour
 
             if (StartToFollowAfterCertainDist == true)
             {
-                if (distancefromplayer <= distToStartFollow)
+                if (disttofollow <= distToStartFollow)
                 {
                     StartToFollowAfterCertainDist = false;
                 }
