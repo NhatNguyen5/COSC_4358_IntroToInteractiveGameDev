@@ -182,10 +182,9 @@ public class Enemy1 : MonoBehaviour
         playerStash = player;
 
         if (GameObject.Find("EnemyColony") != null)
-            enemyManager = GameObject.Find("EnemyColony").GetComponent<EnemyManager>();
+            enemyManager = EnemyManager.instance;
         if (GameObject.Find("EnemyColony2") != null)
-            enemyManager = GameObject.Find("EnemyColonyType2").GetComponent<EnemyManager>();
-
+            enemyManager = EnemyManager.instance;
         variation();
     }
 

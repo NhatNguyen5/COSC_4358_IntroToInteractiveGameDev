@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+
+    public static EnemyManager instance;
+
     [System.Serializable]
     public struct enemyType
     {
@@ -58,7 +61,10 @@ public class EnemyManager : MonoBehaviour
     public float yPos;
 
 
-
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {

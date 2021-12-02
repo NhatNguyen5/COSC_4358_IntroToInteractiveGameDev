@@ -738,7 +738,7 @@ MonoBehaviour:
   DamageText: {fileID: 1138736699864978853, guid: 7340a996cc5e41d49941f7248c03f3ff, type: 3}
   player: {fileID: 0}
   playerStash: {fileID: 0}
-  stoppingDistance: 0
+  stoppingDistance: 5
   circleRadius: 30
   timeTillNextMove: 0.5
   lineofsight: 0
@@ -753,10 +753,10 @@ MonoBehaviour:
   maxHP: 1000
   AR: 25
   speed: 250
-  contactDamage: 1
+  contactDamage: 50
   EXPWorth: 500
   time2chase: 6
-  retreatToBoss: 1
+  retreatToBoss: 0
   retreatDist: 10
   canDash: 1
   randomDash: 1
@@ -768,7 +768,7 @@ MonoBehaviour:
   AirStrike: {fileID: 5974539760832893, guid: 5a8700ee66670364c83f15c57a3070b2, type: 3}
   amountOfAirStrikes: 3
   beginningRangeToCallAirStrike: 5
-  endingRangeToCallAirStrike: 10
+  endingRangeToCallAirStrike: 7
   knockForcePlayerContact: 0
   knockbackstartrange: 0.125
   knockbackendrange: 0.125

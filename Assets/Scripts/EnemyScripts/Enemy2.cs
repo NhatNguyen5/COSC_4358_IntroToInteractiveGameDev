@@ -176,9 +176,9 @@ public class Enemy2 : MonoBehaviour
         currSprite = spriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(targetCategory).ToArray();
 
         if (GameObject.Find("EnemyColony") != null)
-            enemyManager = GameObject.Find("EnemyColony").GetComponent<EnemyManager>();
+            enemyManager = EnemyManager.instance;
         if (GameObject.Find("EnemyColony2") != null)
-            enemyManager = GameObject.Find("EnemyColonyType2").GetComponent<EnemyManager>();
+            enemyManager = EnemyManager.instance;
     }
 
     void variation()

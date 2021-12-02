@@ -208,6 +208,11 @@ public class Enemy3 : MonoBehaviour
     private EnemyManager enemyManager = null;
 
 
+    private void Awake()
+    {
+        GlobalPlayerVariables.TotalEnemiesAlive += 1;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -236,15 +241,14 @@ public class Enemy3 : MonoBehaviour
         playerStash = player;
         EnemyTarget = player;
         //GlobalPlayerVariables.GlobinsAndPlayerAlive += 1;
-        GlobalPlayerVariables.TotalEnemiesAlive += 1;
         InvokeRepeating("UpdatePath", 0f, 0.5f);
 
         currSprite = spriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(targetCategory).ToArray();
 
         if (GameObject.Find("EnemyColony") != null)
-            enemyManager = GameObject.Find("EnemyColony").GetComponent<EnemyManager>();
+            enemyManager = EnemyManager.instance;
         if (GameObject.Find("EnemyColony2") != null)
-            enemyManager = GameObject.Find("EnemyColonyType2").GetComponent<EnemyManager>();
+            enemyManager = EnemyManager.instance;
     }
 
     private void UpdatePath()
