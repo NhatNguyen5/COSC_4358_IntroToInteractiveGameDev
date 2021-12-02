@@ -33,6 +33,7 @@ public class Puddle : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        AudioManager.instance.PlayEffect("MollySoundFX");
         PuddleShadow = transform.Find("Sprite");
         PudShaOriSca = PuddleShadow.localScale;
         OriShaTrans = PuddleShadow.GetComponent<SpriteRenderer>().color.a;
@@ -108,12 +109,17 @@ public class Puddle : MonoBehaviour
         Collider2D[] objectsToBurn = Physics2D.OverlapCircleAll(transform.position, size);
         foreach (var objectToBurn in objectsToBurn)
         {
-            if (objectToBurn.tag == "EnemyMelee") { objectToBurn.GetComponent<Enemy2>().takeDamage(currDamage, objectToBurn.transform, 10); }
+            if (objectToBurn.tag == "EnemyMelee") 
+            { 
+                objectToBurn.GetComponent<Enemy2>().takeDamage(currDamage, objectToBurn.transform, 10);
+                AudioManager.instance.PlayEffect("Hit");
+            }
             if (objectToBurn.tag == "Enemy") {
                 if (objectToBurn.GetComponent<Enemy1>() != null)
                     objectToBurn.GetComponent<Enemy1>().takeDamage(currDamage, objectToBurn.transform, 10); 
                 else
                     objectToBurn.GetComponent<Enemy3>().takeDamage(currDamage, objectToBurn.transform, 10);
+                AudioManager.instance.PlayEffect("Hit");
             }
             if (objectToBurn.tag == "Colony") {
 
@@ -121,9 +127,14 @@ public class Puddle : MonoBehaviour
                     objectToBurn.GetComponent<EnemyColony>().takeDamage(currDamage, objectToBurn.transform, 10);
                 else
                     objectToBurn.GetComponent<EnemyColony2>().takeDamage(currDamage, objectToBurn.transform, 10);
+                AudioManager.instance.PlayEffect("Hit");
             }
             if (objectToBurn.tag == "Player") { objectToBurn.GetComponent<TakeDamage>().takeDamage(currDamage, objectToBurn.transform, 10); }
-            if (objectToBurn.tag == "Globin") { objectToBurn.GetComponent<Globin>().takeDamage(currDamage, objectToBurn.transform, 10); }
+            if (objectToBurn.tag == "Globin") 
+            { 
+                objectToBurn.GetComponent<Globin>().takeDamage(currDamage, objectToBurn.transform, 10);
+                AudioManager.instance.PlayEffect("HemoTakeDamage");
+            }
         }
     }
 

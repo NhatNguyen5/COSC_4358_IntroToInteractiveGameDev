@@ -487,7 +487,7 @@ public class PlayerActions
         bool weaponActive = false;
         foreach (Transform rw in rightArm)
         {
-            Debug.Log(rw.gameObject.GetType());
+            //Debug.Log(rw.gameObject.GetType());
             if (rw.gameObject.activeSelf)
             {
                 Transform tempWI = RWeaponIcon.transform.Find("WeaponIcon");

@@ -15,6 +15,7 @@ public class WeaponStandScript : MonoBehaviour
     [HideInInspector]
     public bool ThymusPresent = false;
     private bool allowWeaponPickup;
+    private GameObject buttonToPress;
     
 
     // Start is called before the first frame update
@@ -27,7 +28,8 @@ public class WeaponStandScript : MonoBehaviour
             transform.Find("Canvas").transform.Find("WeaponName").GetComponent<Text>().text = DisplayedWeapon.transform.GetComponent<MeleeWeapon>().WeaponLabel;
         else if (DisplayedWeapon.transform.GetComponent<ShieldScript>() != null)
             transform.Find("Canvas").transform.Find("WeaponName").GetComponent<Text>().text = DisplayedWeapon.transform.GetComponent<ShieldScript>().WeaponLabel;
-        
+        buttonToPress = transform.Find("Canvas").Find("ActivateButton").gameObject;
+        buttonToPress.SetActive(false);
     }
 
     // Update is called once per frame
@@ -58,6 +60,7 @@ public class WeaponStandScript : MonoBehaviour
                         if (wp.gameObject.activeSelf)
                         {
                             currSlot = wp.GetComponent<Weapon>().Slot;
+                            
                             isHoldingWeapon = true;
                         }
                         if (wp.GetComponent<Weapon>().Slot == 1)
@@ -78,7 +81,7 @@ public class WeaponStandScript : MonoBehaviour
                         }
                         haveMelee = true;
                     }
-
+                    buttonToPress.GetComponent<Text>().text = "[ " + currSlot + " ]";
                     Debug.Log(wp.gameObject.name + " " + currSlot);
                 }
                 if (!isMeleeWeapon)
@@ -148,6 +151,7 @@ public class WeaponStandScript : MonoBehaviour
         {
             PlayerIsNear = true;
             player = collision.transform;
+            buttonToPress.SetActive(true);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -156,6 +160,7 @@ public class WeaponStandScript : MonoBehaviour
         {
             PlayerIsNear = false;
             player = null;
+            buttonToPress.SetActive(false);
         }
     }
 

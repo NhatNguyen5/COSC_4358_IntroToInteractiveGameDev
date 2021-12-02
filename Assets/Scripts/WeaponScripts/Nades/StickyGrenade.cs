@@ -65,13 +65,15 @@ public class StickyGrenade : MonoBehaviour
         Vector2 GrenadePos = new Vector2(transform.position.x, transform.position.y);
         float distance = (OriPlayerPos - GrenadePos).magnitude;
 
-        if ((distance >= throwRange || (GrenadePos - Target).magnitude <= 0.5))
+        if ((distance >= throwRange || (GrenadePos - Target).magnitude <= 0.5) && !landed && !stuck)
         {
             rb.drag = 50;
             rb.velocity = Vector2.zero;
             rb.angularVelocity = 0;
             transform.GetComponent<TrailRenderer>().enabled = false;
             landed = true;
+            AudioManager.instance.PlayEffect("StickyNadeLand");
+            Debug.Log("this is sticky");
         }
 
         if(stuck || landed)
@@ -86,9 +88,9 @@ public class StickyGrenade : MonoBehaviour
             }
             if(tempTr == 0)
             {
+                AudioManager.instance.PlayEffect("StickyNadeBeep");
                 tempTr = 1;
             }
-
             spriteRend.color = new Color(1, 0, 0, 0.25f * tempTr);
         }
         //Debug.Log(distanceLeft);
@@ -114,7 +116,9 @@ public class StickyGrenade : MonoBehaviour
             cc2d.isTrigger = true;
             rb.isKinematic = true;
             stuck = true;
+            landed = false;
             transform.GetComponent<TrailRenderer>().enabled = false;
+            AudioManager.instance.PlayEffect("StickyNadeLand");
             if (collision.transform.tag != "Walls")
                 transform.parent = collision.transform; 
         }
@@ -131,6 +135,7 @@ public class StickyGrenade : MonoBehaviour
     private IEnumerator countDown()
     {
         yield return new WaitForSeconds(timer);
+        
         Instantiate(greExpl, transform.position, transform.rotation);
         Destroy(gameObject);
     }

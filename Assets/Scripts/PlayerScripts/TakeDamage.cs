@@ -172,7 +172,7 @@ public class TakeDamage : MonoBehaviour
     public void takeDamage(float damage, Transform impact, float speed)
     {
         //Debug.Log(damage);
-        
+        AudioManager.instance.PlayEffect("HemoTakeDamage");
         bool iscrit = false;
         /*
         float chance2crit = Random.Range(0f, 1f);

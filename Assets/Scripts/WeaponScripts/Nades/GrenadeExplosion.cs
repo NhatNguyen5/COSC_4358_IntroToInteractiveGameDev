@@ -30,7 +30,7 @@ public class GrenadeExplosion : MonoBehaviour
         PSEmission.rateOverTimeMultiplier *= 100*explodeRadius;
         PSMain = PS.main;
         PSMain.startSpeed = 1;
-
+        AudioManager.instance.PlayEffect("StickyNadeExplode");
         Collider2D[] CaughtObjects = Physics2D.OverlapCircleAll(transform.position, explodeRadius);
         foreach (var CaughtObject in CaughtObjects)
         {

@@ -18,6 +18,7 @@ public class Chest : Interactable
 
     [Header("Drops")]
     public Droppable[] droppables;
+    private GameObject buttonPress;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,12 @@ public class Chest : Interactable
         for (int i = 0; i < droppables.Length; i++)
         {
             totalPercent = totalPercent + droppables[i].chanceOfDrop;
+        }
+        if(transform.Find("Canvas") != null)
+        {
+            buttonPress = transform.Find("Canvas").Find("ActivateButton").gameObject;
+            buttonPress.transform.position = transform.position;
+            buttonPress.SetActive(false);
         }
     }
 
@@ -39,11 +46,18 @@ public class Chest : Interactable
             {
                 openChest();
             }
+            buttonPress.SetActive(true);
+        }
+        else
+        {
+            if(buttonPress != null)
+                buttonPress.SetActive(false);
         }
     }
 
     private void openChest()
     {
+        AudioManager.instance.PlayEffect("ChestOpen");
         interacted = true;
         anim.SetBool("opened", true);
         int randomNum = Random.Range(0, totalPercent);

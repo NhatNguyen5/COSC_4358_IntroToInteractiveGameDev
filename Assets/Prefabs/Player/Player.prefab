@@ -185,7 +185,6 @@ GameObject:
   - component: {fileID: 3517825292825441637}
   - component: {fileID: 3517825292825441636}
   - component: {fileID: 3517825292825441641}
-  - component: {fileID: 3517825292825441642}
   - component: {fileID: 3517825292825441643}
   - component: {fileID: 3517825292825441646}
   - component: {fileID: 3517825292825441638}
@@ -256,21 +255,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.00000047683716, y: -0.09258181}
   m_Size: {x: 0.7365532, y: 0.80398}
   m_Direction: 0
---- !u!114 &3517825292825441642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3517825292825441639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e16f8f96122c8334d90203c5a4549cb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HitNoise: HemoTakeDamage
-  ContactNoise: HemoTakeDamage
-  isObjectEnemy: 0
 --- !u!114 &3517825292825441643
 MonoBehaviour:
   m_ObjectHideFlags: 0
