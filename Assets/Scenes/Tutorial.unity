@@ -9938,9 +9938,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1577942273
-  m_SortingLayer: 5
-  m_SortingOrder: 0
+  m_SortingLayerID: -1518238841
+  m_SortingLayer: 3
+  m_SortingOrder: 1
   m_Sprite: {fileID: 5193985531252906689, guid: 95f3a6ad02e40db4e90183995d2bab00, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -84640,6 +84640,9 @@ MonoBehaviour:
   tbsDecreaseRate: 0
   DecreaseAfter: 0
   MinTbs: 0
+  Enemy1DieIncrease: 0
+  Enemy2DieIncrease: 0
+  Enemy3DieIncrease: 0
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -100592,7 +100595,7 @@ PrefabInstance:
       objectReference: {fileID: 542014992}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: SpawnCap
-      value: 500
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: CamFollow
@@ -100604,11 +100607,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: tbsDecreaseRate
-      value: 0.05
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: Enemy1DieIncrease
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: Enemy2DieIncrease
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: Enemy3DieIncrease
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: timeBetweenSpawns
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: chanceToSpawnBrunt

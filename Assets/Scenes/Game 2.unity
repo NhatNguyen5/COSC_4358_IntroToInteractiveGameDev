@@ -75458,6 +75458,9 @@ MonoBehaviour:
   tbsDecreaseRate: 0
   DecreaseAfter: 0
   MinTbs: 0
+  Enemy1DieIncrease: 0
+  Enemy2DieIncrease: 0
+  Enemy3DieIncrease: 0
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -84971,6 +84974,7 @@ GameObject:
   - component: {fileID: 2004488607}
   - component: {fileID: 2004488606}
   - component: {fileID: 2004488605}
+  - component: {fileID: 2004488611}
   m_Layer: 0
   m_Name: PityMoneyChest
   m_TagString: Untagged
@@ -85084,8 +85088,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1518238841
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 5193985531252906689, guid: 95f3a6ad02e40db4e90183995d2bab00, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -85106,12 +85110,38 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004488604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -70.84, y: 36.73, z: -0.12}
+  m_LocalPosition: {x: -70.84, y: 36.73, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 78
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2004488611
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004488604}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.25952834}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.68, y: 1.2}
+    newSize: {x: 1.68, y: 1.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.68, y: 0.68094337}
+  m_EdgeRadius: 0
 --- !u!1 &2020665320
 GameObject:
   m_ObjectHideFlags: 0
@@ -86325,7 +86355,7 @@ PrefabInstance:
       objectReference: {fileID: 7674072803767978065, guid: 004f8d1e3c373fe45bed69bfd2079751, type: 3}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: MaxTbs
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: MinTbs
@@ -86354,6 +86384,18 @@ PrefabInstance:
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: tbsDecreaseRate
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: Enemy1DieIncrease
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: Enemy2DieIncrease
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
+      propertyPath: Enemy3DieIncrease
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: timeBetweenSpawns

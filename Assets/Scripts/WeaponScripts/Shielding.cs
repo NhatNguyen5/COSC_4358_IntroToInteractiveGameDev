@@ -61,6 +61,7 @@ public class Shielding : MonoBehaviour
             else
                 collision.gameObject.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - player.transform.position) * 2, ForceMode2D.Impulse);
         }
+
         if (collision.CompareTag("EnemyBullet") || collision.CompareTag("EnemyBullet2"))
         {
             if (collision.CompareTag("EnemyBullet"))

@@ -677,7 +677,10 @@ public class Weapon : MonoBehaviour
     }
     private void OnDisable()
     {
-        UIAmmoCount.text = "0";
-        UIMaxAmmoCount.text = "0";
+        if(UIAmmoCount != null && UIMaxAmmoCount != null)
+        {
+            UIAmmoCount.text = "0";
+            UIMaxAmmoCount.text = "0";
+        }
     }
 }

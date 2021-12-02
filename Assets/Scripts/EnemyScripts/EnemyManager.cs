@@ -18,7 +18,7 @@ public class EnemyManager : MonoBehaviour
     public Camera Mcamera;
     public CameraFollow CamFollow;
     public int SpawnCap;
-    [HideInInspector]
+    //[HideInInspector]
     public float timeBetweenSpawns;
     [Header("Spawn time setting")]
     [Tooltip("This is in second")]

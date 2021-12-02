@@ -22,6 +22,7 @@ public class Interactable : MonoBehaviour
         if (collision.CompareTag("Player") && !collision.isTrigger)
         {
             Debug.Log("Player in range of interactable.");
+
             playerInRange = true;
         }
     }
@@ -32,5 +33,12 @@ public class Interactable : MonoBehaviour
             Debug.Log("Player left range of interactable.");
             playerInRange = false;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Globin"))
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position) * 2, ForceMode2D.Impulse);
+        
     }
 }

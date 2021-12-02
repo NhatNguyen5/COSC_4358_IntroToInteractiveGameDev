@@ -18,6 +18,6 @@ public class smallRedunDantScript : MonoBehaviour
 
     public void moveChest()
     {
-        GameObject.Find("PityMoneyChest").transform.position = new Vector2(-37.43f, 4.24f);
+        GameObject.Find("PityMoneyChest").transform.position = new Vector3(-37.43f, 4.24f, -1);
     }
 }
