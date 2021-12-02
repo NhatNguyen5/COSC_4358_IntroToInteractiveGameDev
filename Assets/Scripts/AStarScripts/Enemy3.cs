@@ -205,6 +205,7 @@ public class Enemy3 : MonoBehaviour
     [HideInInspector]
     public float facing;
 
+    private EnemyManager enemyManager = null;
 
 
     // Start is called before the first frame update
@@ -239,6 +240,11 @@ public class Enemy3 : MonoBehaviour
         InvokeRepeating("UpdatePath", 0f, 0.5f);
 
         currSprite = spriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(targetCategory).ToArray();
+
+        if (GameObject.Find("EnemyColony") != null)
+            enemyManager = GameObject.Find("EnemyColony").GetComponent<EnemyManager>();
+        if (GameObject.Find("EnemyColony2") != null)
+            enemyManager = GameObject.Find("EnemyColonyType2").GetComponent<EnemyManager>();
     }
 
     private void UpdatePath()
@@ -895,6 +901,10 @@ public class Enemy3 : MonoBehaviour
         if (isDead == false)
         {
             isDead = true;
+            if (enemyManager != null)
+            {
+                enemyManager.OnEnemyDeath(3);
+            }
             GlobalPlayerVariables.expToDistribute += EXPWorth;
             RememberLoadout.totalExperienceEarned += EXPWorth;
             GlobalPlayerVariables.TotalEnemiesAlive -= 1;

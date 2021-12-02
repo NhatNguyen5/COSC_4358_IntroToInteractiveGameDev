@@ -26,6 +26,11 @@ public class EnemyManager : MonoBehaviour
     public float tbsDecreaseRate;
     public float DecreaseAfter;
     public float MinTbs;
+
+    public float Enemy1DieIncrease;
+    public float Enemy2DieIncrease;
+    public float Enemy3DieIncrease;
+
     //int enemiesRemainingToSpawn;
     private float nextSpawnTime;
     private float nextDecrease;
@@ -82,10 +87,7 @@ public class EnemyManager : MonoBehaviour
                     spawnPointDistances[i] = temp;
                 }
 
-
-
-
-                if (/*colonyHealth > 0 && */timeBetweenSpawns > 0 && Time.time > nextDecrease && (timeBetweenSpawns > MinTbs || timeBetweenSpawns < MaxTbs))
+                if (colonyHealth > 0 && timeBetweenSpawns > 0 && Time.time > nextDecrease && (timeBetweenSpawns > MinTbs || timeBetweenSpawns < MaxTbs))
                 {
                     nextDecrease = Time.time + DecreaseAfter;
                     timeBetweenSpawns -= tbsDecreaseRate;
@@ -99,6 +101,7 @@ public class EnemyManager : MonoBehaviour
                     }
 
                 }
+
                 if (timeBetweenSpawns > MaxTbs)
                 {
                     tbsDecreaseRate = 0;
@@ -118,7 +121,7 @@ public class EnemyManager : MonoBehaviour
                         SPAnimReset = false;
                     }
                     //Debug.Log(timeBetweenSpawns);
-                    if (/*enemiesRemainingToSpawn > 0 && colonyHealth > 0 &&*/ Time.time > nextSpawnTime && SpawnedMobs.Count < SpawnCap)
+                    if (/*enemiesRemainingToSpawn > 0 && */ colonyHealth > 0 && Time.time > nextSpawnTime && SpawnedMobs.Count < SpawnCap)
                     {
                         //enemiesRemainingToSpawn--;
                         nextSpawnTime = Time.time + timeBetweenSpawns;
@@ -158,11 +161,6 @@ public class EnemyManager : MonoBehaviour
                     cutSceneFlag = true;
                 }
 
-
-
-
-
-
             }
             //Debug.Log(bossDeath);
         }
@@ -176,10 +174,26 @@ public class EnemyManager : MonoBehaviour
         
     }
 
-    private void OnEnemyDeath()
+    public void OnEnemyDeath(int type)
     {
+
         print("Enemy died");
         //enemiesRemainingToSpawn++;
+        switch (type)
+        {
+            case 1:
+                timeBetweenSpawns += Enemy1DieIncrease;
+                break;
+            case 2:
+                timeBetweenSpawns += Enemy2DieIncrease;
+                break;
+            case 3:
+                timeBetweenSpawns += Enemy3DieIncrease;
+                break;
+            default:
+                Debug.Log("Unknown type");
+                break;
+        }
         print("enemies remaing to spawn incremented");
     }
 

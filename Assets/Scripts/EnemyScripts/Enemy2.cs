@@ -156,6 +156,8 @@ public class Enemy2 : MonoBehaviour
     public float recalcshortestDist;
     private float timer2reset;
 
+    private EnemyManager enemyManager = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -172,6 +174,11 @@ public class Enemy2 : MonoBehaviour
         GlobalPlayerVariables.TotalEnemiesAlive += 1;
 
         currSprite = spriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(targetCategory).ToArray();
+
+        if (GameObject.Find("EnemyColony") != null)
+            enemyManager = GameObject.Find("EnemyColony").GetComponent<EnemyManager>();
+        if (GameObject.Find("EnemyColony2") != null)
+            enemyManager = GameObject.Find("EnemyColonyType2").GetComponent<EnemyManager>();
     }
 
     void variation()
@@ -583,6 +590,10 @@ public class Enemy2 : MonoBehaviour
         if (isDead == false)
         {
             isDead = true;
+            if (enemyManager != null)
+            {
+                enemyManager.OnEnemyDeath(2);
+            }
             GlobalPlayerVariables.expToDistribute += EXPWorth;
             RememberLoadout.totalExperienceEarned += EXPWorth;
             GlobalPlayerVariables.TotalEnemiesAlive -= 1;
