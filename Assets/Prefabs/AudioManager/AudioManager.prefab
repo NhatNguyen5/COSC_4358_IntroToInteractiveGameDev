@@ -233,6 +233,36 @@ MonoBehaviour:
     pitch: 1.5
     loop: 0
     source: {fileID: 0}
+  - name: StickyNadeLand
+    clip: {fileID: 8300000, guid: 62268538a569b3a46ac120f5b06fd095, type: 3}
+    volume: 1
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: StickyNadeExplode
+    clip: {fileID: 8300000, guid: ae6d683294dbb254d97fa811cd9ae058, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: StickyNadeBeep
+    clip: {fileID: 8300000, guid: 15366acc5fc345945bb12843d482881d, type: 3}
+    volume: 0.5
+    pitch: 0.7
+    loop: 0
+    source: {fileID: 0}
+  - name: MollySoundFX
+    clip: {fileID: 8300000, guid: a1b63461215570043a8d6f7f903c2a85, type: 3}
+    volume: 1
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  - name: ChestOpen
+    clip: {fileID: 8300000, guid: b6a449572cdc7334b894210fa38ad24c, type: 3}
+    volume: 0.5
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
   Music:
   - name: Theme
     clip: {fileID: 8300000, guid: b51a60b59117cf44b931df2e12386abe, type: 3}
