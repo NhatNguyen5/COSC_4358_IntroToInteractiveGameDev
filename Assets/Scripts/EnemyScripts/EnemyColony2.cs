@@ -1040,6 +1040,8 @@ public class EnemyColony2 : MonoBehaviour
 
     IEnumerator Dying()
     {
+        dashForce = 0;
+        rb.velocity = Vector2.zero;
         yield return new WaitForSecondsRealtime(2.75f);
         foreach (ItemDrops id in Drops)
         {

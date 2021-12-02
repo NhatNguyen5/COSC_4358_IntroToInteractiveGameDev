@@ -1950,15 +1950,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6476559030465391995, guid: ca790e5a9896022428e6b81ff4c09421, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6476559030465391995, guid: ca790e5a9896022428e6b81ff4c09421, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 46.1
+      value: 36.42
       objectReference: {fileID: 0}
     - target: {fileID: 6476559030465391995, guid: ca790e5a9896022428e6b81ff4c09421, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 83.38919
+      value: 81.99
       objectReference: {fileID: 0}
     - target: {fileID: 6476559030465391995, guid: ca790e5a9896022428e6b81ff4c09421, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4975,15 +4975,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4661130396362426041, guid: 1d6cbc3c60a162a48820ed955a8170fc, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4661130396362426041, guid: 1d6cbc3c60a162a48820ed955a8170fc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 43.04
+      value: 41.3
       objectReference: {fileID: 0}
     - target: {fileID: 4661130396362426041, guid: 1d6cbc3c60a162a48820ed955a8170fc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 85.77
+      value: 76.5
       objectReference: {fileID: 0}
     - target: {fileID: 4661130396362426041, guid: 1d6cbc3c60a162a48820ed955a8170fc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -87067,11 +87067,11 @@ PrefabInstance:
       objectReference: {fileID: 7674072803767978065, guid: 004f8d1e3c373fe45bed69bfd2079751, type: 3}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: MaxTbs
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: MinTbs
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: StaInd
@@ -87095,7 +87095,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: tbsDecreaseRate
-      value: 0.05
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2950618480692910412, guid: d2c2469d62c3239449184d9dd22a1817, type: 3}
       propertyPath: Enemy1DieIncrease

@@ -756,9 +756,9 @@ MonoBehaviour:
   distancefromplayer: 0
   canSeeEnemy: 0
   HPbar: {fileID: 7865572294628849973}
-  HP: 1000
-  maxHP: 1000
-  AR: 25
+  HP: 4000
+  maxHP: 4000
+  AR: 10
   speed: 250
   contactDamage: 50
   EXPWorth: 500
