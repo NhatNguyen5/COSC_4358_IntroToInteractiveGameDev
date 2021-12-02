@@ -245,10 +245,9 @@ public class Enemy3 : MonoBehaviour
 
         currSprite = spriteLibrary.spriteLibraryAsset.GetCategoryLabelNames(targetCategory).ToArray();
 
-        if (GameObject.Find("EnemyColony") != null)
-            enemyManager = EnemyManager.instance;
-        if (GameObject.Find("EnemyColony2") != null)
-            enemyManager = EnemyManager.instance;
+        //if (GameObject.Find("EnemyColony") != null)
+        enemyManager = EnemyManager.instance;
+        //if (GameObject.Find("EnemyColony2") != null)
     }
 
     private void UpdatePath()
@@ -887,11 +886,11 @@ public class Enemy3 : MonoBehaviour
         }
     }
 
-
+    WaitForSeconds shortWait = new WaitForSeconds(0.1f);
     public IEnumerator FlashRed()
     {
         sprite.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
+        yield return shortWait;
         sprite.color = Color.white;
     }
 
