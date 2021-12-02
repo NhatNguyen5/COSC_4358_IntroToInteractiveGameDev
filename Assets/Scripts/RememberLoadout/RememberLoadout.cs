@@ -249,6 +249,7 @@ public class RememberLoadout : MonoBehaviour
             {
                 holdEXPEachLevel = 0;
                 penalty = false;
+                ResetValues();
                 //totalExperienceEarned = 0;
             }
 
