@@ -796,11 +796,11 @@ public class EnemyColony2 : MonoBehaviour
         }
     }
 
-
+    WaitForSeconds shortWait = new WaitForSeconds(0.1f);
     public IEnumerator FlashRed()
     {
         sprite.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
+        yield return shortWait;
         sprite.color = Color.white;
     }
 

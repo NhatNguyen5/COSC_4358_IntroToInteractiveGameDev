@@ -181,10 +181,10 @@ public class Enemy1 : MonoBehaviour
 
         playerStash = player;
 
-        if (GameObject.Find("EnemyColony") != null)
-            enemyManager = EnemyManager.instance;
-        if (GameObject.Find("EnemyColony2") != null)
-            enemyManager = EnemyManager.instance;
+        //if (GameObject.Find("EnemyColony") != null)
+        enemyManager = EnemyManager.instance;
+        //if (GameObject.Find("EnemyColony2") != null)
+            
         variation();
     }
 
@@ -542,11 +542,11 @@ public class Enemy1 : MonoBehaviour
         }
     }
 
-
+    WaitForSeconds shortWait = new WaitForSeconds(0.1f);
     public IEnumerator FlashRed()
     {
         sprite.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
+        yield return shortWait;
         sprite.color = Color.white;
     }
 
