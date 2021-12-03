@@ -14,6 +14,7 @@ public class ShowMouse : MonoBehaviour
     {
         Cursor.visible = true;
         GlobalPlayerVariables.GameOver = false;
+        RememberLoadout.penalty = false;
     }
 
     private void Update()
